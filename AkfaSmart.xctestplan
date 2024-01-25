@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "1F0BA8AD-7BCE-478C-A1ED-249FEDA78D54",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:AkfaSmart.xcodeproj",
+      "identifier" : "178722F224BD537D00D90F8E",
+      "name" : "AkfaSmart"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AkfaSmart.xcodeproj",
+        "identifier" : "1787230824BD537E00D90F8E",
+        "name" : "AkfaSmartTests"
+      }
+    }
+  ],
+  "version" : 1
+}
