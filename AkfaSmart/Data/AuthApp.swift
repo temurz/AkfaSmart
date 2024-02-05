@@ -23,7 +23,7 @@ class AuthApp {
             return token
         }
         set {
-            guard let token = newValue else {return removeToken()}
+            guard let _ = newValue else {return removeToken()}
             defaults.setValue(newValue, forKey: keyToken)
         }
     }

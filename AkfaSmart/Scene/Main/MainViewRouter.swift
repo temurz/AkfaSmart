@@ -26,7 +26,7 @@ class MainViewRouter: ViewRouter {
                                TabBarItem(imageName: "square.stack.3d.up", title: "Catalogs", id: MainPage.catalog.rawValue),
                                TabBarItem(imageName: "plus.app", title: "Create order", id: MainPage.add.rawValue),
                                TabBarItem(imageName: "doc.plaintext", title: "News", id: MainPage.news.rawValue),
-                               TabBarItem(imageName: "gearshape", title: "Profile", id: MainPage.settings.rawValue)]
+                               TabBarItem(imageName: "gearshape", title: "Settings", id: MainPage.settings.rawValue)]
     
     @Published var selectedPageId: String = MainPage.home.rawValue
     @Published var body: AnyView
@@ -42,18 +42,19 @@ class MainViewRouter: ViewRouter {
             })
             break
         case MainPage.catalog.rawValue:
-//            let v:ShoppingView = assembler.resolve(navigationController: navigationController)
-//            body = AnyView(v)
+            let v:ArticlesView = assembler.resolve(navigationController: navigationController)
+            body = AnyView(v)
             break
         case MainPage.add.rawValue:
             break
         case MainPage.news.rawValue:
-            let v: NewsView = NewsView()
+            let v: NewsView = assembler.resolve(navigationController: navigationController)
+            
             body = AnyView(v)
             break
         case MainPage.settings.rawValue:
-//            let settingsView: ProfileView = assembler.resolve(navigationController: navigationController, certificate: certificate)
-//            body = AnyView(profileView)
+            let settingsView: SettingsView = assembler.resolve(navigationController: navigationController)
+            body = AnyView(settingsView)
             break
         default:
             body = AnyView(Text("DEFAULT"))

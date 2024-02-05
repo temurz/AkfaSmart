@@ -15,7 +15,10 @@ protocol Assembler: AnyObject,
     GatewaysAssembler,
     AppAssembler,
     RegisterAssembler,
-    CodeInputAssembler {
+    CodeInputAssembler,
+    NewsAssembler,
+    ArticlesAssembler,
+    SettingsAssembler {
     
 }
 

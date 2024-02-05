@@ -23,16 +23,21 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let nav = UINavigationController()
-//        let contentView: ProductsView = assembler.resolve(navigationController: nav)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-//            let vc: MainViewController = assembler.resolve(navigationController: nav)
-//            nav.viewControllers = [vc]
-            let view: LoginView = assembler.resolve(navigationController: nav)
-            nav.pushViewController(UIHostingController(rootView: view), animated: false)
-            window.rootViewController = nav
+            
+            if let _ = AuthApp.shared.token {
+                let view: MainView = assembler.resolve(navigationController: nav)
+                nav.pushViewController(UIHostingController(rootView: view), animated: false)
+                window.rootViewController = nav
+            }else {
+                let view: LoginView = assembler.resolve(navigationController: nav)
+                nav.pushViewController(UIHostingController(rootView: view), animated: false)
+                window.rootViewController = nav
+            }
+            
             self.window = window
             window.makeKeyAndVisible()
         }

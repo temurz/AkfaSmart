@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NewsItemViewModel: Codable {
+struct NewsItemViewModel: Codable, Identifiable {
     let id: Int
     let date: String?
     let title: String?

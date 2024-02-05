@@ -17,7 +17,7 @@ struct MainView: View {
             VStack(spacing: 0) {
                viewRouter.body
                     .frame(maxHeight: .infinity)
-                    .background(Color(.systemGray6))
+//                    .background(Color(.systemGray6))
                  TabBarView(viewRouter: viewRouter, prominentItemImageName: "") {
 //                     self.viewRouter.showAddCard()
                  }
@@ -31,9 +31,9 @@ struct MainView: View {
 //                self.viewRouter.route(selectedPageId: self.viewRouter.selectedPageId)
 //            }
         })
-        .navigationBarHidden(true)
-            .statusBar(hidden: true)
-            .edgesIgnoringSafeArea(.all)
+//        .navigationBarHidden(true)
+//            .statusBar(hidden: true)
+            .edgesIgnoringSafeArea([.bottom, .leading, .trailing])
          
     }
    
