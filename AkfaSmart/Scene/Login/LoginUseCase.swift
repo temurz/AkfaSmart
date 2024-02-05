@@ -7,7 +7,7 @@
 //
 
 protocol LoginUseCaseType {
-    func login(dto: LoginDto) -> Observable<Void>
+    func login(dto: LoginDto) -> Observable<Bool>
 }
 
 struct LoginUseCase: LoginUseCaseType, LoggingIn {

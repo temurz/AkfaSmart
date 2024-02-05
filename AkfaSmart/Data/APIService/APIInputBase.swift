@@ -17,6 +17,7 @@ open class APIInputBase {
     public var parameters: Parameters?
     public var requireAccessToken: Bool
     public var accessToken: String?
+    public var token: String?
     
     public var usingCache: Bool = false {
         didSet {
@@ -75,6 +76,7 @@ extension APIInputBase {
         
         return [
             "🌎 \(method.rawValue) \(urlString)",
+            "Headers: \(String(describing: headers ?? HTTPHeaders()))",
             "Parameters: \(String(describing: parameters ?? JSONDictionary()))"
         ]
         .joined(separator: "\n")

@@ -19,12 +19,16 @@ struct LoginViewModel {
 // MARK: - ViewModelType
 extension LoginViewModel: ViewModel {
     final class Input: ObservableObject {
-        @Published var username = ""
-        @Published var password = ""
+        @Published var username = "998900109258"
+        @Published var password = "qwerty77"
         let loginTrigger: Driver<Void>
+        let showRegisterTrigger: Driver<Void>
+        let showForgotPasswordTrigger: Driver<Void>
         
-        init(loginTrigger: Driver<Void>) {
+        init(loginTrigger: Driver<Void>, showRegisterTrigger: Driver<Void>, showForgotPasswordTrigger: Driver<Void>) {
             self.loginTrigger = loginTrigger
+            self.showRegisterTrigger = showRegisterTrigger
+            self.showForgotPasswordTrigger = showForgotPasswordTrigger
         }
     }
     
@@ -73,18 +77,29 @@ extension LoginViewModel: ViewModel {
             .delay(for: 0.1, scheduler: RunLoop.main)  // waiting for username/password validation
             .filter { output.isLoginEnabled }
             .map { _ in
-                self.useCase.login(dto: LoginDto(username: input.username, password: input.password))
+                self.useCase.login(dto: LoginDto(username: input.username.removePlusFromPhoneNumber(), password: input.password))
                     .trackError(errorTracker)
                     .trackActivity(activityTracker)
                     .asDriver()
             }
             .switchToLatest()
-            .sink(receiveValue: {
-                let message = AlertMessage(title: "Login successful",
-                                           message: "Hello \(input.username). Welcome to the app!",
-                                           isShowing: true)
-                output.alert = message
+            .sink(receiveValue: { bool in
+                if bool {
+                    navigator.showMain()
+                }
             })
+            .store(in: cancelBag)
+        
+        input.showRegisterTrigger
+            .sink {
+                navigator.showRegistration()
+            }
+            .store(in: cancelBag)
+        
+        input.showForgotPasswordTrigger
+            .sink {
+                navigator.showForgotPassword()
+            }
             .store(in: cancelBag)
         
         errorTracker

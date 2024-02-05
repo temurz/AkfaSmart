@@ -31,15 +31,32 @@ public struct APIInvalidResponseError: APIError {
 
 public struct APIUnknownError: APIError {
     
-    public let statusCode: Int?
+    public let status: Int?
+    public let timestamp: String?
+    public let path: String?
+    public let error: String?
     
     public init(statusCode: Int?) {
-        self.statusCode = statusCode
+        self.status = statusCode
+        self.error = ""
+        self.path = ""
+        self.timestamp = ""
+//        self.init(statusCode: statusCode, error: NSLocalizedString("api.unknownError",
+//                            value: "Unknown API error",
+//                            comment: ""))
     }
     
-    public var errorDescription: String? {
-        return NSLocalizedString("api.unknownError",
-                                 value: "Unknown API error",
-                                 comment: "")
+    public init(statusCode: Int?, error: String?){
+        self.status = statusCode
+        self.error = error
+        self.path = ""
+        self.timestamp = ""
+    }
+    
+    public init(statusCode: Int?, error: String?, path: String?, timestamp: String?){
+        self.status = statusCode
+        self.error = error
+        self.path = path
+        self.timestamp = timestamp
     }
 }

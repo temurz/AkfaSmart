@@ -17,10 +17,10 @@ class APIInput: APIInputBase {  // swiftlint:disable:this final_class
                    parameters: parameters,
                    method: method,
                    requireAccessToken: requireAccessToken)
-        self.headers = [
-            "Content-Type": "application/json; charset=utf-8",
-            "Accept": "application/json"
-        ]
+//        self.headers = [
+//            "Content-Type": "application/json; charset=utf-8",
+//            "Accept": "application/json"
+//        ]
         self.username = nil
         self.password = nil
     }

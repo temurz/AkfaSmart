@@ -8,25 +8,26 @@
 
 import Combine
 import Foundation
-
+import Alamofire
 protocol AuthGatewayType {
-    func login(dto: LoginDto) -> Observable<Void>
+    func login(dto: LoginDto) -> Observable<Bool>
 }
 
 struct AuthGateway: AuthGatewayType {
-    func login(dto: LoginDto) -> Observable<Void> {
-        guard let username = dto.username,
-            let password = dto.password else {
+    func login(dto: LoginDto) -> Observable<Bool> {
+        if !dto.isValid {
             return Empty().eraseToAnyPublisher()
         }
-        
-        print(username, password)
-        
-        return Future { promise in
-            DispatchQueue.global().asyncAfter(deadline: .now() + 0.5, execute: {
-                promise(.success(()))
-            })
-        }
-        .eraseToAnyPublisher()
+       
+        let input = API.LoginInput(dto: dto)
+        return API.shared.login(input)
+            .tryMap { output in
+                let body = output.body
+                
+                AuthApp.shared.token = body?.remoteSession
+                AuthApp.shared.username = body?.username
+                return body?.remoteSession != nil ? true : false
+            }
+            .eraseToAnyPublisher()
     }
 }

@@ -10,6 +10,8 @@ protocol GatewaysAssembler {
     func resolve() -> ProductGatewayType
     func resolve() -> AuthGatewayType
     func resolve() -> RepoGatewayType
+    func resolve() -> RegisterGatewayType
+    func resolve() -> CodeInputGatewayType
 }
 
 extension GatewaysAssembler where Self: DefaultAssembler {
@@ -24,6 +26,14 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> RepoGatewayType {
         RepoGateway()
     }
+    
+    func resolve() -> RegisterGatewayType {
+        RegisterGateway()
+    }
+    
+    func resolve() -> CodeInputGatewayType {
+        CodeInputGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -37,5 +47,13 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> RepoGatewayType {
         RepoGateway()
+    }
+    
+    func resolve() -> RegisterGatewayType {
+        RegisterGateway()
+    }
+    
+    func resolve() -> CodeInputGatewayType {
+        CodeInputGateway()
     }
 }

@@ -16,6 +16,8 @@ struct LoginView: View {
 
     private let cancelBag = CancelBag()
     private let loginTrigger = PassthroughSubject<Void, Never>()
+    private let showRegisterTrigger = PassthroughSubject<Void, Never>()
+    private let showForgotPasswordTrigger = PassthroughSubject<Void,Never>()
     
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
@@ -43,15 +45,17 @@ struct LoginView: View {
                         Text("Login")
                             .font(.title)
                             .padding(.top, 16)
-                        TextField("", text: self.$input.username)
-                            .frame(height: 50)
+                        TextField("Phone number", text: self.$input.username)
+                            .frame(height: 48)
+                            .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                             .background(Color(hex: "#F5F7FA"))
                             .cornerRadius(12)
                         Text(self.output.usernameValidationMessage)
                             .foregroundColor(.red)
                             .font(.footnote)
-                        SecureField("", text: self.$input.password)
-                            .frame(height: 50)
+                        SecureField("Password", text: self.$input.password)
+                            .frame(height: 48)
+                            .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                             .background(Color(hex: "#F5F7FA"))
                             .cornerRadius(12)
                             .padding(.top)
@@ -61,7 +65,7 @@ struct LoginView: View {
                         HStack {
                             Spacer()
                             Button("Forgot password?") {
-                                
+                                showForgotPasswordTrigger.send(())
                             }
                             .foregroundColor(.black)
                             Spacer()
@@ -79,7 +83,7 @@ struct LoginView: View {
                         HStack {
                             Spacer()
                             Button("Registration") {
-                                
+                                self.showRegisterTrigger.send(())
                             }
                             .foregroundColor(Color(hex: "#51526C"))
                             Spacer()
@@ -103,7 +107,8 @@ struct LoginView: View {
     }
     
     init(viewModel: LoginViewModel) {
-        let input = LoginViewModel.Input(loginTrigger: loginTrigger.asDriver())
+        let input = LoginViewModel.Input(loginTrigger: loginTrigger.asDriver(), showRegisterTrigger: showRegisterTrigger.asDriver(),
+            showForgotPasswordTrigger: showForgotPasswordTrigger.asDriver())
         output = viewModel.transform(input, cancelBag: cancelBag)
         self.input = input
     }

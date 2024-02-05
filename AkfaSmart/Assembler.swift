@@ -13,7 +13,9 @@ protocol Assembler: AnyObject,
     MainAssembler,
     LoginAssembler,
     GatewaysAssembler,
-    AppAssembler {
+    AppAssembler,
+    RegisterAssembler,
+    CodeInputAssembler {
     
 }
 

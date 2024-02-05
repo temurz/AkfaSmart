@@ -53,7 +53,7 @@ open class APIBase {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 60
         configuration.timeoutIntervalForResource = 60
-        
+        configuration.httpCookieStorage = nil
         self.init(configuration: configuration)
     }
     
@@ -61,9 +61,27 @@ open class APIBase {
         manager = Alamofire.Session(configuration: configuration)
     }
     
+    open func success(_ input: APIInputBase) -> AnyPublisher<APIResponse<Bool>, Error> {
+        let response: AnyPublisher<APIResponse<JSONDictionary>, Error> = requestJSON(input)
+        return response
+            .map { apiResponse -> APIResponse<Bool> in
+               
+                    let jsonData = apiResponse.data
+                    return APIResponse(header: apiResponse.header, data: jsonData["success"] as? Bool ?? false)
+            
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    open func success(_ input: APIInputBase) -> AnyPublisher<Bool, Error> {
+        success(input)
+            .map { $0.data }
+            .eraseToAnyPublisher()
+    }
+    
     open func request<T: Decodable>(_ input: APIInputBase) -> AnyPublisher<APIResponse<T>, Error> {
         let response: AnyPublisher<APIResponse<JSONDictionary>, Error> = requestJSON(input)
-        
+//        let appResponce: AnyPublisher<APIResponse<JSONArray>,Error> = postProcess(response)
         return response
             .tryMap { apiResponse -> APIResponse<T> in
                 do {
@@ -83,11 +101,38 @@ open class APIBase {
             .map { $0.data }
             .eraseToAnyPublisher()
     }
-
-    open func request<T: Codable>(_ input: APIInputBase) -> AnyPublisher<APIResponse<[T]>, Error> {
-        let response: AnyPublisher<APIResponse<JSONArray>, Error> = requestJSON(input)
-
+    
+    open func requestPrimitive<T: Decodable>(_ input: APIInputBase) -> AnyPublisher<APIResponse<T>, Error> {
+        let response: AnyPublisher<APIResponse<JSONDictionary>, Error> = requestJSON(input)
         return response
+            .tryMap { (apiResponse) -> APIResponse<T> in
+               
+                    let json = apiResponse.data
+                    let success = json["success"] as? Bool ?? false
+                    let object = json["body"] as? T
+                    if success && object != nil{
+                        return APIResponse(header: apiResponse.header,
+                                           data: object!)
+                    }
+                    else {
+                        throw self.handleResponseError( json:  json)
+                    }
+                    
+               
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    open func requestPrimitive<T: Decodable>(_ input: APIInputBase) -> AnyPublisher<T, Error> {
+        requestPrimitive(input)
+            .map { $0.data }
+            .eraseToAnyPublisher()
+    }
+
+    open func requestList<T: Decodable>(_ input: APIInputBase) -> AnyPublisher<APIResponse<[T]>, Error> {
+        let response: AnyPublisher<APIResponse<JSONDictionary>, Error> = requestJSON(input)
+        let appResponce: AnyPublisher<APIResponse<JSONArray>,Error> = postProcess(response)
+        return appResponce
             .tryMap { apiResponse -> APIResponse<[T]> in
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: apiResponse.data,
@@ -103,15 +148,13 @@ open class APIBase {
             .eraseToAnyPublisher()
     }
     
-    open func request<T: Decodable>(_ input: APIInputBase) -> AnyPublisher<[T], Error> {
-        request(input)
+    open func requestList<T: Decodable>(_ input: APIInputBase) -> AnyPublisher<[T], Error> {
+        requestList(input)
             .map { $0.data }
             .eraseToAnyPublisher()
     }
     
     open func requestJSON<U: JSONData>(_ input: APIInputBase) -> AnyPublisher<APIResponse<U>, Error> {
-        let username = input.username
-        let password = input.password
         
         let urlRequest = preprocess(input)
             .handleEvents(receiveOutput: { [unowned self] input in
@@ -147,14 +190,11 @@ open class APIBase {
                         input.urlString,
                         method: input.method,
                         parameters: input.parameters,
-                        encoding: input.encoding,
+                        encoding: URLEncoding.queryString,
                         headers: input.headers
                     )
                 }
                 
-                if let username = username, let password = password {
-                    return request.authenticate(username: username, password: password)
-                }
                 return request
             }
             .handleEvents(receiveOutput: { (dataRequest) in
@@ -173,40 +213,11 @@ open class APIBase {
             .tryCatch { [unowned self] error -> AnyPublisher<APIResponse<U>, Error> in
                 return try self.handleRequestError(error, input: input)
             }
-            .handleEvents(receiveOutput: { response in
-                if input.usingCache {
-                    DispatchQueue.global().async {
-                        try? CacheManager.sharedInstance.write(urlString: input.urlEncodingString,
-                                                               data: response.data,
-                                                               header: response.header)
-                    }
-                }
-            })
+           
             .eraseToAnyPublisher()
         
-        let cacheRequest: AnyPublisher<APIResponse<U>, Error> = Just(input)
-            .setFailureType(to: Error.self)
-            .filter { $0.usingCache }
-            .tryMap { input -> (Any, ResponseHeader?) in
-                return try CacheManager.sharedInstance.read(urlString: input.urlEncodingString)
-            }
-            .catch { _ in Empty() }
-            .filter { $0.0 is U }
-            .map { data, header -> APIResponse<U> in
-                APIResponse(header: header, data: data as! U) // swiftlint:disable:this force_cast
-            }
-            .handleEvents(receiveOutput: { [unowned self] response in
-                if self.logOptions.contains(.cache) {
-                    print("[CACHE]")
-                    print(response.data)
-                }
-            })
-            .eraseToAnyPublisher()
         
-        return input.usingCache
-            ? Publishers.Concatenate(prefix: cacheRequest, suffix: urlRequest)
-                .eraseToAnyPublisher()
-            : urlRequest
+        return  urlRequest
     }
     
     open func preprocess(_ input: APIInputBase) -> AnyPublisher<APIInputBase, Error> {
@@ -221,7 +232,6 @@ open class APIBase {
         switch dataResponse.result {
         case .success(let data):
             let json: U? = (try? JSONSerialization.jsonObject(with: data, options: [])) as? U
-            
             guard let statusCode = dataResponse.response?.statusCode else {
                 throw APIUnknownError(statusCode: nil)
             }
@@ -267,8 +277,32 @@ open class APIBase {
         throw error
     }
     
+    open func postProcess<U:JSONData>(_ response: AnyPublisher<APIResponse<JSONDictionary>, Error>)-> AnyPublisher<APIResponse<U>, Error>{
+        return response
+            .tryMap { (apiResponse) -> APIResponse<U> in
+               
+                    let json = apiResponse.data
+                    let success = json["success"] as? Bool ?? false
+                    let object = json["body"] as? U
+                    if success {
+                        return APIResponse(header: apiResponse.header,
+                                           data: object ?? U.init())
+                    }
+                    else {
+                        throw self.handleResponseError( json:  json)
+                    }
+                    
+               
+            }
+            .eraseToAnyPublisher()
+    }
+    
     open func handleRequestError<U: JSONData>(_ error: Error,
                                               input: APIInputBase) throws -> AnyPublisher<APIResponse<U>, Error> {
+        throw error
+    }
+    
+    open func handleRequestError<U: JSONData>(_ error: Error) throws -> AnyPublisher<APIResponse<U>, Error> {
         throw error
     }
     
@@ -284,6 +318,10 @@ open class APIBase {
     
     open func handleResponseError(dataResponse: DataResponse<Data, AFError>, json: JSONDictionary?) -> Error {
         APIUnknownError(statusCode: dataResponse.response?.statusCode)
+    }
+    
+    open func handleResponseError(json: JSONDictionary?) -> Error {
+        APIUnknownError(statusCode: json?["code"] as? Int, error: json?["message"] as? String)
     }
     
     open func handleResponseError(dataResponse: DataResponse<Data, AFError>, json: JSONArray?) -> Error {
