@@ -38,7 +38,8 @@ struct ArticlesView: View {
             .padding(.top)
         }
         .navigationTitle("Catalogs")
-        .navigationBarItems(trailing: 
+        .navigationBarHidden(false)
+        .navigationBarItems(trailing:
                                 Button(action: {
             
         }, label: {
@@ -46,7 +47,6 @@ struct ArticlesView: View {
                 .resizable()
                 .foregroundColor(Color.red)
         })
-            //slider.horizontal.3
         )
     }
     

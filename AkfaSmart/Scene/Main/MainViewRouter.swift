@@ -35,26 +35,26 @@ class MainViewRouter: ViewRouter {
         self.selectedPageId = selectedPageId
         switch selectedPageId {
         case MainPage.home.rawValue:
-            
-            body = AnyView(VStack{
-                Spacer()
-                Text("Home View")
-            })
+            let view: HomeView = assembler.resolve(navigationController: navigationController)
+            body = AnyView(view)
             break
         case MainPage.catalog.rawValue:
-            let v:ArticlesView = assembler.resolve(navigationController: navigationController)
-            body = AnyView(v)
+            let view:ArticlesView = assembler.resolve(navigationController: navigationController)
+            
+            body = AnyView(view)
             break
         case MainPage.add.rawValue:
-            break
+            let view: CreateOrderView = assembler.resolve(navigationController: navigationController)
+            body = AnyView(view)
         case MainPage.news.rawValue:
-            let v: NewsView = assembler.resolve(navigationController: navigationController)
+            let view: NewsView = assembler.resolve(navigationController: navigationController)
             
-            body = AnyView(v)
+            body = AnyView(view)
             break
         case MainPage.settings.rawValue:
-            let settingsView: SettingsView = assembler.resolve(navigationController: navigationController)
-            body = AnyView(settingsView)
+            let view: SettingsView = assembler.resolve(navigationController: navigationController)
+            
+            body = AnyView(view)
             break
         default:
             body = AnyView(Text("DEFAULT"))
@@ -66,7 +66,8 @@ class MainViewRouter: ViewRouter {
         self.navigationController  = navigationController
         self.assembler = assembler
 //        self.homeView = assembler.resolve(navigationController: navigationController)
-        self.body = AnyView(VStack{ Spacer() })
+        let view: HomeView = assembler.resolve(navigationController: navigationController)
+        self.body = AnyView(view)
         
     }
     

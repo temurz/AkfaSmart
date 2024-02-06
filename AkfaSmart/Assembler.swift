@@ -18,7 +18,9 @@ protocol Assembler: AnyObject,
     CodeInputAssembler,
     NewsAssembler,
     ArticlesAssembler,
-    SettingsAssembler {
+    SettingsAssembler,
+    HomeViewAssembler,
+    CreateOrderAssembler {
     
 }
 

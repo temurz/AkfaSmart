@@ -14,6 +14,7 @@ class AuthApp {
     private var keyAuth:String { "MyAutorizationKey"}
     private var keyAppEnterCode: String { "appEnterCodeKey" }
     private let keyFirstEnter: String = "firstEnter"
+    private let keyForVisibility: String = "visibilityKey"
     private let defaults = UserDefaults.standard
     
     //MARK: Token
@@ -46,6 +47,15 @@ class AuthApp {
         
         set {
             UserDefaults.standard.set(newValue, forKey: keyAppEnterCode)
+        }
+    }
+    
+    var visibility: Bool {
+        get {
+            defaults.bool(forKey: keyForVisibility)
+        }
+        set {
+            defaults.setValue(newValue, forKey: keyForVisibility)
         }
     }
     

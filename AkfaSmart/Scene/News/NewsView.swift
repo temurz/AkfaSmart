@@ -36,7 +36,7 @@ struct NewsView: View {
             .padding(.top)
         }
         .navigationTitle("News")
-        
+        .navigationBarHidden(false)
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
                 title: Text(output.alert.title),
