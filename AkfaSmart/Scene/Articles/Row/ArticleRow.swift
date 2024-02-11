@@ -16,6 +16,13 @@ struct ArticleRow: View {
                 .padding(.horizontal)
             Divider()
             HStack {
+                Text(viewModel.type ?? "")
+                    .foregroundColor(.white)
+                    .font(.subheadline)
+                    .padding(4)
+                    .background(Color(hex: viewModel.buttonColor ?? ""))
+                    .cornerRadius(6)
+                    .padding()
                 Spacer()
                 Text(viewModel.date?.convertToDateUS() ?? "")
                     .font(.subheadline)
@@ -25,7 +32,6 @@ struct ArticleRow: View {
                     .cornerRadius(6)
                     .padding()
             }
-            
         }
         .overlay {
             RoundedRectangle(cornerRadius: 12)

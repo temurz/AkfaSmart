@@ -7,11 +7,11 @@
 //
 
 import Foundation
-protocol NewsDomainUseCase {
+protocol NewsDomainUseCaseType {
     var newsGateway: NewsGatewayType { get }
 }
 
-extension NewsDomainUseCase {
+extension NewsDomainUseCaseType {
     func getNews(dto: GetPageDto) -> Observable<PagingInfo<NewsItemViewModel>> {
         return newsGateway.getNews(dto: dto)
     }

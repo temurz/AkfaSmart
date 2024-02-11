@@ -16,13 +16,13 @@ extension ArticlesViewModel: ViewModel {
     
     struct Input {
         let showDetailViewTrigger: Driver<ArticleItemViewModel>
+        let loadArticlesTrigger: Driver<Void>
+        let reloadNewsTrigger: Driver<Void>
+        let loadMoreArticlesTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
-        @Published var articles = [
-            ArticleItemViewModel(id: 0, date: "2023-03-27T19:00:00.000+00:00", title: "Tiara TwinMax", shortContent: "Алюминиевые окна и двери", htmlContent: "", imageUrl: "http://84.54.75.248:1030/api/mobile/article/img/c6e6e4c7-9749-4861-97f0-37cb9e2ea6f6_twin.png", type: "Каталог", buttonColor: "#007AFF", fileUrls: []),
-            ArticleItemViewModel(id: 1, date: "2023-03-27T19:00:00.000+00:00", title: "Tiara TwinMax", shortContent: "Алюминиевые окна и двери", htmlContent: "", imageUrl: "http://84.54.75.248:1030/api/mobile/article/img/c6e6e4c7-9749-4861-97f0-37cb9e2ea6f6_twin.png", type: "Каталог", buttonColor: "#007AFF", fileUrls: []),
-        ]
+        @Published var articles = [ArticleItemViewModel]()
         @Published var isLoading = false
         @Published var isReloading = false
         @Published var isLoadingMore = false
@@ -37,6 +37,36 @@ extension ArticlesViewModel: ViewModel {
             .sink { item in
                 navigator.showArticleDetail(item)
             }
+            .store(in: cancelBag)
+        
+        input.loadArticlesTrigger.sink{}
+            .store(in: cancelBag)
+        
+        let getPageInput = GetPageInput(loadTrigger: input.loadArticlesTrigger, reloadTrigger: input.reloadNewsTrigger, loadMoreTrigger: input.loadMoreArticlesTrigger, getItems: useCase.getArticles)
+        
+        let (pages, error, isReloading, isLoading, isLoadingMore) = getPage(input: getPageInput).destructured
+        
+        pages
+            .map { $0.items }
+            .assign(to: \.articles, on: output)
+            .store(in: cancelBag)
+        
+        error
+            .receive(on: RunLoop.main)
+            .map { AlertMessage(error: $0)}
+            .assign(to: \.alert, on: output)
+            .store(in: cancelBag)
+            
+        isLoading
+            .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
+        
+        isReloading
+            .assign(to: \.isReloading, on: output)
+            .store(in: cancelBag)
+        
+        isLoadingMore
+            .assign(to: \.isLoadingMore, on: output)
             .store(in: cancelBag)
         
         return output

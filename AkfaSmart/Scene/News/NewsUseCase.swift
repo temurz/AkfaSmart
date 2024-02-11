@@ -11,11 +11,11 @@ protocol NewsUseCaseType {
     func getNews(page: Int) -> Observable<PagingInfo<NewsItemViewModel>>
 }
 
-struct NewsUseCase: NewsUseCaseType, NewsDomainUseCase {
+struct NewsUseCase: NewsUseCaseType, NewsDomainUseCaseType {
     let newsGateway: NewsGatewayType
     
     func getNews(page: Int) -> Observable<PagingInfo<NewsItemViewModel>> {
-        let dto = GetPageDto(page: 1)
+        let dto = GetPageDto(page: page)
         return getNews(dto: dto)
     }
 }

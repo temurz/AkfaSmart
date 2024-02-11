@@ -13,6 +13,9 @@ struct ArticlesView: View {
     
     @ObservedObject var output: ArticlesViewModel.Output
     let showDetailViewTrigger = PassthroughSubject<ArticleItemViewModel, Never>()
+    let loadArticlesTrigger = PassthroughSubject<Void, Never>()
+    let reloadArticlesTrigger = PassthroughSubject<Void,Never>()
+    let loadMoreArticlesTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     
     var body: some View {
@@ -34,7 +37,6 @@ struct ArticlesView: View {
                 }
                 
             }
-            
             .padding(.top)
         }
         .navigationTitle("Catalogs")
@@ -48,10 +50,25 @@ struct ArticlesView: View {
                 .foregroundColor(Color.red)
         })
         )
+        .alert(isPresented: $output.alert.isShowing) {
+            Alert(
+                title: Text(output.alert.title),
+                message: Text(output.alert.message),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+        .onAppear {
+            loadArticlesTrigger.send(())
+        }
     }
     
     init(viewModel: ArticlesViewModel) {
-        let input = ArticlesViewModel.Input(showDetailViewTrigger: showDetailViewTrigger.asDriver())
+        let input = ArticlesViewModel.Input(
+            showDetailViewTrigger: showDetailViewTrigger.asDriver(),
+            loadArticlesTrigger: loadArticlesTrigger.asDriver(),
+            reloadNewsTrigger: reloadArticlesTrigger.asDriver(),
+            loadMoreArticlesTrigger: loadMoreArticlesTrigger.asDriver())
+        
         output = viewModel.transform(input, cancelBag: cancelBag)
     }
 }

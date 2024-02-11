@@ -29,7 +29,7 @@ extension ArticlesAssembler where Self: DefaultAssembler {
         return ArticlesNavigator(assembler: self, navigationController: navigationController)
     }
     func resolve() -> ArticlesUseCaseType {
-        return ArticlesUseCase()
+        return ArticlesUseCase(articlesGateway: resolve())
     }
 }
 
@@ -38,6 +38,6 @@ extension ArticlesAssembler where Self: PreviewAssembler {
         return ArticlesNavigator(assembler: self, navigationController: navigationController)
     }
     func resolve() -> ArticlesUseCaseType {
-        return ArticlesUseCase()
+        return ArticlesUseCase(articlesGateway: resolve())
     }
 }
