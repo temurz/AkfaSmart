@@ -8,10 +8,10 @@
 
 import UIKit
 protocol SettingsNavigatorType {
-    
+    func showLogin()
 }
 
-struct SettingsNavigator: SettingsNavigatorType {
+struct SettingsNavigator: SettingsNavigatorType, ShowingLogin {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
 }

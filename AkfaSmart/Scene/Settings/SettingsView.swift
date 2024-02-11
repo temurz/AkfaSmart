@@ -11,6 +11,7 @@ import Combine
 struct SettingsView: View {
     let output: SettingsViewModel.Output
     let selectRowTrigger = PassthroughSubject<Int,Never>()
+    let deleteAccountTrigger = PassthroughSubject<Void, Never>()
     
     let cancelBag = CancelBag()
     var body: some View {
@@ -37,7 +38,7 @@ struct SettingsView: View {
                 }
                 
                 Button("Delete account") {
-                    
+                    deleteAccountTrigger.send(())
                 }
                 .foregroundColor(Color.red)
                 .font(.bold(.headline)())
@@ -55,7 +56,7 @@ struct SettingsView: View {
     }
     
     init(viewModel: SettingsViewModel) {
-        let input = SettingsViewModel.Input()
+        let input = SettingsViewModel.Input(selectRowTrigger: selectRowTrigger.asDriver(), deleteAccountTrigger: deleteAccountTrigger.asDriver())
         output = viewModel.transform(input, cancelBag: cancelBag)
     }
     

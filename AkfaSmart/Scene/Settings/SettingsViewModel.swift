@@ -20,7 +20,8 @@ struct SettingsViewModel {
 
 extension SettingsViewModel: ViewModel {
     struct Input {
-        
+        let selectRowTrigger: Driver<Int>
+        let deleteAccountTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -42,6 +43,13 @@ extension SettingsViewModel: ViewModel {
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
         let output = Output()
+        
+        input.deleteAccountTrigger.sink { _ in
+            AuthApp.shared.token = nil
+            AuthApp.shared.username = nil
+            navigator.showLogin()
+        }
+        .store(in: cancelBag)
         
         return output
     }
