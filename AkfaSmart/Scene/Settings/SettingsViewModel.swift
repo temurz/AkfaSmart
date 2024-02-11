@@ -51,6 +51,17 @@ extension SettingsViewModel: ViewModel {
         }
         .store(in: cancelBag)
         
+        input.selectRowTrigger.sink { id in
+            switch id {
+            case 1:
+                navigator.showInfographics()
+            default:
+                break
+            }
+            
+        }
+        .store(in: cancelBag)
+        
         return output
     }
 }

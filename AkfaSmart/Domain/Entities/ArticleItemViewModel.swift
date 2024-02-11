@@ -10,14 +10,14 @@ import Foundation
 
 struct ArticleItemViewModel: Codable, Identifiable {
     let id: Int
-                    let date: String?
-                    let title: String?
-                    let shortContent: String?
-                    let htmlContent: String?
-                    let imageUrl: String?
-                    let type: String?
-                    let buttonColor: String?
-                    let fileUrls: [FileUrls]?
+    let date: String?
+    let title: String?
+    let shortContent: String?
+    let htmlContent: String?
+    let imageUrl: String?
+    let type: String?
+    let buttonColor: String?
+    let fileUrls: [FileUrls]?
 }
 
 struct FileUrls: Codable {

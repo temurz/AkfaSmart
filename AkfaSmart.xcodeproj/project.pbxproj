@@ -145,6 +145,10 @@
 		B85516C72B79061B00FC2D6E /* ArticleDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516C62B79061B00FC2D6E /* ArticleDomainUseCase.swift */; };
 		B85516C92B79069300FC2D6E /* ArticlesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516C82B79069300FC2D6E /* ArticlesGateway.swift */; };
 		B85516CB2B790E5F00FC2D6E /* Articles+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516CA2B790E5F00FC2D6E /* Articles+API.swift */; };
+		B85516CD2B7928DD00FC2D6E /* ShowingInfograpics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516CC2B7928DD00FC2D6E /* ShowingInfograpics.swift */; };
+		B85516D02B79294700FC2D6E /* InfographicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516CF2B79294700FC2D6E /* InfographicsView.swift */; };
+		B85516D22B792B5600FC2D6E /* InfographicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516D12B792B5600FC2D6E /* InfographicsViewModel.swift */; };
+		B85516D52B792C6C00FC2D6E /* InfoViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516D42B792C6C00FC2D6E /* InfoViewRow.swift */; };
 		B866A8BF2B66E9A800202C9F /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A8BE2B66E9A800202C9F /* Base.swift */; };
 		B866A8C12B66EC9400202C9F /* Login+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A8C02B66EC9400202C9F /* Login+API.swift */; };
 		B866A8C32B66F07200202C9F /* AuthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A8C22B66F07200202C9F /* AuthApp.swift */; };
@@ -370,6 +374,10 @@
 		B85516C62B79061B00FC2D6E /* ArticleDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDomainUseCase.swift; sourceTree = "<group>"; };
 		B85516C82B79069300FC2D6E /* ArticlesGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesGateway.swift; sourceTree = "<group>"; };
 		B85516CA2B790E5F00FC2D6E /* Articles+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Articles+API.swift"; sourceTree = "<group>"; };
+		B85516CC2B7928DD00FC2D6E /* ShowingInfograpics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingInfograpics.swift; sourceTree = "<group>"; };
+		B85516CF2B79294700FC2D6E /* InfographicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsView.swift; sourceTree = "<group>"; };
+		B85516D12B792B5600FC2D6E /* InfographicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsViewModel.swift; sourceTree = "<group>"; };
+		B85516D42B792C6C00FC2D6E /* InfoViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewRow.swift; sourceTree = "<group>"; };
 		B866A8BE2B66E9A800202C9F /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		B866A8C02B66EC9400202C9F /* Login+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+API.swift"; sourceTree = "<group>"; };
 		B866A8C22B66F07200202C9F /* AuthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApp.swift; sourceTree = "<group>"; };
@@ -660,6 +668,7 @@
 				B866A8D22B68D07C00202C9F /* ShowingCodeInput.swift */,
 				B866A95D2B712DF800202C9F /* ShowingNewsDetailView.swift */,
 				B866A96A2B71544700202C9F /* ShowingArticleDetail.swift */,
+				B85516CC2B7928DD00FC2D6E /* ShowingInfograpics.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -986,6 +995,24 @@
 			path = Articles;
 			sourceTree = "<group>";
 		};
+		B85516CE2B79293200FC2D6E /* Infographics */ = {
+			isa = PBXGroup;
+			children = (
+				B85516D32B792C5D00FC2D6E /* Row */,
+				B85516CF2B79294700FC2D6E /* InfographicsView.swift */,
+				B85516D12B792B5600FC2D6E /* InfographicsViewModel.swift */,
+			);
+			path = Infographics;
+			sourceTree = "<group>";
+		};
+		B85516D32B792C5D00FC2D6E /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				B85516D42B792C6C00FC2D6E /* InfoViewRow.swift */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
 		B866A8D42B68D0C900202C9F /* CodeInputView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1111,6 +1138,7 @@
 		B866A9742B71688B00202C9F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				B85516CE2B79293200FC2D6E /* Infographics */,
 				B866A9832B7181D900202C9F /* Row */,
 				B866A9752B71689A00202C9F /* SettingsView.swift */,
 				B866A97D2B7168E100202C9F /* SettingsViewModel.swift */,
@@ -1455,6 +1483,7 @@
 				1787234B24BD560500D90F8E /* MainUseCase.swift in Sources */,
 				1742B37124D7B45C00C82D15 /* UIViewController+Debug.swift in Sources */,
 				176BAA6224D2698500324D3C /* APIServiceBase.swift in Sources */,
+				B85516CD2B7928DD00FC2D6E /* ShowingInfograpics.swift in Sources */,
 				1787235324BD56E400D90F8E /* Product.swift in Sources */,
 				B866A9782B7168BB00202C9F /* SettingsNavigator.swift in Sources */,
 				1765B2CE24C6A79F0096D210 /* ProductDetailView.swift in Sources */,
@@ -1502,6 +1531,7 @@
 				B866A9712B715CBD00202C9F /* ArticleRow.swift in Sources */,
 				17A5B20124D95168004BD209 /* RefreshHeaderAnimator.swift in Sources */,
 				1770EC3324DAA9AC0022FBFE /* ShowingRepoCollection.swift in Sources */,
+				B85516D52B792C6C00FC2D6E /* InfoViewRow.swift in Sources */,
 				B866A9292B6BF73800202C9F /* TabBarItem.swift in Sources */,
 				B866A9652B71537500202C9F /* ArticlesNavigator.swift in Sources */,
 				17A5B1FF24D9514B004BD209 /* RefreshFooterAnimator.swift in Sources */,
@@ -1521,8 +1551,10 @@
 				B866A92B2B6BF76700202C9F /* TabBarItemView.swift in Sources */,
 				178809B024C0520000002215 /* ViewModel+GetList.swift in Sources */,
 				173865B024D40FBE0059E3AD /* ViewModel+GetItem.swift in Sources */,
+				B85516D02B79294700FC2D6E /* InfographicsView.swift in Sources */,
 				B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */,
 				1742B36B24D7B22B00C82D15 /* ReposAssembler.swift in Sources */,
+				B85516D22B792B5600FC2D6E /* InfographicsViewModel.swift in Sources */,
 				B866A8E72B68E4CD00202C9F /* CodeConfirm+API.swift in Sources */,
 				B866A9592B71285300202C9F /* ArticleItemViewModel.swift in Sources */,
 				1765B2CC24C68D940096D210 /* CancelBag.swift in Sources */,
