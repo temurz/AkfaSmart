@@ -96,10 +96,9 @@ extension RegisterViewModel: ViewModel {
             }
             .switchToLatest()
             .sink(receiveValue: { bool in
-                //TODO:
-//                if bool {
+                if bool {
                     navigator.showCodeInput(title: "Registration")
-//                }
+                }
             })
             .store(in: cancelBag)
         

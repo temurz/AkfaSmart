@@ -21,11 +21,11 @@ struct RegisterGateway: RegisterGatewayType {
         
         let input = API.RegistrationInput(dto: dto)
         return API.shared.register(input: input)
-            .tryMap { response in
-//                if response.success {
+            .tryMap { bool in
+                if bool {
                     AuthApp.shared.username = dto.username
-//                }
-                return response.success
+                }
+                return bool
             }
             .eraseToAnyPublisher()
     }

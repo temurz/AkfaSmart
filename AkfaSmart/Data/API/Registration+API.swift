@@ -9,8 +9,8 @@
 import Foundation
 import Alamofire
 extension API {
-    func register(input: RegistrationInput) -> Observable<ResponseModel<RegistrationOutput>> {
-        return request(input)
+    func register(input: RegistrationInput) -> Observable<Bool> {
+        return success(input)
     }
     
     final class RegistrationInput: APIInput {
