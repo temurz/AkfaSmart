@@ -34,7 +34,7 @@ struct HomeView: View {
             }
             .padding()
         }
-        .navigationBarHidden(true)
+        .navigationTitle("")
     }
     
     init(viewModel: HomeViewModel) {

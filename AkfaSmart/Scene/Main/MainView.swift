@@ -17,9 +17,8 @@ struct MainView: View {
             VStack(spacing: 0) {
                viewRouter.body
                     .frame(maxHeight: .infinity)
-//                    .background(Color(.systemGray6))
                  TabBarView(viewRouter: viewRouter, prominentItemImageName: "") {
-//                     self.viewRouter.showAddCard()
+                     
                  }
                  .frame(width: geometry.size.width, height: geometry.size.height/10)
                  .background(Color("tabBarColor").shadow(radius: 2))

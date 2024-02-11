@@ -34,6 +34,10 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> CodeInputGatewayType {
         CodeInputGateway()
     }
+    
+    func resolve() -> NewsGatewayType {
+        NewsGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -55,5 +59,9 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> CodeInputGatewayType {
         CodeInputGateway()
+    }
+    
+    func resolve() -> NewsGatewayType {
+        NewsGateway()
     }
 }

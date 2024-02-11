@@ -12,6 +12,9 @@ import Combine
 struct NewsView: View {
     @ObservedObject var output: NewsViewModel.Output
     private let selectNewsTrigger = PassthroughSubject<NewsItemViewModel, Never>()
+    private let loadNewsTrigger = PassthroughSubject<Void, Never>()
+    private let reloadNewsTrigger = PassthroughSubject<Void, Never>()
+    private let loadMoreTrigger = PassthroughSubject<Void, Never>()
     private let cancelBag = CancelBag()
     
     var body: some View {
@@ -45,12 +48,17 @@ struct NewsView: View {
             )
         }
         .onAppear(perform: {
+            loadNewsTrigger.send(())
         })
 
     }
     
     init(viewModel: NewsViewModel) {
-        let input = NewsViewModel.Input(selectEventTrigger: selectNewsTrigger.asDriver())
+        let input = NewsViewModel.Input(selectNewsTrigger: selectNewsTrigger.asDriver(),
+            loadNewsTrigger: loadNewsTrigger.asDriver(),
+                                        reloadNewsTrigger: reloadNewsTrigger.asDriver(),
+                                        loadMoreTrigger: loadMoreTrigger.asDriver()
+        )
         output = viewModel.transform(input, cancelBag: cancelBag)
         
     }

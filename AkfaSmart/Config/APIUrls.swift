@@ -16,5 +16,6 @@ extension API {
         static let forgotPassword = Base.BASE_URL + "/api/mobile/auth/forget"
         static let resendForgotPassword = Base.BASE_URL + "/api/mobile/auth/forget/resend"
         static let confirmForgotPassword = Base.BASE_URL + "/api/mobile/auth/forget/confirm"
+        static let getNews = Base.BASE_URL + "/api/mobile/news/data"
     }
 }

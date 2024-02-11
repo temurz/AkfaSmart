@@ -8,9 +8,14 @@
 
 import Foundation
 protocol NewsUseCaseType {
-    
+    func getNews(page: Int) -> Observable<PagingInfo<NewsItemViewModel>>
 }
 
-struct NewsUseCase: NewsUseCaseType {
+struct NewsUseCase: NewsUseCaseType, NewsDomainUseCase {
+    let newsGateway: NewsGatewayType
     
+    func getNews(page: Int) -> Observable<PagingInfo<NewsItemViewModel>> {
+        let dto = GetPageDto(page: 1)
+        return getNews(dto: dto)
+    }
 }

@@ -22,7 +22,7 @@ extension NewsAssembler {
     }
     
     func resolve(navigationController: UINavigationController) -> NewsViewModel {
-        return NewsViewModel(navigator: resolve(navigationController: navigationController))
+        return NewsViewModel(navigator: resolve(navigationController: navigationController), useCase: resolve())
     }
 
 }
@@ -32,7 +32,7 @@ extension NewsAssembler where Self: DefaultAssembler {
         return NewsNavigator(assembler: self, navigationController: navigationController)
     }
     func resolve() -> NewsUseCaseType {
-        return NewsUseCase()
+        return NewsUseCase(newsGateway: resolve())
     }
 
 }
@@ -42,6 +42,6 @@ extension NewsAssembler where Self: PreviewAssembler {
         return NewsNavigator(assembler: self, navigationController: navigationController)
     }
     func resolve() -> NewsUseCaseType {
-        return NewsUseCase()
+        return NewsUseCase(newsGateway: resolve())
     }
 }
