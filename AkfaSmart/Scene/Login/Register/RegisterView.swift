@@ -70,15 +70,17 @@ struct RegisterView: View {
                             .foregroundColor(.red)
                             .font(.footnote)
                         
-                        Button("Register") {
+                        Button {
                             self.registerTrigger.send(())
+                        } label: {
+                            Text("Register")
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                                .foregroundColor(Color.white)
+                                .background(Color.red)
+                                .disabled(!self.output.isRegisterEnabled)
+                                .cornerRadius(12)
+                                .padding(.top, 16)
                         }
-                        .frame(maxWidth: .infinity, maxHeight: 40)
-                        .foregroundColor(Color.white)
-                        .background(Color.red)
-                        .disabled(!self.output.isRegisterEnabled)
-                        .cornerRadius(12)
-                        .padding(.top, 16)
                         
                         HStack {
                             Spacer()

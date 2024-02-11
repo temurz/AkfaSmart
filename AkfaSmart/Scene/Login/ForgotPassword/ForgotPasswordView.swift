@@ -54,14 +54,16 @@ struct ForgotPasswordView: View {
                     
                     Spacer()
                     HStack {
-                        Button("Reset password") {
+                        Button {
                             
+                        }label: {
+                            Text("Reset password")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 40)
+                                .foregroundColor(.white)
+                                .background(Color.red)
+                                .cornerRadius(12)
                         }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 40)
-                        .foregroundColor(.white)
-                        .background(Color.red)
-                        .cornerRadius(12)
                     }
                     .padding()
                     

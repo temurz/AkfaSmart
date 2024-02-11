@@ -61,6 +61,10 @@ struct CodeInputView: View {
                             .background(Color(hex: "#F5F7FA"))
                             .cornerRadius(12)
                             .padding([.top, .horizontal])
+                        Text(output.codeValidationMessage)
+                            .foregroundColor(.red)
+                            .font(.footnote)
+                            .padding(.horizontal)
                     }
                     HStack {
                         Text("Resend code in:")
@@ -74,14 +78,16 @@ struct CodeInputView: View {
                     .padding()
                     Spacer()
                     HStack {
-                        Button("Confirm") {
+                        Button {
                             confirmRegisterTrigger.send(())
+                        } label: {
+                            Text("Confirm")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 40)
+                                .foregroundColor(.white)
+                                .background(Color.red)
+                                .cornerRadius(12)
                         }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 40)
-                        .foregroundColor(.white)
-                        .background(Color.red)
-                        .cornerRadius(12)
                     }
                     .padding()
                     

@@ -70,15 +70,18 @@ struct LoginView: View {
                             .foregroundColor(.black)
                             Spacer()
                         }
-                        Button("Login") {
+                        Button() {
                             self.loginTrigger.send(())
+                        } label: {
+                            Text("Login")
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                                .foregroundColor(Color.white)
+                                .background(Color.red)
+                                .disabled(!self.output.isLoginEnabled)
+                                .cornerRadius(12)
+                                .padding(.top, 16)
                         }
-                        .frame(maxWidth: .infinity, maxHeight: 40)
-                        .foregroundColor(Color.white)
-                        .background(Color.red)
-                        .disabled(!self.output.isLoginEnabled)
-                        .cornerRadius(12)
-                        .padding(.top, 16)
+                        
                         
                         HStack {
                             Spacer()
