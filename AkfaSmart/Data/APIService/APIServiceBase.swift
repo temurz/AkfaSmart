@@ -81,12 +81,12 @@ open class APIBase {
     
     open func request<T: Decodable>(_ input: APIInputBase) -> AnyPublisher<APIResponse<T>, Error> {
         let response: AnyPublisher<APIResponse<JSONDictionary>, Error> = requestJSON(input)
-//        let appResponce: AnyPublisher<APIResponse<JSONArray>,Error> = postProcess(response)
-        return response
+        let appResponce: AnyPublisher<APIResponse<JSONDictionary>,Error> = postProcess(response)
+        return appResponce
             .tryMap { apiResponse -> APIResponse<T> in
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: apiResponse.data,
-                                                              options: .prettyPrinted)
+                                                              options: [])
                     let t = try JSONDecoder().decode(T.self, from: jsonData)
                     return APIResponse(header: apiResponse.header, data: t)
                 } catch {
@@ -165,6 +165,13 @@ open class APIBase {
             .map { [unowned self] input -> DataRequest in
                 let request: DataRequest
                 
+                if let token = AuthApp.shared.token, input.requireAccessToken {
+                    if input.headers == nil {
+                        input.headers = HTTPHeaders()
+                    }
+                    input.headers?.add(name: "Authorization", value: "Bearer " + token)
+                }
+                
                 if let uploadInput = input as? APIUploadInputBase {
                     request = self.manager.upload(
                         multipartFormData: { (multipartFormData) in
@@ -190,7 +197,7 @@ open class APIBase {
                         input.urlString,
                         method: input.method,
                         parameters: input.parameters,
-                        encoding: URLEncoding.queryString,
+                        encoding: input.encoding,
                         headers: input.headers
                     )
                 }
@@ -282,13 +289,15 @@ open class APIBase {
             .tryMap { (apiResponse) -> APIResponse<U> in
                
                     let json = apiResponse.data
-                    let success = json["success"] as? Bool ?? false
+                    let success = json["success"] as? Int ?? 0
                     let object = json["body"] as? U
-                    if success {
+//                if let body = json["body"] {
+//                    print("Type of json[\"body\"]: \(type(of: body))")
+//                }
+                    if success == 1 {
                         return APIResponse(header: apiResponse.header,
                                            data: object ?? U.init())
-                    }
-                    else {
+                    }else {
                         throw self.handleResponseError( json:  json)
                     }
                     

@@ -16,11 +16,7 @@ struct NewsGateway: NewsGatewayType {
         let input = API.GetNewsInput(start: dto.page)
         return API.shared.getNews(input)
             .tryMap { output in
-                if let body = output.body {
-                    return body.rows
-                }else {
-                    return []
-                }
+                return output.rows
             }
             .replaceNil(with: [])
             .map { PagingInfo(page: dto.page, items: $0) }

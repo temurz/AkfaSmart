@@ -9,7 +9,7 @@
 import Alamofire
 import Foundation
 extension API {
-    func login(_ input: LoginInput) -> Observable<ResponseModel<LoginOutput>> {
+    func login(_ input: LoginInput) -> Observable<LoginOutput> {
         return request(input)
     }
     

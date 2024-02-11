@@ -9,43 +9,8 @@
 import Alamofire
 import UIKit
 extension API {
-    func getNews(_ input: GetNewsInput) -> Observable<ResponseModel<GetNewsOutput>> {
-        
-        mockRequest()
+    func getNews(_ input: GetNewsInput) -> Observable<GetNewsOutput> {
         return request(input)
-    }
-    
-    func mockRequest() {
-        let parameters: [String: Any] = [
-            "start": 1,
-            "length": 10,
-            "order": [
-                [
-                    "field": "string",
-                    "sort": "string"
-                ]
-            ],
-            "filter": [
-                "additionalProp1": "string",
-                "additionalProp2": "string",
-                "additionalProp3": "string"
-            ]
-        ]
-        
-        AF.request(API.Urls.getNews, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseString(completionHandler: { response in
-            print(response)
-        })
-    }
-    
-    struct Filter: Codable {
-        var additionalProp1 = "string"
-        var additionalProp2 = "string"
-        var additionalProp3 = "string"
-    }
-    
-    struct Order: Codable {
-        var field = "string"
-        var sort = "string"
     }
     
     final class GetNewsInput: APIInput {
@@ -68,7 +33,7 @@ extension API {
                     ]
             ]
             
-            super.init(urlString: API.Urls.getNews, parameters: params, method: .post, encoding: URLEncoding.httpBody, requireAccessToken: true)
+            super.init(urlString: API.Urls.getNews, parameters: params, method: .post, encoding: JSONEncoding.prettyPrinted, requireAccessToken: true)
         }
     }
     

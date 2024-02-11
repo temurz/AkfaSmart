@@ -33,11 +33,12 @@ open class APIInputBase {
     public init(urlString: String,
                 parameters: Parameters?,
                 method: HTTPMethod,
+                encoding: ParameterEncoding = URLEncoding.queryString,
                 requireAccessToken: Bool) {
         self.urlString = urlString
         self.parameters = parameters
         self.method = method
-        self.encoding = method == .get ? URLEncoding.default : JSONEncoding.default
+        self.encoding = encoding
         self.requireAccessToken = requireAccessToken
     }
 }

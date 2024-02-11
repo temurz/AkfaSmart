@@ -12,10 +12,12 @@ class APIInput: APIInputBase {  // swiftlint:disable:this final_class
     override init(urlString: String,
                   parameters: Parameters?,
                   method: HTTPMethod,
+                  encoding: ParameterEncoding = URLEncoding.default,
                   requireAccessToken: Bool) {
         super.init(urlString: urlString,
                    parameters: parameters,
                    method: method,
+                   encoding: encoding,
                    requireAccessToken: requireAccessToken)
 //        self.headers = [
 //            "Content-Type": "application/json; charset=utf-8",
