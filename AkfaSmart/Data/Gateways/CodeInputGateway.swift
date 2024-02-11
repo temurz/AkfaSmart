@@ -21,12 +21,13 @@ struct CodeInputGateway: CodeInputGatewayType {
         let input = API.CodeConfirmInput(dto: dto)
         return API.shared.confirmRegister(input)
             .tryMap { output in
-                if let body = output.body {
-                    AuthApp.shared.token = body.remoteSession
-                    AuthApp.shared.username = body.username
+                guard let remoteSession = output.remoteSession else {
+                    return false
                 }
+                AuthApp.shared.token = remoteSession
+                AuthApp.shared.username = output.username
                 
-                return output.body?.remoteSession != nil ? true : false
+                return true
             }
             .eraseToAnyPublisher()
     }

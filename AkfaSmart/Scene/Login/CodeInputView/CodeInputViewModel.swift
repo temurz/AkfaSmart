@@ -49,9 +49,20 @@ extension CodeInputViewModel: ViewModel {
             .map { $0.0 }
             .map(CodeInputDto.validateCode(_:))
         
+        codeValidationMessage
+            .asDriver()
+            .map { $0.message }
+            .assign(to: \.codeValidationMessage, on: output)
+            .store(in: cancelBag)
+        
+        codeValidationMessage
+            .map { $0.isValid }
+            .assign(to: \.isConfirmEnabled, on: output)
+            .store(in: cancelBag)
+        
         input.confirmRegisterTrigger
             .delay(for: 0.1, scheduler: RunLoop.main)
-//            .filter { output.isConfirmEnabled }
+            .filter { output.isConfirmEnabled }
             .map { _ in
                 self.useCase.confirmRegister(dto: CodeInputDto(code: input.code))
                     .trackError(errorTracker)

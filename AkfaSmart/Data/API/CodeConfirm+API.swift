@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 extension API {
-    func confirmRegister(_ input: CodeConfirmInput) -> Observable<ResponseModel<RegistrationOutput>> {
+    func confirmRegister(_ input: CodeConfirmInput) -> Observable<RegistrationOutput> {
         request(input)
     }
     
