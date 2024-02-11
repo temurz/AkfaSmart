@@ -16,7 +16,7 @@ struct NewsTableRow: View {
             CustomImageAndTitleView(urlString: viewModel.imageUrl ?? "", title: viewModel.title ?? "", shortContent: viewModel.shortContent ?? "")
                 .padding(.horizontal)
             Divider()
-            Text(viewModel.date ?? "")
+            Text(viewModel.date?.convertToDateUS() ?? "")
                 .font(.subheadline)
                 .foregroundColor(Color(hex: "#9DA8C2"))
                 .padding(6)
