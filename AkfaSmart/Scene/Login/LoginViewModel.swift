@@ -77,7 +77,7 @@ extension LoginViewModel: ViewModel {
             .delay(for: 0.1, scheduler: RunLoop.main)  // waiting for username/password validation
             .filter { output.isLoginEnabled }
             .map { _ in
-                self.useCase.login(dto: LoginDto(username: input.username.removePlusFromPhoneNumber(), password: input.password))
+                self.useCase.login(dto: LoginDto(username: input.username.getOnlyNumbers(), password: input.password))
                     .trackError(errorTracker)
                     .trackActivity(activityTracker)
                     .asDriver()

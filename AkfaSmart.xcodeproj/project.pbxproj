@@ -230,6 +230,7 @@
 		B87ED2052B7A283F00EB5139 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2042B7A283F00EB5139 /* SplashViewModel.swift */; };
 		B87ED2072B7A28E900EB5139 /* SplashViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2062B7A28E900EB5139 /* SplashViewNavigator.swift */; };
 		B87ED2092B7A296400EB5139 /* SplashViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2082B7A296400EB5139 /* SplashViewAssembler.swift */; };
+		B87ED20C2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED20B2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift */; };
 		B8AC36712B798BE30060D52D /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36702B798BE30060D52D /* QRCodeScanner.swift */; };
 		B8AC36732B7991790060D52D /* AddDealerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36722B7991790060D52D /* AddDealerView.swift */; };
 		B8AC36762B79924E0060D52D /* AddDealerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36752B79924E0060D52D /* AddDealerViewModel.swift */; };
@@ -476,6 +477,7 @@
 		B87ED2042B7A283F00EB5139 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		B87ED2062B7A28E900EB5139 /* SplashViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewNavigator.swift; sourceTree = "<group>"; };
 		B87ED2082B7A296400EB5139 /* SplashViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewAssembler.swift; sourceTree = "<group>"; };
+		B87ED20B2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMaskPhone.swift; sourceTree = "<group>"; };
 		B8AC36702B798BE30060D52D /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		B8AC36722B7991790060D52D /* AddDealerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerView.swift; sourceTree = "<group>"; };
 		B8AC36752B79924E0060D52D /* AddDealerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerViewModel.swift; sourceTree = "<group>"; };
@@ -1079,6 +1081,7 @@
 		B866A9242B6BF70800202C9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B87ED20A2B7A2D9000EB5139 /* CustomMaskedTextfield */,
 				B866A93B2B70F7EE00202C9F /* AsyncImage */,
 				B866A9252B6BF71B00202C9F /* TabBar */,
 				B866A9512B7110FB00202C9F /* BottomBarView.swift */,
@@ -1252,6 +1255,14 @@
 				B87ED2082B7A296400EB5139 /* SplashViewAssembler.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		B87ED20A2B7A2D9000EB5139 /* CustomMaskedTextfield */ = {
+			isa = PBXGroup;
+			children = (
+				B87ED20B2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift */,
+			);
+			path = CustomMaskedTextfield;
 			sourceTree = "<group>";
 		};
 		B886F53A2B6283DA009D4BD0 /* CleanArchitecture */ = {
@@ -1513,6 +1524,7 @@
 				173865A624D3BC130059E3AD /* APIError.swift in Sources */,
 				176BAA6924D26AA300324D3C /* String+Base64.swift in Sources */,
 				176BAA6724D26A8100324D3C /* CacheManager.swift in Sources */,
+				B87ED20C2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift in Sources */,
 				1781CF4224BD8FB8004ED1C6 /* ProductDetailUseCase.swift in Sources */,
 				174A188D24C8219300AB39D9 /* ActivityIndicator.swift in Sources */,
 				17A5B1F424D8080B004BD209 /* UIViewController+Combine.swift in Sources */,

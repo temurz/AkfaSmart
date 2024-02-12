@@ -45,7 +45,8 @@ struct LoginView: View {
                         Text("Login")
                             .font(.title)
                             .padding(.top, 16)
-                        TextField("Phone number", text: self.$input.username)
+//                        TextField("Phone number", text: self.$input.username)
+                        NumberPhoneMaskView(number: $input.username)
                             .frame(height: 48)
                             .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                             .background(Color(hex: "#F5F7FA"))
@@ -138,5 +139,12 @@ public struct RoundedCorner: Shape {
     public func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
+    }
+}
+
+struct CustomPhoneNumberTextField: View {
+    @Binding var text: String
+    var body: some View {
+        TextField("", text: $text)
     }
 }

@@ -31,6 +31,11 @@ extension String {
         }
     }
     
+    func getOnlyNumbers() -> String {
+        let text = self.filter("0123456789.".contains)
+        return text
+    }
+    
     func formatToUzNumber() -> String {
         guard self.count >= 12 else { return self}
         let text = Array(self)
