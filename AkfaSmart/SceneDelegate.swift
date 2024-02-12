@@ -39,9 +39,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
             
             //TestView
-//            let view: AddDealerView = assembler.resolve(navigationController: nav)
-//            nav.pushViewController(UIHostingController(rootView: view), animated: false)
-//            window.rootViewController = nav
+            let view: WelcomeView = assembler.resolve(navigationController: nav)
+            nav.setViewControllers([UIHostingController(rootView: view)], animated: true)
+            window.rootViewController = nav
             //
             self.window = window
             window.makeKeyAndVisible()

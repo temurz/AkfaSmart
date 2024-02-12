@@ -221,6 +221,11 @@
 		B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */; };
 		B86CDF472B77BC56002E7EA4 /* News+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF462B77BC56002E7EA4 /* News+API.swift */; };
 		B86CDF4A2B77C801002E7EA4 /* NewsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */; };
+		B87ED1F82B7A1D8100EB5139 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED1F72B7A1D8100EB5139 /* WelcomeView.swift */; };
+		B87ED1FA2B7A220300EB5139 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED1F92B7A220300EB5139 /* WelcomeViewModel.swift */; };
+		B87ED1FC2B7A22CC00EB5139 /* WelcomeViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED1FB2B7A22CC00EB5139 /* WelcomeViewNavigator.swift */; };
+		B87ED1FE2B7A239F00EB5139 /* WelcomeViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED1FD2B7A239F00EB5139 /* WelcomeViewAssembler.swift */; };
+		B87ED2002B7A245F00EB5139 /* ShowingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED1FF2B7A245F00EB5139 /* ShowingWelcomeView.swift */; };
 		B8AC36712B798BE30060D52D /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36702B798BE30060D52D /* QRCodeScanner.swift */; };
 		B8AC36732B7991790060D52D /* AddDealerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36722B7991790060D52D /* AddDealerView.swift */; };
 		B8AC36762B79924E0060D52D /* AddDealerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36752B79924E0060D52D /* AddDealerViewModel.swift */; };
@@ -458,6 +463,11 @@
 		B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGateway.swift; sourceTree = "<group>"; };
 		B86CDF462B77BC56002E7EA4 /* News+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+API.swift"; sourceTree = "<group>"; };
 		B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDomainUseCase.swift; sourceTree = "<group>"; };
+		B87ED1F72B7A1D8100EB5139 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B87ED1F92B7A220300EB5139 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		B87ED1FB2B7A22CC00EB5139 /* WelcomeViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewNavigator.swift; sourceTree = "<group>"; };
+		B87ED1FD2B7A239F00EB5139 /* WelcomeViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewAssembler.swift; sourceTree = "<group>"; };
+		B87ED1FF2B7A245F00EB5139 /* ShowingWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingWelcomeView.swift; sourceTree = "<group>"; };
 		B8AC36702B798BE30060D52D /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		B8AC36722B7991790060D52D /* AddDealerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerView.swift; sourceTree = "<group>"; };
 		B8AC36752B79924E0060D52D /* AddDealerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerViewModel.swift; sourceTree = "<group>"; };
@@ -690,6 +700,7 @@
 				B866A96A2B71544700202C9F /* ShowingArticleDetail.swift */,
 				B85516CC2B7928DD00FC2D6E /* ShowingInfograpics.swift */,
 				B8AC367D2B799E5D0060D52D /* ShowingAddDealerView.swift */,
+				B87ED1FF2B7A245F00EB5139 /* ShowingWelcomeView.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -857,6 +868,7 @@
 				B866A9742B71688B00202C9F /* Settings */,
 				1787234324BD55FA00D90F8E /* Main */,
 				1787233824BD552F00D90F8E /* Login */,
+				B87ED1F62B7A1D6B00EB5139 /* Welcome */,
 				B8AC366F2B798BC30060D52D /* Dealers */,
 				1787231D24BD541100D90F8E /* App */,
 			);
@@ -1211,6 +1223,17 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		B87ED1F62B7A1D6B00EB5139 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				B87ED1F72B7A1D8100EB5139 /* WelcomeView.swift */,
+				B87ED1F92B7A220300EB5139 /* WelcomeViewModel.swift */,
+				B87ED1FB2B7A22CC00EB5139 /* WelcomeViewNavigator.swift */,
+				B87ED1FD2B7A239F00EB5139 /* WelcomeViewAssembler.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
 		B886F53A2B6283DA009D4BD0 /* CleanArchitecture */ = {
 			isa = PBXGroup;
 			children = (
@@ -1485,6 +1508,7 @@
 				B866A8D12B68CFBD00202C9F /* ShowingForgotPassword.swift in Sources */,
 				1787233324BD54B600D90F8E /* Assembler.swift in Sources */,
 				176BAA5A24D16BAE00324D3C /* ShowingLogin.swift in Sources */,
+				B87ED2002B7A245F00EB5139 /* ShowingWelcomeView.swift in Sources */,
 				B866A9492B70FCEC00202C9F /* NewsViewModel.swift in Sources */,
 				B866A9932B71AFF700202C9F /* CreateOrderNavigator.swift in Sources */,
 				B8AC368A2B79A6EF0060D52D /* QRCodeCameraDelegate.swift in Sources */,
@@ -1509,6 +1533,7 @@
 				B866A9382B70EFA000202C9F /* NewsItemViewModel.swift in Sources */,
 				B866A97A2B7168C700202C9F /* SettingsAssembler.swift in Sources */,
 				176BAA6B24D26C8B00324D3C /* APIInputBase.swift in Sources */,
+				B87ED1F82B7A1D8100EB5139 /* WelcomeView.swift in Sources */,
 				1787234224BD556E00D90F8E /* LoginViewModel.swift in Sources */,
 				B866A8DF2B68E03600202C9F /* CodeInputViewModel.swift in Sources */,
 				1765B2D524C6DF8B0096D210 /* ProductItemViewModel.swift in Sources */,
@@ -1539,11 +1564,13 @@
 				B85516CD2B7928DD00FC2D6E /* ShowingInfograpics.swift in Sources */,
 				1787235324BD56E400D90F8E /* Product.swift in Sources */,
 				B866A9782B7168BB00202C9F /* SettingsNavigator.swift in Sources */,
+				B87ED1FE2B7A239F00EB5139 /* WelcomeViewAssembler.swift in Sources */,
 				1765B2CE24C6A79F0096D210 /* ProductDetailView.swift in Sources */,
 				B866A8BF2B66E9A800202C9F /* Base.swift in Sources */,
 				1720C7C124FE383D00D616B2 /* Validation+Collection.swift in Sources */,
 				1787234924BD560500D90F8E /* MainAssembler.swift in Sources */,
 				B85516C72B79061B00FC2D6E /* ArticleDomainUseCase.swift in Sources */,
+				B87ED1FA2B7A220300EB5139 /* WelcomeViewModel.swift in Sources */,
 				B866A94F2B70FE8900202C9F /* NewsAssembler.swift in Sources */,
 				B866A8C32B66F07200202C9F /* AuthApp.swift in Sources */,
 				B866A8D32B68D07C00202C9F /* ShowingCodeInput.swift in Sources */,
@@ -1613,6 +1640,7 @@
 				B85516D22B792B5600FC2D6E /* InfographicsViewModel.swift in Sources */,
 				B866A8E72B68E4CD00202C9F /* CodeConfirm+API.swift in Sources */,
 				B866A9592B71285300202C9F /* ArticleItemViewModel.swift in Sources */,
+				B87ED1FC2B7A22CC00EB5139 /* WelcomeViewNavigator.swift in Sources */,
 				1765B2CC24C68D940096D210 /* CancelBag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

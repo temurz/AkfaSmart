@@ -21,7 +21,9 @@ protocol Assembler: AnyObject,
     SettingsAssembler,
     HomeViewAssembler,
     CreateOrderAssembler,
-    AddDealerAssembler {
+    AddDealerAssembler,
+    WelcomeViewAssembler
+{
     
 }
 
