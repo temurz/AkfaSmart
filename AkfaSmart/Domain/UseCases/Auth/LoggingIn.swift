@@ -15,7 +15,7 @@ struct LoginDto: Dto {
     @Validated(.nonEmpty(message: "Please enter user name"))
     var username: String?
 
-    @Validated(.nonEmpty(message: "Please enter password") && .range(6...))
+    @Validated(.nonEmpty(message: "Please enter password") && .minimumCharacters(5))
     var password: String?
     
     var validatedProperties: [ValidatedProperty] {
@@ -49,5 +49,17 @@ extension LoggingIn {
         }
         
         return authGateway.login(dto: dto)
+    }
+}
+
+extension Validation where Value == String {
+    static func minimumCharacters(_ count: Int) -> Validation {
+        return .init { value in
+            if count <= value.count {
+                return .success(())
+            } else {
+                return .failure("Minimum number of letters is \(count)")
+            }
+        }
     }
 }

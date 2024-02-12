@@ -13,6 +13,8 @@ struct LoginView: View {
     @ObservedObject var input: LoginViewModel.Input
     @ObservedObject var output: LoginViewModel.Output
     @State private var statusBarHeight: CGFloat = 0
+    @State private var eyeImage = "eye"
+    @State private var isShowingPassword = false
 
     private let cancelBag = CancelBag()
     private let loginTrigger = PassthroughSubject<Void, Never>()
@@ -45,21 +47,61 @@ struct LoginView: View {
                         Text("Login")
                             .font(.title)
                             .padding(.top, 16)
-//                        TextField("Phone number", text: self.$input.username)
-                        NumberPhoneMaskView(number: $input.username)
-                            .frame(height: 48)
-                            .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
-                            .background(Color(hex: "#F5F7FA"))
-                            .cornerRadius(12)
+                        ZStack(alignment: .leading) {
+                            NumberPhoneMaskView(number: $input.username)
+                                .frame(height: 48)
+                                .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
+                                .background(Color(hex: "#F5F7FA"))
+                                .cornerRadius(12)
+                            Image("phone_icon")
+                                .resizable()
+                                .foregroundColor(.gray)
+                                .frame(width: 16, height: 16)
+                                .padding()
+                        }
                         Text(self.output.usernameValidationMessage)
                             .foregroundColor(.red)
                             .font(.footnote)
-                        SecureField("Password", text: self.$input.password)
+                        ZStack(alignment: .leading) {
+                            Group {
+                                if isShowingPassword {
+                                    TextField("Password", text: self.$input.password)
+                                        .padding(.horizontal)
+                                }else {
+                                    SecureField("Password", text: self.$input.password)
+                                        .padding(.horizontal)
+                                }
+                            }
                             .frame(height: 48)
-                            .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
-                            .background(Color(hex: "#F5F7FA"))
-                            .cornerRadius(12)
-                            .padding(.top)
+                                .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                                .background(Color(hex: "#F5F7FA"))
+                                .cornerRadius(12)
+                            
+                            
+                            
+                            HStack(alignment: .center) {
+                                Image("key_square")
+                                    .resizable()
+                                    .foregroundColor(.gray)
+                                    .frame(width: 18, height: 18)
+                                    .padding()
+                                Spacer()
+                                
+                                Image(systemName: eyeImage)
+                                    .resizable()
+                                    .tint(.gray)
+                                    .frame(width: 20, height: 16)
+                                    .padding()
+                                    .onTapGesture {
+                                        isShowingPassword.toggle()
+                                        eyeImage = isShowingPassword ? "eye.slash" : "eye"
+                                    }
+                                
+                            }
+                        }
+                        .frame(height: 48)
+                        .padding(.top)
+                        
                         Text(self.output.passwordValidationMessage)
                             .foregroundColor(.red)
                             .font(.footnote)

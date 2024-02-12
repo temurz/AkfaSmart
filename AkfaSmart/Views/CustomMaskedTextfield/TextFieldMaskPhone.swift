@@ -59,25 +59,6 @@ struct TextFieldContainer: UIViewRepresentable {
     }
 }
 
-class FilterNumberPhone: ObservableObject {
-    
-    static func format(with mask: String, phone: String) -> String {
-        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        var result = ""
-        var index = numbers.startIndex
-
-        for ch in mask where index < numbers.endIndex {
-            if ch == "_" {
-                result.append(numbers[index])
-                index = numbers.index(after: index)
-            } else {
-                result.append(ch)
-            }
-        }
-        return result
-    }
-}
-
 
 struct NumberPhoneMaskView: View {
     
@@ -95,29 +76,5 @@ struct NumberPhoneMaskView: View {
             })
             TextFieldContainer("+998 (__) ___-__-__", text: textChangedBinding)
         }.padding()
-    }
-}
-
-
-extension String {
-    func formatPhoneNumber() -> String {
-        let cleanNumber = components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        
-        let mask = "+XXX(XX) XXX-XX-XX"
-        
-        var result = ""
-        var startIndex = cleanNumber.startIndex
-        var endIndex = cleanNumber.endIndex
-        
-        for char in mask where startIndex < endIndex {
-            if char == "X" {
-                result.append(cleanNumber[startIndex])
-                startIndex = cleanNumber.index(after: startIndex)
-            } else {
-                result.append(char)
-            }
-        }
-        
-        return result
     }
 }
