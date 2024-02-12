@@ -226,6 +226,10 @@
 		B87ED1FC2B7A22CC00EB5139 /* WelcomeViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED1FB2B7A22CC00EB5139 /* WelcomeViewNavigator.swift */; };
 		B87ED1FE2B7A239F00EB5139 /* WelcomeViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED1FD2B7A239F00EB5139 /* WelcomeViewAssembler.swift */; };
 		B87ED2002B7A245F00EB5139 /* ShowingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED1FF2B7A245F00EB5139 /* ShowingWelcomeView.swift */; };
+		B87ED2022B7A275F00EB5139 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2012B7A275F00EB5139 /* SplashView.swift */; };
+		B87ED2052B7A283F00EB5139 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2042B7A283F00EB5139 /* SplashViewModel.swift */; };
+		B87ED2072B7A28E900EB5139 /* SplashViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2062B7A28E900EB5139 /* SplashViewNavigator.swift */; };
+		B87ED2092B7A296400EB5139 /* SplashViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2082B7A296400EB5139 /* SplashViewAssembler.swift */; };
 		B8AC36712B798BE30060D52D /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36702B798BE30060D52D /* QRCodeScanner.swift */; };
 		B8AC36732B7991790060D52D /* AddDealerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36722B7991790060D52D /* AddDealerView.swift */; };
 		B8AC36762B79924E0060D52D /* AddDealerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36752B79924E0060D52D /* AddDealerViewModel.swift */; };
@@ -468,6 +472,10 @@
 		B87ED1FB2B7A22CC00EB5139 /* WelcomeViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewNavigator.swift; sourceTree = "<group>"; };
 		B87ED1FD2B7A239F00EB5139 /* WelcomeViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewAssembler.swift; sourceTree = "<group>"; };
 		B87ED1FF2B7A245F00EB5139 /* ShowingWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingWelcomeView.swift; sourceTree = "<group>"; };
+		B87ED2012B7A275F00EB5139 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		B87ED2042B7A283F00EB5139 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		B87ED2062B7A28E900EB5139 /* SplashViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewNavigator.swift; sourceTree = "<group>"; };
+		B87ED2082B7A296400EB5139 /* SplashViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewAssembler.swift; sourceTree = "<group>"; };
 		B8AC36702B798BE30060D52D /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		B8AC36722B7991790060D52D /* AddDealerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerView.swift; sourceTree = "<group>"; };
 		B8AC36752B79924E0060D52D /* AddDealerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerViewModel.swift; sourceTree = "<group>"; };
@@ -871,6 +879,7 @@
 				B87ED1F62B7A1D6B00EB5139 /* Welcome */,
 				B8AC366F2B798BC30060D52D /* Dealers */,
 				1787231D24BD541100D90F8E /* App */,
+				B87ED2032B7A276500EB5139 /* Splash */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1234,6 +1243,17 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
+		B87ED2032B7A276500EB5139 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				B87ED2012B7A275F00EB5139 /* SplashView.swift */,
+				B87ED2042B7A283F00EB5139 /* SplashViewModel.swift */,
+				B87ED2062B7A28E900EB5139 /* SplashViewNavigator.swift */,
+				B87ED2082B7A296400EB5139 /* SplashViewAssembler.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		B886F53A2B6283DA009D4BD0 /* CleanArchitecture */ = {
 			isa = PBXGroup;
 			children = (
@@ -1506,6 +1526,7 @@
 				176BAA5C24D175C200324D3C /* AuthGateway.swift in Sources */,
 				B8CF98E82B656B2700EF02A7 /* RegisterDTO.swift in Sources */,
 				B866A8D12B68CFBD00202C9F /* ShowingForgotPassword.swift in Sources */,
+				B87ED2072B7A28E900EB5139 /* SplashViewNavigator.swift in Sources */,
 				1787233324BD54B600D90F8E /* Assembler.swift in Sources */,
 				176BAA5A24D16BAE00324D3C /* ShowingLogin.swift in Sources */,
 				B87ED2002B7A245F00EB5139 /* ShowingWelcomeView.swift in Sources */,
@@ -1560,6 +1581,7 @@
 				1787234B24BD560500D90F8E /* MainUseCase.swift in Sources */,
 				B8AC367A2B7992680060D52D /* AddDealerUseCase.swift in Sources */,
 				1742B37124D7B45C00C82D15 /* UIViewController+Debug.swift in Sources */,
+				B87ED2022B7A275F00EB5139 /* SplashView.swift in Sources */,
 				176BAA6224D2698500324D3C /* APIServiceBase.swift in Sources */,
 				B85516CD2B7928DD00FC2D6E /* ShowingInfograpics.swift in Sources */,
 				1787235324BD56E400D90F8E /* Product.swift in Sources */,
@@ -1576,6 +1598,7 @@
 				B866A8D32B68D07C00202C9F /* ShowingCodeInput.swift in Sources */,
 				B866A93F2B70F87500202C9F /* ImageLoader.swift in Sources */,
 				B866A96E2B7154E500202C9F /* ArticleDetailView.swift in Sources */,
+				B87ED2052B7A283F00EB5139 /* SplashViewModel.swift in Sources */,
 				176BAA6D24D26CD900324D3C /* APIOutputBase.swift in Sources */,
 				B866A9672B71538200202C9F /* ArticlesUseCase.swift in Sources */,
 				B866A8D82B68D8BA00202C9F /* Int+.swift in Sources */,
@@ -1613,6 +1636,7 @@
 				17A5B20124D95168004BD209 /* RefreshHeaderAnimator.swift in Sources */,
 				1770EC3324DAA9AC0022FBFE /* ShowingRepoCollection.swift in Sources */,
 				B85516D52B792C6C00FC2D6E /* InfoViewRow.swift in Sources */,
+				B87ED2092B7A296400EB5139 /* SplashViewAssembler.swift in Sources */,
 				B866A9292B6BF73800202C9F /* TabBarItem.swift in Sources */,
 				B866A9652B71537500202C9F /* ArticlesNavigator.swift in Sources */,
 				B8AC36882B79A6CA0060D52D /* CameraPreview.swift in Sources */,

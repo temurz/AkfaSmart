@@ -22,7 +22,8 @@ protocol Assembler: AnyObject,
     HomeViewAssembler,
     CreateOrderAssembler,
     AddDealerAssembler,
-    WelcomeViewAssembler
+    WelcomeViewAssembler,
+    SplashViewAssembler
 {
     
 }

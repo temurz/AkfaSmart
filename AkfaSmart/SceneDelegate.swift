@@ -28,20 +28,14 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
-            if let _ = AuthApp.shared.token {
-                let view: MainView = assembler.resolve(navigationController: nav)
-                nav.pushViewController(UIHostingController(rootView: view), animated: false)
-                window.rootViewController = nav
-            }else {
-                let view: LoginView = assembler.resolve(navigationController: nav)
-                nav.pushViewController(UIHostingController(rootView: view), animated: false)
-                window.rootViewController = nav
-            }
-            
-            //TestView
-            let view: WelcomeView = assembler.resolve(navigationController: nav)
-            nav.setViewControllers([UIHostingController(rootView: view)], animated: true)
+            let view: SplashView = assembler.resolve(navigationController: nav)
+            nav.pushViewController(UIHostingController(rootView: view), animated: false)
             window.rootViewController = nav
+
+            //TestView
+//            let view: WelcomeView = assembler.resolve(navigationController: nav)
+//            nav.setViewControllers([UIHostingController(rootView: view)], animated: true)
+//            window.rootViewController = nav
             //
             self.window = window
             window.makeKeyAndVisible()
