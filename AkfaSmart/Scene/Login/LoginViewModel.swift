@@ -20,7 +20,7 @@ struct LoginViewModel {
 extension LoginViewModel: ViewModel {
     final class Input: ObservableObject {
         @Published var username = "998900109258"
-        @Published var password = "qwerty77"
+        @Published var password = "123456"
         let loginTrigger: Driver<Void>
         let showRegisterTrigger: Driver<Void>
         let showForgotPasswordTrigger: Driver<Void>
@@ -85,7 +85,7 @@ extension LoginViewModel: ViewModel {
             .switchToLatest()
             .sink(receiveValue: { bool in
                 if bool {
-                    navigator.showMain()
+                    navigator.showAddDealerView()
                 }
             })
             .store(in: cancelBag)

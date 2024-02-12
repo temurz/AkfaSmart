@@ -38,6 +38,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 window.rootViewController = nav
             }
             
+            //TestView
+//            let view: AddDealerView = assembler.resolve(navigationController: nav)
+//            nav.pushViewController(UIHostingController(rootView: view), animated: false)
+//            window.rootViewController = nav
+            //
             self.window = window
             window.makeKeyAndVisible()
         }

@@ -20,7 +20,8 @@ protocol Assembler: AnyObject,
     ArticlesAssembler,
     SettingsAssembler,
     HomeViewAssembler,
-    CreateOrderAssembler {
+    CreateOrderAssembler,
+    AddDealerAssembler {
     
 }
 

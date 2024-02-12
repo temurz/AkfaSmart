@@ -91,11 +91,10 @@ class AuthApp {
     }
 }
 
-extension AuthApp {
+extension String {
     func makeStarsInsteadNumbersInUsername() -> String {
-        //["+", "9","9","8"]
-        let username = AuthApp.shared.username
-        var text = Array(username ?? "")
+        //["+", "9","9","8"]        
+        var text = Array(self ?? "")
         for i in 0 ..< text.count {
             if i >= 6 && i <= 9 {
                 text[i] = "*"

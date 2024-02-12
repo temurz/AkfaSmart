@@ -221,6 +221,16 @@
 		B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */; };
 		B86CDF472B77BC56002E7EA4 /* News+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF462B77BC56002E7EA4 /* News+API.swift */; };
 		B86CDF4A2B77C801002E7EA4 /* NewsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */; };
+		B8AC36712B798BE30060D52D /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36702B798BE30060D52D /* QRCodeScanner.swift */; };
+		B8AC36732B7991790060D52D /* AddDealerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36722B7991790060D52D /* AddDealerView.swift */; };
+		B8AC36762B79924E0060D52D /* AddDealerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36752B79924E0060D52D /* AddDealerViewModel.swift */; };
+		B8AC36782B79925F0060D52D /* AddDealerNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36772B79925F0060D52D /* AddDealerNavigator.swift */; };
+		B8AC367A2B7992680060D52D /* AddDealerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36792B7992680060D52D /* AddDealerUseCase.swift */; };
+		B8AC367C2B7992720060D52D /* AddDealerAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC367B2B7992720060D52D /* AddDealerAssembler.swift */; };
+		B8AC367E2B799E5D0060D52D /* ShowingAddDealerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC367D2B799E5D0060D52D /* ShowingAddDealerView.swift */; };
+		B8AC36882B79A6CA0060D52D /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36872B79A6CA0060D52D /* CameraPreview.swift */; };
+		B8AC368A2B79A6EF0060D52D /* QRCodeCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36892B79A6EF0060D52D /* QRCodeCameraDelegate.swift */; };
+		B8AC368F2B79BA870060D52D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8AC368E2B79BA870060D52D /* IQKeyboardManagerSwift */; };
 		B8CF98DB2B6311AC00EF02A7 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DA2B6311AC00EF02A7 /* Color+Extension.swift */; };
 		B8CF98DE2B65595B00EF02A7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DD2B65595B00EF02A7 /* RegisterView.swift */; };
 		B8CF98E02B6566EC00EF02A7 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DF2B6566EC00EF02A7 /* RegisterViewModel.swift */; };
@@ -448,6 +458,15 @@
 		B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGateway.swift; sourceTree = "<group>"; };
 		B86CDF462B77BC56002E7EA4 /* News+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+API.swift"; sourceTree = "<group>"; };
 		B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDomainUseCase.swift; sourceTree = "<group>"; };
+		B8AC36702B798BE30060D52D /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
+		B8AC36722B7991790060D52D /* AddDealerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerView.swift; sourceTree = "<group>"; };
+		B8AC36752B79924E0060D52D /* AddDealerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerViewModel.swift; sourceTree = "<group>"; };
+		B8AC36772B79925F0060D52D /* AddDealerNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerNavigator.swift; sourceTree = "<group>"; };
+		B8AC36792B7992680060D52D /* AddDealerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerUseCase.swift; sourceTree = "<group>"; };
+		B8AC367B2B7992720060D52D /* AddDealerAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerAssembler.swift; sourceTree = "<group>"; };
+		B8AC367D2B799E5D0060D52D /* ShowingAddDealerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingAddDealerView.swift; sourceTree = "<group>"; };
+		B8AC36872B79A6CA0060D52D /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		B8AC36892B79A6EF0060D52D /* QRCodeCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeCameraDelegate.swift; sourceTree = "<group>"; };
 		B8CF98D92B630CA000EF02A7 /* AkfaSmart.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AkfaSmart.xctestplan; sourceTree = "<group>"; };
 		B8CF98DA2B6311AC00EF02A7 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		B8CF98DD2B65595B00EF02A7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -470,6 +489,7 @@
 				1BD163F124FF8CA700EBC063 /* MBProgressHUD in Frameworks */,
 				177428D524F3691B00C141E4 /* ValidatedPropertyKit in Frameworks */,
 				176BAA5F24D2690300324D3C /* Alamofire in Frameworks */,
+				B8AC368F2B79BA870060D52D /* IQKeyboardManagerSwift in Frameworks */,
 				176BAA4F24D1326100324D3C /* Then in Frameworks */,
 				1716DE5D250385C5005111BF /* Dto in Frameworks */,
 				B866A9472B70FB6200202C9F /* URLImage in Frameworks */,
@@ -669,6 +689,7 @@
 				B866A95D2B712DF800202C9F /* ShowingNewsDetailView.swift */,
 				B866A96A2B71544700202C9F /* ShowingArticleDetail.swift */,
 				B85516CC2B7928DD00FC2D6E /* ShowingInfograpics.swift */,
+				B8AC367D2B799E5D0060D52D /* ShowingAddDealerView.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -836,6 +857,7 @@
 				B866A9742B71688B00202C9F /* Settings */,
 				1787234324BD55FA00D90F8E /* Main */,
 				1787233824BD552F00D90F8E /* Login */,
+				B8AC366F2B798BC30060D52D /* Dealers */,
 				1787231D24BD541100D90F8E /* App */,
 			);
 			path = Scene;
@@ -1197,6 +1219,29 @@
 			path = CleanArchitecture;
 			sourceTree = "<group>";
 		};
+		B8AC366F2B798BC30060D52D /* Dealers */ = {
+			isa = PBXGroup;
+			children = (
+				B8AC36742B7992380060D52D /* QRCode */,
+				B8AC36722B7991790060D52D /* AddDealerView.swift */,
+				B8AC36752B79924E0060D52D /* AddDealerViewModel.swift */,
+				B8AC36772B79925F0060D52D /* AddDealerNavigator.swift */,
+				B8AC36792B7992680060D52D /* AddDealerUseCase.swift */,
+				B8AC367B2B7992720060D52D /* AddDealerAssembler.swift */,
+			);
+			path = Dealers;
+			sourceTree = "<group>";
+		};
+		B8AC36742B7992380060D52D /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				B8AC36702B798BE30060D52D /* QRCodeScanner.swift */,
+				B8AC36872B79A6CA0060D52D /* CameraPreview.swift */,
+				B8AC36892B79A6EF0060D52D /* QRCodeCameraDelegate.swift */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
 		B8CF98DC2B65594300EF02A7 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -1241,6 +1286,7 @@
 				1716DE5C250385C5005111BF /* Dto */,
 				B866A9462B70FB6200202C9F /* URLImage */,
 				B866A9562B7116CE00202C9F /* Shimmer */,
+				B8AC368E2B79BA870060D52D /* IQKeyboardManagerSwift */,
 			);
 			productName = CleanArchitecture;
 			productReference = 178722F324BD537D00D90F8E /* AkfaSmart.app */;
@@ -1309,6 +1355,7 @@
 				1716DE5B250385C5005111BF /* XCRemoteSwiftPackageReference "Dto" */,
 				B866A9442B70FB0500202C9F /* XCRemoteSwiftPackageReference "url-image" */,
 				B866A9552B7116CE00202C9F /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				B8AC368D2B79BA870060D52D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 178722F424BD537D00D90F8E /* Products */;
 			projectDirPath = "";
@@ -1380,6 +1427,7 @@
 				1765B2D124C6D5550096D210 /* ShowingProductDetail.swift in Sources */,
 				1787231C24BD53BF00D90F8E /* ViewModel.swift in Sources */,
 				1742B37624D7B82C00C82D15 /* ShowingRepoList.swift in Sources */,
+				B8AC367E2B799E5D0060D52D /* ShowingAddDealerView.swift in Sources */,
 				178722F724BD537D00D90F8E /* AppDelegate.swift in Sources */,
 				17A5B1F824D9026D004BD209 /* BaseViewController.swift in Sources */,
 				1787233124BD547600D90F8E /* AppViewModel.swift in Sources */,
@@ -1439,6 +1487,7 @@
 				176BAA5A24D16BAE00324D3C /* ShowingLogin.swift in Sources */,
 				B866A9492B70FCEC00202C9F /* NewsViewModel.swift in Sources */,
 				B866A9932B71AFF700202C9F /* CreateOrderNavigator.swift in Sources */,
+				B8AC368A2B79A6EF0060D52D /* QRCodeCameraDelegate.swift in Sources */,
 				173865A824D3BC490059E3AD /* APIInput.swift in Sources */,
 				B866A95C2B7129F700202C9F /* NewsDetailView.swift in Sources */,
 				1742B36F24D7B22B00C82D15 /* ReposViewModel.swift in Sources */,
@@ -1453,7 +1502,9 @@
 				B866A8DB2B68DC8100202C9F /* ForgotPasswordView.swift in Sources */,
 				B866A9432B70F92900202C9F /* EnvironmentValues+ImageCache.swift in Sources */,
 				1787236524BD5EC700D90F8E /* ProductsNavigator.swift in Sources */,
+				B8AC36712B798BE30060D52D /* QRCodeScanner.swift in Sources */,
 				B866A98F2B71AF5100202C9F /* CreateOrderView.swift in Sources */,
+				B8AC367C2B7992720060D52D /* AddDealerAssembler.swift in Sources */,
 				178809AE24C04A7E00002215 /* ActivityTracker.swift in Sources */,
 				B866A9382B70EFA000202C9F /* NewsItemViewModel.swift in Sources */,
 				B866A97A2B7168C700202C9F /* SettingsAssembler.swift in Sources */,
@@ -1463,6 +1514,7 @@
 				1765B2D524C6DF8B0096D210 /* ProductItemViewModel.swift in Sources */,
 				176BAA4624D1154F00324D3C /* Storyboards.swift in Sources */,
 				1787236424BD5EC700D90F8E /* ProductsAssembler.swift in Sources */,
+				B8AC36762B79924E0060D52D /* AddDealerViewModel.swift in Sources */,
 				B866A9272B6BF72600202C9F /* ViewRouter.swift in Sources */,
 				1787235624BD571500D90F8E /* GettingProducts.swift in Sources */,
 				176BAA7324D26DEF00324D3C /* APIResponse.swift in Sources */,
@@ -1481,6 +1533,7 @@
 				1787236824BD5EC700D90F8E /* ProductsViewModel.swift in Sources */,
 				B866A8E32B68E09600202C9F /* CodeInputGateway.swift in Sources */,
 				1787234B24BD560500D90F8E /* MainUseCase.swift in Sources */,
+				B8AC367A2B7992680060D52D /* AddDealerUseCase.swift in Sources */,
 				1742B37124D7B45C00C82D15 /* UIViewController+Debug.swift in Sources */,
 				176BAA6224D2698500324D3C /* APIServiceBase.swift in Sources */,
 				B85516CD2B7928DD00FC2D6E /* ShowingInfograpics.swift in Sources */,
@@ -1515,6 +1568,7 @@
 				B866A9972B71B02900202C9F /* CreateOrderAssembler.swift in Sources */,
 				B866A8C72B686B7A00202C9F /* Registration+API.swift in Sources */,
 				B866A93D2B70F80700202C9F /* ImageCache.swift in Sources */,
+				B8AC36732B7991790060D52D /* AddDealerView.swift in Sources */,
 				B866A97C2B7168D800202C9F /* SettingsUseCase.swift in Sources */,
 				1787235B24BD578500D90F8E /* ProductGateway.swift in Sources */,
 				1770EC2824DAA55B0022FBFE /* PagingCollectionView.swift in Sources */,
@@ -1534,6 +1588,7 @@
 				B85516D52B792C6C00FC2D6E /* InfoViewRow.swift in Sources */,
 				B866A9292B6BF73800202C9F /* TabBarItem.swift in Sources */,
 				B866A9652B71537500202C9F /* ArticlesNavigator.swift in Sources */,
+				B8AC36882B79A6CA0060D52D /* CameraPreview.swift in Sources */,
 				17A5B1FF24D9514B004BD209 /* RefreshFooterAnimator.swift in Sources */,
 				B866A92D2B6BF79100202C9F /* ProminentTabBarItemView.swift in Sources */,
 				1770EC2E24DAA6570022FBFE /* RepoCollectionCell.swift in Sources */,
@@ -1552,6 +1607,7 @@
 				178809B024C0520000002215 /* ViewModel+GetList.swift in Sources */,
 				173865B024D40FBE0059E3AD /* ViewModel+GetItem.swift in Sources */,
 				B85516D02B79294700FC2D6E /* InfographicsView.swift in Sources */,
+				B8AC36782B79925F0060D52D /* AddDealerNavigator.swift in Sources */,
 				B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */,
 				1742B36B24D7B22B00C82D15 /* ReposAssembler.swift in Sources */,
 				B85516D22B792B5600FC2D6E /* InfographicsViewModel.swift in Sources */,
@@ -1955,6 +2011,14 @@
 				minimumVersion = 1.4.2;
 			};
 		};
+		B8AC368D2B79BA870060D52D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2027,6 +2091,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B866A9552B7116CE00202C9F /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
 			productName = Shimmer;
+		};
+		B8AC368E2B79BA870060D52D /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8AC368D2B79BA870060D52D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

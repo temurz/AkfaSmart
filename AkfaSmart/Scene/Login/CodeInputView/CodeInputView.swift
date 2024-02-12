@@ -16,7 +16,7 @@ struct CodeInputView: View {
     private let confirmRegisterTrigger = PassthroughSubject<Void,Never>()
     
     @State var statusBarHeight: CGFloat = 0
-    @State var username: String = AuthApp.shared.makeStarsInsteadNumbersInUsername()
+    @State var username: String = AuthApp.shared.username?.makeStarsInsteadNumbersInUsername() ?? ""
     @State private var timeRemaining = 120
     @State var duration = "2:00"
     

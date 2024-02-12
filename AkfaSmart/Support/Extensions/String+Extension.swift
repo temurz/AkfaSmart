@@ -23,11 +23,30 @@ extension String {
     }
     
     func removePlusFromPhoneNumber() -> String {
-        var text = Array(self)
+        let text = Array(self)
         if text[0] == "+" {
             return String(text.dropFirst())
         }else {
             return String(text)
         }
+    }
+    
+    func formatToUzNumber() -> String {
+        guard self.count >= 12 else { return self}
+        let text = Array(self)
+        var result = text
+        if text[0] != "+" {
+            result.insert("+", at: 0)
+        }
+        result.insert(" ", at: 4)
+        result.insert("(", at: 5)
+        result.insert(")", at: 8)
+        result.insert(" ", at: 9)
+        result.insert(" ", at: 13)
+        result[14] = "*"
+        result[15] = "*"
+        result.insert(" ", at: 15)
+        
+        return String(result)
     }
 }

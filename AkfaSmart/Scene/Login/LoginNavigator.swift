@@ -10,10 +10,11 @@ import UIKit
 protocol LoginNavigatorType {
     func showRegistration()
     func showMain()
+    func showAddDealerView()
     func showForgotPassword()
 }
 
-struct LoginNavigator: LoginNavigatorType, ShowingRegistration, ShowingMain, ShowingForgotPassword {
+struct LoginNavigator: LoginNavigatorType, ShowingRegistration, ShowingMain, ShowingForgotPassword, ShowingAddDealerView {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
 }
