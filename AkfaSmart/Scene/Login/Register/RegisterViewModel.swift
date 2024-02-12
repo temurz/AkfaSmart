@@ -70,12 +70,16 @@ extension RegisterViewModel: ViewModel {
         let repeatedPasswordValidation = Publishers
             .CombineLatest(input.$repeatedPassword, input.registerTrigger)
             .map { $0.0 }
-            .map { $0 == input.password }
+            .map {
+                $0 == input.password
+            }
 //            .map(LoginDto.validateRepeatedPassword(input.repeatedPassword, password: input.password))
         
         repeatedPasswordValidation
             .asDriver()
-            .map { _ in "Two passwords should be the same" }
+            .map { bool in
+                return bool ? "" : "Two passwords should be the same"
+            }
             .assign(to: \.repeatedPasswordValidationMessage, on: output)
             .store(in: cancelBag)
         

@@ -62,44 +62,7 @@ struct LoginView: View {
                         Text(self.output.usernameValidationMessage)
                             .foregroundColor(.red)
                             .font(.footnote)
-                        ZStack(alignment: .leading) {
-                            Group {
-                                if isShowingPassword {
-                                    TextField("Password", text: self.$input.password)
-                                        .padding(.horizontal)
-                                }else {
-                                    SecureField("Password", text: self.$input.password)
-                                        .padding(.horizontal)
-                                }
-                            }
-                            .frame(height: 48)
-                                .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
-                                .background(Color(hex: "#F5F7FA"))
-                                .cornerRadius(12)
-                            
-                            
-                            
-                            HStack(alignment: .center) {
-                                Image("key_square")
-                                    .resizable()
-                                    .foregroundColor(.gray)
-                                    .frame(width: 18, height: 18)
-                                    .padding()
-                                Spacer()
-                                
-                                Image(systemName: eyeImage)
-                                    .resizable()
-                                    .tint(.gray)
-                                    .frame(width: 20, height: 16)
-                                    .padding()
-                                    .onTapGesture {
-                                        isShowingPassword.toggle()
-                                        eyeImage = isShowingPassword ? "eye.slash" : "eye"
-                                    }
-                                
-                            }
-                        }
-                        .frame(height: 48)
+                        CustomSecureTextField(password: $input.password)
                         .padding(.top)
                         
                         Text(self.output.passwordValidationMessage)
@@ -188,5 +151,51 @@ struct CustomPhoneNumberTextField: View {
     @Binding var text: String
     var body: some View {
         TextField("", text: $text)
+    }
+}
+
+struct CustomSecureTextField: View {
+    @State private var isShowingPassword: Bool = false
+    @State private var eyeImage: String = "eye"
+    @Binding var password: String
+    var body: some View {
+        ZStack(alignment: .leading) {
+            Group {
+                if isShowingPassword {
+                    TextField("Password", text: $password)
+                        .padding(.horizontal)
+                }else {
+                    SecureField("Password", text: $password)
+                        .padding(.horizontal)
+                }
+            }
+            .frame(height: 48)
+                .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                .background(Color(hex: "#F5F7FA"))
+                .cornerRadius(12)
+            
+            
+            
+            HStack(alignment: .center) {
+                Image("key_square")
+                    .resizable()
+                    .foregroundColor(.gray)
+                    .frame(width: 18, height: 18)
+                    .padding()
+                Spacer()
+                
+                Image(systemName: eyeImage)
+                    .resizable()
+                    .tint(.gray)
+                    .frame(width: 20, height: 16)
+                    .padding()
+                    .onTapGesture {
+                        isShowingPassword.toggle()
+                        eyeImage = isShowingPassword ? "eye.slash" : "eye"
+                    }
+                
+            }
+        }
+        .frame(height: 48)
     }
 }
