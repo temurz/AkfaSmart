@@ -30,13 +30,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let view: SplashView = assembler.resolve(navigationController: nav)
             nav.pushViewController(UIHostingController(rootView: view), animated: false)
-            window.rootViewController = nav
 
             //TestView
-//            let view: WelcomeView = assembler.resolve(navigationController: nav)
-//            nav.setViewControllers([UIHostingController(rootView: view)], animated: true)
-//            window.rootViewController = nav
+//            let testView: LoginView = assembler.resolve(navigationController: nav)
+//            nav.setViewControllers([UIHostingController(rootView: testView)], animated: true)
             //
+            window.rootViewController = nav
             self.window = window
             window.makeKeyAndVisible()
         }
