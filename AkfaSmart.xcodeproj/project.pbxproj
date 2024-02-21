@@ -916,7 +916,7 @@
 				B866A9302B6C0A3000202C9F /* News */,
 				B866A9742B71688B00202C9F /* Settings */,
 				1787234324BD55FA00D90F8E /* Main */,
-				1787233824BD552F00D90F8E /* Login */,
+				1787233824BD552F00D90F8E /* Auth */,
 				B87ED1F62B7A1D6B00EB5139 /* Welcome */,
 				B8AC366F2B798BC30060D52D /* Dealers */,
 				1787231D24BD541100D90F8E /* App */,
@@ -936,7 +936,7 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		1787233824BD552F00D90F8E /* Login */ = {
+		1787233824BD552F00D90F8E /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				B866A8D92B68DC6E00202C9F /* ForgotPassword */,
@@ -948,7 +948,7 @@
 				1787233D24BD556E00D90F8E /* LoginViewModel.swift */,
 				176BAA5424D158BC00324D3C /* LoginView.swift */,
 			);
-			path = Login;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		1787234324BD55FA00D90F8E /* Main */ = {
