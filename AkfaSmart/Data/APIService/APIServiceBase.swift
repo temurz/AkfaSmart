@@ -63,11 +63,12 @@ open class APIBase {
     
     open func success(_ input: APIInputBase) -> AnyPublisher<APIResponse<Bool>, Error> {
         let response: AnyPublisher<APIResponse<JSONDictionary>, Error> = requestJSON(input)
-        return response
-            .map { apiResponse -> APIResponse<Bool> in
+        let appResponce: AnyPublisher<APIResponse<JSONDictionary>,Error> = postProcess(response)
+        return appResponce
+            .tryMap { apiResponse -> APIResponse<Bool> in
                
                     let jsonData = apiResponse.data
-                    return APIResponse(header: apiResponse.header, data: jsonData["success"] as? Bool ?? false)
+                    return APIResponse(header: apiResponse.header, data: jsonData["success"] as? Bool ?? true)
             
             }
             .eraseToAnyPublisher()

@@ -23,7 +23,9 @@ protocol Assembler: AnyObject,
     CreateOrderAssembler,
     AddDealerAssembler,
     WelcomeViewAssembler,
-    SplashViewAssembler
+    SplashViewAssembler,
+    ForgotPasswordAssembler,
+    ResetPasswordAssembler
 {
     
 }

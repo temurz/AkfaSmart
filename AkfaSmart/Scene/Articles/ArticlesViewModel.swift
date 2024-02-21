@@ -31,6 +31,8 @@ extension ArticlesViewModel: ViewModel {
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
+        let errorTracker = ErrorTracker()
+        let activityTracker = ActivityTracker(false)
         let output = Output()
         
         input.showDetailViewTrigger
@@ -67,6 +69,11 @@ extension ArticlesViewModel: ViewModel {
         
         isLoadingMore
             .assign(to: \.isLoadingMore, on: output)
+            .store(in: cancelBag)
+        
+        activityTracker
+            .receive(on: RunLoop.main)
+            .assign(to: \.isLoading, on: output)
             .store(in: cancelBag)
         
         return output

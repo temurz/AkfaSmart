@@ -10,7 +10,7 @@ import UIKit
 
 protocol RegisterNavigatorType {
     func showLogin()
-    func showCodeInput(title: String)
+    func showCodeInput(reason: CodeReason)
 }
 
 struct RegisterNavigator: RegisterNavigatorType, ShowingLogin, ShowingCodeInput {

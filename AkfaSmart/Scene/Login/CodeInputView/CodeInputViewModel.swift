@@ -11,7 +11,9 @@ import Combine
 struct CodeInputViewModel {
     let navigator: CodeInputNavigatorType
     let useCase: CodeInputUseCaseType
-    let title: String
+    let useCaseResend: ResendSMSUseCaseType
+    let confirmSMSCodeOnForgotPasswordUseCase: ConfirmSMSCodeOnForgotPasswordUseCaseType
+    let reason: CodeReason
 }
 
 // MARK: - ViewModelType
@@ -19,11 +21,11 @@ extension CodeInputViewModel: ViewModel {
     final class Input: ObservableObject {
         @Published var code = ""
         let confirmRegisterTrigger: Driver<Void>
+        let resendSMSTrigger: Driver<Void>
         
-        
-        init(confirmRegisterTrigger: Driver<Void>) {
+        init(confirmRegisterTrigger: Driver<Void>, resendSMSTrigger: Driver<Void>) {
             self.confirmRegisterTrigger = confirmRegisterTrigger
-            
+            self.resendSMSTrigger = resendSMSTrigger
         }
     }
     
@@ -34,15 +36,20 @@ extension CodeInputViewModel: ViewModel {
         @Published var title: String
         @Published var isConfirmEnabled = true
         
-        init(title: String) {
-            self.title = title
+        init(reason: CodeReason) {
+            switch reason {
+            case .register:
+                title = "Registration"
+            case .forgotPassword:
+                title = "Forgot password"
+            }
         }
     }
         
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
         let errorTracker = ErrorTracker()
         let activityTracker = ActivityTracker(false)
-        let output = Output(title: self.title)
+        let output = Output(reason: self.reason)
         
         let codeValidationMessage = Publishers
             .CombineLatest(input.$code, input.confirmRegisterTrigger)
@@ -64,15 +71,44 @@ extension CodeInputViewModel: ViewModel {
             .delay(for: 0.1, scheduler: RunLoop.main)
             .filter { output.isConfirmEnabled }
             .map { _ in
-                self.useCase.confirmRegister(dto: CodeInputDto(code: input.code))
+                switch reason {
+                case .register:
+                    self.useCase.confirmRegister(dto: CodeInputDto(code: input.code))
+                        .trackError(errorTracker)
+                        .trackActivity(activityTracker)
+                        .asDriver()
+                case .forgotPassword:
+                    self.confirmSMSCodeOnForgotPasswordUseCase.confirmSMSCodeOnForgotPassword(dto: CodeInputDto(code: input.code))
+                        .trackError(errorTracker)
+                        .trackActivity(activityTracker)
+                        .asDriver()
+                }
+            }
+            .switchToLatest()
+            .sink { bool in
+                if bool {
+                    switch reason {
+                    case .register:
+                        navigator.showMain()
+                    case .forgotPassword:
+                        //TODO: 
+                        navigator.showResetPasswordView()
+                    }
+                }
+            }
+            .store(in: cancelBag)
+        
+        input.resendSMSTrigger
+            .map { _ in
+                self.useCaseResend.resendSMS(reason: reason)
                     .trackError(errorTracker)
                     .trackActivity(activityTracker)
                     .asDriver()
             }
             .switchToLatest()
             .sink { bool in
-                if bool {
-                    navigator.showMain()
+                if !bool {
+                    //show error
                 }
             }
             .store(in: cancelBag)

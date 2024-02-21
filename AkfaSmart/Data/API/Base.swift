@@ -17,3 +17,9 @@ struct ResponseModel<T: Decodable>: Decodable {
     let body: T?
     let code: Int
 }
+
+struct SuccessResponseModel: Decodable {
+    let success: Bool
+    let message: String
+    let code: Int
+}

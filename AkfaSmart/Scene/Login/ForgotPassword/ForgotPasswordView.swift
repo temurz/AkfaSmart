@@ -7,13 +7,17 @@
 //
 
 import SwiftUI
-
+import Combine
 struct ForgotPasswordView: View {
-    @State var phoneNumber = ""
+    @ObservedObject var input: ForgotPasswordViewModel.Input
+    @ObservedObject var output: ForgotPasswordViewModel.Output
+    private let confirmPhoneNumberTrigger = PassthroughSubject<Void,Never>()
+    
     @State var statusBarHeight: CGFloat = 0
-    @State var isLoading = false
+    private let cancelBag = CancelBag()
+    
     var body: some View {
-        LoadingView(isShowing: $isLoading, text: .constant("")) {
+        LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             ZStack {
                 Color.red
                     .ignoresSafeArea(edges: .top)
@@ -44,20 +48,29 @@ struct ForgotPasswordView: View {
                             .foregroundColor(Color(hex: "#51526C"))
                             .font(.system(size: 17))
                             .padding([.bottom,.horizontal])
-                        TextField("Phone number", text: $phoneNumber)
-                            .multilineTextAlignment(.center)
-                            .frame(height: 48)
-                            .background(Color(hex: "#F5F7FA"))
-                            .cornerRadius(12)
-                            .padding([.top, .horizontal])
+                        ZStack(alignment: .leading) {
+                            NumberPhoneMaskView(number: $input.phoneNumber)
+                                .frame(height: 48)
+                                .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
+                                .background(Color(hex: "#F5F7FA"))
+                                .cornerRadius(12)
+                            Image("phone_icon")
+                                .resizable()
+                                .foregroundColor(.gray)
+                                .frame(width: 16, height: 16)
+                                .padding()
+                        }
+                        Text(output.usernameValidationMessage)
+                            .foregroundColor(.red)
+                            .font(.footnote)
                     }
                     
                     Spacer()
                     HStack {
                         Button {
-                            
+                            confirmPhoneNumberTrigger.send(())
                         }label: {
-                            Text("Reset password")
+                            Text("Confirm")
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 40)
                                 .foregroundColor(.white)
@@ -71,9 +84,53 @@ struct ForgotPasswordView: View {
                 .padding()
             }
         }
+        .alert(isPresented: $output.alert.isShowing) {
+            Alert(
+                title: Text(output.alert.title),
+                message: Text(output.alert.message),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
+    
+    init(viewModel: ForgotPasswordViewModel) {
+        let input = ForgotPasswordViewModel.Input(confirmPhoneNumberTrigger: confirmPhoneNumberTrigger.asDriver())
+        self.output = viewModel.transform(input, cancelBag: cancelBag)
+        self.input = input
+    }
+    
 }
 
-#Preview {
-    ForgotPasswordView()
+
+struct CustomHeaderView<Content: View>: View {
+    @State var statusBarHeight: CGFloat = 0
+    
+    var content: () -> Content
+    var body: some View {
+        ZStack {
+            Color.red
+                .ignoresSafeArea(edges: .top)
+            Color.white
+                .cornerRadius(20, corners: [.topLeft, .topRight])
+                .padding(.top, statusBarHeight > 0 ? statusBarHeight : 48)
+                .ignoresSafeArea()
+                .onAppear {
+                    if let statusBarManager = UIApplication.shared.windows.first?.windowScene?.statusBarManager {
+                        statusBarHeight = statusBarManager.statusBarFrame.height
+                    }
+                }
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    Image("akfa_smart")
+                        .frame(width: 124, height: 44)
+                    Spacer()
+                }
+                .padding(.bottom)
+                
+                content()
+            }
+            .padding()
+        }
+    }
 }

@@ -19,7 +19,7 @@ struct RegisterViewModel {
 // MARK: - ViewModelType
 extension RegisterViewModel: ViewModel {
     final class Input: ObservableObject {
-        @Published var username = "998900109258"
+        @Published var username = "99890010"
         @Published var password = "123456"
         @Published var repeatedPassword = "123456"
         let registerTrigger: Driver<Void>
@@ -73,7 +73,6 @@ extension RegisterViewModel: ViewModel {
             .map {
                 $0 == input.password
             }
-//            .map(LoginDto.validateRepeatedPassword(input.repeatedPassword, password: input.password))
         
         repeatedPasswordValidation
             .asDriver()
@@ -93,7 +92,7 @@ extension RegisterViewModel: ViewModel {
             .delay(for: 0.1, scheduler: RunLoop.main)  // waiting for username/password validation
             .filter { output.isRegisterEnabled }
             .map { _ in
-                self.useCase.register(dto: RegisterDto(username: input.username.removePlusFromPhoneNumber(), password: input.password, repeatedPassword: input.repeatedPassword))
+                self.useCase.register(dto: RegisterDto(username: input.username.getOnlyNumbers(), password: input.password, repeatedPassword: input.repeatedPassword))
                     .trackError(errorTracker)
                     .trackActivity(activityTracker)
                     .asDriver()
@@ -101,7 +100,7 @@ extension RegisterViewModel: ViewModel {
             .switchToLatest()
             .sink(receiveValue: { bool in
                 if bool {
-                    navigator.showCodeInput(title: "Registration")
+                    navigator.showCodeInput(reason: .register)
                 }
             })
             .store(in: cancelBag)

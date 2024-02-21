@@ -34,3 +34,21 @@ extension API {
         }
     }
 }
+
+
+extension API {
+    func confirmSMSCodeOnForgotPassword(input: ConfirmSMSCodeOnForgotPasswordInput) -> Observable<Bool> {
+        success(input)
+    }
+    
+    final class ConfirmSMSCodeOnForgotPasswordInput: APIInput {
+        init(dto: CodeInputDto) {
+            let username = AuthApp.shared.username ?? ""
+            let params: Parameters = [
+                "username": username,
+                "resetCode": dto.code ?? ""
+            ]
+            super.init(urlString: API.Urls.confirmForgotPassword, parameters: params, method: .post, requireAccessToken: false)
+        }
+    }
+}

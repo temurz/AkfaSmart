@@ -157,15 +157,18 @@ struct CustomPhoneNumberTextField: View {
 struct CustomSecureTextField: View {
     @State private var isShowingPassword: Bool = false
     @State private var eyeImage: String = "eye"
+    
+    let placeholder: String
     @Binding var password: String
+    
     var body: some View {
         ZStack(alignment: .leading) {
             Group {
                 if isShowingPassword {
-                    TextField("Password", text: $password)
+                    TextField(placeholder, text: $password)
                         .padding(.horizontal)
                 }else {
-                    SecureField("Password", text: $password)
+                    SecureField(placeholder, text: $password)
                         .padding(.horizontal)
                 }
             }
@@ -197,5 +200,10 @@ struct CustomSecureTextField: View {
             }
         }
         .frame(height: 48)
+    }
+    
+    init(placeholder: String = "Password", password: Binding<String>) {
+        self.placeholder = placeholder
+        self._password = password
     }
 }

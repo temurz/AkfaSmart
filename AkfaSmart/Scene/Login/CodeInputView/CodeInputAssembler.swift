@@ -8,23 +8,27 @@
 
 import UIKit
 protocol CodeInputAssembler {
-    func resolve(navigationController: UINavigationController, title: String) -> CodeInputView
-    func resolve(navigationController: UINavigationController, title: String) -> CodeInputViewModel
+    func resolve(navigationController: UINavigationController, reason: CodeReason) -> CodeInputView
+    func resolve(navigationController: UINavigationController, reason: CodeReason) -> CodeInputViewModel
     func resolve(navigationController: UINavigationController) -> CodeInputNavigatorType
     func resolve() -> CodeInputUseCaseType
+    func resolve() -> ResendSMSUseCaseType
+    func resolve() -> ConfirmSMSCodeOnForgotPasswordUseCaseType
 
 }
 
 extension CodeInputAssembler {
-    func resolve(navigationController: UINavigationController, title: String) -> CodeInputView {
-        return CodeInputView(viewModel: resolve(navigationController: navigationController, title: title))
+    func resolve(navigationController: UINavigationController, reason: CodeReason) -> CodeInputView {
+        return CodeInputView(viewModel: resolve(navigationController: navigationController, reason: reason))
     }
     
-    func resolve(navigationController: UINavigationController, title: String) -> CodeInputViewModel {
+    func resolve(navigationController: UINavigationController, reason: CodeReason) -> CodeInputViewModel {
         return CodeInputViewModel(
             navigator: resolve(navigationController: navigationController),
             useCase: resolve(),
-            title: title)
+            useCaseResend: resolve(),
+            confirmSMSCodeOnForgotPasswordUseCase: resolve(),
+            reason: reason)
     }
 }
 
@@ -35,6 +39,13 @@ extension CodeInputAssembler where Self: DefaultAssembler {
     func resolve() -> CodeInputUseCaseType {
         return CodeInputUseCase(codeInputGateway: resolve())
     }
+    
+    func resolve() -> ResendSMSUseCaseType {
+        return ResendSMSUseCase(resendSMSGateway: resolve())
+    }
+    func resolve() -> ConfirmSMSCodeOnForgotPasswordUseCaseType {
+        return ConfirmSMSCodeOnForgotPasswordUseCase(confirmSMSCodeOnForgotPasswordGateway: resolve())
+    }
 }
 
 extension CodeInputAssembler where Self: PreviewAssembler {
@@ -43,5 +54,13 @@ extension CodeInputAssembler where Self: PreviewAssembler {
     }
     func resolve() -> CodeInputUseCaseType {
         return CodeInputUseCase(codeInputGateway: resolve())
+    }
+    
+    func resolve() -> ResendSMSUseCaseType {
+        return ResendSMSUseCase(resendSMSGateway: resolve())
+    }
+    
+    func resolve() -> ConfirmSMSCodeOnForgotPasswordUseCaseType {
+        return ConfirmSMSCodeOnForgotPasswordUseCase(confirmSMSCodeOnForgotPasswordGateway: resolve())
     }
 }

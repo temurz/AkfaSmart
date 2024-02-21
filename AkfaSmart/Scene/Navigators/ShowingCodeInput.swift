@@ -8,14 +8,19 @@
 
 import UIKit
 import SwiftUI
+enum CodeReason {
+    case register
+    case forgotPassword
+}
+
 protocol ShowingCodeInput {
     var assembler: Assembler { get }
     var navigationController: UINavigationController { get }
 }
 
 extension ShowingCodeInput {
-    func showCodeInput(title: String) {
-        let view: CodeInputView = assembler.resolve(navigationController: navigationController, title: title)
+    func showCodeInput(reason: CodeReason) {
+        let view: CodeInputView = assembler.resolve(navigationController: navigationController, reason: reason)
         let vc = UIHostingController(rootView: view)
         navigationController.pushViewController(vc, animated: true)
     }

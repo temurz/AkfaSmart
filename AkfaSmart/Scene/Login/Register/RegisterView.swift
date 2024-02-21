@@ -62,7 +62,7 @@ struct RegisterView: View {
                         Text(self.output.passwordValidationMessage)
                             .foregroundColor(.red)
                             .font(.footnote)
-                        CustomSecureTextField(password: $input.repeatedPassword)
+                        CustomSecureTextField(placeholder: "Confirm password", password: $input.repeatedPassword)
                         Text(self.output.repeatedPasswordValidationMessage)
                             .foregroundColor(.red)
                             .font(.footnote)
@@ -81,7 +81,7 @@ struct RegisterView: View {
                         
                         HStack {
                             Spacer()
-                            Button("Alreay registered") {
+                            Button("Already registered") {
                                 self.showLoginTrigger.send(Void())
                             }
                             .foregroundColor(Color(hex: "#51526C"))

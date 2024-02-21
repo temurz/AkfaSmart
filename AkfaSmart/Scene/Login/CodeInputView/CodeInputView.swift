@@ -14,6 +14,7 @@ struct CodeInputView: View {
     
     private let cancelBag = CancelBag()
     private let confirmRegisterTrigger = PassthroughSubject<Void,Never>()
+    private let resendSMSTrigger = PassthroughSubject<Void,Never>()
     
     @State var statusBarHeight: CGFloat = 0
     @State var username: String = AuthApp.shared.username?.makeStarsInsteadNumbersInUsername() ?? ""
@@ -74,6 +75,12 @@ struct CodeInputView: View {
                         Text(duration)
                             .font(.system(size: 14))
                             .foregroundColor(Color(hex: "#51526C"))
+                            .onTapGesture {
+                                if timeRemaining == 0 {
+                                    resendSMSTrigger.send(())
+                                    timeRemaining = 120
+                                }
+                            }
                     }
                     .padding()
                     Spacer()
@@ -105,13 +112,16 @@ struct CodeInputView: View {
         .onReceive(timer) { time in
             if timeRemaining > 0 {
                 timeRemaining -= 1
+                duration = timeRemaining.makeMinutesAndSeconds()
+            }else {
+                duration = "Resend SMS"
             }
-            duration = timeRemaining.makeMinutesAndSeconds()
         }
     }
     
     init(viewModel: CodeInputViewModel) {
-        let input = CodeInputViewModel.Input(confirmRegisterTrigger: confirmRegisterTrigger.asDriver())
+        let input = CodeInputViewModel.Input(confirmRegisterTrigger: confirmRegisterTrigger.asDriver(), resendSMSTrigger: resendSMSTrigger.asDriver()
+        )
         output = viewModel.transform(input, cancelBag: cancelBag)
         self.input = input
     }
@@ -119,9 +129,7 @@ struct CodeInputView: View {
 
 struct CodeInputView_Previews: PreviewProvider {
     static var previews: some View {
-        let vm: CodeInputViewModel = PreviewAssembler().resolve(navigationController: UINavigationController(), title: "")
+        let vm: CodeInputViewModel = PreviewAssembler().resolve(navigationController: UINavigationController(), reason: .register)
         return CodeInputView(viewModel: vm)
     }
-    
-    
 }
