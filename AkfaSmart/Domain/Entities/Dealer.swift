@@ -12,7 +12,7 @@ struct Dealer: Decodable {
     let dealerClientCid: Int?
     let name: String?
     let clientName: String?
-    let balance: Int
-    let purchaseForMonth: Int
-    let purchaseForYear: Int
+    let balance: Double
+    let purchaseForMonth: Double
+    let purchaseForYear: Double
 }

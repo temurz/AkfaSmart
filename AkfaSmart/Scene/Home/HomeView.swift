@@ -11,9 +11,12 @@ import Combine
 struct HomeView: View {
     @ObservedObject var output: HomeViewModel.Output
     @State var balanceIsVisible = false
+    @State var totalOfMonth = 0.0
+    @State var totalOfYear = 0.0
     
     private let openPurchasesTrigger = PassthroughSubject<Int,Never>()
     private let openPaymentsTrigger = PassthroughSubject<Int,Never>()
+    private let calculateTotalAmounts = PassthroughSubject<Void,Never>()
     
     let cancelBag = CancelBag()
     var body: some View {
@@ -45,9 +48,9 @@ struct HomeView: View {
                 VStack(alignment: .leading) {
                     Carousel(
                         data: $output.items,
-                        isBalanceVisible: $balanceIsVisible, 
-                        width: UIScreen.main.bounds.width,
-                        height: 320,
+                        isBalanceVisible: $balanceIsVisible,
+                        totalOfMonth: $totalOfMonth,
+                        totalOfYear: $totalOfYear,
                         openPurchases: { dealerId in
                             openPurchasesTrigger.send(dealerId)
                         },
@@ -66,14 +69,27 @@ struct HomeView: View {
             }
         }
         .navigationTitle("")
+        .onAppear {
+            calculateTotals()
+        }
     }
     
     init(viewModel: HomeViewModel) {
         let input = HomeViewModel.Input(
             openPurchasesTrigger: openPurchasesTrigger.asDriver(),
-            openPaymentsTrigger: openPaymentsTrigger.asDriver())
+            openPaymentsTrigger: openPaymentsTrigger.asDriver(), calculateTotalAmounts: calculateTotalAmounts.asDriver())
         
         output = viewModel.transform(input, cancelBag: cancelBag)
+    }
+    
+    func calculateTotals() {
+        totalOfMonth = output.items
+            .map { $0.purchaseForMonth }
+            .reduce(0,+)
+        
+        totalOfYear = output.items
+            .map {$0.purchaseForYear}
+            .reduce(0, +)
     }
 }
 

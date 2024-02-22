@@ -12,6 +12,8 @@ struct DealerViewRow: View {
     var width: CGFloat
     var model: Dealer
     var isBalanceVisible: Bool
+    @Binding var totalOfMonth: Double
+    @Binding var totalOfYear: Double
     var openPurchases: ((Int) -> ())
     var openPayments: ((Int) -> ())
     
@@ -34,7 +36,7 @@ struct DealerViewRow: View {
                                 .font(.subheadline)
                                 .foregroundColor(Color(hex: "#9DA8C2"))
                             if isBalanceVisible {
-                                Text("\(model.balance) sum")
+                                Text(String(format: "%.2f",model.balance) + " sum")
                                     .font(.headline)
                                     .foregroundColor(.red)
                             }else {
@@ -58,24 +60,71 @@ struct DealerViewRow: View {
                         .foregroundColor(Color(hex: "#9DA8C2"))
                     Spacer()
                     if isBalanceVisible {
-                        Text("\(model.purchaseForMonth)")
+                        Text(String(format: "%.2f", model.purchaseForMonth))
                     }else {
                         Text("***")
                     }
                 }
-                .padding()
+                .padding(.horizontal)
+                
+                ZStack {
+                    Color.gray
+                        .cornerRadius(2)
+                        .frame(height: 4)
+                    if totalOfMonth != 0 {
+                        HStack {
+                            GeometryReader { g in
+                                Color.red
+                                    .cornerRadius(2)
+                                    .frame(width: CGFloat(
+                                        (model.purchaseForMonth / totalOfMonth) * g.size.width))
+                                    .frame(height: 4)
+                                    
+                            }
+                            Spacer()
+                        }
+                        
+                    }
+                }
+                .frame(height: 4)
+                .padding(.horizontal)
+                
+
                 HStack {
                     Text("For year")
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9DA8C2"))
                     Spacer()
                     if isBalanceVisible {
-                        Text("\(model.purchaseForYear)")
+                        Text(String(format: "%.2f", model.purchaseForYear))
                     }else {
                         Text("***")
                     }
                 }
-                .padding()
+                .padding(.horizontal)
+                
+                ZStack {
+                    Color.gray
+                        .cornerRadius(2)
+                        .frame(height: 4)
+                    if totalOfYear != 0 {
+                        HStack {
+                            GeometryReader { g in
+                                Color.red
+                                    .cornerRadius(2)
+                                    .frame(width: CGFloat(
+                                        (model.purchaseForYear / totalOfYear) * g.size.width))
+                                    .frame(height: 4)
+                                    
+                            }
+                            Spacer()
+                        }
+                        
+                    }
+                }
+                .frame(height: 4)
+                .padding(.horizontal)
+                
                 Divider()
                 
                 HStack {
@@ -105,7 +154,7 @@ struct DealerViewRow: View {
                             .frame(height: 50)
                     }
                 }
-                .padding()
+                .padding(16)
             }
             .background(.white)
             .border(Color(hex: "#E2E5ED"), width: 0.5)

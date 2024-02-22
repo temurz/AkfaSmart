@@ -271,6 +271,7 @@
 		B8FEC6CE2B8665950028BA7F /* DealersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6CD2B8665950028BA7F /* DealersListView.swift */; };
 		B8FEC6D82B8761AB0028BA7F /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6D72B8761AB0028BA7F /* Dealer.swift */; };
 		B8FEC6DA2B8783140028BA7F /* UserClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6D92B8783130028BA7F /* UserClassView.swift */; };
+		B8FEC6DC2B879ABC0028BA7F /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6DB2B879ABC0028BA7F /* CarouselView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -539,6 +540,7 @@
 		B8FEC6CD2B8665950028BA7F /* DealersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersListView.swift; sourceTree = "<group>"; };
 		B8FEC6D72B8761AB0028BA7F /* Dealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
 		B8FEC6D92B8783130028BA7F /* UserClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassView.swift; sourceTree = "<group>"; };
+		B8FEC6DB2B879ABC0028BA7F /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1381,8 +1383,9 @@
 		B8FEC6C92B8660880028BA7F /* DealerView */ = {
 			isa = PBXGroup;
 			children = (
-				B8FEC6CB2B86650E0028BA7F /* DealerViewRow.swift */,
+				B8FEC6DB2B879ABC0028BA7F /* CarouselView.swift */,
 				B8FEC6CD2B8665950028BA7F /* DealersListView.swift */,
+				B8FEC6CB2B86650E0028BA7F /* DealerViewRow.swift */,
 			);
 			path = DealerView;
 			sourceTree = "<group>";
@@ -1629,6 +1632,7 @@
 				176BAA5C24D175C200324D3C /* AuthGateway.swift in Sources */,
 				B8CF98E82B656B2700EF02A7 /* RegisterDTO.swift in Sources */,
 				B866A8D12B68CFBD00202C9F /* ShowingForgotPassword.swift in Sources */,
+				B8FEC6DC2B879ABC0028BA7F /* CarouselView.swift in Sources */,
 				B87ED2072B7A28E900EB5139 /* SplashViewNavigator.swift in Sources */,
 				1787233324BD54B600D90F8E /* Assembler.swift in Sources */,
 				176BAA5A24D16BAE00324D3C /* ShowingLogin.swift in Sources */,
