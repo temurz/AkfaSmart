@@ -11,6 +11,9 @@ import SwiftUI
 struct DealerViewRow: View {
     var width: CGFloat
     var model: Dealer
+    var isBalanceVisible: Bool
+    var openPurchases: ((Int) -> ())
+    var openPayments: ((Int) -> ())
     
     var body: some View {
         VStack {
@@ -30,9 +33,15 @@ struct DealerViewRow: View {
                             Label("Balance", image: "account_balance_wallet")
                                 .font(.subheadline)
                                 .foregroundColor(Color(hex: "#9DA8C2"))
-                            Text("\(model.balance) sum")
-                                .font(.headline)
-                                .foregroundColor(.red)
+                            if isBalanceVisible {
+                                Text("\(model.balance) sum")
+                                    .font(.headline)
+                                    .foregroundColor(.red)
+                            }else {
+                                Text("*** sum")
+                                    .font(.headline)
+                                    .foregroundColor(.red)
+                            }
                         }
                     }
                     .padding([.horizontal, .top])
@@ -48,7 +57,11 @@ struct DealerViewRow: View {
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9DA8C2"))
                     Spacer()
-                    Text("\(model.purchaseForMonth)")
+                    if isBalanceVisible {
+                        Text("\(model.purchaseForMonth)")
+                    }else {
+                        Text("***")
+                    }
                 }
                 .padding()
                 HStack {
@@ -56,14 +69,18 @@ struct DealerViewRow: View {
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9DA8C2"))
                     Spacer()
-                    Text("\(model.purchaseForYear)")
+                    if isBalanceVisible {
+                        Text("\(model.purchaseForYear)")
+                    }else {
+                        Text("***")
+                    }
                 }
                 .padding()
                 Divider()
                 
                 HStack {
                     Button {
-                        
+                        openPurchases(model.dealerId ?? 0)
                     } label: {
                         Text("History of purchases")
                             .font(.subheadline)
@@ -76,7 +93,7 @@ struct DealerViewRow: View {
                     }
                     Spacer()
                     Button {
-                        
+                        openPayments(model.dealerId ?? 0)
                     } label: {
                         Text("History of payments")
                             .font(.subheadline)

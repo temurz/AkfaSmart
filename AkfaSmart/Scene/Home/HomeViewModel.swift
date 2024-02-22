@@ -14,12 +14,14 @@ struct HomeViewModel {
 
 extension HomeViewModel: ViewModel {
     struct Input {
-        
+        let openPurchasesTrigger: Driver<Int>
+        let openPaymentsTrigger: Driver<Int>
     }
     
     final class Output: ObservableObject {
         @Published var visible: Bool = AuthApp.shared.visibility
         @Published var dealerPage = 0
+        
         @Published var items = [
             Dealer(dealerId: 0, dealerClientCid: 0, name: nil, clientName: nil, balance: 0, purchaseForMonth: 0, purchaseForYear: 0),
             Dealer(dealerId: 1, dealerClientCid: 0, name: nil, clientName: nil, balance: 0, purchaseForMonth: 0, purchaseForYear: 0),

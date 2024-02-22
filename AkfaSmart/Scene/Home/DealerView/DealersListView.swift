@@ -10,11 +10,20 @@ import SwiftUI
 
 struct DealersListView: View {
     @Binding var data: [Dealer]
+    @Binding var isBalanceVisible: Bool
+    var openPurchases: ((Int) -> ())
+    var openPayments: ((Int) -> ())
     
     var body: some View {
         HStack(spacing: 0) {
             ForEach(data, id: \.dealerId) { model in
-                DealerViewRow(width: UIScreen.main.bounds.width, model: model)
+                DealerViewRow(
+                    width: UIScreen.main.bounds.width,
+                    model: model,
+                    isBalanceVisible: self.isBalanceVisible,
+                    openPurchases: openPurchases,
+                    openPayments: openPayments
+                )
                     .padding(.vertical)
             }
         }
@@ -24,9 +33,11 @@ struct DealersListView: View {
 
 struct Carousel: UIViewRepresentable {
     @Binding var data: [Dealer]
-    @Binding var page: Int
+    @Binding var isBalanceVisible: Bool
     var width: CGFloat
     var height: CGFloat
+    var openPurchases: ((Int) -> ())
+    var openPayments: ((Int) -> ())
     
     func makeUIView(context: Context) -> UIScrollView {
         //ScrollView Content Size
@@ -40,7 +51,8 @@ struct Carousel: UIViewRepresentable {
         view.showsHorizontalScrollIndicator = false
 
         //Embed SwiftUI View into UIView
-        let view1 = UIHostingController(rootView: DealersListView(data: $data))
+        let listView = DealersListView(data: $data, isBalanceVisible: self.$isBalanceVisible, openPurchases: self.openPurchases, openPayments: self.openPayments)
+        let view1 = UIHostingController(rootView: listView)
         view1.view.frame = CGRect(x: 0, y: 0, width: total, height: self.height)
         view1.view.backgroundColor = .clear
         

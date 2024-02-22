@@ -7,9 +7,13 @@
 //
 
 import SwiftUI
-
+import Combine
 struct HomeView: View {
     @ObservedObject var output: HomeViewModel.Output
+    @State var balanceIsVisible = false
+    
+    private let openPurchasesTrigger = PassthroughSubject<Int,Never>()
+    private let openPaymentsTrigger = PassthroughSubject<Int,Never>()
     
     let cancelBag = CancelBag()
     var body: some View {
@@ -21,6 +25,12 @@ struct HomeView: View {
                     Spacer()
                     CustomButtonWithImage(eyeImage: output.visible ? "visibility" : "visibility_off") {
                         AuthApp.shared.visibility = !output.visible
+                        balanceIsVisible.toggle()
+                    }
+                    .onAppear {
+                        if AuthApp.shared.visibility {
+                            balanceIsVisible = true
+                        }
                     }
                     
                     CustomButtonWithImage(systemImage: "plus") {
@@ -33,7 +43,17 @@ struct HomeView: View {
                 }
                 .padding(.horizontal)
                 VStack(alignment: .leading) {
-                    Carousel(data: $output.items, page: $output.dealerPage, width: UIScreen.main.bounds.width,  height: 320)
+                    Carousel(
+                        data: $output.items,
+                        isBalanceVisible: $balanceIsVisible, 
+                        width: UIScreen.main.bounds.width,
+                        height: 320,
+                        openPurchases: { dealerId in
+                            openPurchasesTrigger.send(dealerId)
+                        },
+                        openPayments: { dealerId in
+                            openPaymentsTrigger.send(dealerId)
+                        })
                         .padding(.top)
                         
                     Text("My class")
@@ -49,7 +69,10 @@ struct HomeView: View {
     }
     
     init(viewModel: HomeViewModel) {
-        let input = HomeViewModel.Input()
+        let input = HomeViewModel.Input(
+            openPurchasesTrigger: openPurchasesTrigger.asDriver(),
+            openPaymentsTrigger: openPaymentsTrigger.asDriver())
+        
         output = viewModel.transform(input, cancelBag: cancelBag)
     }
 }
