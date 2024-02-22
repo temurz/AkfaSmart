@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    let output: HomeViewModel.Output
+    @ObservedObject var output: HomeViewModel.Output
     
     let cancelBag = CancelBag()
     var body: some View {
-        ScrollView {
-            VStack {
+        VStack {
+            VStack(alignment: .leading) {
                 HStack {
                     Text("My dilers")
                         .font(.title)
@@ -31,8 +31,19 @@ struct HomeView: View {
                     }
                     
                 }
+                .padding(.horizontal)
+                VStack(alignment: .leading) {
+                    Carousel(data: $output.items, page: $output.dealerPage, width: UIScreen.main.bounds.width,  height: 320)
+                        .padding(.top)
+                        
+                    Text("My class")
+                        .font(.title2)
+                        .padding()
+                    UserClassView()
+                        .frame(height: 200)
+                        .background(Color.yellow)
+                }
             }
-            .padding()
         }
         .navigationTitle("")
     }

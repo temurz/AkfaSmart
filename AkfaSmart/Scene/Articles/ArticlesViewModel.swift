@@ -71,11 +71,6 @@ extension ArticlesViewModel: ViewModel {
             .assign(to: \.isLoadingMore, on: output)
             .store(in: cancelBag)
         
-        activityTracker
-            .receive(on: RunLoop.main)
-            .assign(to: \.isLoading, on: output)
-            .store(in: cancelBag)
-        
         return output
     }
 }
