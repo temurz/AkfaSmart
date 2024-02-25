@@ -17,67 +17,74 @@ struct HomeView: View {
     private let openPurchasesTrigger = PassthroughSubject<Int,Never>()
     private let openPaymentsTrigger = PassthroughSubject<Int,Never>()
     private let calculateTotalAmounts = PassthroughSubject<Void,Never>()
+    private let getDealersTrigger = PassthroughSubject<Void,Never>()
     
     let cancelBag = CancelBag()
     var body: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("My dilers")
-                        .font(.title)
-                    Spacer()
-                    CustomButtonWithImage(eyeImage: output.visible ? "visibility" : "visibility_off") {
-                        AuthApp.shared.visibility = !output.visible
-                        balanceIsVisible.toggle()
-                    }
-                    .onAppear {
-                        if AuthApp.shared.visibility {
-                            balanceIsVisible = true
-                        }
-                    }
-                    
-                    CustomButtonWithImage(systemImage: "plus") {
-                        
-                    }
-                    CustomButtonWithImage(systemImage: "bell") {
-                        
-                    }
-                    
-                }
-                .padding(.horizontal)
+        LoadingView(isShowing: $output.isLoading, text: .constant("")) {
+            VStack {
                 VStack(alignment: .leading) {
-                    Carousel(
-                        data: $output.items,
-                        isBalanceVisible: $balanceIsVisible,
-                        totalOfMonth: $totalOfMonth,
-                        totalOfYear: $totalOfYear,
-                        openPurchases: { dealerId in
-                            openPurchasesTrigger.send(dealerId)
-                        },
-                        openPayments: { dealerId in
-                            openPaymentsTrigger.send(dealerId)
-                        })
-                        .padding(.top)
+                    HStack {
+                        Text("My dilers")
+                            .font(.title)
+                        Spacer()
+                        CustomButtonWithImage(eyeImage: output.visible ? "visibility" : "visibility_off") {
+                            AuthApp.shared.visibility = !output.visible
+                            balanceIsVisible.toggle()
+                        }
+                        .onAppear {
+                            if AuthApp.shared.visibility {
+                                balanceIsVisible = true
+                            }
+                        }
                         
-                    Text("My class")
-                        .font(.title2)
-                        .padding()
-                    UserClassView()
-                        .frame(height: 200)
-                        .background(Color.yellow)
+                        CustomButtonWithImage(systemImage: "plus") {
+                            
+                        }
+                        CustomButtonWithImage(systemImage: "bell") {
+                            
+                        }
+                        
+                    }
+                    .padding(.horizontal)
+                    
+                        if output.hasDealers {
+                            Carousel(
+                                data: $output.items,
+                                isBalanceVisible: $balanceIsVisible,
+                                totalOfMonth: $output.totalOfMonth,
+                                totalOfYear: $output.totalOfYear,
+                                openPurchases: { dealerId in
+                                    openPurchasesTrigger.send(dealerId)
+                                },
+                                openPayments: { dealerId in
+                                    openPaymentsTrigger.send(dealerId)
+                                })
+                                .padding(.top)
+                        }
+                        
+                            
+                        Text("My class")
+                            .font(.title2)
+                            .padding()
+                        UserClassView()
+                            .frame(height: 200)
+                            .background(Color.yellow)
+                        Spacer()
+                    
                 }
             }
         }
         .navigationTitle("")
         .onAppear {
-            calculateTotals()
+            getDealersTrigger.send(())
         }
     }
     
     init(viewModel: HomeViewModel) {
         let input = HomeViewModel.Input(
             openPurchasesTrigger: openPurchasesTrigger.asDriver(),
-            openPaymentsTrigger: openPaymentsTrigger.asDriver(), calculateTotalAmounts: calculateTotalAmounts.asDriver())
+            openPaymentsTrigger: openPaymentsTrigger.asDriver(), calculateTotalAmounts: calculateTotalAmounts.asDriver(), getDealersTrigger: getDealersTrigger.asDriver())
         
         output = viewModel.transform(input, cancelBag: cancelBag)
     }

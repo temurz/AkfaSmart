@@ -16,3 +16,13 @@ struct Dealer: Decodable {
     let purchaseForMonth: Double
     let purchaseForYear: Double
 }
+
+struct HasDealerAndLocation: Decodable {
+    let username: String
+    let imageUrl: String?
+    let firstName: String?
+    let lastName: String?
+    let middleName: String?
+    let hasDealer: Bool
+    let hasLocation: Bool
+}

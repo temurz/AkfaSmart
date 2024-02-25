@@ -292,9 +292,9 @@ open class APIBase {
                     let json = apiResponse.data
                     let success = json["success"] as? Int ?? 0
                     let object = json["body"] as? U
-//                if let body = json["body"] {
-//                    print("Type of json[\"body\"]: \(type(of: body))")
-//                }
+                if let body = json["body"] {
+                    print("Type of json[\"body\"]: \(type(of: body))")
+                }
                     if success == 1 {
                         return APIResponse(header: apiResponse.header,
                                            data: object ?? U.init())

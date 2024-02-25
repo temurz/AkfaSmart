@@ -29,7 +29,7 @@ extension HomeViewAssembler where Self: DefaultAssembler {
     }
     
     func resolve() -> HomeViewUseCaseType {
-        return HomeViewUseCase()
+        return HomeViewUseCase(gateway: resolve())
     }
 }
 
@@ -39,6 +39,6 @@ extension HomeViewAssembler where Self: PreviewAssembler {
     }
     
     func resolve() -> HomeViewUseCaseType {
-        return HomeViewUseCase()
+        return HomeViewUseCase(gateway: resolve())
     }
 }

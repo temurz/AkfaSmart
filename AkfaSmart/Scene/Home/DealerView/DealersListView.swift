@@ -18,7 +18,7 @@ struct DealersListView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(data, id: \.dealerId) { model in
+            ForEach(data, id: \.dealerClientCid) { model in
                 DealerViewRow(
                     width: UIScreen.main.bounds.width,
                     model: model,
@@ -28,7 +28,6 @@ struct DealersListView: View {
                     openPurchases: openPurchases,
                     openPayments: openPayments
                 )
-                    .padding(.vertical)
             }
         }
     }

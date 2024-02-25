@@ -58,6 +58,9 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> ResetPasswordGatewayType {
         ResetPasswordGateway()
     }
+    func resolve() -> GetDealersGatewayType {
+        GetDealersGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -102,5 +105,9 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> ResetPasswordGatewayType {
         ResetPasswordGateway()
+    }
+    
+    func resolve() -> GetDealersGatewayType {
+        GetDealersGateway()
     }
 }

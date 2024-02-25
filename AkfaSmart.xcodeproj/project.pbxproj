@@ -221,6 +221,9 @@
 		B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */; };
 		B86CDF472B77BC56002E7EA4 /* News+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF462B77BC56002E7EA4 /* News+API.swift */; };
 		B86CDF4A2B77C801002E7EA4 /* NewsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */; };
+		B877FD612B8BBFA200D24CB0 /* Dealers+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */; };
+		B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */; };
+		B877FD662B8BC11500D24CB0 /* GetDealersDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD652B8BC11500D24CB0 /* GetDealersDomainUseCase.swift */; };
 		B87C71DC2B829EEA0061530E /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DB2B829EEA0061530E /* ForgotPasswordViewModel.swift */; };
 		B87C71DE2B829FA50061530E /* ForgotPasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DD2B829FA50061530E /* ForgotPasswordUseCase.swift */; };
 		B87C71E02B829FD60061530E /* ForgotPasswordNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DF2B829FD60061530E /* ForgotPasswordNavigator.swift */; };
@@ -490,6 +493,9 @@
 		B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGateway.swift; sourceTree = "<group>"; };
 		B86CDF462B77BC56002E7EA4 /* News+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+API.swift"; sourceTree = "<group>"; };
 		B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDomainUseCase.swift; sourceTree = "<group>"; };
+		B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dealers+API.swift"; sourceTree = "<group>"; };
+		B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDealersGateway.swift; sourceTree = "<group>"; };
+		B877FD652B8BC11500D24CB0 /* GetDealersDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDealersDomainUseCase.swift; sourceTree = "<group>"; };
 		B87C71DB2B829EEA0061530E /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		B87C71DD2B829FA50061530E /* ForgotPasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUseCase.swift; sourceTree = "<group>"; };
 		B87C71DF2B829FD60061530E /* ForgotPasswordNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordNavigator.swift; sourceTree = "<group>"; };
@@ -620,6 +626,7 @@
 				B86CDF462B77BC56002E7EA4 /* News+API.swift */,
 				B85516CA2B790E5F00FC2D6E /* Articles+API.swift */,
 				B8FEC6B42B8502540028BA7F /* ResendSMS+API.swift */,
+				B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1009,6 +1016,7 @@
 		1787235124BD56CD00D90F8E /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				B877FD642B8BC10600D24CB0 /* Dealers */,
 				B85516C52B79060D00FC2D6E /* Articles */,
 				B86CDF482B77C7CD002E7EA4 /* News */,
 				1720C7BB24FE37E300D616B2 /* Validations */,
@@ -1041,6 +1049,7 @@
 				B85516C82B79069300FC2D6E /* ArticlesGateway.swift */,
 				B87C71E52B82B2A20061530E /* ForgotPasswordGateway.swift */,
 				B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */,
+				B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -1293,6 +1302,14 @@
 				B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		B877FD642B8BC10600D24CB0 /* Dealers */ = {
+			isa = PBXGroup;
+			children = (
+				B877FD652B8BC11500D24CB0 /* GetDealersDomainUseCase.swift */,
+			);
+			path = Dealers;
 			sourceTree = "<group>";
 		};
 		B87ED1F62B7A1D6B00EB5139 /* Welcome */ = {
@@ -1574,6 +1591,7 @@
 				1742B37624D7B82C00C82D15 /* ShowingRepoList.swift in Sources */,
 				B8AC367E2B799E5D0060D52D /* ShowingAddDealerView.swift in Sources */,
 				178722F724BD537D00D90F8E /* AppDelegate.swift in Sources */,
+				B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */,
 				17A5B1F824D9026D004BD209 /* BaseViewController.swift in Sources */,
 				1787233124BD547600D90F8E /* AppViewModel.swift in Sources */,
 				1770EC2B24DAA5ED0022FBFE /* RepoCollectionViewController.swift in Sources */,
@@ -1602,6 +1620,7 @@
 				B87C71DE2B829FA50061530E /* ForgotPasswordUseCase.swift in Sources */,
 				B866A8CB2B686FE300202C9F /* MainView.swift in Sources */,
 				1781CF4424BD8FB8004ED1C6 /* ProductDetailViewModel.swift in Sources */,
+				B877FD612B8BBFA200D24CB0 /* Dealers+API.swift in Sources */,
 				B866A9412B70F8E400202C9F /* AsyncImageEarly.swift in Sources */,
 				B866A9872B7193D300202C9F /* HomeViewModel.swift in Sources */,
 				B866A92F2B6BF7AB00202C9F /* TabBarView.swift in Sources */,
@@ -1677,6 +1696,7 @@
 				176BAA7324D26DEF00324D3C /* APIResponse.swift in Sources */,
 				B866A9232B6BF5AE00202C9F /* MainViewRouter.swift in Sources */,
 				B866A9692B71538D00202C9F /* ArticlesAssembler.swift in Sources */,
+				B877FD662B8BC11500D24CB0 /* GetDealersDomainUseCase.swift in Sources */,
 				B866A9342B6C0AE000202C9F /* NewsView.swift in Sources */,
 				B8FEC6DA2B8783140028BA7F /* UserClassView.swift in Sources */,
 				1734926524C59D2A0014F87E /* AppError.swift in Sources */,
