@@ -8,14 +8,24 @@
 
 import UIKit
 import SwiftUI
+enum CodeReason: Equatable {
+    static func == (lhs: CodeReason, rhs: CodeReason) -> Bool {
+        lhs == rhs
+    }
+    
+    case register
+    case forgotPassword
+    case dealer(_ dealer: AddDealer)
+}
+
 protocol ShowingCodeInput {
     var assembler: Assembler { get }
     var navigationController: UINavigationController { get }
 }
 
 extension ShowingCodeInput {
-    func showCodeInput(title: String) {
-        let view: CodeInputView = assembler.resolve(navigationController: navigationController, title: title)
+    func showCodeInput(reason: CodeReason) {
+        let view: CodeInputView = assembler.resolve(navigationController: navigationController, reason: reason)
         let vc = UIHostingController(rootView: view)
         navigationController.pushViewController(vc, animated: true)
     }

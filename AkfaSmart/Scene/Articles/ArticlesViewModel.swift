@@ -23,7 +23,7 @@ extension ArticlesViewModel: ViewModel {
     
     final class Output: ObservableObject {
         @Published var articles = [ArticleItemViewModel]()
-        @Published var isLoading = false
+        @Published var isLoading = true
         @Published var isReloading = false
         @Published var isLoadingMore = false
         @Published var alert = AlertMessage()
@@ -39,8 +39,8 @@ extension ArticlesViewModel: ViewModel {
             }
             .store(in: cancelBag)
         
-        input.loadArticlesTrigger.sink{}
-            .store(in: cancelBag)
+//        input.loadArticlesTrigger.sink{}
+//            .store(in: cancelBag)
         
         let getPageInput = GetPageInput(loadTrigger: input.loadArticlesTrigger, reloadTrigger: input.reloadNewsTrigger, loadMoreTrigger: input.loadMoreArticlesTrigger, getItems: useCase.getArticles)
         

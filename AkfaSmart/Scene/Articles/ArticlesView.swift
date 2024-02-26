@@ -26,7 +26,7 @@ struct ArticlesView: View {
                         Button(action: {
                             showDetailViewTrigger.send(article)
                         }) {
-                            ArticleRow(viewModel: article)
+                            ArticleRow(itemModel: article)
                         }
                         .listRowSeparator(.hidden)
                     }
