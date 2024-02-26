@@ -35,6 +35,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             //TestView
 //            let view: CodeInputView = assembler.resolve(navigationController: nav, reason: .dealer(AddDealer(phone: "998998148188", dealerId: 182, printableName: "Nurbek Alu (+998 99 814 8188)", cid: 2)))
 //            nav.setViewControllers([UIHostingController(rootView: view)], animated: true)
+
             //
             window.rootViewController = nav
             self.window = window
