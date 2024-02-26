@@ -55,6 +55,20 @@ extension SettingsViewModel: ViewModel {
             switch id {
             case 1:
                 navigator.showInfographics()
+            case 2:
+                navigator.showTechnographics()
+            case 3:
+                navigator.showHRgraphics()
+            case 4:
+                navigator.showMarketinggraphics()
+            case 5:
+                navigator.showProductGraphics()
+            case 6:
+                break
+            case 7:
+                break
+            case 8:
+                navigator.showLanguageChanger()
             default:
                 break
             }

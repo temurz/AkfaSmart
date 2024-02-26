@@ -18,8 +18,8 @@ extension InfographicsViewModel: ViewModel {
     
     final class Output: ObservableObject {
         @Published var items = [
-            InfoItemViewModel(title: "ФИО", value: "Jack Smith"),
-            InfoItemViewModel(title: "Дата рождения", value: "21.02.1995")
+            InfoItemViewModel(title: "ФИО", value: "Jack Smith", editedValue: ""),
+            InfoItemViewModel(title: "Дата рождения", value: "21.02.1995", editedValue: "")
         ]
         
     }

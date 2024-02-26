@@ -11,6 +11,7 @@ import SwiftUI
 struct InfoItemViewModel {
     let title: String
     let value: String
+    let editedValue: String
 }
 
 struct InfographicsView: View {

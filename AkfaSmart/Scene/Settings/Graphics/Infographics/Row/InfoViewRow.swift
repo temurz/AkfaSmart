@@ -16,10 +16,12 @@ struct InfoViewRow: View {
                 .foregroundColor(Color(hex: "#9DA8C2"))
             Text(viewModel.value)
                 .lineLimit(0)
+            Text(viewModel.editedValue)
+                .lineLimit(0)
         }
     }
 }
 
 #Preview {
-    InfoViewRow(viewModel: InfoItemViewModel(title: "", value: ""))
+    InfoViewRow(viewModel: InfoItemViewModel(title: "", value: "", editedValue: ""))
 }
