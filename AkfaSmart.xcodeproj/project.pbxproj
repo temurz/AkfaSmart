@@ -230,6 +230,9 @@
 		B877FD6F2B8BFF6300D24CB0 /* MobileClassInfoDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD6E2B8BFF6300D24CB0 /* MobileClassInfoDomainUseCase.swift */; };
 		B877FD712B8C053200D24CB0 /* MobileClassUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD702B8C053200D24CB0 /* MobileClassUseCase.swift */; };
 		B877FD732B8C069500D24CB0 /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD722B8C069500D24CB0 /* Image+.swift */; };
+		B877FD782B8C30D300D24CB0 /* ImageDownloaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD772B8C30D300D24CB0 /* ImageDownloaderViewModel.swift */; };
+		B877FD7B2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD7A2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift */; };
+		B877FD7D2B8C327D00D24CB0 /* ImageDownloaderGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD7C2B8C327D00D24CB0 /* ImageDownloaderGateway.swift */; };
 		B87C71DC2B829EEA0061530E /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DB2B829EEA0061530E /* ForgotPasswordViewModel.swift */; };
 		B87C71DE2B829FA50061530E /* ForgotPasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DD2B829FA50061530E /* ForgotPasswordUseCase.swift */; };
 		B87C71E02B829FD60061530E /* ForgotPasswordNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DF2B829FD60061530E /* ForgotPasswordNavigator.swift */; };
@@ -508,6 +511,9 @@
 		B877FD6E2B8BFF6300D24CB0 /* MobileClassInfoDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileClassInfoDomainUseCase.swift; sourceTree = "<group>"; };
 		B877FD702B8C053200D24CB0 /* MobileClassUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileClassUseCase.swift; sourceTree = "<group>"; };
 		B877FD722B8C069500D24CB0 /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
+		B877FD772B8C30D300D24CB0 /* ImageDownloaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderViewModel.swift; sourceTree = "<group>"; };
+		B877FD7A2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderDomainUseCase.swift; sourceTree = "<group>"; };
+		B877FD7C2B8C327D00D24CB0 /* ImageDownloaderGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderGateway.swift; sourceTree = "<group>"; };
 		B87C71DB2B829EEA0061530E /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		B87C71DD2B829FA50061530E /* ForgotPasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUseCase.swift; sourceTree = "<group>"; };
 		B87C71DF2B829FD60061530E /* ForgotPasswordNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordNavigator.swift; sourceTree = "<group>"; };
@@ -1030,6 +1036,7 @@
 		1787235124BD56CD00D90F8E /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				B877FD792B8C317800D24CB0 /* ImageDownloader */,
 				B877FD672B8BF59500D24CB0 /* Class */,
 				B877FD642B8BC10600D24CB0 /* Dealers */,
 				B85516C52B79060D00FC2D6E /* Articles */,
@@ -1066,6 +1073,7 @@
 				B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */,
 				B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */,
 				B877FD6C2B8BFEE700D24CB0 /* MobileClassGateway.swift */,
+				B877FD7C2B8C327D00D24CB0 /* ImageDownloaderGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -1196,6 +1204,7 @@
 				B866A94A2B70FE7200202C9F /* NewsUseCase.swift */,
 				B866A94C2B70FE7F00202C9F /* NewsNavigator.swift */,
 				B866A94E2B70FE8900202C9F /* NewsAssembler.swift */,
+				B877FD772B8C30D300D24CB0 /* ImageDownloaderViewModel.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -1335,6 +1344,14 @@
 				B877FD6E2B8BFF6300D24CB0 /* MobileClassInfoDomainUseCase.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		B877FD792B8C317800D24CB0 /* ImageDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				B877FD7A2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift */,
+			);
+			path = ImageDownloader;
 			sourceTree = "<group>";
 		};
 		B87ED1F62B7A1D6B00EB5139 /* Welcome */ = {
@@ -1616,7 +1633,9 @@
 				1765B2D124C6D5550096D210 /* ShowingProductDetail.swift in Sources */,
 				1787231C24BD53BF00D90F8E /* ViewModel.swift in Sources */,
 				1742B37624D7B82C00C82D15 /* ShowingRepoList.swift in Sources */,
+				B877FD7D2B8C327D00D24CB0 /* ImageDownloaderGateway.swift in Sources */,
 				B877FD6B2B8BFD9F00D24CB0 /* MobileClass+API.swift in Sources */,
+				B877FD7B2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift in Sources */,
 				B8AC367E2B799E5D0060D52D /* ShowingAddDealerView.swift in Sources */,
 				178722F724BD537D00D90F8E /* AppDelegate.swift in Sources */,
 				B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */,
@@ -1736,6 +1755,7 @@
 				1787234A24BD560500D90F8E /* MainNavigator.swift in Sources */,
 				1781CF4024BD8FB8004ED1C6 /* ProductDetailAssembler.swift in Sources */,
 				B8FEC6CE2B8665950028BA7F /* DealersListView.swift in Sources */,
+				B877FD782B8C30D300D24CB0 /* ImageDownloaderViewModel.swift in Sources */,
 				B85516CB2B790E5F00FC2D6E /* Articles+API.swift in Sources */,
 				1787233F24BD556E00D90F8E /* LoginNavigator.swift in Sources */,
 				1787232F24BD547600D90F8E /* AppUseCase.swift in Sources */,

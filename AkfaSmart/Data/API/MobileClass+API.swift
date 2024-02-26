@@ -21,12 +21,12 @@ extension API {
 
 
 extension API {
-    func getUserClassImage(_ input: GetMobileClassImageInput) -> Observable<Data> {
+    func getUserClassImage(_ input: GetImageInput) -> Observable<Data> {
 //        requestImageAF()
         return requestImage(input)
     }
     
-    final class GetMobileClassImageInput: APIInput {
+    final class GetImageInput: APIInput {
         init(_ urlString: String) {
             
             super.init(urlString: urlString, parameters: nil, method: .get, requireAccessToken: true)

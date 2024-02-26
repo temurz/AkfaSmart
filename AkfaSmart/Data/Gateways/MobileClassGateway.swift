@@ -19,7 +19,7 @@ struct MobileClassGateway: MobileClassGatewayType {
     }
     
     func getMobileClassImage(_ urlString: String) -> Observable<Data> {
-        let input = API.GetMobileClassImageInput(urlString)
+        let input = API.GetImageInput(urlString)
         return API.shared.getUserClassImage(input)
     }
 }

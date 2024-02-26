@@ -8,15 +8,40 @@
 
 import SwiftUI
 import URLImage
-import Shimmer
+import Combine
 struct NewsTableRow: View {
-    var viewModel: NewsItemViewModel
+    var item: NewsItemViewModel
+    @ObservedObject var output: ImageDownloaderViewModel.Output
+    private let getImageTrigger = PassthroughSubject<String,Never>()
+    private let cancelBag = CancelBag()
     var body: some View {
         VStack(alignment: .leading) {
-            CustomImageAndTitleView(urlString: viewModel.imageUrl ?? "", title: viewModel.title ?? "", shortContent: viewModel.shortContent ?? "")
-                .padding(.horizontal)
+            
+            Group {
+                if output.imageData != nil {
+                    Image(data: output.imageData!)?
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .frame(height: 200)
+                }
+                Text(item.title ?? "")
+                    .font(.headline)
+                    .foregroundColor(Color.black)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
+                    .padding(.top)
+                Text(item.shortContent ?? "")
+                    .font(.footnote)
+                    .foregroundColor(Color.gray)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
+            }
+            .padding(.horizontal)
+            
             Divider()
-            Text(viewModel.date?.convertToDateUS() ?? "")
+            Text(item.date?.convertToDateUS() ?? "")
                 .font(.subheadline)
                 .foregroundColor(Color(hex: "#9DA8C2"))
                 .padding(6)
@@ -28,9 +53,20 @@ struct NewsTableRow: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color(hex: "#E2E5ED"))
         }
+        .onAppear {
+            getImageTrigger.send(item.imageUrl ?? "")
+        }
+    }
+    
+    init(item: NewsItemViewModel) {
+        self.item = item
+        let input = ImageDownloaderViewModel.Input(getImageTrigger: getImageTrigger.asDriver())
+        
+        let vm = ImageDownloaderViewModel()
+        self.output = vm.transform(input, cancelBag: cancelBag)
     }
 }
 
 #Preview {
-    NewsTableRow(viewModel: NewsItemViewModel(id: 0, date: "", title: "", shortContent: "", htmlContent: nil, imageUrl: nil))
+    NewsTableRow(item: NewsItemViewModel(id: 0, date: "", title: "", shortContent: "", htmlContent: nil, imageUrl: nil))
 }
