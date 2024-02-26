@@ -25,7 +25,8 @@ protocol Assembler: AnyObject,
     WelcomeViewAssembler,
     SplashViewAssembler,
     ForgotPasswordAssembler,
-    ResetPasswordAssembler
+    ResetPasswordAssembler,
+    AddDealerAssembler
 {
     
 }

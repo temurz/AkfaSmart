@@ -13,6 +13,7 @@ struct CodeInputViewModel {
     let useCase: CodeInputUseCaseType
     let useCaseResend: ResendSMSUseCaseType
     let confirmSMSCodeOnForgotPasswordUseCase: ConfirmSMSCodeOnForgotPasswordUseCaseType
+    let dealerUseCase: ConfirmDealerUseCaseType
     let reason: CodeReason
 }
 
@@ -22,10 +23,12 @@ extension CodeInputViewModel: ViewModel {
         @Published var code = ""
         let confirmRegisterTrigger: Driver<Void>
         let resendSMSTrigger: Driver<Void>
+        let showMainViewTrigger: Driver<Void>
         
-        init(confirmRegisterTrigger: Driver<Void>, resendSMSTrigger: Driver<Void>) {
+        init(confirmRegisterTrigger: Driver<Void>, resendSMSTrigger: Driver<Void>, showMainViewTrigger: Driver<Void>) {
             self.confirmRegisterTrigger = confirmRegisterTrigger
             self.resendSMSTrigger = resendSMSTrigger
+            self.showMainViewTrigger = showMainViewTrigger
         }
     }
     
@@ -33,15 +36,22 @@ extension CodeInputViewModel: ViewModel {
         @Published var isLoading = false
         @Published var alert = AlertMessage()
         @Published var codeValidationMessage = ""
+        @Published var timeRemaining = 120
+        @Published var username: String =  AuthApp.shared.username?.makeStarsInsteadNumbersInUsername() ?? ""
         @Published var title: String
         @Published var isConfirmEnabled = true
+        @Published var reason: CodeReason
         
         init(reason: CodeReason) {
+            self.reason = reason
             switch reason {
             case .register:
                 title = "Registration"
             case .forgotPassword:
                 title = "Forgot password"
+            case let .dealer(dealer):
+                title = "Add Dealer"
+                username = dealer.phone?.makeStarsInsteadNumbersInUsername() ?? ""
             }
         }
     }
@@ -67,6 +77,11 @@ extension CodeInputViewModel: ViewModel {
             .assign(to: \.isConfirmEnabled, on: output)
             .store(in: cancelBag)
         
+        input.showMainViewTrigger.sink {
+            navigator.showMain()
+        }
+        .store(in: cancelBag)
+        
         input.confirmRegisterTrigger
             .delay(for: 0.1, scheduler: RunLoop.main)
             .filter { output.isConfirmEnabled }
@@ -82,6 +97,11 @@ extension CodeInputViewModel: ViewModel {
                         .trackError(errorTracker)
                         .trackActivity(activityTracker)
                         .asDriver()
+                case let .dealer(dealer):
+                    self.dealerUseCase.confirmSMSCode(dealer, code: input.code)
+                        .trackError(errorTracker)
+                        .trackActivity(activityTracker)
+                        .asDriver()
                 }
             }
             .switchToLatest()
@@ -92,6 +112,8 @@ extension CodeInputViewModel: ViewModel {
                         navigator.showMain()
                     case .forgotPassword:
                         navigator.showResetPasswordView()
+                    case .dealer(_):
+                        navigator.showMain()
                     }
                 }
             }
@@ -106,8 +128,8 @@ extension CodeInputViewModel: ViewModel {
             }
             .switchToLatest()
             .sink { bool in
-                if !bool {
-                    //show error
+                if bool {
+                    output.timeRemaining = 120
                 }
             }
             .store(in: cancelBag)

@@ -9,9 +9,10 @@
 import UIKit
 protocol AddDealerNavigatorType {
     func showMain()
+    func showCodeInput(reason: CodeReason)
 }
 
-struct AddDealerNavigator: AddDealerNavigatorType, ShowingMain {
+struct AddDealerNavigator: AddDealerNavigatorType, ShowingMain,ShowingCodeInput {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
 }

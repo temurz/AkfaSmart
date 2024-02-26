@@ -26,7 +26,7 @@ extension HomeViewAssembler {
 
 extension HomeViewAssembler where Self: DefaultAssembler {
     func resolve(navigationController: UINavigationController) -> HomeViewNavigatorType {
-        return HomeViewNavigator()
+        return HomeViewNavigator(assembler: self, navigationController: navigationController)
     }
     
     func resolve() -> HomeViewUseCaseType {
@@ -40,7 +40,7 @@ extension HomeViewAssembler where Self: DefaultAssembler {
 
 extension HomeViewAssembler where Self: PreviewAssembler {
     func resolve(navigationController: UINavigationController) -> HomeViewNavigatorType {
-        return HomeViewNavigator()
+        return HomeViewNavigator(assembler: self, navigationController: navigationController)
     }
     
     func resolve() -> HomeViewUseCaseType {

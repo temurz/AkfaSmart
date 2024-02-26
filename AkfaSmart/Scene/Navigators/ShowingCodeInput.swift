@@ -8,9 +8,14 @@
 
 import UIKit
 import SwiftUI
-enum CodeReason {
+enum CodeReason: Equatable {
+    static func == (lhs: CodeReason, rhs: CodeReason) -> Bool {
+        lhs == rhs
+    }
+    
     case register
     case forgotPassword
+    case dealer(_ dealer: AddDealer)
 }
 
 protocol ShowingCodeInput {

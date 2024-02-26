@@ -31,6 +31,12 @@ extension API {
         static let getDealersInfo = Base.BASE_URL + "/api/mobile/adwdealer/view"
         static let hasADealerCheck = Base.BASE_URL + "/api/mobile/adwdealer/hasDealer"
         static let hasADealerAndLocationCheck = Base.BASE_URL + "/api/mobile/adwdealer/hasDealerAndLocation"
+        //AddDealer
+        static let addDealer_sendQRCode = Base.BASE_URL + "/api/mobile/dealer_client"
+        static let addDealer_requestSMSCode = Base.BASE_URL + "/api/mobile/dealer_client/sms/send"
+        static let addDealer_resendSMSCode = Base.BASE_URL + "/api/mobile/dealer_client/sms/resend"
+        static let addDealer_confirmSMSCode = Base.BASE_URL + "/api/mobile/dealer_client/sms/confirm"
+
         
         //MobileClass
         static let getMobileClassInfo = Base.BASE_URL + "/api/mobile/mobile_user/klass"

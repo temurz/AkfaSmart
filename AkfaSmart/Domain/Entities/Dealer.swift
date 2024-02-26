@@ -26,3 +26,11 @@ struct HasDealerAndLocation: Decodable {
     let hasDealer: Bool
     let hasLocation: Bool
 }
+
+
+struct AddDealer: Codable {
+    let phone: String?
+    let dealerId: Int?
+    let printableName: String?
+    let cid: Int?
+}

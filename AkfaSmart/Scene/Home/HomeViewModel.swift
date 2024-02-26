@@ -20,6 +20,7 @@ extension HomeViewModel: ViewModel {
         let calculateTotalAmounts: Driver<Void>
         let getDealersTrigger: Driver<Void>
         let getMobileClassInfo: Driver<Void>
+        let showAddDealerViewTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -37,6 +38,11 @@ extension HomeViewModel: ViewModel {
         let errorTracker = ErrorTracker()
         let activityTracker = ActivityTracker(false)
         let output = Output()
+        
+        input.showAddDealerViewTrigger.sink {
+            navigator.showAddDealerView()
+        }
+        .store(in: cancelBag)
         
         input.calculateTotalAmounts.sink {
             output.totalOfMonth = output.items

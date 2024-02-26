@@ -6,11 +6,13 @@
 //  Copyright © 2024 Tuan Truong. All rights reserved.
 //
 
-import Foundation
+import UIKit
 protocol HomeViewNavigatorType {
-    
+    func showAddDealerView()
 }
 
-struct HomeViewNavigator: HomeViewNavigatorType {
+struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView {
+    var assembler: Assembler
     
+    var navigationController: UINavigationController
 }

@@ -233,6 +233,9 @@
 		B877FD782B8C30D300D24CB0 /* ImageDownloaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD772B8C30D300D24CB0 /* ImageDownloaderViewModel.swift */; };
 		B877FD7B2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD7A2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift */; };
 		B877FD7D2B8C327D00D24CB0 /* ImageDownloaderGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD7C2B8C327D00D24CB0 /* ImageDownloaderGateway.swift */; };
+		B877FD7F2B8C3D7B00D24CB0 /* AddDealerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD7E2B8C3D7B00D24CB0 /* AddDealerAPI.swift */; };
+		B877FD812B8C3F1F00D24CB0 /* AddDealerGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD802B8C3F1F00D24CB0 /* AddDealerGateway.swift */; };
+		B877FD842B8C3F8700D24CB0 /* AddDealerDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD832B8C3F8700D24CB0 /* AddDealerDomainUseCase.swift */; };
 		B87C71DC2B829EEA0061530E /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DB2B829EEA0061530E /* ForgotPasswordViewModel.swift */; };
 		B87C71DE2B829FA50061530E /* ForgotPasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DD2B829FA50061530E /* ForgotPasswordUseCase.swift */; };
 		B87C71E02B829FD60061530E /* ForgotPasswordNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DF2B829FD60061530E /* ForgotPasswordNavigator.swift */; };
@@ -514,6 +517,9 @@
 		B877FD772B8C30D300D24CB0 /* ImageDownloaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderViewModel.swift; sourceTree = "<group>"; };
 		B877FD7A2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderDomainUseCase.swift; sourceTree = "<group>"; };
 		B877FD7C2B8C327D00D24CB0 /* ImageDownloaderGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderGateway.swift; sourceTree = "<group>"; };
+		B877FD7E2B8C3D7B00D24CB0 /* AddDealerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerAPI.swift; sourceTree = "<group>"; };
+		B877FD802B8C3F1F00D24CB0 /* AddDealerGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerGateway.swift; sourceTree = "<group>"; };
+		B877FD832B8C3F8700D24CB0 /* AddDealerDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealerDomainUseCase.swift; sourceTree = "<group>"; };
 		B87C71DB2B829EEA0061530E /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		B87C71DD2B829FA50061530E /* ForgotPasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUseCase.swift; sourceTree = "<group>"; };
 		B87C71DF2B829FD60061530E /* ForgotPasswordNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordNavigator.swift; sourceTree = "<group>"; };
@@ -646,6 +652,7 @@
 				B8FEC6B42B8502540028BA7F /* ResendSMS+API.swift */,
 				B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */,
 				B877FD6A2B8BFD9F00D24CB0 /* MobileClass+API.swift */,
+				B877FD7E2B8C3D7B00D24CB0 /* AddDealerAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1036,6 +1043,7 @@
 		1787235124BD56CD00D90F8E /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				B877FD822B8C3F7900D24CB0 /* AddDealer */,
 				B877FD792B8C317800D24CB0 /* ImageDownloader */,
 				B877FD672B8BF59500D24CB0 /* Class */,
 				B877FD642B8BC10600D24CB0 /* Dealers */,
@@ -1074,6 +1082,7 @@
 				B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */,
 				B877FD6C2B8BFEE700D24CB0 /* MobileClassGateway.swift */,
 				B877FD7C2B8C327D00D24CB0 /* ImageDownloaderGateway.swift */,
+				B877FD802B8C3F1F00D24CB0 /* AddDealerGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -1352,6 +1361,14 @@
 				B877FD7A2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift */,
 			);
 			path = ImageDownloader;
+			sourceTree = "<group>";
+		};
+		B877FD822B8C3F7900D24CB0 /* AddDealer */ = {
+			isa = PBXGroup;
+			children = (
+				B877FD832B8C3F8700D24CB0 /* AddDealerDomainUseCase.swift */,
+			);
+			path = AddDealer;
 			sourceTree = "<group>";
 		};
 		B87ED1F62B7A1D6B00EB5139 /* Welcome */ = {
@@ -1734,6 +1751,7 @@
 				176BAA6B24D26C8B00324D3C /* APIInputBase.swift in Sources */,
 				B87ED1F82B7A1D8100EB5139 /* WelcomeView.swift in Sources */,
 				1787234224BD556E00D90F8E /* LoginViewModel.swift in Sources */,
+				B877FD7F2B8C3D7B00D24CB0 /* AddDealerAPI.swift in Sources */,
 				B866A8DF2B68E03600202C9F /* CodeInputViewModel.swift in Sources */,
 				1765B2D524C6DF8B0096D210 /* ProductItemViewModel.swift in Sources */,
 				B8FEC6C02B863C660028BA7F /* ResetPasswordView.swift in Sources */,
@@ -1849,6 +1867,7 @@
 				B866A8C12B66EC9400202C9F /* Login+API.swift in Sources */,
 				176BAA5824D167A400324D3C /* LoggingIn.swift in Sources */,
 				1787234D24BD560500D90F8E /* MainViewModel.swift in Sources */,
+				B877FD842B8C3F8700D24CB0 /* AddDealerDomainUseCase.swift in Sources */,
 				B8CF98E02B6566EC00EF02A7 /* RegisterViewModel.swift in Sources */,
 				B866A92B2B6BF76700202C9F /* TabBarItemView.swift in Sources */,
 				178809B024C0520000002215 /* ViewModel+GetList.swift in Sources */,
@@ -1858,6 +1877,7 @@
 				B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */,
 				1742B36B24D7B22B00C82D15 /* ReposAssembler.swift in Sources */,
 				B85516D22B792B5600FC2D6E /* InfographicsViewModel.swift in Sources */,
+				B877FD812B8C3F1F00D24CB0 /* AddDealerGateway.swift in Sources */,
 				B866A8E72B68E4CD00202C9F /* CodeConfirm+API.swift in Sources */,
 				B866A9592B71285300202C9F /* ArticleItemViewModel.swift in Sources */,
 				B87ED1FC2B7A22CC00EB5139 /* WelcomeViewNavigator.swift in Sources */,

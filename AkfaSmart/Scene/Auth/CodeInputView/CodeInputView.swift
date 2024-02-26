@@ -15,10 +15,11 @@ struct CodeInputView: View {
     private let cancelBag = CancelBag()
     private let confirmRegisterTrigger = PassthroughSubject<Void,Never>()
     private let resendSMSTrigger = PassthroughSubject<Void,Never>()
+    private let showMainView = PassthroughSubject<Void,Never>()
     
     @State var statusBarHeight: CGFloat = 0
     @State var username: String = AuthApp.shared.username?.makeStarsInsteadNumbersInUsername() ?? ""
-    @State private var timeRemaining = 120
+//    @State private var timeRemaining = 120
     @State var duration = "2:00"
     
     
@@ -52,7 +53,7 @@ struct CodeInputView: View {
                             .font(.title)
                             .padding(.horizontal)
                     
-                        Text("One-time code was sent to your phone number \(username) ")
+                        Text("One-time code was sent to the phone number \(output.username) ")
                             .foregroundColor(Color(hex: "#51526C"))
                             .font(.system(size: 17))
                             .padding([.bottom,.horizontal])
@@ -76,9 +77,8 @@ struct CodeInputView: View {
                             .font(.system(size: 14))
                             .foregroundColor(Color(hex: "#51526C"))
                             .onTapGesture {
-                                if timeRemaining == 0 {
+                                if output.timeRemaining == 0 {
                                     resendSMSTrigger.send(())
-                                    timeRemaining = 120
                                 }
                             }
                     }
@@ -97,7 +97,24 @@ struct CodeInputView: View {
                         }
                     }
                     .padding()
-                    
+                    switch output.reason {
+                    case .dealer:
+                        Button() {
+                            showMainView.send(())
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Text("Skip")
+                                    .font(.system(size: 16))
+                                    .frame(height: 32)
+                                    .foregroundColor(Color.blue)
+                                Spacer()
+                            }
+                            
+                        }
+                    default:
+                        EmptyView()
+                    }
                 }
                 .padding()
             }
@@ -110,9 +127,9 @@ struct CodeInputView: View {
             )
         }
         .onReceive(timer) { time in
-            if timeRemaining > 0 {
-                timeRemaining -= 1
-                duration = timeRemaining.makeMinutesAndSeconds()
+            if output.timeRemaining > 0 {
+                output.timeRemaining -= 1
+                duration = output.timeRemaining.makeMinutesAndSeconds()
             }else {
                 duration = "Resend SMS"
             }
@@ -120,7 +137,10 @@ struct CodeInputView: View {
     }
     
     init(viewModel: CodeInputViewModel) {
-        let input = CodeInputViewModel.Input(confirmRegisterTrigger: confirmRegisterTrigger.asDriver(), resendSMSTrigger: resendSMSTrigger.asDriver()
+        let input = CodeInputViewModel.Input(
+            confirmRegisterTrigger: confirmRegisterTrigger.asDriver(),
+            resendSMSTrigger: resendSMSTrigger.asDriver(),
+            showMainViewTrigger: showMainView.asDriver()
         )
         output = viewModel.transform(input, cancelBag: cancelBag)
         self.input = input

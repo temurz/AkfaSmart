@@ -19,6 +19,7 @@ struct HomeView: View {
     private let calculateTotalAmounts = PassthroughSubject<Void,Never>()
     private let getDealersTrigger = PassthroughSubject<Void,Never>()
     private let getMobileClassInfoTrigger = PassthroughSubject<Void,Never>()
+    private let showAddDealerViewTrigger = PassthroughSubject<Void,Never>()
     
     
     let cancelBag = CancelBag()
@@ -41,7 +42,7 @@ struct HomeView: View {
                         }
                         
                         CustomButtonWithImage(systemImage: "plus") {
-                            
+                            showAddDealerViewTrigger.send(())
                         }
                         CustomButtonWithImage(systemImage: "bell") {
                             
@@ -64,6 +65,17 @@ struct HomeView: View {
                             })
                         .frame(height: 320)
 //                        .background(Color.red)
+                    }else {
+                        HStack {
+                            Spacer()
+                            Text("You didn't \n add dealers yet!")
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .font(.title2)
+                                .foregroundColor(.gray)
+                            Spacer()
+                        }
+                        .padding()
                     }
                     Text("My class")
                         .font(.title2)
@@ -89,7 +101,8 @@ struct HomeView: View {
     init(viewModel: HomeViewModel) {
         let input = HomeViewModel.Input(
             openPurchasesTrigger: openPurchasesTrigger.asDriver(),
-            openPaymentsTrigger: openPaymentsTrigger.asDriver(), calculateTotalAmounts: calculateTotalAmounts.asDriver(), getDealersTrigger: getDealersTrigger.asDriver(), getMobileClassInfo: getMobileClassInfoTrigger.asDriver())
+            openPaymentsTrigger: openPaymentsTrigger.asDriver(), calculateTotalAmounts: calculateTotalAmounts.asDriver(), getDealersTrigger: getDealersTrigger.asDriver(), getMobileClassInfo: getMobileClassInfoTrigger.asDriver(),
+            showAddDealerViewTrigger: showAddDealerViewTrigger.asDriver())
         
         output = viewModel.transform(input, cancelBag: cancelBag)
     }

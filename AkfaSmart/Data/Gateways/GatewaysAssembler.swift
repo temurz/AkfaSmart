@@ -67,6 +67,10 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> MobileClassGatewayType {
         return MobileClassGateway()
     }
+    
+    func resolve() -> AddDealerGatewayType {
+        return AddDealerGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -119,5 +123,9 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> MobileClassGatewayType {
         return MobileClassGateway()
+    }
+    
+    func resolve() -> AddDealerGatewayType {
+        return AddDealerGateway()
     }
 }

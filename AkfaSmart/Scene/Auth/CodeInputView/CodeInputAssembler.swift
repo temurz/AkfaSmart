@@ -14,7 +14,7 @@ protocol CodeInputAssembler {
     func resolve() -> CodeInputUseCaseType
     func resolve() -> ResendSMSUseCaseType
     func resolve() -> ConfirmSMSCodeOnForgotPasswordUseCaseType
-
+    func resolve() -> ConfirmDealerUseCaseType
 }
 
 extension CodeInputAssembler {
@@ -25,10 +25,11 @@ extension CodeInputAssembler {
     func resolve(navigationController: UINavigationController, reason: CodeReason) -> CodeInputViewModel {
         return CodeInputViewModel(
             navigator: resolve(navigationController: navigationController),
-            useCase: resolve(),
-            useCaseResend: resolve(),
-            confirmSMSCodeOnForgotPasswordUseCase: resolve(),
-            reason: reason)
+                                  useCase: resolve(),
+                                  useCaseResend: resolve(),
+                                  confirmSMSCodeOnForgotPasswordUseCase: resolve(),
+                                  dealerUseCase: resolve(),
+                                  reason: reason)
     }
 }
 
@@ -46,6 +47,10 @@ extension CodeInputAssembler where Self: DefaultAssembler {
     func resolve() -> ConfirmSMSCodeOnForgotPasswordUseCaseType {
         return ConfirmSMSCodeOnForgotPasswordUseCase(confirmSMSCodeOnForgotPasswordGateway: resolve())
     }
+    func resolve() -> ConfirmDealerUseCaseType {
+        return ConfirmDealerUseCase(gateway: AddDealerGateway())
+    }
+
 }
 
 extension CodeInputAssembler where Self: PreviewAssembler {
@@ -63,4 +68,9 @@ extension CodeInputAssembler where Self: PreviewAssembler {
     func resolve() -> ConfirmSMSCodeOnForgotPasswordUseCaseType {
         return ConfirmSMSCodeOnForgotPasswordUseCase(confirmSMSCodeOnForgotPasswordGateway: resolve())
     }
+    
+    func resolve() -> ConfirmDealerUseCaseType {
+        return ConfirmDealerUseCase(gateway: AddDealerGateway())
+    }
+
 }
