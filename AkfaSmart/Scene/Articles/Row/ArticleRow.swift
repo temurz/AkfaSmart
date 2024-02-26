@@ -7,24 +7,43 @@
 //
 
 import SwiftUI
-
+import Combine
 struct ArticleRow: View {
-    let viewModel: ArticleItemViewModel
+    let itemModel: ArticleItemViewModel
+    @ObservedObject var output: ImageDownloaderViewModel.Output
+    
+    private let getImageTrigger = PassthroughSubject<String,Never>()
+    private let cancelBag = CancelBag()
     var body: some View {
         VStack(alignment: .leading) {
-            CustomImageAndTitleView(urlString: viewModel.imageUrl ?? "" , title: viewModel.title ?? "", shortContent: viewModel.shortContent ?? "")
-                .padding(.horizontal)
+            Group {
+                if let data = output.imageData {
+                    CustomImageAndTitleView(data: data)
+                }
+                Text(itemModel.title ?? "")
+                    .font(.headline)
+                    .foregroundColor(Color.black)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
+                    .padding(.top)
+                Text(itemModel.shortContent ?? "")
+                    .font(.footnote)
+                    .foregroundColor(Color.gray)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
+            }
+            .padding(.horizontal)
             Divider()
             HStack {
-                Text(viewModel.type ?? "")
+                Text(itemModel.type ?? "")
                     .foregroundColor(.white)
                     .font(.subheadline)
                     .padding(4)
-                    .background(Color(hex: viewModel.buttonColor ?? ""))
+                    .background(Color(hex: itemModel.buttonColor ?? ""))
                     .cornerRadius(6)
                     .padding()
                 Spacer()
-                Text(viewModel.date?.convertToDateUS() ?? "")
+                Text(itemModel.date?.convertToDateUS() ?? "")
                     .font(.subheadline)
                     .foregroundColor(Color(hex: "#9DA8C2"))
                     .padding(6)
@@ -37,9 +56,18 @@ struct ArticleRow: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color(hex: "#E2E5ED"))
         }
+        .onAppear {
+            getImageTrigger.send(itemModel.imageUrl ?? "")
+        }
+    }
+    
+    init(itemModel: ArticleItemViewModel) {
+        self.itemModel = itemModel
+        let input = ImageDownloaderViewModel.Input(getImageTrigger: getImageTrigger.asDriver())
+        self.output = ImageDownloaderViewModel().transform(input, cancelBag: cancelBag)
     }
 }
 
 #Preview {
-    ArticleRow(viewModel: ArticleItemViewModel(id: 0, date: nil, title: nil, shortContent: nil, htmlContent: nil, imageUrl: nil, type: nil, buttonColor: nil, fileUrls: nil))
+    ArticleRow(itemModel: ArticleItemViewModel(id: 0, date: nil, title: nil, shortContent: nil, htmlContent: nil, imageUrl: nil, type: nil, buttonColor: nil, fileUrls: nil))
 }

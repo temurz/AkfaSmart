@@ -13,7 +13,6 @@ struct AddDealerView: View {
     let addDealerTrigger = PassthroughSubject<Void,Never>()
     let showQRScannerTrigger = PassthroughSubject<Bool,Never>()
     let showMainView = PassthroughSubject<Void, Never>()
-    @State var scanResult = ""
     
     private let cancelBag = CancelBag()
     var body: some View {
@@ -26,7 +25,7 @@ struct AddDealerView: View {
                     .font(.system(size: 15))
                     .foregroundColor(Color(hex: "#9497A1"))
                 HStack {
-                    TextField("Code", text: $scanResult)
+                    TextField("Code", text: $output.qrCodeValue)
                         .padding(.trailing, 32)
                         .padding(.leading, 16)
                     Spacer()
@@ -78,7 +77,7 @@ struct AddDealerView: View {
         }
         .padding()
         .sheet(isPresented: $output.isShowingQrScanner) {
-            QRCodeScannerViewMain(result: $scanResult)
+            QRCodeScannerViewMain(result: $output.qrCodeValue)
         }
     }
     

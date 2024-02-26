@@ -29,7 +29,7 @@ extension AddDealerAssembler where Self: DefaultAssembler {
     }
     
     func resolve() -> AddDealerUseCaseType {
-        return AddDealerUseCase()
+        return AddDealerUseCase(gateway: resolve())
     }
 }
 
@@ -39,6 +39,6 @@ extension AddDealerAssembler where Self: PreviewAssembler {
     }
     
     func resolve() -> AddDealerUseCaseType {
-        return AddDealerUseCase()
+        return AddDealerUseCase(gateway: resolve())
     }
 }

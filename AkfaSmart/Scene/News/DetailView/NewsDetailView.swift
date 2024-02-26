@@ -8,21 +8,40 @@
 
 import SwiftUI
 import WebKit
+import Combine
 struct NewsDetailView: View {
-    let viewModel: NewsItemViewModel
+    let itemModel: NewsItemViewModel
+    @ObservedObject var output: ImageDownloaderViewModel.Output
+    
+    private let getImageTrigger = PassthroughSubject<String,Never>()
+    private let cancelBag = CancelBag()
+    
     var body: some View {
         return LoadingView(isShowing: .constant(false), text: .constant("")) {
             VStack(alignment: .leading) {
-                CustomImageAndTitleView(urlString: viewModel.imageUrl ?? "", title: viewModel.title ?? "", shortContent: viewModel.shortContent ?? "")
+                if let data = output.imageData {
+                    CustomImageAndTitleView(data: data)
+                }
+                Text(itemModel.title ?? "")
+                    .font(.headline)
+                    .foregroundColor(Color.black)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
+                    .padding(.top)
+                Text(itemModel.shortContent ?? "")
+                    .font(.footnote)
+                    .foregroundColor(Color.gray)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
                 
-                Text(viewModel.date ?? "")
+                Text(itemModel.date?.convertToDateUS() ?? "")
                     .font(.subheadline)
                     .foregroundColor(Color(hex: "#9DA8C2"))
                     .padding(6)
                     .background(Color.init(hex: "#F7F7F6"))
                     .cornerRadius(6)
                 
-                if let htmlContent = viewModel.htmlContent {
+                if let htmlContent = itemModel.htmlContent {
                     WebView(html: htmlContent)
                 }
                 
@@ -30,6 +49,15 @@ struct NewsDetailView: View {
             .padding()
         }
         .navigationTitle("News")
+        .onAppear {
+            getImageTrigger.send(itemModel.imageUrl ?? "")
+        }
+    }
+    
+    init(itemModel: NewsItemViewModel) {
+        self.itemModel = itemModel
+        let input = ImageDownloaderViewModel.Input(getImageTrigger: getImageTrigger.asDriver())
+        self.output = ImageDownloaderViewModel().transform(input, cancelBag: cancelBag)
     }
 }
 

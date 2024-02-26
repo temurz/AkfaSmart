@@ -8,9 +8,10 @@
 
 import Foundation
 protocol HomeViewUseCaseType {
-    
+    func getDealers() -> Observable<[Dealer]>
+    func checkHasADealer() -> Observable<Bool>
 }
 
-struct HomeViewUseCase: HomeViewUseCaseType {
-    
+struct HomeViewUseCase: HomeViewUseCaseType, GetDealersDomainUseCase {
+    var gateway: GetDealersGatewayType
 }

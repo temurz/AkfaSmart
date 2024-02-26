@@ -15,6 +15,7 @@ class AuthApp {
     private var keyAppEnterCode: String { "appEnterCodeKey" }
     private let keyFirstEnter: String = "firstEnter"
     private let keyForVisibility: String = "visibilityKey"
+    private let keySMSCode: String = "SMSCodeKey"
     private let defaults = UserDefaults.standard
     
     //MARK: Token
@@ -47,6 +48,15 @@ class AuthApp {
         
         set {
             UserDefaults.standard.set(newValue, forKey: keyAppEnterCode)
+        }
+    }
+    
+    var smsCode: String? {
+        get {
+            defaults.string(forKey: keySMSCode)
+        }
+        set {
+            defaults.setValue(newValue, forKey: keySMSCode)
         }
     }
     
@@ -94,7 +104,7 @@ class AuthApp {
 extension String {
     func makeStarsInsteadNumbersInUsername() -> String {
         //["+", "9","9","8"]        
-        var text = Array(self ?? "")
+        var text = Array(self)
         for i in 0 ..< text.count {
             if i >= 6 && i <= 9 {
                 text[i] = "*"

@@ -12,10 +12,10 @@ import ValidatedPropertyKit
 import Dto
 
 struct RegisterDto: Dto {
-    @Validated(.nonEmpty(message: "Please enter user name"))
+    @Validated(.nonEmpty(message: "Please enter user name") && .validPhoneNumber())
     var username: String?
 
-    @Validated(.nonEmpty(message: "Please enter password") && .range(6...))
+    @Validated(.nonEmpty(message: "Please enter password") && .minimumCharacters(6))
     var password: String?
     
     @Validated(.nonEmpty(message: "Please enter password"))

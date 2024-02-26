@@ -25,7 +25,7 @@ struct NewsView: View {
                         Button(action: {
                             self.selectNewsTrigger.send(news)
                         }) {
-                                NewsTableRow(viewModel: news)
+                                NewsTableRow(item: news)
                         }
                         .listRowSeparator(.hidden)
                     }

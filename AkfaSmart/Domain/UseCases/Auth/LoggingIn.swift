@@ -12,7 +12,7 @@ import ValidatedPropertyKit
 import Dto
 
 struct LoginDto: Dto {
-    @Validated(.nonEmpty(message: "Please enter user name"))
+    @Validated(.nonEmpty(message: "Please enter user name") && .validPhoneNumber())
     var username: String?
 
     @Validated(.nonEmpty(message: "Please enter password") && .minimumCharacters(5))
@@ -52,14 +52,3 @@ extension LoggingIn {
     }
 }
 
-extension Validation where Value == String {
-    static func minimumCharacters(_ count: Int) -> Validation {
-        return .init { value in
-            if count <= value.count {
-                return .success(())
-            } else {
-                return .failure("Minimum number of letters is \(count)")
-            }
-        }
-    }
-}

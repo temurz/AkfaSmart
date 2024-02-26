@@ -12,6 +12,7 @@ protocol GatewaysAssembler {
     func resolve() -> RepoGatewayType
     func resolve() -> RegisterGatewayType
     func resolve() -> CodeInputGatewayType
+    func resolve() -> ForgotPasswordGatewayType
 }
 
 extension GatewaysAssembler where Self: DefaultAssembler {
@@ -42,6 +43,34 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> ArticlesGatewayType {
         ArticlesGateway()
     }
+    
+    func resolve() -> ForgotPasswordGatewayType {
+        ForgotPasswordGateway()
+    }
+    
+    func resolve() -> ResendSMSGatewayType {
+        ResendSMSGateway()
+    }
+    
+    func resolve() -> ConfirmSMSCodeOnForgotPasswordGatewayType {
+        ConfirmSMSCodeOnForgotPasswordGateway()
+    }
+    
+    func resolve() -> ResetPasswordGatewayType {
+        ResetPasswordGateway()
+    }
+    
+    func resolve() -> GetDealersGatewayType {
+        GetDealersGateway()
+    }
+    
+    func resolve() -> MobileClassGatewayType {
+        return MobileClassGateway()
+    }
+    
+    func resolve() -> AddDealerGatewayType {
+        return AddDealerGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -71,5 +100,32 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> ArticlesGatewayType {
         ArticlesGateway()
+    }
+    
+    func resolve() -> ForgotPasswordGatewayType {
+        ForgotPasswordGateway()
+    }
+    
+    func resolve() -> ResendSMSGatewayType {
+        ResendSMSGateway()
+    }
+    func resolve() -> ConfirmSMSCodeOnForgotPasswordGatewayType {
+        ConfirmSMSCodeOnForgotPasswordGateway()
+    }
+    
+    func resolve() -> ResetPasswordGatewayType {
+        ResetPasswordGateway()
+    }
+    
+    func resolve() -> GetDealersGatewayType {
+        GetDealersGateway()
+    }
+    
+    func resolve() -> MobileClassGatewayType {
+        return MobileClassGateway()
+    }
+    
+    func resolve() -> AddDealerGatewayType {
+        return AddDealerGateway()
     }
 }

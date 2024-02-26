@@ -16,7 +16,7 @@ protocol ShowingForgotPassword {
 
 extension ShowingForgotPassword {
     func showForgotPassword() {
-        let view: ForgotPasswordView = ForgotPasswordView()
+        let view: ForgotPasswordView = assembler.resolve(navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
         navigationController.pushViewController(vc, animated: true)
     }

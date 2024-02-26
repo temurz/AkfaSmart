@@ -61,13 +61,35 @@ open class APIBase {
         manager = Alamofire.Session(configuration: configuration)
     }
     
+    open func requestImage(_ input: APIInputBase) -> AnyPublisher<Data, Error> {
+        if let token = AuthApp.shared.token, input.requireAccessToken {
+            if input.headers == nil {
+                input.headers = HTTPHeaders()
+            }
+            input.headers?.add(name: "Authorization", value: "Bearer " + token)
+        }
+        
+        return Future<Data, Error> { promise in
+            AF.request(input.urlString, headers: input.headers).responseData { response in
+                switch response.result {
+                case .success(let data):
+                        promise(.success(data))
+                case .failure(let error):
+                    promise(.failure(error))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
     open func success(_ input: APIInputBase) -> AnyPublisher<APIResponse<Bool>, Error> {
         let response: AnyPublisher<APIResponse<JSONDictionary>, Error> = requestJSON(input)
-        return response
-            .map { apiResponse -> APIResponse<Bool> in
+        let appResponce: AnyPublisher<APIResponse<JSONDictionary>,Error> = postProcess(response)
+        return appResponce
+            .tryMap { apiResponse -> APIResponse<Bool> in
                
                     let jsonData = apiResponse.data
-                    return APIResponse(header: apiResponse.header, data: jsonData["success"] as? Bool ?? false)
+                    return APIResponse(header: apiResponse.header, data: jsonData["success"] as? Bool ?? true)
             
             }
             .eraseToAnyPublisher()
@@ -291,9 +313,9 @@ open class APIBase {
                     let json = apiResponse.data
                     let success = json["success"] as? Int ?? 0
                     let object = json["body"] as? U
-//                if let body = json["body"] {
-//                    print("Type of json[\"body\"]: \(type(of: body))")
-//                }
+                if let body = json["body"] {
+                    print("Type of json[\"body\"]: \(type(of: body))")
+                }
                     if success == 1 {
                         return APIResponse(header: apiResponse.header,
                                            data: object ?? U.init())

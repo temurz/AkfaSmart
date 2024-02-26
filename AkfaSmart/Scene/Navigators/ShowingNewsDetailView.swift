@@ -16,7 +16,7 @@ protocol ShowingNewsDetailView {
 
 extension ShowingNewsDetailView {
     func showDetail(_ item: NewsItemViewModel) {
-        let view: NewsDetailView = NewsDetailView(viewModel: item)
+        let view: NewsDetailView = NewsDetailView(itemModel: item)
         let vc = UIHostingController(rootView: view)
         navigationController.setNavigationBarHidden(false, animated: false)
         navigationController.pushViewController(vc, animated: true)
