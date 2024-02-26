@@ -61,6 +61,27 @@ open class APIBase {
         manager = Alamofire.Session(configuration: configuration)
     }
     
+    open func requestImage(_ input: APIInputBase) -> AnyPublisher<Data, Error> {
+        if let token = AuthApp.shared.token, input.requireAccessToken {
+            if input.headers == nil {
+                input.headers = HTTPHeaders()
+            }
+            input.headers?.add(name: "Authorization", value: "Bearer " + token)
+        }
+        
+        return Future<Data, Error> { promise in
+            AF.request(input.urlString, headers: input.headers).responseData { response in
+                switch response.result {
+                case .success(let data):
+                        promise(.success(data))
+                case .failure(let error):
+                    promise(.failure(error))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
     open func success(_ input: APIInputBase) -> AnyPublisher<APIResponse<Bool>, Error> {
         let response: AnyPublisher<APIResponse<JSONDictionary>, Error> = requestJSON(input)
         let appResponce: AnyPublisher<APIResponse<JSONDictionary>,Error> = postProcess(response)

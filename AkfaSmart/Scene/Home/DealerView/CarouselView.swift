@@ -21,7 +21,7 @@ struct Carousel: UIViewRepresentable {
         let view = UIScrollView()
         view.isPagingEnabled = true
         //height = 1.0 for disabling vertical scrolling.
-        view.contentSize = CGSize(width: total, height: 1.0)
+        view.contentSize = CGSize(width: total, height: 0.5)
         view.bounces = true
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false

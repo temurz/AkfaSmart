@@ -16,10 +16,6 @@ struct GetDealersGateway: GetDealersGatewayType {
     func getDealers() -> Observable<[Dealer]> {
         let input = API.GetDealersInput()
         return API.shared.getDealers(input)
-//            .tryMap { DealersArray in
-//                return DealersArray.compactMap {$0}
-//            }
-//            .eraseToAnyPublisher()
     }
     
     func checkHasADealer() -> Observable<Bool> {

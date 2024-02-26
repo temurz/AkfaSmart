@@ -91,7 +91,6 @@ extension CodeInputViewModel: ViewModel {
                     case .register:
                         navigator.showMain()
                     case .forgotPassword:
-                        //TODO: 
                         navigator.showResetPasswordView()
                     }
                 }

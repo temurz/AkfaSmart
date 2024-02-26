@@ -18,11 +18,13 @@ struct HomeView: View {
     private let openPaymentsTrigger = PassthroughSubject<Int,Never>()
     private let calculateTotalAmounts = PassthroughSubject<Void,Never>()
     private let getDealersTrigger = PassthroughSubject<Void,Never>()
+    private let getMobileClassInfoTrigger = PassthroughSubject<Void,Never>()
+    
     
     let cancelBag = CancelBag()
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            VStack {
+            ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
                         Text("My dilers")
@@ -48,43 +50,46 @@ struct HomeView: View {
                     }
                     .padding(.horizontal)
                     
-                        if output.hasDealers {
-                            Carousel(
-                                data: $output.items,
-                                isBalanceVisible: $balanceIsVisible,
-                                totalOfMonth: $output.totalOfMonth,
-                                totalOfYear: $output.totalOfYear,
-                                openPurchases: { dealerId in
-                                    openPurchasesTrigger.send(dealerId)
-                                },
-                                openPayments: { dealerId in
-                                    openPaymentsTrigger.send(dealerId)
-                                })
-                                .padding(.top)
-                        }
-                        
-                            
-                        Text("My class")
-                            .font(.title2)
-                            .padding()
-                        UserClassView()
-                            .frame(height: 200)
-                            .background(Color.yellow)
-                        Spacer()
-                    
+                    if output.hasDealers {
+                        Carousel(
+                            data: $output.items,
+                            isBalanceVisible: $balanceIsVisible,
+                            totalOfMonth: $output.totalOfMonth,
+                            totalOfYear: $output.totalOfYear,
+                            openPurchases: { dealerId in
+                                openPurchasesTrigger.send(dealerId)
+                            },
+                            openPayments: { dealerId in
+                                openPaymentsTrigger.send(dealerId)
+                            })
+                        .frame(height: 320)
+//                        .background(Color.red)
+                    }
+                    Text("My class")
+                        .font(.title2)
+                        .padding([.horizontal, .bottom])
+                    UserClassView(model: $output.mobileClass,
+                                  imageData: $output.mobileClassLogoData)
+                    .onTapGesture {
+                        //TODO: 
+                    }
+                    .frame(height: 200)
+                    Spacer()
+                        .frame(height: 16)
                 }
             }
         }
         .navigationTitle("")
         .onAppear {
             getDealersTrigger.send(())
+            getMobileClassInfoTrigger.send(())
         }
     }
     
     init(viewModel: HomeViewModel) {
         let input = HomeViewModel.Input(
             openPurchasesTrigger: openPurchasesTrigger.asDriver(),
-            openPaymentsTrigger: openPaymentsTrigger.asDriver(), calculateTotalAmounts: calculateTotalAmounts.asDriver(), getDealersTrigger: getDealersTrigger.asDriver())
+            openPaymentsTrigger: openPaymentsTrigger.asDriver(), calculateTotalAmounts: calculateTotalAmounts.asDriver(), getDealersTrigger: getDealersTrigger.asDriver(), getMobileClassInfo: getMobileClassInfoTrigger.asDriver())
         
         output = viewModel.transform(input, cancelBag: cancelBag)
     }

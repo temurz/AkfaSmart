@@ -55,11 +55,17 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> ConfirmSMSCodeOnForgotPasswordGatewayType {
         ConfirmSMSCodeOnForgotPasswordGateway()
     }
+    
     func resolve() -> ResetPasswordGatewayType {
         ResetPasswordGateway()
     }
+    
     func resolve() -> GetDealersGatewayType {
         GetDealersGateway()
+    }
+    
+    func resolve() -> MobileClassGatewayType {
+        return MobileClassGateway()
     }
 }
 
@@ -109,5 +115,9 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> GetDealersGatewayType {
         GetDealersGateway()
+    }
+    
+    func resolve() -> MobileClassGatewayType {
+        return MobileClassGateway()
     }
 }

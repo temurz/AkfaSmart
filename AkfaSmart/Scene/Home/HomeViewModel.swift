@@ -10,6 +10,7 @@ import Foundation
 struct HomeViewModel {
     let navigator: HomeViewNavigatorType
     let useCase: HomeViewUseCaseType
+    let mobileClassUseCase: MobileClassUseCaseType
 }
 
 extension HomeViewModel: ViewModel {
@@ -18,6 +19,7 @@ extension HomeViewModel: ViewModel {
         let openPaymentsTrigger: Driver<Int>
         let calculateTotalAmounts: Driver<Void>
         let getDealersTrigger: Driver<Void>
+        let getMobileClassInfo: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -27,6 +29,8 @@ extension HomeViewModel: ViewModel {
         @Published var isLoading = false
         @Published var hasDealers = false
         @Published var items: [Dealer] = []
+        @Published var mobileClass: MobileClass? = nil
+        @Published var mobileClassLogoData: Data? = nil
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -78,6 +82,26 @@ extension HomeViewModel: ViewModel {
                 }
             }
             )
+            .store(in: cancelBag)
+        
+        input.getMobileClassInfo
+            .map {
+                mobileClassUseCase.getMobileClassInfo()
+                    .trackError(errorTracker)
+                    .trackActivity(activityTracker)
+                    .asDriver()
+            }
+            .switchToLatest()
+            .sink(receiveValue: { mobileClass in
+                mobileClassUseCase.getMobileClassImage(mobileClass.logoImgUrl ?? "")
+                    .asDriver()
+                    .map { data in
+                        output.mobileClassLogoData = data
+                    }
+                    .sink()
+                    .store(in: cancelBag)
+                output.mobileClass = mobileClass
+            })
             .store(in: cancelBag)
         
         activityTracker

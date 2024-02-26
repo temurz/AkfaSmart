@@ -31,5 +31,11 @@ extension API {
         static let getDealersInfo = Base.BASE_URL + "/api/mobile/adwdealer/view"
         static let hasADealerCheck = Base.BASE_URL + "/api/mobile/adwdealer/hasDealer"
         static let hasADealerAndLocationCheck = Base.BASE_URL + "/api/mobile/adwdealer/hasDealerAndLocation"
+        
+        //MobileClass
+        static let getMobileClassInfo = Base.BASE_URL + "/api/mobile/mobile_user/klass"
+        static let getMobileClassDetail = Base.BASE_URL + "/api/mobile/mobile_user/klass_detail"
+        static let getMobileClassImageLogo = Base.BASE_URL + "/api/mobile/mobile_user/klass_logo/"
+        
     }
 }

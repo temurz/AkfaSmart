@@ -224,6 +224,12 @@
 		B877FD612B8BBFA200D24CB0 /* Dealers+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */; };
 		B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */; };
 		B877FD662B8BC11500D24CB0 /* GetDealersDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD652B8BC11500D24CB0 /* GetDealersDomainUseCase.swift */; };
+		B877FD692B8BF5B200D24CB0 /* MobileClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD682B8BF5B200D24CB0 /* MobileClass.swift */; };
+		B877FD6B2B8BFD9F00D24CB0 /* MobileClass+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD6A2B8BFD9F00D24CB0 /* MobileClass+API.swift */; };
+		B877FD6D2B8BFEE700D24CB0 /* MobileClassGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD6C2B8BFEE700D24CB0 /* MobileClassGateway.swift */; };
+		B877FD6F2B8BFF6300D24CB0 /* MobileClassInfoDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD6E2B8BFF6300D24CB0 /* MobileClassInfoDomainUseCase.swift */; };
+		B877FD712B8C053200D24CB0 /* MobileClassUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD702B8C053200D24CB0 /* MobileClassUseCase.swift */; };
+		B877FD732B8C069500D24CB0 /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD722B8C069500D24CB0 /* Image+.swift */; };
 		B87C71DC2B829EEA0061530E /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DB2B829EEA0061530E /* ForgotPasswordViewModel.swift */; };
 		B87C71DE2B829FA50061530E /* ForgotPasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DD2B829FA50061530E /* ForgotPasswordUseCase.swift */; };
 		B87C71E02B829FD60061530E /* ForgotPasswordNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C71DF2B829FD60061530E /* ForgotPasswordNavigator.swift */; };
@@ -496,6 +502,12 @@
 		B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dealers+API.swift"; sourceTree = "<group>"; };
 		B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDealersGateway.swift; sourceTree = "<group>"; };
 		B877FD652B8BC11500D24CB0 /* GetDealersDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDealersDomainUseCase.swift; sourceTree = "<group>"; };
+		B877FD682B8BF5B200D24CB0 /* MobileClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileClass.swift; sourceTree = "<group>"; };
+		B877FD6A2B8BFD9F00D24CB0 /* MobileClass+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MobileClass+API.swift"; sourceTree = "<group>"; };
+		B877FD6C2B8BFEE700D24CB0 /* MobileClassGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileClassGateway.swift; sourceTree = "<group>"; };
+		B877FD6E2B8BFF6300D24CB0 /* MobileClassInfoDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileClassInfoDomainUseCase.swift; sourceTree = "<group>"; };
+		B877FD702B8C053200D24CB0 /* MobileClassUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileClassUseCase.swift; sourceTree = "<group>"; };
+		B877FD722B8C069500D24CB0 /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		B87C71DB2B829EEA0061530E /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		B87C71DD2B829FA50061530E /* ForgotPasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordUseCase.swift; sourceTree = "<group>"; };
 		B87C71DF2B829FD60061530E /* ForgotPasswordNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordNavigator.swift; sourceTree = "<group>"; };
@@ -627,6 +639,7 @@
 				B85516CA2B790E5F00FC2D6E /* Articles+API.swift */,
 				B8FEC6B42B8502540028BA7F /* ResendSMS+API.swift */,
 				B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */,
+				B877FD6A2B8BFD9F00D24CB0 /* MobileClass+API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1002,6 +1015,7 @@
 		1787235024BD56C800D90F8E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				B877FD682B8BF5B200D24CB0 /* MobileClass.swift */,
 				1787235224BD56E400D90F8E /* Product.swift */,
 				173865A024D3BB470059E3AD /* Repo.swift */,
 				1787235724BD575E00D90F8E /* PagingInfo.swift */,
@@ -1016,6 +1030,7 @@
 		1787235124BD56CD00D90F8E /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				B877FD672B8BF59500D24CB0 /* Class */,
 				B877FD642B8BC10600D24CB0 /* Dealers */,
 				B85516C52B79060D00FC2D6E /* Articles */,
 				B86CDF482B77C7CD002E7EA4 /* News */,
@@ -1050,6 +1065,7 @@
 				B87C71E52B82B2A20061530E /* ForgotPasswordGateway.swift */,
 				B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */,
 				B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */,
+				B877FD6C2B8BFEE700D24CB0 /* MobileClassGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -1090,6 +1106,7 @@
 				B866A8D72B68D8BA00202C9F /* Int+.swift */,
 				B866A9392B70F23400202C9F /* String+Extension.swift */,
 				B8FEC6BA2B8521A00028BA7F /* Validation+.swift */,
+				B877FD722B8C069500D24CB0 /* Image+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1312,6 +1329,14 @@
 			path = Dealers;
 			sourceTree = "<group>";
 		};
+		B877FD672B8BF59500D24CB0 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				B877FD6E2B8BFF6300D24CB0 /* MobileClassInfoDomainUseCase.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		B87ED1F62B7A1D6B00EB5139 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -1411,6 +1436,7 @@
 			isa = PBXGroup;
 			children = (
 				B8FEC6D92B8783130028BA7F /* UserClassView.swift */,
+				B877FD702B8C053200D24CB0 /* MobileClassUseCase.swift */,
 			);
 			path = UserClassView;
 			sourceTree = "<group>";
@@ -1581,6 +1607,7 @@
 			files = (
 				B866A95E2B712DF800202C9F /* ShowingNewsDetailView.swift in Sources */,
 				B866A9542B7115C200202C9F /* ShimmerView.swift in Sources */,
+				B877FD692B8BF5B200D24CB0 /* MobileClass.swift in Sources */,
 				B866A94B2B70FE7200202C9F /* NewsUseCase.swift in Sources */,
 				B866A9612B71535C00202C9F /* ArticlesView.swift in Sources */,
 				B87C71E82B82B58F0061530E /* ForgotPassword+API.swift in Sources */,
@@ -1589,6 +1616,7 @@
 				1765B2D124C6D5550096D210 /* ShowingProductDetail.swift in Sources */,
 				1787231C24BD53BF00D90F8E /* ViewModel.swift in Sources */,
 				1742B37624D7B82C00C82D15 /* ShowingRepoList.swift in Sources */,
+				B877FD6B2B8BFD9F00D24CB0 /* MobileClass+API.swift in Sources */,
 				B8AC367E2B799E5D0060D52D /* ShowingAddDealerView.swift in Sources */,
 				178722F724BD537D00D90F8E /* AppDelegate.swift in Sources */,
 				B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */,
@@ -1626,11 +1654,13 @@
 				B866A92F2B6BF7AB00202C9F /* TabBarView.swift in Sources */,
 				17A5B1FC24D948BC004BD209 /* PagingTableView.swift in Sources */,
 				B8CF98E22B65671300EF02A7 /* RegisterAssembler.swift in Sources */,
+				B877FD6D2B8BFEE700D24CB0 /* MobileClassGateway.swift in Sources */,
 				B87C71DC2B829EEA0061530E /* ForgotPasswordViewModel.swift in Sources */,
 				B866A8CD2B6874E100202C9F /* ShowingMain.swift in Sources */,
 				1742B37824D7C48400C82D15 /* RepoItemViewModel.swift in Sources */,
 				B866A97E2B7168E100202C9F /* SettingsViewModel.swift in Sources */,
 				1742B36C24D7B22B00C82D15 /* ReposNavigator.swift in Sources */,
+				B877FD732B8C069500D24CB0 /* Image+.swift in Sources */,
 				B8CF98E42B65672200EF02A7 /* RegisterNavigator.swift in Sources */,
 				1742B36D24D7B22B00C82D15 /* ReposUseCase.swift in Sources */,
 				B866A8C52B66FB2300202C9F /* Alamofire+.swift in Sources */,
@@ -1645,6 +1675,7 @@
 				B866A93A2B70F23400202C9F /* String+Extension.swift in Sources */,
 				174A188F24C821B600AB39D9 /* LoadingView.swift in Sources */,
 				173865B224D419700059E3AD /* ViewModel+GetPage.swift in Sources */,
+				B877FD6F2B8BFF6300D24CB0 /* MobileClassInfoDomainUseCase.swift in Sources */,
 				178809AA24C0412F00002215 /* Observable.swift in Sources */,
 				1742B37B24D7E88900C82D15 /* AlertMessage.swift in Sources */,
 				B866A9522B7110FB00202C9F /* BottomBarView.swift in Sources */,
@@ -1793,6 +1824,7 @@
 				B87C71E02B829FD60061530E /* ForgotPasswordNavigator.swift in Sources */,
 				B866A8E52B68E19F00202C9F /* CodeInputDto.swift in Sources */,
 				176BAA4824D130B800324D3C /* Bindable.swift in Sources */,
+				B877FD712B8C053200D24CB0 /* MobileClassUseCase.swift in Sources */,
 				176BAA4B24D1319C00324D3C /* MenuCell.swift in Sources */,
 				B866A8C12B66EC9400202C9F /* Login+API.swift in Sources */,
 				176BAA5824D167A400324D3C /* LoggingIn.swift in Sources */,
