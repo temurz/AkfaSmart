@@ -48,5 +48,11 @@ extension API {
         static let getInfoGraphics = Base.BASE_URL + "/api/mobile/infographic"
         static let editInfoGraphics = Base.BASE_URL + "/api/mobile/infographic/edit"
         
+        static let getTechnoGraphics = Base.BASE_URL + "/api/mobile/technographic"
+        static let editTechnoGraphics = Base.BASE_URL + "/api/mobile/technographic/edit"
+        
+        static let getHRGraphics = Base.BASE_URL + "/api/mobile/HRgraphic"
+        
+        
     }
 }

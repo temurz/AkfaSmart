@@ -18,3 +18,28 @@ extension API {
         }
     }
 }
+
+
+extension API {
+    func getTechnoGraphics(_ input: TechnoGraphicsInput) -> Observable<TechnoGraphics> {
+        return request(input)
+    }
+    
+    final class TechnoGraphicsInput: APIInput {
+        init() {
+            super.init(urlString: API.Urls.getTechnoGraphics, parameters: nil, method: .get, requireAccessToken: true)
+        }
+    }
+}
+
+extension API {
+    func getHRGraphics(_ input: HRGraphicsInput) -> Observable<HRGraphics> {
+        request(input)
+    }
+    
+    final class HRGraphicsInput: APIInput {
+        init() {
+            super.init(urlString: API.Urls.getHRGraphics, parameters: nil, method: .get, requireAccessToken: true)
+        }
+    }
+}

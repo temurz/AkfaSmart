@@ -286,6 +286,14 @@
 		B8BE49E62B8D689600876714 /* InfographicsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E52B8D689600876714 /* InfographicsDomainUseCase.swift */; };
 		B8BE49E82B8D68FB00876714 /* InfographicsViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E72B8D68FB00876714 /* InfographicsViewUseCase.swift */; };
 		B8BE49EA2B8D69E800876714 /* InfographicsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E92B8D69E800876714 /* InfographicsAssembler.swift */; };
+		B8BE49EC2B8D7B8900876714 /* TechnoGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49EB2B8D7B8900876714 /* TechnoGraphics.swift */; };
+		B8BE49EE2B8D7D7800876714 /* TechnoGraphicsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49ED2B8D7D7800876714 /* TechnoGraphicsGateway.swift */; };
+		B8BE49F02B8D7DE900876714 /* TechnoGraphicsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49EF2B8D7DE900876714 /* TechnoGraphicsDomainUseCase.swift */; };
+		B8BE49F22B8D7EAD00876714 /* TechnoGraphicsViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49F12B8D7EAD00876714 /* TechnoGraphicsViewUseCase.swift */; };
+		B8BE49F42B8D86CB00876714 /* HRGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49F32B8D86CB00876714 /* HRGraphics.swift */; };
+		B8BE49F62B8D87A200876714 /* HRGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49F52B8D87A200876714 /* HRGateway.swift */; };
+		B8BE49F82B8D883300876714 /* HRGraphicsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49F72B8D883300876714 /* HRGraphicsDomainUseCase.swift */; };
+		B8BE49FA2B8D888100876714 /* HRGraphicsViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49F92B8D888100876714 /* HRGraphicsViewUseCase.swift */; };
 		B8CF98DB2B6311AC00EF02A7 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DA2B6311AC00EF02A7 /* Color+Extension.swift */; };
 		B8CF98DE2B65595B00EF02A7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DD2B65595B00EF02A7 /* RegisterView.swift */; };
 		B8CF98E02B6566EC00EF02A7 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DF2B6566EC00EF02A7 /* RegisterViewModel.swift */; };
@@ -592,6 +600,14 @@
 		B8BE49E52B8D689600876714 /* InfographicsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsDomainUseCase.swift; sourceTree = "<group>"; };
 		B8BE49E72B8D68FB00876714 /* InfographicsViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsViewUseCase.swift; sourceTree = "<group>"; };
 		B8BE49E92B8D69E800876714 /* InfographicsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsAssembler.swift; sourceTree = "<group>"; };
+		B8BE49EB2B8D7B8900876714 /* TechnoGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnoGraphics.swift; sourceTree = "<group>"; };
+		B8BE49ED2B8D7D7800876714 /* TechnoGraphicsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnoGraphicsGateway.swift; sourceTree = "<group>"; };
+		B8BE49EF2B8D7DE900876714 /* TechnoGraphicsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnoGraphicsDomainUseCase.swift; sourceTree = "<group>"; };
+		B8BE49F12B8D7EAD00876714 /* TechnoGraphicsViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnoGraphicsViewUseCase.swift; sourceTree = "<group>"; };
+		B8BE49F32B8D86CB00876714 /* HRGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphics.swift; sourceTree = "<group>"; };
+		B8BE49F52B8D87A200876714 /* HRGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGateway.swift; sourceTree = "<group>"; };
+		B8BE49F72B8D883300876714 /* HRGraphicsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsDomainUseCase.swift; sourceTree = "<group>"; };
+		B8BE49F92B8D888100876714 /* HRGraphicsViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsViewUseCase.swift; sourceTree = "<group>"; };
 		B8CF98D92B630CA000EF02A7 /* AkfaSmart.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AkfaSmart.xctestplan; sourceTree = "<group>"; };
 		B8CF98DA2B6311AC00EF02A7 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		B8CF98DD2B65595B00EF02A7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -1138,6 +1154,8 @@
 				B877FD7C2B8C327D00D24CB0 /* ImageDownloaderGateway.swift */,
 				B877FD802B8C3F1F00D24CB0 /* AddDealerGateway.swift */,
 				B8BE49E22B8D683300876714 /* InfoGraphicsGateway.swift */,
+				B8BE49ED2B8D7D7800876714 /* TechnoGraphicsGateway.swift */,
+				B8BE49F52B8D87A200876714 /* HRGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -1216,6 +1234,7 @@
 			children = (
 				B863DA9A2B8D0458003F2C3D /* HRGraphicViewModel.swift */,
 				B863DA9C2B8D047A003F2C3D /* HRGraphicsView.swift */,
+				B8BE49F92B8D888100876714 /* HRGraphicsViewUseCase.swift */,
 			);
 			path = HRGraphics;
 			sourceTree = "<group>";
@@ -1270,6 +1289,7 @@
 			children = (
 				B863DAB42B8D084B003F2C3D /* TechnoGraphicsView.swift */,
 				B863DAB62B8D0880003F2C3D /* TechnoGraphicsViewModel.swift */,
+				B8BE49F12B8D7EAD00876714 /* TechnoGraphicsViewUseCase.swift */,
 			);
 			path = TechnoGraphics;
 			sourceTree = "<group>";
@@ -1290,6 +1310,8 @@
 			isa = PBXGroup;
 			children = (
 				B863DAC42B8D58D8003F2C3D /* Infographics.swift */,
+				B8BE49EB2B8D7B8900876714 /* TechnoGraphics.swift */,
+				B8BE49F32B8D86CB00876714 /* HRGraphics.swift */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -1577,6 +1599,8 @@
 			isa = PBXGroup;
 			children = (
 				B8BE49E52B8D689600876714 /* InfographicsDomainUseCase.swift */,
+				B8BE49EF2B8D7DE900876714 /* TechnoGraphicsDomainUseCase.swift */,
+				B8BE49F72B8D883300876714 /* HRGraphicsDomainUseCase.swift */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -1798,6 +1822,7 @@
 				B85516C92B79069300FC2D6E /* ArticlesGateway.swift in Sources */,
 				1765B2D124C6D5550096D210 /* ShowingProductDetail.swift in Sources */,
 				1787231C24BD53BF00D90F8E /* ViewModel.swift in Sources */,
+				B8BE49EE2B8D7D7800876714 /* TechnoGraphicsGateway.swift in Sources */,
 				B863DAAB2B8D0644003F2C3D /* MarketingGraphicView.swift in Sources */,
 				1742B37624D7B82C00C82D15 /* ShowingRepoList.swift in Sources */,
 				B863DABC2B8D09DE003F2C3D /* ShowingLanguageSetterView.swift in Sources */,
@@ -1816,6 +1841,7 @@
 				1742B36E24D7B22B00C82D15 /* ReposViewController.swift in Sources */,
 				B8BE49E82B8D68FB00876714 /* InfographicsViewUseCase.swift in Sources */,
 				173865A424D3BB7A0059E3AD /* APIService.swift in Sources */,
+				B8BE49F42B8D86CB00876714 /* HRGraphics.swift in Sources */,
 				178722F924BD537D00D90F8E /* SceneDelegate.swift in Sources */,
 				17DCF1BB24BF028200D970B4 /* Double+.swift in Sources */,
 				B863DABA2B8D09C4003F2C3D /* ShowingHRGraphics.swift in Sources */,
@@ -1856,6 +1882,7 @@
 				B877FD732B8C069500D24CB0 /* Image+.swift in Sources */,
 				B8CF98E42B65672200EF02A7 /* RegisterNavigator.swift in Sources */,
 				1742B36D24D7B22B00C82D15 /* ReposUseCase.swift in Sources */,
+				B8BE49F62B8D87A200876714 /* HRGateway.swift in Sources */,
 				B866A8C52B66FB2300202C9F /* Alamofire+.swift in Sources */,
 				173865A624D3BC130059E3AD /* APIError.swift in Sources */,
 				176BAA6924D26AA300324D3C /* String+Base64.swift in Sources */,
@@ -1863,6 +1890,7 @@
 				B87ED20C2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift in Sources */,
 				1781CF4224BD8FB8004ED1C6 /* ProductDetailUseCase.swift in Sources */,
 				174A188D24C8219300AB39D9 /* ActivityIndicator.swift in Sources */,
+				B8BE49F22B8D7EAD00876714 /* TechnoGraphicsViewUseCase.swift in Sources */,
 				17A5B1F424D8080B004BD209 /* UIViewController+Combine.swift in Sources */,
 				17DCF1B624BEE76800D970B4 /* Driver.swift in Sources */,
 				B866A93A2B70F23400202C9F /* String+Extension.swift in Sources */,
@@ -1882,6 +1910,7 @@
 				1787233324BD54B600D90F8E /* Assembler.swift in Sources */,
 				176BAA5A24D16BAE00324D3C /* ShowingLogin.swift in Sources */,
 				B87ED2002B7A245F00EB5139 /* ShowingWelcomeView.swift in Sources */,
+				B8BE49F82B8D883300876714 /* HRGraphicsDomainUseCase.swift in Sources */,
 				B866A9492B70FCEC00202C9F /* NewsViewModel.swift in Sources */,
 				B866A9932B71AFF700202C9F /* CreateOrderNavigator.swift in Sources */,
 				B8FEC6D82B8761AB0028BA7F /* Dealer.swift in Sources */,
@@ -1906,6 +1935,7 @@
 				B866A98F2B71AF5100202C9F /* CreateOrderView.swift in Sources */,
 				B8AC367C2B7992720060D52D /* AddDealerAssembler.swift in Sources */,
 				178809AE24C04A7E00002215 /* ActivityTracker.swift in Sources */,
+				B8BE49FA2B8D888100876714 /* HRGraphicsViewUseCase.swift in Sources */,
 				B866A9382B70EFA000202C9F /* NewsItemViewModel.swift in Sources */,
 				B866A97A2B7168C700202C9F /* SettingsAssembler.swift in Sources */,
 				176BAA6B24D26C8B00324D3C /* APIInputBase.swift in Sources */,
@@ -1962,6 +1992,7 @@
 				B863DAB52B8D084B003F2C3D /* TechnoGraphicsView.swift in Sources */,
 				B87ED1FA2B7A220300EB5139 /* WelcomeViewModel.swift in Sources */,
 				B8FEC6C42B863C7D0028BA7F /* ResetPasswordNavigator.swift in Sources */,
+				B8BE49F02B8D7DE900876714 /* TechnoGraphicsDomainUseCase.swift in Sources */,
 				B8FEC6B52B8502540028BA7F /* ResendSMS+API.swift in Sources */,
 				B866A94F2B70FE8900202C9F /* NewsAssembler.swift in Sources */,
 				B863DAC52B8D58D8003F2C3D /* Infographics.swift in Sources */,
@@ -2042,6 +2073,7 @@
 				B877FD842B8C3F8700D24CB0 /* AddDealerDomainUseCase.swift in Sources */,
 				B8CF98E02B6566EC00EF02A7 /* RegisterViewModel.swift in Sources */,
 				B866A92B2B6BF76700202C9F /* TabBarItemView.swift in Sources */,
+				B8BE49EC2B8D7B8900876714 /* TechnoGraphics.swift in Sources */,
 				178809B024C0520000002215 /* ViewModel+GetList.swift in Sources */,
 				173865B024D40FBE0059E3AD /* ViewModel+GetItem.swift in Sources */,
 				B85516D02B79294700FC2D6E /* InfographicsView.swift in Sources */,
