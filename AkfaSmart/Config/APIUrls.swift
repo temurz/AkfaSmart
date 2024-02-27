@@ -43,5 +43,10 @@ extension API {
         static let getMobileClassDetail = Base.BASE_URL + "/api/mobile/mobile_user/klass_detail"
         static let getMobileClassImageLogo = Base.BASE_URL + "/api/mobile/mobile_user/klass_logo/"
         
+        
+        //Graphics
+        static let getInfoGraphics = Base.BASE_URL + "/api/mobile/infographic"
+        static let editInfoGraphics = Base.BASE_URL + "/api/mobile/infographic/edit"
+        
     }
 }

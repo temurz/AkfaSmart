@@ -15,7 +15,7 @@ protocol ShowingInfograpics {
 
 extension ShowingInfograpics {
     func showInfographics() {
-        let view: InfographicsView = InfographicsView(viewModel: InfographicsViewModel())
+        let view: InfographicsView = InfographicsView(viewModel: InfographicsViewModel(useCase: InfographicsViewUseCase(gateway: InfoGraphicsGateway())))
         let vc = UIHostingController(rootView: view)
         self.navigationController.pushViewController(vc, animated: true)
     }

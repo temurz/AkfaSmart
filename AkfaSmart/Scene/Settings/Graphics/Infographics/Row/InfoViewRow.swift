@@ -15,9 +15,12 @@ struct InfoViewRow: View {
             Text(viewModel.title)
                 .foregroundColor(Color(hex: "#9DA8C2"))
             Text(viewModel.value)
-                .lineLimit(0)
+                .multilineTextAlignment(.leading)
+                .lineLimit(3)
             Text(viewModel.editedValue)
+                .multilineTextAlignment(.leading)
                 .lineLimit(0)
+                .foregroundColor(.red)
         }
     }
 }

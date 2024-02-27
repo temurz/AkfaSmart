@@ -49,7 +49,7 @@ struct UserClassView: View {
                 }
                 .padding()
             }
-            .background(Color(hex: model?.backgroundColor ?? ""))
+            .background(model?.backgroundColor != nil ? Color(hex: model?.backgroundColor ?? "") : Color.white)
             
             HStack {
                 Text("Detail")

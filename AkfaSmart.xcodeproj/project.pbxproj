@@ -166,6 +166,7 @@
 		B863DABE2B8D09F7003F2C3D /* ShowingMarketingsGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863DABD2B8D09F7003F2C3D /* ShowingMarketingsGraphics.swift */; };
 		B863DAC02B8D0A0D003F2C3D /* ShowingTechnoGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863DABF2B8D0A0D003F2C3D /* ShowingTechnoGraphics.swift */; };
 		B863DAC22B8D0A21003F2C3D /* ShowingProductGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863DAC12B8D0A21003F2C3D /* ShowingProductGraphics.swift */; };
+		B863DAC52B8D58D8003F2C3D /* Infographics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863DAC42B8D58D8003F2C3D /* Infographics.swift */; };
 		B866A8BF2B66E9A800202C9F /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A8BE2B66E9A800202C9F /* Base.swift */; };
 		B866A8C12B66EC9400202C9F /* Login+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A8C02B66EC9400202C9F /* Login+API.swift */; };
 		B866A8C32B66F07200202C9F /* AuthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A8C22B66F07200202C9F /* AuthApp.swift */; };
@@ -280,6 +281,11 @@
 		B8AC36882B79A6CA0060D52D /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36872B79A6CA0060D52D /* CameraPreview.swift */; };
 		B8AC368A2B79A6EF0060D52D /* QRCodeCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC36892B79A6EF0060D52D /* QRCodeCameraDelegate.swift */; };
 		B8AC368F2B79BA870060D52D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B8AC368E2B79BA870060D52D /* IQKeyboardManagerSwift */; };
+		B8BE49E12B8D677C00876714 /* Graphics + API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E02B8D677C00876714 /* Graphics + API.swift */; };
+		B8BE49E32B8D683300876714 /* InfoGraphicsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E22B8D683300876714 /* InfoGraphicsGateway.swift */; };
+		B8BE49E62B8D689600876714 /* InfographicsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E52B8D689600876714 /* InfographicsDomainUseCase.swift */; };
+		B8BE49E82B8D68FB00876714 /* InfographicsViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E72B8D68FB00876714 /* InfographicsViewUseCase.swift */; };
+		B8BE49EA2B8D69E800876714 /* InfographicsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E92B8D69E800876714 /* InfographicsAssembler.swift */; };
 		B8CF98DB2B6311AC00EF02A7 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DA2B6311AC00EF02A7 /* Color+Extension.swift */; };
 		B8CF98DE2B65595B00EF02A7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DD2B65595B00EF02A7 /* RegisterView.swift */; };
 		B8CF98E02B6566EC00EF02A7 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DF2B6566EC00EF02A7 /* RegisterViewModel.swift */; };
@@ -469,6 +475,7 @@
 		B863DABD2B8D09F7003F2C3D /* ShowingMarketingsGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingMarketingsGraphics.swift; sourceTree = "<group>"; };
 		B863DABF2B8D0A0D003F2C3D /* ShowingTechnoGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingTechnoGraphics.swift; sourceTree = "<group>"; };
 		B863DAC12B8D0A21003F2C3D /* ShowingProductGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingProductGraphics.swift; sourceTree = "<group>"; };
+		B863DAC42B8D58D8003F2C3D /* Infographics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Infographics.swift; sourceTree = "<group>"; };
 		B866A8BE2B66E9A800202C9F /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		B866A8C02B66EC9400202C9F /* Login+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+API.swift"; sourceTree = "<group>"; };
 		B866A8C22B66F07200202C9F /* AuthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApp.swift; sourceTree = "<group>"; };
@@ -580,6 +587,11 @@
 		B8AC367D2B799E5D0060D52D /* ShowingAddDealerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingAddDealerView.swift; sourceTree = "<group>"; };
 		B8AC36872B79A6CA0060D52D /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		B8AC36892B79A6EF0060D52D /* QRCodeCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeCameraDelegate.swift; sourceTree = "<group>"; };
+		B8BE49E02B8D677C00876714 /* Graphics + API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Graphics + API.swift"; sourceTree = "<group>"; };
+		B8BE49E22B8D683300876714 /* InfoGraphicsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGraphicsGateway.swift; sourceTree = "<group>"; };
+		B8BE49E52B8D689600876714 /* InfographicsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsDomainUseCase.swift; sourceTree = "<group>"; };
+		B8BE49E72B8D68FB00876714 /* InfographicsViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsViewUseCase.swift; sourceTree = "<group>"; };
+		B8BE49E92B8D69E800876714 /* InfographicsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsAssembler.swift; sourceTree = "<group>"; };
 		B8CF98D92B630CA000EF02A7 /* AkfaSmart.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AkfaSmart.xctestplan; sourceTree = "<group>"; };
 		B8CF98DA2B6311AC00EF02A7 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		B8CF98DD2B65595B00EF02A7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -687,6 +699,7 @@
 				B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */,
 				B877FD6A2B8BFD9F00D24CB0 /* MobileClass+API.swift */,
 				B877FD7E2B8C3D7B00D24CB0 /* AddDealerAPI.swift */,
+				B8BE49E02B8D677C00876714 /* Graphics + API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1067,6 +1080,7 @@
 		1787235024BD56C800D90F8E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				B863DAC32B8D58CA003F2C3D /* Graphics */,
 				B877FD682B8BF5B200D24CB0 /* MobileClass.swift */,
 				1787235224BD56E400D90F8E /* Product.swift */,
 				173865A024D3BB470059E3AD /* Repo.swift */,
@@ -1082,6 +1096,7 @@
 		1787235124BD56CD00D90F8E /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				B8BE49E42B8D688200876714 /* Graphics */,
 				B877FD822B8C3F7900D24CB0 /* AddDealer */,
 				B877FD792B8C317800D24CB0 /* ImageDownloader */,
 				B877FD672B8BF59500D24CB0 /* Class */,
@@ -1122,6 +1137,7 @@
 				B877FD6C2B8BFEE700D24CB0 /* MobileClassGateway.swift */,
 				B877FD7C2B8C327D00D24CB0 /* ImageDownloaderGateway.swift */,
 				B877FD802B8C3F1F00D24CB0 /* AddDealerGateway.swift */,
+				B8BE49E22B8D683300876714 /* InfoGraphicsGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -1181,6 +1197,8 @@
 				B85516D32B792C5D00FC2D6E /* Row */,
 				B85516CF2B79294700FC2D6E /* InfographicsView.swift */,
 				B85516D12B792B5600FC2D6E /* InfographicsViewModel.swift */,
+				B8BE49E72B8D68FB00876714 /* InfographicsViewUseCase.swift */,
+				B8BE49E92B8D69E800876714 /* InfographicsAssembler.swift */,
 			);
 			path = Infographics;
 			sourceTree = "<group>";
@@ -1264,6 +1282,14 @@
 				B85516CE2B79293200FC2D6E /* Infographics */,
 				B863DA942B8D037C003F2C3D /* HRGraphics */,
 				B863DAB32B8D082D003F2C3D /* TechnoGraphics */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		B863DAC32B8D58CA003F2C3D /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				B863DAC42B8D58D8003F2C3D /* Infographics.swift */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -1547,6 +1573,14 @@
 			path = QRCode;
 			sourceTree = "<group>";
 		};
+		B8BE49E42B8D688200876714 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				B8BE49E52B8D689600876714 /* InfographicsDomainUseCase.swift */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
 		B8CF98DC2B65594300EF02A7 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -1780,6 +1814,7 @@
 				173865AC24D3BC840059E3AD /* API+Repo.swift in Sources */,
 				B866A9632B71536900202C9F /* ArticlesViewModel.swift in Sources */,
 				1742B36E24D7B22B00C82D15 /* ReposViewController.swift in Sources */,
+				B8BE49E82B8D68FB00876714 /* InfographicsViewUseCase.swift in Sources */,
 				173865A424D3BB7A0059E3AD /* APIService.swift in Sources */,
 				178722F924BD537D00D90F8E /* SceneDelegate.swift in Sources */,
 				17DCF1BB24BF028200D970B4 /* Double+.swift in Sources */,
@@ -1879,15 +1914,18 @@
 				B877FD7F2B8C3D7B00D24CB0 /* AddDealerAPI.swift in Sources */,
 				B866A8DF2B68E03600202C9F /* CodeInputViewModel.swift in Sources */,
 				1765B2D524C6DF8B0096D210 /* ProductItemViewModel.swift in Sources */,
+				B8BE49E32B8D683300876714 /* InfoGraphicsGateway.swift in Sources */,
 				B8FEC6C02B863C660028BA7F /* ResetPasswordView.swift in Sources */,
 				176BAA4624D1154F00324D3C /* Storyboards.swift in Sources */,
 				1787236424BD5EC700D90F8E /* ProductsAssembler.swift in Sources */,
+				B8BE49E12B8D677C00876714 /* Graphics + API.swift in Sources */,
 				B8AC36762B79924E0060D52D /* AddDealerViewModel.swift in Sources */,
 				B866A9272B6BF72600202C9F /* ViewRouter.swift in Sources */,
 				B863DAA32B8D0551003F2C3D /* LanguageChangerView.swift in Sources */,
 				1787235624BD571500D90F8E /* GettingProducts.swift in Sources */,
 				B8FEC6C22B863C720028BA7F /* ResetPasswordUseCase.swift in Sources */,
 				176BAA7324D26DEF00324D3C /* APIResponse.swift in Sources */,
+				B8BE49E62B8D689600876714 /* InfographicsDomainUseCase.swift in Sources */,
 				B866A9232B6BF5AE00202C9F /* MainViewRouter.swift in Sources */,
 				B866A9692B71538D00202C9F /* ArticlesAssembler.swift in Sources */,
 				B877FD662B8BC11500D24CB0 /* GetDealersDomainUseCase.swift in Sources */,
@@ -1926,6 +1964,7 @@
 				B8FEC6C42B863C7D0028BA7F /* ResetPasswordNavigator.swift in Sources */,
 				B8FEC6B52B8502540028BA7F /* ResendSMS+API.swift in Sources */,
 				B866A94F2B70FE8900202C9F /* NewsAssembler.swift in Sources */,
+				B863DAC52B8D58D8003F2C3D /* Infographics.swift in Sources */,
 				B866A8C32B66F07200202C9F /* AuthApp.swift in Sources */,
 				B866A8D32B68D07C00202C9F /* ShowingCodeInput.swift in Sources */,
 				B866A93F2B70F87500202C9F /* ImageLoader.swift in Sources */,
@@ -1954,6 +1993,7 @@
 				B863DAB22B8D07D3003F2C3D /* ProductGraphicsViewModel.swift in Sources */,
 				176BAA5124D1483200324D3C /* ShowingProductList.swift in Sources */,
 				B866A9972B71B02900202C9F /* CreateOrderAssembler.swift in Sources */,
+				B8BE49EA2B8D69E800876714 /* InfographicsAssembler.swift in Sources */,
 				B866A8C72B686B7A00202C9F /* Registration+API.swift in Sources */,
 				B866A93D2B70F80700202C9F /* ImageCache.swift in Sources */,
 				B8AC36732B7991790060D52D /* AddDealerView.swift in Sources */,
