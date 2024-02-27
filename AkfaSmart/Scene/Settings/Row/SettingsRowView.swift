@@ -22,12 +22,13 @@ struct SettingsRowView: View {
             Text(viewModel.text)
                 .font(.system(size: 15))
             Spacer()
-            Image(systemName: "chevron.forward")
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(Color(hex: "#979797"))
-                .frame(width: 12, height: 12)
-                
+            if viewModel.id != 0 {
+                Image(systemName: "chevron.forward")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(Color(hex: "#979797"))
+                    .frame(width: 12, height: 12)
+            }
         }
         .padding()
     }

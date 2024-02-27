@@ -63,6 +63,13 @@ struct TechnoGraphicsView: View {
                   message: Text(output.alert.message),
                   dismissButton: .default(Text("OK")))
         }
+        .navigationBarItems(trailing: Button(action: {
+            
+        }, label: {
+            Text("Edit")
+                .foregroundColor(.red)
+                .font(.headline)
+        }))
         .onAppear {
             requestTechnoGraphicsTrigger.send(())
         }
