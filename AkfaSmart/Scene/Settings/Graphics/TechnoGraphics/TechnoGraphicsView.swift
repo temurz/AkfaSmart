@@ -69,7 +69,7 @@ struct TechnoGraphicsView: View {
     }
     
     private func getSeriesString(series: [ModelWithIdAndName]) -> String {
-        var array = series.map { $0.name ?? "" }
+        let array = series.map { $0.name ?? "" }
         return array.joined(separator: ", ")
     }
     

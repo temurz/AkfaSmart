@@ -19,10 +19,6 @@ extension HRgraphicsViewModel: ViewModel {
     final class Output: ObservableObject {
         @Published var isLoading = false
         @Published var alert = AlertMessage()
-        @Published var items = [
-            InfoItemViewModel(title: "Ходимлар сони", value: "8 та. Шулардан: 4 та уста, 3 та монтажчилар, 1 та сотувчи", editedValue: "8 та. Шулардан: 4 та уста, 3 та монтажчилар, 1 та сотувчи"),
-            InfoItemViewModel(title: "Қайси серияни ясай олади", value: "5200, 6000 куаттро, 6000 трио, 7000 Акфа", editedValue: "5200, 6000 куаттро, 6000 трио, 7000 Акфа")
-        ]
         @Published var hrGraphics: HRGraphics? = nil
     }
     

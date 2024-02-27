@@ -22,13 +22,27 @@ struct HRgraphicsView: View {
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             ScrollView {
-                VStack {
+                VStack(alignment: .leading, spacing: 12) {
                     if output.hrGraphics != nil, let hrGraphics = output.hrGraphics {
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Number of employees",
                                 value: "\(hrGraphics.numberOfEmployees ?? 0) \r\n\(hrGraphics.aboutEmployees ?? "")",
                                 editedValue: "\(hrGraphics.numberOfEmployeesEdited)")
+                        )
+                        
+                        InfoViewRow(
+                            viewModel: InfoItemViewModel(
+                                title: "Is there a seller",
+                                value: "\(ConverterToString.getYesOrNoString(hrGraphics.hasSeller))",
+                                editedValue: "\(ConverterToString.getYesOrNoString(hrGraphics.hasSellerEdited))")
+                        )
+                        
+                        InfoViewRow(
+                            viewModel: InfoItemViewModel(
+                                title: "Is there an accountant",
+                                value: "\(ConverterToString.getYesOrNoString(hrGraphics.hasAccountant))",
+                                editedValue: "\(ConverterToString.getYesOrNoString(hrGraphics.hasAccountantEdited))")
                         )
                     }
                 }

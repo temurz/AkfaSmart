@@ -31,7 +31,7 @@ extension SettingsViewModel: ViewModel {
             SettingItemViewModel(id: 2, image: "", text: "Technographics"),
             SettingItemViewModel(id: 3, image: "", text: "HR graphics"),
             SettingItemViewModel(id: 4, image: "", text: "Market graphics"),
-            SettingItemViewModel(id: 5, image: "", text: "Secret graphics"),
+            SettingItemViewModel(id: 5, image: "", text: "Product graphics"),
             ],
             [            
                 SettingItemViewModel(id: 6, image: "headset_mic", text: "Technical support"),

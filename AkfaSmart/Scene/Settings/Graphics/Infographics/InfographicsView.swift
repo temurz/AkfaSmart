@@ -66,8 +66,8 @@ struct InfographicsView: View {
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Foreign Languages",
-                                value: "\(getOwnedLanguagesString(languages: info.ownedLanguages))",
-                                editedValue: "\(getOwnedLanguagesString(languages: info.ownedLanguagesEdited))")
+                                value: "\(ConverterToString.getStringFrom( info.ownedLanguages))",
+                                editedValue: "\(ConverterToString.getStringFrom( info.ownedLanguagesEdited))")
                         )
                         
                     }
@@ -93,14 +93,26 @@ struct InfographicsView: View {
         }
     }
     
-    func getOwnedLanguagesString(languages: [OwnedLanguage]) -> String {
-        var array = languages.map { $0.name ?? "" }
-        return array.joined(separator: ", ")
-    }
+    
     
     init(viewModel: InfographicsViewModel) {
         let input = InfographicsViewModel.Input(requestInfographicsTrigger: requestInfographicsTrigger.asDriver())
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
+    }
+}
+
+struct ConverterToString {
+    static func getStringFrom(_ modelWithName: [ModelWithIdAndName]) -> String {
+        var array = modelWithName.map { $0.name ?? "" }
+        return array.joined(separator: ", ")
+    }
+    
+    static func getYesOrNoString(_ bool: Bool?) -> String {
+        if (bool ?? false) {
+            return "Yes"
+        }else {
+            return "No"
+        }
     }
 }

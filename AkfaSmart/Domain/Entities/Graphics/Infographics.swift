@@ -25,8 +25,8 @@ struct Infographics: Codable {
     let nationEdited: String?
     let education: String?
     let educationEdited: String?
-    let ownedLanguages: [OwnedLanguage]
-    let ownedLanguagesEdited: [OwnedLanguage]
+    let ownedLanguages: [ModelWithIdAndName]
+    let ownedLanguagesEdited: [ModelWithIdAndName]
     let numberOfChildren: Int?
     let numberOfChildrenEdited: Int
     let klassName: String
