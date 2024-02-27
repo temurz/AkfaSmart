@@ -9,24 +9,49 @@
 
 import Foundation
 struct MarketingGraphicsViewModel {
-    
+    let useCase: MarketingGraphicsViewUseCaseType
 }
 
 extension MarketingGraphicsViewModel: ViewModel {
     struct Input {
-        
+        let requestMarketingGraphicsTrigger: Driver<Void>
+
     }
     
     final class Output: ObservableObject {
-        @Published var items = [
-            MarketingItemViewModel(title: "Офис ёки шоурумнинг мавжудлиги", value: "Офис мавжуд/шоурум йўқ"),
-            MarketingItemViewModel(title: "Рекламадан фойдаланадими", value: "Ижтимоий тармоқларда реклама бериб туради, Инстаграмда канали бор")
-        ]
-        
+        @Published var isLoading = false
+        @Published var alert = AlertMessage()
+        @Published var graphics: MarketingGraphics? = nil
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
+        let errorTracker = ErrorTracker()
+        let activityTracker = ActivityTracker(false)
         let output = Output()
+        
+        input.requestMarketingGraphicsTrigger
+            .map {
+                useCase.getMarketingGraphics()
+                    .trackError(errorTracker)
+                    .trackActivity(activityTracker)
+                    .asDriver()
+            }
+            .switchToLatest()
+            .sink(receiveValue: { marketingGraphics in
+                output.graphics = marketingGraphics
+            })
+            .store(in: cancelBag)
+        
+        errorTracker
+            .receive(on: RunLoop.main)
+            .map { AlertMessage(error: $0)}
+            .assign(to: \.alert, on: output)
+            .store(in: cancelBag)
+        
+        activityTracker
+            .receive(on: RunLoop.main)
+            .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
         
         return output
     }

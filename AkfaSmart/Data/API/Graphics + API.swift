@@ -7,6 +7,7 @@
 //
 
 import Foundation
+//InfoGraphics
 extension API {
     func getInfoGraphics(_ input: InfoGraphicsInput) -> Observable<Infographics> {
         return request(input)
@@ -19,7 +20,7 @@ extension API {
     }
 }
 
-
+//TechnoGraphics
 extension API {
     func getTechnoGraphics(_ input: TechnoGraphicsInput) -> Observable<TechnoGraphics> {
         return request(input)
@@ -32,6 +33,7 @@ extension API {
     }
 }
 
+//HRGraphics
 extension API {
     func getHRGraphics(_ input: HRGraphicsInput) -> Observable<HRGraphics> {
         request(input)
@@ -40,6 +42,20 @@ extension API {
     final class HRGraphicsInput: APIInput {
         init() {
             super.init(urlString: API.Urls.getHRGraphics, parameters: nil, method: .get, requireAccessToken: true)
+        }
+    }
+}
+
+
+//MarketingGraphics
+extension API {
+    func getMarketingGraphics(_ input: GetMarketingGraphicsInput) -> Observable<MarketingGraphics> {
+        request(input)
+    }
+    
+    final class GetMarketingGraphicsInput: APIInput {
+        init() {
+            super.init(urlString: API.Urls.getMarketingGraphics, parameters: nil, method: .get, requireAccessToken: true)
         }
     }
 }
