@@ -59,3 +59,16 @@ extension API {
         }
     }
 }
+
+
+extension API {
+    func getProductGraphics(_ input: GetProductGraphicsInput) -> Observable<ProductGraphics> {
+        request(input)
+    }
+    
+    final class GetProductGraphicsInput: APIInput {
+        init() {
+            super.init(urlString: API.Urls.getProductGraphics, parameters: nil, method: .get, requireAccessToken: true)
+        }
+    }
+}
