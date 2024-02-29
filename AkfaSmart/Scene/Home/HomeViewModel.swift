@@ -21,6 +21,7 @@ extension HomeViewModel: ViewModel {
         let getDealersTrigger: Driver<Void>
         let getMobileClassInfo: Driver<Void>
         let showAddDealerViewTrigger: Driver<Void>
+        let showClassDetailViewTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -108,6 +109,12 @@ extension HomeViewModel: ViewModel {
                     .store(in: cancelBag)
                 output.mobileClass = mobileClass
             })
+            .store(in: cancelBag)
+        
+        input.showClassDetailViewTrigger
+            .sink {
+                navigator.showClassDetailView()
+            }
             .store(in: cancelBag)
         
         activityTracker

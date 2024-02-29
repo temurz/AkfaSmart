@@ -103,8 +103,8 @@ struct InfographicsView: View {
 }
 
 struct ConverterToString {
-    static func getStringFrom(_ modelWithName: [ModelWithIdAndName]) -> String {
-        var array = modelWithName.map { $0.name ?? "" }
+    static func getStringFrom(_ modelsWithName: [ModelWithIdAndName]) -> String {
+        let array = modelsWithName.map { $0.name ?? "" }
         return array.joined(separator: ", ")
     }
     

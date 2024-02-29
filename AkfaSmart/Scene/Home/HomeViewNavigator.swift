@@ -9,9 +9,10 @@
 import UIKit
 protocol HomeViewNavigatorType {
     func showAddDealerView()
+    func showClassDetailView()
 }
 
-struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView {
+struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView, ShowingClassDetailView {
     var assembler: Assembler
     
     var navigationController: UINavigationController

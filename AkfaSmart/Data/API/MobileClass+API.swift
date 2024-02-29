@@ -22,7 +22,6 @@ extension API {
 
 extension API {
     func getUserClassImage(_ input: GetImageInput) -> Observable<Data> {
-//        requestImageAF()
         return requestImage(input)
     }
     
@@ -30,6 +29,18 @@ extension API {
         init(_ urlString: String) {
             
             super.init(urlString: urlString, parameters: nil, method: .get, requireAccessToken: true)
+        }
+    }
+}
+
+extension API {
+    func getUserClassDetail(_ input: GetUserClassDetailInput) -> Observable<[MobileClassDetail]> {
+        requestList(input)
+    }
+    
+    final class GetUserClassDetailInput: APIInput {
+        init() {
+            super.init(urlString: API.Urls.getMobileClassDetail, parameters: nil, method: .get, requireAccessToken: true)
         }
     }
 }

@@ -20,6 +20,7 @@ struct HomeView: View {
     private let getDealersTrigger = PassthroughSubject<Void,Never>()
     private let getMobileClassInfoTrigger = PassthroughSubject<Void,Never>()
     private let showAddDealerViewTrigger = PassthroughSubject<Void,Never>()
+    private let showClassDetailViewTrigger = PassthroughSubject<Void,Never>()
     
     
     let cancelBag = CancelBag()
@@ -83,7 +84,7 @@ struct HomeView: View {
                     UserClassView(model: $output.mobileClass,
                                   imageData: $output.mobileClassLogoData)
                     .onTapGesture {
-                        //TODO: 
+                        showClassDetailViewTrigger.send(())
                     }
                     .frame(height: 200)
                     Spacer()
@@ -102,7 +103,7 @@ struct HomeView: View {
         let input = HomeViewModel.Input(
             openPurchasesTrigger: openPurchasesTrigger.asDriver(),
             openPaymentsTrigger: openPaymentsTrigger.asDriver(), calculateTotalAmounts: calculateTotalAmounts.asDriver(), getDealersTrigger: getDealersTrigger.asDriver(), getMobileClassInfo: getMobileClassInfoTrigger.asDriver(),
-            showAddDealerViewTrigger: showAddDealerViewTrigger.asDriver())
+            showAddDealerViewTrigger: showAddDealerViewTrigger.asDriver(), showClassDetailViewTrigger: showClassDetailViewTrigger.asDriver())
         
         output = viewModel.transform(input, cancelBag: cancelBag)
     }
