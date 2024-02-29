@@ -45,7 +45,7 @@ struct ArticlesView: View {
                                 Button(action: {
             
         }, label: {
-            Image(systemName: "slider.horizontal.3")
+            Image("filter_icon")
                 .resizable()
                 .foregroundColor(Color.red)
         })
