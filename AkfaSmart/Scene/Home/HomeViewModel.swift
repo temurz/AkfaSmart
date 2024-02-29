@@ -113,7 +113,7 @@ extension HomeViewModel: ViewModel {
         
         input.showClassDetailViewTrigger
             .sink {
-                navigator.showClassDetailView()
+                navigator.showClassDetailView(imageData: output.mobileClassLogoData, title: output.mobileClass?.klassName)
             }
             .store(in: cancelBag)
         

@@ -10,15 +10,29 @@ import SwiftUI
 import Combine
 struct UserClassDetailView: View {
     @ObservedObject var output: ClassDetailViewModel.Output
+    var imageData: Data?
+    var classTitle: String?
     private let requestClassDetailsTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             ScrollView {
+                ZStack {
+                    Color(hex: "#E9E9E9")
+                        .frame(height: 7)
+                    Image(data: imageData ?? Data())?
+                        .resizable()
+                        .frame(width: 70, height: 70)
+                        .padding()
+                }
+               
+                Text(classTitle ?? "")
+                    .font(.title)
+                    
                 if !output.details.isEmpty {
                     ForEach(output.details, id: \.c1Id) { item in
                         ClassDetailViewRow(model: item)
-                            .padding()
+                            .padding(4)
                             .cornerRadius(12)
                     }
                 }
@@ -38,7 +52,9 @@ struct UserClassDetailView: View {
         }
     }
     
-    init(viewModel: ClassDetailViewModel) {
+    init(viewModel: ClassDetailViewModel, _ imageData: Data?, title: String?) {
+        self.imageData = imageData
+        self.classTitle = title
         let input = ClassDetailViewModel.Input(requestClassDetailsTrigger: requestClassDetailsTrigger.asDriver())
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

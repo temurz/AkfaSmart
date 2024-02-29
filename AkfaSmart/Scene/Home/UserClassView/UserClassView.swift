@@ -36,18 +36,18 @@ struct UserClassView: View {
                         .frame(width: 54, height: 54)
                 }
                 .padding()
-                Color.white
-                    .frame(height: 1)
-                HStack {
-                    Text("For the year: ")
-                        .font(.system(size: 15))
-                        .foregroundColor(Color(hex: "#858890"))
-                    Text("2000 kg")
-                        .font(.system(size: 20))
-                        .foregroundColor(Color(hex: "#858890"))
-                    Spacer()
-                }
-                .padding()
+//                Color.white
+//                    .frame(height: 1)
+//                HStack {
+//                    Text("For the year: ")
+//                        .font(.system(size: 15))
+//                        .foregroundColor(Color(hex: "#858890"))
+//                    Text("2000 kg")
+//                        .font(.system(size: 20))
+//                        .foregroundColor(Color(hex: "#858890"))
+//                    Spacer()
+//                }
+//                .padding()
             }
             .background(model?.backgroundColor != nil ? Color(hex: model?.backgroundColor ?? "") : Color.white)
             

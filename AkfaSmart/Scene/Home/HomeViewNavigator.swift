@@ -9,7 +9,7 @@
 import UIKit
 protocol HomeViewNavigatorType {
     func showAddDealerView()
-    func showClassDetailView()
+    func showClassDetailView(imageData: Data?, title: String?)
 }
 
 struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView, ShowingClassDetailView {

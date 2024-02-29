@@ -8,14 +8,14 @@
 
 import UIKit
 protocol ClassDetailViewAssembler {
-    func resolve() -> UserClassDetailView
+    func resolve(imageData: Data?, title: String?) -> UserClassDetailView
     func resolve() -> ClassDetailViewModel
     func resolve() -> ClassDetailViewUseCaseType
 }
 
 extension ClassDetailViewAssembler {
-    func resolve() -> UserClassDetailView {
-        return UserClassDetailView(viewModel: resolve())
+    func resolve(imageData: Data?, title: String?) -> UserClassDetailView {
+        return UserClassDetailView(viewModel: resolve(), imageData, title: title)
     }
     
     func resolve() -> ClassDetailViewModel {

@@ -115,4 +115,12 @@ struct ConverterToString {
             return "No"
         }
     }
+    
+    static func minMaxText(min: Double, max: Double) -> String {
+        if min == 0 {
+            return "eng kamida \(max)"
+        }else {
+            return "eng ko'pi \(min)"
+        }
+    }
 }

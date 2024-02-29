@@ -86,7 +86,7 @@ struct HomeView: View {
                     .onTapGesture {
                         showClassDetailViewTrigger.send(())
                     }
-                    .frame(height: 200)
+                    .frame(height: 160)
                     Spacer()
                         .frame(height: 16)
                 }
