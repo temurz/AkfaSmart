@@ -117,6 +117,12 @@ extension HomeViewModel: ViewModel {
             }
             .store(in: cancelBag)
         
+        input.openPurchasesTrigger
+            .sink {_ in 
+                navigator.showPurchasesHistoryView()
+            }
+            .store(in: cancelBag)
+        
         activityTracker
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)

@@ -53,10 +53,16 @@ extension API {
         
         static let getHRGraphics = Base.BASE_URL + "/api/mobile/HRgraphic"
         
-        
         static let getMarketingGraphics = Base.BASE_URL + "/api/mobile/marketing"
         static let getProductGraphics = Base.BASE_URL + "/api/mobile/productgraphic"
         
+        //Invoice
+        static let getInvoiceList = Base.BASE_URL + "/api/mobile/invoice/list"
+        static let getInvoiceListById = Base.BASE_URL + "/api/mobile/invoice/items"
+        
+        //Receipt
+        static let getReceiptList = Base.BASE_URL + "/api/mobile/payment_receipt/list"
+
         
     }
 }

@@ -27,7 +27,8 @@ protocol Assembler: AnyObject,
     ForgotPasswordAssembler,
     ResetPasswordAssembler,
     AddDealerAssembler,
-    ClassDetailViewAssembler
+    ClassDetailViewAssembler,
+    PurchaseHistoryAssembler
 {
     
 }

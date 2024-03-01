@@ -27,6 +27,11 @@ struct ArticlesView: View {
                             showDetailViewTrigger.send(article)
                         }) {
                             ArticleRow(itemModel: article)
+                                .onAppear {
+                                    if output.articles.last?.id ?? -1 == article.id {
+                                        self.loadMoreArticlesTrigger.send(())
+                                    }
+                                }
                         }
                         .listRowSeparator(.hidden)
                     }
