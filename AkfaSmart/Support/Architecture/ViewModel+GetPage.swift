@@ -215,7 +215,7 @@ public extension ViewModel {
             .map { triggerInput -> AnyPublisher<PagingInfo<Item>, Never> in
                 let page = input.pageSubject.value.page
                 
-                return input.loadMoreItems(triggerInput, page + 1)
+                return input.loadMoreItems(triggerInput, page + 10)
                     .trackError(input.errorTracker)
                     .trackActivity(loadingMoreActivityTracker)
                     .catch { _ in Empty() }
