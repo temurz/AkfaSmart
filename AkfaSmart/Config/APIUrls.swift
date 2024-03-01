@@ -63,6 +63,9 @@ extension API {
         //Receipt
         static let getReceiptList = Base.BASE_URL + "/api/mobile/payment_receipt/list"
 
-        
+        //Products
+        static let getProductsList = Base.BASE_URL + "/api/mobile/product/list"
+        static let getProductsListByNameAndLocation = Base.BASE_URL + "/api/mobile/product/listByProductName"
+
     }
 }

@@ -20,7 +20,7 @@ protocol Assembler: AnyObject,
     ArticlesAssembler,
     SettingsAssembler,
     HomeViewAssembler,
-    CreateOrderAssembler,
+    SearchProductViewAssembler,
     AddDealerAssembler,
     WelcomeViewAssembler,
     SplashViewAssembler,
@@ -28,7 +28,8 @@ protocol Assembler: AnyObject,
     ResetPasswordAssembler,
     AddDealerAssembler,
     ClassDetailViewAssembler,
-    PurchaseHistoryAssembler
+    PurchaseHistoryAssembler,
+    ProductDealersListViewAssembler
 {
     
 }

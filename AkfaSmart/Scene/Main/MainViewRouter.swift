@@ -24,7 +24,7 @@ class MainViewRouter: ViewRouter {
     
     var pages: [TabBarItem] = [TabBarItem(imageName: "house", title: "Home", id: MainPage.home.rawValue),
                                TabBarItem(imageName: "square.stack.3d.up", title: "Catalogs", id: MainPage.catalog.rawValue),
-                               TabBarItem(imageName: "plus.app", title: "Create order", id: MainPage.add.rawValue),
+                               TabBarItem(imageName: "plus.app", title: "Search", id: MainPage.add.rawValue),
                                TabBarItem(imageName: "doc.plaintext", title: "News", id: MainPage.news.rawValue),
                                TabBarItem(imageName: "gearshape", title: "Settings", id: MainPage.settings.rawValue)]
     
@@ -44,7 +44,7 @@ class MainViewRouter: ViewRouter {
             body = AnyView(view)
             break
         case MainPage.add.rawValue:
-            let view: CreateOrderView = assembler.resolve(navigationController: navigationController)
+            let view: SearchProductView = assembler.resolve(navigationController: navigationController)
             body = AnyView(view)
         case MainPage.news.rawValue:
             let view: NewsView = assembler.resolve(navigationController: navigationController)

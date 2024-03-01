@@ -1,28 +1,21 @@
 //
-//  PurchaseHistoryViewModel.swift
+//  ProductDealerListViewModel.swift
 //  AkfaSmart
 //
-//  Created by Temur on 29/02/2024.
+//  Created by Temur on 01/03/2024.
 //  Copyright © 2024 Tuan Truong. All rights reserved.
 //
 
 import Foundation
-enum PurchaseHistoryType: String {
-    case income = "RASXOD_KLIENT"
-    case returnType = "VOZVRAT_KLIENT"
+struct ProductDealersListViewModel {
+    let useCase: ProductDealersListViewUseCaseType
 }
 
-struct PurchaseHistoryViewModel {
-    let navigator: PurchaseHistoryViewNavigatorType
-    let useCase: PurchaseHistoryViewUseCaseType
-}
-
-extension PurchaseHistoryViewModel: ViewModel {
+extension ProductDealersListViewModel: ViewModel {
     struct Input {
-        let loadPurchaseHistoryIncome: Driver<InvoiceInput>
-        let reloadPurchaseHistoryIncome: Driver<InvoiceInput>
-        let loadMorePurchaseHistoryIncome: Driver<InvoiceInput>
-        let showFilterViewTrigger: Driver<Void>
+        let loadProductDealersTrigger: Driver<ProductDealersListInput>
+        let reloadProductDealersTrigger: Driver<ProductDealersListInput>
+        let loadMoreProductDealersTrigger: Driver<ProductDealersListInput>
     }
     
     final class Output: ObservableObject {
@@ -30,18 +23,16 @@ extension PurchaseHistoryViewModel: ViewModel {
         @Published var isReloading = false
         @Published var isLoadingMore = false
         @Published var alert = AlertMessage()
-        @Published var items = [Invoice]()
-        @Published var type: PurchaseHistoryType = .income
+        @Published var items = [ProductDealerWithLocation]()
         @Published var hasMorePages = false
-        @Published var dateFilter = DateFilter()
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
         let output = Output()
         
-        let getIncomePageInfo = GetPageInput(loadTrigger: input.loadPurchaseHistoryIncome, reloadTrigger: input.reloadPurchaseHistoryIncome, loadMoreTrigger: input.loadMorePurchaseHistoryIncome, getItems: useCase.getInvoiceList)
+        let getPageInfo = GetPageInput(loadTrigger: input.loadProductDealersTrigger, reloadTrigger: input.reloadProductDealersTrigger, loadMoreTrigger: input.loadMoreProductDealersTrigger, getItems: useCase.getProductDealers)
         
-        let (page,error,isLoading,isReloading,isLoadingMore) = getPage(input: getIncomePageInfo).destructured
+        let (page,error,isLoading,isReloading,isLoadingMore) = getPage(input: getPageInfo).destructured
         
         page
             .handleEvents(receiveOutput:{
@@ -69,11 +60,6 @@ extension PurchaseHistoryViewModel: ViewModel {
         isLoadingMore
             .assign(to: \.isLoadingMore, on: output)
             .store(in: cancelBag)
-        
-        input.showFilterViewTrigger.sink {
-            navigator.showDateFilterView(output.dateFilter)
-        }
-        .store(in: cancelBag)
         
         return output
     }

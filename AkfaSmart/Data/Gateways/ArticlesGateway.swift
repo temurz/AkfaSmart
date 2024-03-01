@@ -19,8 +19,7 @@ struct ArticlesGateway: ArticlesGatewayType {
                 return output.rows
             }
             .replaceNil(with: [])
-            .map { PagingInfo(page: dto.page, items: $0) }
-            .eraseToAnyPublisher()
+            .map { PagingInfo(page: dto.page, items: $0, hasMorePages: $0.count == dto.perPage) }
             .eraseToAnyPublisher()
     }
 }

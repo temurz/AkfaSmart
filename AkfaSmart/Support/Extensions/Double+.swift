@@ -21,4 +21,13 @@ extension Double {
             return String(format: "%.0f", self)
         }
     }
+    
+    func convertDecimals() -> String {
+        var numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 0;
+
+        let result = numberFormatter.string(from: self as NSNumber)
+        return result ?? ""
+    }
 }
