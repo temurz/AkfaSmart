@@ -8,21 +8,6 @@
 
 import Foundation
 extension Date {
-    func convertToDateUS() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Set the locale to avoid any potential issues with different locales.
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX" // Input format
-
-        return dateFormatter.string(from: self)
-    }
-    
-    func convertToDateUSNew() -> String {
-        let dateFormatter = ISO8601DateFormatter()
-
-        dateFormatter.formatOptions = [.withFullDate, .withFullTime, .withTimeZone, .withDashSeparatorInDate, .withColonSeparatorInTime]
-        return dateFormatter.string(from: self)
-    }
-    
     func toApiFormat()->String {
         
         // Create Date Formatter
@@ -41,7 +26,7 @@ extension Date {
         let dateFormatter = DateFormatter()
 
         // Set Date Format
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "dd.MM.yyyy"
 
         // Convert Date to String
         return dateFormatter.string(from: self)

@@ -15,8 +15,8 @@ extension API {
     final class GetInvoiceListInput: APIInput {
         init(input: InvoiceInput, dto: GetPageDto) {
             let params: Parameters = [
-                "from": input.from?.convertToDateUSNew() ?? "",
-                "to": input.to?.convertToDateUSNew() ?? "",
+                "from": input.from?.toShortFormat() ?? "",
+                "to": input.to?.toShortFormat() ?? "",
                 "type": input.type,
                 "length": dto.perPage,
                 "start": dto.page
