@@ -60,11 +60,14 @@ struct PurchaseHistoryView: View {
                         .listRowSeparator(.hidden)
                     }
                 }
-                .listStyle(.plain)
                 .pullToRefresh(isShowing: $output.isReloading) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        output.isReloading = false
+                    }
                     output.items = []
                     self.reloadIncome.send(InvoiceInput(from: output.dateFilter.from, to: output.dateFilter.to, type: output.type.rawValue))
                 }
+                .listStyle(.plain)
             }
         }
         .navigationTitle("Purchase history")
