@@ -28,7 +28,7 @@ struct ArticlesView: View {
                         }) {
                             ArticleRow(itemModel: article)
                                 .onAppear {
-                                    if output.articles.last?.id ?? -1 == article.id {
+                                    if output.articles.last?.id ?? -1 == article.id && output.hasMorePages {
                                         self.loadMoreArticlesTrigger.send(())
                                     }
                                 }

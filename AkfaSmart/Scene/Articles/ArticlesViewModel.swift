@@ -28,6 +28,8 @@ extension ArticlesViewModel: ViewModel {
         @Published var isLoadingMore = false
         @Published var alert = AlertMessage()
         @Published var isEmpty = false
+        @Published var hasMorePages = false
+
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -47,6 +49,9 @@ extension ArticlesViewModel: ViewModel {
         let (pages, error, isReloading, isLoading, isLoadingMore) = getPage(input: getPageInput).destructured
         
         pages
+            .handleEvents(receiveOutput: { pagingInfo in
+                output.hasMorePages = pagingInfo.hasMorePages
+            })
             .map { $0.items }
             .assign(to: \.articles, on: output)
             .store(in: cancelBag)
