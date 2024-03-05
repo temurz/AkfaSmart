@@ -29,6 +29,7 @@ extension HomeViewModel: ViewModel {
         @Published var totalOfMonth = 0.0
         @Published var totalOfYear = 0.0
         @Published var isLoading = false
+        @Published var alert = AlertMessage()
         @Published var hasDealers = false
         @Published var items: [Dealer] = []
         @Published var mobileClass: MobileClass? = nil
@@ -121,6 +122,12 @@ extension HomeViewModel: ViewModel {
             .sink {_ in 
                 navigator.showPurchasesHistoryView()
             }
+            .store(in: cancelBag)
+        
+        errorTracker
+            .receive(on: RunLoop.main)
+            .map { AlertMessage(error: $0 ) }
+            .assign(to: \.alert, on: output)
             .store(in: cancelBag)
         
         activityTracker

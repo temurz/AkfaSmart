@@ -12,6 +12,7 @@ protocol SettingsAssembler {
     func resolve(navigationController: UINavigationController) -> SettingsViewModel
     func resolve(navigationController: UINavigationController) -> SettingsNavigatorType
     func resolve() -> SettingsUseCaseType
+    func resolve() -> ImageDownloaderUseCaseType
 }
 
 extension SettingsAssembler {
@@ -19,7 +20,7 @@ extension SettingsAssembler {
         return SettingsView(viewModel: resolve(navigationController: navigationController))
     }
     func resolve(navigationController: UINavigationController) -> SettingsViewModel {
-        return SettingsViewModel(navigator: resolve(navigationController: navigationController), useCase: resolve())
+        return SettingsViewModel(navigator: resolve(navigationController: navigationController), useCase: resolve(), downloadImageUseCase: resolve())
     }
 }
 
@@ -28,7 +29,11 @@ extension SettingsAssembler where Self: DefaultAssembler {
         return SettingsNavigator(assembler: self, navigationController: navigationController)
     }
     func resolve() -> SettingsUseCaseType {
-        return SettingsUseCase()
+        return SettingsUseCase(gateway: resolve())
+    }
+    
+    func resolve() -> ImageDownloaderUseCaseType {
+        return ImageDownloaderUseCase(gateway: resolve())
     }
 }
 
@@ -37,6 +42,10 @@ extension SettingsAssembler where Self: PreviewAssembler {
         return SettingsNavigator(assembler: self, navigationController: navigationController)
     }
     func resolve() -> SettingsUseCaseType {
-        return SettingsUseCase()
+        return SettingsUseCase(gateway: resolve())
+    }
+    
+    func resolve() -> ImageDownloaderUseCaseType {
+        return ImageDownloaderUseCase(gateway: resolve())
     }
 }

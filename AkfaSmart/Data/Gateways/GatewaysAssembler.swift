@@ -87,6 +87,15 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> ProductDealersListGatewayType {
         return ProductDealersListGateway()
     }
+    
+    func resolve() -> UserInfoGatewayType {
+        return UserInfoGateway()
+    }
+    
+    func resolve() -> ImageDownloaderGatewayType {
+        return ImageDownloaderGateway()
+    }
+    
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -159,5 +168,13 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> ProductDealersListGatewayType {
         return ProductDealersListGateway()
+    }
+    
+    func resolve() -> UserInfoGatewayType {
+        return UserInfoGateway()
+    }
+    
+    func resolve() -> ImageDownloaderGatewayType {
+        return ImageDownloaderGateway()
     }
 }

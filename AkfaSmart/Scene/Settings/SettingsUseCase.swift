@@ -8,9 +8,10 @@
 
 import Foundation
 protocol SettingsUseCaseType {
-    
+    func getGeneralUserInfo() -> Observable<GeneralUser>
+    func setAvatarImage(data: Data) -> Observable<Bool>
 }
 
-struct SettingsUseCase: SettingsUseCaseType {
-    
+struct SettingsUseCase: SettingsUseCaseType, GettingUserInfoDomainUseCase {
+    var gateway: UserInfoGatewayType
 }

@@ -11,65 +11,166 @@ import Combine
 import PhotosUI
 struct SettingsView: View {
     @ObservedObject var output: SettingsViewModel.Output
-    private let editAvatarImageTrigger = PassthroughSubject<Void, Never>()
+    private let uploadAvatarImageTrigger = PassthroughSubject<Void, Never>()
     private let getGeneralUserInfoTrigger = PassthroughSubject<Void,Never>()
+    
     private let selectRowTrigger = PassthroughSubject<Int,Never>()
     private let deleteAccountTrigger = PassthroughSubject<Void, Never>()
+    private let cancelBag = CancelBag()
     
-    
-    let cancelBag = CancelBag()
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                headerView
-                    .padding()
-                
-                Color(hex: "#E2E5ED").frame(height: 4)
-                ForEach(output.items[0]) { item in
-                    SettingsRowView(viewModel: item)
-                        .onTapGesture {
-                            selectRowTrigger.send(item.id)
+        return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
+            ZStack {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        headerView
+                            .padding()
+                        
+                        Color(hex: "#E2E5ED").frame(height: 4)
+                        ForEach(output.items[0]) { item in
+                            SettingsRowView(viewModel: item)
+                                .onTapGesture {
+                                    selectRowTrigger.send(item.id)
+                                }
                         }
-                }
-                    
-                Color(hex: "#E2E5ED").frame(height: 4)
-                ForEach(output.items[1]) { item in
-                    SettingsRowView(viewModel: item)
-                        .onTapGesture {
-                            selectRowTrigger.send(item.id)
+                        
+                        Color(hex: "#E2E5ED").frame(height: 4)
+                        ForEach(output.items[1]) { item in
+                            SettingsRowView(viewModel: item)
+                                .onTapGesture {
+                                    selectRowTrigger.send(item.id)
+                                }
+                            Divider()
                         }
-                    Divider()
+                        
+                        Button("Delete account") {
+                            deleteAccountTrigger.send(())
+                        }
+                        .foregroundColor(Color.red)
+                        .font(.bold(.headline)())
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 14)
+                                .stroke(Color.red, lineWidth: 1.5)
+                        }
+                        .padding(24)
+                    }
                 }
-                
-                Button("Delete account") {
-                    deleteAccountTrigger.send(())
+                if output.showImageSourceSelector {
+                    ZStack {
+                        Color.black.opacity(0.6).ignoresSafeArea(.all)
+                        VStack(spacing: 0) {
+                            Spacer()
+                            Button {
+                                if !PickerImage.checkPermissions(.library) {
+                                    return
+                                }
+                                output.imageChooserType = .library
+                                output.showImagePicker = true
+                            } label: {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "folder.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 24, height: 24)
+                                        .foregroundColor(Color(hex: "#51526C"))
+                                    Text("Use gallery")
+                                        .bold()
+                                        .foregroundColor(Color(hex: "#51526C"))
+                                }
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 40)
+                                .background(Color(hex: "#DFE3EB"))
+                                .cornerRadius(12)
+                                .padding()
+                            }
+                            
+                            Button {
+                                if !PickerImage.checkPermissions(.camera) {
+                                    print("There is no camera on this device")
+                                    return
+                                }
+                                output.imageChooserType = .camera
+                                output.showImagePicker = true
+                            } label: {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "camera.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 24, height: 24)
+                                        .foregroundColor(Color(hex: "#51526C"))
+                                    Text("Use camera")
+                                        .bold()
+                                        .foregroundColor(Color(hex: "#51526C"))
+                                }
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 40)
+                                .background(Color(hex: "#DFE3EB"))
+                                .cornerRadius(12)
+                                .padding()
+                            }
+                            
+                            Button {
+                                output.showImageSourceSelector = false
+                            } label: {
+                                Text("Close")
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 40)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.red)
+                                    .cornerRadius(12)
+                                    .padding()
+                            }
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 240)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .padding(.horizontal)
+                    }
                 }
-                .foregroundColor(Color.red)
-                .font(.bold(.headline)())
-                .frame(maxWidth: .infinity)
-                .frame(height: 50)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 14)
-                        .stroke(Color.red, lineWidth: 1.5)
+            }
+            .navigationTitle("Settings")
+            .navigationBarHidden(false)
+            .alert(isPresented: $output.alert.isShowing) {
+                Alert(
+                    title: Text(output.alert.title),
+                    message: Text(output.alert.message),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
+            .onAppear {
+                getGeneralUserInfoTrigger.send(())
+            }
+            .sheet(isPresented: $output.showImagePicker) {
+                ImagePicker(sourceType: output.imageChooserType == .library ? .photoLibrary : .camera, selectedImage: $output.imageData) {
+                    uploadAvatarImageTrigger.send(())
+                    output.showImageSourceSelector = false
                 }
-                .padding(24)
+                    .ignoresSafeArea()
             }
         }
-        .navigationTitle("Settings")
-        .navigationBarHidden(false)
     }
     
     init(viewModel: SettingsViewModel) {
-        let input = SettingsViewModel.Input(selectRowTrigger: selectRowTrigger.asDriver(), deleteAccountTrigger: deleteAccountTrigger.asDriver())
+        let input = SettingsViewModel.Input(
+            selectRowTrigger: selectRowTrigger.asDriver(),
+            deleteAccountTrigger: deleteAccountTrigger.asDriver(),
+            loadUserInfoTrigger: getGeneralUserInfoTrigger.asDriver(),
+            uploadAvatarImageTrigger: uploadAvatarImageTrigger.asDriver())
         output = viewModel.transform(input, cancelBag: cancelBag)
     }
     
     var headerView: some View {
         HStack {
             ZStack {
-                if output.user != nil, let url = output.user?.imageUrl {
-                    EmptyView()
+                if output.imageData != nil, let data = output.imageData {
+                    Image(data: data)?
+                        .resizable()
                         .frame(width: 80, height: 80)
+                        .cornerRadius(8)
                 }else {
                     Image("avatar")
                         .resizable()
@@ -80,7 +181,7 @@ struct SettingsView: View {
                 VStack {
                     Spacer()
                     Button {
-                        
+                        output.showImageSourceSelector.toggle()
                     } label: {
                         Image("pen")
                             .resizable()
@@ -96,22 +197,16 @@ struct SettingsView: View {
             .frame(height: 94)
             
             VStack(alignment: .leading) {
-                Text("\(output.user?.firstName ?? "") + \(output.user?.middleName ?? "") + \(output.user?.lastName ?? "")")
+                Text("\(output.user?.firstName ?? "") \(output.user?.middleName ?? "") \(output.user?.lastName ?? "")")
                     .font(.headline)
-                Text(output.user?.username ?? "")
+                Text(output.user?.username?.formatPhoneNumber() ?? "")
                     .font(.footnote)
                     .foregroundColor(.red)
                 Spacer()
-//                Text("Identified")
-//                    .foregroundColor(.white)
-//                    .font(.footnote)
-//                    .padding(.horizontal, 6)
-//                    .padding(.vertical, 2)
-//                    .background(Color(hex: "#5DB075"))
-//                    .cornerRadius(12.5)
             }
             .frame(height: 80)
             .padding(.horizontal)
+            
         }
     }
 }
