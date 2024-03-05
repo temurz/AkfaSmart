@@ -23,8 +23,8 @@ struct HasDealerAndLocation: Decodable {
     let firstName: String?
     let lastName: String?
     let middleName: String?
-    let hasDealer: Bool
-    let hasLocation: Bool
+    let hasDealer: Bool?
+    let hasLocation: Bool?
 }
 
 

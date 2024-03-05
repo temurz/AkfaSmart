@@ -27,22 +27,32 @@ struct HRgraphicsView: View {
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Number of employees",
-                                value: "\(hrGraphics.numberOfEmployees ?? 0) \r\n\(hrGraphics.aboutEmployees ?? "")",
-                                editedValue: "\(hrGraphics.numberOfEmployeesEdited)")
+                                value: ConverterToString.getAmount(from: hrGraphics.numberOfEmployees),
+                                editedValue: ConverterToString.getAmount(from: hrGraphics.numberOfEmployeesEdited)
+                            )
+                        )
+                        InfoViewRow(
+                            viewModel: InfoItemViewModel(
+                                title: "About employees",
+                                value: "\(hrGraphics.aboutEmployees ?? "")",
+                                editedValue: "\(hrGraphics.aboutEmployeesEdited ?? "")"
+                            )
                         )
                         
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Is there a seller",
                                 value: "\(ConverterToString.getYesOrNoString(hrGraphics.hasSeller))",
-                                editedValue: "\(ConverterToString.getYesOrNoString(hrGraphics.hasSellerEdited))")
+                                editedValue: "\(ConverterToString.getYesOrNoString(hrGraphics.hasSellerEdited))"
+                            )
                         )
                         
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Is there an accountant",
                                 value: "\(ConverterToString.getYesOrNoString(hrGraphics.hasAccountant))",
-                                editedValue: "\(ConverterToString.getYesOrNoString(hrGraphics.hasAccountantEdited))")
+                                editedValue: "\(ConverterToString.getYesOrNoString(hrGraphics.hasAccountantEdited))"
+                            )
                         )
                     }
                 }

@@ -22,7 +22,7 @@ struct GetDealersGateway: GetDealersGatewayType {
         let input = API.HasDealerCheckInput()
         return API.shared.hasADealer(input)
             .tryMap { hasDealerAndLocation in
-                return hasDealerAndLocation.hasDealer ? true : false
+                return hasDealerAndLocation.hasDealer ?? false ? true : false
             }
             .eraseToAnyPublisher()
     }

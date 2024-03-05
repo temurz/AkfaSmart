@@ -62,4 +62,12 @@ struct ConverterToString {
             return ""
         }
     }
+    
+    static func getAmount(from amount: Int?) -> String {
+        if let amount {
+            return amount > 0 ? "\(amount)" : ""
+        }else {
+            return ""
+        }
+    }
 }
