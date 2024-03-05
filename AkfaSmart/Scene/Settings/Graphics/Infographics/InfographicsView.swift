@@ -27,9 +27,9 @@ struct InfographicsView: View {
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "FIO",
-                                value: "\(info.firstName ?? "") \(info.middleName ?? "") \(info.lastName ?? "")",
-                                editedValue: "\(info.firstNameEdited ?? "") \(info.middleNameEdited ?? "") \(info.lastNameEdited ?? "")")
-                        )
+                                value: ConverterToString.createFullName(from: [info.firstName, info.middleName, info.lastName]),
+                                editedValue: ConverterToString.createFullName(from: [info.firstNameEdited, info.middleNameEdited, info.lastNameEdited], isEdited: true))
+                            )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Birth date",
@@ -39,8 +39,8 @@ struct InfographicsView: View {
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Address",
-                                value: "\(info.region.parentName ?? "") \(info.region.name ?? "")",
-                                editedValue: "\(info.regionEdited.parentName ?? "") \(info.regionEdited.name ?? "")")
+                                value: ConverterToString.createFullName(from: [info.region.parentName, info.region.name]),
+                                editedValue: ConverterToString.createFullName(from: [info.regionEdited.parentName, info.regionEdited.name], isEdited: true))
                         )
                         
                         InfoViewRow(
@@ -59,17 +59,16 @@ struct InfographicsView: View {
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Family",
-                                value: "\((info.isMarried ?? false) ? "Married" : "Single") \((info.numberOfChildren ?? 0) != 0 ? "Has \(info.numberOfChildren!) children" : "")",
-                                editedValue: "\((info.isMarriedEdited ?? false) ? "Married" : "Single") \(info.numberOfChildrenEdited != 0 ? "Has \(info.numberOfChildrenEdited) children" : "")")
+                                value: "\(ConverterToString.getMarriedStatus(bool: info.isMarried)) \((info.numberOfChildren ?? 0) != 0 ? "Has \(info.numberOfChildren!) children" : "")",
+                                editedValue: "\(ConverterToString.getMarriedStatus(bool: info.isMarried, isEdited: true)) \((info.numberOfChildrenEdited ?? 0) != 0 ? "Has \(info.numberOfChildrenEdited ?? 0) children" : "")")
                         )
                         
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Foreign Languages",
                                 value: "\(ConverterToString.getStringFrom( info.ownedLanguages))",
-                                editedValue: "\(ConverterToString.getStringFrom( info.ownedLanguagesEdited))")
+                                editedValue: "\(ConverterToString.getStringFrom( info.ownedLanguagesEdited, isEdited: true))")
                         )
-                        
                     }
                 }
                 .padding(.horizontal)
@@ -102,25 +101,3 @@ struct InfographicsView: View {
     }
 }
 
-struct ConverterToString {
-    static func getStringFrom(_ modelsWithName: [ModelWithIdAndName]) -> String {
-        let array = modelsWithName.map { $0.name ?? "" }
-        return array.joined(separator: ", ")
-    }
-    
-    static func getYesOrNoString(_ bool: Bool?) -> String {
-        if (bool ?? false) {
-            return "Yes"
-        }else {
-            return "No"
-        }
-    }
-    
-    static func minMaxText(min: Double, max: Double) -> String {
-        if min == 0 {
-            return "eng kamida \(max)"
-        }else {
-            return "eng ko'pi \(min)"
-        }
-    }
-}

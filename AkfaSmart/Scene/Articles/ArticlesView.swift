@@ -29,18 +29,26 @@ struct ArticlesView: View {
                             ArticleRow(itemModel: article)
                                 .onAppear {
                                     if output.articles.last?.id ?? -1 == article.id && output.hasMorePages {
+                                        output.isLoadingMore = true
                                         self.loadMoreArticlesTrigger.send(())
                                     }
                                 }
                         }
                         .listRowSeparator(.hidden)
                     }
+                    if output.isLoadingMore {
+                        HStack {
+                            Spacer()
+                            ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
+                            Spacer()
+                        }
+                        .listRowSeparator(.hidden)
+                    }
                 }
                 .listStyle(.plain)
                 .pullToRefresh(isShowing: self.$output.isReloading) {
-                    
+                    self.reloadArticlesTrigger.send(())
                 }
-                
             }
             .padding(.top)
         }
@@ -63,7 +71,11 @@ struct ArticlesView: View {
             )
         }
         .onAppear {
-            loadArticlesTrigger.send(())
+            if output.isFirstLoad {
+                output.isFirstLoad = false
+                loadArticlesTrigger.send(())
+            }
+            
         }
     }
     

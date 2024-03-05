@@ -9,13 +9,13 @@
 import Foundation
 struct HRGraphics: Codable {
     let aboutEmployees: String?
-    let aboutEmployeesEdited: String
+    let aboutEmployeesEdited: String?
     let hasAccountant: Bool?
-    let hasAccountantEdited: Bool
+    let hasAccountantEdited: Bool?
     let hasSeller: Bool?
-    let hasSellerEdited: Bool
+    let hasSellerEdited: Bool?
     let numberOfEmployees: Int?
-    let numberOfEmployeesEdited: Int
+    let numberOfEmployeesEdited: Int?
     let userAttendantTrainings: [ModelWithIdAndName]
     let userAttendantTrainingsEdited: [ModelWithIdAndName]
 }

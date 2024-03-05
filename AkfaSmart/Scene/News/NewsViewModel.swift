@@ -23,11 +23,13 @@ extension NewsViewModel: ViewModel {
     
     final class Output: ObservableObject {
         @Published var news = [NewsItemViewModel]()
+        @Published var isFirstLoad = true
         @Published var isLoading = false
         @Published var isReloading = false
         @Published var isLoadingMore = false
         @Published var alert = AlertMessage()
         @Published var isEmpty = false
+        @Published var hasMorePages = false
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -44,6 +46,9 @@ extension NewsViewModel: ViewModel {
         let (page, error, isLoading, isReloading, isLoadingMore) = getPage(input: getPageInput).destructured
         
         page
+            .handleEvents(receiveOutput: { pagingInfo in
+                output.hasMorePages = pagingInfo.hasMorePages
+            })
             .map { $0.items.map { NewsItemViewModel(id: $0.id, date: $0.date, title: $0.title, shortContent: $0.shortContent, htmlContent: $0.htmlContent, imageUrl: $0.imageUrl)} }
             .assign(to: \.news, on: output)
             .store(in: cancelBag)

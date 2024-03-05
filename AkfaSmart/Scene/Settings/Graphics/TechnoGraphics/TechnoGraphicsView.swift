@@ -29,13 +29,13 @@ struct TechnoGraphicsView: View {
                             viewModel: InfoItemViewModel(
                                 title: "Area of factory",
                                 value: "\(techno.area ?? 0) sq.m.",
-                                editedValue: "\(techno.areaEdited) sq.m.")
+                                editedValue: "\(techno.areaEdited ?? 0) sq.m.")
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Glass factory (exists/no)",
                                 value: "\((techno.hasGlassWorkshop ?? false) ? "Yes" : "No")",
-                                editedValue: "\(techno.hasGlassWorkshopEdited ? "Yes" : "No")")
+                                editedValue: "\(techno.hasGlassWorkshopEdited ?? false ? "Yes" : "No")")
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(

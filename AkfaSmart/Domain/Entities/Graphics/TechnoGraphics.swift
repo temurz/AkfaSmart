@@ -10,13 +10,13 @@ import Foundation
 
 struct TechnoGraphics: Codable {
     let longitude: Double?
-    let longitudeEdited: Double
+    let longitudeEdited: Double?
     let latitude: Double?
-    let latitudeEdited: Double
+    let latitudeEdited: Double?
     let area: Double?
-    let areaEdited: Double
+    let areaEdited: Double?
     let hasGlassWorkshop: Bool?
-    let hasGlassWorkshopEdited: Bool
+    let hasGlassWorkshopEdited: Bool?
     let tools: [ModelWithIdAndName]
     let toolsEdited: [ModelWithIdAndName]
     let workWithSeries: [ModelWithIdAndName]

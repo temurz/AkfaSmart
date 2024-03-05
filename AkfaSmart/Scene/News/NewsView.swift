@@ -26,13 +26,28 @@ struct NewsView: View {
                             self.selectNewsTrigger.send(news)
                         }) {
                                 NewsTableRow(item: news)
+                                .onAppear {
+                                    if output.news.last?.id ?? -1 == news.id && output.hasMorePages {
+                                        output.isLoadingMore = true
+                                        self.loadMoreTrigger.send(())
+                                    }
+                                }
+                        }
+                        .listRowSeparator(.hidden)
+                    }
+                    
+                    if output.isLoadingMore {
+                        HStack {
+                            Spacer()
+                            ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
+                            Spacer()
                         }
                         .listRowSeparator(.hidden)
                     }
                 }
                 .listStyle(.plain)
                 .pullToRefresh(isShowing: self.$output.isReloading) {
-                    
+                    self.reloadNewsTrigger.send(())
                 }
                 
             }
@@ -40,6 +55,9 @@ struct NewsView: View {
         }
         .navigationTitle("News")
         .navigationBarHidden(false)
+        .pullToRefresh(isShowing: $output.isReloading, onRefresh: {
+            self.reloadNewsTrigger.send(())
+        })
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
                 title: Text(output.alert.title),
@@ -48,7 +66,10 @@ struct NewsView: View {
             )
         }
         .onAppear(perform: {
-            loadNewsTrigger.send(())
+            if output.isFirstLoad {
+                loadNewsTrigger.send(())
+                output.isFirstLoad = false
+            }
         })
 
     }
