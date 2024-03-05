@@ -54,4 +54,12 @@ struct ConverterToString {
             return ""
         }
     }
+    
+    static func getArea(area: Double?) -> String {
+        if let area {
+            return area > 0 ? "\(area)" + " sq.km" : ""
+        }else {
+            return ""
+        }
+    }
 }

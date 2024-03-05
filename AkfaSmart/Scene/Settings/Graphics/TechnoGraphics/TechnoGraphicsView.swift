@@ -28,26 +28,26 @@ struct TechnoGraphicsView: View {
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Area of factory",
-                                value: "\(techno.area ?? 0) sq.m.",
-                                editedValue: "\(techno.areaEdited ?? 0) sq.m.")
+                                value: ConverterToString.getArea(area: techno.area),
+                                editedValue: ConverterToString.getArea(area: techno.areaEdited))
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Glass factory (exists/no)",
-                                value: "\((techno.hasGlassWorkshop ?? false) ? "Yes" : "No")",
-                                editedValue: "\(techno.hasGlassWorkshopEdited ?? false ? "Yes" : "No")")
+                                value: ConverterToString.getYesOrNoString(techno.hasGlassWorkshop),
+                                editedValue: ConverterToString.getYesOrNoString(techno.hasGlassWorkshopEdited))
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Which series uses",
-                                value: "Uses \(getSeriesString(series: techno.workWithSeries))",
-                                editedValue: "Uses \(getSeriesString(series: techno.workWithSeries))")
+                                value: "\(getSeriesString(series: techno.workWithSeries))",
+                                editedValue: "\(getSeriesString(series: techno.workWithSeries))")
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "Which tools uses",
-                                value: "Uses \(getSeriesString(series: techno.tools))",
-                                editedValue: "Uses \(getSeriesString(series: techno.toolsEdited))")
+                                value: "\(getSeriesString(series: techno.tools))",
+                                editedValue: "\(getSeriesString(series: techno.toolsEdited))")
                         )
                     }
                     
