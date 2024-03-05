@@ -8,10 +8,12 @@
 
 import SwiftUI
 import Combine
+import CoreLocation
 struct ProductDealersListView: View {
     var model: ProductWithName
     @ObservedObject var output: ProductDealersListViewModel.Output
-    
+    @ObservedObject var locationManager = LocationManager()
+
     private let loadProductDealersTrigger = PassthroughSubject<ProductDealersListInput, Never>()
     private let reloadProductDealersTrigger = PassthroughSubject<ProductDealersListInput, Never>()
     private let loadMoreProductDealersTrigger = PassthroughSubject<ProductDealersListInput, Never>()
@@ -46,6 +48,11 @@ struct ProductDealersListView: View {
                     ForEach(output.items, id: \.dealerId) { item in
                         ProductDealerViewRow(model: item)
                             .padding(.vertical, 4)
+                            .onAppear {
+                                if output.items.last?.dealerId ?? -1 == item.dealerId && output.hasMorePages {
+                                    loadMoreProductDealersTrigger.send(ProductDealersListInput(productName: model.name, latitude: 0.0, longitude: 0.0))
+                                }
+                            }
                             .listRowSeparator(.hidden)
                     }
                 }
@@ -55,7 +62,11 @@ struct ProductDealersListView: View {
         }
         .navigationTitle("Ushbu mahsulot bor bo'lgan dilerlar")
         .onAppear {
-            loadProductDealersTrigger.send(ProductDealersListInput(productName: "Poliamid PVC002 (6.52m) (Tr)", latitude: 51.759247, longitude: 19.455982))
+            
+            locationManager.didEndUpdating = { lat, long in
+                loadProductDealersTrigger.send(ProductDealersListInput(productName: model.name, latitude: lat, longitude: long))
+            }
+            
         }
     }
     
@@ -64,5 +75,31 @@ struct ProductDealersListView: View {
         let input = ProductDealersListViewModel.Input(loadProductDealersTrigger: loadProductDealersTrigger.asDriver(), reloadProductDealersTrigger: reloadProductDealersTrigger.asDriver(), loadMoreProductDealersTrigger: loadMoreProductDealersTrigger.asDriver())
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
+    }
+}
+
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    let manager = CLLocationManager()
+    @Published var latitude: Double = 0
+    @Published var longitude: Double = 0
+    var didEndUpdating: ((Double, Double) -> Void)?
+    override init() {
+        super.init()
+        manager.delegate = self
+        manager.startUpdatingLocation()
+        manager.requestWhenInUseAuthorization()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            latitude = location.coordinate.latitude
+            longitude = location.coordinate.longitude
+            didEndUpdating?(latitude, longitude)
+            manager.stopUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }
