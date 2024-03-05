@@ -8,10 +8,14 @@
 
 import SwiftUI
 import Combine
+import PhotosUI
 struct SettingsView: View {
-    let output: SettingsViewModel.Output
-    let selectRowTrigger = PassthroughSubject<Int,Never>()
-    let deleteAccountTrigger = PassthroughSubject<Void, Never>()
+    @ObservedObject var output: SettingsViewModel.Output
+    private let editAvatarImageTrigger = PassthroughSubject<Void, Never>()
+    private let getGeneralUserInfoTrigger = PassthroughSubject<Void,Never>()
+    private let selectRowTrigger = PassthroughSubject<Int,Never>()
+    private let deleteAccountTrigger = PassthroughSubject<Void, Never>()
+    
     
     let cancelBag = CancelBag()
     var body: some View {
@@ -63,11 +67,16 @@ struct SettingsView: View {
     var headerView: some View {
         HStack {
             ZStack {
-                Image("avatar")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    .background(Color(hex: "#DFE3EB"))
-                    .cornerRadius(8)
+                if output.user != nil, let url = output.user?.imageUrl {
+                    EmptyView()
+                        .frame(width: 80, height: 80)
+                }else {
+                    Image("avatar")
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                        .background(Color(hex: "#DFE3EB"))
+                        .cornerRadius(8)
+                }
                 VStack {
                     Spacer()
                     Button {
@@ -87,19 +96,19 @@ struct SettingsView: View {
             .frame(height: 94)
             
             VStack(alignment: .leading) {
-                Text("Mardon Shonazarov")
+                Text("\(output.user?.firstName ?? "") + \(output.user?.middleName ?? "") + \(output.user?.lastName ?? "")")
                     .font(.headline)
-                Text("@shonazarov")
+                Text(output.user?.username ?? "")
                     .font(.footnote)
                     .foregroundColor(.red)
                 Spacer()
-                Text("Identified")
-                    .foregroundColor(.white)
-                    .font(.footnote)
-                    .padding(.horizontal, 6)
-                    .padding(.vertical, 2)
-                    .background(Color(hex: "#5DB075"))
-                    .cornerRadius(12.5)
+//                Text("Identified")
+//                    .foregroundColor(.white)
+//                    .font(.footnote)
+//                    .padding(.horizontal, 6)
+//                    .padding(.vertical, 2)
+//                    .background(Color(hex: "#5DB075"))
+//                    .cornerRadius(12.5)
             }
             .frame(height: 80)
             .padding(.horizontal)

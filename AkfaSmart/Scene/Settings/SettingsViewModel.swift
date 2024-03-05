@@ -25,20 +25,22 @@ extension SettingsViewModel: ViewModel {
     }
     
     final class Output: ObservableObject {
-        @Published var items = [[
-            SettingItemViewModel(id: 0, image: "person", text: "Personal data"),
-            SettingItemViewModel(id: 1, image: "", text: "Infographics"),
-            SettingItemViewModel(id: 2, image: "", text: "Technographics"),
-            SettingItemViewModel(id: 3, image: "", text: "HR graphics"),
-            SettingItemViewModel(id: 4, image: "", text: "Market graphics"),
-            SettingItemViewModel(id: 5, image: "", text: "Product graphics"),
+        @Published var items = [
+            [
+                SettingItemViewModel(id: 0, image: "person", text: "Personal data"),
+                SettingItemViewModel(id: 1, image: "", text: "Infographics"),
+                SettingItemViewModel(id: 2, image: "", text: "Technographics"),
+                SettingItemViewModel(id: 3, image: "", text: "HR graphics"),
+                SettingItemViewModel(id: 4, image: "", text: "Market graphics"),
+                SettingItemViewModel(id: 5, image: "", text: "Product graphics"),
             ],
-            [            
+            [
                 SettingItemViewModel(id: 6, image: "headset_mic", text: "Technical support"),
                 SettingItemViewModel(id: 7, image: "lock", text: "PIN-code"),
                 SettingItemViewModel(id: 8, image: "translate", text: "Language")
             ]
         ]
+        @Published var user: GeneralUser? = nil
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
