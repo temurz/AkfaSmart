@@ -142,7 +142,12 @@ struct SettingsView: View {
                 )
             }
             .onAppear {
-                getGeneralUserInfoTrigger.send(())
+                if output.imageData == nil {
+                    if output.isFirstLoad {
+                        output.isFirstLoad = false
+                        getGeneralUserInfoTrigger.send(())
+                    }
+                }
             }
             .sheet(isPresented: $output.showImagePicker) {
                 ImagePicker(sourceType: output.imageChooserType == .library ? .photoLibrary : .camera, selectedImage: $output.imageData) {
@@ -169,6 +174,7 @@ struct SettingsView: View {
                 if output.imageData != nil, let data = output.imageData {
                     Image(data: data)?
                         .resizable()
+                        .background(Color(hex: "#DFE3EB"))
                         .frame(width: 80, height: 80)
                         .cornerRadius(8)
                 }else {
@@ -194,7 +200,7 @@ struct SettingsView: View {
                 }
                 
             }
-            .frame(height: 94)
+            .frame(width: 80, height: 94)
             
             VStack(alignment: .leading) {
                 Text("\(output.user?.firstName ?? "") \(output.user?.middleName ?? "") \(output.user?.lastName ?? "")")

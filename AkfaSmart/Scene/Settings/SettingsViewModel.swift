@@ -51,6 +51,7 @@ extension SettingsViewModel: ViewModel {
         @Published var showImagePicker = false
         @Published var imageChooserType: PickerImage.Source = .library
         @Published var oldImageData: Data? = nil
+        @Published var isFirstLoad = true
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
