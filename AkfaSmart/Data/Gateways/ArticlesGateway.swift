@@ -8,12 +8,12 @@
 
 import Foundation
 protocol ArticlesGatewayType {
-    func getArticles(dto: GetPageDto) -> Observable<PagingInfo<ArticleItemViewModel>>
+    func getArticles(input: ArticlesGetInput, dto: GetPageDto) -> Observable<PagingInfo<ArticleItemViewModel>>
 }
 
 struct ArticlesGateway: ArticlesGatewayType {
-    func getArticles(dto: GetPageDto) -> Observable<PagingInfo<ArticleItemViewModel>> {
-        let input = API.GetArticlesInput(dto: dto)
+    func getArticles(input: ArticlesGetInput, dto: GetPageDto) -> Observable<PagingInfo<ArticleItemViewModel>> {
+        let input = API.GetArticlesInput(input: input, dto: dto)
         return API.shared.getArticles(input)
             .tryMap { output in
                 return output.rows

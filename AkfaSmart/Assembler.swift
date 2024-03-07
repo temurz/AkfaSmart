@@ -29,7 +29,8 @@ protocol Assembler: AnyObject,
     AddDealerAssembler,
     ClassDetailViewAssembler,
     PurchaseHistoryAssembler,
-    ProductDealersListViewAssembler
+    ProductDealersListViewAssembler,
+    ArticlesFilterViewAssembler
 {
     
 }

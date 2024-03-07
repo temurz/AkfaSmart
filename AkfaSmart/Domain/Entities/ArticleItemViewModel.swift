@@ -24,3 +24,11 @@ struct FileUrls: Codable {
     let name: String?
     let url: String?
 }
+
+struct ArticleType:Decodable, Hashable, Identifiable {
+    let id: Int?
+    let name: String?
+    let parentId: Int?
+    let parentName: Int?
+    let hasChild: Bool?
+}

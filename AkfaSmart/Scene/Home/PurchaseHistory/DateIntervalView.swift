@@ -11,6 +11,9 @@ import UIKit
 class DateFilter: ObservableObject {
     @Published var from: Date = (Calendar.current.date(byAdding: .year, value: -20, to: Date()) ?? Date(timeIntervalSince1970: 0))
     @Published var to: Date = Date()
+    @Published var optionalFrom: Date? = nil
+    @Published var optionalTo: Date? = nil
+    @Published var isFiltered = false
 }
 
 struct DateIntervalView: View {
@@ -19,6 +22,8 @@ struct DateIntervalView: View {
     var body: some View {
         VStack {
             CalendarAlert(from: dateFilter.from, to: dateFilter.to) { from, to in
+                dateFilter.optionalFrom = from
+                dateFilter.optionalTo = to
                 dateFilter.from = from
                 dateFilter.to = to
                 navigationContoller.popViewController(animated: true)

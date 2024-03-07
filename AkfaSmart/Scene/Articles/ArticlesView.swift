@@ -13,9 +13,10 @@ struct ArticlesView: View {
     
     @ObservedObject var output: ArticlesViewModel.Output
     let showDetailViewTrigger = PassthroughSubject<ArticleItemViewModel, Never>()
-    let loadArticlesTrigger = PassthroughSubject<Void, Never>()
-    let reloadArticlesTrigger = PassthroughSubject<Void,Never>()
-    let loadMoreArticlesTrigger = PassthroughSubject<Void,Never>()
+    let loadArticlesTrigger = PassthroughSubject<ArticlesGetInput, Never>()
+    let reloadArticlesTrigger = PassthroughSubject<ArticlesGetInput,Never>()
+    let loadMoreArticlesTrigger = PassthroughSubject<ArticlesGetInput,Never>()
+    let showFilterViewTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     
     var body: some View {
@@ -30,7 +31,12 @@ struct ArticlesView: View {
                                 .onAppear {
                                     if output.articles.last?.id ?? -1 == article.id && output.hasMorePages {
                                         output.isLoadingMore = true
-                                        self.loadMoreArticlesTrigger.send(())
+                                        let input = ArticlesGetInput(
+                                            from: output.dateFilter.optionalFrom,
+                                            to: output.dateFilter.optionalTo,
+                                            type: output.articleType.type)
+                                        
+                                        self.loadMoreArticlesTrigger.send(input )
                                     }
                                 }
                         }
@@ -47,16 +53,20 @@ struct ArticlesView: View {
                 }
                 .listStyle(.plain)
                 .pullToRefresh(isShowing: self.$output.isReloading) {
-                    self.reloadArticlesTrigger.send(())
+                    let input = ArticlesGetInput(
+                        from: output.dateFilter.optionalFrom,
+                        to: output.dateFilter.optionalTo,
+                        type: output.articleType.type)
+                    self.reloadArticlesTrigger.send(input)
                 }
             }
             .padding(.top)
         }
-        .navigationTitle("Catalogs")
+        .navigationTitle("Articles")
         .navigationBarHidden(false)
         .navigationBarItems(trailing:
                                 Button(action: {
-            
+            showFilterViewTrigger.send(())
         }, label: {
             Image("filter_icon")
                 .resizable()
@@ -71,9 +81,15 @@ struct ArticlesView: View {
             )
         }
         .onAppear {
-            if output.isFirstLoad {
+            
+            if output.isFirstLoad || output.dateFilter.isFiltered {
                 output.isFirstLoad = false
-                loadArticlesTrigger.send(())
+                output.articles = []
+                let input = ArticlesGetInput(
+                    from: output.dateFilter.optionalFrom,
+                    to: output.dateFilter.optionalTo,
+                    type: output.articleType.type)
+                loadArticlesTrigger.send(input)
             }
             
         }
@@ -84,7 +100,8 @@ struct ArticlesView: View {
             showDetailViewTrigger: showDetailViewTrigger.asDriver(),
             loadArticlesTrigger: loadArticlesTrigger.asDriver(),
             reloadNewsTrigger: reloadArticlesTrigger.asDriver(),
-            loadMoreArticlesTrigger: loadMoreArticlesTrigger.asDriver())
+            loadMoreArticlesTrigger: loadMoreArticlesTrigger.asDriver(),
+            showFilterViewTrigger: showFilterViewTrigger.asDriver())
         
         output = viewModel.transform(input, cancelBag: cancelBag)
     }
@@ -92,4 +109,10 @@ struct ArticlesView: View {
 
 #Preview {
     ArticlesView(viewModel: PreviewAssembler().resolve(navigationController: UINavigationController()))
+}
+
+struct ArticlesGetInput {
+    let from: Date?
+    let to: Date?
+    let type: String?
 }

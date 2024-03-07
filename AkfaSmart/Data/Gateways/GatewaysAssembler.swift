@@ -96,6 +96,9 @@ extension GatewaysAssembler where Self: DefaultAssembler {
         return ImageDownloaderGateway()
     }
     
+    func resolve() -> ArticleTypeGatewayType {
+        return ArticleTypeGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -176,5 +179,9 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> ImageDownloaderGatewayType {
         return ImageDownloaderGateway()
+    }
+    
+    func resolve() -> ArticleTypeGatewayType {
+        return ArticleTypeGateway()
     }
 }

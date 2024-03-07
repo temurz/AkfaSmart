@@ -13,8 +13,33 @@ extension API {
     }
     
     final class GetArticlesInput: APIInput {
-        init(dto: GetPageDto) {
-            let parameters: [String: Any] = [
+        init(input: ArticlesGetInput, dto: GetPageDto) {
+            
+            var filter: [String: Any] = [:]
+            var typeKey = "additionalProp1"
+            var fromKey = "additionalProp2"
+            var toKey = "additionalProp3"
+            
+            if let type = input.type {
+                typeKey = "typeId"
+                filter[typeKey] = type
+            }else {
+                filter[typeKey] = ""
+            }
+            if let from = input.from {
+                fromKey = "fromDate"
+                filter[fromKey] = from.toShortFormat()
+            }else {
+                filter[fromKey] = ""
+            }
+            if let to = input.to {
+                toKey = "toDate"
+                filter[toKey] = to.toShortFormat()
+            }else {
+                filter[toKey] = ""
+            }
+            
+            var parameters: [String: Any] = [
                 "start": dto.page,
                 "length": dto.perPage,
                 "order":
@@ -24,13 +49,10 @@ extension API {
                             "sort": "string"
                         ]
                     ],
-                "filter":
-                    [
-                        "additionalProp1" : "string",
-                        "additionalProp2" : "string",
-                        "additionalProp3" : "string"
-                    ]
+                "filter": filter
+                
             ]
+            
             super.init(urlString: API.Urls.getArticles, parameters: parameters, method: .post,encoding: JSONEncoding.prettyPrinted, requireAccessToken: true)
         }
     }
@@ -38,5 +60,17 @@ extension API {
     struct GetArticlesOutput: Decodable {
         var total: Int
         var rows: [ArticleItemViewModel]
+    }
+}
+
+
+extension API {
+    func getArticleTypes(_ input: GetArticleTypesInput) -> Observable<[ArticleType]>{
+        requestList(input)
+    }
+    final class GetArticleTypesInput: APIInput {
+        init() {
+            super.init(urlString: API.Urls.getArticleTypes, parameters: nil, method: .get, requireAccessToken: true)
+        }
     }
 }

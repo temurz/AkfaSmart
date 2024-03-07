@@ -12,7 +12,7 @@ protocol ArticlesDomainUseCaseType {
 }
 
 extension ArticlesDomainUseCaseType {
-    func getArticles(dto: GetPageDto) -> Observable<PagingInfo<ArticleItemViewModel>> {
-        return articlesGateway.getArticles(dto: dto)
+    func getArticles(input: ArticlesGetInput, dto: GetPageDto) -> Observable<PagingInfo<ArticleItemViewModel>> {
+        return articlesGateway.getArticles(input: input, dto: dto)
     }
 }

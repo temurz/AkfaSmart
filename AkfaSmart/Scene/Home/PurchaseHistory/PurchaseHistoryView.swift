@@ -38,7 +38,7 @@ struct PurchaseHistoryView: View {
                 .onChange(of: selection) { tag in
                     output.type = tag == 0 ? .income : .returnType
                     output.items = []
-                    loadIncome.send(InvoiceInput(from: output.dateFilter.from, to: output.dateFilter.to, type: output.type.rawValue))
+                    loadIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
                 }
                 List {
                     ForEach(output.items, id: \.cid) { item in
@@ -46,7 +46,7 @@ struct PurchaseHistoryView: View {
                             .onAppear {
                                 if output.items.last?.cid == item.cid && output.hasMorePages {
                                     output.isLoadingMore = true
-                                    loadMoreIncome.send(InvoiceInput(from: output.dateFilter.from, to: output.dateFilter.to, type: output.type.rawValue))
+                                    loadMoreIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
                                 }
                             }
                             .listRowSeparator(.hidden)
@@ -65,7 +65,7 @@ struct PurchaseHistoryView: View {
                         output.isReloading = false
                     }
                     output.items = []
-                    self.reloadIncome.send(InvoiceInput(from: output.dateFilter.from, to: output.dateFilter.to, type: output.type.rawValue))
+                    self.reloadIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
                 }
                 .listStyle(.plain)
             }
@@ -89,7 +89,7 @@ struct PurchaseHistoryView: View {
         }
         .onAppear {
             output.items = []
-            loadIncome.send(InvoiceInput(from: output.dateFilter.from, to: output.dateFilter.to, type: output.type.rawValue))
+            loadIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
         }
         
     }

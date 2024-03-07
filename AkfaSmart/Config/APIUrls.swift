@@ -26,6 +26,7 @@ extension API {
         //News and Articles
         static let getNews = Base.BASE_URL + "/api/mobile/news/data"
         static let getArticles = Base.BASE_URL + "/api/mobile/article/data"
+        static let getArticleTypes = Base.BASE_URL + "/api/mobile/articleType/view"
         
         //Dealers
         static let getDealersInfo = Base.BASE_URL + "/api/mobile/adwdealer/view"

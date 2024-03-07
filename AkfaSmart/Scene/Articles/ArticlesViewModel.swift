@@ -16,9 +16,10 @@ extension ArticlesViewModel: ViewModel {
     
     struct Input {
         let showDetailViewTrigger: Driver<ArticleItemViewModel>
-        let loadArticlesTrigger: Driver<Void>
-        let reloadNewsTrigger: Driver<Void>
-        let loadMoreArticlesTrigger: Driver<Void>
+        let loadArticlesTrigger: Driver<ArticlesGetInput>
+        let reloadNewsTrigger: Driver<ArticlesGetInput>
+        let loadMoreArticlesTrigger: Driver<ArticlesGetInput>
+        let showFilterViewTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -30,7 +31,8 @@ extension ArticlesViewModel: ViewModel {
         @Published var alert = AlertMessage()
         @Published var isEmpty = false
         @Published var hasMorePages = false
-
+        @Published var dateFilter = DateFilter()
+        @Published var articleType = ArticleObservableType()
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -42,8 +44,10 @@ extension ArticlesViewModel: ViewModel {
             }
             .store(in: cancelBag)
         
-//        input.loadArticlesTrigger.sink{}
-//            .store(in: cancelBag)
+        input.showFilterViewTrigger.sink {
+            navigator.showArticlesFilterView(output.dateFilter, output.articleType)
+        }
+        .store(in: cancelBag)
         
         let getPageInput = GetPageInput(loadTrigger: input.loadArticlesTrigger, reloadTrigger: input.reloadNewsTrigger, loadMoreTrigger: input.loadMoreArticlesTrigger, getItems: useCase.getArticles)
         
