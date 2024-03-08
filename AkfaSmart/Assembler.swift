@@ -31,7 +31,8 @@ protocol Assembler: AnyObject,
     PurchaseHistoryAssembler,
     ProductDealersListViewAssembler,
     ArticlesFilterViewAssembler,
-    PaymentHistoryViewAssembler
+    PaymentHistoryViewAssembler,
+    PurchaseDetailViewAssembler
 {
     
 }

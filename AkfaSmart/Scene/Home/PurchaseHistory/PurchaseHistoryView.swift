@@ -16,7 +16,7 @@ struct PurchaseHistoryView: View {
     private let reloadIncome = PassthroughSubject<InvoiceInput,Never>()
     private let loadMoreIncome = PassthroughSubject<InvoiceInput,Never>()
     private let showFilterViewTrigger = PassthroughSubject<Void,Never>()
-    
+    private let showDetailViewTrigger = PassthroughSubject<Invoice, Never>()
     private let cancelBag = CancelBag()
     
     var body: some View {
@@ -42,7 +42,9 @@ struct PurchaseHistoryView: View {
                 }
                 List {
                     ForEach(output.items, id: \.cid) { item in
-                        PurchaseHistoryViewRow(model: item, type: output.type)
+                        PurchaseHistoryViewRow(model: item, type: output.type) {
+                            showDetailViewTrigger.send(item)
+                        }
                             .onAppear {
                                 if output.items.last?.cid == item.cid && output.hasMorePages {
                                     output.isLoadingMore = true
@@ -88,17 +90,25 @@ struct PurchaseHistoryView: View {
             )
         }
         .onAppear {
-            output.items = []
-            loadIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
+            if output.isFirstLoad || output.dateFilter.isFiltered {
+                output.isFirstLoad = false
+                output.dateFilter.isFiltered = false
+                output.items = []
+                loadIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
+            }
         }
         
     }
     
     init(viewModel: PurchaseHistoryViewModel) {
         let input = PurchaseHistoryViewModel.Input(
-            loadPurchaseHistoryIncome: loadIncome.asDriver(), reloadPurchaseHistoryIncome: reloadIncome.asDriver(), loadMorePurchaseHistoryIncome: loadMoreIncome.asDriver(),
-            showFilterViewTrigger: showFilterViewTrigger.asDriver()
-)
+            loadPurchaseHistoryIncome: loadIncome.asDriver(), 
+            reloadPurchaseHistoryIncome: reloadIncome.asDriver(),
+            loadMorePurchaseHistoryIncome: loadMoreIncome.asDriver(),
+            showFilterViewTrigger: showFilterViewTrigger.asDriver(), 
+            showDetailViewTrigger: showDetailViewTrigger.asDriver()
+        )
+        
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }
 }

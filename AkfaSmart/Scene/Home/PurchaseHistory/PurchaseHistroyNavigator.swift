@@ -10,9 +10,10 @@ import UIKit
 import SwiftUI
 protocol PurchaseHistoryViewNavigatorType {
     func showDateFilterView(_ dateFilter: DateFilter)
+    func showPurchaseDetailView(_ model: Invoice)
 }
 
-struct PurchaseHistoryViewNavigator: PurchaseHistoryViewNavigatorType {
+struct PurchaseHistoryViewNavigator: PurchaseHistoryViewNavigatorType, ShowingPurchaseDetailView {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
     

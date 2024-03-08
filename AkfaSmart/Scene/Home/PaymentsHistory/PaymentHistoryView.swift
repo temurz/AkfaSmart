@@ -99,8 +99,12 @@ struct PaymentHistoryView: View {
             )
         }
         .onAppear {
-            output.items = []
-            loadHistoryTrigger.send(ReceiptsInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
+            if output.isFirstLoad || output.dateFilter.isFiltered {
+                output.isFirstLoad = false
+                output.dateFilter.isFiltered = false
+                output.items = []
+                loadHistoryTrigger.send(ReceiptsInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
+            }
         }
     }
     

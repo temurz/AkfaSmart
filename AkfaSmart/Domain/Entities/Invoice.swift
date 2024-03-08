@@ -18,3 +18,15 @@ struct Invoice: Decodable {
     let uniqueId: String?
     let status: String?
 }
+
+
+struct InvoiceDetail: Decodable {
+    let status: String?
+    let altQty: Double?
+    let qty: Double?
+    let rate: Double?
+    let amount: Double?
+    let uniqueId: String?
+    let productName: String?
+    let productGroupName: String?
+}

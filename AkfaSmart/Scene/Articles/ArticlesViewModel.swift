@@ -25,7 +25,7 @@ extension ArticlesViewModel: ViewModel {
     final class Output: ObservableObject {
         @Published var articles = [ArticleItemViewModel]()
         @Published var isFirstLoad = true
-        @Published var isLoading = true
+        @Published var isLoading = false
         @Published var isReloading = false
         @Published var isLoadingMore = false
         @Published var alert = AlertMessage()

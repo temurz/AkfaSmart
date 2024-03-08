@@ -23,6 +23,7 @@ extension PurchaseHistoryViewModel: ViewModel {
         let reloadPurchaseHistoryIncome: Driver<InvoiceInput>
         let loadMorePurchaseHistoryIncome: Driver<InvoiceInput>
         let showFilterViewTrigger: Driver<Void>
+        let showDetailViewTrigger: Driver<Invoice>
     }
     
     final class Output: ObservableObject {
@@ -34,6 +35,7 @@ extension PurchaseHistoryViewModel: ViewModel {
         @Published var type: PurchaseHistoryType = .income
         @Published var hasMorePages = false
         @Published var dateFilter = DateFilter()
+        @Published var isFirstLoad = true
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -72,6 +74,11 @@ extension PurchaseHistoryViewModel: ViewModel {
         
         input.showFilterViewTrigger.sink {
             navigator.showDateFilterView(output.dateFilter)
+        }
+        .store(in: cancelBag)
+        
+        input.showDetailViewTrigger.sink { model in
+            navigator.showPurchaseDetailView(model)
         }
         .store(in: cancelBag)
         

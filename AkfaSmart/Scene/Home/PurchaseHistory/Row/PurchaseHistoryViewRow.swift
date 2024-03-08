@@ -10,6 +10,7 @@ import SwiftUI
 struct PurchaseHistoryViewRow: View {
     var model: Invoice
     var type: PurchaseHistoryType
+    var selectAction: (() -> Void)?
     var body: some View {
         VStack {
             HStack(spacing: 0) {
@@ -31,22 +32,22 @@ struct PurchaseHistoryViewRow: View {
             }
             HStack {
                 Text((model.total?.convertDecimals() ?? "0") + " uzs")
-                    .padding(.horizontal)
+                    .padding(.horizontal, 4)
                     .foregroundColor(type == .income ? .green : .red)
                 Spacer()
                 Button {
-                    
+                    selectAction?()
                 } label: {
                     Text("Batafsil")
                         .foregroundColor(.white)
                         .padding(4)
                         .background(Color(hex: "#E7372C"))
-                        .cornerRadius(8)
+                        .cornerRadius(4)
                 }
 
             }
             .overlay {
-                RoundedRectangle(cornerRadius: 8)
+                RoundedRectangle(cornerRadius: 4)
                     .stroke(Color.gray, lineWidth: 0.5)
             }
         }

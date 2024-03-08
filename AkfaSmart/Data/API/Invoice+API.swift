@@ -25,3 +25,16 @@ extension API {
         }
     }
 }
+
+extension API {
+    func getInvoiceDetail(_ input: GetInvoiceDetailAPIInput) -> Observable<[InvoiceDetail]> {
+        requestList(input)
+    }
+    
+    final class GetInvoiceDetailAPIInput: APIInput {
+        init(invoiceId: Int, dealerId: Int) {
+            let url = API.Urls.getInvoiceListById + "/\(invoiceId)/\(dealerId)"
+            super.init(urlString: url, parameters: nil, method: .post, requireAccessToken: true)
+        }
+    }
+}

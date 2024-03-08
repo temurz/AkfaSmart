@@ -26,10 +26,22 @@ struct DateIntervalView: View {
                 dateFilter.optionalTo = to
                 dateFilter.from = from
                 dateFilter.to = to
+                dateFilter.isFiltered = true
                 navigationContoller.popViewController(animated: true)
             }
             Spacer()
         }
         .navigationTitle("Filter")
+        .navigationBarItems(trailing:
+                                Button(action: {
+            dateFilter.optionalFrom = nil
+            dateFilter.optionalTo = nil
+            dateFilter.isFiltered = true
+            navigationContoller.popViewController(animated: true)
+        }, label: {
+            Text("Clear")
+                .foregroundColor(Color.red)
+        })
+        )
     }
 }
