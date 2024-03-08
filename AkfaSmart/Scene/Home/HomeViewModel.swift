@@ -124,6 +124,12 @@ extension HomeViewModel: ViewModel {
             }
             .store(in: cancelBag)
         
+        input.openPaymentsTrigger
+            .sink { _ in
+                navigator.showPaymentsHistoryView()
+            }
+            .store(in: cancelBag)
+        
         errorTracker
             .receive(on: RunLoop.main)
             .map { AlertMessage(error: $0 ) }

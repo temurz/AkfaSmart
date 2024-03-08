@@ -23,7 +23,7 @@ extension Double {
     }
     
     func convertDecimals() -> String {
-        var numberFormatter = NumberFormatter()
+        let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.maximumFractionDigits = 0;
 

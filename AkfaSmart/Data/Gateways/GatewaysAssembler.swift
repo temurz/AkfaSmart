@@ -99,6 +99,10 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> ArticleTypeGatewayType {
         return ArticleTypeGateway()
     }
+    
+    func resolve() -> PaymentReceiptsGatewayType {
+        return PaymentReceiptsGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -183,5 +187,9 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> ArticleTypeGatewayType {
         return ArticleTypeGateway()
+    }
+    
+    func resolve() -> PaymentReceiptsGatewayType {
+        return PaymentReceiptsGateway()
     }
 }

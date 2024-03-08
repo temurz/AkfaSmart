@@ -14,15 +14,15 @@ struct PurchaseHistoryViewRow: View {
         VStack {
             HStack(spacing: 0) {
                 Text("Buyurtma №")
-                Text(String(model.cid))
+                Text(String(model.cid ?? 0))
                 Spacer()
-                Text("\(model.date.convertToDateUS())")
+                Text(model.date?.convertToDateUS() ?? "")
             }
             HStack(spacing: 0) {
                 Text("Mijoz: ")
-                Text("\(model.dealerName)")
+                Text(model.dealerName ?? "")
                 Spacer()
-                Text("\(model.status)")
+                Text(model.status ?? "")
                     .font(.subheadline)
                     .foregroundColor(Color.red)
                     .padding(4)
@@ -30,7 +30,7 @@ struct PurchaseHistoryViewRow: View {
                     .cornerRadius(8)
             }
             HStack {
-                Text(String(format: "%.2f", model.total) + " uzs")
+                Text((model.total?.convertDecimals() ?? "0") + " uzs")
                     .padding(.horizontal)
                     .foregroundColor(type == .income ? .green : .red)
                 Spacer()

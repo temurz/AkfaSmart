@@ -8,13 +8,13 @@
 
 import Foundation
 struct Invoice: Decodable {
-    let dealerId: Int
-    let organizationType: String
-    let dealerName: String
-    let total: Double
-    let type: String
-    let date: String
-    let cid: Int
-    let uniqueId: String
-    let status: String
+    let dealerId: Int?
+    let organizationType: String?
+    let dealerName: String?
+    let total: Double?
+    let type: String?
+    let date: String?
+    let cid: Int?
+    let uniqueId: String?
+    let status: String?
 }

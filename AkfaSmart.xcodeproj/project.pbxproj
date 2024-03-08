@@ -354,6 +354,17 @@
 		B8C1659A2B99D91E00F70074 /* ArticleTypeViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165992B99D91E00F70074 /* ArticleTypeViewUseCase.swift */; };
 		B8C1659C2B99D96B00F70074 /* ArticlesFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1659B2B99D96B00F70074 /* ArticlesFilterViewModel.swift */; };
 		B8C165A02B99DC7E00F70074 /* ArticlesFilterViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1659F2B99DC7E00F70074 /* ArticlesFilterViewAssembler.swift */; };
+		B8C165A22B9A6E4F00F70074 /* Payments+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165A12B9A6E4F00F70074 /* Payments+API.swift */; };
+		B8C165A42B9A6F6000F70074 /* PaymentReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165A32B9A6F6000F70074 /* PaymentReceipt.swift */; };
+		B8C165A62B9A9ADE00F70074 /* PaymentReceiptsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165A52B9A9ADE00F70074 /* PaymentReceiptsGateway.swift */; };
+		B8C165A92B9A9F8700F70074 /* GettingPaymentReceiptsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165A82B9A9F8700F70074 /* GettingPaymentReceiptsDomainUseCase.swift */; };
+		B8C165AC2B9AA51B00F70074 /* PaymentHistoryViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165AB2B9AA51B00F70074 /* PaymentHistoryViewUseCase.swift */; };
+		B8C165AE2B9AA56E00F70074 /* PaymentHistoryViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165AD2B9AA56E00F70074 /* PaymentHistoryViewNavigator.swift */; };
+		B8C165B02B9AA59B00F70074 /* PaymentHistoryViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165AF2B9AA59B00F70074 /* PaymentHistoryViewAssembler.swift */; };
+		B8C165B22B9AA5CA00F70074 /* PaymentHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165B12B9AA5CA00F70074 /* PaymentHistoryViewModel.swift */; };
+		B8C165B42B9AA60800F70074 /* PaymentHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165B32B9AA60800F70074 /* PaymentHistoryView.swift */; };
+		B8C165B72B9AA95B00F70074 /* PaymentHistoryViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165B62B9AA95B00F70074 /* PaymentHistoryViewRow.swift */; };
+		B8C165B92B9AAD1F00F70074 /* ShowingPaymentsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C165B82B9AAD1F00F70074 /* ShowingPaymentsHistoryView.swift */; };
 		B8CF98DB2B6311AC00EF02A7 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DA2B6311AC00EF02A7 /* Color+Extension.swift */; };
 		B8CF98DE2B65595B00EF02A7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DD2B65595B00EF02A7 /* RegisterView.swift */; };
 		B8CF98E02B6566EC00EF02A7 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98DF2B6566EC00EF02A7 /* RegisterViewModel.swift */; };
@@ -728,6 +739,17 @@
 		B8C165992B99D91E00F70074 /* ArticleTypeViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTypeViewUseCase.swift; sourceTree = "<group>"; };
 		B8C1659B2B99D96B00F70074 /* ArticlesFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesFilterViewModel.swift; sourceTree = "<group>"; };
 		B8C1659F2B99DC7E00F70074 /* ArticlesFilterViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesFilterViewAssembler.swift; sourceTree = "<group>"; };
+		B8C165A12B9A6E4F00F70074 /* Payments+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Payments+API.swift"; sourceTree = "<group>"; };
+		B8C165A32B9A6F6000F70074 /* PaymentReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceipt.swift; sourceTree = "<group>"; };
+		B8C165A52B9A9ADE00F70074 /* PaymentReceiptsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReceiptsGateway.swift; sourceTree = "<group>"; };
+		B8C165A82B9A9F8700F70074 /* GettingPaymentReceiptsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingPaymentReceiptsDomainUseCase.swift; sourceTree = "<group>"; };
+		B8C165AB2B9AA51B00F70074 /* PaymentHistoryViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewUseCase.swift; sourceTree = "<group>"; };
+		B8C165AD2B9AA56E00F70074 /* PaymentHistoryViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewNavigator.swift; sourceTree = "<group>"; };
+		B8C165AF2B9AA59B00F70074 /* PaymentHistoryViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewAssembler.swift; sourceTree = "<group>"; };
+		B8C165B12B9AA5CA00F70074 /* PaymentHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewModel.swift; sourceTree = "<group>"; };
+		B8C165B32B9AA60800F70074 /* PaymentHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryView.swift; sourceTree = "<group>"; };
+		B8C165B62B9AA95B00F70074 /* PaymentHistoryViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryViewRow.swift; sourceTree = "<group>"; };
+		B8C165B82B9AAD1F00F70074 /* ShowingPaymentsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingPaymentsHistoryView.swift; sourceTree = "<group>"; };
 		B8CF98D92B630CA000EF02A7 /* AkfaSmart.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AkfaSmart.xctestplan; sourceTree = "<group>"; };
 		B8CF98DA2B6311AC00EF02A7 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		B8CF98DD2B65595B00EF02A7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -839,6 +861,7 @@
 				B89F2F802B911719004DAEAB /* Invoice+API.swift */,
 				B89F2F9B2B91A3BB004DAEAB /* ProductsList+API.swift */,
 				B82CA96A2B977598000147D2 /* User+API.swift */,
+				B8C165A12B9A6E4F00F70074 /* Payments+API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -986,6 +1009,7 @@
 				B8BE4A192B90103200876714 /* ShowingClassDetailView.swift */,
 				B89F2F7E2B90E994004DAEAB /* ShowingPurchasesHistoryView.swift */,
 				B89F2FB72B91C124004DAEAB /* ShowingProductDealersListView.swift */,
+				B8C165B82B9AAD1F00F70074 /* ShowingPaymentsHistoryView.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -1232,6 +1256,7 @@
 				B89F2F992B919F86004DAEAB /* ProductWithName.swift */,
 				B89F2FAD2B91BBF5004DAEAB /* ProductDealerWithLocation.swift */,
 				B82CA9682B977207000147D2 /* GeneralUser.swift */,
+				B8C165A32B9A6F6000F70074 /* PaymentReceipt.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1239,6 +1264,7 @@
 		1787235124BD56CD00D90F8E /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				B8C165A72B9A9F6900F70074 /* PaymentReceipts */,
 				B82CA96E2B977733000147D2 /* User */,
 				B89F2F9F2B91A589004DAEAB /* ProductsList */,
 				B89F2F842B911A56004DAEAB /* Invoice */,
@@ -1294,6 +1320,7 @@
 				B89F2FAF2B91BC20004DAEAB /* ProductDealersListGateway.swift */,
 				B82CA96C2B97768D000147D2 /* UserInfoGateway.swift */,
 				B8C165952B99D87D00F70074 /* ArticleTypeGateway.swift */,
+				B8C165A52B9A9ADE00F70074 /* PaymentReceiptsGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -1651,6 +1678,7 @@
 			isa = PBXGroup;
 			children = (
 				B89F2F762B90DA30004DAEAB /* PurchaseHistory */,
+				B8C165AA2B9A9FEC00F70074 /* PaymentsHistory */,
 				B8FEC6C92B8660880028BA7F /* DealerView */,
 				B8FEC6CA2B8660930028BA7F /* UserClassView */,
 				B866A9842B7193BE00202C9F /* HomeView.swift */,
@@ -1896,6 +1924,35 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
+		B8C165A72B9A9F6900F70074 /* PaymentReceipts */ = {
+			isa = PBXGroup;
+			children = (
+				B8C165A82B9A9F8700F70074 /* GettingPaymentReceiptsDomainUseCase.swift */,
+			);
+			path = PaymentReceipts;
+			sourceTree = "<group>";
+		};
+		B8C165AA2B9A9FEC00F70074 /* PaymentsHistory */ = {
+			isa = PBXGroup;
+			children = (
+				B8C165B52B9AA94D00F70074 /* Row */,
+				B8C165B32B9AA60800F70074 /* PaymentHistoryView.swift */,
+				B8C165B12B9AA5CA00F70074 /* PaymentHistoryViewModel.swift */,
+				B8C165AB2B9AA51B00F70074 /* PaymentHistoryViewUseCase.swift */,
+				B8C165AD2B9AA56E00F70074 /* PaymentHistoryViewNavigator.swift */,
+				B8C165AF2B9AA59B00F70074 /* PaymentHistoryViewAssembler.swift */,
+			);
+			path = PaymentsHistory;
+			sourceTree = "<group>";
+		};
+		B8C165B52B9AA94D00F70074 /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				B8C165B62B9AA95B00F70074 /* PaymentHistoryViewRow.swift */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
 		B8CF98DC2B65594300EF02A7 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -2113,6 +2170,7 @@
 				1742B36324D7B00000C82D15 /* GettingRepos.swift in Sources */,
 				B85516C92B79069300FC2D6E /* ArticlesGateway.swift in Sources */,
 				B89F2F8A2B911B95004DAEAB /* PurchaseHistoryViewModel.swift in Sources */,
+				B8C165A42B9A6F6000F70074 /* PaymentReceipt.swift in Sources */,
 				1765B2D124C6D5550096D210 /* ShowingProductDetail.swift in Sources */,
 				1787231C24BD53BF00D90F8E /* ViewModel.swift in Sources */,
 				B89F2F832B9118ED004DAEAB /* InvoiceListGateway.swift in Sources */,
@@ -2123,6 +2181,7 @@
 				1742B37624D7B82C00C82D15 /* ShowingRepoList.swift in Sources */,
 				B863DABC2B8D09DE003F2C3D /* ShowingLanguageSetterView.swift in Sources */,
 				B863DA9D2B8D047A003F2C3D /* HRGraphicsView.swift in Sources */,
+				B8C165AC2B9AA51B00F70074 /* PaymentHistoryViewUseCase.swift in Sources */,
 				B877FD7D2B8C327D00D24CB0 /* ImageDownloaderGateway.swift in Sources */,
 				B877FD6B2B8BFD9F00D24CB0 /* MobileClass+API.swift in Sources */,
 				B877FD7B2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift in Sources */,
@@ -2172,11 +2231,13 @@
 				B877FD612B8BBFA200D24CB0 /* Dealers+API.swift in Sources */,
 				B866A9412B70F8E400202C9F /* AsyncImageEarly.swift in Sources */,
 				B866A9872B7193D300202C9F /* HomeViewModel.swift in Sources */,
+				B8C165B22B9AA5CA00F70074 /* PaymentHistoryViewModel.swift in Sources */,
 				B866A92F2B6BF7AB00202C9F /* TabBarView.swift in Sources */,
 				B89F2F7D2B90E5BA004DAEAB /* Invoice.swift in Sources */,
 				B863DAA52B8D05BB003F2C3D /* LanguageChangerViewModel.swift in Sources */,
 				B8BE4A1A2B90103200876714 /* ShowingClassDetailView.swift in Sources */,
 				B8BE4A0F2B900C0200876714 /* ClassDetailGateway.swift in Sources */,
+				B8C165A22B9A6E4F00F70074 /* Payments+API.swift in Sources */,
 				17A5B1FC24D948BC004BD209 /* PagingTableView.swift in Sources */,
 				B8CF98E22B65671300EF02A7 /* RegisterAssembler.swift in Sources */,
 				B8C165A02B99DC7E00F70074 /* ArticlesFilterViewAssembler.swift in Sources */,
@@ -2194,6 +2255,7 @@
 				1742B36D24D7B22B00C82D15 /* ReposUseCase.swift in Sources */,
 				B8BE49F62B8D87A200876714 /* HRGateway.swift in Sources */,
 				B89F2FA42B91AEFA004DAEAB /* SearchProductRow.swift in Sources */,
+				B8C165A92B9A9F8700F70074 /* GettingPaymentReceiptsDomainUseCase.swift in Sources */,
 				B866A8C52B66FB2300202C9F /* Alamofire+.swift in Sources */,
 				173865A624D3BC130059E3AD /* APIError.swift in Sources */,
 				176BAA6924D26AA300324D3C /* String+Base64.swift in Sources */,
@@ -2205,6 +2267,7 @@
 				B8BE49F22B8D7EAD00876714 /* TechnoGraphicsViewUseCase.swift in Sources */,
 				17A5B1F424D8080B004BD209 /* UIViewController+Combine.swift in Sources */,
 				17DCF1B624BEE76800D970B4 /* Driver.swift in Sources */,
+				B8C165A62B9A9ADE00F70074 /* PaymentReceiptsGateway.swift in Sources */,
 				B866A93A2B70F23400202C9F /* String+Extension.swift in Sources */,
 				B89F2FB42B91BE1C004DAEAB /* ProductDealersListViewModel.swift in Sources */,
 				174A188F24C821B600AB39D9 /* LoadingView.swift in Sources */,
@@ -2219,6 +2282,7 @@
 				B866A8D12B68CFBD00202C9F /* ShowingForgotPassword.swift in Sources */,
 				B8FEC6DC2B879ABC0028BA7F /* CarouselView.swift in Sources */,
 				B863DA9B2B8D0458003F2C3D /* HRGraphicViewModel.swift in Sources */,
+				B8C165B92B9AAD1F00F70074 /* ShowingPaymentsHistoryView.swift in Sources */,
 				B863DAC22B8D0A21003F2C3D /* ShowingProductGraphics.swift in Sources */,
 				B87ED2072B7A28E900EB5139 /* SplashViewNavigator.swift in Sources */,
 				1787233324BD54B600D90F8E /* Assembler.swift in Sources */,
@@ -2231,6 +2295,7 @@
 				B8C1659C2B99D96B00F70074 /* ArticlesFilterViewModel.swift in Sources */,
 				B8FEC6D82B8761AB0028BA7F /* Dealer.swift in Sources */,
 				B89F2FB22B91BD76004DAEAB /* GettingProductDealersListDomainUseCase.swift in Sources */,
+				B8C165B42B9AA60800F70074 /* PaymentHistoryView.swift in Sources */,
 				B8AC368A2B79A6EF0060D52D /* QRCodeCameraDelegate.swift in Sources */,
 				B863DABE2B8D09F7003F2C3D /* ShowingMarketingsGraphics.swift in Sources */,
 				173865A824D3BC490059E3AD /* APIInput.swift in Sources */,
@@ -2258,6 +2323,7 @@
 				B866A97A2B7168C700202C9F /* SettingsAssembler.swift in Sources */,
 				176BAA6B24D26C8B00324D3C /* APIInputBase.swift in Sources */,
 				B87ED1F82B7A1D8100EB5139 /* WelcomeView.swift in Sources */,
+				B8C165B72B9AA95B00F70074 /* PaymentHistoryViewRow.swift in Sources */,
 				1787234224BD556E00D90F8E /* LoginViewModel.swift in Sources */,
 				B877FD7F2B8C3D7B00D24CB0 /* AddDealerAPI.swift in Sources */,
 				B866A8DF2B68E03600202C9F /* CodeInputViewModel.swift in Sources */,
@@ -2337,6 +2403,7 @@
 				B863DAA92B8D0629003F2C3D /* MarketingViewRow.swift in Sources */,
 				B8BE4A082B8E4C3200876714 /* ProductGraphicsGateway.swift in Sources */,
 				B87ED2052B7A283F00EB5139 /* SplashViewModel.swift in Sources */,
+				B8C165AE2B9AA56E00F70074 /* PaymentHistoryViewNavigator.swift in Sources */,
 				B8BE4A172B900CCE00876714 /* ClassDetailViewModel.swift in Sources */,
 				176BAA6D24D26CD900324D3C /* APIOutputBase.swift in Sources */,
 				B87C71E22B829FF40061530E /* ForgotPasswordAssembler.swift in Sources */,
@@ -2427,6 +2494,7 @@
 				B8BE4A1C2B9013B800876714 /* ClassDetailViewRow.swift in Sources */,
 				178809B024C0520000002215 /* ViewModel+GetList.swift in Sources */,
 				173865B024D40FBE0059E3AD /* ViewModel+GetItem.swift in Sources */,
+				B8C165B02B9AA59B00F70074 /* PaymentHistoryViewAssembler.swift in Sources */,
 				B85516D02B79294700FC2D6E /* InfographicsView.swift in Sources */,
 				B8AC36782B79925F0060D52D /* AddDealerNavigator.swift in Sources */,
 				B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */,

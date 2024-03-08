@@ -30,7 +30,8 @@ protocol Assembler: AnyObject,
     ClassDetailViewAssembler,
     PurchaseHistoryAssembler,
     ProductDealersListViewAssembler,
-    ArticlesFilterViewAssembler
+    ArticlesFilterViewAssembler,
+    PaymentHistoryViewAssembler
 {
     
 }
