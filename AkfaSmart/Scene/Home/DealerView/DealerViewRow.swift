@@ -36,7 +36,7 @@ struct DealerViewRow: View {
                                 .font(.subheadline)
                                 .foregroundColor(Color(hex: "#9DA8C2"))
                             if isBalanceVisible {
-                                Text(model.balance.uzCurrency + " sum")
+                                Text(model.balance.convertDecimals() + " sum")
                                     .font(.headline)
                                     .foregroundColor(.red)
                             }else {
@@ -60,7 +60,7 @@ struct DealerViewRow: View {
                         .foregroundColor(Color(hex: "#9DA8C2"))
                     Spacer()
                     if isBalanceVisible {
-                        Text(model.purchaseForMonth.uzCurrency)
+                        Text(model.purchaseForMonth.convertDecimals())
                     }else {
                         Text("***")
                     }
@@ -96,7 +96,7 @@ struct DealerViewRow: View {
                         .foregroundColor(Color(hex: "#9DA8C2"))
                     Spacer()
                     if isBalanceVisible {
-                        Text(model.purchaseForYear.uzCurrency)
+                        Text(model.purchaseForYear.convertDecimals())
                     }else {
                         Text("***")
                     }
