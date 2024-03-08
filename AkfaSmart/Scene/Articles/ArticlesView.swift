@@ -52,7 +52,7 @@ struct ArticlesView: View {
                     }
                 }
                 .listStyle(.plain)
-                .pullToRefresh(isShowing: self.$output.isReloading) {
+                .refreshable {
                     let input = ArticlesGetInput(
                         from: output.dateFilter.optionalFrom,
                         to: output.dateFilter.optionalTo,
@@ -99,7 +99,7 @@ struct ArticlesView: View {
         let input = ArticlesViewModel.Input(
             showDetailViewTrigger: showDetailViewTrigger.asDriver(),
             loadArticlesTrigger: loadArticlesTrigger.asDriver(),
-            reloadNewsTrigger: reloadArticlesTrigger.asDriver(),
+            reloadArticlesTrigger: reloadArticlesTrigger.asDriver(),
             loadMoreArticlesTrigger: loadMoreArticlesTrigger.asDriver(),
             showFilterViewTrigger: showFilterViewTrigger.asDriver())
         

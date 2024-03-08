@@ -17,7 +17,7 @@ extension ArticlesViewModel: ViewModel {
     struct Input {
         let showDetailViewTrigger: Driver<ArticleItemViewModel>
         let loadArticlesTrigger: Driver<ArticlesGetInput>
-        let reloadNewsTrigger: Driver<ArticlesGetInput>
+        let reloadArticlesTrigger: Driver<ArticlesGetInput>
         let loadMoreArticlesTrigger: Driver<ArticlesGetInput>
         let showFilterViewTrigger: Driver<Void>
     }
@@ -49,9 +49,9 @@ extension ArticlesViewModel: ViewModel {
         }
         .store(in: cancelBag)
         
-        let getPageInput = GetPageInput(loadTrigger: input.loadArticlesTrigger, reloadTrigger: input.reloadNewsTrigger, loadMoreTrigger: input.loadMoreArticlesTrigger, getItems: useCase.getArticles)
+        let getPageInput = GetPageInput(loadTrigger: input.loadArticlesTrigger, reloadTrigger: input.reloadArticlesTrigger, loadMoreTrigger: input.loadMoreArticlesTrigger, getItems: useCase.getArticles)
         
-        let (pages, error, isReloading, isLoading, isLoadingMore) = getPage(input: getPageInput).destructured
+        let (pages, error, isLoading, isReloading, isLoadingMore) = getPage(input: getPageInput).destructured
         
         pages
             .handleEvents(receiveOutput: { pagingInfo in
@@ -72,6 +72,12 @@ extension ArticlesViewModel: ViewModel {
             .store(in: cancelBag)
         
         isReloading
+            .map({ bool in
+                if bool {
+                    output.articles = []
+                }
+                return bool
+            })
             .assign(to: \.isReloading, on: output)
             .store(in: cancelBag)
         
