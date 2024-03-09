@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 struct ProductDealersListViewModel {
     let useCase: ProductDealersListViewUseCaseType
 }
@@ -16,6 +17,8 @@ extension ProductDealersListViewModel: ViewModel {
         let loadProductDealersTrigger: Driver<ProductDealersListInput>
         let reloadProductDealersTrigger: Driver<ProductDealersListInput>
         let loadMoreProductDealersTrigger: Driver<ProductDealersListInput>
+        let showLocationTrigger: Driver<Location>
+        let showPhoneCallTrigger: Driver<String>
     }
     
     final class Output: ObservableObject {
@@ -61,6 +64,30 @@ extension ProductDealersListViewModel: ViewModel {
             .assign(to: \.isLoadingMore, on: output)
             .store(in: cancelBag)
         
+        input.showLocationTrigger.sink { location in
+            openGoogleMap(lat: location.latitude, long: location.longitude)
+        }
+        .store(in: cancelBag)
+        
         return output
     }
+    
+    func openGoogleMap(lat: Double, long: Double) {
+        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {  //if phone has an app
+            if let url = URL(string: "comgooglemaps-x-callback://?saddr=&daddr=\(lat),\(long)&directionsmode=driving") {
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
+        else {
+            //Open in browser
+            if let urlDestination = URL.init(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(lat),\(long)&directionsmode=driving") {
+                UIApplication.shared.open(urlDestination)
+            }
+        }
+    }
+}
+
+struct Location {
+    let latitude: Double
+    let longitude: Double
 }

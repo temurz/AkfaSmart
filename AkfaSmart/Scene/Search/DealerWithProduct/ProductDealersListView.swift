@@ -17,6 +17,10 @@ struct ProductDealersListView: View {
     private let loadProductDealersTrigger = PassthroughSubject<ProductDealersListInput, Never>()
     private let reloadProductDealersTrigger = PassthroughSubject<ProductDealersListInput, Never>()
     private let loadMoreProductDealersTrigger = PassthroughSubject<ProductDealersListInput, Never>()
+    
+    private let showLocationTrigger = PassthroughSubject<Location, Never>()
+    private let showPhoneCallTrigger = PassthroughSubject<String, Never>()
+    
     private let cancelBag = CancelBag()
     
     var body: some View {
@@ -46,7 +50,13 @@ struct ProductDealersListView: View {
                 
                 List {
                     ForEach(output.items, id: \.dealerId) { item in
-                        ProductDealerViewRow(model: item)
+                        ProductDealerViewRow(model: item, 
+                                             selectLocation: {
+                            showLocationTrigger.send(Location(latitude: item.latitude, longitude: item.longitude))
+                        },
+                                             selectPhone: {
+                            showPhoneCallTrigger.send("\(item.phones)")
+                        })
                             .padding(.vertical, 4)
                             .onAppear {
                                 if output.items.last?.dealerId ?? -1 == item.dealerId && output.hasMorePages {
@@ -72,7 +82,13 @@ struct ProductDealersListView: View {
     
     init(model: ProductWithName, viewModel: ProductDealersListViewModel) {
         self.model = model
-        let input = ProductDealersListViewModel.Input(loadProductDealersTrigger: loadProductDealersTrigger.asDriver(), reloadProductDealersTrigger: reloadProductDealersTrigger.asDriver(), loadMoreProductDealersTrigger: loadMoreProductDealersTrigger.asDriver())
+        let input = ProductDealersListViewModel.Input(
+            loadProductDealersTrigger: loadProductDealersTrigger.asDriver(),
+            reloadProductDealersTrigger: reloadProductDealersTrigger.asDriver(),
+            loadMoreProductDealersTrigger: loadMoreProductDealersTrigger.asDriver(),
+            showLocationTrigger: showLocationTrigger.asDriver(),
+            showPhoneCallTrigger: showPhoneCallTrigger.asDriver()
+        )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

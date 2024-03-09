@@ -9,6 +9,8 @@
 import SwiftUI
 struct ProductDealerViewRow: View {
     var model: ProductDealerWithLocation
+    var selectLocation: (() -> Void)?
+    var selectPhone: (() -> Void)?
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(model.dealerName)
@@ -41,7 +43,7 @@ struct ProductDealerViewRow: View {
                 .padding(.vertical)
                 Spacer()
                 Button {
-                    
+                    selectLocation?()
                 } label: {
                     Image("location_white")
                         .frame(minWidth: 40)
@@ -51,7 +53,7 @@ struct ProductDealerViewRow: View {
                 }
                 Spacer()
                 Button {
-                    
+                    selectPhone?()
                 } label: {
                     Image("call-calling")
                         .frame(minWidth: 40)
