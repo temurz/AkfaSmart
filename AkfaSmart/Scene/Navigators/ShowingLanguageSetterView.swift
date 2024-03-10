@@ -16,7 +16,7 @@ protocol ShowingLanguageChanger {
 
 extension ShowingLanguageChanger {
     func showLanguageChanger() {
-        let view: LanguageChangerView = LanguageChangerView(viewModel: LanguageChangerViewModel())
+        let view: LanguageChangerView = LanguageChangerView(viewModel: LanguageChangerViewModel(navigator: LanguageViewNavigator(assembler: assembler, navigationController: navigationController)))
         let vc = UIHostingController(rootView: view)
         self.navigationController.pushViewController(vc, animated: true)
     }

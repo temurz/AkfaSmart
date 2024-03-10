@@ -7,57 +7,53 @@
 //
 
 import SwiftUI
-
+import Combine
 struct LanguageItemViewModel: Hashable {
-  
+    let id: Int
     let title: String
     var isSelected: Bool = false
 }
 
 struct LanguageChangerView: View {
     @ObservedObject var output: LanguageChangerViewModel.Output
+    private let saveTrigger = PassthroughSubject<Void,Never>()
+    private let getCurrentLanguageTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     
-    @State private var selectedRow: LanguageItemViewModel?
-    
     var body: some View {
-        
-        return LoadingView(isShowing: .constant(false), text: .constant("")) {
-            VStack (alignment: .leading) {
-                List {
-                    ForEach($output.items, id: \.title) { $item in
-                        LanguageViewRow(viewModel: item,selectedItem: $selectedRow)
-                            .listRowSeparator(.hidden)
-                            .onTapGesture {
-                                selectedRow = item
-                               
-                            }
-                        
-                    }
+        VStack (alignment: .leading) {
+            List {
+                ForEach($output.items, id: \.title) { $item in
+                    LanguageViewRow(viewModel: item, selectedItem: $output.selectedRow)
+                        .listRowSeparator(.hidden)
+                        .onTapGesture {
+                            output.selectedRow = item
+                        }
+                    
                 }
-                .listStyle(.plain)
-                
             }
+            .listStyle(.plain)
+            
         }
         .navigationTitle("Language")
         .navigationBarItems(trailing: Button(action: {
-            
-            
-            
+            saveTrigger.send(())
         }, label: {
             Text("Save")
                 .foregroundColor(.red)
                 .font(.headline)
         }))
+        .onAppear {
+            getCurrentLanguageTrigger.send(())
+        }
     }
     
     init(viewModel: LanguageChangerViewModel) {
-        let input = LanguageChangerViewModel.Input()
+        let input = LanguageChangerViewModel.Input(
+            saveTrigger: saveTrigger.asDriver(),
+            getCurrentLanguageTrigger: getCurrentLanguageTrigger.asDriver()
+        )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }
-}
-
-#Preview {
-    LanguageChangerView(viewModel: LanguageChangerViewModel())
 }

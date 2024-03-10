@@ -33,5 +33,5 @@ struct LanguageViewRow: View {
 }
 
 #Preview {
-    LanguageViewRow(viewModel: LanguageItemViewModel(title: ""), selectedItem: .constant(nil))
+    LanguageViewRow(viewModel: LanguageItemViewModel(id: 0, title: ""), selectedItem: .constant(nil))
 }

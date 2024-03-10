@@ -20,7 +20,7 @@ struct CalendarAlert: View {
     
     var body: some View {
         VStack(alignment: .trailing){
-            DatePicker("Date of start"/*.localizedString*/, selection: $from, in: ...Date(), displayedComponents: .date)
+            DatePicker("Date of start".localizedString, selection: $from, in: ...Date(), displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: AuthApp.shared.language))
                 .id(fromCalendarId)
                 .onChange(of: from, perform: { newValue in
@@ -29,7 +29,7 @@ struct CalendarAlert: View {
                 
                 .padding()
             
-            DatePicker("Date of end"/*.localizedString*/, selection: $to, in: ...Date(),displayedComponents: .date)
+            DatePicker("Date of end".localizedString, selection: $to, in: ...Date(),displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: AuthApp.shared.language))
                 .id(toCalendarId)
                 .onChange(of: to, perform: { newValue in
@@ -43,7 +43,7 @@ struct CalendarAlert: View {
             }) {
                 HStack{
                     
-                    Text("Filter"/*.localizedString*/)
+                    Text("Filter".localizedString)
                         .font(.headline)
                         .frame(maxWidth: .infinity, maxHeight: 40)
                         .foregroundColor(Color.white)
