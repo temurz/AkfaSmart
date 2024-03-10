@@ -69,6 +69,12 @@ extension ProductDealersListViewModel: ViewModel {
         }
         .store(in: cancelBag)
         
+        input.showPhoneCallTrigger.sink { phoneNumber in
+            print("Call")
+            openPhoneCall(phoneNumber)
+        }
+        .store(in: cancelBag)
+        
         return output
     }
     
@@ -84,6 +90,16 @@ extension ProductDealersListViewModel: ViewModel {
                 UIApplication.shared.open(urlDestination)
             }
         }
+    }
+    
+    func openPhoneCall(_ phoneNumber: String) {
+        let numbers = phoneNumber.components(separatedBy: ",")
+        if let num = numbers.first {
+            if let url = URL(string: "tel://\(num)"), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        
     }
 }
 

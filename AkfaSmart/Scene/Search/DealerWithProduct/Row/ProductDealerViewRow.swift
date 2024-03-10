@@ -51,6 +51,7 @@ struct ProductDealerViewRow: View {
                         .background(Color.red)
                         .cornerRadius(14)
                 }
+                .buttonStyle(PlainButtonStyle())
                 Spacer()
                 Button {
                     selectPhone?()
@@ -61,6 +62,7 @@ struct ProductDealerViewRow: View {
                         .background(Color(hex: "#35AC81"))
                         .cornerRadius(14)
                 }
+                .buttonStyle(PlainButtonStyle())
             }
             .padding(.horizontal)
         }

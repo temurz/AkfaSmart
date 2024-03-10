@@ -41,6 +41,7 @@ struct SearchProductRow: View {
                 Image("arrow_forward")
                     .padding(.bottom, 8)
             }
+            .background(Color.white)
             .padding(.horizontal)
             .onTapGesture {
                 selected?()
