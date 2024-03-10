@@ -78,7 +78,7 @@ extension CodeInputViewModel: ViewModel {
             .store(in: cancelBag)
         
         input.showMainViewTrigger.sink {
-            navigator.showMain()
+            navigator.showMain(page: .home)
         }
         .store(in: cancelBag)
         
@@ -109,11 +109,11 @@ extension CodeInputViewModel: ViewModel {
                 if bool {
                     switch reason {
                     case .register:
-                        navigator.showMain()
+                        navigator.showMain(page: .home)
                     case .forgotPassword:
                         navigator.showResetPasswordView()
                     case .dealer(_):
-                        navigator.showMain()
+                        navigator.showMain(page: .home)
                     }
                 }
             }

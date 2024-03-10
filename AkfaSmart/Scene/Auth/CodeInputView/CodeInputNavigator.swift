@@ -8,7 +8,7 @@
 
 import UIKit
 protocol CodeInputNavigatorType {
-    func showMain()
+    func showMain(page: MainPage)
     func showResetPasswordView()
 }
 

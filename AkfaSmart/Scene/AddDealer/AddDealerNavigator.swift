@@ -8,7 +8,7 @@
 
 import UIKit
 protocol AddDealerNavigatorType {
-    func showMain()
+    func showMain(page: MainPage)
     func showCodeInput(reason: CodeReason)
 }
 

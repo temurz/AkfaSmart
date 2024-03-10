@@ -33,3 +33,11 @@ extension API {
         }
     }
 }
+
+extension API {
+    final class GetUnreadDataCount: APIInput {
+        init() {
+            super.init(urlString: API.Urls.getUnreadData, parameters: nil, method: .get, requireAccessToken: true)
+        }
+    }
+}

@@ -37,7 +37,7 @@ extension AddDealerViewModel: ViewModel {
             .store(in: cancelBag)
         
         input.showMainView.sink { _ in
-            navigator.showMain()
+            navigator.showMain(page: .home)
         }
         .store(in: cancelBag)
         

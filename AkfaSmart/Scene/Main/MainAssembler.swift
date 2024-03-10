@@ -9,8 +9,8 @@
 import UIKit
 
 protocol MainAssembler {
-    func resolve(navigationController: UINavigationController) -> MainView
-    func resolve(navigationController: UINavigationController) -> MainViewRouter
+    func resolve(navigationController: UINavigationController, page: MainPage) -> MainView
+    func resolve(navigationController: UINavigationController, page: MainPage) -> MainViewRouter
     func resolve(navigationController: UINavigationController) -> MainViewModel
     func resolve(navigationController: UINavigationController) -> MainNavigatorType
     func resolve() -> MainUseCaseType
@@ -18,8 +18,8 @@ protocol MainAssembler {
 
 extension MainAssembler {
     
-    func resolve(navigationController: UINavigationController) -> MainView {
-        let view = MainView(viewRouter: resolve(navigationController: navigationController))
+    func resolve(navigationController: UINavigationController, page: MainPage = .home) -> MainView {
+        let view = MainView(viewRouter: resolve(navigationController: navigationController, page: page))
 //        let vm: MainViewModel = resolve(navigationController: navigationController)
 //        vc.bindViewModel(to: vm)
         return view
@@ -34,8 +34,8 @@ extension MainAssembler {
 }
 
 extension MainAssembler where Self: DefaultAssembler {
-    func resolve(navigationController: UINavigationController) -> MainViewRouter {
-        let router = MainViewRouter(assembler: self, navigationController: navigationController)
+    func resolve(navigationController: UINavigationController, page: MainPage = .home) -> MainViewRouter {
+        let router = MainViewRouter(assembler: self, navigationController: navigationController, page: page)
         return router
     }
     
@@ -49,8 +49,8 @@ extension MainAssembler where Self: DefaultAssembler {
 }
 
 extension MainAssembler where Self: PreviewAssembler {
-    func resolve(navigationController: UINavigationController) -> MainViewRouter {
-        let router = MainViewRouter(assembler: self, navigationController: navigationController)
+    func resolve(navigationController: UINavigationController, page: MainPage = .home) -> MainViewRouter {
+        let router = MainViewRouter(assembler: self, navigationController: navigationController, page: page)
         return router
     }
     

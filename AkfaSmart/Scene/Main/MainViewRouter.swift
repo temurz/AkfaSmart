@@ -62,12 +62,16 @@ class MainViewRouter: ViewRouter {
         }
     }
     
-    init(assembler: Assembler, navigationController: UINavigationController){
+    init(assembler: Assembler, navigationController: UINavigationController, page: MainPage = .home){
         self.navigationController  = navigationController
         self.assembler = assembler
 //        self.homeView = assembler.resolve(navigationController: navigationController)
         let view: HomeView = assembler.resolve(navigationController: navigationController)
         self.body = AnyView(view)
+        if page != .home {
+            self.route(selectedPageId: page.rawValue)
+        }
+        self.selectedPageId = page.rawValue
         
     }
     

@@ -22,6 +22,9 @@ extension HomeViewModel: ViewModel {
         let getMobileClassInfo: Driver<Void>
         let showAddDealerViewTrigger: Driver<Void>
         let showClassDetailViewTrigger: Driver<Void>
+        let showMessagesViewTrigger: Driver<Void>
+        let showArticlesViewTrigger: Driver<Void>
+        let showNewsViewTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -34,6 +37,7 @@ extension HomeViewModel: ViewModel {
         @Published var items: [Dealer] = []
         @Published var mobileClass: MobileClass? = nil
         @Published var mobileClassLogoData: Data? = nil
+        @Published var unreadDataCount: UnreadDataCount = UnreadDataCount(countUnreadMessages: 1, countUnreadArticles: 2, countUnreadNews: 123)
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -139,6 +143,18 @@ extension HomeViewModel: ViewModel {
         activityTracker
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
+        
+        input.showArticlesViewTrigger
+            .sink {
+                navigator.showMain(page: .catalog)
+            }
+            .store(in: cancelBag)
+        
+        input.showNewsViewTrigger
+            .sink {
+                navigator.showMain(page: .news)
+            }
             .store(in: cancelBag)
         
         return output

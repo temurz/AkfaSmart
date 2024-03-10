@@ -8,7 +8,7 @@
 
 import UIKit
 protocol SplashViewNavigatorType {
-    func showMain()
+    func showMain(page: MainPage)
     func showLogin()
 }
 
