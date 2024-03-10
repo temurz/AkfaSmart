@@ -73,5 +73,9 @@ extension API {
         static let saveAvatarImage = Base.BASE_URL + "/api/mobile/mobile_user/save/img"
         static let getUnreadData = Base.BASE_URL + "/api/mobile/mobile_user/unreadData"
         
+        //Messages
+        static let getMessages = Base.BASE_URL + "/api/mobile/message/data"
+        static let sendMessage = Base.BASE_URL + "/api/mobile/message/save"
+        
     }
 }

@@ -15,8 +15,8 @@ struct TechnicalSupportView: View {
         
         VStack {
             List {
-                MessageViewRow(model: Message(isUser: true, time: "20.10.2019", text: "jdifgjidfjgdjfgijdfijgidfjgijdfigjdfi"))
-                MessageViewRow(model: Message(isUser: false, time: "20.10.2019", text: "jdifgjidfjgdjfgijdfijgidfjgijdfigjdfi"))
+                MessageViewRow(model: Message(isUser: true, time: "20.10.2019", text: "ads"))
+                MessageViewRow(model: Message(isUser: false, time: "20.10.2019", text: "?"))
                     .listRowSeparator(.hidden)
             }.listStyle(.plain)
 

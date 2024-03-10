@@ -146,6 +146,10 @@
 		3420A0A62B9D891E00DC3E3D /* TechnicalSupportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0A52B9D891E00DC3E3D /* TechnicalSupportViewModel.swift */; };
 		3420A0AB2B9D898300DC3E3D /* ShowingTechnicalSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0AA2B9D898300DC3E3D /* ShowingTechnicalSupportView.swift */; };
 		3420A0AE2B9E1C9D00DC3E3D /* TechnicalSupportRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0AD2B9E1C9D00DC3E3D /* TechnicalSupportRow.swift */; };
+		3420A0B02B9E3F4600DC3E3D /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0AF2B9E3F4600DC3E3D /* MessageModel.swift */; };
+		3420A0B22B9E405700DC3E3D /* Message+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0B12B9E405700DC3E3D /* Message+API.swift */; };
+		3420A0B42B9E444800DC3E3D /* MessagesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */; };
+		3420A0B82B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0B72B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift */; };
 		B82CA9672B975981000147D2 /* ConverterToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9662B975981000147D2 /* ConverterToString.swift */; };
 		B82CA9692B977207000147D2 /* GeneralUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9682B977207000147D2 /* GeneralUser.swift */; };
 		B82CA96B2B977598000147D2 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA96A2B977598000147D2 /* User+API.swift */; };
@@ -547,6 +551,10 @@
 		3420A0A52B9D891E00DC3E3D /* TechnicalSupportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSupportViewModel.swift; sourceTree = "<group>"; };
 		3420A0AA2B9D898300DC3E3D /* ShowingTechnicalSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingTechnicalSupportView.swift; sourceTree = "<group>"; };
 		3420A0AD2B9E1C9D00DC3E3D /* TechnicalSupportRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSupportRow.swift; sourceTree = "<group>"; };
+		3420A0AF2B9E3F4600DC3E3D /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		3420A0B12B9E405700DC3E3D /* Message+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+API.swift"; sourceTree = "<group>"; };
+		3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesGateway.swift; sourceTree = "<group>"; };
+		3420A0B72B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingMessagesDomainUseCase.swift; sourceTree = "<group>"; };
 		B82CA9662B975981000147D2 /* ConverterToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterToString.swift; sourceTree = "<group>"; };
 		B82CA9682B977207000147D2 /* GeneralUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralUser.swift; sourceTree = "<group>"; };
 		B82CA96A2B977598000147D2 /* User+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
@@ -888,6 +896,7 @@
 				B89F2F9B2B91A3BB004DAEAB /* ProductsList+API.swift */,
 				B82CA96A2B977598000147D2 /* User+API.swift */,
 				B8C165A12B9A6E4F00F70074 /* Payments+API.swift */,
+				3420A0B12B9E405700DC3E3D /* Message+API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1286,6 +1295,7 @@
 				B82CA9682B977207000147D2 /* GeneralUser.swift */,
 				B8C165A32B9A6F6000F70074 /* PaymentReceipt.swift */,
 				B8512B0B2B9DFEAF00CEE80A /* UnreadDataCount.swift */,
+				3420A0AF2B9E3F4600DC3E3D /* MessageModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1293,6 +1303,7 @@
 		1787235124BD56CD00D90F8E /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				3420A0B62B9E47C000DC3E3D /* Messages */,
 				B8C165A72B9A9F6900F70074 /* PaymentReceipts */,
 				B82CA96E2B977733000147D2 /* User */,
 				B89F2F9F2B91A589004DAEAB /* ProductsList */,
@@ -1351,6 +1362,7 @@
 				B8C165952B99D87D00F70074 /* ArticleTypeGateway.swift */,
 				B8C165A52B9A9ADE00F70074 /* PaymentReceiptsGateway.swift */,
 				B8E192972B9B0F620013B148 /* InvoiceDetailGateway.swift */,
+				3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -1415,6 +1427,14 @@
 				3420A0AD2B9E1C9D00DC3E3D /* TechnicalSupportRow.swift */,
 			);
 			path = Row;
+			sourceTree = "<group>";
+		};
+		3420A0B62B9E47C000DC3E3D /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				3420A0B72B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		B82CA9652B975974000147D2 /* Helpers */ = {
@@ -2235,6 +2255,7 @@
 				B866A95E2B712DF800202C9F /* ShowingNewsDetailView.swift in Sources */,
 				B866A9542B7115C200202C9F /* ShimmerView.swift in Sources */,
 				B877FD692B8BF5B200D24CB0 /* MobileClass.swift in Sources */,
+				3420A0B02B9E3F4600DC3E3D /* MessageModel.swift in Sources */,
 				B866A94B2B70FE7200202C9F /* NewsUseCase.swift in Sources */,
 				B866A9612B71535C00202C9F /* ArticlesView.swift in Sources */,
 				B87C71E82B82B58F0061530E /* ForgotPassword+API.swift in Sources */,
@@ -2261,6 +2282,7 @@
 				B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */,
 				17A5B1F824D9026D004BD209 /* BaseViewController.swift in Sources */,
 				1787233124BD547600D90F8E /* AppViewModel.swift in Sources */,
+				3420A0B82B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift in Sources */,
 				1770EC2B24DAA5ED0022FBFE /* RepoCollectionViewController.swift in Sources */,
 				B82CA96B2B977598000147D2 /* User+API.swift in Sources */,
 				B89F2F732B9021B3004DAEAB /* SeriesAndAmountRow.swift in Sources */,
@@ -2357,6 +2379,7 @@
 				B866A8D12B68CFBD00202C9F /* ShowingForgotPassword.swift in Sources */,
 				B8FEC6DC2B879ABC0028BA7F /* CarouselView.swift in Sources */,
 				B863DA9B2B8D0458003F2C3D /* HRGraphicViewModel.swift in Sources */,
+				3420A0B22B9E405700DC3E3D /* Message+API.swift in Sources */,
 				B8C165B92B9AAD1F00F70074 /* ShowingPaymentsHistoryView.swift in Sources */,
 				B8E192A52B9B19C60013B148 /* PurchaseDetailViewRow.swift in Sources */,
 				B863DAC22B8D0A21003F2C3D /* ShowingProductGraphics.swift in Sources */,
@@ -2450,6 +2473,7 @@
 				1787234B24BD560500D90F8E /* MainUseCase.swift in Sources */,
 				B82CA9672B975981000147D2 /* ConverterToString.swift in Sources */,
 				B8AC367A2B7992680060D52D /* AddDealerUseCase.swift in Sources */,
+				3420A0B42B9E444800DC3E3D /* MessagesGateway.swift in Sources */,
 				B863DAB72B8D0880003F2C3D /* TechnoGraphicsViewModel.swift in Sources */,
 				1742B37124D7B45C00C82D15 /* UIViewController+Debug.swift in Sources */,
 				B87ED2022B7A275F00EB5139 /* SplashView.swift in Sources */,
