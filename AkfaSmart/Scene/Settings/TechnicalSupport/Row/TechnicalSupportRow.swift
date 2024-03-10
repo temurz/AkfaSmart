@@ -34,7 +34,7 @@ struct MessageViewRow: View {
                         .font(.headline)
                         .foregroundStyle(model.isUser ? .white : .black)
                         .padding()
-                        .background(model.isUser ? .red : .blue)
+                        .background(model.isUser ? .red : .white)
                         .cornerRadius(12, corners: model.isUser ?
                                       [.topLeft, .topRight, .bottomLeft] :  [.topRight, .bottomRight , .bottomLeft])
                     

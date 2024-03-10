@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftUI
-
 protocol ShowingTechnicalSupportView {
     var assembler: Assembler { get }
     var navigationController: UINavigationController { get }
@@ -16,8 +15,8 @@ protocol ShowingTechnicalSupportView {
 
 extension ShowingTechnicalSupportView {
     func showTechnicalSupport() {
-//        let view: TechnicalSupportView = TechnicalSupportView(viewModel: TechnicalSupportViewModel())
-//        let vc = UIHostingController(rootView: view)
-//        self.navigationController.pushViewController(vc, animated: true)
+        let view: TechnicalSupportView = TechnicalSupportView(viewModel: TechnicalSupportViewModel(useCase: TechnicalSupportUseCase(gateway: MessagesGateway())))
+        let vc = UIHostingController(rootView: view)
+        self.navigationController.pushViewController(vc, animated: true)
     }
 }

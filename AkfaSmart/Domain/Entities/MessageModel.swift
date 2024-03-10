@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct MessageModel:Decodable {
+struct MessageModel:Decodable, Hashable {
     
     let text: String?
     let date: String?
     let mobileUserId: Int?
     let userId: Int?
     let username: String?
-//    let fileUrls: [],
-//    let imageHeight48Urls: [],
-//    let fileNames: []
+//    let fileUrls: [String]
+//    let imageHeight48Urls: [String]
+//    let fileNames: [String]
 }

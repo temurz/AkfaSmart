@@ -7,11 +7,11 @@
 //
 
 import Foundation
-
+import Alamofire
 extension API {
     
-    func getMessages(_ input:GetMessagesAPIInput) -> Observable <[MessageModel]> {
-        requestList(input)
+    func getMessages(_ input:GetMessagesAPIInput) -> Observable<GetMessagesOutput> {
+        request(input)
     }
     
     final class GetMessagesAPIInput: APIInput {
@@ -32,7 +32,12 @@ extension API {
                 "additionalProp3": "string"
               ]
            ]
-            super.init(urlString: API.Urls.getMessages, parameters: parametres, method: .post, requireAccessToken: true)
+            super.init(urlString: API.Urls.getMessages, parameters: parametres,  method: .post, encoding: JSONEncoding.prettyPrinted, requireAccessToken: true)
         }
+    }
+    
+    final class GetMessagesOutput: Decodable {
+        let total: Int
+        let rows: [MessageModel]
     }
 }

@@ -16,8 +16,8 @@ struct MessagesGateway: MessagesGatewayType {
     func getMessages(dto: GetPageDto) -> Observable<PagingInfo<MessageModel>> {
         let input = API.GetMessagesAPIInput(dto: dto)
         return API.shared.getMessages(input)
-            .tryMap { messages in
-                return messages
+            .tryMap { output in
+                return output.rows
             }
             .replaceNil(with: [])
             .map{PagingInfo(page: dto.page, items: $0, hasMorePages: $0.count==dto.perPage)}
