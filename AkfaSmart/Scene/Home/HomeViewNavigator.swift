@@ -12,9 +12,10 @@ protocol HomeViewNavigatorType {
     func showClassDetailView(imageData: Data?, title: String?)
     func showPurchasesHistoryView()
     func showPaymentsHistoryView()
+    func showMain(page: MainPage)
 }
 
-struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView, ShowingClassDetailView, ShowingPurchasesHistoryView, ShowingPaymentsHistoryView {
+struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView, ShowingClassDetailView, ShowingPurchasesHistoryView, ShowingPaymentsHistoryView, ShowingMain {
     var assembler: Assembler
     
     var navigationController: UINavigationController

@@ -21,6 +21,9 @@ struct HomeView: View {
     private let getMobileClassInfoTrigger = PassthroughSubject<Void,Never>()
     private let showAddDealerViewTrigger = PassthroughSubject<Void,Never>()
     private let showClassDetailViewTrigger = PassthroughSubject<Void,Never>()
+    private let showMessagesViewTrigger = PassthroughSubject<Void,Never>()
+    private let showArticlesViewTrigger = PassthroughSubject<Void,Never>()
+    private let showNewsViewTrigger = PassthroughSubject<Void,Never>()
     
     
     let cancelBag = CancelBag()
@@ -45,9 +48,7 @@ struct HomeView: View {
                         CustomButtonWithImage(systemImage: "plus") {
                             showAddDealerViewTrigger.send(())
                         }
-                        CustomButtonWithImage(systemImage: "bell") {
-                            
-                        }
+                        notificationView
                         
                     }
                     .padding(.horizontal)
@@ -99,11 +100,61 @@ struct HomeView: View {
         }
     }
     
+    
+    var notificationView: some View {
+        ZStack(alignment: .topTrailing) {
+            Menu {
+                Button {
+                    showMessagesViewTrigger.send(())
+                } label: {
+                    Text("Messages")
+                    if output.unreadDataCount.countUnreadMessages != 0 {
+                        Text("\(output.unreadDataCount.countUnreadMessages)")
+                            .foregroundStyle(Color.green)
+                    }
+                }
+                Button {
+                    showArticlesViewTrigger.send(())
+                } label: {
+                    Text("Articles")
+                    if output.unreadDataCount
+                        .countUnreadArticles != 0 {
+                        Text("\(output.unreadDataCount.countUnreadArticles)")
+                            .foregroundColor(.green)
+                    }
+                }
+                Button {
+                    showNewsViewTrigger.send(())
+                } label: {
+                    Text("News")
+                    if output.unreadDataCount.countUnreadNews != 0 {
+                        Text("\(output.unreadDataCount.countUnreadNews)")
+                    }
+                }
+            } label: {
+                CustomButtonWithImage(systemImage: "bell")
+            }
+            if output.unreadDataCount.hasUnreadData {
+                Color.green
+                    .frame(width: 8, height: 8)
+                    .clipShape(Circle())
+            }
+        }
+    }
+    
     init(viewModel: HomeViewModel) {
         let input = HomeViewModel.Input(
             openPurchasesTrigger: openPurchasesTrigger.asDriver(),
-            openPaymentsTrigger: openPaymentsTrigger.asDriver(), calculateTotalAmounts: calculateTotalAmounts.asDriver(), getDealersTrigger: getDealersTrigger.asDriver(), getMobileClassInfo: getMobileClassInfoTrigger.asDriver(),
-            showAddDealerViewTrigger: showAddDealerViewTrigger.asDriver(), showClassDetailViewTrigger: showClassDetailViewTrigger.asDriver())
+            openPaymentsTrigger: openPaymentsTrigger.asDriver(), 
+            calculateTotalAmounts: calculateTotalAmounts.asDriver(),
+            getDealersTrigger: getDealersTrigger.asDriver(), 
+            getMobileClassInfo: getMobileClassInfoTrigger.asDriver(),
+            showAddDealerViewTrigger: showAddDealerViewTrigger.asDriver(), 
+            showClassDetailViewTrigger: showClassDetailViewTrigger.asDriver(),
+            showMessagesViewTrigger: showMessagesViewTrigger.asDriver(),
+            showArticlesViewTrigger: showArticlesViewTrigger.asDriver(),
+            showNewsViewTrigger: showNewsViewTrigger.asDriver()
+        )
         
         output = viewModel.transform(input, cancelBag: cancelBag)
     }
@@ -163,7 +214,7 @@ struct CustomButtonWithImage: View {
         }
     }
     
-    init(eyeImage: String = "", systemImage: String = "", action: @escaping () -> Void) {
+    init(eyeImage: String = "", systemImage: String = "", action: @escaping () -> Void = {}) {
         self.eyeImage = eyeImage
         self.systemImage = systemImage
         self.action = action

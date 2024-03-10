@@ -14,8 +14,8 @@ protocol ShowingMain {
 }
 
 extension ShowingMain {
-    func showMain() {
-        let view: MainView = assembler.resolve(navigationController: navigationController)
+    func showMain(page: MainPage) {
+        let view: MainView = assembler.resolve(navigationController: navigationController, page: page)
         
         let vc = UIHostingController(rootView: view)
         navigationController.setNavigationBarHidden(false, animated: false)

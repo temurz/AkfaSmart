@@ -26,7 +26,7 @@ extension SplashViewModel: ViewModel {
             let hasToken = AuthApp.shared.token != nil
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
                 if hasToken {
-                    navigator.showMain()
+                    navigator.showMain(page: .home)
                 }else {
                     navigator.showLogin()
                 }

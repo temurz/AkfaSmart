@@ -71,6 +71,7 @@ extension API {
         //User
         static let getGeneralUserInfo = Base.BASE_URL + "/api/mobile/mobile_user/userInfo"
         static let saveAvatarImage = Base.BASE_URL + "/api/mobile/mobile_user/save/img"
+        static let getUnreadData = Base.BASE_URL + "/api/mobile/mobile_user/unreadData"
         
     }
 }
