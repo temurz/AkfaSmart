@@ -15,6 +15,7 @@ protocol SettingsNavigatorType {
     func showMarketinggraphics()
     func showProductGraphics()
     func showLanguageChanger()
+    func showTechnicalSupport()
 }
 
 struct SettingsNavigator: 
@@ -25,7 +26,8 @@ struct SettingsNavigator:
     ShowingTechnographics,
     ShowingMarketinggraphics,
     ShowingProductGraphics,
-    ShowingLanguageChanger
+    ShowingLanguageChanger,
+    ShowingTechnicalSupportView
 {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController

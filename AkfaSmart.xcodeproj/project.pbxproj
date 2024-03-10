@@ -142,6 +142,10 @@
 		1B425EAC24FF8D1A000F7F6B /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1B425EAB24FF8D1A000F7F6B /* SDWebImageMapKit */; };
 		1B425EAF24FF9058000F7F6B /* ESPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 1B425EAE24FF9058000F7F6B /* ESPullToRefresh */; };
 		1BD163F124FF8CA700EBC063 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 1BD163F024FF8CA700EBC063 /* MBProgressHUD */; };
+		3420A0A42B9D890600DC3E3D /* TechnicalSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0A32B9D890600DC3E3D /* TechnicalSupportView.swift */; };
+		3420A0A62B9D891E00DC3E3D /* TechnicalSupportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0A52B9D891E00DC3E3D /* TechnicalSupportViewModel.swift */; };
+		3420A0AB2B9D898300DC3E3D /* ShowingTechnicalSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0AA2B9D898300DC3E3D /* ShowingTechnicalSupportView.swift */; };
+		3420A0AE2B9E1C9D00DC3E3D /* TechnicalSupportRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0AD2B9E1C9D00DC3E3D /* TechnicalSupportRow.swift */; };
 		B82CA9672B975981000147D2 /* ConverterToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9662B975981000147D2 /* ConverterToString.swift */; };
 		B82CA9692B977207000147D2 /* GeneralUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9682B977207000147D2 /* GeneralUser.swift */; };
 		B82CA96B2B977598000147D2 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA96A2B977598000147D2 /* User+API.swift */; };
@@ -538,6 +542,10 @@
 		17DCF1B524BEE76800D970B4 /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		17DCF1B824BF01ED00D970B4 /* Publisher+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+.swift"; sourceTree = "<group>"; };
 		17DCF1BA24BF028200D970B4 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		3420A0A32B9D890600DC3E3D /* TechnicalSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSupportView.swift; sourceTree = "<group>"; };
+		3420A0A52B9D891E00DC3E3D /* TechnicalSupportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSupportViewModel.swift; sourceTree = "<group>"; };
+		3420A0AA2B9D898300DC3E3D /* ShowingTechnicalSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingTechnicalSupportView.swift; sourceTree = "<group>"; };
+		3420A0AD2B9E1C9D00DC3E3D /* TechnicalSupportRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSupportRow.swift; sourceTree = "<group>"; };
 		B82CA9662B975981000147D2 /* ConverterToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterToString.swift; sourceTree = "<group>"; };
 		B82CA9682B977207000147D2 /* GeneralUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralUser.swift; sourceTree = "<group>"; };
 		B82CA96A2B977598000147D2 /* User+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
@@ -1027,6 +1035,7 @@
 				B89F2FB72B91C124004DAEAB /* ShowingProductDealersListView.swift */,
 				B8C165B82B9AAD1F00F70074 /* ShowingPaymentsHistoryView.swift */,
 				B8E192A12B9B174F0013B148 /* ShowingPurchaseDetailView.swift */,
+				3420A0AA2B9D898300DC3E3D /* ShowingTechnicalSupportView.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -1387,6 +1396,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		3420A0A22B9D886F00DC3E3D /* TechnicalSupportButton */ = {
+			isa = PBXGroup;
+			children = (
+				3420A0AC2B9E1BDD00DC3E3D /* Row */,
+				3420A0A32B9D890600DC3E3D /* TechnicalSupportView.swift */,
+				3420A0A52B9D891E00DC3E3D /* TechnicalSupportViewModel.swift */,
+			);
+			path = TechnicalSupportButton;
+			sourceTree = "<group>";
+		};
+		3420A0AC2B9E1BDD00DC3E3D /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				3420A0AD2B9E1C9D00DC3E3D /* TechnicalSupportRow.swift */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
 		B82CA9652B975974000147D2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1665,6 +1692,7 @@
 		B866A9742B71688B00202C9F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3420A0A22B9D886F00DC3E3D /* TechnicalSupportButton */,
 				B82CA9712B977EF9000147D2 /* Views */,
 				B863DAB82B8D098F003F2C3D /* Graphics */,
 				B863DA9E2B8D051F003F2C3D /* LanguageChanger */,
@@ -2389,6 +2417,7 @@
 				B8FEC6C22B863C720028BA7F /* ResetPasswordUseCase.swift in Sources */,
 				B8BE4A152B900CB800876714 /* ClassDetailViewAssembler.swift in Sources */,
 				176BAA7324D26DEF00324D3C /* APIResponse.swift in Sources */,
+				3420A0AE2B9E1C9D00DC3E3D /* TechnicalSupportRow.swift in Sources */,
 				B8BE49E62B8D689600876714 /* InfographicsDomainUseCase.swift in Sources */,
 				B8BE4A062B8E48DD00876714 /* ProductGraphics.swift in Sources */,
 				B89F2F782B90DA6C004DAEAB /* PurchaseHistoryView.swift in Sources */,
@@ -2404,6 +2433,7 @@
 				1787234A24BD560500D90F8E /* MainNavigator.swift in Sources */,
 				1781CF4024BD8FB8004ED1C6 /* ProductDetailAssembler.swift in Sources */,
 				B8FEC6CE2B8665950028BA7F /* DealersListView.swift in Sources */,
+				3420A0A62B9D891E00DC3E3D /* TechnicalSupportViewModel.swift in Sources */,
 				B877FD782B8C30D300D24CB0 /* ImageDownloaderViewModel.swift in Sources */,
 				B89F2F812B911719004DAEAB /* Invoice+API.swift in Sources */,
 				B8C165942B99D38F00F70074 /* ArticlesFilterView.swift in Sources */,
@@ -2428,6 +2458,7 @@
 				B87ED1FE2B7A239F00EB5139 /* WelcomeViewAssembler.swift in Sources */,
 				1765B2CE24C6A79F0096D210 /* ProductDetailView.swift in Sources */,
 				B866A8BF2B66E9A800202C9F /* Base.swift in Sources */,
+				3420A0AB2B9D898300DC3E3D /* ShowingTechnicalSupportView.swift in Sources */,
 				B8BE49FE2B8E3EED00876714 /* MarketingGraphicsGateway.swift in Sources */,
 				1720C7C124FE383D00D616B2 /* Validation+Collection.swift in Sources */,
 				1787234924BD560500D90F8E /* MainAssembler.swift in Sources */,
@@ -2481,6 +2512,7 @@
 				B82CA9732B977F0C000147D2 /* ImagePicker.swift in Sources */,
 				B866A9972B71B02900202C9F /* SearchProductAssembler.swift in Sources */,
 				B8BE49EA2B8D69E800876714 /* InfographicsAssembler.swift in Sources */,
+				3420A0A42B9D890600DC3E3D /* TechnicalSupportView.swift in Sources */,
 				B866A8C72B686B7A00202C9F /* Registration+API.swift in Sources */,
 				B866A93D2B70F80700202C9F /* ImageCache.swift in Sources */,
 				B8AC36732B7991790060D52D /* AddDealerView.swift in Sources */,

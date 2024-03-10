@@ -79,7 +79,7 @@ extension SettingsViewModel: ViewModel {
             case 5:
                 navigator.showProductGraphics()
             case 6:
-                break
+                navigator.showTechnicalSupport()
             case 7:
                 break
             case 8:
