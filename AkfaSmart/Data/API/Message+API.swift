@@ -18,20 +18,20 @@ extension API {
         init (dto:GetPageDto) {
             
             let parametres: [String : Any] = [
-              "start": 0,
-              "length": 10,
-              "order": [
-                [
-                  "field": "string",
-                  "sort": "string"
+                "start": dto.page,
+                "length": 10,
+                "order": [
+                    [
+                        "field": "string",
+                        "sort": "string"
+                    ]
+                ],
+                "filter": [
+                    "additionalProp1": "string",
+                    "additionalProp2": "string",
+                    "additionalProp3": "string"
                 ]
-              ],
-              "filter": [
-                "additionalProp1": "string",
-                "additionalProp2": "string",
-                "additionalProp3": "string"
-              ]
-           ]
+            ]
             super.init(urlString: API.Urls.getMessages, parameters: parametres,  method: .post, encoding: JSONEncoding.prettyPrinted, requireAccessToken: true)
         }
     }

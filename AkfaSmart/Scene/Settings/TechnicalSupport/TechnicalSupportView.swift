@@ -13,7 +13,7 @@ struct TechnicalSupportView: View {
     @State private var messageText = ""
 
     private let getMessagesTrigger = PassthroughSubject<Void,Never>()
-    
+    private let loadMoreMessagesTrigger = PassthroughSubject<Void, Never>()
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
@@ -58,6 +58,11 @@ struct TechnicalSupportView: View {
                   dismissButton: .default(Text("OK"))
             )
         })
+        .refreshable {
+            if output.hasMorePages {
+                loadMoreMessagesTrigger.send(())
+            }
+        }
         .onAppear {
             getMessagesTrigger.send(())
         }
@@ -68,7 +73,7 @@ struct TechnicalSupportView: View {
         let input = TechnicalSupportViewModel.Input(
             loadMessagesTrigger: getMessagesTrigger.asDriver(),
             reloadMessagesTrigger: Driver.empty(),
-            loadMoreMessagesTrigger: Driver.empty()
+            loadMoreMessagesTrigger: loadMoreMessagesTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
