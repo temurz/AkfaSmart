@@ -29,7 +29,7 @@ struct QRCodeScannerViewMain: View {
                     Button {
                         dismiss()
                     } label: {
-                        Text("Dismiss")
+                        Text("DISMISS".localizedString)
                             .padding(4)
                     }
                     

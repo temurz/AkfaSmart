@@ -46,7 +46,7 @@ struct WelcomeView: View {
                     .padding(.top)
                     
                     Spacer()
-                    Text("Welcome!")
+                    Text("WELCOME".localizedString)
                         .font(.system(size: 32))
                         .lineLimit(2)
                     Button() {
@@ -56,7 +56,7 @@ struct WelcomeView: View {
                             Image("add_link")
                                 .resizable()
                                 .frame(width: 24, height: 24)
-                            Text("Add my dealer")
+                            Text("ADD_MY_DEALER".localizedString)
                             
                         }
                         .frame(maxWidth: .infinity, maxHeight: 50)

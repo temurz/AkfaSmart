@@ -18,14 +18,14 @@ struct AddDealerView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Add my dealer")
+                Text("ADD_MY_DEALER".localizedString)
                     .font(.title)
                 
-                Text("You can add the dealer by scanning qr-code or by entering bar-code")
+                Text("CAN_ADD_DEALER_BY_SCAN".localizedString)
                     .font(.system(size: 15))
                     .foregroundColor(Color(hex: "#9497A1"))
                 HStack {
-                    TextField("Code", text: $output.qrCodeValue)
+                    TextField("CODE".localizedString, text: $output.qrCodeValue)
                         .padding(.trailing, 32)
                         .padding(.leading, 16)
                     Spacer()
@@ -44,7 +44,7 @@ struct AddDealerView: View {
                 .cornerRadius(12)
                 .padding(.vertical)
                 
-                Text("Phone number")
+                Text("PHONE_NUMBER".localizedString)
                     .font(.system(size: 15))
                     .foregroundColor(Color(hex: "#9497A1"))
                 Text(AuthApp.shared.username?.formatToUzNumber() ?? "")
@@ -55,7 +55,7 @@ struct AddDealerView: View {
                 Button() {
                     addDealerTrigger.send(())
                 } label: {
-                    Text("Confirm")
+                    Text("CONFIRM".localizedString)
                         .frame(maxWidth: .infinity)
                         .frame(height: 40)
                         .foregroundColor(Color.white)
@@ -67,7 +67,7 @@ struct AddDealerView: View {
                 Button() {
                     showMainView.send(())
                 } label: {
-                    Text("Skip")
+                    Text("SKIP".localizedString)
                         .frame(maxWidth: .infinity)
                         .frame(height: 40)
                         .foregroundColor(Color.blue)

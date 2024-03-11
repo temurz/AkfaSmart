@@ -58,3 +58,11 @@
 "GROUP_WITH_COLON" = "Group: ";
 "DEALERS_WITH_THIS_PRODUCT" = "Dealers with this product";
 "SEARCH_PRODUCT" = "Search product";
+"WELCOME" = "Welcome!";
+"ADD_MY_DEALER" = "Add my dealer";
+"DISMISS" = "Dismiss";
+"CAN_ADD_DEALER_BY_SCAN" = "You can add the dealer by scanning qr-code or by entering bar-code";
+"CODE" = "Code";
+"PHONE_NUMBER" = "Phone number";
+"CONFIRM" = "Confirm";
+"SKIP" = "Skip";
