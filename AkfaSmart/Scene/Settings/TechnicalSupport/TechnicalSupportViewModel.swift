@@ -40,7 +40,7 @@ extension TechnicalSupportViewModel: ViewModel {
             .handleEvents(receiveOutput: { pagingInfo in
                 output.hasMorePages = pagingInfo.hasMorePages
             })
-            .map { $0.items }
+            .map { $0.items.reversed() }
             .assign(to: \.items, on: output)
             .store(in: cancelBag)
         
