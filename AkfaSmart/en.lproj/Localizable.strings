@@ -66,3 +66,16 @@
 "PHONE_NUMBER" = "Phone number";
 "CONFIRM" = "Confirm";
 "SKIP" = "Skip";
+"TEXT" = "Text";
+"CHAT" = "Chat";
+
+
+"IS_OFFICE_OR_SHOWROOM" = "Is there an office or showroom";
+"OFFICE" = "Office ";
+"OR_SHOWROOM" = " / showroom ";
+"ANNUAL_BUSINESS_GROWTH" = "Annual business growth";
+"ANNUAL_SALES_TURNOVER" = "Annual sales turnover";
+"USES_ADVERTISING" = "Uses advertising";
+"NO_INFORMATION" = "No information";
+"USES_OUTDOOR_ADVERTISING" = "Uses outdoor advertising";
+"MARKETING_GRAPHICS" = "Marketing graphics";

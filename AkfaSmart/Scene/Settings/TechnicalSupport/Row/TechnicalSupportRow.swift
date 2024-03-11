@@ -56,5 +56,5 @@ struct MessageViewRow: View {
 }
 
 #Preview {
-    MessageViewRow(model: Message(isUser: true, time: "11.03.2024", text: "Hiadadaddakdkdakadkdakdakadkdpkadapdakpdkakdapkdapkdakppdak"))
+    MessageViewRow(model: Message(isUser: true, time: "11.03.2024", text: "Qalay!"))
 }

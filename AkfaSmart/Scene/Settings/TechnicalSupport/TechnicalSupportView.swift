@@ -27,7 +27,7 @@ struct TechnicalSupportView: View {
                 .listStyle(.plain)
 
                 HStack {
-                    TextField("Написать", text: $messageText)
+                    TextField("TEXT".localizedString, text: $messageText)
                         .padding(.leading, 8)
                         .frame(height: 40)
                         .background(Color(.systemGray6))
@@ -35,7 +35,6 @@ struct TechnicalSupportView: View {
 
                     Button(action: {
                         
-                        print("Sending message: \(messageText)")
                         self.messageText = ""
                         
                     }) {
@@ -51,7 +50,7 @@ struct TechnicalSupportView: View {
             }
             .background(Color(hex: "#EAEEF5"))
         }
-        .navigationTitle("Chat")
+        .navigationTitle("CHAT".localizedString)
         .alert(isPresented: $output.alert.isShowing, content: {
             Alert(title: Text(output.alert.title),
                   message: Text(output.alert.message),

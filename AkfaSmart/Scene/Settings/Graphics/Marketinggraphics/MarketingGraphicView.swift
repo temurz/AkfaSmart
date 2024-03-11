@@ -25,27 +25,27 @@ struct MarketingGraphicsView: View {
                     if output.graphics != nil, let graphics = output.graphics {
                         MarketingViewRow(
                             viewModel: MarketingItemViewModel(
-                                title: "Is there an office or showroom",
-                                value: "Office \(ConverterToString.getYesOrNoString(graphics.hasOffice)) / showroom \(ConverterToString.getYesOrNoString(graphics.hasShowroom))")
+                                title: "IS_OFFICE_OR_SHOWROOM".localizedString,
+                                value: "OFFICE".localizedString + ConverterToString.getYesOrNoString(graphics.hasOffice) + "OR_SHOWROOM".localizedString + ConverterToString.getYesOrNoString(graphics.hasShowroom))
                         )
                         MarketingViewRow(
                             viewModel: MarketingItemViewModel(
-                                title: "Annual business growth",
+                                title: "ANNUAL_BUSINESS_GROWTH".localizedString,
                                 value: "\(getAmount(graphics.annualBusinessGrowth))")
                         )
                         MarketingViewRow(
                             viewModel: MarketingItemViewModel(
-                                title: "Annual sales turnover",
+                                title: "ANNUAL_SALES_TURNOVER".localizedString,
                                 value: "\(getAmount(graphics.annualSalesTurnover))")
                         )
                         MarketingViewRow(
                             viewModel: MarketingItemViewModel(
-                                title: "Uses advertising",
-                                value: "\(graphics.useAdvertising ?? "No information")")
+                                title: "USES_ADVERTISING".localizedString,
+                                value: "\(graphics.useAdvertising ?? "NO_INFORMATION".localizedString)")
                         )
                         MarketingViewRow(
                             viewModel: MarketingItemViewModel(
-                                title: "Uses outdoor advertising",
+                                title: "USES_OUTDOOR_ADVERTISING".localizedString,
                                 value: "\(graphics.numberOfOutdoorAdvertising)")
                         )
                     }
@@ -54,7 +54,7 @@ struct MarketingGraphicsView: View {
             }
             
         }
-        .navigationTitle("Marketing graphics")
+        .navigationTitle("MARKETING_GRAPHICS".localizedString)
         .alert(isPresented: $output.alert.isShowing) {
             Alert(title: Text(output.alert.title),
                   message: Text(output.alert.message),
@@ -67,7 +67,7 @@ struct MarketingGraphicsView: View {
     }
     
     private func getAmount(_ amount: Double?) -> String {
-        guard let amount else { return "No Information"}
+        guard let amount else { return "NO_INFORMATION".localizedString}
         return String(format: "%.2f", amount)
     }
     
