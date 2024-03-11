@@ -24,7 +24,7 @@ public struct APIInvalidResponseError: APIError {
     
     public var errorDescription: String? {
         return NSLocalizedString("api.invalidResponseError",
-                                 value: "Invalid server response",
+                                 value: "Invalid server response".localizedString,
                                  comment: "")
     }
 }
@@ -48,14 +48,14 @@ public struct APIUnknownError: APIError {
     
     public init(statusCode: Int?, error: String?){
         self.status = statusCode
-        self.error = error
+        self.error = error?.localizedString
         self.path = ""
         self.timestamp = ""
     }
     
     public init(statusCode: Int?, error: String?, path: String?, timestamp: String?){
         self.status = statusCode
-        self.error = error
+        self.error = error?.localizedString
         self.path = path
         self.timestamp = timestamp
     }

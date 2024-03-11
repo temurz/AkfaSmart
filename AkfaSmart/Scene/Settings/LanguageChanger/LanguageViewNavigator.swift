@@ -9,9 +9,10 @@
 import UIKit
 protocol LanguageViewNavigatorType {    
     func popViewController()
+    func showMain(page: MainPage)
 }
 
-struct LanguageViewNavigator: LanguageViewNavigatorType {
+struct LanguageViewNavigator: LanguageViewNavigatorType, ShowingMain {
     unowned var assembler: Assembler
     
     unowned var navigationController: UINavigationController

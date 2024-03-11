@@ -5,14 +5,11 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
-"Yes" = "Ha";
-"Filter" = "Filtr";
-"Home" = "Asosiy";
-"My_dilers" = "My dilers";
-
-
-
-
+"YES" = "Ha";
+"FILTER" = "Filtr";
+"HOME" = "Asosiy";
+"SEARCH" = "Qidirish";
+"MY_DEALERS" = "Mening dilerlarim";
 "TOTAL_OF_PRODUCTS_SHOULD_BE" = "mahsulotlarning ja'mi xaridi bo'lishi kerak";
 "MIN" = "eng kamida ";
 "MAX" = "eng kamida ";
@@ -20,4 +17,142 @@
 "ADDITIONAL_TERMS" = "Qo'shimcha shartlar";
 "TOTAL_OF_PRODUCTS_SHOULD_BE_MAXIMUM" = "maxsulotlarning jami haridi eng ko'pi ";
 "SHOULD_BE_PERSENTS_UZ" = "% bo'lishi kerak";
-"" = "Ushbu mahsulot bor bo'lgan dilerlar";
+"DEALERS_WITH_THIS_PRODUCT" = "Ushbu mahsulot bor bo'lgan dilerlar";
+
+"DEALERS_NOT_ADDED" = "Siz diler qo'shmagansiz!";
+"MY_CLASS" = "Mening klassim";
+"MESSAGES" = "Xatlar";
+"NEWS" = "Xabarlar";
+"ARTICLES" = "Maqolalar";
+"YOUR_STATUS" = "Sizning holatingiz";
+"DETAIL" = "Tafsilotlar";
+"BY_ANNUAL_PURCHASE" = "Yillik xarid";
+"TOTAL" = "Umumiy";
+"MARRIED" = "Uylangan";
+"SINGLE" = "Yolg'iz";
+"SQ_KM" = " kv.km";
+"DEALERS_NAME" = "Diler nomi";
+"BALANCE" = "Balans";
+"SUM_UZS" = " so'm";
+"SUM_OF_BOUGHT_GOODS" = "Sotib olingan tovarlar summasi:";
+"FOR_MONTH" = "Oylik";
+"FOR_YEAR" = "Yillik";
+"HISTORY_OF_PURCHASES" = "Xarid tarixi";
+"HISTORY_OF_PAYMENTS" = "To'lov tarixi";
+"CLIENT" = "Mijoz: ";
+"INCOME" = "Daromad";
+"OUTCOME" = "Chiqim";
+"PAYMENT_HISTORY_TITLE" = "To'lov tarixi";
+"AMOUNT" = "Miqdori: ";
+"PRICE" = "Narxi: ";
+"TOTAL_WITH_COLON" = "Umumiy: ";
+"UZS" = " so'm";
+"ORDER_WITH_NUMBER" = "Buyurtma №";
+"MORE" = "Batafsil";
+"PURCHASE_HISTORY_TITLE" = "Xarid tarixi";
+"FILTER" = "Filtr";
+"CLEAR" = "Tozalash";
+"DATE_OF_START" = "Boshlanish sanasi";
+"DATE_OF_END" = "Tugash sanasi";
+"TYPE_OF_ARTICLES" = "Maqola turi";
+"SELECT_ARTICLE_TYPE" = "Maqola turini tanlang";
+"KM" = "km";
+"GROUP_WITH_COLON" = "Guruh: ";
+
+"SEARCH_PRODUCT" = "Mahsulotni qidirish";
+"WELCOME" = "Xush kelibsiz!";
+"ADD_MY_DEALER" = "Dilerimni qo'shish";
+"DISMISS" = "Bekor qilish";
+
+"CAN_ADD_DEALER_BY_SCAN" = "Dilerni qr-kodni skan qilib yoki shtrix-kodni kiritib qo'shishingiz mumkin";
+"CODE" = "Kod";
+"PHONE_NUMBER" = "Telefon raqami";
+"CONFIRM" = "Tasdiqlash";
+"SKIP" = "O'tkazib yuborish";
+"TEXT" = "Matn";
+"CHAT" = "Chat";
+
+
+"IS_OFFICE_OR_SHOWROOM" = "Ofis yoki shourum bormi";
+"OFFICE" = "Ofis ";
+"OR_SHOWROOM" = " / shourum ";
+"ANNUAL_BUSINESS_GROWTH" = "Yillik biznes rivojlanishi";
+"ANNUAL_SALES_TURNOVER" = "Yillik savdo aylanishi";
+"USES_ADVERTISING" = "Reklama foydalanadi";
+"NO_INFORMATION" = "Ma'lumot yo'q";
+"USES_OUTDOOR_ADVERTISING" = "Ko'chaga reklama qo'yish";
+"MARKETING_GRAPHICS" = "Marketing grafiklari";
+"ANNUAL_BUY_AMOUNT" = "Yillik sotib olish miqdori";
+"ANNUAL_BUY_WEIGHT" = "Yillik sotib olish og'irligi";
+"DEALER_NAMES" = "Diler nomlari";
+"PRODUCT_GRAPHICS_TITLE"= "Mahsulot grafiklari";
+"FIO" = "To'liq ism";
+"DATE_OF_BIRTH" = "Tug'ilgan sana";
+"ADDRESS" = "Manzil";
+"NATIONALITY" = "Millati";
+"EDUCATION" = "Ta'lim";
+"FAMILY" = "Oilaviy holati";
+"CHILDREN_EN" = " bolalar";
+"HAS" = "bor ";
+"FOREIGN_LANGUAGES" = "Chet tillar";
+"INFOGRAPHICS" = "Infografikalar";
+"EDIT" = "Tahrirlash";
+"NUMBER_OF_EMPLOYEES" = "Xodimlar soni";
+"ABOUT_EMPLOYEES" = "Xodimlar haqida";
+"IS_THERE_A_SELLER" = "Sotuvchi bormi";
+"IS_THERE_AN_ACCOUNTANT" = "Hisobchi bormi";
+"HR_GRAPHICS_TITLE" = "HR grafiklari";
+"ADDRESS_OF_FACTORY" = "Zavod manzili";
+"AREA_OF_FACTORY" = "Zavod maydoni";
+"GLASS_FACTORY_EXISTS" = "Shisha zavodi (mavjud/yo'q)";
+"WHICH_SERIES_USES" = "Qaysi seriyaning foydalaniladi";
+"WHICH_TOOLS_USES" = "Qaysi vositalardan foydalaniladi";
+"TECHNOGRAPHICS_TITLE" = "Texnografika";
+"LANGUAGE_TITLE" = "Til";
+"SAVE" = "Saqlash";
+"DELETE_ACCOUNT" = "Hisobni o'chirish";
+"USE_GALLERY" = "Galereyadan foydalanish";
+"USE_CAMERA" = "Kameradan foydalanish";
+"CLOSE" = "Yopish";
+"SETTINGS_TITLE" = "Sozlamalar";
+"RESET_PASSWORD" = "Parolni qayta o'rnatish";
+"CREATE_PASSWORD" = "Yangi parol yaratish";
+"NEW_PASSWORD" = "Yangi parol";
+"CONFIRM_NEW_PASSWORD" = "Yangi parolni tasdiqlang";
+"PASSWORDS_SHOULD_BE_SAME" = "Ikki parol bir xil bo'lishi kerak";
+"FORGOT_PASSWORD_QUESTION" = "Parolni unutdingizmi?";
+"ENTER_PHONE_NUMBER_RESET_PASSWORD" = "Parolni qayta o'rnatish uchun telefon raqamingizni kiriting";
+"CODE_SENT_TO_PHONE" = "Bir marta ishlatiladigan kod telefon raqamiga yuborildi ";
+"SMS_CODE" = "SMS kodi";
+"RESEND_CODE_IN" = "Kodni qayta yuborish:";
+"RESEND_SMS" = "SMS-ni qayta yuborish";
+"REGISTRATION" = "Ro'yxatdan o'tish";
+"FORGOT_PASSWORD" = "Parolni unutdim";
+"ADD_DEALER" = "Diler qo'shish";
+"REGISTER" = "Ro'yxatdan o'tkazish";
+"CONFIRM_PASSWORD" = "Parolni tasdiqlang";
+"ALREADY_REGISTERED" = "Afsuski, allaqachon ro'yxatdan o'tgansiz";
+"LOGIN" = "Kirish";
+"PASSWORD" = "Parol";
+"PLEASE_ENTER_USERNAME" = "Iltimos, foydalanuvchi nomini kiriting";
+"PHONE_NUMBER_SHOULD_BE_IN_FORMAT" = "Telefon raqami +998(**) ***-**-** formatida bo'lishi kerak";
+"MINIMUM_NUMBER_OF_LETTERS" = "Harf minimal soni ";
+"PLEASE_ENTER_PASSWORD" = "Iltimos, parolni kiriting";
+"CODE_CANNOT_BE_EMPTY" = "Kod bo'sh bo'lishi mumkin emas";
+"PHONE_NUMBER_CANNOT_BE_EMPTY" = "Telefon raqami bo'sh bo'lishi mumkin emas";
+
+"PERSONAL_DATA" = "Shaxsiy ma'lumotlar";
+"INFOGRAPHICS" = "Infografika";
+"TECHNOGRAPHICS" = "Texnografika";
+"HR_GRAPHICS" = "HR grafikalar";
+"MARKET_GRAPHICS" = "Bozor grafikasi";
+"PRODUCT_GRAPHICS" = "Mahsulot grafikasi";
+"TECHNICAL_SUPPORT" = "Texnik yordam";
+"PIN_CODE" = "PIN-kod";
+"LANGUAGE" = "Til";
+
+
+//ERRORS
+"Not Found" = "Ma'lumot topilmadi";
+"Invalid server response" = "Noto'g'ri server javobi";
+"Error" = "Xatolik";

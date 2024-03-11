@@ -28,12 +28,12 @@ public struct AlertMessage {
 public extension AlertMessage {  // swiftlint:disable:this no_extension_access_modifier
     init(error: Error) {
         if let error = error as? APIUnknownError {
-            self.title = "Error"
+            self.title = "Error".localizedString
             let message = error.error ?? ""
             self.message = message
             self.isShowing = !message.isEmpty
         }else {
-            self.title = "Error"
+            self.title = "Error".localizedString
             let message = error.localizedDescription
             self.message = message
             self.isShowing = !message.isEmpty

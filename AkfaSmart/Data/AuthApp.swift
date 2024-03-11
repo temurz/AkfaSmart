@@ -83,7 +83,7 @@ class AuthApp {
     //MARK: - Language
     var language: String {
         get {
-            return UserDefaults.standard.string(forKey: "LanguageTypeKey") ?? "en"
+            return UserDefaults.standard.string(forKey: "LanguageTypeKey") ?? "uz"
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "LanguageTypeKey")

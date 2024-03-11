@@ -59,7 +59,7 @@ extension LanguageChangerViewModel: ViewModel {
                 default:
                     AuthApp.shared.language = "en"
                 }
-                navigator.popViewController()
+                navigator.showMain(page: .settings)
             }
             .store(in: cancelBag)
         

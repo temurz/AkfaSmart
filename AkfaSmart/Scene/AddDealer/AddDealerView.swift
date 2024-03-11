@@ -44,11 +44,11 @@ struct AddDealerView: View {
                 .cornerRadius(12)
                 .padding(.vertical)
                 
-                Text("PHONE_NUMBER".localizedString)
-                    .font(.system(size: 15))
-                    .foregroundColor(Color(hex: "#9497A1"))
-                Text(AuthApp.shared.username?.formatToUzNumber() ?? "")
-                    .font(.headline)
+//                Text("PHONE_NUMBER".localizedString)
+//                    .font(.system(size: 15))
+//                    .foregroundColor(Color(hex: "#9497A1"))
+//                Text(AuthApp.shared.username?.formatToUzNumber() ?? "")
+//                    .font(.headline)
                 
                 Spacer()
                 

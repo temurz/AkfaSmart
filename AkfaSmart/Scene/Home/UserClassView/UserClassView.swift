@@ -22,7 +22,7 @@ struct UserClassView: View {
                             .font(.italic(.subheadline)())
                     }
                     VStack {
-                        Text("YOUR_STATUS")
+                        Text("YOUR_STATUS".localizedString)
                             .foregroundColor(.white)
                             .font(.system(size: 10))
                             .padding(4)
@@ -40,7 +40,7 @@ struct UserClassView: View {
             .background(model?.backgroundColor != nil ? Color(hex: model?.backgroundColor ?? "") : Color.white)
             
             HStack {
-                Text("DETAIL")
+                Text("DETAIL".localizedString)
                     .padding()
                 Spacer()
                 Image("arrow_forward")

@@ -10,6 +10,7 @@
 "HOME" = "Home";
 "SEARCH" = "Search";
 "MY_DEALERS" = "My dealers";
+
 "DEALERS_NOT_ADDED" = "You didn't \n add dealers yet!";
 "MY_CLASS" = "My class";
 "MESSAGES" = "Messages";
@@ -137,3 +138,19 @@
 "PLEASE_ENTER_PASSWORD" = "Please enter password";
 "CODE_CANNOT_BE_EMPTY" = "Code cannot be empty";
 "PHONE_NUMBER_CANNOT_BE_EMPTY" = "Phone number cannot be empty";
+
+"PERSONAL_DATA" = "Personal data";
+"INFOGRAPHICS" = "Infographics";
+"TECHNOGRAPHICS" = "Technographics";
+"HR_GRAPHICS" = "HR graphics";
+"MARKET_GRAPHICS" = "Market graphics";
+"PRODUCT_GRAPHICS" = "Product graphics";
+"TECHNICAL_SUPPORT" = "Technical support";
+"PIN_CODE" = "PIN-code";
+"LANGUAGE" = "Language";
+
+
+//ERRORS
+"Not Found" = "Not found";
+"Invalid server response" = "Invalid server response";
+"Error" = "Error";
