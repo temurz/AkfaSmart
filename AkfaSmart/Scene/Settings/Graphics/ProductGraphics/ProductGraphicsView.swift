@@ -33,10 +33,10 @@ struct ProductGraphicsView: View {
                                 title: "DEALER_NAMES".localizedString,
                                 value: graphics.dealerNames)
                         )
-                        MarketingViewRow(
-                            viewModel: MarketingItemViewModel(
+                        ProductGraphicsDetailRow(
+                            model: ProductGraphicsDetailModel(
                                 title: "ANNUAL_BUY_WEIGHT".localizedString,
-                                value: getBuyWeightDetail(details: graphics.annualBuyWeightDetail))
+                                detailArray: graphics.annualBuyWeightDetail)
                         )
                     }
                     
@@ -58,24 +58,36 @@ struct ProductGraphicsView: View {
     
     private func getAmount(_ amount: Double?) -> String {
         guard let amount else { return "NO_INFORMATION".localizedString}
-        return String(format: "%.2f", amount)
-    }
-    
-    private func getBuyWeightDetail(details: [BuyWeightDetail]) -> String {
-        let namesAndWeights = details.map { ($0.name, $0.weight) }
-        var text = ""
-        namesAndWeights.forEach { name, weight in
-            text += name
-            text += " "
-            text += "\(weight)"
-            text += "\r\n"
-        }
-        return text
+        return amount.convertDecimals()
     }
     
     init(viewModel: ProductGraphicsViewModel) {
         let input = ProductGraphicsViewModel.Input(requestProductGraphicsTrigger: requestProductGraphicsTrigger.asDriver())
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
+    }
+}
+
+struct ProductGraphicsDetailModel {
+    let title: String
+    let detailArray: [BuyWeightDetail]
+}
+
+struct ProductGraphicsDetailRow: View {
+    let model: ProductGraphicsDetailModel
+    var body: some View {
+        
+        VStack(alignment: .leading) {
+            Text(model.title)
+                .foregroundColor(Color(hex: "#9DA8C2"))
+            ForEach(model.detailArray, id: \.id) { item in
+                HStack {
+                    Text(item.name)
+                    Spacer()
+                    Text(item.weight.convertDecimals())
+                }
+            }
+        }
+        
     }
 }

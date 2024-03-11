@@ -68,7 +68,7 @@ struct MarketingGraphicsView: View {
     
     private func getAmount(_ amount: Double?) -> String {
         guard let amount else { return "NO_INFORMATION".localizedString}
-        return String(format: "%.2f", amount)
+        return amount.convertDecimals()
     }
     
     init(viewModel: MarketingGraphicsViewModel) {
