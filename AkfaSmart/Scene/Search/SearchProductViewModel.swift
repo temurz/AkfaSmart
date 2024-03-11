@@ -74,7 +74,6 @@ extension SearchProductViewModel: ViewModel {
                 output.items = []
                 output.debounceText = text
                 
-                print("Now it is searching")
                 loadProductsTrigger.send(text)
             })
             .store(in: cancelBag)

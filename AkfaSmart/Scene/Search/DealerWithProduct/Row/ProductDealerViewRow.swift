@@ -30,7 +30,7 @@ struct ProductDealerViewRow: View {
                     Image("routing-2")
                         .padding(.leading)
                     Divider()
-                    Text(String(format: "%.1f", model.distance/1000) + "\nkm")
+                    Text(String(format: "%.1f", model.distance/1000) + "\n" + "KM".localizedString)
                         .fixedSize()
                         .multilineTextAlignment(.center)
                         .lineLimit(2)

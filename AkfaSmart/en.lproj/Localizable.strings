@@ -54,3 +54,7 @@
 "DATE_OF_END" = "Date of end";
 "TYPE_OF_ARTICLES" = "Type of Articles";
 "SELECT_ARTICLE_TYPE" = "Select article type";
+"KM" = "km";
+"GROUP_WITH_COLON" = "Group: ";
+"DEALERS_WITH_THIS_PRODUCT" = "Dealers with this product";
+"SEARCH_PRODUCT" = "Search product";

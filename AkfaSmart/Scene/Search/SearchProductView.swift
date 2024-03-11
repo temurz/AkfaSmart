@@ -30,7 +30,7 @@ struct SearchProductView: View {
                 }
                 .listStyle(.plain)
             }
-            .navigationTitle("Search product")
+            .navigationTitle("SEARCH_PRODUCT".localizedString)
             .navigationBarHidden(false)
             .searchable(text: $output.searchedText)
         }

@@ -18,7 +18,7 @@ struct SearchProductRow: View {
                     .font(.subheadline)
                     .foregroundColor(Color(hex: "#9497A1"))
                 HStack(spacing: 0) {
-                    Text("Guruh: ")
+                    Text("GROUP_WITH_COLON".localizedString)
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9497A1"))
                     Spacer()
@@ -26,11 +26,11 @@ struct SearchProductRow: View {
                 }
                 
                 HStack {
-                    Text("Narxi: ")
+                    Text("PRICE".localizedString)
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9497A1"))
                     Spacer()
-                    Text(model.rate.convertDecimals() + " uzs")
+                    Text(model.rate.convertDecimals() + "UZS".localizedString)
                 }
             }
             .padding()

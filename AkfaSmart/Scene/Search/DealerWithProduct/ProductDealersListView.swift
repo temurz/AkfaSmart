@@ -31,7 +31,7 @@ struct ProductDealersListView: View {
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9497A1"))
                     HStack(spacing: 0) {
-                        Text("Guruh: ")
+                        Text("GROUP_WITH_COLON".localizedString)
                             .font(.subheadline)
                             .foregroundColor(Color(hex: "#9497A1"))
                         Spacer()
@@ -39,11 +39,11 @@ struct ProductDealersListView: View {
                     }
                     
                     HStack {
-                        Text("Narxi: ")
+                        Text("PRICE".localizedString)
                             .font(.subheadline)
                             .foregroundColor(Color(hex: "#9497A1"))
                         Spacer()
-                        Text(model.rate.convertDecimals() + " uzs")
+                        Text(model.rate.convertDecimals() + "UZS".localizedString)
                     }
                 }
                 .padding()
@@ -70,7 +70,7 @@ struct ProductDealersListView: View {
                 .listStyle(.plain)
             }
         }
-        .navigationTitle("Ushbu mahsulot bor bo'lgan dilerlar")
+        .navigationTitle("DEALERS_WITH_THIS_PRODUCT".localizedString)
         .onAppear {
             
             locationManager.didEndUpdating = { lat, long in
