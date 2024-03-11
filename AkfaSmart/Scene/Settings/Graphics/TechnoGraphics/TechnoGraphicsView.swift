@@ -21,31 +21,31 @@ struct TechnoGraphicsView: View {
                         let techno = output.technoGraphics {
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
-                                title: "Address of factory",
+                                title: "ADDRESS_OF_FACTORY".localizedString,
                                 value: "",
                                 editedValue: "")
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
-                                title: "Area of factory",
+                                title: "AREA_OF_FACTORY".localizedString,
                                 value: ConverterToString.getArea(area: techno.area),
                                 editedValue: ConverterToString.getArea(area: techno.areaEdited))
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
-                                title: "Glass factory (exists/no)",
+                                title: "GLASS_FACTORY_EXISTS".localizedString,
                                 value: ConverterToString.getYesOrNoString(techno.hasGlassWorkshop),
                                 editedValue: ConverterToString.getYesOrNoString(techno.hasGlassWorkshopEdited))
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
-                                title: "Which series uses",
+                                title: "WHICH_SERIES_USES".localizedString,
                                 value: "\(getSeriesString(series: techno.workWithSeries))",
                                 editedValue: "\(getSeriesString(series: techno.workWithSeries))")
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
-                                title: "Which tools uses",
+                                title: "WHICH_TOOLS_USES".localizedString,
                                 value: "\(getSeriesString(series: techno.tools))",
                                 editedValue: "\(getSeriesString(series: techno.toolsEdited))")
                         )
@@ -57,7 +57,7 @@ struct TechnoGraphicsView: View {
             }
             
         }
-        .navigationTitle("Technographics")
+        .navigationTitle("TECHNOGRAPHICS_TITLE".localizedString)
         .alert(isPresented: $output.alert.isShowing) {
             Alert(title: Text(output.alert.title),
                   message: Text(output.alert.message),
@@ -66,7 +66,7 @@ struct TechnoGraphicsView: View {
         .navigationBarItems(trailing: Button(action: {
             
         }, label: {
-            Text("Edit")
+            Text("EDIT".localizedString)
                 .foregroundColor(.red)
                 .font(.headline)
         }))

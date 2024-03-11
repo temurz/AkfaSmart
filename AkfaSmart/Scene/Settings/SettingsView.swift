@@ -43,7 +43,7 @@ struct SettingsView: View {
                             Divider()
                         }
                         
-                        Button("Delete account") {
+                        Button("DELETE_ACCOUNT".localizedString) {
                             deleteAccountTrigger.send(())
                         }
                         .foregroundColor(Color.red)
@@ -75,7 +75,7 @@ struct SettingsView: View {
                                         .scaledToFit()
                                         .frame(width: 24, height: 24)
                                         .foregroundColor(Color(hex: "#51526C"))
-                                    Text("Use gallery")
+                                    Text("USE_GALLERY".localizedString)
                                         .bold()
                                         .foregroundColor(Color(hex: "#51526C"))
                                 }
@@ -88,7 +88,7 @@ struct SettingsView: View {
                             
                             Button {
                                 if !PickerImage.checkPermissions(.camera) {
-                                    print("There is no camera on this device")
+                                    
                                     return
                                 }
                                 output.imageChooserType = .camera
@@ -100,7 +100,7 @@ struct SettingsView: View {
                                         .scaledToFit()
                                         .frame(width: 24, height: 24)
                                         .foregroundColor(Color(hex: "#51526C"))
-                                    Text("Use camera")
+                                    Text("USE_CAMERA".localizedString)
                                         .bold()
                                         .foregroundColor(Color(hex: "#51526C"))
                                 }
@@ -114,7 +114,7 @@ struct SettingsView: View {
                             Button {
                                 output.showImageSourceSelector = false
                             } label: {
-                                Text("Close")
+                                Text("CLOSE".localizedString)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 40)
                                     .foregroundColor(Color.white)
@@ -132,7 +132,7 @@ struct SettingsView: View {
                     }
                 }
             }
-            .navigationTitle("Settings")
+            .navigationTitle("SETTINGS_TITLE".localizedString)
             .navigationBarHidden(false)
             .alert(isPresented: $output.alert.isShowing) {
                 Alert(

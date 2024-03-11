@@ -26,14 +26,14 @@ struct HRgraphicsView: View {
                     if output.hrGraphics != nil, let hrGraphics = output.hrGraphics {
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
-                                title: "Number of employees",
+                                title: "NUMBER_OF_EMPLOYEES".localizedString,
                                 value: ConverterToString.getAmount(from: hrGraphics.numberOfEmployees),
                                 editedValue: ConverterToString.getAmount(from: hrGraphics.numberOfEmployeesEdited)
                             )
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
-                                title: "About employees",
+                                title: "ABOUT_EMPLOYEES".localizedString,
                                 value: "\(hrGraphics.aboutEmployees ?? "")",
                                 editedValue: "\(hrGraphics.aboutEmployeesEdited ?? "")"
                             )
@@ -41,7 +41,7 @@ struct HRgraphicsView: View {
                         
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
-                                title: "Is there a seller",
+                                title: "IS_THERE_A_SELLER".localizedString,
                                 value: "\(ConverterToString.getYesOrNoString(hrGraphics.hasSeller))",
                                 editedValue: "\(ConverterToString.getYesOrNoString(hrGraphics.hasSellerEdited))"
                             )
@@ -49,7 +49,7 @@ struct HRgraphicsView: View {
                         
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
-                                title: "Is there an accountant",
+                                title: "IS_THERE_AN_ACCOUNTANT".localizedString,
                                 value: "\(ConverterToString.getYesOrNoString(hrGraphics.hasAccountant))",
                                 editedValue: "\(ConverterToString.getYesOrNoString(hrGraphics.hasAccountantEdited))"
                             )
@@ -59,7 +59,7 @@ struct HRgraphicsView: View {
                 .padding()
             }
         }
-        .navigationTitle("HR graphics")
+        .navigationTitle("HR_GRAPHICS_TITLE".localizedString)
         .alert(isPresented: $output.alert.isShowing) {
             Alert(title: Text(output.alert.title),
                   message: Text(output.alert.message),
@@ -68,7 +68,7 @@ struct HRgraphicsView: View {
         .navigationBarItems(trailing: Button(action: {
             
         }, label: {
-            Text("Edit")
+            Text("EDIT".localizedString)
                 .foregroundColor(.red)
                 .font(.headline)
         }))

@@ -35,11 +35,11 @@ struct LanguageChangerView: View {
             .listStyle(.plain)
             
         }
-        .navigationTitle("Language")
+        .navigationTitle("LANGUAGE_TITLE".localizedString)
         .navigationBarItems(trailing: Button(action: {
             saveTrigger.send(())
         }, label: {
-            Text("Save")
+            Text("SAVE".localizedString)
                 .foregroundColor(.red)
                 .font(.headline)
         }))

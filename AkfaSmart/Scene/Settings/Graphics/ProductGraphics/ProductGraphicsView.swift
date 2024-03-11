@@ -20,23 +20,23 @@ struct ProductGraphicsView: View {
                     if output.graphics != nil, let graphics = output.graphics {
                         MarketingViewRow(
                             viewModel: MarketingItemViewModel(
-                                title: "Annual buy amount",
-                                value: "\(getAmount(graphics.annualBuyAmount))")
+                                title: "ANNUAL_BUY_AMOUNT".localizedString,
+                                value: getAmount(graphics.annualBuyAmount))
                         )
                         MarketingViewRow(
                             viewModel: MarketingItemViewModel(
-                                title: "Annual buy weight",
-                                value: "\(getAmount(graphics.annualBuyWeight))")
+                                title: "ANNUAL_BUY_WEIGHT".localizedString,
+                                value: getAmount(graphics.annualBuyWeight))
                         )
                         MarketingViewRow(
                             viewModel: MarketingItemViewModel(
-                                title: "Dealer names",
+                                title: "DEALER_NAMES".localizedString,
                                 value: graphics.dealerNames)
                         )
                         MarketingViewRow(
                             viewModel: MarketingItemViewModel(
-                                title: "Annual buy weight",
-                                value: "\(getBuyWeightDetail(details: graphics.annualBuyWeightDetail))")
+                                title: "ANNUAL_BUY_WEIGHT".localizedString,
+                                value: getBuyWeightDetail(details: graphics.annualBuyWeightDetail))
                         )
                     }
                     
@@ -44,7 +44,7 @@ struct ProductGraphicsView: View {
                 .padding()
             }
         }
-        .navigationTitle("Product Graphics")
+        .navigationTitle("PRODUCT_GRAPHICS_TITLE".localizedString)
         .alert(isPresented: $output.alert.isShowing) {
             Alert(title: Text(output.alert.title),
                   message: Text(output.alert.message),
@@ -57,7 +57,7 @@ struct ProductGraphicsView: View {
     }
     
     private func getAmount(_ amount: Double?) -> String {
-        guard let amount else { return "No Information"}
+        guard let amount else { return "NO_INFORMATION".localizedString}
         return String(format: "%.2f", amount)
     }
     
