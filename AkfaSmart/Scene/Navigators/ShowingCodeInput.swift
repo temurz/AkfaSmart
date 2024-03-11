@@ -8,11 +8,7 @@
 
 import UIKit
 import SwiftUI
-enum CodeReason: Equatable {
-    static func == (lhs: CodeReason, rhs: CodeReason) -> Bool {
-        lhs == rhs
-    }
-    
+enum CodeReason {
     case register
     case forgotPassword
     case dealer(_ dealer: AddDealer)

@@ -32,7 +32,7 @@ struct HomeView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("My dilers")
+                        Text("MY_DEALERS")
                             .font(.title)
                         Spacer()
                         CustomButtonWithImage(eyeImage: output.visible ? "visibility" : "visibility_off") {
@@ -70,7 +70,7 @@ struct HomeView: View {
                     }else {
                         HStack {
                             Spacer()
-                            Text("You didn't \n add dealers yet!")
+                            Text("DEALERS_NOT_ADDED")
                                 .multilineTextAlignment(.center)
                                 .lineLimit(2)
                                 .font(.title2)
@@ -79,7 +79,7 @@ struct HomeView: View {
                         }
                         .padding()
                     }
-                    Text("My class")
+                    Text("MY_CLASS")
                         .font(.title2)
                         .padding([.horizontal, .bottom])
                     UserClassView(model: $output.mobileClass,
@@ -107,7 +107,7 @@ struct HomeView: View {
                 Button {
                     showMessagesViewTrigger.send(())
                 } label: {
-                    Text("Messages")
+                    Text("MESSAGES")
                     if output.unreadDataCount.countUnreadMessages != 0 {
                         Text("\(output.unreadDataCount.countUnreadMessages)")
                             .foregroundStyle(Color.green)
@@ -116,7 +116,7 @@ struct HomeView: View {
                 Button {
                     showArticlesViewTrigger.send(())
                 } label: {
-                    Text("Articles")
+                    Text("ARTICLES")
                     if output.unreadDataCount
                         .countUnreadArticles != 0 {
                         Text("\(output.unreadDataCount.countUnreadArticles)")
@@ -126,7 +126,7 @@ struct HomeView: View {
                 Button {
                     showNewsViewTrigger.send(())
                 } label: {
-                    Text("News")
+                    Text("NEWS")
                     if output.unreadDataCount.countUnreadNews != 0 {
                         Text("\(output.unreadDataCount.countUnreadNews)")
                     }

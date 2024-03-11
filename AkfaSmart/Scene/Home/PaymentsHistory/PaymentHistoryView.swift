@@ -23,11 +23,11 @@ struct PaymentHistoryView: View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
                 Picker("", selection: $selection) {
-                    Text("Income")
+                    Text("INCOME".localizedString)
                         .font(.headline)
                         .padding()
                         .tag(0)
-                    Text("Outcome")
+                    Text("OUTCOME".localizedString)
                         .font(.headline)
                         .padding()
                         .tag(1)
@@ -81,7 +81,7 @@ struct PaymentHistoryView: View {
                 
             }
         }
-        .navigationTitle("Payment history")
+        .navigationTitle("PAYMENT_HISTORY_TITLE".localizedString)
         .navigationBarItems(trailing:
                                 Button(action: {
             showFilterViewTrigger.send(())

@@ -33,7 +33,7 @@ struct ConverterToString {
     
     static func getYesOrNoString(_ bool: Bool?, isEdited: Bool = false) -> String {
         if let bool = bool {
-            return bool ? "Yes" : "No"
+            return bool ? "YES".localizedString : "NO".localizedString
         }else {
             return ""
         }
@@ -41,15 +41,15 @@ struct ConverterToString {
     
     static func minMaxText(min: Double, max: Double) -> String {
         if min == 0 {
-            return "eng kamida \(max)"
+            return "MIN".localizedString + "\(max)"
         }else {
-            return "eng ko'pi \(min)"
+            return "MAX".localizedString + "\(min)"
         }
     }
     
     static func getMarriedStatus(bool: Bool?, isEdited: Bool = false) -> String {
         if let bool = bool {
-            return bool ? "Married" : "Single"
+            return bool ? "MARRIED".localizedString : "SINGLE".localizedString
         }else {
             return ""
         }
@@ -57,7 +57,7 @@ struct ConverterToString {
     
     static func getArea(area: Double?) -> String {
         if let area {
-            return area > 0 ? "\(area)" + " sq.km" : ""
+            return area > 0 ? "\(area)" + "SQ_KM".localizedString : ""
         }else {
             return ""
         }

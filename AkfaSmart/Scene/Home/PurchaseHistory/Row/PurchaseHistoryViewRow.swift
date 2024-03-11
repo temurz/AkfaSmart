@@ -14,13 +14,13 @@ struct PurchaseHistoryViewRow: View {
     var body: some View {
         VStack {
             HStack(spacing: 0) {
-                Text("Buyurtma №")
+                Text("ORDER_WITH_NUMBER".localizedString)
                 Text(String(model.cid ?? 0))
                 Spacer()
                 Text(model.date?.convertToDateUS() ?? "")
             }
             HStack(spacing: 0) {
-                Text("Mijoz: ")
+                Text("CLIENT".localizedString)
                 Text(model.dealerName ?? "")
                 Spacer()
                 Text(model.status ?? "")
@@ -38,7 +38,7 @@ struct PurchaseHistoryViewRow: View {
                 Button {
                     selectAction?()
                 } label: {
-                    Text("Batafsil")
+                    Text("MORE".localizedString)
                         .foregroundColor(.white)
                         .padding(4)
                         .background(Color(hex: "#E7372C"))

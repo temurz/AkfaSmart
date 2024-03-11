@@ -23,11 +23,11 @@ struct PurchaseHistoryView: View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
                 Picker("", selection: $selection) {
-                    Text("Income")
+                    Text("INCOME".localizedString)
                         .font(.headline)
                         .padding()
                         .tag(0)
-                    Text("Outcome")
+                    Text("OUTCOME".localizedString)
                         .font(.headline)
                         .padding()
                         .tag(1)
@@ -72,7 +72,7 @@ struct PurchaseHistoryView: View {
                 .listStyle(.plain)
             }
         }
-        .navigationTitle("Purchase history")
+        .navigationTitle("PURCHASE_HISTORY_TITLE".localizedString)
         .navigationBarItems(trailing:
                                 Button(action: {
             showFilterViewTrigger.send(())
@@ -116,6 +116,6 @@ struct PurchaseHistoryView: View {
 extension UISegmentedControl {
     override open func didMoveToSuperview() {
         super.didMoveToSuperview()
-        self.setContentHuggingPriority(.defaultLow, for: .vertical)  // << here !!
+        self.setContentHuggingPriority(.defaultLow, for: .vertical)
     }
 }

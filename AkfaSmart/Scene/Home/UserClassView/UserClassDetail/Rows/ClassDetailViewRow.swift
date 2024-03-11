@@ -14,7 +14,7 @@ struct ClassDetailViewRow: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("By Annual purchase")
+                Text("BY_ANNUAL_PURCHASE")
                     .padding()
                 Spacer()
                 Button {
@@ -36,11 +36,15 @@ struct ClassDetailViewRow: View {
             .cornerRadius(12, corners: [.topLeft, .topRight])
             if showDetails {
                 Group {
-                    Text("\(ConverterToString.getStringFrom(model.c1KlassProductGroups)) mahsulotlarning ja'mi xaridi \(ConverterToString.minMaxText(min: model.c1MinWeight, max: model.c1MaxWeight)) bo'lishi kerak")
+                    Text(
+                        ConverterToString.getStringFrom(model.c1KlassProductGroups)
+                        + "TOTAL_OF_PRODUCTS_SHOULD_BE".localizedString
+                        + ConverterToString.minMaxText(min: model.c1MinWeight, max: model.c1MaxWeight)
+                    )
                         .padding()
                     HStack {
                         Spacer()
-                        Text("Xaridlar(kg)")
+                        Text("PURCHASES_KG")
                             .underline(true)
                             .padding()
                             .onTapGesture {
@@ -63,7 +67,7 @@ struct ClassDetailViewRow: View {
                                     .edgesIgnoringSafeArea(.horizontal)
                                 SeriesAndAmountRow(model: ClassAmountDetail(
                                     id: -1,
-                                    name: "Jami",
+                                    name: "TOTAL".localizedString,
                                     amount: model.c1Amount))
                             }
                             .padding(.leading, 2)
@@ -74,7 +78,7 @@ struct ClassDetailViewRow: View {
                     if !model.c2ObjectList.isEmpty {
                         VStack(spacing: 0) {
                             HStack {
-                                Text("Qo'shimcha shartlar")
+                                Text("ADDITIONAL_TERMS")
                                 Spacer()
                             }
                             .padding(.leading)

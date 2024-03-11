@@ -7,3 +7,16 @@
 */
 "Yes" = "Ha";
 "Filter" = "Filtr";
+"Home" = "Asosiy";
+"My_dilers" = "My dilers";
+
+
+
+
+"TOTAL_OF_PRODUCTS_SHOULD_BE" = "mahsulotlarning ja'mi xaridi bo'lishi kerak";
+"MIN" = "eng kamida ";
+"MAX" = "eng kamida ";
+"PURCHASES_KG" = "Xaridlar(kg)";
+"" = "Qo'shimcha shartlar";
+"TOTAL_OF_PRODUCTS_SHOULD_BE_MAXIMUM" = "maxsulotlarning jami haridi eng ko'pi ";
+"SHOULD_BE_PERSENTS_UZ" = "% bo'lishi kerak";

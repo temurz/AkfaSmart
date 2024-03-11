@@ -37,7 +37,7 @@ extension HomeViewModel: ViewModel {
         @Published var items: [Dealer] = []
         @Published var mobileClass: MobileClass? = nil
         @Published var mobileClassLogoData: Data? = nil
-        @Published var unreadDataCount: UnreadDataCount = UnreadDataCount(countUnreadMessages: 1, countUnreadArticles: 2, countUnreadNews: 123)
+        @Published var unreadDataCount: UnreadDataCount = UnreadDataCount(countUnreadMessages: 0, countUnreadArticles: 0, countUnreadNews: 0)
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -157,6 +157,11 @@ extension HomeViewModel: ViewModel {
             }
             .store(in: cancelBag)
         
+        input.showMessagesViewTrigger
+            .sink {
+                navigator.showTechnicalSupport()
+            }
+            .store(in: cancelBag)
         return output
     }
 }

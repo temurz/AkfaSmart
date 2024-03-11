@@ -31,7 +31,7 @@ struct DateIntervalView: View {
             }
             Spacer()
         }
-        .navigationTitle("Filter")
+        .navigationTitle("FILTER".localizedString)
         .navigationBarItems(trailing:
                                 Button(action: {
             dateFilter.optionalFrom = nil
@@ -39,7 +39,7 @@ struct DateIntervalView: View {
             dateFilter.isFiltered = true
             navigationContoller.popViewController(animated: true)
         }, label: {
-            Text("Clear")
+            Text("CLEAR".localizedString)
                 .foregroundColor(Color.red)
         })
         )

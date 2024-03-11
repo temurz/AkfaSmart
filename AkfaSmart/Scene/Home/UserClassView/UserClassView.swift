@@ -22,7 +22,7 @@ struct UserClassView: View {
                             .font(.italic(.subheadline)())
                     }
                     VStack {
-                        Text("Your status")
+                        Text("YOUR_STATUS")
                             .foregroundColor(.white)
                             .font(.system(size: 10))
                             .padding(4)
@@ -36,23 +36,11 @@ struct UserClassView: View {
                         .frame(width: 54, height: 54)
                 }
                 .padding()
-//                Color.white
-//                    .frame(height: 1)
-//                HStack {
-//                    Text("For the year: ")
-//                        .font(.system(size: 15))
-//                        .foregroundColor(Color(hex: "#858890"))
-//                    Text("2000 kg")
-//                        .font(.system(size: 20))
-//                        .foregroundColor(Color(hex: "#858890"))
-//                    Spacer()
-//                }
-//                .padding()
             }
             .background(model?.backgroundColor != nil ? Color(hex: model?.backgroundColor ?? "") : Color.white)
             
             HStack {
-                Text("Detail")
+                Text("DETAIL")
                     .padding()
                 Spacer()
                 Image("arrow_forward")

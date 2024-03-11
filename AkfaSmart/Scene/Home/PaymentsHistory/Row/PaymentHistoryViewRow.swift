@@ -14,7 +14,7 @@ struct PaymentHistoryViewRow: View {
         VStack {
             VStack {
                 HStack(spacing: 0) {
-                    Text("Mijoz: ")
+                    Text("CLIENT".localizedString)
                     Text(model.dealerName ?? "")
                         .bold()
                     Spacer()

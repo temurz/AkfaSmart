@@ -24,22 +24,22 @@ struct PurchaseDetailViewRow: View {
                         .cornerRadius(8)
                 }
                 HStack {
-                    Text("Miqdori: ")
+                    Text("AMOUNT".localizedString)
                         .font(.footnote)
                     Spacer()
                     Text(String(format: "%.0f", (model.qty ?? 0)))
                 }
                 HStack {
-                    Text("Narxi: ")
+                    Text("PRICE".localizedString)
                         .font(.footnote)
                     Spacer()
-                    Text((model.rate?.convertDecimals() ?? "0") + " uzs")
+                    Text((model.rate?.convertDecimals() ?? "0") + "UZS".localizedString)
                 }
                 HStack {
-                    Text("Jami: ")
+                    Text("TOTAL_WITH_COLON".localizedString)
                         .font(.footnote)
                     Spacer()
-                    Text((model.amount?.convertDecimals() ?? "0") + " uzs")
+                    Text((model.amount?.convertDecimals() ?? "0") + "UZS".localizedString)
                 }
             }
             .padding(.horizontal)

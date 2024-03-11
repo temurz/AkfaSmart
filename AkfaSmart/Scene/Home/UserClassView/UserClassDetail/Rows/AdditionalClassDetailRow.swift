@@ -13,10 +13,13 @@ struct AdditionalClassDetailRow: View {
     @State var showAmount = false
     var body: some View {
         VStack {
-            Text("* (\("\(ConverterToString.getStringFrom(model.c2KlassProductGroups)) mahsulotlarning ja'mi xaridi eng ko'pi \(model.c2Percent) % bo'lishi kerak")")
+            Text("*(\(ConverterToString.getStringFrom(model.c2KlassProductGroups))"
+                 + "TOTAL_OF_PRODUCTS_SHOULD_BE_MAXIMUM".localizedString +
+                 " \(model.c2Percent)" + "SHOULD_BE_PERSENTS_UZ".localizedString)
+            
             HStack {
                 Spacer()
-                Text("Xaridlar(kg)")
+                Text("PURCHASES_KG")
                     .underline(true)
                     .onTapGesture {
                         showAmount.toggle()
@@ -34,7 +37,7 @@ struct AdditionalClassDetailRow: View {
                         Rectangle()
                             .frame(height: 1)
                             .edgesIgnoringSafeArea(.horizontal)
-                        SeriesAndAmountRow(model: ClassAmountDetail(id: -1, name: "Jami", amount: model.c2Amount))
+                        SeriesAndAmountRow(model: ClassAmountDetail(id: -1, name: "TOTAL".localizedString, amount: model.c2Amount))
                     }
                     .padding(.leading, 2)
                 }

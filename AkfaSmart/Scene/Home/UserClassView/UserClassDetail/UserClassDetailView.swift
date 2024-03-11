@@ -39,7 +39,7 @@ struct UserClassDetailView: View {
             }
             
         }
-        .navigationTitle("My Class")
+        .navigationTitle("MY_CLASS".localizedString)
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
                 title: Text(output.alert.title),

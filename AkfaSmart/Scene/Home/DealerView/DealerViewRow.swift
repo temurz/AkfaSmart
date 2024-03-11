@@ -23,7 +23,7 @@ struct DealerViewRow: View {
                 VStack {
                     HStack {
                         VStack(alignment: .leading) {
-                            Label("Dealer's name", image: "account_circle")
+                            Label("DEALERS_NAME".localizedString, image: "account_circle")
                                 .foregroundColor(Color(hex: "#9DA8C2"))
                                 .font(.subheadline)
                             Text(model.name ?? " ")
@@ -32,15 +32,15 @@ struct DealerViewRow: View {
                         }
                         Spacer()
                         VStack(alignment: .trailing) {
-                            Label("Balance", image: "account_balance_wallet")
+                            Label("BALANCE".localizedString, image: "account_balance_wallet")
                                 .font(.subheadline)
                                 .foregroundColor(Color(hex: "#9DA8C2"))
                             if isBalanceVisible {
-                                Text(model.balance.convertDecimals() + " sum")
+                                Text(model.balance.convertDecimals() + "SUM_UZS".localizedString)
                                     .font(.headline)
                                     .foregroundColor(.red)
                             }else {
-                                Text("*** sum")
+                                Text("***" + "SUM_UZS".localizedString)
                                     .font(.headline)
                                     .foregroundColor(.red)
                             }
@@ -51,11 +51,11 @@ struct DealerViewRow: View {
                 }
                 .background(Color(hex: "#F6F8FC"))
                 
-                Text("Sum of bought goods:")
+                Text("SUM_OF_BOUGHT_GOODS".localizedString)
                     .font(.headline)
                     .padding(.horizontal)
                 HStack {
-                    Text("For month")
+                    Text("FOR_MONTH".localizedString)
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9DA8C2"))
                     Spacer()
@@ -91,7 +91,7 @@ struct DealerViewRow: View {
                 
 
                 HStack {
-                    Text("For year")
+                    Text("FOR_YEAR".localizedString)
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9DA8C2"))
                     Spacer()
@@ -131,8 +131,8 @@ struct DealerViewRow: View {
                     Button {
                         openPurchases(model.dealerId ?? 0)
                     } label: {
-                        Text("History of purchases")
-                            .font(.subheadline)
+                        Text("HISTORY_OF_PURCHASES".localizedString)
+                            .font(.system(size: 12))
                             .foregroundColor(Color(hex: "#51526C"))
                             .lineLimit(1)
                             .padding()
@@ -144,8 +144,8 @@ struct DealerViewRow: View {
                     Button {
                         openPayments(model.dealerId ?? 0)
                     } label: {
-                        Text("History of payments")
-                            .font(.subheadline)
+                        Text("HISTORY_OF_PAYMENTS".localizedString)
+                            .font(.system(size: 12))
                             .foregroundColor(Color(hex: "#51526C"))
                             .lineLimit(1)
                             .padding()

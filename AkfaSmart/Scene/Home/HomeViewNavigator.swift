@@ -13,9 +13,10 @@ protocol HomeViewNavigatorType {
     func showPurchasesHistoryView()
     func showPaymentsHistoryView()
     func showMain(page: MainPage)
+    func showTechnicalSupport()
 }
 
-struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView, ShowingClassDetailView, ShowingPurchasesHistoryView, ShowingPaymentsHistoryView, ShowingMain {
+struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView, ShowingClassDetailView, ShowingPurchasesHistoryView, ShowingPaymentsHistoryView, ShowingMain, ShowingTechnicalSupportView {
     var assembler: Assembler
     
     var navigationController: UINavigationController
