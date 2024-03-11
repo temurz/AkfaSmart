@@ -10,7 +10,7 @@ import Foundation
 import ValidatedPropertyKit
 import Dto
 struct PhoneNumberDTO: Dto {
-    @Validated(.nonEmpty(message: "Phone number cannot be empty") && .validPhoneNumber())
+    @Validated(.nonEmpty(message: "PHONE_NUMBER_CANNOT_BE_EMPTY".localizedString) && .validPhoneNumber())
     var phoneNumber: String?
     
     var validatedProperties: [ValidatedProperty] {

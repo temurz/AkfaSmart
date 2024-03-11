@@ -12,7 +12,7 @@ import ValidatedPropertyKit
 import Dto
 struct CodeInputDto: Dto {
     
-    @Validated(.nonEmpty(message: "Code cannot be empty"))
+    @Validated(.nonEmpty(message: "CODE_CANNOT_BE_EMPTY".localizedString))
     var code: String?
     
     var validatedProperties: [ValidatedProperty] {

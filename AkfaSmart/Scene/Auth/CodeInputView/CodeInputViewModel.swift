@@ -46,11 +46,11 @@ extension CodeInputViewModel: ViewModel {
             self.reason = reason
             switch reason {
             case .register:
-                title = "Registration"
+                title = "REGISTRATION".localizedString
             case .forgotPassword:
-                title = "Forgot password"
+                title = "FORGOT_PASSWORD".localizedString
             case let .dealer(dealer):
-                title = "Add Dealer"
+                title = "ADD_DEALER".localizedString
                 username = dealer.phone?.makeStarsInsteadNumbersInUsername() ?? ""
             }
         }

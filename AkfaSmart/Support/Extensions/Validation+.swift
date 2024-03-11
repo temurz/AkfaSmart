@@ -14,7 +14,9 @@ extension Validation where Value == String {
             if count <= value.count {
                 return .success(())
             } else {
-                return .failure("Minimum number of letters is \(count)")
+                return .failure(
+                    ValidationError(message: "MINIMUM_NUMBER_OF_LETTERS".localizedString + "\(count)")
+                )
             }
         }
     }
@@ -27,7 +29,7 @@ extension Validation where Value == String {
             if count == value.getOnlyNumbers().count {
                 return .success(())
             }else {
-                return .failure("The phone number should be in +998(**) ***-**-** format")
+                return .failure(ValidationError(message: "PHONE_NUMBER_SHOULD_BE_IN_FORMAT".localizedString))
             }
         }
     }

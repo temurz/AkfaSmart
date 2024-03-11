@@ -40,7 +40,7 @@ struct RegisterView: View {
                     }
                     .ignoresSafeArea()
                     Group {
-                        Text("Register")
+                        Text("REGISTER".localizedString)
                             .font(.title)
                             .padding(.top, 16)
                         ZStack(alignment: .leading) {
@@ -62,7 +62,7 @@ struct RegisterView: View {
                         Text(self.output.passwordValidationMessage)
                             .foregroundColor(.red)
                             .font(.footnote)
-                        CustomSecureTextField(placeholder: "Confirm password", password: $input.repeatedPassword)
+                        CustomSecureTextField(placeholder: "CONFIRM_PASSWORD".localizedString, password: $input.repeatedPassword)
                         Text(self.output.repeatedPasswordValidationMessage)
                             .foregroundColor(.red)
                             .font(.footnote)
@@ -70,7 +70,7 @@ struct RegisterView: View {
                         Button {
                             self.registerTrigger.send(())
                         } label: {
-                            Text("Register")
+                            Text("REGISTER".localizedString)
                                 .frame(maxWidth: .infinity, maxHeight: 40)
                                 .foregroundColor(Color.white)
                                 .background(Color.red)
@@ -81,7 +81,7 @@ struct RegisterView: View {
                         
                         HStack {
                             Spacer()
-                            Button("Already registered") {
+                            Button("ALREADY_REGISTERED".localizedString) {
                                 self.showLoginTrigger.send(Void())
                             }
                             .foregroundColor(Color(hex: "#51526C"))

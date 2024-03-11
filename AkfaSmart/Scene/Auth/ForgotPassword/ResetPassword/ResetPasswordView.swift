@@ -16,18 +16,18 @@ struct ResetPasswordView: View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             CustomHeaderView {
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Reset password")
+                    Text("RESET_PASSWORD".localizedString)
                         .font(.title)
-                    Text("Create a new password")
+                    Text("CREATE_PASSWORD".localizedString)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                     
-                    CustomSecureTextField(placeholder: "New password",
+                    CustomSecureTextField(placeholder: "NEW_PASSWORD".localizedString,
                                           password: $output.password)
                     Text(output.passwordValidationMessage)
                         .font(.footnote)
                         .foregroundColor(.red)
-                    CustomSecureTextField(placeholder: "Confirm new password",
+                    CustomSecureTextField(placeholder: "CONFIRM_NEW_PASSWORD".localizedString,
                         password: $output.repeatedPassword)
                     Text(output.repeatedPasswordValidationMessage)
                         .font(.footnote)
@@ -36,7 +36,7 @@ struct ResetPasswordView: View {
                     Button {
                         resetPasswordTrigger.send(())
                     } label: {
-                        Text("Reset password")
+                        Text("RESET_PASSWORD".localizedString)
                             .frame(maxWidth: .infinity)
                             .frame(height: 40)
                             .foregroundColor(.white)

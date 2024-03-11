@@ -44,7 +44,7 @@ struct LoginView: View {
                     }
                     .ignoresSafeArea()
                     Group {
-                        Text("Login")
+                        Text("LOGIN".localizedString)
                             .font(.title)
                             .padding(.top, 16)
                         ZStack(alignment: .leading) {
@@ -70,7 +70,7 @@ struct LoginView: View {
                             .font(.footnote)
                         HStack {
                             Spacer()
-                            Button("Forgot password?") {
+                            Button("FORGOT_PASSWORD_QUESTION") {
                                 showForgotPasswordTrigger.send(())
                             }
                             .foregroundColor(.black)
@@ -79,7 +79,7 @@ struct LoginView: View {
                         Button() {
                             self.loginTrigger.send(())
                         } label: {
-                            Text("Login")
+                            Text("LOGIN".localizedString)
                                 .frame(maxWidth: .infinity, maxHeight: 40)
                                 .foregroundColor(Color.white)
                                 .background(Color.red)
@@ -91,7 +91,7 @@ struct LoginView: View {
                         
                         HStack {
                             Spacer()
-                            Button("Registration") {
+                            Button("REGISTRATION".localizedString) {
                                 self.showRegisterTrigger.send(())
                             }
                             .foregroundColor(Color(hex: "#51526C"))
@@ -202,7 +202,7 @@ struct CustomSecureTextField: View {
         .frame(height: 48)
     }
     
-    init(placeholder: String = "Password", password: Binding<String>) {
+    init(placeholder: String = "PASSWORD".localizedString, password: Binding<String>) {
         self.placeholder = placeholder
         self._password = password
     }

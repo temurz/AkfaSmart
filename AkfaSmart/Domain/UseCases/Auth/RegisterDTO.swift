@@ -12,13 +12,13 @@ import ValidatedPropertyKit
 import Dto
 
 struct RegisterDto: Dto {
-    @Validated(.nonEmpty(message: "Please enter user name") && .validPhoneNumber())
+    @Validated(.nonEmpty(message: "PLEASE_ENTER_USERNAME".localizedString) && .validPhoneNumber())
     var username: String?
 
-    @Validated(.nonEmpty(message: "Please enter password") && .minimumCharacters(6))
+    @Validated(.nonEmpty(message: "PLEASE_ENTER_PASSWORD".localizedString) && .minimumCharacters(6))
     var password: String?
     
-    @Validated(.nonEmpty(message: "Please enter password"))
+    @Validated(.nonEmpty(message: "PLEASE_ENTER_PASSWORD".localizedString))
     var repeatedPassword: String?
     
     var validatedProperties: [ValidatedProperty] {

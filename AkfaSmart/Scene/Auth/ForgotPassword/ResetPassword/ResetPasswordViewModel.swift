@@ -54,7 +54,7 @@ extension ResetPasswordViewModel: ViewModel {
         repeatedPasswordValidation
             .asDriver()
             .map { bool in
-                return bool ? "" : "Two passwords should be the same"
+                return bool ? "" : "PASSWORDS_SHOULD_BE_SAME".localizedString
             }
             .assign(to: \.repeatedPasswordValidationMessage, on: output)
             .store(in: cancelBag)

@@ -40,11 +40,11 @@ struct ForgotPasswordView: View {
                     .ignoresSafeArea()
                     .padding(.bottom)
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Forgot password?")
+                        Text("FORGOT_PASSWORD_QUESTION".localizedString)
                             .font(.title)
                             .padding(.horizontal)
                     
-                        Text("Enter your phone number in order to reset your password")
+                        Text("ENTER_PHONE_NUMBER_RESET_PASSWORD".localizedString)
                             .foregroundColor(Color(hex: "#51526C"))
                             .font(.system(size: 17))
                             .padding([.bottom,.horizontal])
@@ -70,7 +70,7 @@ struct ForgotPasswordView: View {
                         Button {
                             confirmPhoneNumberTrigger.send(())
                         }label: {
-                            Text("Confirm")
+                            Text("CONFIRM".localizedString)
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 40)
                                 .foregroundColor(.white)

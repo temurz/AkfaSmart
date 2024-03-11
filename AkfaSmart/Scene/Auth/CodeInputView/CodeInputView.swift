@@ -53,11 +53,11 @@ struct CodeInputView: View {
                             .font(.title)
                             .padding(.horizontal)
                     
-                        Text("One-time code was sent to the phone number \(output.username) ")
+                        Text("CODE_SENT_TO_PHONE".localizedString + "\(output.username) ")
                             .foregroundColor(Color(hex: "#51526C"))
                             .font(.system(size: 17))
                             .padding([.bottom,.horizontal])
-                        TextField("SMS code", text: $input.code)
+                        TextField("SMS_CODE".localizedString, text: $input.code)
                             .multilineTextAlignment(.center)
                             .frame(height: 48)
                             .background(Color(hex: "#F5F7FA"))
@@ -69,7 +69,7 @@ struct CodeInputView: View {
                             .padding(.horizontal)
                     }
                     HStack {
-                        Text("Resend code in:")
+                        Text("RESEND_CODE_IN".localizedString)
                             .font(.system(size: 14))
                             .foregroundColor(Color(hex: "#51526C"))
                         Spacer()
@@ -88,7 +88,7 @@ struct CodeInputView: View {
                         Button {
                             confirmRegisterTrigger.send(())
                         } label: {
-                            Text("Confirm")
+                            Text("CONFIRM".localizedString)
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 40)
                                 .foregroundColor(.white)
@@ -104,7 +104,7 @@ struct CodeInputView: View {
                         } label: {
                             HStack {
                                 Spacer()
-                                Text("Skip")
+                                Text("SKIP".localizedString)
                                     .font(.system(size: 16))
                                     .frame(height: 32)
                                     .foregroundColor(Color.blue)
@@ -131,7 +131,7 @@ struct CodeInputView: View {
                 output.timeRemaining -= 1
                 duration = output.timeRemaining.makeMinutesAndSeconds()
             }else {
-                duration = "Resend SMS"
+                duration = "RESEND_SMS".localizedString
             }
         }
     }
