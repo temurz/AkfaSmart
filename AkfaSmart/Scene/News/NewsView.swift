@@ -53,7 +53,7 @@ struct NewsView: View {
             }
             .padding(.top)
         }
-        .navigationTitle("News")
+        .navigationTitle("NEWS".localizedString)
         .navigationBarHidden(false)
         .pullToRefresh(isShowing: $output.isReloading, onRefresh: {
             self.reloadNewsTrigger.send(())

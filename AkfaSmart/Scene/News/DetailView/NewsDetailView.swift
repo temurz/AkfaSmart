@@ -48,7 +48,7 @@ struct NewsDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("News")
+        .navigationTitle("NEWS".localizedString)
         .onAppear {
             getImageTrigger.send(itemModel.imageUrl ?? "")
         }
