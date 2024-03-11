@@ -22,10 +22,10 @@ struct ArticlesFilterView: View {
         return LoadingView(isShowing: .constant(false), text: .constant("")) {
             VStack {
                 HStack {
-                    Text("Type of Article")
+                    Text("TYPE_OF_ARTICLES".localizedString)
                         .padding()
                     Spacer()
-                    Picker("Select article type", selection: $output.selectedType) {
+                    Picker("SELECT_ARTICLE_TYPE".localizedString, selection: $output.selectedType) {
                         ForEach(output.types, id: \.self) { type in
                             Text(type.name ?? "")
                         }
@@ -48,7 +48,7 @@ struct ArticlesFilterView: View {
                 Spacer()
             }
         }
-        .navigationTitle("Filter")
+        .navigationTitle("FILTER".localizedString)
         .navigationBarItems(trailing:
                                 Button(action: {
             dateFilter.optionalFrom = nil
@@ -57,7 +57,7 @@ struct ArticlesFilterView: View {
             type.type = nil
             navigationController.popViewController(animated: true)
         }, label: {
-            Text("Clear")
+            Text("CLEAR".localizedString)
                 .foregroundColor(.red)
         })
         )

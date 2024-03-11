@@ -52,3 +52,5 @@
 "CLEAR" = "Clear";
 "DATE_OF_START" = "Date of start";
 "DATE_OF_END" = "Date of end";
+"TYPE_OF_ARTICLES" = "Type of Articles";
+"SELECT_ARTICLE_TYPE" = "Select article type";

@@ -62,7 +62,7 @@ struct ArticlesView: View {
             }
             .padding(.top)
         }
-        .navigationTitle("Articles")
+        .navigationTitle("ARTICLES".localizedString)
         .navigationBarHidden(false)
         .navigationBarItems(trailing:
                                 Button(action: {
