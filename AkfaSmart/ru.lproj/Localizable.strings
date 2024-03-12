@@ -156,3 +156,4 @@
 "Invalid server response" = "Неверный ответ сервера";
 "Error" = "Ошибка";
 "mobile user details is not found!!!" = "Данные мобильного пользователя не найдены!!!";
+"Internal Server Error" = "Внутренняя Ошибка Сервера";

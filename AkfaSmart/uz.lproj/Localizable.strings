@@ -158,4 +158,4 @@
 "Invalid server response" = "Noto'g'ri server javobi";
 "Error" = "Xatolik";
 "mobile user details is not found!!!" = "Mobil foydalanuvchi ma'lumotlari topilmadi!!!";
-
+"Internal Server Error" = "Ichki Serverda Xatolik";
