@@ -41,3 +41,15 @@ extension API {
         let rows: [MessageModel]
     }
 }
+
+extension API {
+    func clearMessagesHistory(_ input: ClearMessagesHistoryAPIInput) -> Observable<Bool> {
+        success(input)
+    }
+    
+    final class ClearMessagesHistoryAPIInput: APIInput {
+        init() {
+            super.init(urlString: API.Urls.clearMessagesHistory, parameters: nil, method: .delete, requireAccessToken: true)
+        }
+    }
+}

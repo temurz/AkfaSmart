@@ -9,6 +9,7 @@
 import Foundation
 protocol TechnicalSupportUseCaseType {
     func getMessages(page: Int) -> Observable<PagingInfo<MessageModel>>
+    func clearHistory() -> Observable<Bool>
 }
 
 struct TechnicalSupportUseCase: TechnicalSupportUseCaseType, GettingMessagesDomainUseCase {

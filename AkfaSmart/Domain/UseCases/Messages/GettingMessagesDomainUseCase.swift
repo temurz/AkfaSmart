@@ -18,4 +18,8 @@ extension GettingMessagesDomainUseCase {
         let dto = GetPageDto(page: page)
         return gateway.getMessages(dto: dto)
     }
+    
+    func clearHistory() -> Observable<Bool> {
+        return gateway.clearHistory()
+    }
 }

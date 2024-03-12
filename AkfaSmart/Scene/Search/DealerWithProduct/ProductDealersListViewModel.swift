@@ -48,7 +48,13 @@ extension ProductDealersListViewModel: ViewModel {
         
         error
             .receive(on: RunLoop.main)
-            .map { AlertMessage(error: $0) }
+            .map {
+                if let error = $0 as? APIUnknownError, error.error == "Not Found".localizedString {
+                    return AlertMessage()
+                }else {
+                    return AlertMessage(error: $0)
+                }
+            }
             .assign(to: \.alert, on: output)
             .store(in: cancelBag)
         

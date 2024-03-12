@@ -14,18 +14,29 @@ struct TechnicalSupportView: View {
 
     private let getMessagesTrigger = PassthroughSubject<Void,Never>()
     private let loadMoreMessagesTrigger = PassthroughSubject<Void, Never>()
+    private let clearHistoryTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
-                List(output.items, id: \.self) { item in
-                    MessageViewRow(model: Message(isUser: item.userId == nil , time: item.date ?? "", text: item.text ?? ""))
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
+                if output.items.isEmpty {
+                    VStack {
+                        Spacer()
+                        Text("CHAT_IS_EMPTY".localizedString)
+                            .foregroundStyle(Color.gray)
+                        Spacer()
+                    }
+                    
+                }else {
+                    List(output.items, id: \.self) { item in
+                        MessageViewRow(model: Message(isUser: item.userId == nil , time: item.date ?? "", text: item.text ?? ""))
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
+                    }
+                    .background(Color(hex: "#EAEEF5"))
+                    .listStyle(.plain)
                 }
-                .background(Color(hex: "#EAEEF5"))
-                .listStyle(.plain)
-
+                Spacer()
                 HStack {
                     TextField("TEXT".localizedString, text: $messageText)
                         .padding(.leading, 8)
@@ -65,6 +76,20 @@ struct TechnicalSupportView: View {
         .onAppear {
             getMessagesTrigger.send(())
         }
+        .navigationBarItems(trailing:
+                                Menu {
+            Button {
+                clearHistoryTrigger.send(())
+            } label: {
+                Text("CLEAR".localizedString)
+            }
+
+        } label: {
+            Image("more")
+                .resizable()
+                .frame(width: 20, height: 20)
+        }
+        )
     }
     
     
@@ -72,7 +97,8 @@ struct TechnicalSupportView: View {
         let input = TechnicalSupportViewModel.Input(
             loadMessagesTrigger: getMessagesTrigger.asDriver(),
             reloadMessagesTrigger: Driver.empty(),
-            loadMoreMessagesTrigger: loadMoreMessagesTrigger.asDriver()
+            loadMoreMessagesTrigger: loadMoreMessagesTrigger.asDriver(),
+            clearHistoryTrigger: clearHistoryTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

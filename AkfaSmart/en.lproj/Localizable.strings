@@ -148,7 +148,8 @@
 "TECHNICAL_SUPPORT" = "Technical support";
 "PIN_CODE" = "PIN-code";
 "LANGUAGE" = "Language";
-
+"CHAT_IS_EMPTY" = "You have no messages";
+"LIST_IS_EMPTY" = "List is empty";
 
 //ERRORS
 "Not Found" = "Not found";

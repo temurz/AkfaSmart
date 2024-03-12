@@ -76,6 +76,6 @@ extension API {
         //Messages
         static let getMessages = Base.BASE_URL + "/api/mobile/message/data"
         static let sendMessage = Base.BASE_URL + "/api/mobile/message/save"
-        
+        static let clearMessagesHistory = Base.BASE_URL + "/api/mobile/message/clearAll"
     }
 }

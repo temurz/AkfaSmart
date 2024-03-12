@@ -56,12 +56,12 @@ extension PaymentHistoryViewModel: ViewModel {
         error
             .receive(on: RunLoop.main)
             .map {
-                if !output.isFirstLoad {
-                    AlertMessage(error: $0)
+                if let error = $0 as? APIUnknownError, error.error == "Not Found".localizedString {
+                    return AlertMessage()
                 }else {
-                    AlertMessage(title: "", message: "", isShowing: false)
+                    return AlertMessage(error: $0)
                 }
-                 }
+            }
             .assign(to: \.alert, on: output)
             .store(in: cancelBag)
         

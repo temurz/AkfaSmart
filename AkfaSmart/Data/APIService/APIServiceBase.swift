@@ -101,6 +101,33 @@ open class APIBase {
             .eraseToAnyPublisher()
     }
     
+    open func successPrimitive(_ input: APIInputBase) -> AnyPublisher<APIResponse<Bool>, Error> {
+        let response: AnyPublisher<APIResponse<JSONDictionary>, Error> = requestJSON(input)
+        return response
+            .tryMap { (apiResponse) -> APIResponse<Bool> in
+               
+                    let json = apiResponse.data
+                    let success = json["success"] as? Bool ?? false
+//                    let object = json["body"] as? T
+                    if success {
+                        return APIResponse(header: apiResponse.header,
+                                           data: success)
+                    }
+                    else {
+                        throw self.handleResponseError( json:  json)
+                    }
+                    
+               
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    open func successPrimitive(_ input: APIInputBase) -> AnyPublisher<Bool, Error> {
+        successPrimitive(input)
+            .map { $0.data }
+            .eraseToAnyPublisher()
+    }
+    
     open func request<T: Decodable>(_ input: APIInputBase) -> AnyPublisher<APIResponse<T>, Error> {
         let response: AnyPublisher<APIResponse<JSONDictionary>, Error> = requestJSON(input)
         let appResponce: AnyPublisher<APIResponse<JSONDictionary>,Error> = postProcess(response)

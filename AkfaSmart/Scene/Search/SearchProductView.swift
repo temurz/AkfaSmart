@@ -9,7 +9,6 @@
 import SwiftUI
 import Combine
 struct SearchProductView: View {
-//    @State var searchText = ""
     @ObservedObject var output: SearchProductViewModel.Output
     private let loadProductsTrigger = PassthroughSubject<String,Never>()
     private let reloadProductsTrigger = PassthroughSubject<String,Never>()
@@ -20,15 +19,28 @@ struct SearchProductView: View {
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
-                List {
-                    ForEach(output.items, id: \.id) { item in
-                        SearchProductRow(model: item) {
-                            showProductDetailView.send(item)
+                if output.items.isEmpty {
+                    VStack(alignment: .center) {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Text("LIST_IS_EMPTY".localizedString)
+                                .foregroundStyle(.gray)
+                            Spacer()
                         }
-                            .listRowSeparator(.hidden)
+                        Spacer()
                     }
+                }else {
+                    List {
+                        ForEach(output.items, id: \.id) { item in
+                            SearchProductRow(model: item) {
+                                showProductDetailView.send(item)
+                            }
+                                .listRowSeparator(.hidden)
+                        }
+                    }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
             }
             .navigationTitle("SEARCH_PRODUCT".localizedString)
             .navigationBarHidden(false)

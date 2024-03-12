@@ -21,43 +21,57 @@ struct ArticlesView: View {
     
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            VStack() {
-                List {
-                    ForEach(output.articles) { article in
-                        Button(action: {
-                            showDetailViewTrigger.send(article)
-                        }) {
-                            ArticleRow(itemModel: article)
-                                .onAppear {
-                                    if output.articles.last?.id ?? -1 == article.id && output.hasMorePages {
-                                        output.isLoadingMore = true
-                                        let input = ArticlesGetInput(
-                                            from: output.dateFilter.optionalFrom,
-                                            to: output.dateFilter.optionalTo,
-                                            type: output.articleType.type)
-                                        
-                                        self.loadMoreArticlesTrigger.send(input )
-                                    }
-                                }
-                        }
-                        .listRowSeparator(.hidden)
-                    }
-                    if output.isLoadingMore {
+            VStack {
+                if output.articles.isEmpty {
+                    VStack(alignment: .center) {
+                        Spacer()
                         HStack {
                             Spacer()
-                            ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
+                            Text("LIST_IS_EMPTY".localizedString)
+                                .foregroundStyle(.gray)
                             Spacer()
                         }
-                        .listRowSeparator(.hidden)
+                        Spacer()
                     }
-                }
-                .listStyle(.plain)
-                .refreshable {
-                    let input = ArticlesGetInput(
-                        from: output.dateFilter.optionalFrom,
-                        to: output.dateFilter.optionalTo,
-                        type: output.articleType.type)
-                    self.reloadArticlesTrigger.send(input)
+                }else {
+                    List {
+                        ForEach(output.articles) { article in
+                            Button(action: {
+                                showDetailViewTrigger.send(article)
+                            }) {
+                                ArticleRow(itemModel: article)
+                                    .onAppear {
+                                        if output.articles.last?.id ?? -1 == article.id && output.hasMorePages {
+                                            output.isLoadingMore = true
+                                            let input = ArticlesGetInput(
+                                                from: output.dateFilter.optionalFrom,
+                                                to: output.dateFilter.optionalTo,
+                                                type: output.articleType.type)
+                                            
+                                            self.loadMoreArticlesTrigger.send(input )
+                                        }
+                                    }
+                            }
+                            .listRowSeparator(.hidden)
+                        }
+                        if output.isLoadingMore {
+                            HStack {
+                                Spacer()
+                                ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
+                                Spacer()
+                            }
+                            .listRowSeparator(.hidden)
+                        }
+                    }
+                    .listStyle(.plain)
+                    .refreshable {
+                        let input = ArticlesGetInput(
+                            from: output.dateFilter.optionalFrom,
+                            to: output.dateFilter.optionalTo,
+                            type: output.articleType.type)
+                        self.reloadArticlesTrigger.send(input)
+                    }
+
                 }
             }
             .padding(.top)

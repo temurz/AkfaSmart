@@ -23,7 +23,7 @@ extension API {
 
 extension API {
     func uploadAvatarImage(_ input: UploadImageInput) -> Observable<Bool> {
-        return success(input)
+        return successPrimitive(input)
     }
     
     final class UploadImageInput: APIUploadInputBase {

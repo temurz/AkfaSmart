@@ -150,7 +150,8 @@
 "TECHNICAL_SUPPORT" = "Texnik yordam";
 "PIN_CODE" = "PIN-kod";
 "LANGUAGE" = "Til";
-
+"CHAT_IS_EMPTY" = "Sizda xatlar yo'q";
+"LIST_IS_EMPTY" = "Ro'yxat bo'sh";
 
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";

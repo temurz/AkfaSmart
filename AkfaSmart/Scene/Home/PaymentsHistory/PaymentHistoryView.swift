@@ -43,42 +43,50 @@ struct PaymentHistoryView: View {
                         to: output.dateFilter.optionalTo,
                         type: output.type.rawValue))
                 }
-                List {
-                    ForEach(output.items, id: \.uniqueId) { item in
-                        PaymentHistoryViewRow(model: item, type: output.type)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color.blue)
-                            .onAppear {
-                                if output.items.last?.uniqueId == item.uniqueId && output.hasMorePages {
-                                    output.isLoadingMore = true
-                                    loadMoreHistoryTrigger.send(ReceiptsInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
+                if output.items.isEmpty {
+                    VStack(alignment: .center) {
+                        Spacer()
+                        Text("LIST_IS_EMPTY".localizedString)
+                            .foregroundStyle(.gray)
+                        Spacer()
+                    }
+                }else {
+                    List {
+                        ForEach(output.items, id: \.uniqueId) { item in
+                            PaymentHistoryViewRow(model: item, type: output.type)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(Color.blue)
+                                .onAppear {
+                                    if output.items.last?.uniqueId == item.uniqueId && output.hasMorePages {
+                                        output.isLoadingMore = true
+                                        loadMoreHistoryTrigger.send(ReceiptsInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
+                                    }
                                 }
-                            }
-                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            .listRowSeparator(.hidden)
-                        
-                    }
-                    if output.isLoadingMore {
-                        HStack {
-                            Spacer()
-                            ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
-                            Spacer()
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .listRowSeparator(.hidden)
+                            
                         }
-                        .listRowSeparator(.hidden)
+                        if output.isLoadingMore {
+                            HStack {
+                                Spacer()
+                                ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
+                                Spacer()
+                            }
+                            .listRowSeparator(.hidden)
+                        }
+                    }
+                    .listStyle(PlainListStyle())
+                    .pullToRefresh(isShowing: $output.isReloading) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            output.isReloading = false
+                        }
+                        output.items = []
+                        self.reloadHistoryTrigger.send(ReceiptsInput(
+                            from: output.dateFilter.optionalFrom,
+                            to: output.dateFilter.optionalTo,
+                            type: output.type.rawValue))
                     }
                 }
-                .listStyle(PlainListStyle())
-                .pullToRefresh(isShowing: $output.isReloading) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        output.isReloading = false
-                    }
-                    output.items = []
-                    self.reloadHistoryTrigger.send(ReceiptsInput(
-                        from: output.dateFilter.optionalFrom,
-                        to: output.dateFilter.optionalTo,
-                        type: output.type.rawValue))
-                }
-                
             }
         }
         .navigationTitle("PAYMENT_HISTORY_TITLE".localizedString)

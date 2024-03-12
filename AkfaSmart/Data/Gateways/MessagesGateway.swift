@@ -10,6 +10,7 @@ import Foundation
 
 protocol MessagesGatewayType {
     func getMessages (dto:GetPageDto) -> Observable <PagingInfo<MessageModel>>
+    func clearHistory() -> Observable<Bool>
 }
 
 struct MessagesGateway: MessagesGatewayType {
@@ -24,5 +25,9 @@ struct MessagesGateway: MessagesGatewayType {
             .eraseToAnyPublisher()
     }
     
+    func clearHistory() -> Observable<Bool> {
+        let input = API.ClearMessagesHistoryAPIInput()
+        return API.shared.clearMessagesHistory(input)
+    }
     
 }

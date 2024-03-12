@@ -17,6 +17,7 @@ extension TechnicalSupportViewModel: ViewModel {
         let loadMessagesTrigger: Driver<Void>
         let reloadMessagesTrigger: Driver<Void>
         let loadMoreMessagesTrigger: Driver<Void>
+        let clearHistoryTrigger: Driver<Void>
         
     }
     
@@ -30,6 +31,8 @@ extension TechnicalSupportViewModel: ViewModel {
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
+        let errorTracker = ErrorTracker()
+        let activityTracker = ActivityTracker(false)
         let output = Output()
         
         let getPageInput = GetPageInput(loadTrigger: input.loadMessagesTrigger, reloadTrigger: input.reloadMessagesTrigger, loadMoreTrigger: input.loadMoreMessagesTrigger, getItems: useCase.getMessages(page:))
@@ -46,7 +49,13 @@ extension TechnicalSupportViewModel: ViewModel {
         
         error
             .receive(on: RunLoop.main)
-            .map { AlertMessage(error: $0)}
+            .map {
+                if let error = $0 as? APIUnknownError, error.error == "Not Found".localizedString {
+                    return AlertMessage()
+                }else {
+                    return AlertMessage(error: $0)
+                }
+            }
             .assign(to: \.alert, on: output)
             .store(in: cancelBag)
             
@@ -69,6 +78,20 @@ extension TechnicalSupportViewModel: ViewModel {
             .store(in: cancelBag)
 
         
+        input.clearHistoryTrigger
+            .sink {
+                useCase.clearHistory()
+                    .trackError(errorTracker)
+                    .trackActivity(activityTracker)
+                    .asDriver()
+                    .sink { bool in
+                        if bool {
+                            output.items = []
+                        }
+                    }
+                    .store(in: cancelBag)
+            }
+            .store(in: cancelBag)
         
         return output
     }

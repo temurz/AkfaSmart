@@ -40,36 +40,46 @@ struct PurchaseHistoryView: View {
                     output.items = []
                     loadIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
                 }
-                List {
-                    ForEach(output.items, id: \.cid) { item in
-                        PurchaseHistoryViewRow(model: item, type: output.type) {
-                            showDetailViewTrigger.send(item)
-                        }
-                            .onAppear {
-                                if output.items.last?.cid == item.cid && output.hasMorePages {
-                                    output.isLoadingMore = true
-                                    loadMoreIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
+                if output.items.isEmpty {
+                    VStack(alignment: .center) {
+                        Spacer()
+                        Text("LIST_IS_EMPTY".localizedString)
+                            .foregroundStyle(.gray)
+                        Spacer()
+                    }
+                }else {
+                    List {
+                        ForEach(output.items, id: \.cid) { item in
+                            PurchaseHistoryViewRow(model: item, type: output.type) {
+                                showDetailViewTrigger.send(item)
+                            }
+                                .onAppear {
+                                    if output.items.last?.cid == item.cid && output.hasMorePages {
+                                        output.isLoadingMore = true
+                                        loadMoreIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
+                                    }
                                 }
+                                .listRowSeparator(.hidden)
+                        }
+                        if output.isLoadingMore {
+                            HStack {
+                                Spacer()
+                                ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
+                                Spacer()
                             }
                             .listRowSeparator(.hidden)
-                    }
-                    if output.isLoadingMore {
-                        HStack {
-                            Spacer()
-                            ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
-                            Spacer()
                         }
-                        .listRowSeparator(.hidden)
                     }
-                }
-                .pullToRefresh(isShowing: $output.isReloading) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        output.isReloading = false
+                    .pullToRefresh(isShowing: $output.isReloading) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            output.isReloading = false
+                        }
+                        output.items = []
+                        self.reloadIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
                     }
-                    output.items = []
-                    self.reloadIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
+                    .listStyle(.plain)
+
                 }
-                .listStyle(.plain)
             }
         }
         .navigationTitle("PURCHASE_HISTORY_TITLE".localizedString)

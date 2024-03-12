@@ -19,37 +19,49 @@ struct NewsView: View {
     
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            VStack() {
-                List {
-                    ForEach(output.news) { news in
-                        Button(action: {
-                            self.selectNewsTrigger.send(news)
-                        }) {
-                                NewsTableRow(item: news)
-                                .onAppear {
-                                    if output.news.last?.id ?? -1 == news.id && output.hasMorePages {
-                                        output.isLoadingMore = true
-                                        self.loadMoreTrigger.send(())
-                                    }
-                                }
-                        }
-                        .listRowSeparator(.hidden)
-                    }
-                    
-                    if output.isLoadingMore {
+            VStack {
+                if output.news.isEmpty {
+                    VStack(alignment: .center) {
+                        Spacer()
                         HStack {
                             Spacer()
-                            ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
+                            Text("LIST_IS_EMPTY".localizedString)
+                                .foregroundStyle(.gray)
                             Spacer()
                         }
-                        .listRowSeparator(.hidden)
+                        Spacer()
+                    }
+                }else {
+                    List {
+                        ForEach(output.news) { news in
+                            Button(action: {
+                                self.selectNewsTrigger.send(news)
+                            }) {
+                                    NewsTableRow(item: news)
+                                    .onAppear {
+                                        if output.news.last?.id ?? -1 == news.id && output.hasMorePages {
+                                            output.isLoadingMore = true
+                                            self.loadMoreTrigger.send(())
+                                        }
+                                    }
+                            }
+                            .listRowSeparator(.hidden)
+                        }
+                        
+                        if output.isLoadingMore {
+                            HStack {
+                                Spacer()
+                                ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
+                                Spacer()
+                            }
+                            .listRowSeparator(.hidden)
+                        }
+                    }
+                    .listStyle(.plain)
+                    .pullToRefresh(isShowing: self.$output.isReloading) {
+                        self.reloadNewsTrigger.send(())
                     }
                 }
-                .listStyle(.plain)
-                .pullToRefresh(isShowing: self.$output.isReloading) {
-                    self.reloadNewsTrigger.send(())
-                }
-                
             }
             .padding(.top)
         }

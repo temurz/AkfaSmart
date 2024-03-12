@@ -148,7 +148,8 @@
 "TECHNICAL_SUPPORT" = "Техническая поддержка";
 "PIN_CODE" = "ПИН-код";
 "LANGUAGE" = "Язык";
-
+"CHAT_IS_EMPTY" = "У вас нет сообщений";
+"LIST_IS_EMPTY" = "Список пуст";
 
 //ERRORS
 "Not Found" = "Нет данных";
