@@ -87,7 +87,7 @@ struct DealerViewRow: View {
                     }
                 }
                 .frame(height: 4)
-                .padding(.horizontal)
+                .padding()
                 
 
                 HStack {
@@ -123,45 +123,17 @@ struct DealerViewRow: View {
                     }
                 }
                 .frame(height: 4)
-                .padding(.horizontal)
+                .padding()
                 
                 Divider()
                 
-                HStack {
-                    Button {
-                        openPurchases(model.dealerId ?? 0)
-                    } label: {
-                        Text("HISTORY_OF_PURCHASES".localizedString)
-                            .font(.system(size: 12))
-                            .foregroundColor(Color(hex: "#51526C"))
-                            .lineLimit(1)
-                            .padding()
-                            .background(Color(hex: "#DFE3EB"))
-                            .cornerRadius(12)
-                            .frame(height: 50)
-                    }
-                    Spacer()
-                    Button {
-                        openPayments(model.dealerId ?? 0)
-                    } label: {
-                        Text("HISTORY_OF_PAYMENTS".localizedString)
-                            .font(.system(size: 12))
-                            .foregroundColor(Color(hex: "#51526C"))
-                            .lineLimit(1)
-                            .padding()
-                            .background(Color(hex: "#DFE3EB"))
-                            .cornerRadius(12)
-                            .frame(height: 50)
-                    }
-                }
-                .padding(16)
             }
             .background(.white)
             .border(Color(hex: "#E2E5ED"), width: 0.5)
             .cornerRadius(8)
             .shadow(radius: 4)
             .padding(.horizontal, 20)
-            .padding(.vertical, 8)
+            .padding(.vertical, 20)
             
             
         }

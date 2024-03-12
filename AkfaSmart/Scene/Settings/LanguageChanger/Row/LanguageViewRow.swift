@@ -12,22 +12,23 @@ struct LanguageViewRow: View {
     var viewModel: LanguageItemViewModel
     @Binding var selectedItem: LanguageItemViewModel?
     var body: some View {
-        VStack(alignment: .leading) {
-
-            HStack{
-                if viewModel == selectedItem {
-                    Text(viewModel.title)
-                        .foregroundColor(.red)
-                    Spacer()
-                    Image(systemName: "checkmark")
-                        .foregroundColor(.red)
-                    
-                }else {
-                    Text(viewModel.title)
-                        .foregroundColor(.black)
+        ZStack(alignment: .leading) {
+            Color.white
+            VStack(alignment: .leading) {
+                HStack {
+                    if viewModel == selectedItem {
+                        Text(viewModel.title)
+                            .foregroundColor(.red)
+                        Spacer()
+                        Image(systemName: "checkmark")
+                            .foregroundColor(.red)
+                        
+                    }else {
+                        Text(viewModel.title)
+                            .foregroundColor(.black)
+                    }
                 }
             }
-            
         }
     }
 }

@@ -15,8 +15,8 @@ struct HomeViewModel {
 
 extension HomeViewModel: ViewModel {
     struct Input {
-        let openPurchasesTrigger: Driver<Int>
-        let openPaymentsTrigger: Driver<Int>
+        let openPurchasesTrigger: Driver<Void>
+        let openPaymentsTrigger: Driver<Void>
         let calculateTotalAmounts: Driver<Void>
         let getDealersTrigger: Driver<Void>
         let getMobileClassInfo: Driver<Void>

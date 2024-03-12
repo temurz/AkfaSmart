@@ -40,7 +40,7 @@ struct PurchaseHistoryView: View {
                     output.items = []
                     loadIncome.send(InvoiceInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
                 }
-                if output.items.isEmpty {
+                if output.items.isEmpty && !output.isLoading {
                     VStack(alignment: .center) {
                         Spacer()
                         Text("LIST_IS_EMPTY".localizedString)

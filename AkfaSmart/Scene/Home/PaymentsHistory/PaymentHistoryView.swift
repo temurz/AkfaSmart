@@ -43,7 +43,7 @@ struct PaymentHistoryView: View {
                         to: output.dateFilter.optionalTo,
                         type: output.type.rawValue))
                 }
-                if output.items.isEmpty {
+                if output.items.isEmpty && !output.isLoading {
                     VStack(alignment: .center) {
                         Spacer()
                         Text("LIST_IS_EMPTY".localizedString)

@@ -29,6 +29,7 @@ struct SettingsView: View {
                         Color(hex: "#E2E5ED").frame(height: 4)
                         ForEach(output.items[0]) { item in
                             SettingsRowView(viewModel: item)
+                                .background(Color.white)
                                 .onTapGesture {
                                     selectRowTrigger.send(item.id)
                                 }
@@ -37,6 +38,7 @@ struct SettingsView: View {
                         Color(hex: "#E2E5ED").frame(height: 4)
                         ForEach(output.items[1]) { item in
                             SettingsRowView(viewModel: item)
+                                .background(Color.white)
                                 .onTapGesture {
                                     selectRowTrigger.send(item.id)
                                 }

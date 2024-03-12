@@ -14,8 +14,8 @@ struct HomeView: View {
     @State var totalOfMonth = 0.0
     @State var totalOfYear = 0.0
     
-    private let openPurchasesTrigger = PassthroughSubject<Int,Never>()
-    private let openPaymentsTrigger = PassthroughSubject<Int,Never>()
+    private let openPurchasesTrigger = PassthroughSubject<Void,Never>()
+    private let openPaymentsTrigger = PassthroughSubject<Void,Never>()
     private let calculateTotalAmounts = PassthroughSubject<Void,Never>()
     private let getDealersTrigger = PassthroughSubject<Void,Never>()
     private let getMobileClassInfoTrigger = PassthroughSubject<Void,Never>()
@@ -60,12 +60,12 @@ struct HomeView: View {
                             totalOfMonth: $output.totalOfMonth,
                             totalOfYear: $output.totalOfYear,
                             openPurchases: { dealerId in
-                                openPurchasesTrigger.send(dealerId)
+//                                openPurchasesTrigger.send(dealerId)
                             },
                             openPayments: { dealerId in
-                                openPaymentsTrigger.send(dealerId)
+//                                openPaymentsTrigger.send(dealerId)
                             })
-                        .frame(height: 320)
+                        .frame(height: 270)
 //                        .background(Color.red)
                     }else {
                         HStack {
@@ -79,6 +79,35 @@ struct HomeView: View {
                         }
                         .padding()
                     }
+                    HStack {
+                        Button {
+                            openPurchasesTrigger.send(())
+                        } label: {
+                            Text("HISTORY_OF_PURCHASES".localizedString)
+                                .font(.system(size: 15))
+                                .foregroundColor(Color(hex: "#51526C"))
+                                .lineLimit(1)
+                                .padding()
+                                .background(Color(hex: "#DFE3EB"))
+                                .cornerRadius(12)
+                                .frame(height: 50)
+                        }
+                        Spacer()
+                        Button {
+                            openPaymentsTrigger.send(())
+                        } label: {
+                            Text("HISTORY_OF_PAYMENTS".localizedString)
+                                .font(.system(size: 15))
+                                .foregroundColor(Color(hex: "#51526C"))
+                                .lineLimit(1)
+                                .padding()
+                                .background(Color(hex: "#DFE3EB"))
+                                .cornerRadius(12)
+                                .frame(height: 50)
+                        }
+                    }
+                    .padding(16)
+
                     Text("MY_CLASS".localizedString)
                         .font(.title2)
                         .padding([.horizontal, .bottom])

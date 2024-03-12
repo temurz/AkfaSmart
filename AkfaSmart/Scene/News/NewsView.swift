@@ -20,7 +20,7 @@ struct NewsView: View {
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
-                if output.news.isEmpty {
+                if output.news.isEmpty && !output.isLoading {
                     VStack(alignment: .center) {
                         Spacer()
                         HStack {

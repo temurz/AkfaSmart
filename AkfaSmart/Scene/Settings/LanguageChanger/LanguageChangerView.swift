@@ -26,6 +26,7 @@ struct LanguageChangerView: View {
                 ForEach($output.items, id: \.title) { $item in
                     LanguageViewRow(viewModel: item, selectedItem: $output.selectedRow)
                         .listRowSeparator(.hidden)
+                        .background(Color.white)
                         .onTapGesture {
                             output.selectedRow = item
                         }

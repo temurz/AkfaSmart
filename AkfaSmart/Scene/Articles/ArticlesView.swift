@@ -22,7 +22,7 @@ struct ArticlesView: View {
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
-                if output.articles.isEmpty {
+                if output.articles.isEmpty && !output.isLoading {
                     VStack(alignment: .center) {
                         Spacer()
                         HStack {

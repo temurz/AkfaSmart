@@ -35,7 +35,7 @@ struct Carousel: UIViewRepresentable {
             openPurchases: self.openPurchases,
             openPayments: self.openPayments)
         let view1 = UIHostingController(rootView: listView)
-        view1.view.frame = CGRect(x: 0, y: 0, width: total, height: 320)
+        view1.view.frame = CGRect(x: 0, y: 0, width: total, height: 270)
         view1.view.backgroundColor = .clear
         
         view.addSubview(view1.view)
