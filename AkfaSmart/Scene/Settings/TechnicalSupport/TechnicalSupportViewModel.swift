@@ -18,7 +18,7 @@ extension TechnicalSupportViewModel: ViewModel {
         let reloadMessagesTrigger: Driver<Void>
         let loadMoreMessagesTrigger: Driver<Void>
         let clearHistoryTrigger: Driver<Void>
-        
+        let sendMessageTrigger: Driver<String>
     }
     
     final class Output: ObservableObject {
@@ -28,6 +28,8 @@ extension TechnicalSupportViewModel: ViewModel {
         @Published var hasMorePages = false
         @Published var alert = AlertMessage()
         @Published var items = [MessageModel]()
+        @Published var isFirstLoad = true
+        @Published var newMessages = 0
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -88,6 +90,18 @@ extension TechnicalSupportViewModel: ViewModel {
                         if bool {
                             output.items = []
                         }
+                    }
+                    .store(in: cancelBag)
+            }
+            .store(in: cancelBag)
+        
+        input.sendMessageTrigger
+            .sink { text in
+                useCase.sendMessage(text: text)
+                    .asDriver()
+                    .sink { message in
+                        output.items.append(message)
+                        output.newMessages += 1
                     }
                     .store(in: cancelBag)
             }

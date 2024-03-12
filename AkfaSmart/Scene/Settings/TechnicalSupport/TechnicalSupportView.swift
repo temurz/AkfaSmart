@@ -11,15 +11,16 @@ import Combine
 struct TechnicalSupportView: View {
     @ObservedObject var output: TechnicalSupportViewModel.Output
     @State private var messageText = ""
-
+    
     private let getMessagesTrigger = PassthroughSubject<Void,Never>()
     private let loadMoreMessagesTrigger = PassthroughSubject<Void, Never>()
     private let clearHistoryTrigger = PassthroughSubject<Void,Never>()
+    private let sendMessageTrigger = PassthroughSubject<String,Never>()
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
-                if output.items.isEmpty {
+                if output.items.isEmpty && !output.isLoading {
                     VStack {
                         Spacer()
                         Text("CHAT_IS_EMPTY".localizedString)
@@ -28,13 +29,32 @@ struct TechnicalSupportView: View {
                     }
                     
                 }else {
-                    List(output.items, id: \.self) { item in
-                        MessageViewRow(model: Message(isUser: item.userId == nil , time: item.date ?? "", text: item.text ?? ""))
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
+                    ScrollViewReader { proxy in
+                        VStack {
+                            ScrollView(.vertical) {
+                                VStack {
+                                    ForEach(output.items, id: \.self) { item in
+                                        MessageViewRow(model:
+                                                        Message(isUser: item.userId == nil , time: item.date ?? "", text: item.text ?? "")
+                                        )
+                                    }
+                                }.id("ScrollView")
+                            }
+                            .onChange(of: output.items) { _ in
+                                if output.isFirstLoad {
+                                    output.isFirstLoad = false
+                                    withAnimation {
+                                        proxy.scrollTo("ScrollView", anchor: .bottom)
+                                    }
+                                }
+                            }
+                            .onChange(of: output.newMessages) { _ in
+                                withAnimation {
+                                    proxy.scrollTo("ScrollView", anchor: .bottom)
+                                }
+                            }
+                        }
                     }
-                    .background(Color(hex: "#EAEEF5"))
-                    .listStyle(.plain)
                 }
                 Spacer()
                 HStack {
@@ -45,9 +65,10 @@ struct TechnicalSupportView: View {
                         .cornerRadius(10)
 
                     Button(action: {
-                        
-                        self.messageText = ""
-                        
+                        if !messageText.isEmpty {
+                            sendMessageTrigger.send(messageText)
+                            self.messageText = ""
+                        }
                     }) {
                         
                         Image(systemName: "paperplane")
@@ -98,7 +119,8 @@ struct TechnicalSupportView: View {
             loadMessagesTrigger: getMessagesTrigger.asDriver(),
             reloadMessagesTrigger: Driver.empty(),
             loadMoreMessagesTrigger: loadMoreMessagesTrigger.asDriver(),
-            clearHistoryTrigger: clearHistoryTrigger.asDriver()
+            clearHistoryTrigger: clearHistoryTrigger.asDriver(),
+            sendMessageTrigger: sendMessageTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

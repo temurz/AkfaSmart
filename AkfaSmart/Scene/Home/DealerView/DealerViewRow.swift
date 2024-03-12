@@ -38,7 +38,7 @@ struct DealerViewRow: View {
                             if isBalanceVisible {
                                 Text(model.balance.convertDecimals() + "SUM_UZS".localizedString)
                                     .font(.headline)
-                                    .foregroundColor(.red)
+                                    .foregroundColor(model.balance >= 0 ? .green : .red)
                             }else {
                                 Text("***" + "SUM_UZS".localizedString)
                                     .font(.headline)

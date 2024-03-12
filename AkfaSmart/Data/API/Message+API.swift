@@ -53,3 +53,17 @@ extension API {
         }
     }
 }
+
+extension API {
+    func sendMessage(_ input: SendMessageAPIInput) -> Observable<MessageModel> {
+        request(input)
+    }
+    final class SendMessageAPIInput: APIInput {
+        init(text: String) {
+            let params: Parameters = [
+                "text": text
+            ]
+            super.init(urlString: API.Urls.sendMessage, parameters: params, method: .post, requireAccessToken: true)
+        }
+    }
+}

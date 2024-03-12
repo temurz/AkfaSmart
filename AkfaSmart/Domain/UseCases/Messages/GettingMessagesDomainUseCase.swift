@@ -22,4 +22,8 @@ extension GettingMessagesDomainUseCase {
     func clearHistory() -> Observable<Bool> {
         return gateway.clearHistory()
     }
+    
+    func sendMessage(text: String) -> Observable<MessageModel> {
+        gateway.sendMessage(text: text)
+    }
 }
