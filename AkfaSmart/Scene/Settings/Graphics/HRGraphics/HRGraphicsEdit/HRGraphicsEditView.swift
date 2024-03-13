@@ -16,15 +16,38 @@ struct HRGraphicsEditView: View {
     
     private let model: HRGraphics
     var body: some View {
-        ScrollView {
-            VStack {
-                EditInfographicsViewRow(title: "NUMBER_OF_EMPLOYEES".localizedString, constantModel: "\(model.numberOfEmployees ?? 0)", editedValue: $output.numberOfEmployeesEditedString)
-                EditViewRowWithMultiLine(title: "ABOUT_EMPLOYEES".localizedString, constantModel: model.aboutEmployees, editedValue: $output.aboutEmployeesEdited)
-                sellerRow
-                accountantRow
-                
+        return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
+            ScrollView {
+                VStack {
+                    EditInfographicsViewRow(title: "NUMBER_OF_EMPLOYEES".localizedString, constantModel: "\(model.numberOfEmployees ?? 0)", editedValue: $output.numberOfEmployeesEditedString)
+                    EditViewRowWithMultiLine(title: "ABOUT_EMPLOYEES".localizedString, constantModel: model.aboutEmployees, editedValue: $output.aboutEmployeesEdited)
+                    sellerRow
+                    accountantRow
+                    
+                }
             }
         }
+        .navigationTitle("HR_GRAPHICS_TITLE".localizedString)
+        .navigationBarItems(trailing:
+                                Button(action: {
+            saveHRGraphicsTrigger.send(model)
+        }, label: {
+            Text("SAVE".localizedString)
+                .bold()
+                .foregroundColor(Color.red)
+        })
+        )
+        .alert(isPresented: $output.alert.isShowing) {
+            Alert(
+                title: Text(output.alert.title),
+                message: Text(output.alert.message),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+        .onAppear {
+            loadInitialValuesTrigger.send(model)
+        }
+        
         
     }
     
