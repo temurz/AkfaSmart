@@ -27,7 +27,7 @@
 "ADDITIONAL_TERMS" = "Дополнительные условия";
 "MARRIED" = "Женат";
 "SINGLE" = "Холост";
-"SQ_KM" = " кв.км";
+"SQ_M" = " кв.м";
 "TOTAL_OF_PRODUCTS_SHOULD_BE_MAXIMUM" = "Общее количество товаров должно быть максимальным ";
 "SHOULD_BE_PERSENTS_UZ" = "%";
 "DEALERS_NAME" = "Имя дилера";
@@ -156,6 +156,7 @@
 "IS_MARRIED" = "Женат/Замужем";
 "REGION" = "Регион";
 "HAS_CHILDREN_QUESTION" = "Дети";
+"TOOLS" = "Инструменты";
 //ERRORS
 "Not Found" = "Нет данных";
 "Invalid server response" = "Неверный ответ сервера";

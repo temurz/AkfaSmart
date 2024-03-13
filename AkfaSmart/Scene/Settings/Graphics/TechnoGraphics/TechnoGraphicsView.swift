@@ -42,7 +42,7 @@ struct TechnoGraphicsView: View {
                             viewModel: InfoItemViewModel(
                                 title: "WHICH_SERIES_USES".localizedString,
                                 value: "\(getSeriesString(series: techno.workWithSeries))",
-                                editedValue: "\(getSeriesString(series: techno.workWithSeries))")
+                                editedValue: "")
                         )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
@@ -63,7 +63,7 @@ struct TechnoGraphicsView: View {
                   dismissButton: .default(Text("OK")))
         }
         .navigationBarItems(trailing: Button(action: {
-            
+            showEditTechnoGraphicsViewTrigger.send(())
         }, label: {
             Text("EDIT".localizedString)
                 .foregroundColor(.red)

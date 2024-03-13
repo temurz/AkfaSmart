@@ -6,4 +6,15 @@
 //  Copyright © 2024 Tuan Truong. All rights reserved.
 //
 
-import Foundation
+import UIKit
+protocol PopViewNavigatorType {
+    func popView()
+}
+
+struct PopViewNavigator: PopViewNavigatorType {
+    unowned var navigationController: UINavigationController
+    
+    func popView() {
+        navigationController.popViewController(animated: true)
+    }
+}

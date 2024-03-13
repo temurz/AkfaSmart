@@ -7,3 +7,12 @@
 //
 
 import Foundation
+protocol EditTechnographicsUseCaseType {
+    func getSeries() -> Observable<[ModelWithIdAndName]>
+    func getTools() -> Observable<[ModelWithIdAndName]>
+    func save(_ model: TechnoGraphics) -> Observable<Bool>
+}
+
+struct EditTechnographicsUseCase: EditTechnographicsUseCaseType, EditTechnographicsDomainUseCase {
+    var gateway: EditTechnographicsGatewayType
+}

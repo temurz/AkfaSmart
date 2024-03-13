@@ -11,7 +11,7 @@
 "HOME" = "Asosiy";
 "SEARCH" = "Qidirish";
 "MY_DEALERS" = "Mening dilerlarim";
-"TOTAL_OF_PRODUCTS_SHOULD_BE" = "mahsulotlarning ja'mi xaridi bo'lishi kerak";
+"TOTAL_OF_PRODUCTS_SHOULD_BE" = " mahsulotlarning ja'mi xaridi bo'lishi kerak";
 "MIN" = "eng kamida ";
 "MAX" = "eng kamida ";
 "PURCHASES_KG" = "Xaridlar(kg)";
@@ -31,7 +31,7 @@
 "TOTAL" = "Umumiy";
 "MARRIED" = "Uylangan";
 "SINGLE" = "Yolg'iz";
-"SQ_KM" = " kv.km";
+"SQ_M" = " kv.m";
 "DEALERS_NAME" = "Diler nomi";
 "BALANCE" = "Balans";
 "SUM_UZS" = " so'm";
@@ -146,7 +146,7 @@
 "INFOGRAPHICS" = "Infografika";
 "TECHNOGRAPHICS" = "Texnografika";
 "HR_GRAPHICS" = "HR grafikalar";
-"MARKET_GRAPHICS" = "Bozor grafikasi";
+"MARKET_GRAPHICS" = "Market grafikasi";
 "PRODUCT_GRAPHICS" = "Mahsulot grafikasi";
 "TECHNICAL_SUPPORT" = "Texnik yordam";
 "PIN_CODE" = "PIN-kod";
@@ -159,6 +159,7 @@
 "IS_MARRIED" = "Uylangan/Turmushga chiqqan";
 "REGION" = "Hudud";
 "HAS_CHILDREN_QUESTION" = "Bolalari";
+"TOOLS" = "Uskunalar";
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";
 "Invalid server response" = "Noto'g'ri server javobi";

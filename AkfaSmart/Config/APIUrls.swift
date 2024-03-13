@@ -54,6 +54,7 @@ extension API {
         static let getTechnoGraphics = Base.BASE_URL + "/api/mobile/technographic"
         static let editTechnoGraphics = Base.BASE_URL + "/api/mobile/technographic/edit"
         static let getTools = Base.BASE_URL + "/api/mobile/tool/view"
+        static let getSeries = Base.BASE_URL + "/api/mobile/klass_group/view"
         
         static let getHRGraphics = Base.BASE_URL + "/api/mobile/HRgraphic"
         

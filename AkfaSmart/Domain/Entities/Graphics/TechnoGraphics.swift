@@ -10,16 +10,30 @@ import Foundation
 
 struct TechnoGraphics: Codable {
     let longitude: Double?
-    let longitudeEdited: Double?
+    var longitudeEdited: Double?
     let latitude: Double?
-    let latitudeEdited: Double?
+    var latitudeEdited: Double?
     let area: Double?
-    let areaEdited: Double?
+    var areaEdited: Double?
     let hasGlassWorkshop: Bool?
-    let hasGlassWorkshopEdited: Bool?
+    var hasGlassWorkshopEdited: Bool?
     let tools: [ModelWithIdAndName]
-    let toolsEdited: [ModelWithIdAndName]
+    var toolsEdited: [ModelWithIdAndName]
     let workWithSeries: [ModelWithIdAndName]
+    
+    mutating func edit(
+        longitudeEdited: Double?,
+        latitudeEdited: Double?,
+        areaEdited: Double?,
+        hasGlassWorkshopEdited: Bool?,
+        toolsEdited: [ModelWithIdAndName]
+    ) {
+        self.longitudeEdited = longitudeEdited
+        self.latitudeEdited = latitudeEdited
+        self.areaEdited = areaEdited
+        self.hasGlassWorkshopEdited = hasGlassWorkshopEdited
+        self.toolsEdited = toolsEdited
+    }
 }
 
 struct ModelWithIdAndName: Codable {

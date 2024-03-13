@@ -46,7 +46,7 @@ struct EditInfographicsView: View {
                                     Button(action: {
                 saveInfographicsTrigger.send(model)
             }, label: {
-                Text("Save")
+                Text("SAVE".localizedString)
                     .bold()
                     .foregroundColor(Color.red)
             })

@@ -57,7 +57,7 @@ struct ConverterToString {
     
     static func getArea(area: Double?) -> String {
         if let area {
-            return area > 0 ? "\(area)" + "SQ_KM".localizedString : ""
+            return area > 0 ? "\(area)" + "SQ_M".localizedString : ""
         }else {
             return ""
         }

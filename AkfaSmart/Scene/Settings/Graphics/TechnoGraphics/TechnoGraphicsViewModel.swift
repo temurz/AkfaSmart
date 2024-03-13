@@ -10,6 +10,7 @@
 import Foundation
 struct TechnoGraphicsViewModel {
     let useCase: TechnoGraphicsViewUseCaseType
+    let navigator: TechnographicsNavigatorType
 }
 
 extension TechnoGraphicsViewModel: ViewModel {
@@ -21,10 +22,6 @@ extension TechnoGraphicsViewModel: ViewModel {
     final class Output: ObservableObject {
         @Published var isLoading = false
         @Published var alert = AlertMessage()
-        @Published var items = [
-            InfoItemViewModel(title: "Цех манзили", value: "Наманган шахри, Лола кўчаси", editedValue: "Наманган шахри, Лола кўчаси"),
-            InfoItemViewModel(title: "Цех майдони", value: "100 кв.м.", editedValue: "100 кв.м.")
-        ]
         @Published var technoGraphics: TechnoGraphics? = nil
     }
     
@@ -44,6 +41,14 @@ extension TechnoGraphicsViewModel: ViewModel {
             .sink(receiveValue: { technoGraphics in
                 output.technoGraphics = technoGraphics
             })
+            .store(in: cancelBag)
+        
+        input.showEditTechnoGraphicsViewTrigger
+            .sink {
+                if let technoGraphics = output.technoGraphics {
+                    navigator.showEditTechnographicsView(model: technoGraphics)
+                }
+            }
             .store(in: cancelBag)
         
         errorTracker

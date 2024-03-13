@@ -12,6 +12,7 @@ struct EditInfographicsViewRow: View {
     let title: String
     let constantModel: String?
     @Binding var editedValue: String
+    var keyboardType: UIKeyboardType = .default
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)

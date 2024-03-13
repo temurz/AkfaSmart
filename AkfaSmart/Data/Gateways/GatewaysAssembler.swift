@@ -115,6 +115,10 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> InfoGraphicsGatewayType {
         return InfoGraphicsGateway()
     }
+    
+    func resolve() -> EditTechnographicsGatewayType {
+        return EditTechnographicsGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -215,5 +219,9 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> InfoGraphicsGatewayType {
         return InfoGraphicsGateway()
+    }
+    
+    func resolve() -> EditTechnographicsGatewayType {
+        return EditTechnographicsGateway()
     }
 }

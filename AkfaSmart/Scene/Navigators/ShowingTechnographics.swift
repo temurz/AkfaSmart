@@ -17,7 +17,7 @@ protocol ShowingTechnographics {
 
 extension ShowingTechnographics {
     func showTechnographics() {
-        let view: TechnoGraphicsView = TechnoGraphicsView(viewModel: TechnoGraphicsViewModel(useCase: TechnoGraphicsViewUseCase(gateway: TechnoGraphicsGateway())))
+        let view: TechnoGraphicsView = TechnoGraphicsView(viewModel: TechnoGraphicsViewModel(useCase: TechnoGraphicsViewUseCase(gateway: TechnoGraphicsGateway()), navigator: TechnographicsNavigator(assembler: assembler, navigationController: navigationController)))
         let vc = UIHostingController(rootView: view)
         self.navigationController.pushViewController(vc, animated: true)
     }

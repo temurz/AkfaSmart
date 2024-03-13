@@ -87,12 +87,12 @@ struct HomeView: View {
                                 .font(.system(size: 15))
                                 .foregroundColor(Color(hex: "#51526C"))
                                 .lineLimit(1)
-                                .padding()
+                                .frame(height: 50)
+                                .frame(maxWidth: .infinity)
+                                .padding(.horizontal)
                                 .background(Color(hex: "#DFE3EB"))
                                 .cornerRadius(12)
-                                .frame(height: 50)
                         }
-                        Spacer()
                         Button {
                             openPaymentsTrigger.send(())
                         } label: {
@@ -100,10 +100,11 @@ struct HomeView: View {
                                 .font(.system(size: 15))
                                 .foregroundColor(Color(hex: "#51526C"))
                                 .lineLimit(1)
-                                .padding()
+                                .frame(height: 50)
+                                .frame(maxWidth: .infinity)
+                                .padding(.horizontal)
                                 .background(Color(hex: "#DFE3EB"))
                                 .cornerRadius(12)
-                                .frame(height: 50)
                         }
                     }
                     .padding(16)

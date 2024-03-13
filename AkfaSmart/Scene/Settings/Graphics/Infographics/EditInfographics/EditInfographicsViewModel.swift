@@ -128,13 +128,22 @@ extension EditInfographicsViewModel: ViewModel {
                 let nation = output.nation
                 let educationEdited = output.educationEdited
                 let ownedLanguagesEdited = output.ownedLanguagesEdited
-                let numberOfChildrenEdited = output.numberOfChildrenEdited
+                
                 let regionEdited = output.regionEdited.id == nil ? output.parentRegion : output.regionEdited
                 
                 var dateOfBirth = output.dateOfBirth
                 if !Calendar(identifier: .gregorian).isDateInToday(output.date) {
                     dateOfBirth = output.date.toLongAPIFormat()
                 }
+                var numberOfChildrenEdited: Int = output.numberOfChildrenEdited
+                
+                if output.numberOfChildrenEdited != Int(output.numberOfChildrenString) {
+                    if let num = Int(output.numberOfChildrenString) {
+                        numberOfChildrenEdited = num
+                    }
+                }
+                
+                
                 
                 
                 model.edit(firstNameEdited: firstname, lastNameEdited: lastName, middleNameEdited: middleName, isMarriedEdited: isMarriedEdited, dateOfBirth: dateOfBirth, address: address, nation: nation, educationEdited: educationEdited, ownedLanguagesEdited: ownedLanguagesEdited, numberOfChildrenEdited: numberOfChildrenEdited, regionEdited: regionEdited)

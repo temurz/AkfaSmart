@@ -27,7 +27,7 @@
 "ADDITIONAL_TERMS" = "Additional terms";
 "MARRIED" = "Married";
 "SINGLE" = "Single";
-"SQ_KM" = " sq.km";
+"SQ_M" = " sq.m";
 "TOTAL_OF_PRODUCTS_SHOULD_BE_MAXIMUM" = "Total of products should be maximum";
 "SHOULD_BE_PERSENTS_UZ" = "%";
 "DEALERS_NAME" = "Dealer's name";
@@ -155,6 +155,8 @@
 "IS_MARRIED" = "Is married";
 "REGION" = "Region";
 "HAS_CHILDREN_QUESTION" = "Has children";
+"TOOLS" = "Tools";
+
 //ERRORS
 "Not Found" = "Not found";
 "Invalid server response" = "Invalid server response";

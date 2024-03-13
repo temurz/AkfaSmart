@@ -71,10 +71,6 @@ extension API {
                 params["regionIdEdited"] = region
             }
             
-//            if let region = graphics.region.id {
-//                params["regionId"] = region
-//            }
-            
             if let dateOfBirthEdited = graphics.dateOfBirthEdited, !dateOfBirthEdited.isEmpty {
                 params["dateOfBirthEdited"] = dateOfBirthEdited
             }
@@ -123,6 +119,62 @@ extension API {
     final class TechnoGraphicsInput: APIInput {
         init() {
             super.init(urlString: API.Urls.getTechnoGraphics, parameters: nil, method: .get, requireAccessToken: true)
+        }
+    }
+    
+    func saveTechnographics(_ input: SaveTechnographicsAPIInput) -> Observable<Bool> {
+        success(input)
+    }
+    
+    final class SaveTechnographicsAPIInput: APIInput {
+        init(_ model: TechnoGraphics) {
+            var params: Parameters = [:]
+            
+            if let longitudeEdited = model.longitudeEdited {
+                params["longitudeEdited"] = longitudeEdited
+            }
+            
+            if let latitudeEdited = model.latitudeEdited {
+                params["latitudeEdited"] = latitudeEdited
+            }
+            
+            if let areaEdited = model.areaEdited {
+                params["areaEdited"] = areaEdited
+            }
+            
+            if let hasGlassWorkshopEdited = model.hasGlassWorkshopEdited {
+                params["hasGlassWorkshopEdited"] = hasGlassWorkshopEdited
+            }
+            
+            if !model.toolsEdited.isEmpty {
+                params["toolsEdited"] = model.toolsEdited.map({ $0.id })
+            }
+            
+            super.init(urlString: API.Urls.editTechnoGraphics, parameters: params, method: .post, encoding: JSONEncoding.prettyPrinted, requireAccessToken: true)
+        }
+    }
+}
+
+extension API {
+    func getSeries(_ input: GetSeriesAPIInput) -> Observable<[ModelWithIdAndName]> {
+        requestList(input)
+    }
+    
+    final class GetSeriesAPIInput: APIInput {
+        init() {
+            super.init(urlString: API.Urls.getSeries, parameters: nil, method: .get, requireAccessToken: true)
+        }
+    }
+}
+
+extension API {
+    func getTools(_ input: APIInput) -> Observable<[ModelWithIdAndName]> {
+        requestList(input)
+    }
+    
+    final class GetToolsAPIInput: APIInput {
+        init() {
+            super.init(urlString: API.Urls.getTools, parameters: nil, method: .get, requireAccessToken: true)
         }
     }
 }

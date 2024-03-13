@@ -34,7 +34,8 @@ protocol Assembler: AnyObject,
     PaymentHistoryViewAssembler,
     PurchaseDetailViewAssembler,
     EditInfographicsViewAssembler,
-    InfographicsAssembler
+    InfographicsAssembler,
+    EditTechnographicsAssembler
 {
     
 }
