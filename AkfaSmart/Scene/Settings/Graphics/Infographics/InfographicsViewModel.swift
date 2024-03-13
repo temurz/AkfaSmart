@@ -9,11 +9,13 @@
 import Foundation
 struct InfographicsViewModel {
     let useCase: InfographicsViewUseCaseType
+    let navigator: InfographicsViewNavigatorType
 }
 
 extension InfographicsViewModel: ViewModel {
     struct Input {
         let requestInfographicsTrigger: Driver<Void>
+        let showEditInfographicsViewTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -54,6 +56,14 @@ extension InfographicsViewModel: ViewModel {
         activityTracker
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
+        
+        input.showEditInfographicsViewTrigger
+            .sink {
+                if let info = output.info {
+                    navigator.showEditInfographicsView(model: info)
+                }
+            }
             .store(in: cancelBag)
         
         return output

@@ -18,6 +18,7 @@ struct InfographicsView: View {
     @ObservedObject var output: InfographicsViewModel.Output
     
     private let requestInfographicsTrigger = PassthroughSubject<Void,Never>()
+    private let showEditInfographicsViewTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
@@ -81,7 +82,7 @@ struct InfographicsView: View {
                   dismissButton: .default(Text("OK")))
         }
         .navigationBarItems(trailing: Button(action: {
-            
+            showEditInfographicsViewTrigger.send(())
         }, label: {
             Text("EDIT".localizedString)
                 .foregroundColor(.red)
@@ -95,7 +96,10 @@ struct InfographicsView: View {
     
     
     init(viewModel: InfographicsViewModel) {
-        let input = InfographicsViewModel.Input(requestInfographicsTrigger: requestInfographicsTrigger.asDriver())
+        let input = InfographicsViewModel.Input(
+            requestInfographicsTrigger: requestInfographicsTrigger.asDriver(),
+            showEditInfographicsViewTrigger: showEditInfographicsViewTrigger.asDriver()
+        )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

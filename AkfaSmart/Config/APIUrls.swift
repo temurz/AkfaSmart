@@ -48,9 +48,12 @@ extension API {
         //Graphics
         static let getInfoGraphics = Base.BASE_URL + "/api/mobile/infographic"
         static let editInfoGraphics = Base.BASE_URL + "/api/mobile/infographic/edit"
+        static let getRegions = Base.BASE_URL + "/api/mobile/region/view"
+        static let getLanguages = Base.BASE_URL + "/api/mobile/language/view"
         
         static let getTechnoGraphics = Base.BASE_URL + "/api/mobile/technographic"
         static let editTechnoGraphics = Base.BASE_URL + "/api/mobile/technographic/edit"
+        static let getTools = Base.BASE_URL + "/api/mobile/tool/view"
         
         static let getHRGraphics = Base.BASE_URL + "/api/mobile/HRgraphic"
         

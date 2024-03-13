@@ -6,6 +6,7 @@
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
 "YES" = "Ha";
+"NO" = "No";
 "FILTER" = "Filtr";
 "HOME" = "Asosiy";
 "SEARCH" = "Qidirish";
@@ -92,8 +93,8 @@
 "NATIONALITY" = "Millati";
 "EDUCATION" = "Ta'lim";
 "FAMILY" = "Oilaviy holati";
-"CHILDREN_EN" = " bolalar";
-"HAS" = "bor ";
+"CHILDREN_EN" = " bolasi bor";
+"HAS" = " ";
 "FOREIGN_LANGUAGES" = "Chet tillar";
 "INFOGRAPHICS" = "Infografikalar";
 "EDIT" = "Tahrirlash";
@@ -152,6 +153,10 @@
 "LANGUAGE" = "Til";
 "CHAT_IS_EMPTY" = "Sizda xatlar yo'q";
 "LIST_IS_EMPTY" = "Ro'yxat bo'sh";
+"FIRST_NAME" = "Ismi";
+"MIDDLE_NAME" = "Otasining ismi";
+"LAST_NAME" = "Familiyasi";
+"IS_MARRIED" = "Uylangan/Turmushga chiqqan";
 
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";

@@ -150,6 +150,10 @@
 "LANGUAGE" = "Язык";
 "CHAT_IS_EMPTY" = "У вас нет сообщений";
 "LIST_IS_EMPTY" = "Список пуст";
+"FIRST_NAME" = "Имя";
+"MIDDLE_NAME" = "Отчество";
+"LAST_NAME" = "Фамилия";
+"IS_MARRIED" = "Женат/Замужем";
 
 //ERRORS
 "Not Found" = "Нет данных";

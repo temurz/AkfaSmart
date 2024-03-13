@@ -32,7 +32,9 @@ protocol Assembler: AnyObject,
     ProductDealersListViewAssembler,
     ArticlesFilterViewAssembler,
     PaymentHistoryViewAssembler,
-    PurchaseDetailViewAssembler
+    PurchaseDetailViewAssembler,
+    EditInfographicsViewAssembler,
+    InfographicsAssembler
 {
     
 }

@@ -150,6 +150,16 @@
 		3420A0B22B9E405700DC3E3D /* Message+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0B12B9E405700DC3E3D /* Message+API.swift */; };
 		3420A0B42B9E444800DC3E3D /* MessagesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */; };
 		3420A0B82B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0B72B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift */; };
+		B80331442BA0BECE0019ACA5 /* EditInfographicsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331432BA0BECE0019ACA5 /* EditInfographicsGateway.swift */; };
+		B80331462BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331452BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift */; };
+		B80331492BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331482BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift */; };
+		B803314B2BA0BFC40019ACA5 /* EditInfographicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803314A2BA0BFC40019ACA5 /* EditInfographicsViewModel.swift */; };
+		B803314D2BA0C7690019ACA5 /* EditInfographicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803314C2BA0C7690019ACA5 /* EditInfographicsView.swift */; };
+		B803314F2BA0CCA20019ACA5 /* EditInfographicsViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803314E2BA0CCA20019ACA5 /* EditInfographicsViewAssembler.swift */; };
+		B80331512BA0CD940019ACA5 /* ShowingEditInfographicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331502BA0CD940019ACA5 /* ShowingEditInfographicsView.swift */; };
+		B80331532BA0CE840019ACA5 /* InfographicsViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331522BA0CE840019ACA5 /* InfographicsViewNavigator.swift */; };
+		B80331562BA0D3BE0019ACA5 /* EditInfographicsViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331552BA0D3BE0019ACA5 /* EditInfographicsViewRow.swift */; };
+		B80331582BA0D88A0019ACA5 /* EditInfoGraphicsViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331572BA0D88A0019ACA5 /* EditInfoGraphicsViewNavigator.swift */; };
 		B82CA9672B975981000147D2 /* ConverterToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9662B975981000147D2 /* ConverterToString.swift */; };
 		B82CA9692B977207000147D2 /* GeneralUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9682B977207000147D2 /* GeneralUser.swift */; };
 		B82CA96B2B977598000147D2 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA96A2B977598000147D2 /* User+API.swift */; };
@@ -558,6 +568,16 @@
 		3420A0B12B9E405700DC3E3D /* Message+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+API.swift"; sourceTree = "<group>"; };
 		3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesGateway.swift; sourceTree = "<group>"; };
 		3420A0B72B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingMessagesDomainUseCase.swift; sourceTree = "<group>"; };
+		B80331432BA0BECE0019ACA5 /* EditInfographicsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsGateway.swift; sourceTree = "<group>"; };
+		B80331452BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsDomainUseCase.swift; sourceTree = "<group>"; };
+		B80331482BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsViewUseCase.swift; sourceTree = "<group>"; };
+		B803314A2BA0BFC40019ACA5 /* EditInfographicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsViewModel.swift; sourceTree = "<group>"; };
+		B803314C2BA0C7690019ACA5 /* EditInfographicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsView.swift; sourceTree = "<group>"; };
+		B803314E2BA0CCA20019ACA5 /* EditInfographicsViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsViewAssembler.swift; sourceTree = "<group>"; };
+		B80331502BA0CD940019ACA5 /* ShowingEditInfographicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingEditInfographicsView.swift; sourceTree = "<group>"; };
+		B80331522BA0CE840019ACA5 /* InfographicsViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsViewNavigator.swift; sourceTree = "<group>"; };
+		B80331552BA0D3BE0019ACA5 /* EditInfographicsViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsViewRow.swift; sourceTree = "<group>"; };
+		B80331572BA0D88A0019ACA5 /* EditInfoGraphicsViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoGraphicsViewNavigator.swift; sourceTree = "<group>"; };
 		B82CA9662B975981000147D2 /* ConverterToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterToString.swift; sourceTree = "<group>"; };
 		B82CA9682B977207000147D2 /* GeneralUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralUser.swift; sourceTree = "<group>"; };
 		B82CA96A2B977598000147D2 /* User+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
@@ -1057,6 +1077,7 @@
 				B8C165B82B9AAD1F00F70074 /* ShowingPaymentsHistoryView.swift */,
 				B8E192A12B9B174F0013B148 /* ShowingPurchaseDetailView.swift */,
 				3420A0AA2B9D898300DC3E3D /* ShowingTechnicalSupportView.swift */,
+				B80331502BA0CD940019ACA5 /* ShowingEditInfographicsView.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -1374,6 +1395,7 @@
 				B8C165A52B9A9ADE00F70074 /* PaymentReceiptsGateway.swift */,
 				B8E192972B9B0F620013B148 /* InvoiceDetailGateway.swift */,
 				3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */,
+				B80331432BA0BECE0019ACA5 /* EditInfographicsGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -1449,6 +1471,27 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
+		B80331472BA0BF810019ACA5 /* EditInfographics */ = {
+			isa = PBXGroup;
+			children = (
+				B80331542BA0D3A80019ACA5 /* Row */,
+				B803314C2BA0C7690019ACA5 /* EditInfographicsView.swift */,
+				B803314A2BA0BFC40019ACA5 /* EditInfographicsViewModel.swift */,
+				B80331482BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift */,
+				B803314E2BA0CCA20019ACA5 /* EditInfographicsViewAssembler.swift */,
+				B80331572BA0D88A0019ACA5 /* EditInfoGraphicsViewNavigator.swift */,
+			);
+			path = EditInfographics;
+			sourceTree = "<group>";
+		};
+		B80331542BA0D3A80019ACA5 /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				B80331552BA0D3BE0019ACA5 /* EditInfographicsViewRow.swift */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
 		B82CA9652B975974000147D2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1485,11 +1528,13 @@
 		B85516CE2B79293200FC2D6E /* Infographics */ = {
 			isa = PBXGroup;
 			children = (
+				B80331472BA0BF810019ACA5 /* EditInfographics */,
 				B85516D32B792C5D00FC2D6E /* Row */,
 				B85516CF2B79294700FC2D6E /* InfographicsView.swift */,
 				B85516D12B792B5600FC2D6E /* InfographicsViewModel.swift */,
 				B8BE49E72B8D68FB00876714 /* InfographicsViewUseCase.swift */,
 				B8BE49E92B8D69E800876714 /* InfographicsAssembler.swift */,
+				B80331522BA0CE840019ACA5 /* InfographicsViewNavigator.swift */,
 			);
 			path = Infographics;
 			sourceTree = "<group>";
@@ -1969,6 +2014,7 @@
 				B8BE49F72B8D883300876714 /* HRGraphicsDomainUseCase.swift */,
 				B8BE49FF2B8E3F4200876714 /* MarketingGraphicsDomainUseCase.swift */,
 				B8BE4A092B8E4C9500876714 /* ProductGraphicsDomainUseCase.swift */,
+				B80331452BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -2277,6 +2323,7 @@
 				B87C71E82B82B58F0061530E /* ForgotPassword+API.swift in Sources */,
 				1742B36324D7B00000C82D15 /* GettingRepos.swift in Sources */,
 				B85516C92B79069300FC2D6E /* ArticlesGateway.swift in Sources */,
+				B80331582BA0D88A0019ACA5 /* EditInfoGraphicsViewNavigator.swift in Sources */,
 				B89F2F8A2B911B95004DAEAB /* PurchaseHistoryViewModel.swift in Sources */,
 				B8C165A42B9A6F6000F70074 /* PaymentReceipt.swift in Sources */,
 				1765B2D124C6D5550096D210 /* ShowingProductDetail.swift in Sources */,
@@ -2333,6 +2380,7 @@
 				B866A9912B71AF9400202C9F /* SearchProductViewModel.swift in Sources */,
 				B87C71E42B82B1F70061530E /* ForgotPasswordDomainUseCase.swift in Sources */,
 				B82CA9692B977207000147D2 /* GeneralUser.swift in Sources */,
+				B80331492BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift in Sources */,
 				B866A8CF2B68C8E400202C9F /* CodeInputView.swift in Sources */,
 				176BAA3E24D10F7500324D3C /* MainViewController.swift in Sources */,
 				B87C71DE2B829FA50061530E /* ForgotPasswordUseCase.swift in Sources */,
@@ -2391,6 +2439,7 @@
 				178809AA24C0412F00002215 /* Observable.swift in Sources */,
 				1742B37B24D7E88900C82D15 /* AlertMessage.swift in Sources */,
 				B866A9522B7110FB00202C9F /* BottomBarView.swift in Sources */,
+				B80331442BA0BECE0019ACA5 /* EditInfographicsGateway.swift in Sources */,
 				B82CA9702B97775D000147D2 /* GettingUserInfoDomainUseCase.swift in Sources */,
 				176BAA5C24D175C200324D3C /* AuthGateway.swift in Sources */,
 				B8CF98E82B656B2700EF02A7 /* RegisterDTO.swift in Sources */,
@@ -2482,6 +2531,7 @@
 				B89F2F812B911719004DAEAB /* Invoice+API.swift in Sources */,
 				B8C165942B99D38F00F70074 /* ArticlesFilterView.swift in Sources */,
 				B8E192A02B9B10710013B148 /* PurchaseDetailViewAssembler.swift in Sources */,
+				B803314F2BA0CCA20019ACA5 /* EditInfographicsViewAssembler.swift in Sources */,
 				B85516CB2B790E5F00FC2D6E /* Articles+API.swift in Sources */,
 				1787233F24BD556E00D90F8E /* LoginNavigator.swift in Sources */,
 				1787232F24BD547600D90F8E /* AppUseCase.swift in Sources */,
@@ -2495,6 +2545,7 @@
 				B863DAB72B8D0880003F2C3D /* TechnoGraphicsViewModel.swift in Sources */,
 				1742B37124D7B45C00C82D15 /* UIViewController+Debug.swift in Sources */,
 				B87ED2022B7A275F00EB5139 /* SplashView.swift in Sources */,
+				B80331462BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift in Sources */,
 				176BAA6224D2698500324D3C /* APIServiceBase.swift in Sources */,
 				B89F2F882B911AC9004DAEAB /* PurchaseHistoryViewUseCase.swift in Sources */,
 				B85516CD2B7928DD00FC2D6E /* ShowingInfograpics.swift in Sources */,
@@ -2517,6 +2568,7 @@
 				B8BE49F02B8D7DE900876714 /* TechnoGraphicsDomainUseCase.swift in Sources */,
 				B8FEC6B52B8502540028BA7F /* ResendSMS+API.swift in Sources */,
 				B866A94F2B70FE8900202C9F /* NewsAssembler.swift in Sources */,
+				B80331532BA0CE840019ACA5 /* InfographicsViewNavigator.swift in Sources */,
 				B8E192962B9ABF500013B148 /* PurchaseDetailView.swift in Sources */,
 				B863DAC52B8D58D8003F2C3D /* Infographics.swift in Sources */,
 				B866A8C32B66F07200202C9F /* AuthApp.swift in Sources */,
@@ -2548,7 +2600,9 @@
 				B82CA96D2B97768D000147D2 /* UserInfoGateway.swift in Sources */,
 				B89F2F9A2B919F86004DAEAB /* ProductWithName.swift in Sources */,
 				1781CF3924BD8D58004ED1C6 /* GatewaysAssembler.swift in Sources */,
+				B80331562BA0D3BE0019ACA5 /* EditInfographicsViewRow.swift in Sources */,
 				B866A8E12B68E04400202C9F /* CodeInputNavigator.swift in Sources */,
+				B803314D2BA0C7690019ACA5 /* EditInfographicsView.swift in Sources */,
 				1787232E24BD547600D90F8E /* AppNavigator.swift in Sources */,
 				B89F2F8E2B911C37004DAEAB /* PurchaseHistoryAssembler.swift in Sources */,
 				1742B38124D7F66400C82D15 /* UIImageView+SDWebImage.swift in Sources */,
@@ -2582,6 +2636,7 @@
 				1781CF4124BD8FB8004ED1C6 /* ProductDetailNavigator.swift in Sources */,
 				B866A9852B7193BE00202C9F /* HomeView.swift in Sources */,
 				B89F2F8C2B911C1C004DAEAB /* PurchaseHistroyNavigator.swift in Sources */,
+				B80331512BA0CD940019ACA5 /* ShowingEditInfographicsView.swift in Sources */,
 				1765B2D324C6D6D40096D210 /* ProductRow.swift in Sources */,
 				B89F2F9C2B91A3BB004DAEAB /* ProductsList+API.swift in Sources */,
 				B863DAA12B8D053F003F2C3D /* LanguageViewRow.swift in Sources */,
@@ -2594,6 +2649,7 @@
 				B85516D52B792C6C00FC2D6E /* InfoViewRow.swift in Sources */,
 				B87ED2092B7A296400EB5139 /* SplashViewAssembler.swift in Sources */,
 				B866A9292B6BF73800202C9F /* TabBarItem.swift in Sources */,
+				B803314B2BA0BFC40019ACA5 /* EditInfographicsViewModel.swift in Sources */,
 				B866A9652B71537500202C9F /* ArticlesNavigator.swift in Sources */,
 				B8FEC6BB2B8521A00028BA7F /* Validation+.swift in Sources */,
 				B8AC36882B79A6CA0060D52D /* CameraPreview.swift in Sources */,

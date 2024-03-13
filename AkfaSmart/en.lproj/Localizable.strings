@@ -93,7 +93,6 @@
 "CHILDREN_EN" = " children";
 "HAS" = "has ";
 "FOREIGN_LANGUAGES" = "Foreign languages";
-"INFOGRAPHICS" = "Infographics";
 "EDIT" = "Edit";
 "NUMBER_OF_EMPLOYEES" = "Number of employees";
 "ABOUT_EMPLOYEES" = "About employees";
@@ -150,7 +149,10 @@
 "LANGUAGE" = "Language";
 "CHAT_IS_EMPTY" = "You have no messages";
 "LIST_IS_EMPTY" = "List is empty";
-
+"FIRST_NAME" = "First name";
+"MIDDLE_NAME" = "Middle name";
+"LAST_NAME" = "Last name";
+"IS_MARRIED" = "Is married";
 //ERRORS
 "Not Found" = "Not found";
 "Invalid server response" = "Invalid server response";
