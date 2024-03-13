@@ -57,6 +57,7 @@ extension API {
         static let getSeries = Base.BASE_URL + "/api/mobile/klass_group/view"
         
         static let getHRGraphics = Base.BASE_URL + "/api/mobile/HRgraphic"
+        static let editHRGraphics = Base.BASE_URL + "/api/mobile/HRgraphic/edit"
         
         static let getMarketingGraphics = Base.BASE_URL + "/api/mobile/marketing"
         static let getProductGraphics = Base.BASE_URL + "/api/mobile/productgraphic"

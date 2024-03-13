@@ -33,7 +33,7 @@ extension EditInfographicsViewModel: ViewModel {
         @Published var firstName = ""
         @Published var middleName = ""
         @Published var lastName = ""
-        @Published var isMarriedEdited: Bool = false
+        @Published var isMarriedEdited: Bool?
         @Published var dateOfBirth: String = ""
         @Published var address: String = ""
         @Published var nation: String = ""
@@ -98,7 +98,7 @@ extension EditInfographicsViewModel: ViewModel {
                 output.firstName = model.firstNameEdited ?? ""
                 output.middleName = model.middleNameEdited ?? ""
                 output.lastName = model.lastNameEdited ?? ""
-                output.isMarriedEdited = model.isMarriedEdited ?? false
+                output.isMarriedEdited = model.isMarriedEdited
                 output.dateOfBirth = model.dateOfBirthEdited ?? ""
                 output.address = model.addressEdited ?? ""
                 output.nation = model.nationEdited ?? ""

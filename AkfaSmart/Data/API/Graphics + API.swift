@@ -190,6 +190,33 @@ extension API {
             super.init(urlString: API.Urls.getHRGraphics, parameters: nil, method: .get, requireAccessToken: true)
         }
     }
+    
+    func editHRGraphics(_ input: EditHRGraphics) -> Observable<Bool> {
+        success(input)
+    }
+    
+    final class EditHRGraphics: APIInput {
+        init(_ model: HRGraphics) {
+            var params: Parameters = [:]
+            if let aboutEmployeesEdited = model.aboutEmployeesEdited {
+                params["aboutEmployeesEdited"] = aboutEmployeesEdited
+            }
+                
+            if let hasAccountantEdited = model.hasAccountantEdited {
+                params["hasAccountantEdited"] = hasAccountantEdited
+            }
+            if let hasSellerEdited = model.hasSellerEdited {
+                params["hasSellerEdited"] = hasSellerEdited
+            }
+            if let numberOfEmployeesEdited = model.numberOfEmployeesEdited {
+                params["numberOfEmployeesEdited"] = numberOfEmployeesEdited
+            }
+            if !model.userAttendantTrainingsEdited.isEmpty {
+                params["userAttendantTrainingsEdited"] = model.userAttendantTrainingsEdited.map({ $0.id })
+            }
+            super.init(urlString: API.Urls.editHRGraphics, parameters: params, method: .post,encoding: JSONEncoding.prettyPrinted, requireAccessToken: true)
+        }
+    }
 }
 
 

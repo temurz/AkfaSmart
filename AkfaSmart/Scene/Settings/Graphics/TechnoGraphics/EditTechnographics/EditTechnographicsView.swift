@@ -75,9 +75,13 @@ struct EditTechnographicsView: View {
                         }
 
                     } label: {
-                        Text(output.hasGlassWorkshopEdited ? "YES".localizedString : "NO".localizedString)
-                            .foregroundStyle(.red)
-                            .padding(.horizontal)
+                        HStack {
+                            Text((output.hasGlassWorkshopEdited ?? false) ? "YES".localizedString : "NO".localizedString)
+                                .foregroundStyle(.red)
+                                .padding(.horizontal)
+                            Spacer()
+                        }
+                        
                     }
                 }
             }

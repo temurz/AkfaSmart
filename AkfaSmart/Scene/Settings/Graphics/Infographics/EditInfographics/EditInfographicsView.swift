@@ -92,14 +92,17 @@ struct EditInfographicsView: View {
                             Text("NO".localizedString)
                         }
                     } label: {
-                        if model.isMarriedEdited == nil {
-                            Text("NO_INFORMATION".localizedString)
-                                .foregroundStyle(.gray)
-                                .padding(.horizontal)
-                        }else {
-                            Text(output.isMarriedEdited ? "YES".localizedString : "NO".localizedString)
-                                .foregroundStyle(.red)
-                                .padding(.horizontal)
+                        HStack {
+                            if model.isMarriedEdited == nil {
+                                Text("NO_INFORMATION".localizedString)
+                                    .foregroundStyle(.gray)
+                                    .padding(.horizontal)
+                            }else {
+                                Text((output.isMarriedEdited ?? (model.isMarried ?? false)) ? "YES".localizedString : "NO".localizedString)
+                                    .foregroundStyle(.red)
+                                    .padding(.horizontal)
+                            }
+                            Spacer()
                         }
                     }
                 }
@@ -111,7 +114,7 @@ struct EditInfographicsView: View {
     
     var childRow: some View {
         VStack(alignment: .leading) {
-            if model.isMarried ?? false || model.isMarriedEdited ?? false || output.isMarriedEdited {
+            if model.isMarried ?? false || model.isMarriedEdited ?? false || output.isMarriedEdited ?? false {
                 Text("HAS_CHILDREN_QUESTION".localizedString)
                     .font(.headline)
                     .padding(.horizontal, 4)
@@ -199,14 +202,17 @@ struct EditInfographicsView: View {
                         }
                     }
                 } label: {
-                    if (model.addressEdited == nil || ((model.addressEdited?.isEmpty) != nil)) && output.parentRegion.id == nil {
-                        Text("NO_INFORMATION".localizedString)
-                            .foregroundStyle(.gray)
-                            .padding(.horizontal)
-                    }else {
-                        Text("")
-                            .foregroundStyle(.red)
-                            .padding(.horizontal)
+                    HStack {
+                        if (model.addressEdited == nil || ((model.addressEdited?.isEmpty) != nil)) && output.parentRegion.id == nil {
+                            Text("NO_INFORMATION".localizedString)
+                                .foregroundStyle(.gray)
+                                .padding(.horizontal)
+                        }else {
+                            Text("")
+                                .foregroundStyle(.red)
+                                .padding(.horizontal)
+                        }
+                        Spacer()
                     }
                 }
                 
@@ -222,9 +228,12 @@ struct EditInfographicsView: View {
                             }
                         }
                     }label: {
-                        Text((output.parentRegion.name ?? "") + ", " + output.childRegionString)
-                            .foregroundStyle(.red)
-                            .padding(.horizontal)
+                        HStack {
+                            Text((output.parentRegion.name ?? "") + ", " + output.childRegionString)
+                                .foregroundStyle(.red)
+                                .padding(.horizontal)
+                            Spacer()
+                        }
                     }
                 }
             }
@@ -256,15 +265,19 @@ struct EditInfographicsView: View {
 
                     }
                 } label: {
-                    if model.ownedLanguagesEdited.isEmpty && output.ownedLanguagesEdited.isEmpty {
-                        Text("NO_INFORMATION".localizedString)
-                            .foregroundStyle(.gray)
-                            .padding(.horizontal)
-                    }else {
-                        Text(ConverterToString.getStringFrom(output.ownedLanguagesEdited))
-                            .foregroundStyle(.red)
-                            .padding(.horizontal)
+                    HStack {
+                        if model.ownedLanguagesEdited.isEmpty && output.ownedLanguagesEdited.isEmpty {
+                            Text("NO_INFORMATION".localizedString)
+                                .foregroundStyle(.gray)
+                                .padding(.horizontal)
+                        }else {
+                            Text(ConverterToString.getStringFrom(output.ownedLanguagesEdited))
+                                .foregroundStyle(.red)
+                                .padding(.horizontal)
+                        }
+                        Spacer()
                     }
+                    
                 }
             }
         }

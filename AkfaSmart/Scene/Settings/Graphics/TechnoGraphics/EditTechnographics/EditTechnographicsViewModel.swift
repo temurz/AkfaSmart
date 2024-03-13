@@ -24,9 +24,9 @@ extension EditTechnographicsViewModel: ViewModel {
         @Published var alert = AlertMessage()
         @Published var tools = [ModelWithIdAndName]()
         
-        @Published var areaEdited = 0.0
+        @Published var areaEdited: Double? = nil
         @Published var areaEditedString = ""
-        @Published var hasGlassWorkshopEdited = false
+        @Published var hasGlassWorkshopEdited: Bool?
         @Published var toolsEdited = [ModelWithIdAndName]()
     }
     
@@ -49,9 +49,9 @@ extension EditTechnographicsViewModel: ViewModel {
         
         input.loadInitialValuesTrigger
             .sink { model in
-                output.areaEdited = model.areaEdited ?? 0.0
+                output.areaEdited = model.areaEdited
                 output.areaEditedString = "\(model.areaEdited ?? 0.0)"
-                output.hasGlassWorkshopEdited = model.hasGlassWorkshopEdited ?? false
+                output.hasGlassWorkshopEdited = model.hasGlassWorkshopEdited
                 output.toolsEdited = model.toolsEdited
             }
             .store(in: cancelBag)
@@ -60,9 +60,9 @@ extension EditTechnographicsViewModel: ViewModel {
             .sink { model in
                 var newModel = model
                 
-                var newArea = model.areaEdited ?? 0.0
-                if output.areaEdited != Double(output.areaEditedString) {
-                    if let area = Double(output.areaEditedString) {
+                var newArea = model.areaEdited
+                if let area = Double(output.areaEditedString) {
+                    if output.areaEdited != area {
                         newArea = area
                     }
                 }

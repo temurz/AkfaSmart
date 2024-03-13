@@ -123,6 +123,10 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> HRGatewayType {
         return HRGateway()
     }
+    
+    func resolve() -> HRGraphicsEditGatewayType {
+        return HRGraphicsEditGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -231,5 +235,9 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> HRGatewayType {
         return HRGateway()
+    }
+    
+    func resolve() -> HRGraphicsEditGatewayType {
+        return HRGraphicsEditGateway()
     }
 }

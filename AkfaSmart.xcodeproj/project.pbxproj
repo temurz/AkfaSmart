@@ -176,6 +176,8 @@
 		B80331762BA1E04D0019ACA5 /* HRGraphicsEditViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331752BA1E04D0019ACA5 /* HRGraphicsEditViewUseCase.swift */; };
 		B80331782BA1E0670019ACA5 /* HRGraphicsEditAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331772BA1E0670019ACA5 /* HRGraphicsEditAssembler.swift */; };
 		B803317A2BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331792BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift */; };
+		B803317C2BA1EF8E0019ACA5 /* HRGraphicsEditGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803317B2BA1EF8E0019ACA5 /* HRGraphicsEditGateway.swift */; };
+		B803317E2BA1F3070019ACA5 /* HRGraphicsEditDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803317D2BA1F3070019ACA5 /* HRGraphicsEditDomainUseCase.swift */; };
 		B82CA9672B975981000147D2 /* ConverterToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9662B975981000147D2 /* ConverterToString.swift */; };
 		B82CA9692B977207000147D2 /* GeneralUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9682B977207000147D2 /* GeneralUser.swift */; };
 		B82CA96B2B977598000147D2 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA96A2B977598000147D2 /* User+API.swift */; };
@@ -610,6 +612,8 @@
 		B80331752BA1E04D0019ACA5 /* HRGraphicsEditViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsEditViewUseCase.swift; sourceTree = "<group>"; };
 		B80331772BA1E0670019ACA5 /* HRGraphicsEditAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsEditAssembler.swift; sourceTree = "<group>"; };
 		B80331792BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingHRGraphicsEditView.swift; sourceTree = "<group>"; };
+		B803317B2BA1EF8E0019ACA5 /* HRGraphicsEditGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsEditGateway.swift; sourceTree = "<group>"; };
+		B803317D2BA1F3070019ACA5 /* HRGraphicsEditDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsEditDomainUseCase.swift; sourceTree = "<group>"; };
 		B82CA9662B975981000147D2 /* ConverterToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterToString.swift; sourceTree = "<group>"; };
 		B82CA9682B977207000147D2 /* GeneralUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralUser.swift; sourceTree = "<group>"; };
 		B82CA96A2B977598000147D2 /* User+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
@@ -1431,6 +1435,7 @@
 				3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */,
 				B80331432BA0BECE0019ACA5 /* EditInfographicsGateway.swift */,
 				B80331662BA1ACF80019ACA5 /* EditTechnographicsGateway.swift */,
+				B803317B2BA1EF8E0019ACA5 /* HRGraphicsEditGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -2079,6 +2084,7 @@
 				B8BE4A092B8E4C9500876714 /* ProductGraphicsDomainUseCase.swift */,
 				B80331452BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift */,
 				B80331682BA1AD4C0019ACA5 /* EditTechnographicsDomainUseCase.swift */,
+				B803317D2BA1F3070019ACA5 /* HRGraphicsEditDomainUseCase.swift */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -2464,6 +2470,7 @@
 				B863DAA52B8D05BB003F2C3D /* LanguageChangerViewModel.swift in Sources */,
 				B8BE4A1A2B90103200876714 /* ShowingClassDetailView.swift in Sources */,
 				B8BE4A0F2B900C0200876714 /* ClassDetailGateway.swift in Sources */,
+				B803317C2BA1EF8E0019ACA5 /* HRGraphicsEditGateway.swift in Sources */,
 				B8C165A22B9A6E4F00F70074 /* Payments+API.swift in Sources */,
 				17A5B1FC24D948BC004BD209 /* PagingTableView.swift in Sources */,
 				B8CF98E22B65671300EF02A7 /* RegisterAssembler.swift in Sources */,
@@ -2491,6 +2498,7 @@
 				176BAA6924D26AA300324D3C /* String+Base64.swift in Sources */,
 				176BAA6724D26A8100324D3C /* CacheManager.swift in Sources */,
 				B8C1659A2B99D91E00F70074 /* ArticleTypeViewUseCase.swift in Sources */,
+				B803317E2BA1F3070019ACA5 /* HRGraphicsEditDomainUseCase.swift in Sources */,
 				B87ED20C2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift in Sources */,
 				1781CF4224BD8FB8004ED1C6 /* ProductDetailUseCase.swift in Sources */,
 				174A188D24C8219300AB39D9 /* ActivityIndicator.swift in Sources */,

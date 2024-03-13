@@ -8,9 +8,9 @@
 
 import Foundation
 protocol HRGraphicsEditViewUseCaseType {
-    
+    func editHRGraphics(_ model: HRGraphics) -> Observable<Bool>
 }
 
-struct HRGraphicsEditViewUseCase: HRGraphicsEditViewUseCaseType {
-    
+struct HRGraphicsEditViewUseCase: HRGraphicsEditViewUseCaseType, HRGraphicsEditDomainUseCase {
+    var gateway: HRGraphicsEditGatewayType
 }

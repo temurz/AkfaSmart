@@ -9,13 +9,27 @@
 import Foundation
 struct HRGraphics: Codable {
     let aboutEmployees: String?
-    let aboutEmployeesEdited: String?
+    var aboutEmployeesEdited: String?
     let hasAccountant: Bool?
-    let hasAccountantEdited: Bool?
+    var hasAccountantEdited: Bool?
     let hasSeller: Bool?
-    let hasSellerEdited: Bool?
+    var hasSellerEdited: Bool?
     let numberOfEmployees: Int?
-    let numberOfEmployeesEdited: Int?
+    var numberOfEmployeesEdited: Int?
     let userAttendantTrainings: [ModelWithIdAndName]
-    let userAttendantTrainingsEdited: [ModelWithIdAndName]
+    var userAttendantTrainingsEdited: [ModelWithIdAndName]
+    
+    mutating func edit(
+        aboutEmployeesEdited: String?,
+        hasAccountantEdited: Bool?,
+        hasSellerEdited: Bool?,
+        numberOfEmployeesEdited: Int?,
+        userAttendantTrainingsEdited: [ModelWithIdAndName]
+    ) {
+        self.aboutEmployeesEdited = aboutEmployeesEdited
+        self.hasAccountantEdited = hasAccountantEdited
+        self.hasSellerEdited = hasSellerEdited
+        self.numberOfEmployeesEdited = numberOfEmployeesEdited
+        self.userAttendantTrainingsEdited = userAttendantTrainingsEdited
+    }
 }

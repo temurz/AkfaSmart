@@ -24,12 +24,12 @@ extension HRGraphicsEditAssembler {
 
 extension HRGraphicsEditAssembler where Self: DefaultAssembler {
     func resolve() -> HRGraphicsEditViewUseCaseType {
-        return HRGraphicsEditViewUseCase()
+        return HRGraphicsEditViewUseCase(gateway: resolve())
     }
 }
 
 extension HRGraphicsEditAssembler where Self: PreviewAssembler {
     func resolve() -> HRGraphicsEditViewUseCaseType {
-        return HRGraphicsEditViewUseCase()
+        return HRGraphicsEditViewUseCase(gateway: resolve())
     }
 }
