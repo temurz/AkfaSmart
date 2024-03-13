@@ -154,7 +154,8 @@
 "MIDDLE_NAME" = "Отчество";
 "LAST_NAME" = "Фамилия";
 "IS_MARRIED" = "Женат/Замужем";
-
+"REGION" = "Регион";
+"HAS_CHILDREN_QUESTION" = "Дети";
 //ERRORS
 "Not Found" = "Нет данных";
 "Invalid server response" = "Неверный ответ сервера";

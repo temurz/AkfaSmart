@@ -30,39 +30,54 @@ extension API {
     final class EditInfoGraphicsAPIInput: APIInput {
         init(graphics: Infographics) {
             
-            let params: Parameters = [
-                  "id": 0,
-                  "status": "CREATED",
-                  "createdAt": "2024-03-12T16:36:50.366Z",
-                  "updatedAt": "2024-03-12T16:36:50.366Z",
-                  "createdBy": 0,
-                  "updatedBy": 0,
-                  "firstName": graphics.firstName ?? "",
-                  "firstNameEdited": graphics.firstNameEdited ?? "",
-                  "middleName": graphics.middleName ?? "",
-                  "middleNameEdited": graphics.middleNameEdited ?? "",
-                  "lastName": graphics.lastName ?? "",
-                  "lastNameEdited": graphics.lastNameEdited ?? "",
-                  "dateOfBirth": graphics.dateOfBirth ?? "",
-                  "dateOfBirthEdited": graphics.dateOfBirthEdited ?? "",
-                  "regionId": graphics.region.id ?? 0,
-                  "regionIdEdited": graphics.regionEdited.id ?? 0,
-                  "address": graphics.address ?? "",
-                  "addressEdited": graphics.addressEdited ?? "",
-                  "nation": graphics.nation ?? "",
-                  "nationEdited": graphics.nationEdited ?? "",
-                  "education": graphics.education ?? "",
-                  "educationEdited": graphics.educationEdited ?? "",
-                  "isMarried": graphics.isMarried ?? false,
-                  "isMarriedEdited": graphics.isMarriedEdited ?? false,
-                  "numberOfChildren": graphics.numberOfChildren ?? 0,
-                  "numberOfChildrenEdited": graphics.numberOfChildrenEdited ?? 0,
-                  "languageIds": graphics.ownedLanguages.map { $0.id },
-                  "languageIdsEdited": graphics.ownedLanguagesEdited.map { $0.id},
-                  "klassId": 0,
-//                  "klassCriterias": {},
-                  "uniqueId": 0
-            ]
+            var params: Parameters = [:]
+            if let firstNameEdited = graphics.firstNameEdited {
+                params["firstNameEdited"] = firstNameEdited
+            }
+            
+            if let middleName = graphics.middleNameEdited {
+                params["middleNameEdited"] = middleName
+            }
+            
+            if let lastNameEdited = graphics.lastNameEdited {
+                params["lastNameEdited"] = lastNameEdited
+            }
+            
+            if let addressEdited = graphics.addressEdited {
+                params["addressEdited"] = addressEdited
+            }
+            
+            if let nationEdited = graphics.nationEdited {
+                params["nationEdited"] = nationEdited
+            }
+            
+            if let educationEdited = graphics.educationEdited {
+                params["educationEdited"] = educationEdited
+            }
+            
+            if let numberOfChildrenEdited = graphics.numberOfChildrenEdited {
+                params["numberOfChildrenEdited"] = numberOfChildrenEdited
+            }
+            
+            if !graphics.ownedLanguagesEdited.isEmpty {
+                params["languageIdsEdited"] = graphics.ownedLanguagesEdited.map { $0.id}
+            }
+            
+            if let married = graphics.isMarriedEdited {
+                params["isMarriedEdited"] = married
+            }
+            
+            if let region = graphics.regionEdited.id {
+                params["regionIdEdited"] = region
+            }
+            
+//            if let region = graphics.region.id {
+//                params["regionId"] = region
+//            }
+            
+            if let dateOfBirthEdited = graphics.dateOfBirthEdited, !dateOfBirthEdited.isEmpty {
+                params["dateOfBirthEdited"] = dateOfBirthEdited
+            }
             
             super.init(urlString: API.Urls.editInfoGraphics, parameters: params, method: .post, encoding: JSONEncoding.prettyPrinted, requireAccessToken: true)
         }

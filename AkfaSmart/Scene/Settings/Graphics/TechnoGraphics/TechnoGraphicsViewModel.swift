@@ -15,6 +15,7 @@ struct TechnoGraphicsViewModel {
 extension TechnoGraphicsViewModel: ViewModel {
     struct Input {
         let requestTechnoGraphicsTrigger: Driver<Void>
+        let showEditTechnoGraphicsViewTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {

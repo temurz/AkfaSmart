@@ -32,6 +32,7 @@ struct EditInfographicsView: View {
                     childRow
                     dateRow
                     regionRow
+                    EditInfographicsViewRow(title: "ADDRESS".localizedString, constantModel: model.address, editedValue: $output.address)
                     EditInfographicsViewRow(title: "NATIONALITY".localizedString, constantModel: model.nation, editedValue: $output.nation)
                     EditInfographicsViewRow(title: "EDUCATION".localizedString, constantModel: model.education, editedValue: $output.educationEdited)
                     languagesRow
@@ -111,10 +112,10 @@ struct EditInfographicsView: View {
     var childRow: some View {
         VStack(alignment: .leading) {
             if model.isMarried ?? false || model.isMarriedEdited ?? false || output.isMarriedEdited {
-                Text("IS_MARRIED".localizedString)
+                Text("HAS_CHILDREN_QUESTION".localizedString)
                     .font(.headline)
                     .padding(.horizontal, 4)
-                Text(ConverterToString.getYesOrNoString(model.isMarried))
+                Text(ConverterToString.getAmount(from: model.numberOfChildren))
                     .font(.subheadline)
                     .padding(.horizontal, 4)
                 ZStack(alignment: .leading) {
@@ -124,7 +125,7 @@ struct EditInfographicsView: View {
                         .cornerRadius(12)
                     HStack {
                         if let children = model.numberOfChildrenEdited {
-                            TextField("\(model.numberOfChildren ?? 0)" , text: $output.numberOfChildrenString)
+                            TextField("\(children)" , text: $output.numberOfChildrenString)
                                 .keyboardType(.numberPad)
                                 .foregroundStyle(.red)
                                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
@@ -158,14 +159,17 @@ struct EditInfographicsView: View {
             ZStack(alignment: .leading) {
                 Color(hex: "#F5F7FA")
                     .foregroundStyle(.red)
+                    
                     .frame(height: 48)
                     .cornerRadius(12)
-                DatePicker("", selection: $output.date, in: ...Date(), displayedComponents: .date)
+                DatePicker(output.date.toShortFormat(), selection: $output.date, in: ...Date(), displayedComponents: .date)
+                    .foregroundStyle(.red)
                     .environment(\.locale, Locale.init(identifier: AuthApp.shared.language))
                     .id(output.dateID)
                     .onChange(of: output.date, perform: { newValue in
                         output.dateID = UUID()
                     })
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
             }
         }
         .padding(.horizontal)
@@ -173,10 +177,10 @@ struct EditInfographicsView: View {
     
     var regionRow: some View {
         VStack(alignment: .leading) {
-            Text("ADDRESS".localizedString)
+            Text("REGION".localizedString)
                 .font(.headline)
                 .padding(.horizontal, 4)
-            Text(model.address ?? "")
+            Text((model.region.name ?? "" + (model.region.parentName ?? "")))
                 .font(.subheadline)
                 .padding(.horizontal, 4)
             ZStack(alignment: .leading) {
@@ -188,16 +192,14 @@ struct EditInfographicsView: View {
                     ForEach(output.regions, id: \.id) { item in
                         Button {
                             loadChildRegionsTrigger.send(item.id ?? 0)
-                            
-                            output.parentRegionString = item.name ?? ""
+                            output.parentRegion = item
                             showChildRegions = true
-                            output.address = item.name ?? ""
                         } label: {
                             Text(item.name ?? "")
                         }
                     }
                 } label: {
-                    if model.addressEdited == nil && output.parentRegionString.isEmpty {
+                    if (model.addressEdited == nil || ((model.addressEdited?.isEmpty) != nil)) && output.parentRegion.id == nil {
                         Text("NO_INFORMATION".localizedString)
                             .foregroundStyle(.gray)
                             .padding(.horizontal)
@@ -213,13 +215,14 @@ struct EditInfographicsView: View {
                         ForEach(output.childRegions, id: \.id) {
                             item in
                             Button {
-                                output.address = output.parentRegionString + ", " + (item.name ?? "")
+                                output.childRegionString = item.name ?? ""
+                                output.regionEdited = item
                             } label: {
                                 Text(item.name ?? "")
                             }
                         }
                     }label: {
-                        Text(output.address)
+                        Text((output.parentRegion.name ?? "") + ", " + output.childRegionString)
                             .foregroundStyle(.red)
                             .padding(.horizontal)
                     }

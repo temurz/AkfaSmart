@@ -153,6 +153,8 @@
 "MIDDLE_NAME" = "Middle name";
 "LAST_NAME" = "Last name";
 "IS_MARRIED" = "Is married";
+"REGION" = "Region";
+"HAS_CHILDREN_QUESTION" = "Has children";
 //ERRORS
 "Not Found" = "Not found";
 "Invalid server response" = "Invalid server response";

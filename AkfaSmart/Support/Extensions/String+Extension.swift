@@ -22,6 +22,13 @@ extension String {
         }
     }
     
+    func revertToDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.date(from: self)
+    }
+    
     func removePlusFromPhoneNumber() -> String {
         let text = Array(self)
         if text[0] == "+" {

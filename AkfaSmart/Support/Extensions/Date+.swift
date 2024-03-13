@@ -20,6 +20,13 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func toLongAPIFormat() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.string(from: self)
+    }
+    
     func toShortFormat()->String{
         
         // Create Date Formatter

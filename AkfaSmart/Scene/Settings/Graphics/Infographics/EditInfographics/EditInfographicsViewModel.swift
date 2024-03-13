@@ -45,7 +45,7 @@ extension EditInfographicsViewModel: ViewModel {
         @Published var date: Date = Date()
         @Published var dateID = UUID()
         
-        @Published var parentRegionString = ""
+        @Published var parentRegion = Region()
         @Published var childRegionString = ""
         
         @Published var numberOfChildrenString = ""
@@ -105,7 +105,10 @@ extension EditInfographicsViewModel: ViewModel {
                 output.educationEdited = model.educationEdited ?? ""
                 output.ownedLanguagesEdited = model.ownedLanguagesEdited
                 output.numberOfChildrenEdited = model.numberOfChildrenEdited ?? 0
+                output.numberOfChildrenString = "\(model.numberOfChildren ?? (model.numberOfChildrenEdited ?? 0))"
                 output.regionEdited = model.regionEdited
+                
+                output.date = model.dateOfBirthEdited?.revertToDate() ?? Date()
                 
                 output.initialValuesAreLoaded += 1
             }
@@ -120,13 +123,19 @@ extension EditInfographicsViewModel: ViewModel {
                 let middleName = output.middleName
                 let lastName = output.lastName
                 let isMarriedEdited = output.isMarriedEdited
-                let dateOfBirth = output.dateOfBirth
+                
                 let address = output.address
                 let nation = output.nation
                 let educationEdited = output.educationEdited
                 let ownedLanguagesEdited = output.ownedLanguagesEdited
                 let numberOfChildrenEdited = output.numberOfChildrenEdited
-                let regionEdited = output.regionEdited
+                let regionEdited = output.regionEdited.id == nil ? output.parentRegion : output.regionEdited
+                
+                var dateOfBirth = output.dateOfBirth
+                if !Calendar(identifier: .gregorian).isDateInToday(output.date) {
+                    dateOfBirth = output.date.toLongAPIFormat()
+                }
+                
                 
                 model.edit(firstNameEdited: firstname, lastNameEdited: lastName, middleNameEdited: middleName, isMarriedEdited: isMarriedEdited, dateOfBirth: dateOfBirth, address: address, nation: nation, educationEdited: educationEdited, ownedLanguagesEdited: ownedLanguagesEdited, numberOfChildrenEdited: numberOfChildrenEdited, regionEdited: regionEdited)
                 

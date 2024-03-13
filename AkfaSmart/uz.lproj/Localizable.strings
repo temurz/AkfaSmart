@@ -157,7 +157,8 @@
 "MIDDLE_NAME" = "Otasining ismi";
 "LAST_NAME" = "Familiyasi";
 "IS_MARRIED" = "Uylangan/Turmushga chiqqan";
-
+"REGION" = "Hudud";
+"HAS_CHILDREN_QUESTION" = "Bolalari";
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";
 "Invalid server response" = "Noto'g'ri server javobi";

@@ -12,6 +12,7 @@ struct TechnoGraphicsView: View {
     @ObservedObject var output: TechnoGraphicsViewModel.Output
     
     private let requestTechnoGraphicsTrigger = PassthroughSubject<Void,Never>()
+    private let showEditTechnoGraphicsViewTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
@@ -50,8 +51,6 @@ struct TechnoGraphicsView: View {
                                 editedValue: "\(getSeriesString(series: techno.toolsEdited))")
                         )
                     }
-                    
-                    
                 }
                 .padding(.horizontal)
             }
@@ -81,7 +80,10 @@ struct TechnoGraphicsView: View {
     }
     
     init(viewModel: TechnoGraphicsViewModel) {
-        let input = TechnoGraphicsViewModel.Input(requestTechnoGraphicsTrigger: requestTechnoGraphicsTrigger.asDriver())
+        let input = TechnoGraphicsViewModel.Input(
+            requestTechnoGraphicsTrigger: requestTechnoGraphicsTrigger.asDriver(),
+            showEditTechnoGraphicsViewTrigger: showEditTechnoGraphicsViewTrigger.asDriver()
+        )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

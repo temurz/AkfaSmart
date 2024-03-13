@@ -39,9 +39,15 @@ struct InfographicsView: View {
                             )
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
-                                title: "ADDRESS".localizedString,
+                                title: "REGION".localizedString,
                                 value: ConverterToString.createFullName(from: [info.region.parentName, info.region.name]),
                                 editedValue: ConverterToString.createFullName(from: [info.regionEdited.parentName, info.regionEdited.name], isEdited: true))
+                        )
+                        InfoViewRow(
+                            viewModel: InfoItemViewModel(
+                                title: "ADDRESS".localizedString,
+                                value: info.address ?? "",
+                                editedValue: info.addressEdited ?? "")
                         )
                         
                         InfoViewRow(
