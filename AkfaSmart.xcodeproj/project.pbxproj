@@ -169,6 +169,13 @@
 		B80331672BA1ACF80019ACA5 /* EditTechnographicsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331662BA1ACF80019ACA5 /* EditTechnographicsGateway.swift */; };
 		B80331692BA1AD4C0019ACA5 /* EditTechnographicsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331682BA1AD4C0019ACA5 /* EditTechnographicsDomainUseCase.swift */; };
 		B803316B2BA1BD820019ACA5 /* ShowingEditTechnographicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803316A2BA1BD820019ACA5 /* ShowingEditTechnographicsView.swift */; };
+		B803316D2BA1D5CE0019ACA5 /* HRGraphicsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803316C2BA1D5CE0019ACA5 /* HRGraphicsNavigator.swift */; };
+		B803316F2BA1D61D0019ACA5 /* HRGraphicsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803316E2BA1D61D0019ACA5 /* HRGraphicsAssembler.swift */; };
+		B80331722BA1E0330019ACA5 /* HRGraphicsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331712BA1E0330019ACA5 /* HRGraphicsEditView.swift */; };
+		B80331742BA1E0410019ACA5 /* HRGraphicsEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331732BA1E0410019ACA5 /* HRGraphicsEditViewModel.swift */; };
+		B80331762BA1E04D0019ACA5 /* HRGraphicsEditViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331752BA1E04D0019ACA5 /* HRGraphicsEditViewUseCase.swift */; };
+		B80331782BA1E0670019ACA5 /* HRGraphicsEditAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331772BA1E0670019ACA5 /* HRGraphicsEditAssembler.swift */; };
+		B803317A2BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331792BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift */; };
 		B82CA9672B975981000147D2 /* ConverterToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9662B975981000147D2 /* ConverterToString.swift */; };
 		B82CA9692B977207000147D2 /* GeneralUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9682B977207000147D2 /* GeneralUser.swift */; };
 		B82CA96B2B977598000147D2 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA96A2B977598000147D2 /* User+API.swift */; };
@@ -596,6 +603,13 @@
 		B80331662BA1ACF80019ACA5 /* EditTechnographicsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTechnographicsGateway.swift; sourceTree = "<group>"; };
 		B80331682BA1AD4C0019ACA5 /* EditTechnographicsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTechnographicsDomainUseCase.swift; sourceTree = "<group>"; };
 		B803316A2BA1BD820019ACA5 /* ShowingEditTechnographicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingEditTechnographicsView.swift; sourceTree = "<group>"; };
+		B803316C2BA1D5CE0019ACA5 /* HRGraphicsNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsNavigator.swift; sourceTree = "<group>"; };
+		B803316E2BA1D61D0019ACA5 /* HRGraphicsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsAssembler.swift; sourceTree = "<group>"; };
+		B80331712BA1E0330019ACA5 /* HRGraphicsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsEditView.swift; sourceTree = "<group>"; };
+		B80331732BA1E0410019ACA5 /* HRGraphicsEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsEditViewModel.swift; sourceTree = "<group>"; };
+		B80331752BA1E04D0019ACA5 /* HRGraphicsEditViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsEditViewUseCase.swift; sourceTree = "<group>"; };
+		B80331772BA1E0670019ACA5 /* HRGraphicsEditAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsEditAssembler.swift; sourceTree = "<group>"; };
+		B80331792BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingHRGraphicsEditView.swift; sourceTree = "<group>"; };
 		B82CA9662B975981000147D2 /* ConverterToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterToString.swift; sourceTree = "<group>"; };
 		B82CA9682B977207000147D2 /* GeneralUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralUser.swift; sourceTree = "<group>"; };
 		B82CA96A2B977598000147D2 /* User+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
@@ -1097,6 +1111,7 @@
 				3420A0AA2B9D898300DC3E3D /* ShowingTechnicalSupportView.swift */,
 				B80331502BA0CD940019ACA5 /* ShowingEditInfographicsView.swift */,
 				B803316A2BA1BD820019ACA5 /* ShowingEditTechnographicsView.swift */,
+				B80331792BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -1524,6 +1539,17 @@
 			path = EditTechnographics;
 			sourceTree = "<group>";
 		};
+		B80331702BA1E01C0019ACA5 /* HRGraphicsEdit */ = {
+			isa = PBXGroup;
+			children = (
+				B80331712BA1E0330019ACA5 /* HRGraphicsEditView.swift */,
+				B80331732BA1E0410019ACA5 /* HRGraphicsEditViewModel.swift */,
+				B80331752BA1E04D0019ACA5 /* HRGraphicsEditViewUseCase.swift */,
+				B80331772BA1E0670019ACA5 /* HRGraphicsEditAssembler.swift */,
+			);
+			path = HRGraphicsEdit;
+			sourceTree = "<group>";
+		};
 		B82CA9652B975974000147D2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1582,9 +1608,12 @@
 		B863DA942B8D037C003F2C3D /* HRGraphics */ = {
 			isa = PBXGroup;
 			children = (
+				B80331702BA1E01C0019ACA5 /* HRGraphicsEdit */,
 				B863DA9A2B8D0458003F2C3D /* HRGraphicViewModel.swift */,
 				B863DA9C2B8D047A003F2C3D /* HRGraphicsView.swift */,
 				B8BE49F92B8D888100876714 /* HRGraphicsViewUseCase.swift */,
+				B803316C2BA1D5CE0019ACA5 /* HRGraphicsNavigator.swift */,
+				B803316E2BA1D61D0019ACA5 /* HRGraphicsAssembler.swift */,
 			);
 			path = HRGraphics;
 			sourceTree = "<group>";
@@ -2350,6 +2379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B866A95E2B712DF800202C9F /* ShowingNewsDetailView.swift in Sources */,
+				B80331742BA1E0410019ACA5 /* HRGraphicsEditViewModel.swift in Sources */,
 				B866A9542B7115C200202C9F /* ShimmerView.swift in Sources */,
 				B877FD692B8BF5B200D24CB0 /* MobileClass.swift in Sources */,
 				3420A0B02B9E3F4600DC3E3D /* MessageModel.swift in Sources */,
@@ -2392,6 +2422,7 @@
 				B89F2F902B916C09004DAEAB /* Date+.swift in Sources */,
 				B8BE49E82B8D68FB00876714 /* InfographicsViewUseCase.swift in Sources */,
 				173865A424D3BB7A0059E3AD /* APIService.swift in Sources */,
+				B803316F2BA1D61D0019ACA5 /* HRGraphicsAssembler.swift in Sources */,
 				B8BE49F42B8D86CB00876714 /* HRGraphics.swift in Sources */,
 				178722F924BD537D00D90F8E /* SceneDelegate.swift in Sources */,
 				B8BE4A042B8E480600876714 /* ProductGraphicsViewUseCase.swift in Sources */,
@@ -2489,6 +2520,7 @@
 				B8E192A52B9B19C60013B148 /* PurchaseDetailViewRow.swift in Sources */,
 				B863DAC22B8D0A21003F2C3D /* ShowingProductGraphics.swift in Sources */,
 				B87ED2072B7A28E900EB5139 /* SplashViewNavigator.swift in Sources */,
+				B80331722BA1E0330019ACA5 /* HRGraphicsEditView.swift in Sources */,
 				1787233324BD54B600D90F8E /* Assembler.swift in Sources */,
 				176BAA5A24D16BAE00324D3C /* ShowingLogin.swift in Sources */,
 				B87ED2002B7A245F00EB5139 /* ShowingWelcomeView.swift in Sources */,
@@ -2519,6 +2551,7 @@
 				B866A9432B70F92900202C9F /* EnvironmentValues+ImageCache.swift in Sources */,
 				1787236524BD5EC700D90F8E /* ProductsNavigator.swift in Sources */,
 				B8AC36712B798BE30060D52D /* QRCodeScanner.swift in Sources */,
+				B80331782BA1E0670019ACA5 /* HRGraphicsEditAssembler.swift in Sources */,
 				B866A98F2B71AF5100202C9F /* SearchProductView.swift in Sources */,
 				B8AC367C2B7992720060D52D /* AddDealerAssembler.swift in Sources */,
 				178809AE24C04A7E00002215 /* ActivityTracker.swift in Sources */,
@@ -2583,6 +2616,7 @@
 				3420A0B42B9E444800DC3E3D /* MessagesGateway.swift in Sources */,
 				B863DAB72B8D0880003F2C3D /* TechnoGraphicsViewModel.swift in Sources */,
 				1742B37124D7B45C00C82D15 /* UIViewController+Debug.swift in Sources */,
+				B803316D2BA1D5CE0019ACA5 /* HRGraphicsNavigator.swift in Sources */,
 				B87ED2022B7A275F00EB5139 /* SplashView.swift in Sources */,
 				B80331462BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift in Sources */,
 				176BAA6224D2698500324D3C /* APIServiceBase.swift in Sources */,
@@ -2643,6 +2677,7 @@
 				1781CF3924BD8D58004ED1C6 /* GatewaysAssembler.swift in Sources */,
 				B80331562BA0D3BE0019ACA5 /* EditInfographicsViewRow.swift in Sources */,
 				B866A8E12B68E04400202C9F /* CodeInputNavigator.swift in Sources */,
+				B803317A2BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift in Sources */,
 				B803314D2BA0C7690019ACA5 /* EditInfographicsView.swift in Sources */,
 				1787232E24BD547600D90F8E /* AppNavigator.swift in Sources */,
 				B89F2F8E2B911C37004DAEAB /* PurchaseHistoryAssembler.swift in Sources */,
@@ -2692,6 +2727,7 @@
 				B85516D52B792C6C00FC2D6E /* InfoViewRow.swift in Sources */,
 				B87ED2092B7A296400EB5139 /* SplashViewAssembler.swift in Sources */,
 				B866A9292B6BF73800202C9F /* TabBarItem.swift in Sources */,
+				B80331762BA1E04D0019ACA5 /* HRGraphicsEditViewUseCase.swift in Sources */,
 				B803314B2BA0BFC40019ACA5 /* EditInfographicsViewModel.swift in Sources */,
 				B866A9652B71537500202C9F /* ArticlesNavigator.swift in Sources */,
 				B8FEC6BB2B8521A00028BA7F /* Validation+.swift in Sources */,

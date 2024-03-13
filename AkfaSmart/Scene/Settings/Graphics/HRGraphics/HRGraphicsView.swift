@@ -18,6 +18,7 @@ struct HRgraphicsView: View {
     @ObservedObject var output: HRgraphicsViewModel.Output
     
     private let requestHRGraphicsTrigger = PassthroughSubject<Void,Never>()
+    private let showEditViewTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
@@ -66,7 +67,7 @@ struct HRgraphicsView: View {
                   dismissButton: .default(Text("OK")))
         }
         .navigationBarItems(trailing: Button(action: {
-            
+            showEditViewTrigger.send(())
         }, label: {
             Text("EDIT".localizedString)
                 .foregroundColor(.red)
@@ -78,7 +79,10 @@ struct HRgraphicsView: View {
     }
     
     init(viewModel: HRgraphicsViewModel) {
-        let input = HRgraphicsViewModel.Input(requestHRGraphicsTrigger: requestHRGraphicsTrigger.asDriver())
+        let input = HRgraphicsViewModel.Input(
+            requestHRGraphicsTrigger: requestHRGraphicsTrigger.asDriver(),
+            showEditViewTrigger: showEditViewTrigger.asDriver()
+        )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

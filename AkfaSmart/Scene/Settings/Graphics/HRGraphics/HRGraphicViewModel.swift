@@ -9,11 +9,13 @@
 import Foundation
 struct HRgraphicsViewModel {
     let useCase: HRGraphicsViewUseCaseType
+    let navigator: HRGraphicsNavigatorType
 }
 
 extension HRgraphicsViewModel: ViewModel {
     struct Input {
         let requestHRGraphicsTrigger: Driver<Void>
+        let showEditViewTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -38,6 +40,14 @@ extension HRgraphicsViewModel: ViewModel {
             .sink(receiveValue: { hrGraphics in
                 output.hrGraphics = hrGraphics
             })
+            .store(in: cancelBag)
+        
+        input.showEditViewTrigger
+            .sink {
+                if let model = output.hrGraphics {
+                    navigator.showHRGraphicsEditView(model)
+                }
+            }
             .store(in: cancelBag)
         
         errorTracker

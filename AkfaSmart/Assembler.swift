@@ -35,7 +35,9 @@ protocol Assembler: AnyObject,
     PurchaseDetailViewAssembler,
     EditInfographicsViewAssembler,
     InfographicsAssembler,
-    EditTechnographicsAssembler
+    EditTechnographicsAssembler,
+    HRGraphicsAssembler,
+    HRGraphicsEditAssembler
 {
     
 }

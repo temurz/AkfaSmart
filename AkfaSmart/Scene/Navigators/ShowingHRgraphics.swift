@@ -16,7 +16,7 @@ protocol ShowingHRgraphics {
 
 extension ShowingHRgraphics {
     func showHRgraphics() {
-        let view: HRgraphicsView = HRgraphicsView(viewModel: HRgraphicsViewModel(useCase: HRGraphicsViewUseCase(gateway: HRGateway())))
+        let view: HRgraphicsView = assembler.resolve(navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
         self.navigationController.pushViewController(vc, animated: true)
     }
