@@ -9,7 +9,7 @@
 import Foundation
 struct EditInfographicsViewModel {
     let useCase: EditInfographicsViewUseCaseType
-    let navigator: EditInfoGraphicsViewNavigatorType
+    let navigator: PopViewNavigatorType
 }
 
 extension EditInfographicsViewModel: ViewModel {

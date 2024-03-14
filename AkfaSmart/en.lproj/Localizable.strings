@@ -156,7 +156,7 @@
 "REGION" = "Region";
 "HAS_CHILDREN_QUESTION" = "Has children";
 "TOOLS" = "Tools";
-
+"CHOOSE_ON_MAP" = "Choose on map";
 //ERRORS
 "Not Found" = "Not found";
 "Invalid server response" = "Invalid server response";

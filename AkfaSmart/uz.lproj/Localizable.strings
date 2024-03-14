@@ -160,6 +160,7 @@
 "REGION" = "Hudud";
 "HAS_CHILDREN_QUESTION" = "Bolalari";
 "TOOLS" = "Uskunalar";
+"CHOOSE_ON_MAP" = "Xaritada tanlang";
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";
 "Invalid server response" = "Noto'g'ri server javobi";

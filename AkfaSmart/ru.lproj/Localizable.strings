@@ -157,6 +157,7 @@
 "REGION" = "Регион";
 "HAS_CHILDREN_QUESTION" = "Дети";
 "TOOLS" = "Инструменты";
+"CHOOSE_ON_MAP" = "Выберите на карте";
 //ERRORS
 "Not Found" = "Нет данных";
 "Invalid server response" = "Неверный ответ сервера";

@@ -7,11 +7,11 @@
 //
 
 import UIKit
-protocol EditInfoGraphicsViewNavigatorType {
+protocol PopViewNavigatorType {
     func popView()
 }
 
-struct EditInfoGraphicsViewNavigator: EditInfoGraphicsViewNavigatorType {
+struct PopViewNavigator: PopViewNavigatorType {
     unowned var navigationController: UINavigationController
     
     func popView() {

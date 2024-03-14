@@ -13,6 +13,7 @@ struct TechnoGraphicsView: View {
     
     private let requestTechnoGraphicsTrigger = PassthroughSubject<Void,Never>()
     private let showEditTechnoGraphicsViewTrigger = PassthroughSubject<Void,Never>()
+    private let openGoogleMapsTrigger = PassthroughSubject<Location,Never>()
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
@@ -20,12 +21,36 @@ struct TechnoGraphicsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     if output.technoGraphics != nil, 
                         let techno = output.technoGraphics {
-                        InfoViewRow(
-                            viewModel: InfoItemViewModel(
-                                title: "ADDRESS_OF_FACTORY".localizedString,
-                                value: "",
-                                editedValue: "")
-                        )
+                        HStack {
+                            InfoViewRow(
+                                viewModel: InfoItemViewModel(
+                                    title: "ADDRESS_OF_FACTORY".localizedString,
+                                    value: output.address,
+                                    editedValue: output.addressEdited)
+                            )
+                            Spacer()
+                            if !output.address.isEmpty || !output.addressEdited.isEmpty {
+                                Button {
+                                    if let latitude = techno.latitude, let longitude = techno.longitude {
+                                        openGoogleMapsTrigger.send(Location(latitude: latitude, longitude: longitude))
+                                    }else if let latitudeEdited = techno.latitudeEdited, let longitudeEdited = techno.longitudeEdited {
+                                        openGoogleMapsTrigger.send(Location(latitude: latitudeEdited, longitude: longitudeEdited))
+                                    }
+                                    
+                                } label: {
+                                    Image("location_white")
+                                        .resizable()
+                                        .frame(width: 24,height: 24)
+                                        .padding()
+                                        .background(Color.red)
+                                        .cornerRadius(8)
+                                }
+                            }
+                            
+
+                            
+                        }
+                        
                         InfoViewRow(
                             viewModel: InfoItemViewModel(
                                 title: "AREA_OF_FACTORY".localizedString,
@@ -82,7 +107,8 @@ struct TechnoGraphicsView: View {
     init(viewModel: TechnoGraphicsViewModel) {
         let input = TechnoGraphicsViewModel.Input(
             requestTechnoGraphicsTrigger: requestTechnoGraphicsTrigger.asDriver(),
-            showEditTechnoGraphicsViewTrigger: showEditTechnoGraphicsViewTrigger.asDriver()
+            showEditTechnoGraphicsViewTrigger: showEditTechnoGraphicsViewTrigger.asDriver(),
+            openGoogleMapsTrigger: openGoogleMapsTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

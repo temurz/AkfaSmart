@@ -10,7 +10,7 @@ import UIKit
 protocol EditTechnographicsAssembler {
     func resolve(navigationController: UINavigationController, model: TechnoGraphics) -> EditTechnographicsView
     func resolve(navigationController: UINavigationController) -> EditTechnographicsViewModel
-    func resolve(navigationController: UINavigationController) -> PopViewNavigatorType
+    func resolve(navigationController: UINavigationController) -> EditTechnographicsNavigatorType
     func resolve() -> EditTechnographicsUseCaseType
 }
 
@@ -25,8 +25,8 @@ extension EditTechnographicsAssembler {
 }
 
 extension EditTechnographicsAssembler where Self: DefaultAssembler {
-    func resolve(navigationController: UINavigationController) -> PopViewNavigatorType {
-        return PopViewNavigator(navigationController: navigationController)
+    func resolve(navigationController: UINavigationController) -> EditTechnographicsNavigatorType {
+        return EditTechnographicsNavigator(navigationController: navigationController)
     }
     func resolve() -> EditTechnographicsUseCaseType {
         return EditTechnographicsUseCase(gateway: resolve())
@@ -34,8 +34,8 @@ extension EditTechnographicsAssembler where Self: DefaultAssembler {
 }
 
 extension EditTechnographicsAssembler where Self: PreviewAssembler {
-    func resolve(navigationController: UINavigationController) -> PopViewNavigatorType {
-        return PopViewNavigator(navigationController: navigationController)
+    func resolve(navigationController: UINavigationController) -> EditTechnographicsNavigatorType {
+        return EditTechnographicsNavigator(navigationController: navigationController)
     }
     func resolve() -> EditTechnographicsUseCaseType {
         return EditTechnographicsUseCase(gateway: resolve())

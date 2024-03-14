@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+
 struct ConverterToString {
     static func getStringFrom(_ modelsWithName: [ModelWithIdAndName], isEdited: Bool = false) -> String {
         let array = modelsWithName.map { $0.name ?? "" }
@@ -68,6 +70,40 @@ struct ConverterToString {
             return amount > 0 ? "\(amount)" : ""
         }else {
             return ""
+        }
+    }
+    
+    static func reverseGeocode(latitude: Double, longitude: Double, completion: @escaping (String) -> Void) {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        
+        let locale = Locale(identifier: AuthApp.shared.language)
+        let geocoder = CLGeocoder()
+        
+        geocoder.reverseGeocodeLocation(location, preferredLocale: locale) { (placemarks, error) in
+            guard error == nil, let placemark = placemarks?.first else {
+                print("Reverse geocoding failed with error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+
+            var addressString = ""
+            
+            if let name = placemark.name {
+                addressString += name + ", "
+            }
+//                if let thoroughfare = placemark.thoroughfare {
+//                    addressString += thoroughfare + ", "
+//                }
+//                if let locality = placemark.locality {
+//                    addressString += locality + ", "
+//                }
+            if let administrativeArea = placemark.administrativeArea {
+                addressString += administrativeArea + ", "
+            }
+            if let country = placemark.country {
+                addressString += country
+            }
+            
+            completion(addressString)
         }
     }
 }

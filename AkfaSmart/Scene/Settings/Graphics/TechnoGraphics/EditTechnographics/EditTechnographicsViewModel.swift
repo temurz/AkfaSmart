@@ -8,7 +8,7 @@
 
 import Foundation
 struct EditTechnographicsViewModel {
-    let navigator: PopViewNavigatorType
+    let navigator: EditTechnographicsNavigatorType
     let useCase: EditTechnographicsUseCaseType
 }
 
@@ -17,6 +17,7 @@ extension EditTechnographicsViewModel: ViewModel {
         let loadToolsTrigger: Driver<Void>
         let saveTechnographicsTrigger: Driver<TechnoGraphics>
         let loadInitialValuesTrigger: Driver<TechnoGraphics>
+        let openMapTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -28,6 +29,12 @@ extension EditTechnographicsViewModel: ViewModel {
         @Published var areaEditedString = ""
         @Published var hasGlassWorkshopEdited: Bool?
         @Published var toolsEdited = [ModelWithIdAndName]()
+        @Published var locationInfoManager = LocationInfoManager()
+        @Published var address = ""
+        @Published var addressEdited = ""
+        @Published var latEdited: Double?
+        @Published var longEdited: Double?
+        
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -53,6 +60,19 @@ extension EditTechnographicsViewModel: ViewModel {
                 output.areaEditedString = "\(model.areaEdited ?? 0.0)"
                 output.hasGlassWorkshopEdited = model.hasGlassWorkshopEdited
                 output.toolsEdited = model.toolsEdited
+                if let lat = model.latitude, let long = model.longitude {
+                    ConverterToString.reverseGeocode(latitude: lat, longitude: long) { address in
+                        output.address = address
+                    }
+                }
+                if let lat = model.latitudeEdited, let long = model.longitudeEdited {
+                    output.latEdited = lat
+                    output.longEdited = long
+                    ConverterToString.reverseGeocode(latitude: lat, longitude: long) { address in
+                        output.addressEdited = address
+                    }
+                }
+                
             }
             .store(in: cancelBag)
         
@@ -67,7 +87,14 @@ extension EditTechnographicsViewModel: ViewModel {
                     }
                 }
                 
-                newModel.edit(longitudeEdited: model.longitudeEdited, latitudeEdited: model.latitudeEdited, areaEdited: newArea, hasGlassWorkshopEdited: output.hasGlassWorkshopEdited, toolsEdited: output.toolsEdited)
+                var latitude = output.locationInfoManager.locationInfo?.latitude
+                var longitude = output.locationInfoManager.locationInfo?.longitude
+                if latitude == nil || longitude == nil {
+                    latitude = output.latEdited
+                    longitude = output.longEdited
+                }
+                
+                newModel.edit(longitudeEdited: longitude, latitudeEdited: latitude, areaEdited: newArea, hasGlassWorkshopEdited: output.hasGlassWorkshopEdited, toolsEdited: output.toolsEdited)
                 
                 useCase.save(newModel)
                     .trackError(errorTracker)
@@ -79,6 +106,12 @@ extension EditTechnographicsViewModel: ViewModel {
                         }
                     }
                     .store(in: cancelBag)
+            }
+            .store(in: cancelBag)
+        
+        input.openMapTrigger
+            .sink {
+                navigator.openMap(output.locationInfoManager)
             }
             .store(in: cancelBag)
         

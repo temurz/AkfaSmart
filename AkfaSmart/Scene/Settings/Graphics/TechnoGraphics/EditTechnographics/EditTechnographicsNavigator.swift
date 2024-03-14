@@ -7,14 +7,23 @@
 //
 
 import UIKit
-protocol PopViewNavigatorType {
+import SwiftUI
+protocol EditTechnographicsNavigatorType {
     func popView()
+    func openMap(_ manager: LocationInfoManager)
 }
 
-struct PopViewNavigator: PopViewNavigatorType {
+struct EditTechnographicsNavigator: EditTechnographicsNavigatorType {
     unowned var navigationController: UINavigationController
     
     func popView() {
         navigationController.popViewController(animated: true)
+    }
+    
+    func openMap(_ manager: LocationInfoManager) {
+        let view = MapView(navigationController: navigationController)
+            .environmentObject(manager)
+        let vc = UIHostingController(rootView: view)
+        navigationController.pushViewController(vc, animated: true)
     }
 }

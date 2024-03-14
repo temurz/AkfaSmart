@@ -11,7 +11,7 @@ import UIKit
 protocol EditInfographicsViewAssembler {
     func resolve(navigationController: UINavigationController, model: Infographics) -> EditInfographicsView
     func resolve(navigationController: UINavigationController) -> EditInfographicsViewModel
-    func resolve(navigationController: UINavigationController) -> EditInfoGraphicsViewNavigatorType
+    func resolve(navigationController: UINavigationController) -> PopViewNavigatorType
     func resolve() -> EditInfographicsViewUseCaseType
 }
 
@@ -29,8 +29,8 @@ extension EditInfographicsViewAssembler where Self: DefaultAssembler {
         return EditInfographicsViewUseCase(gateway: resolve())
     }
     
-    func resolve(navigationController: UINavigationController) -> EditInfoGraphicsViewNavigatorType {
-        return EditInfoGraphicsViewNavigator(navigationController: navigationController)
+    func resolve(navigationController: UINavigationController) -> PopViewNavigatorType {
+        return PopViewNavigator(navigationController: navigationController)
     }
 }
 
@@ -39,7 +39,7 @@ extension EditInfographicsViewAssembler where Self: PreviewAssembler {
         return EditInfographicsViewUseCase(gateway: resolve())
     }
     
-    func resolve(navigationController: UINavigationController) -> EditInfoGraphicsViewNavigatorType {
-        return EditInfoGraphicsViewNavigator(navigationController: navigationController)
+    func resolve(navigationController: UINavigationController) -> PopViewNavigatorType {
+        return PopViewNavigator(navigationController: navigationController)
     }
 }

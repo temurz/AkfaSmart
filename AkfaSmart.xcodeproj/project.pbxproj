@@ -159,7 +159,7 @@
 		B80331512BA0CD940019ACA5 /* ShowingEditInfographicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331502BA0CD940019ACA5 /* ShowingEditInfographicsView.swift */; };
 		B80331532BA0CE840019ACA5 /* InfographicsViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331522BA0CE840019ACA5 /* InfographicsViewNavigator.swift */; };
 		B80331562BA0D3BE0019ACA5 /* EditInfographicsViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331552BA0D3BE0019ACA5 /* EditInfographicsViewRow.swift */; };
-		B80331582BA0D88A0019ACA5 /* EditInfoGraphicsViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331572BA0D88A0019ACA5 /* EditInfoGraphicsViewNavigator.swift */; };
+		B80331582BA0D88A0019ACA5 /* PopViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331572BA0D88A0019ACA5 /* PopViewNavigator.swift */; };
 		B803315A2BA18FB20019ACA5 /* TechnographicsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331592BA18FB20019ACA5 /* TechnographicsNavigator.swift */; };
 		B803315D2BA190180019ACA5 /* EditTechnographicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803315C2BA190180019ACA5 /* EditTechnographicsView.swift */; };
 		B803315F2BA190270019ACA5 /* EditTechnographicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803315E2BA190270019ACA5 /* EditTechnographicsViewModel.swift */; };
@@ -178,6 +178,7 @@
 		B803317A2BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331792BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift */; };
 		B803317C2BA1EF8E0019ACA5 /* HRGraphicsEditGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803317B2BA1EF8E0019ACA5 /* HRGraphicsEditGateway.swift */; };
 		B803317E2BA1F3070019ACA5 /* HRGraphicsEditDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803317D2BA1F3070019ACA5 /* HRGraphicsEditDomainUseCase.swift */; };
+		B80331802BA263A00019ACA5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803317F2BA263A00019ACA5 /* MapView.swift */; };
 		B82CA9672B975981000147D2 /* ConverterToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9662B975981000147D2 /* ConverterToString.swift */; };
 		B82CA9692B977207000147D2 /* GeneralUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA9682B977207000147D2 /* GeneralUser.swift */; };
 		B82CA96B2B977598000147D2 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82CA96A2B977598000147D2 /* User+API.swift */; };
@@ -595,7 +596,7 @@
 		B80331502BA0CD940019ACA5 /* ShowingEditInfographicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingEditInfographicsView.swift; sourceTree = "<group>"; };
 		B80331522BA0CE840019ACA5 /* InfographicsViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsViewNavigator.swift; sourceTree = "<group>"; };
 		B80331552BA0D3BE0019ACA5 /* EditInfographicsViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsViewRow.swift; sourceTree = "<group>"; };
-		B80331572BA0D88A0019ACA5 /* EditInfoGraphicsViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoGraphicsViewNavigator.swift; sourceTree = "<group>"; };
+		B80331572BA0D88A0019ACA5 /* PopViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewNavigator.swift; sourceTree = "<group>"; };
 		B80331592BA18FB20019ACA5 /* TechnographicsNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnographicsNavigator.swift; sourceTree = "<group>"; };
 		B803315C2BA190180019ACA5 /* EditTechnographicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTechnographicsView.swift; sourceTree = "<group>"; };
 		B803315E2BA190270019ACA5 /* EditTechnographicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTechnographicsViewModel.swift; sourceTree = "<group>"; };
@@ -614,6 +615,7 @@
 		B80331792BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingHRGraphicsEditView.swift; sourceTree = "<group>"; };
 		B803317B2BA1EF8E0019ACA5 /* HRGraphicsEditGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsEditGateway.swift; sourceTree = "<group>"; };
 		B803317D2BA1F3070019ACA5 /* HRGraphicsEditDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsEditDomainUseCase.swift; sourceTree = "<group>"; };
+		B803317F2BA263A00019ACA5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		B82CA9662B975981000147D2 /* ConverterToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterToString.swift; sourceTree = "<group>"; };
 		B82CA9682B977207000147D2 /* GeneralUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralUser.swift; sourceTree = "<group>"; };
 		B82CA96A2B977598000147D2 /* User+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
@@ -1519,7 +1521,7 @@
 				B803314A2BA0BFC40019ACA5 /* EditInfographicsViewModel.swift */,
 				B80331482BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift */,
 				B803314E2BA0CCA20019ACA5 /* EditInfographicsViewAssembler.swift */,
-				B80331572BA0D88A0019ACA5 /* EditInfoGraphicsViewNavigator.swift */,
+				B80331572BA0D88A0019ACA5 /* PopViewNavigator.swift */,
 			);
 			path = EditInfographics;
 			sourceTree = "<group>";
@@ -1540,6 +1542,7 @@
 				B80331602BA190350019ACA5 /* EditTechnographicsUseCase.swift */,
 				B80331622BA190520019ACA5 /* EditTechnographicsNavigator.swift */,
 				B80331642BA1905E0019ACA5 /* EditTechnographicsAssembler.swift */,
+				B803317F2BA263A00019ACA5 /* MapView.swift */,
 			);
 			path = EditTechnographics;
 			sourceTree = "<group>";
@@ -2395,7 +2398,7 @@
 				B87C71E82B82B58F0061530E /* ForgotPassword+API.swift in Sources */,
 				1742B36324D7B00000C82D15 /* GettingRepos.swift in Sources */,
 				B85516C92B79069300FC2D6E /* ArticlesGateway.swift in Sources */,
-				B80331582BA0D88A0019ACA5 /* EditInfoGraphicsViewNavigator.swift in Sources */,
+				B80331582BA0D88A0019ACA5 /* PopViewNavigator.swift in Sources */,
 				B89F2F8A2B911B95004DAEAB /* PurchaseHistoryViewModel.swift in Sources */,
 				B8C165A42B9A6F6000F70074 /* PaymentReceipt.swift in Sources */,
 				1765B2D124C6D5550096D210 /* ShowingProductDetail.swift in Sources */,
@@ -2598,6 +2601,7 @@
 				B866A9692B71538D00202C9F /* ArticlesAssembler.swift in Sources */,
 				B877FD662B8BC11500D24CB0 /* GetDealersDomainUseCase.swift in Sources */,
 				B866A9342B6C0AE000202C9F /* NewsView.swift in Sources */,
+				B80331802BA263A00019ACA5 /* MapView.swift in Sources */,
 				B8FEC6DA2B8783140028BA7F /* UserClassView.swift in Sources */,
 				B8BE4A022B8E3FAB00876714 /* MarketingGraphicsViewUseCase.swift in Sources */,
 				1734926524C59D2A0014F87E /* AppError.swift in Sources */,
