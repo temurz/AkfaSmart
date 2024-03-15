@@ -19,7 +19,7 @@ struct HRGraphicsEditView: View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             ScrollView {
                 VStack {
-                    EditInfographicsViewRow(title: "NUMBER_OF_EMPLOYEES".localizedString, constantModel: "\(model.numberOfEmployees ?? 0)", editedValue: $output.numberOfEmployeesEditedString)
+                    EditInfographicsViewRow(title: "NUMBER_OF_EMPLOYEES".localizedString, constantModel: "\(model.numberOfEmployees ?? 0)", editedValue: $output.numberOfEmployeesEditedString, keyboardType: .numberPad)
                     EditViewRowWithMultiLine(title: "ABOUT_EMPLOYEES".localizedString, constantModel: model.aboutEmployees, editedValue: $output.aboutEmployeesEdited)
                     sellerRow
                     accountantRow

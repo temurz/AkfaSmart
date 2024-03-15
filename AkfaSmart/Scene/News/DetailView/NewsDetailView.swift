@@ -63,11 +63,8 @@ struct NewsDetailView: View {
 
 
 struct WebView: UIViewRepresentable {
-    // 1
     let html: String
 
-    
-    // 2
     func makeUIView(context: Context) -> WKWebView {
 
         return WKWebView()
@@ -75,8 +72,31 @@ struct WebView: UIViewRepresentable {
     
     // 3
     func updateUIView(_ webView: WKWebView, context: Context) {
-
-        let headString = "<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></head>"
-        webView.loadHTMLString(headString + html, baseURL: nil)
+        let styledHTML = addStyleToHTML(html)
+//        let headString = "<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></head>"
+        let headString = "<head><meta name='viewport' content='width=device-width, shrink-to-fit=YES'></head>"
+        webView.loadHTMLString(styledHTML, baseURL: nil)
+    }
+    
+    private func addStyleToHTML(_ html: String) -> String {
+        let css = """
+                body {
+                    width: 100%;
+                    max-width: 100%;
+                }
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            """
+        // Find the <head> tag and insert the <style> tag containing the CSS
+        if let range = html.range(of: "<head>") {
+            var styledHTML = html
+            styledHTML.insert(contentsOf: "<style>\(css)</style>", at: range.upperBound)
+            return styledHTML
+        } else {
+            // If <head> tag is not found, simply append the <style> tag to the beginning of the HTML content
+            return "<style>\(css)</style>" + html
+        }
     }
 }

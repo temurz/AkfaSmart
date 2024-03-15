@@ -286,6 +286,8 @@
 		B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */; };
 		B86CDF472B77BC56002E7EA4 /* News+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF462B77BC56002E7EA4 /* News+API.swift */; };
 		B86CDF4A2B77C801002E7EA4 /* NewsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */; };
+		B86E1C972BA480BF00A0AF4D /* DownloadTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E1C962BA480BF00A0AF4D /* DownloadTaskModel.swift */; };
+		B86E1C9B2BA485B200A0AF4D /* DownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E1C9A2BA485B200A0AF4D /* DownloadProgressView.swift */; };
 		B877FD612B8BBFA200D24CB0 /* Dealers+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */; };
 		B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */; };
 		B877FD662B8BC11500D24CB0 /* GetDealersDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD652B8BC11500D24CB0 /* GetDealersDomainUseCase.swift */; };
@@ -725,6 +727,8 @@
 		B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGateway.swift; sourceTree = "<group>"; };
 		B86CDF462B77BC56002E7EA4 /* News+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+API.swift"; sourceTree = "<group>"; };
 		B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDomainUseCase.swift; sourceTree = "<group>"; };
+		B86E1C962BA480BF00A0AF4D /* DownloadTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTaskModel.swift; sourceTree = "<group>"; };
+		B86E1C9A2BA485B200A0AF4D /* DownloadProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProgressView.swift; sourceTree = "<group>"; };
 		B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dealers+API.swift"; sourceTree = "<group>"; };
 		B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDealersGateway.swift; sourceTree = "<group>"; };
 		B877FD652B8BC11500D24CB0 /* GetDealersDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDealersDomainUseCase.swift; sourceTree = "<group>"; };
@@ -1829,6 +1833,8 @@
 			isa = PBXGroup;
 			children = (
 				B866A96D2B7154E500202C9F /* ArticleDetailView.swift */,
+				B86E1C962BA480BF00A0AF4D /* DownloadTaskModel.swift */,
+				B86E1C9A2BA485B200A0AF4D /* DownloadProgressView.swift */,
 			);
 			path = ArticleDetail;
 			sourceTree = "<group>";
@@ -2610,6 +2616,7 @@
 				1787234A24BD560500D90F8E /* MainNavigator.swift in Sources */,
 				1781CF4024BD8FB8004ED1C6 /* ProductDetailAssembler.swift in Sources */,
 				B8FEC6CE2B8665950028BA7F /* DealersListView.swift in Sources */,
+				B86E1C9B2BA485B200A0AF4D /* DownloadProgressView.swift in Sources */,
 				3420A0A62B9D891E00DC3E3D /* TechnicalSupportViewModel.swift in Sources */,
 				B877FD782B8C30D300D24CB0 /* ImageDownloaderViewModel.swift in Sources */,
 				B89F2F812B911719004DAEAB /* Invoice+API.swift in Sources */,
@@ -2683,6 +2690,7 @@
 				B8CF98DB2B6311AC00EF02A7 /* Color+Extension.swift in Sources */,
 				1720C7BA24FE355800D616B2 /* GetPageDto.swift in Sources */,
 				178722FB24BD537D00D90F8E /* ContentView.swift in Sources */,
+				B86E1C972BA480BF00A0AF4D /* DownloadTaskModel.swift in Sources */,
 				B8FEC6B92B8504F90028BA7F /* ResendSMSDomainUseCase.swift in Sources */,
 				B82CA96D2B97768D000147D2 /* UserInfoGateway.swift in Sources */,
 				B89F2F9A2B919F86004DAEAB /* ProductWithName.swift in Sources */,

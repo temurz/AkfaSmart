@@ -14,11 +14,12 @@ struct CustomImageAndTitleView: View {
             
             Image(data: data)?
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .frame(maxWidth: .infinity)
-                .padding()
-                .cornerRadius(16)
+//                .padding(.vertical)
                 .frame(height: 200)
+                .clipped()
+                .cornerRadius(8)
         }
     }
 }

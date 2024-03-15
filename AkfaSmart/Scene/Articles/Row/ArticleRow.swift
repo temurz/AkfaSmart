@@ -69,5 +69,5 @@ struct ArticleRow: View {
 }
 
 #Preview {
-    ArticleRow(itemModel: ArticleItemViewModel(id: 0, date: nil, title: nil, shortContent: nil, htmlContent: nil, imageUrl: nil, type: nil, buttonColor: nil, fileUrls: nil))
+    ArticleRow(itemModel: ArticleItemViewModel(id: 0, date: nil, title: nil, shortContent: nil, htmlContent: nil, imageUrl: nil, type: nil, buttonColor: nil, fileUrls: []))
 }

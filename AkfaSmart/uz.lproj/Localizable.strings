@@ -24,7 +24,7 @@
 "MY_CLASS" = "Mening klassim";
 "MESSAGES" = "Xatlar";
 "NEWS" = "Xabarlar";
-"ARTICLES" = "Maqolalar";
+"ARTICLES" = "Kataloglar";
 "YOUR_STATUS" = "Sizning holatingiz";
 "DETAIL" = "Tafsilotlar";
 "BY_ANNUAL_PURCHASE" = "Yillik xarid";
@@ -111,7 +111,7 @@
 "TECHNOGRAPHICS_TITLE" = "Texnografika";
 "LANGUAGE_TITLE" = "Til";
 "SAVE" = "Saqlash";
-"DELETE_ACCOUNT" = "Hisobni o'chirish";
+"DELETE_ACCOUNT" = "Akkauntni o'chirish";
 "USE_GALLERY" = "Galereyadan foydalanish";
 "USE_CAMERA" = "Kameradan foydalanish";
 "CLOSE" = "Yopish";

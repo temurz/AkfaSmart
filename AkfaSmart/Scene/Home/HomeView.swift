@@ -44,10 +44,21 @@ struct HomeView: View {
                                 balanceIsVisible = true
                             }
                         }
-                        
-                        CustomButtonWithImage(systemImage: "plus") {
+                        Button {
                             showAddDealerViewTrigger.send(())
+                        } label: {
+                            Image("add_circle_outline")
+                                .resizable()
+                                .foregroundColor(.white)
+                                .frame(width: 20, height: 20)
                         }
+                        .frame(width: 40, height: 32)
+                        .background(Color.red)
+                        .cornerRadius(12)
+
+//                        CustomButtonWithImage(systemImage: "plus") {
+//                            showAddDealerViewTrigger.send(())
+//                        }
                         notificationView
                         
                     }

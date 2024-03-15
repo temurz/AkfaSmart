@@ -17,7 +17,7 @@ struct ArticleItemViewModel: Codable, Identifiable {
     let imageUrl: String?
     let type: String?
     let buttonColor: String?
-    let fileUrls: [FileUrls]?
+    let fileUrls: [FileUrls]
 }
 
 struct FileUrls: Codable {
