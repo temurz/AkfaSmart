@@ -19,11 +19,12 @@ struct ArticleDetailView: View {
     
     var body: some View {
         ScrollView {
+            VStack {
+                if let data = output.imageData {
+                    CustomImageAndTitleView(data: data)
+                }
+            }
             VStack(alignment: .leading) {
-                Group {
-                    if let data = output.imageData {
-                        CustomImageAndTitleView(data: data)
-                    }
                     Text(itemModel.title ?? "")
                         .font(.headline)
                         .foregroundColor(Color.black)
@@ -35,8 +36,6 @@ struct ArticleDetailView: View {
                         .foregroundColor(Color.gray)
                         .multilineTextAlignment(.leading)
                         .lineLimit(2)
-                }
-                .padding(.horizontal)
                 Divider()
                 if let htmlContent = itemModel.htmlContent, !htmlContent.isEmpty {
                     WebView(html: htmlContent)
@@ -61,7 +60,7 @@ struct ArticleDetailView: View {
                 .listStyle(.plain)
                 .background(.clear)
             }
-
+            .padding(.horizontal)
         }
         .onAppear {
             getImageTrigger.send(itemModel.imageUrl ?? "")

@@ -9,17 +9,18 @@
 import SwiftUI
 struct CustomImageAndTitleView: View {
     let data: Data
+    let height: CGFloat = 200
     var body: some View {
-        Group {
+//        GeometryReader { geometry in
             
             Image(data: data)?
                 .resizable()
                 .scaledToFill()
-                .frame(maxWidth: .infinity)
-//                .padding(.vertical)
-                .frame(height: 200)
+//                .padding(.horizontal)
+                .frame(width: UIScreen.main.bounds.width - 32)
+                .frame(height: height)
                 .clipped()
                 .cornerRadius(8)
-        }
+//        }
     }
 }

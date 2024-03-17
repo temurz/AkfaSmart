@@ -21,7 +21,7 @@ struct CalendarAlert: View {
     var body: some View {
         VStack(alignment: .trailing){
             DatePicker("DATE_OF_START".localizedString, selection: $from, in: ...Date(), displayedComponents: .date)
-                .environment(\.locale, Locale.init(identifier: AuthApp.shared.language))
+                .environment(\.locale, Locale.init(identifier: "de_DE"))
                 .id(fromCalendarId)
                 .onChange(of: from, perform: { newValue in
                     fromCalendarId = UUID()
@@ -30,7 +30,7 @@ struct CalendarAlert: View {
                 .padding()
             
             DatePicker("DATE_OF_END".localizedString, selection: $to, in: ...Date(),displayedComponents: .date)
-                .environment(\.locale, Locale.init(identifier: AuthApp.shared.language))
+                .environment(\.locale, Locale.init(identifier: "de_DE"))
                 .id(toCalendarId)
                 .onChange(of: to, perform: { newValue in
                     toCalendarId = UUID()

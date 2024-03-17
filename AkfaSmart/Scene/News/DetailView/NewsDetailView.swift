@@ -17,11 +17,15 @@ struct NewsDetailView: View {
     private let cancelBag = CancelBag()
     
     var body: some View {
-        return LoadingView(isShowing: .constant(false), text: .constant("")) {
-            VStack(alignment: .leading) {
+        VStack {
+            VStack {
                 if let data = output.imageData {
                     CustomImageAndTitleView(data: data)
+                        .padding(.horizontal)
                 }
+            }
+            VStack(alignment: .leading) {
+                
                 Text(itemModel.title ?? "")
                     .font(.headline)
                     .foregroundColor(Color.black)
@@ -33,14 +37,12 @@ struct NewsDetailView: View {
                     .foregroundColor(Color.gray)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
-                
                 Text(itemModel.date?.convertToDateUS() ?? "")
                     .font(.subheadline)
                     .foregroundColor(Color(hex: "#9DA8C2"))
                     .padding(6)
                     .background(Color.init(hex: "#F7F7F6"))
                     .cornerRadius(6)
-                
                 if let htmlContent = itemModel.htmlContent {
                     WebView(html: htmlContent)
                 }
@@ -64,16 +66,16 @@ struct NewsDetailView: View {
 
 struct WebView: UIViewRepresentable {
     let html: String
-
+    
     func makeUIView(context: Context) -> WKWebView {
-
+        
         return WKWebView()
     }
     
     // 3
     func updateUIView(_ webView: WKWebView, context: Context) {
         let styledHTML = addStyleToHTML(html)
-//        let headString = "<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></head>"
+        //        let headString = "<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></head>"
         let headString = "<head><meta name='viewport' content='width=device-width, shrink-to-fit=YES'></head>"
         webView.loadHTMLString(styledHTML, baseURL: nil)
     }

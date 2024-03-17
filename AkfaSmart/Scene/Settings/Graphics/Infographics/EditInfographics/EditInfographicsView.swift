@@ -167,7 +167,7 @@ struct EditInfographicsView: View {
                     .cornerRadius(12)
                 DatePicker(output.date.toShortFormat(), selection: $output.date, in: ...Date(), displayedComponents: .date)
                     .foregroundStyle(.red)
-                    .environment(\.locale, Locale.init(identifier: AuthApp.shared.language))
+                    .environment(\.locale, Locale.init(identifier: "de_DE"))
                     .id(output.dateID)
                     .onChange(of: output.date, perform: { newValue in
                         output.dateID = UUID()
