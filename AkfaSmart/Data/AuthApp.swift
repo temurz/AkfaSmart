@@ -21,11 +21,11 @@ class AuthApp {
     //MARK: Token
     var token:String? {
         get {
-//            guard let token = defaults.string(forKey: keyToken) else {return nil}
+            guard let token = defaults.string(forKey: keyToken) else {return nil}
             //TODO:
             //Permanent token
-            return /*token*/
-            "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5OTg5NzU1MDA1NzUiLCJleHAiOjE3MDg5OTg4MDAsImlhdCI6MTcwODk5ODUwMH0.P4zGKTOHey-rdg7HuQLHX_7lJ22qm52h0dn9sw66thuVRw1fJld1NaDWmO4ZDzM7HJIwcwNreg0GUAG95nFdyA"
+            return token
+//            "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5OTg5NzU1MDA1NzUiLCJleHAiOjE3MDg5OTg4MDAsImlhdCI6MTcwODk5ODUwMH0.P4zGKTOHey-rdg7HuQLHX_7lJ22qm52h0dn9sw66thuVRw1fJld1NaDWmO4ZDzM7HJIwcwNreg0GUAG95nFdyA"
         }
         set {
             guard let _ = newValue else {return removeToken()}
