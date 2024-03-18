@@ -161,6 +161,7 @@
 "HAS_CHILDREN_QUESTION" = "Bolalari";
 "TOOLS" = "Uskunalar";
 "CHOOSE_ON_MAP" = "Xaritada tanlang";
+"ARTICLE_NAME" = "Katalog nomi";
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";
 "Invalid server response" = "Noto'g'ri server javobi";

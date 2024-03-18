@@ -157,6 +157,7 @@
 "HAS_CHILDREN_QUESTION" = "Has children";
 "TOOLS" = "Tools";
 "CHOOSE_ON_MAP" = "Choose on map";
+"ARTICLE_NAME" = "Article name";
 //ERRORS
 "Not Found" = "Not found";
 "Invalid server response" = "Invalid server response";

@@ -21,14 +21,22 @@ struct DateIntervalView: View {
     var navigationContoller: UINavigationController
     var body: some View {
         VStack {
-            CalendarAlert(from: dateFilter.from, to: dateFilter.to) { from, to in
-                dateFilter.optionalFrom = from
-                dateFilter.optionalTo = to
-                dateFilter.from = from
-                dateFilter.to = to
-                dateFilter.isFiltered = true
+            CalendarAlert(from: dateFilter.from, to: dateFilter.to)
+            .environmentObject(dateFilter)
+            Button(action: {
                 navigationContoller.popViewController(animated: true)
-            }
+            }) {
+                HStack{
+                    
+                    Text("FILTER".localizedString)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, maxHeight: 40)
+                        .foregroundColor(Color.white)
+                        .background(Color.red)
+                        .cornerRadius(12)
+                        .padding(.top, 16)
+                }
+            }.padding()
             Spacer()
         }
         .navigationTitle("FILTER".localizedString)

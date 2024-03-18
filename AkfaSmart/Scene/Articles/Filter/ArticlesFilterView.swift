@@ -21,30 +21,44 @@ struct ArticlesFilterView: View {
     var body: some View {
         return LoadingView(isShowing: .constant(false), text: .constant("")) {
             VStack {
-                HStack {
-                    Text("TYPE_OF_ARTICLES".localizedString)
-                        .padding()
-                    Spacer()
-                    Picker("SELECT_ARTICLE_TYPE".localizedString, selection: $output.selectedType) {
-                        ForEach(output.types, id: \.self) { type in
-                            Text(type.name ?? "")
-                        }
-                    }
-                    .pickerStyle(MenuPickerStyle())
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("ARTICLE_NAME".localizedString)
+                        .padding(.horizontal, 4)
+                    TextField("ARTICLE_NAME".localizedString, text: $output.articleName)
+                        .frame(height: 48)
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
+                        .background(Color(hex: "#F5F7FA"))
+                        .cornerRadius(12)
                 }
-                .padding(.horizontal)
+                .padding([.horizontal, .top])
                 
-                CalendarAlert(from: dateFilter.from, to: dateFilter.to) { from, to in
-                    dateFilter.from = from
-                    dateFilter.to = to
-                    dateFilter.optionalFrom = from
-                    dateFilter.optionalTo = to
+                CalendarAlert(from: dateFilter.from, to: dateFilter.to)
+                    .environmentObject(dateFilter)
+                
+                types
+                
+                Button(action: {
+                    dateFilter.isFiltered = true
                     if let id = output.selectedType.id {
                         type.type = "\(id)"
                     }
-                    dateFilter.isFiltered = true
+                    if !output.articleName.isEmpty {
+                        type.name = output.articleName
+                    }
                     navigationController.popViewController(animated: true)
-                }
+                }) {
+                    HStack{
+                        
+                        Text("FILTER".localizedString)
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, maxHeight: 40)
+                            .foregroundColor(Color.white)
+                            .background(Color.red)
+                            .cornerRadius(12)
+                            .padding(.top, 16)
+                    }
+                }.padding()
+                
                 Spacer()
             }
         }
@@ -64,6 +78,22 @@ struct ArticlesFilterView: View {
         .onAppear {
             getArticleTypesTrigger.send(())
         }
+    }
+    
+    
+    var types: some View {
+        HStack {
+            Text("TYPE_OF_ARTICLES".localizedString)
+                .padding()
+            Spacer()
+            Picker("SELECT_ARTICLE_TYPE".localizedString, selection: $output.selectedType) {
+                ForEach(output.types, id: \.self) { type in
+                    Text(type.name ?? "")
+                }
+            }
+            .pickerStyle(MenuPickerStyle())
+        }
+        .padding(.horizontal)
     }
     
     init(viewModel: ArticlesFilterViewModel, navigationController: UINavigationController) {

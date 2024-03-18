@@ -29,4 +29,5 @@ struct ArticlesNavigator: ArticlesNavigatorType, ShowingArticleDetail {
 
 class ArticleObservableType: ObservableObject {
     @Published var type: String? = nil
+    @Published var name: String? = nil
 }

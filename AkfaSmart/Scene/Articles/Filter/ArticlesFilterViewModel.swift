@@ -20,6 +20,7 @@ extension ArticlesFilterViewModel: ViewModel {
         @Published var types = [ArticleType]()
         @Published var isLoading = false
         @Published var selectedType = ArticleType(id: 3, name: "Каталог", parentId: nil, parentName: nil, hasChild: false)
+        @Published var articleName = ""
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {

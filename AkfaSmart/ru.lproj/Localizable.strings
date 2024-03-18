@@ -158,6 +158,7 @@
 "HAS_CHILDREN_QUESTION" = "Дети";
 "TOOLS" = "Инструменты";
 "CHOOSE_ON_MAP" = "Выберите на карте";
+"ARTICLE_NAME" = "Название каталога";
 //ERRORS
 "Not Found" = "Нет данных";
 "Invalid server response" = "Неверный ответ сервера";
