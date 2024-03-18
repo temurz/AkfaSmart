@@ -35,7 +35,11 @@ struct TechnicalSupportView: View {
                                 VStack {
                                     ForEach(output.items, id: \.self) { item in
                                         MessageViewRow(model:
-                                                        Message(isUser: item.userId == nil , time: item.date ?? "", text: item.text ?? "")
+                                                        Message(isUser: item.userId == nil , time: item.date ?? "", text: item.text ?? "",
+                                                                fileItem: item.fileItems)
+                                                       ,
+                                                       isLoadingFile: $output.isLoadingFile
+                                                    
                                         )
                                     }
                                 }.id("ScrollView")
@@ -94,7 +98,14 @@ struct TechnicalSupportView: View {
                 loadMoreMessagesTrigger.send(())
             }
         }
+        .overlay {
+            if output.isLoadingFile {
+                ProgressView()
+                    .controlSize(.large)
+            }
+        }
         .onAppear {
+            output.isLoadingFile = false
             getMessagesTrigger.send(())
         }
         .navigationBarItems(trailing:

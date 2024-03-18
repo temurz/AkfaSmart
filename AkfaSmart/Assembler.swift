@@ -37,7 +37,8 @@ protocol Assembler: AnyObject,
     InfographicsAssembler,
     EditTechnographicsAssembler,
     HRGraphicsAssembler,
-    HRGraphicsEditAssembler
+    HRGraphicsEditAssembler,
+    TechnicalSupportAssembler
 {
     
 }

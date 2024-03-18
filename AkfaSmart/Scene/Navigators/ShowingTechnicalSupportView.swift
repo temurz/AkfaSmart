@@ -15,7 +15,7 @@ protocol ShowingTechnicalSupportView {
 
 extension ShowingTechnicalSupportView {
     func showTechnicalSupport() {
-        let view: TechnicalSupportView = TechnicalSupportView(viewModel: TechnicalSupportViewModel(useCase: TechnicalSupportUseCase(gateway: MessagesGateway())))
+        let view: TechnicalSupportView = assembler.resolve(navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
         self.navigationController.pushViewController(vc, animated: true)
     }

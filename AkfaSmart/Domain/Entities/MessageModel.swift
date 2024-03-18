@@ -15,7 +15,12 @@ struct MessageModel:Decodable, Hashable {
     let mobileUserId: Int?
     let userId: Int?
     let username: String?
-//    let fileUrls: [String]
-//    let imageHeight48Urls: [String]
-//    let fileNames: [String]
+    let fileUrls: [String]
+    let imageHeight48Urls: [String]
+    let fileNames: [String]
+    
+    var fileItems: FileItem {
+        var items = FileItem(fileNames: fileNames, fileURLs: fileUrls)
+        return items
+    }
 }

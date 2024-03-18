@@ -417,6 +417,7 @@
 		B8CF98E82B656B2700EF02A7 /* RegisterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98E72B656B2700EF02A7 /* RegisterDTO.swift */; };
 		B8CF98EA2B656B8100EF02A7 /* RegisterGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98E92B656B8100EF02A7 /* RegisterGateway.swift */; };
 		B8CF98EC2B65718900EF02A7 /* ShowingRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98EB2B65718900EF02A7 /* ShowingRegistration.swift */; };
+		B8D49C6B2BA8947900672750 /* TechnicalSupportAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D49C6A2BA8947900672750 /* TechnicalSupportAssembler.swift */; };
 		B8E192962B9ABF500013B148 /* PurchaseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192952B9ABF500013B148 /* PurchaseDetailView.swift */; };
 		B8E192982B9B0F620013B148 /* InvoiceDetailGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192972B9B0F620013B148 /* InvoiceDetailGateway.swift */; };
 		B8E1929A2B9B0FC90013B148 /* GettingInvoiceDetailDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192992B9B0FC90013B148 /* GettingInvoiceDetailDomainUseCase.swift */; };
@@ -858,6 +859,7 @@
 		B8CF98E72B656B2700EF02A7 /* RegisterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDTO.swift; sourceTree = "<group>"; };
 		B8CF98E92B656B8100EF02A7 /* RegisterGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGateway.swift; sourceTree = "<group>"; };
 		B8CF98EB2B65718900EF02A7 /* ShowingRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingRegistration.swift; sourceTree = "<group>"; };
+		B8D49C6A2BA8947900672750 /* TechnicalSupportAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSupportAssembler.swift; sourceTree = "<group>"; };
 		B8E192952B9ABF500013B148 /* PurchaseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetailView.swift; sourceTree = "<group>"; };
 		B8E192972B9B0F620013B148 /* InvoiceDetailGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailGateway.swift; sourceTree = "<group>"; };
 		B8E192992B9B0FC90013B148 /* GettingInvoiceDetailDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingInvoiceDetailDomainUseCase.swift; sourceTree = "<group>"; };
@@ -1497,6 +1499,7 @@
 				3420A0A32B9D890600DC3E3D /* TechnicalSupportView.swift */,
 				3420A0A52B9D891E00DC3E3D /* TechnicalSupportViewModel.swift */,
 				B8512B0E2B9E4AAE00CEE80A /* TechnicalSupportUseCase.swift */,
+				B8D49C6A2BA8947900672750 /* TechnicalSupportAssembler.swift */,
 			);
 			path = TechnicalSupport;
 			sourceTree = "<group>";
@@ -2417,6 +2420,7 @@
 				1742B37624D7B82C00C82D15 /* ShowingRepoList.swift in Sources */,
 				B863DABC2B8D09DE003F2C3D /* ShowingLanguageSetterView.swift in Sources */,
 				B863DA9D2B8D047A003F2C3D /* HRGraphicsView.swift in Sources */,
+				B8D49C6B2BA8947900672750 /* TechnicalSupportAssembler.swift in Sources */,
 				B8C165AC2B9AA51B00F70074 /* PaymentHistoryViewUseCase.swift in Sources */,
 				B877FD7D2B8C327D00D24CB0 /* ImageDownloaderGateway.swift in Sources */,
 				B877FD6B2B8BFD9F00D24CB0 /* MobileClass+API.swift in Sources */,

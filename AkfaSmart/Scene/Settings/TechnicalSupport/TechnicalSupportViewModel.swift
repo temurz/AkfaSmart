@@ -30,6 +30,7 @@ extension TechnicalSupportViewModel: ViewModel {
         @Published var items = [MessageModel]()
         @Published var isFirstLoad = true
         @Published var newMessages = 0
+        @Published var isLoadingFile = false
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
