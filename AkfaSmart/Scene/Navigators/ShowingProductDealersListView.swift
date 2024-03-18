@@ -15,7 +15,7 @@ protocol ShowingProductDealersListView {
 
 extension ShowingProductDealersListView {
     func showProductDealersListView(model: ProductWithName) {
-        let view: ProductDealersListView = assembler.resolve(model: model)
+        let view: ProductDealersListView = assembler.resolve(model: model, navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
         navigationController.pushViewController(vc, animated: true)
     }

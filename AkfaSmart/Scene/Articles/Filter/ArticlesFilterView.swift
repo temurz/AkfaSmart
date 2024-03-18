@@ -75,6 +75,16 @@ struct ArticlesFilterView: View {
                 .foregroundColor(.red)
         })
         )
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Button(action: {
+            navigationController.popViewController(animated: true)
+        }) {
+            Image(systemName: "chevron.left")
+                .imageScale(.large)
+                .foregroundColor(.blue) // Customize the color as needed
+        }
+        )
         .onAppear {
             getArticleTypesTrigger.send(())
         }

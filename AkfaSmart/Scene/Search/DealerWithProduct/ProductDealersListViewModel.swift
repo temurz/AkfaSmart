@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 struct ProductDealersListViewModel {
     let useCase: ProductDealersListViewUseCaseType
+    let navigationController: UINavigationController
 }
 
 extension ProductDealersListViewModel: ViewModel {
@@ -19,6 +20,7 @@ extension ProductDealersListViewModel: ViewModel {
         let loadMoreProductDealersTrigger: Driver<ProductDealersListInput>
         let showLocationTrigger: Driver<Location>
         let showPhoneCallTrigger: Driver<String>
+        let backButtonTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -80,6 +82,12 @@ extension ProductDealersListViewModel: ViewModel {
             openPhoneCall(phoneNumber)
         }
         .store(in: cancelBag)
+        
+        input.backButtonTrigger
+            .sink {
+                navigationController.popViewController(animated: true)
+            }
+            .store(in: cancelBag)
         
         return output
     }

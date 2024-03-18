@@ -20,6 +20,7 @@ struct ProductDealersListView: View {
     
     private let showLocationTrigger = PassthroughSubject<Location, Never>()
     private let showPhoneCallTrigger = PassthroughSubject<String, Never>()
+    private let backButtonTrigger = PassthroughSubject<Void,Never>()
     
     private let cancelBag = CancelBag()
     
@@ -76,8 +77,17 @@ struct ProductDealersListView: View {
             locationManager.didEndUpdating = { lat, long in
                 loadProductDealersTrigger.send(ProductDealersListInput(productName: model.name, latitude: lat, longitude: long))
             }
-            
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Button(action: {
+            backButtonTrigger.send(())
+        }) {
+            Image(systemName: "chevron.left")
+                .imageScale(.large)
+                .foregroundColor(.blue) // Customize the color as needed
+        }
+        )
     }
     
     init(model: ProductWithName, viewModel: ProductDealersListViewModel) {
@@ -87,7 +97,8 @@ struct ProductDealersListView: View {
             reloadProductDealersTrigger: reloadProductDealersTrigger.asDriver(),
             loadMoreProductDealersTrigger: loadMoreProductDealersTrigger.asDriver(),
             showLocationTrigger: showLocationTrigger.asDriver(),
-            showPhoneCallTrigger: showPhoneCallTrigger.asDriver()
+            showPhoneCallTrigger: showPhoneCallTrigger.asDriver(),
+            backButtonTrigger: backButtonTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

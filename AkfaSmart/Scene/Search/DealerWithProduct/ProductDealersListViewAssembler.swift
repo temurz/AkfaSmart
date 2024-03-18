@@ -6,19 +6,19 @@
 //  Copyright © 2024 Tuan Truong. All rights reserved.
 //
 
-import Foundation
+import UIKit
 protocol ProductDealersListViewAssembler {
-    func resolve(model: ProductWithName) -> ProductDealersListView
-    func resolve() -> ProductDealersListViewModel
+    func resolve(model: ProductWithName, navigationController: UINavigationController) -> ProductDealersListView
+    func resolve(navigationController: UINavigationController) -> ProductDealersListViewModel
     func resolve() -> ProductDealersListViewUseCaseType
 }
 
 extension ProductDealersListViewAssembler {
-    func resolve(model: ProductWithName) -> ProductDealersListView {
-        return ProductDealersListView(model: model, viewModel: resolve())
+    func resolve(model: ProductWithName, navigationController: UINavigationController) -> ProductDealersListView {
+        return ProductDealersListView(model: model, viewModel: resolve(navigationController: navigationController))
     }
-    func resolve() -> ProductDealersListViewModel {
-        return ProductDealersListViewModel(useCase: resolve())
+    func resolve(navigationController: UINavigationController) -> ProductDealersListViewModel {
+        return ProductDealersListViewModel(useCase: resolve(), navigationController: navigationController)
     }
 }
 
