@@ -55,12 +55,13 @@ struct MessageViewRow: View {
                 VStack (alignment: model.isUser ? .leading : .trailing) {
                     
                     HStack {
-                        
-                        Text(model.text)
-                            .font(.headline)
-                            .foregroundStyle(model.isUser ? .white : .black)
-                            .lineLimit(nil)
-                            .padding()
+                        if !model.text.isEmpty {
+                            Text(model.text)
+                                .font(.headline)
+                                .foregroundStyle(model.isUser ? .white : .black)
+                                .lineLimit(nil)
+                                .padding()
+                        }
                     }
                         .background(model.isUser ? .red : .white)
                         .cornerRadius(12, corners: model.isUser ?

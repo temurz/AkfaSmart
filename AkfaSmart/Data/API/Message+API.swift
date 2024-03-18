@@ -58,12 +58,16 @@ extension API {
     func sendMessage(_ input: SendMessageAPIInput) -> Observable<MessageModel> {
         request(input)
     }
-    final class SendMessageAPIInput: APIInput {
-        init(text: String) {
-            let params: Parameters = [
-                "text": text
-            ]
-            super.init(urlString: API.Urls.sendMessage, parameters: params, method: .post, requireAccessToken: true)
+    final class SendMessageAPIInput: APIUploadInputBase {
+        init(message: MessageWithData) {
+            var text = ""
+            if !message.text.isEmpty {
+                text = "?text=\(message.text)"
+            }
+            
+            let uploadData = APIUploadData(data: message.data ?? Data(), name: "files", fileName: UUID().uuidString + ".jpeg", mimeType: "image/jpeg")
+            
+            super.init(data: message.data != nil ? [uploadData] : [], urlString: API.Urls.sendMessage+text, parameters: nil, method: .post, requireAccessToken: true)
         }
     }
 }

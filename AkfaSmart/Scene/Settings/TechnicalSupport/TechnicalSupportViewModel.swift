@@ -19,6 +19,7 @@ extension TechnicalSupportViewModel: ViewModel {
         let loadMoreMessagesTrigger: Driver<Void>
         let clearHistoryTrigger: Driver<Void>
         let sendMessageTrigger: Driver<String>
+        let sendMessageWithImageTrigger: Driver<MessageWithData>
     }
     
     final class Output: ObservableObject {
@@ -31,6 +32,7 @@ extension TechnicalSupportViewModel: ViewModel {
         @Published var isFirstLoad = true
         @Published var newMessages = 0
         @Published var isLoadingFile = false
+        @Published var selectedImageData: Data?
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -98,7 +100,19 @@ extension TechnicalSupportViewModel: ViewModel {
         
         input.sendMessageTrigger
             .sink { text in
-                useCase.sendMessage(text: text)
+                useCase.sendMessage(message: MessageWithData(text: text, data: nil))
+                    .asDriver()
+                    .sink { message in
+                        output.items.append(message)
+                        output.newMessages += 1
+                    }
+                    .store(in: cancelBag)
+            }
+            .store(in: cancelBag)
+        
+        input.sendMessageWithImageTrigger
+            .sink { message in
+                useCase.sendMessage(message: message)
                     .asDriver()
                     .sink { message in
                         output.items.append(message)
@@ -110,4 +124,9 @@ extension TechnicalSupportViewModel: ViewModel {
         
         return output
     }
+}
+
+struct MessageWithData {
+    let text: String
+    let data: Data?
 }

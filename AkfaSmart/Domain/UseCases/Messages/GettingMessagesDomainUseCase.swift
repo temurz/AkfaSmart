@@ -23,7 +23,7 @@ extension GettingMessagesDomainUseCase {
         return gateway.clearHistory()
     }
     
-    func sendMessage(text: String) -> Observable<MessageModel> {
-        gateway.sendMessage(text: text)
+    func sendMessage(message: MessageWithData) -> Observable<MessageModel> {
+        gateway.sendMessage(message: message)
     }
 }

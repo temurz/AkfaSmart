@@ -16,7 +16,10 @@ struct TechnicalSupportView: View {
     private let loadMoreMessagesTrigger = PassthroughSubject<Void, Never>()
     private let clearHistoryTrigger = PassthroughSubject<Void,Never>()
     private let sendMessageTrigger = PassthroughSubject<String,Never>()
+    private let sendMessageWithImageTrigger = PassthroughSubject<MessageWithData, Never>()
     private let cancelBag = CancelBag()
+    @State var showImagePicker = false
+    
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
@@ -62,11 +65,22 @@ struct TechnicalSupportView: View {
                 }
                 Spacer()
                 HStack {
-                    TextField("TEXT".localizedString, text: $messageText)
-                        .padding(.leading, 8)
-                        .frame(height: 40)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
+                    ZStack(alignment: .leading) {
+                        TextField("TEXT".localizedString, text: $messageText)
+                            .padding(.horizontal, 40)
+                            .frame(height: 40)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(10)
+                        Button {
+                            showImagePicker = true
+                        } label: {
+                            Image("attach_file")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .padding(.leading, 8)
+                        }
+                    }
+                    
 
                     Button(action: {
                         if !messageText.isEmpty {
@@ -75,8 +89,8 @@ struct TechnicalSupportView: View {
                         }
                     }) {
                         
-                        Image(systemName: "paperplane")
-                            .foregroundColor(.blue)
+                        Image("send")
+                            .foregroundColor(.red)
                             .padding(.trailing, 8)
                     }
                 }
@@ -103,6 +117,13 @@ struct TechnicalSupportView: View {
                 ProgressView()
                     .controlSize(.large)
             }
+        }
+        .sheet(isPresented: $showImagePicker) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: $output.selectedImageData) {
+                sendMessageWithImageTrigger.send(MessageWithData(text: messageText, data: output.selectedImageData))
+                messageText = ""
+            }
+            .ignoresSafeArea(.all)
         }
         .onAppear {
             output.isLoadingFile = false
@@ -131,7 +152,8 @@ struct TechnicalSupportView: View {
             reloadMessagesTrigger: Driver.empty(),
             loadMoreMessagesTrigger: loadMoreMessagesTrigger.asDriver(),
             clearHistoryTrigger: clearHistoryTrigger.asDriver(),
-            sendMessageTrigger: sendMessageTrigger.asDriver()
+            sendMessageTrigger: sendMessageTrigger.asDriver(),
+            sendMessageWithImageTrigger: sendMessageWithImageTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

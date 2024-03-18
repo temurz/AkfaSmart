@@ -11,7 +11,7 @@ import Foundation
 protocol MessagesGatewayType {
     func getMessages (dto:GetPageDto) -> Observable <PagingInfo<MessageModel>>
     func clearHistory() -> Observable<Bool>
-    func sendMessage(text: String) -> Observable<MessageModel>
+    func sendMessage(message: MessageWithData) -> Observable<MessageModel>
 }
 
 struct MessagesGateway: MessagesGatewayType {
@@ -31,8 +31,8 @@ struct MessagesGateway: MessagesGatewayType {
         return API.shared.clearMessagesHistory(input)
     }
     
-    func sendMessage(text: String) -> Observable<MessageModel> {
-        let input = API.SendMessageAPIInput(text: text)
+    func sendMessage(message: MessageWithData) -> Observable<MessageModel> {
+        let input = API.SendMessageAPIInput(message: message)
         return API.shared.sendMessage(input)
     }
     
