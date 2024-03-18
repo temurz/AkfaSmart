@@ -22,7 +22,7 @@ struct SearchProductView: View {
                 ZStack(alignment: .trailing) {
                     TextField("SEARCH".localizedString, text: $output.searchedText)
                         .frame(height: 48)
-                        .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
                         .background(Color(hex: "#F5F7FA"))
                         .cornerRadius(12)
                         .padding()
