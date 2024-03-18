@@ -46,7 +46,7 @@ struct ArticlesView: View {
                                             let input = ArticlesGetInput(
                                                 from: output.dateFilter.optionalFrom,
                                                 to: output.dateFilter.optionalTo,
-                                                type: output.articleType.type)
+                                                type: output.articleType.type, name: output.articleType.name)
                                             
                                             self.loadMoreArticlesTrigger.send(input )
                                         }
@@ -68,7 +68,8 @@ struct ArticlesView: View {
                         let input = ArticlesGetInput(
                             from: output.dateFilter.optionalFrom,
                             to: output.dateFilter.optionalTo,
-                            type: output.articleType.type)
+                            type: output.articleType.type,
+                            name: output.articleType.name)
                         self.reloadArticlesTrigger.send(input)
                     }
 
@@ -102,7 +103,8 @@ struct ArticlesView: View {
                 let input = ArticlesGetInput(
                     from: output.dateFilter.optionalFrom,
                     to: output.dateFilter.optionalTo,
-                    type: output.articleType.type)
+                    type: output.articleType.type,
+                    name: output.articleType.name)
                 loadArticlesTrigger.send(input)
             }
             
@@ -129,4 +131,5 @@ struct ArticlesGetInput {
     let from: Date?
     let to: Date?
     let type: String?
+    let name: String?
 }

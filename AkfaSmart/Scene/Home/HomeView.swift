@@ -29,7 +29,7 @@ struct HomeView: View {
     let cancelBag = CancelBag()
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
                     HStack {
                         Text("MY_DEALERS".localizedString)
@@ -76,7 +76,7 @@ struct HomeView: View {
                             openPayments: { dealerId in
 //                                openPaymentsTrigger.send(dealerId)
                             })
-                        .frame(height: 300)
+                        .frame(height: 320)
 //                        .background(Color.red)
                     }else {
                         HStack {
@@ -122,7 +122,7 @@ struct HomeView: View {
 
                     Text("MY_CLASS".localizedString)
                         .font(.title2)
-                        .padding([.horizontal, .bottom])
+                        .padding(.horizontal)
                     UserClassView(model: $output.mobileClass,
                                   imageData: $output.mobileClassLogoData)
                     .onTapGesture {

@@ -38,8 +38,11 @@ extension API {
             }else {
                 filter[toKey] = ""
             }
+            if let title = input.name {
+                filter["title"] = title
+            }
             
-            var parameters: [String: Any] = [
+            let parameters: [String: Any] = [
                 "start": dto.page,
                 "length": dto.perPage,
                 "order":

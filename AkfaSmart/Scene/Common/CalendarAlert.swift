@@ -54,6 +54,7 @@ struct CalendarAlert: View {
             if isFromDatePickerVisible {
                 DatePicker("", selection: $from, displayedComponents: .date)
                     .datePickerStyle(.wheel)
+                    .environment(\.locale, Locale(identifier: AuthApp.shared.language))
                     .labelsHidden()
                     .id(fromCalendarId)
                     .onChange(of: from, perform: { newValue in
@@ -99,6 +100,7 @@ struct CalendarAlert: View {
             if isToDatePickerVisible {
                 DatePicker("", selection: $to, displayedComponents: .date)
                     .datePickerStyle(.wheel)
+                    .environment(\.locale, Locale(identifier: AuthApp.shared.language))
                     .labelsHidden()
                     .id(toCalendarId)
                     .onChange(of: to, perform: { newValue in
