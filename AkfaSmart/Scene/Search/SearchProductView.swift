@@ -19,6 +19,21 @@ struct SearchProductView: View {
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
+                ZStack(alignment: .trailing) {
+                    TextField("SEARCH".localizedString, text: $output.searchedText)
+                        .frame(height: 48)
+                        .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
+                        .background(Color(hex: "#F5F7FA"))
+                        .cornerRadius(12)
+                        .padding()
+                    
+                    Image(systemName: "magnifyingglass")
+                        .padding()
+                        .padding(.trailing, 8)
+//                        .resizable()
+//                        .frame(width: 24, height: 24)
+                }
+                
                 if output.items.isEmpty {
                     VStack(alignment: .center) {
                         Spacer()
@@ -44,7 +59,6 @@ struct SearchProductView: View {
             }
             .navigationTitle("SEARCH_PRODUCT".localizedString)
             .navigationBarHidden(false)
-            .searchable(text: $output.searchedText)
         }
     }
     
