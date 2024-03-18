@@ -16,16 +16,18 @@ struct NewsTableRow: View {
     private let cancelBag = CancelBag()
     var body: some View {
         VStack(alignment: .leading) {
-            
+            if output.imageData != nil {
+                Image(data: output.imageData!)?
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width - 64)
+                    .frame(height: 200)
+                    .scaledToFill()
+                    .cornerRadius(12)
+                    .padding()
+                                        
+                
+            }
             Group {
-                if output.imageData != nil {
-                    Image(data: output.imageData!)?
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .frame(height: 200)
-                }
                 Text(item.title ?? "")
                     .font(.headline)
                     .foregroundColor(Color.black)

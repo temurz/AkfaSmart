@@ -20,8 +20,13 @@ struct NewsDetailView: View {
         VStack {
             VStack {
                 if let data = output.imageData {
-                    CustomImageAndTitleView(data: data)
-                        .padding(.horizontal)
+                    Image(data: data)?
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width - 64)
+                        .frame(height: 200)
+                        .scaledToFill()
+                        .cornerRadius(12)
+                        .padding()
                 }
             }
             VStack(alignment: .leading) {

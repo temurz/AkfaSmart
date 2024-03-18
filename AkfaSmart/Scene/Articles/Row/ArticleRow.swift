@@ -16,10 +16,16 @@ struct ArticleRow: View {
     private let cancelBag = CancelBag()
     var body: some View {
         VStack(alignment: .leading) {
+            if let data = output.imageData {
+                Image(data: data)?
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width - 64)
+                    .frame(height: 200)
+                    .scaledToFill()
+                    .cornerRadius(12)
+                    .padding()
+            }
             Group {
-                if let data = output.imageData {
-                    CustomImageAndTitleView(data: data)
-                }
                 Text(itemModel.title ?? "")
                     .font(.headline)
                     .foregroundColor(Color.black)

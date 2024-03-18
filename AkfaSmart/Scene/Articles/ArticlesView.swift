@@ -10,7 +10,6 @@ import SwiftUI
 import Combine
 import SwiftUIRefresh
 struct ArticlesView: View {
-    
     @ObservedObject var output: ArticlesViewModel.Output
     let showDetailViewTrigger = PassthroughSubject<ArticleItemViewModel, Never>()
     let loadArticlesTrigger = PassthroughSubject<ArticlesGetInput, Never>()
@@ -72,7 +71,6 @@ struct ArticlesView: View {
                             name: output.articleType.name)
                         self.reloadArticlesTrigger.send(input)
                     }
-
                 }
             }
             .padding(.top)
@@ -96,7 +94,6 @@ struct ArticlesView: View {
             )
         }
         .onAppear {
-            
             if output.isFirstLoad || output.dateFilter.isFiltered {
                 output.isFirstLoad = false
                 output.articles = []
@@ -107,7 +104,6 @@ struct ArticlesView: View {
                     name: output.articleType.name)
                 loadArticlesTrigger.send(input)
             }
-            
         }
     }
     

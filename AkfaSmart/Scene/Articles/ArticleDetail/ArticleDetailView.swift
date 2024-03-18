@@ -21,7 +21,13 @@ struct ArticleDetailView: View {
         ScrollView {
             VStack {
                 if let data = output.imageData {
-                    CustomImageAndTitleView(data: data)
+                    Image(data: data)?
+                        .resizable()
+                        .frame(width: UIScreen.main.bounds.width - 64)
+                        .frame(height: 200)
+                        .scaledToFill()
+                        .cornerRadius(12)
+                        .padding()
                 }
             }
             VStack(alignment: .leading) {
@@ -47,16 +53,23 @@ struct ArticleDetailView: View {
                         downloadModel.startDownload(urlString: item.url ?? "")
                     } label: {
                         HStack {
+                            Image(systemName: "arrow.down.circle")
+                                .resizable()
+                                .foregroundStyle(.blue)
+                                .frame(width: 24, height: 24)
+                                .padding()
                             Text(item.name ?? "")
                                 .bold()
+                                .foregroundStyle(.blue)
                                 .font(.subheadline)
+                            Spacer()
                         }
-                        .frame(height: 50)
+                        .frame(height: 60)
                     }
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
                 }
-                .frame(height: CGFloat(itemModel.fileUrls.count) * 50)
+                .frame(height: CGFloat(itemModel.fileUrls.count) * 60)
                 .listStyle(.plain)
                 .background(.clear)
             }
