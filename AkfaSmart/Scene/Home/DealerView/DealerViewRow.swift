@@ -21,20 +21,34 @@ struct DealerViewRow: View {
         VStack {
             VStack(alignment: .leading) {
                 VStack {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Label("DEALERS_NAME".localizedString, image: "account_circle")
+                    VStack {
+                        HStack {
+                            Label("DEALER".localizedString, image: "account_circle")
                                 .foregroundColor(Color(hex: "#9DA8C2"))
                                 .font(.subheadline)
+                            Spacer()
                             Text(model.name ?? " ")
                                 .foregroundColor(Color(hex: "#51526C"))
                                 .font(.headline)
                         }
-                        Spacer()
-                        VStack(alignment: .trailing) {
+                        
+                        HStack {
+                            Label("CLIENT".localizedString, image: "account_circle")
+                                .foregroundColor(Color(hex: "#9DA8C2"))
+                                .font(.subheadline)
+                            Spacer()
+                            Text(model.clientName ?? " ")
+                                .multilineTextAlignment(.trailing)
+                                .lineLimit(2)
+                                .foregroundColor(Color(hex: "#51526C"))
+                                .font(.headline)
+                        }
+                        
+                        HStack {
                             Label("BALANCE".localizedString, image: "account_balance_wallet")
                                 .font(.subheadline)
                                 .foregroundColor(Color(hex: "#9DA8C2"))
+                            Spacer()
                             if isBalanceVisible {
                                 Text(model.balance.convertDecimals() + "SUM_UZS".localizedString)
                                     .font(.headline)

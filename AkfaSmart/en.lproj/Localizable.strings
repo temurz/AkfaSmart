@@ -10,7 +10,7 @@
 "HOME" = "Home";
 "SEARCH" = "Search";
 "MY_DEALERS" = "My dealers";
-
+"DEALER" = "Dealer:";
 "DEALERS_NOT_ADDED" = "You didn't \n add dealers yet!";
 "MY_CLASS" = "My class";
 "MESSAGES" = "Messages";

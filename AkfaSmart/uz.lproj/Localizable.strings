@@ -11,6 +11,7 @@
 "HOME" = "Asosiy";
 "SEARCH" = "Qidirish";
 "MY_DEALERS" = "Mening dilerlarim";
+"DEALER" = "Diler:";
 "TOTAL_OF_PRODUCTS_SHOULD_BE" = " mahsulotlarning ja'mi xaridi bo'lishi kerak";
 "MIN" = " eng kamida ";
 "MAX" = " eng kopi ";
@@ -32,10 +33,10 @@
 "MARRIED" = "Uylangan";
 "SINGLE" = "Yolg'iz";
 "SQ_M" = " kv.m";
-"DEALERS_NAME" = "Diler nomi";
+"DEALERS_NAME" = "Diler ismi";
 "BALANCE" = "Balans";
 "SUM_UZS" = " uzs";
-"SUM_OF_BOUGHT_GOODS" = "Sotib olingan tovarlar summasi:";
+"SUM_OF_BOUGHT_GOODS" = "Mahsulotlar xaridi(uzs):";
 "FOR_MONTH" = "Oylik";
 "FOR_YEAR" = "Yillik";
 "HISTORY_OF_PURCHASES" = "Sotib olish tarixi";

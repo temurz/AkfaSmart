@@ -76,7 +76,7 @@ struct HomeView: View {
                             openPayments: { dealerId in
 //                                openPaymentsTrigger.send(dealerId)
                             })
-                        .frame(height: 270)
+                        .frame(height: 300)
 //                        .background(Color.red)
                     }else {
                         HStack {
