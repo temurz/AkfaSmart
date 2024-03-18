@@ -53,7 +53,8 @@ struct CodeInputView: View {
                             .font(.title)
                             .padding(.horizontal)
                     
-                        Text("CODE_SENT_TO_PHONE".localizedString + "\(output.username) ")
+                        Text(String(format: NSLocalizedString("CODE_SENT_TO_PHONE".localizedString, comment: ""), output.username)
+                            )
                             .foregroundColor(Color(hex: "#51526C"))
                             .font(.system(size: 17))
                             .padding([.bottom,.horizontal])

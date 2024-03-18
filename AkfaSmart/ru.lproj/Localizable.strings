@@ -19,7 +19,8 @@
 "YOUR_STATUS" = "Ваш статус";
 "DETAIL" = "Подробнее";
 "BY_ANNUAL_PURCHASE" = "По годовой закупке";
-"TOTAL_OF_PRODUCTS_SHOULD_BE" = " общее количество товаров должно быть ";
+"TOTAL_OF_PRODUCTS_SHOULD_BE" = " общее количество этих товаров должно быть ";
+"BY_ANNUAL_PURCHASE" = "По годовым покупкам";
 "PURCHASES_KG" = "Покупки(кг)";
 "TOTAL" = "Итого";
 "MIN" = " минимум ";
@@ -120,7 +121,7 @@
 "PASSWORDS_SHOULD_BE_SAME" = "Два пароля должны совпадать";
 "FORGOT_PASSWORD_QUESTION" = "Забыли пароль?";
 "ENTER_PHONE_NUMBER_RESET_PASSWORD" = "Введите ваш номер телефона, чтобы сбросить пароль";
-"CODE_SENT_TO_PHONE" = "Одноразовый код был отправлен на номер телефона ";
+"CODE_SENT_TO_PHONE" = "На этот номер мобильного телефона %@ был отправлен код подтверждения";
 "SMS_CODE" = "SMS-код";
 "RESEND_CODE_IN" = "Отправить код еще раз через:";
 "RESEND_SMS" = "Отправить SMS повторно";
@@ -134,7 +135,7 @@
 "PASSWORD" = "Пароль";
 "PLEASE_ENTER_USERNAME" = "Пожалуйста, введите имя пользователя";
 "PHONE_NUMBER_SHOULD_BE_IN_FORMAT" = "Номер телефона должен быть в формате +998(**) ***-**-**";
-"MINIMUM_NUMBER_OF_LETTERS" = "Минимальное количество букв ";
+"MINIMUM_NUMBER_OF_LETTERS" = "Длина пароля должна быть более 6 символов.";
 "PLEASE_ENTER_PASSWORD" = "Пожалуйста, введите пароль";
 "CODE_CANNOT_BE_EMPTY" = "Код не может быть пустым";
 "PHONE_NUMBER_CANNOT_BE_EMPTY" = "Номер телефона не может быть пустым";
@@ -159,9 +160,12 @@
 "TOOLS" = "Инструменты";
 "CHOOSE_ON_MAP" = "Выберите на карте";
 "ARTICLE_NAME" = "Название каталога";
+"OUTCOME_PAYMENT" = "Расход";
+"INCOME_PAYMENT" = "Доход";
 //ERRORS
 "Not Found" = "Нет данных";
 "Invalid server response" = "Неверный ответ сервера";
 "Error" = "Ошибка";
 "mobile user details is not found!!!" = "Данные мобильного пользователя не найдены!!!";
 "Internal Server Error" = "Внутренняя Ошибка Сервера";
+"The username or password is wrong" = "Неправильный номер телефона или пароль";

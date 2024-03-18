@@ -37,10 +37,12 @@ struct ClassDetailViewRow: View {
             if showDetails {
                 Group {
                     Text(
-                        ConverterToString.getStringFrom(model.c1KlassProductGroups)
-                        + "TOTAL_OF_PRODUCTS_SHOULD_BE".localizedString
+                        ConverterToString.getClassProductsAttributed(products: model.c1KlassProductGroups)
+                        + AttributedString("TOTAL_OF_PRODUCTS_SHOULD_BE".localizedString)
                         + ConverterToString.minMaxText(min: model.c1MinWeight, max: model.c1MaxWeight)
                     )
+                    .frame(width: UIScreen.main.bounds.width - 64)
+                    .multilineTextAlignment(.leading)
                         .padding()
                     HStack {
                         Spacer()
@@ -102,3 +104,19 @@ struct ClassDetailViewRow: View {
     }
     
 }
+
+//struct AttributedText: UIViewRepresentable {
+//    let attributedString: NSAttributedString
+//
+//    func makeUIView(context: Context) -> UITextView {
+//        let textView = UITextView()
+//        textView.attributedText = attributedString
+//        textView.isEditable = false
+//        textView.isScrollEnabled = false
+//        return textView
+//    }
+//
+//    func updateUIView(_ uiView: UITextView, context: Context) {
+//        uiView.attributedText = attributedString
+//    }
+//}

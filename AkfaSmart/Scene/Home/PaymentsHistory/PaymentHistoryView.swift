@@ -23,11 +23,11 @@ struct PaymentHistoryView: View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
                 Picker("", selection: $selection) {
-                    Text("INCOME".localizedString)
+                    Text("OUTCOME_PAYMENT".localizedString)
                         .font(.headline)
                         .padding()
                         .tag(0)
-                    Text("OUTCOME".localizedString)
+                    Text("INCOME_PAYMENT".localizedString)
                         .font(.headline)
                         .padding()
                         .tag(1)

@@ -19,7 +19,7 @@
 "YOUR_STATUS" = "Your status";
 "DETAIL" = "Detail";
 "BY_ANNUAL_PURCHASE" = "By Annual purchase";
-"TOTAL_OF_PRODUCTS_SHOULD_BE" = " total of products should be";
+"TOTAL_OF_PRODUCTS_SHOULD_BE" = " total of these products should be";
 "PURCHASES_KG" = "Purchases(kg)";
 "TOTAL" = "Total";
 "MIN" = " minimum ";
@@ -119,7 +119,7 @@
 "PASSWORDS_SHOULD_BE_SAME" = "Two passwords should be the same";
 "FORGOT_PASSWORD_QUESTION" = "Forgot password?";
 "ENTER_PHONE_NUMBER_RESET_PASSWORD" = "Enter your phone number in order to reset your password";
-"CODE_SENT_TO_PHONE" = "One-time code was sent to the phone number ";
+"CODE_SENT_TO_PHONE" = "One-time code was sent to %@ ";
 "SMS_CODE" = "SMS code";
 "RESEND_CODE_IN" = "Resend code in:";
 "RESEND_SMS" = "Resend SMS";
@@ -133,7 +133,7 @@
 "PASSWORD" = "Password";
 "PLEASE_ENTER_USERNAME" = "Please enter user name";
 "PHONE_NUMBER_SHOULD_BE_IN_FORMAT" = "The phone number should be in +998(**) ***-**-** format";
-"MINIMUM_NUMBER_OF_LETTERS" = "Minimum number of letters is ";
+"MINIMUM_NUMBER_OF_LETTERS" = "Password length must be more than 6 characters";
 "PLEASE_ENTER_PASSWORD" = "Please enter password";
 "CODE_CANNOT_BE_EMPTY" = "Code cannot be empty";
 "PHONE_NUMBER_CANNOT_BE_EMPTY" = "Phone number cannot be empty";
@@ -158,9 +158,12 @@
 "TOOLS" = "Tools";
 "CHOOSE_ON_MAP" = "Choose on map";
 "ARTICLE_NAME" = "Article name";
+"OUTCOME_PAYMENT" = "Outcome";
+"INCOME_PAYMENT" = "Income";
 //ERRORS
 "Not Found" = "Not found";
 "Invalid server response" = "Invalid server response";
 "Error" = "Error";
 "mobile user details is not found!!!" = "mobile user details is not found!!!";
 "Internal Server Error" = "Internal Server Error";
+"The username or password is wrong" = "The username or password is wrong";

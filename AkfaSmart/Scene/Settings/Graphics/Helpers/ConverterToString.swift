@@ -6,9 +6,9 @@
 //  Copyright © 2024 Tuan Truong. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreLocation
-
+import SwiftUI
 struct ConverterToString {
     static func getStringFrom(_ modelsWithName: [ModelWithIdAndName], isEdited: Bool = false) -> String {
         let array = modelsWithName.map { $0.name ?? "" }
@@ -41,12 +41,28 @@ struct ConverterToString {
         }
     }
     
-    static func minMaxText(min: Double, max: Double) -> String {
+    static func minMaxText(min: Double, max: Double) -> AttributedString {
+        var text = AttributedString("")
+        let localizedMin = AttributedString("MIN".localizedString)
+        let localizedMax = AttributedString("MAX".localizedString)
+        var maxBold = AttributedString("\(max)")
+        var minBold = AttributedString("\(min)")
+        maxBold.font = .bold(Font.headline)()
+        maxBold.foregroundColor = .black
+        maxBold.backgroundColor = Color(hex: "#DFE3EB")
+        minBold.font = .bold(Font.headline)()
+        minBold.foregroundColor = .black
+        minBold.backgroundColor = Color(hex: "#DFE3EB")
+        
         if min == 0 {
-            return "MIN".localizedString + "\(max)"
+            text = localizedMax + maxBold
+        }else if max == 0 {
+            text = localizedMin + minBold
         }else {
-            return "MAX".localizedString + "\(min)"
+            text = localizedMin + minBold + localizedMax + maxBold
         }
+        
+        return text
     }
     
     static func getMarriedStatus(bool: Bool?, isEdited: Bool = false) -> String {
@@ -71,6 +87,24 @@ struct ConverterToString {
         }else {
             return ""
         }
+    }
+    
+    static func getClassProductsAttributed(products: [ModelWithIdAndName]) -> AttributedString {
+        let products = ConverterToString.getStringFrom(products)
+        
+        var result = AttributedString(products)
+        result.font = .bold(Font.headline)()
+        result.foregroundColor = .black
+        result.backgroundColor = Color(hex: "#DFE3EB")
+        return result
+    }
+    
+    static func addBackgroundToString(_ text: String) -> AttributedString {
+        var result = AttributedString(text)
+        result.font = .bold(Font.headline)()
+        result.foregroundColor = .black
+        result.backgroundColor = Color(hex: "#DFE3EB")
+        return result
     }
     
     static func reverseGeocode(latitude: Double, longitude: Double, completion: @escaping (String) -> Void) {

@@ -13,10 +13,17 @@ struct AdditionalClassDetailRow: View {
     @State var showAmount = false
     var body: some View {
         VStack {
-            Text("*(\(ConverterToString.getStringFrom(model.c2KlassProductGroups))"
-                 + "TOTAL_OF_PRODUCTS_SHOULD_BE_MAXIMUM".localizedString +
-                 " \(model.c2Percent)" + "SHOULD_BE_PERSENTS_UZ".localizedString)
-            
+            Text(
+                AttributedString("*(") 
+                +
+                ConverterToString.getClassProductsAttributed(products: model.c2KlassProductGroups)
+                 + AttributedString("TOTAL_OF_PRODUCTS_SHOULD_BE_MAXIMUM".localizedString) 
+                + ConverterToString.addBackgroundToString("\(model.c2Percent)")
+                + AttributedString("SHOULD_BE_PERSENTS_UZ".localizedString)
+                + AttributedString(")")
+            )
+            .frame(width: UIScreen.main.bounds.width - 64)
+            .multilineTextAlignment(.leading)
             HStack {
                 Spacer()
                 Text("PURCHASES_KG")

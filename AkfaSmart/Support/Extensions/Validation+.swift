@@ -15,7 +15,7 @@ extension Validation where Value == String {
                 return .success(())
             } else {
                 return .failure(
-                    ValidationError(message: "MINIMUM_NUMBER_OF_LETTERS".localizedString + "\(count)")
+                    ValidationError(message: "MINIMUM_NUMBER_OF_LETTERS".localizedString)
                 )
             }
         }

@@ -70,7 +70,7 @@ struct LoginView: View {
                             .font(.footnote)
                         HStack {
                             Spacer()
-                            Button("FORGOT_PASSWORD_QUESTION") {
+                            Button("FORGOT_PASSWORD_QUESTION".localizedString) {
                                 showForgotPasswordTrigger.send(())
                             }
                             .foregroundColor(.black)
