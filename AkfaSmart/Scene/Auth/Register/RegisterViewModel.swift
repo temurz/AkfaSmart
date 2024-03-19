@@ -19,9 +19,9 @@ struct RegisterViewModel {
 // MARK: - ViewModelType
 extension RegisterViewModel: ViewModel {
     final class Input: ObservableObject {
-        @Published var username = "99890010"
-        @Published var password = "123456"
-        @Published var repeatedPassword = "123456"
+        @Published var username = "998"
+        @Published var password = ""
+        @Published var repeatedPassword = ""
         let registerTrigger: Driver<Void>
         let showLoginTrigger: Driver<Void>
         

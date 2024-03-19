@@ -19,8 +19,8 @@ struct LoginViewModel {
 // MARK: - ViewModelType
 extension LoginViewModel: ViewModel {
     final class Input: ObservableObject {
-        @Published var username = "998900109258"
-        @Published var password = "123456"
+        @Published var username = "998"
+        @Published var password = ""
         let loginTrigger: Driver<Void>
         let showRegisterTrigger: Driver<Void>
         let showForgotPasswordTrigger: Driver<Void>

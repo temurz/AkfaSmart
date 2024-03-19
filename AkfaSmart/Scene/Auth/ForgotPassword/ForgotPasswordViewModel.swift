@@ -18,7 +18,7 @@ struct ForgotPasswordViewModel {
 extension ForgotPasswordViewModel: ViewModel {
     final class Input: ObservableObject {
         let confirmPhoneNumberTrigger: Driver<Void>
-        @Published var phoneNumber = "998901234567"
+        @Published var phoneNumber = "998"
         
         init(confirmPhoneNumberTrigger: Driver<Void>) {
             self.confirmPhoneNumberTrigger = confirmPhoneNumberTrigger

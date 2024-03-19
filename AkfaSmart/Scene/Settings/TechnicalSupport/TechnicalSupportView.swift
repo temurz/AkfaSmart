@@ -19,7 +19,7 @@ struct TechnicalSupportView: View {
     private let sendMessageWithImageTrigger = PassthroughSubject<MessageWithData, Never>()
     private let cancelBag = CancelBag()
     @State var showImagePicker = false
-    
+    let documentPickerDelegate = DocumentPickerDelegate()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
@@ -73,6 +73,7 @@ struct TechnicalSupportView: View {
                             .cornerRadius(10)
                         Button {
                             showImagePicker = true
+//                            showDocumentPicker()
                         } label: {
                             Image("attach_file")
                                 .resizable()
@@ -145,6 +146,12 @@ struct TechnicalSupportView: View {
         )
     }
     
+    func showDocumentPicker() {
+        let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.data"], in: .import)
+                    documentPicker.delegate = documentPickerDelegate // Assign the delegate
+                    UIApplication.shared.windows.first?.rootViewController?.present(documentPicker, animated: true, completion: nil)
+    }
+    
     
     init(viewModel: TechnicalSupportViewModel) {
         let input = TechnicalSupportViewModel.Input(
@@ -159,4 +166,26 @@ struct TechnicalSupportView: View {
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }
     
+}
+
+class DocumentPickerDelegate: NSObject, UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let selectedFileURL = urls.first else { return }
+        if let fileData = dataFromFile(at: selectedFileURL) {
+            // Now you have the file data, you can send it to the server
+            print("File data: \(fileData)")
+        } else {
+            print("Failed to read data from file.")
+        }
+    }
+    
+    func dataFromFile(at url: URL) -> Data? {
+        do {
+            let data = try Data(contentsOf: url)
+            return data
+        } catch {
+            print("Error reading data from file: \(error.localizedDescription)")
+            return nil
+        }
+    }
 }
