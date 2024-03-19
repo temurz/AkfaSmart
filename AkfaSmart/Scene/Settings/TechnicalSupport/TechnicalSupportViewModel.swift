@@ -79,7 +79,7 @@ extension TechnicalSupportViewModel: ViewModel {
             .store(in: cancelBag)
         
         isLoadingMore
-            .assign(to: \.isLoadingMore, on: output)
+            .assign(to: \.isLoading, on: output)
             .store(in: cancelBag)
 
         

@@ -58,7 +58,7 @@ struct NewsView: View {
                         }
                     }
                     .listStyle(.plain)
-                    .pullToRefresh(isShowing: self.$output.isReloading) {
+                    .refreshable {
                         self.reloadNewsTrigger.send(())
                     }
                 }

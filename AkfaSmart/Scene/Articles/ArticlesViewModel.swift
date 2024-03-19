@@ -84,7 +84,7 @@ extension ArticlesViewModel: ViewModel {
                 }
                 return bool
             })
-            .assign(to: \.isReloading, on: output)
+            .assign(to: \.isLoading, on: output)
             .store(in: cancelBag)
         
         isLoadingMore

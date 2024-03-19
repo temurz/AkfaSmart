@@ -70,7 +70,7 @@ extension NewsViewModel: ViewModel {
             .store(in: cancelBag)
         
         isReloading
-            .assign(to: \.isReloading, on: output)
+            .assign(to: \.isLoading, on: output)
             .store(in: cancelBag)
         
         isLoadingMore
