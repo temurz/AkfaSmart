@@ -8,8 +8,8 @@
 
 import Foundation
 struct Base {
-    static let BASE_URL = "http://api-smart.akfadiler.uz" //
-//    static let BASE_URL = "http://84.54.75.248:1030"
+//    static let BASE_URL = "http://api-smart.akfadiler.uz" //
+    static let BASE_URL = "http://84.54.75.248:1030"
 }
 
 struct ResponseModel<T: Decodable>: Decodable {

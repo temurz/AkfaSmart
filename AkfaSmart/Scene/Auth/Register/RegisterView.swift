@@ -71,7 +71,8 @@ struct RegisterView: View {
                             self.registerTrigger.send(())
                         } label: {
                             Text("REGISTER".localizedString)
-                                .frame(maxWidth: .infinity, maxHeight: 40)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 40)
                                 .foregroundColor(Color.white)
                                 .background(Color.red)
                                 .disabled(!self.output.isRegisterEnabled)

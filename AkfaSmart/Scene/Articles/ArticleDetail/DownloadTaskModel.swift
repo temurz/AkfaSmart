@@ -22,6 +22,8 @@ class DownloadTaskModel: NSObject, ObservableObject, URLSessionDownloadDelegate,
     //Show Progress View...
     @Published var showDownloadProgress = false
     
+    var counter = 0.0
+    
     func startDownload(urlString: String) {
         //checking valid URL
         
@@ -109,7 +111,13 @@ class DownloadTaskModel: NSObject, ObservableObject, URLSessionDownloadDelegate,
         //getting progress
         let newTotal = totalBytesExpectedToWrite == -1 ? 400 : totalBytesExpectedToWrite
         var progress = CGFloat(totalBytesWritten) / CGFloat(newTotal)
-        progress = totalBytesExpectedToWrite == -1 ? progress / 100 : progress
+        progress = totalBytesExpectedToWrite == -1 ? progress / 100000 : progress
+        
+        if totalBytesExpectedToWrite == -1 {
+            progress = counter
+            counter += 0.0005
+        }
+        
         print(progress)
         DispatchQueue.main.async {
             self.downloadProgress = progress

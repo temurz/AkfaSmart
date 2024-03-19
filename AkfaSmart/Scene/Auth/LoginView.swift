@@ -80,7 +80,8 @@ struct LoginView: View {
                             self.loginTrigger.send(())
                         } label: {
                             Text("LOGIN".localizedString)
-                                .frame(maxWidth: .infinity, maxHeight: 40)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 40)
                                 .foregroundColor(Color.white)
                                 .background(Color.red)
                                 .disabled(!self.output.isLoginEnabled)
