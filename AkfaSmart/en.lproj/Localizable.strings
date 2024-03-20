@@ -160,6 +160,19 @@
 "ARTICLE_NAME" = "Article name";
 "OUTCOME_PAYMENT" = "Outcome";
 "INCOME_PAYMENT" = "Income";
+"CREATE_NEW_PIN_TITLE" = "Create a new PIN";
+"REPEAT_PIN_TITLE" = "Repeat the PIN";
+"ENTER_PIN_SIMPLE_TITLE" = "Enter the PIN";
+"OLD_PIN_TITLE" = "Enter old PIN";
+"REMOVE_PIN_TITLE" = "Enter PIN, to remove the PIN";
+"PIN_CODE_VIEW_TITLE" = "PIN code";
+"CREATE_NEW_PIN_ON_AUTH" = "Create a new PIN";
+"WRONG_PIN_CODE" = "The PIN is wrong!";
+"PIN_CODE_SAVED" = "PIN code is saved!";
+"PIN_CODE_REMOVED" = "PIN code is removed!";
+"REMOVE_PIN" = "Remove PIN";
+"CREATE_NEW_PIN" = "Create a new PIN";
+
 //ERRORS
 "Not Found" = "Not found";
 "Invalid server response" = "Invalid server response";

@@ -109,7 +109,7 @@ extension CodeInputViewModel: ViewModel {
                 if bool {
                     switch reason {
                     case .register:
-                        navigator.showMain(page: .home)
+                        navigator.showPINCodeView(state: .onAuth)
                     case .forgotPassword:
                         navigator.showResetPasswordView()
                     case .dealer(_):

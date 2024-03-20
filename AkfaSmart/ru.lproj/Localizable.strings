@@ -162,6 +162,18 @@
 "ARTICLE_NAME" = "Название каталога";
 "OUTCOME_PAYMENT" = "Расход";
 "INCOME_PAYMENT" = "Доход";
+"CREATE_NEW_PIN_TITLE" = "Создать новый ПИН код";
+"REPEAT_PIN_TITLE" = "Повторите ПИН код";
+"ENTER_PIN_SIMPLE_TITLE" = "Введите ПИН код";
+"OLD_PIN_TITLE" = "Введите старый ПИН код";
+"REMOVE_PIN_TITLE" = "Введите старый код чтобы удалить ПИН код";
+"PIN_CODE_VIEW_TITLE" = "ПИН-код";
+"CREATE_NEW_PIN_ON_AUTH" = "Создать новый ПИН код";
+"WRONG_PIN_CODE" = "Неправильный ПИН!";
+"PIN_CODE_SAVED" = "ПИН код сохранен!";
+"PIN_CODE_REMOVED" = "ПИН код удален!";
+"REMOVE_PIN" = "Стереть ПИН";
+"CREATE_NEW_PIN" = "Создать новый ПИН";
 //ERRORS
 "Not Found" = "Нет данных";
 "Invalid server response" = "Неверный ответ сервера";

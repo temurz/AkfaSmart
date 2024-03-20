@@ -25,6 +25,8 @@ extension SettingsViewModel: ViewModel {
         let deleteAccountTrigger: Driver<Void>
         let loadUserInfoTrigger: Driver<Void>
         let uploadAvatarImageTrigger: Driver<Void>
+        let showPINCodeViewTrigger: Driver<Int>
+        let loadInitialSettings: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -48,6 +50,8 @@ extension SettingsViewModel: ViewModel {
         @Published var user: GeneralUser? = nil
         @Published var imageData: Data? = nil
         @Published var showImageSourceSelector = false
+        @Published var showPinCodeOptionSelector = false
+        @Published var hasPIN = false
         @Published var showImagePicker = false
         @Published var imageChooserType: PickerImage.Source = .library
         @Published var oldImageData: Data? = nil
@@ -81,7 +85,7 @@ extension SettingsViewModel: ViewModel {
             case 6:
                 navigator.showTechnicalSupport()
             case 7:
-                break
+                output.showPinCodeOptionSelector = true
             case 8:
                 navigator.showLanguageChanger()
             default:
@@ -90,6 +94,24 @@ extension SettingsViewModel: ViewModel {
             
         }
         .store(in: cancelBag)
+        
+        input.showPINCodeViewTrigger.sink { tag in
+            switch tag {
+            case 0:
+                navigator.showPINCodeView(state: .createNew)
+            case 1:
+                navigator.showPINCodeView(state: .oldPin)
+            default:
+                navigator.showPINCodeView(state: .createNew)
+            }
+        }
+        .store(in: cancelBag)
+        
+        input.loadInitialSettings
+            .sink {
+                output.hasPIN = AuthApp.shared.appEnterCode != nil
+            }
+            .store(in: cancelBag)
         
         input.loadUserInfoTrigger
             .map {

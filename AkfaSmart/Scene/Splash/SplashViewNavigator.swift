@@ -10,9 +10,10 @@ import UIKit
 protocol SplashViewNavigatorType {
     func showMain(page: MainPage)
     func showLogin()
+    func showPINCodeView(state: PINCodeState)
 }
 
-struct SplashViewNavigator: SplashViewNavigatorType, ShowingMain, ShowingLogin {
+struct SplashViewNavigator: SplashViewNavigatorType, ShowingMain, ShowingLogin, ShowingPINCodeView {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
 }

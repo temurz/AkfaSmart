@@ -85,7 +85,7 @@ extension LoginViewModel: ViewModel {
             .switchToLatest()
             .sink(receiveValue: { bool in
                 if bool {
-                    navigator.showWelcomeView()
+                    navigator.showPINCodeView(state: .onAuth)
                 }
             })
             .store(in: cancelBag)

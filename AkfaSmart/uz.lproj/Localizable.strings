@@ -165,6 +165,18 @@
 "ARTICLE_NAME" = "Katalog nomi";
 "OUTCOME_PAYMENT" = "Chiqim";
 "INCOME_PAYMENT" = "Kirim";
+"CREATE_NEW_PIN_TITLE" = "Yangi PIN yaratish";
+"REPEAT_PIN_TITLE" = "PIN-kodni takrorlang";
+"ENTER_PIN_SIMPLE_TITLE" = "Ilovaga kirish uchun PIN-kodni kiriting";
+"OLD_PIN_TITLE" = "Eski PIN-kodni kiriting";
+"REMOVE_PIN_TITLE" = "PIN-kodni o'chirish uchun eski PIN-kodni takrorlang";
+"PIN_CODE_VIEW_TITLE" = "PIN-kod";
+"CREATE_NEW_PIN_ON_AUTH" = "Yangi PIN yaratish";
+"WRONG_PIN_CODE" = "Noto'g'ri PIN";
+"PIN_CODE_SAVED" = "PIN kod saqlandi!";
+"PIN_CODE_REMOVED" = "PIN kod o'chirildi!";
+"REMOVE_PIN" = "PIN kodni o'chirish";
+"CREATE_NEW_PIN" = "Yangi PIN yaratish";
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";
 "Invalid server response" = "Noto'g'ri server javobi";

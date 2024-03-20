@@ -9,9 +9,11 @@
 import UIKit
 protocol WelcomeViewNavigatorType {
     func showAddDealerView()
+    func showMain(page: MainPage)
 }
 
-struct WelcomeViewNavigator: WelcomeViewNavigatorType, ShowingAddDealerView {
+struct WelcomeViewNavigator: WelcomeViewNavigatorType, ShowingAddDealerView,
+ShowingMain {
     var assembler: Assembler
     var navigationController: UINavigationController
 }

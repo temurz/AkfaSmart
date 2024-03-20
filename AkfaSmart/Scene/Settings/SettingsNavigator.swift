@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 protocol SettingsNavigatorType {
     func showLogin()
     func showInfographics()
@@ -16,6 +17,7 @@ protocol SettingsNavigatorType {
     func showProductGraphics()
     func showLanguageChanger()
     func showTechnicalSupport()
+    func showPINCodeView(state: PINCodeState)
 }
 
 struct SettingsNavigator: 
@@ -27,7 +29,8 @@ struct SettingsNavigator:
     ShowingMarketinggraphics,
     ShowingProductGraphics,
     ShowingLanguageChanger,
-    ShowingTechnicalSupportView
+    ShowingTechnicalSupportView,
+    ShowingPINCodeView
 {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController

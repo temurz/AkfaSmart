@@ -15,6 +15,8 @@ struct WelcomeViewModel {
 extension WelcomeViewModel: ViewModel {
     struct Input {
         let showDealerViewTrigger: Driver<Void>
+        let showMainView: Driver<Void>
+        
     }
     
     struct Output {
@@ -28,6 +30,12 @@ extension WelcomeViewModel: ViewModel {
             navigator.showAddDealerView()
         }
         .store(in: cancelBag)
+        
+        input.showMainView
+            .sink {
+                navigator.showMain(page: .home)
+            }
+            .store(in: cancelBag)
         
         return output
     }

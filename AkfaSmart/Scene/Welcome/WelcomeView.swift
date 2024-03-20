@@ -12,6 +12,7 @@ struct WelcomeView: View {
     let output: WelcomeViewModel.Output
     @State private var statusBarHeight: CGFloat = 0
     private let showDealerViewTrigger = PassthroughSubject<Void,Never>()
+    private let showMainView = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     
     var body: some View {
@@ -65,6 +66,14 @@ struct WelcomeView: View {
                         .cornerRadius(12)
                         .padding(.top, 16)
                     }
+                    Button() {
+                        showMainView.send(())
+                    } label: {
+                        Text("SKIP".localizedString)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .foregroundColor(Color.blue)
+                    }
                 }
                 .padding(.horizontal, 16)
             }
@@ -73,7 +82,9 @@ struct WelcomeView: View {
     }
     
     init(viewModel: WelcomeViewModel) {
-        let input = WelcomeViewModel.Input(showDealerViewTrigger: showDealerViewTrigger.asDriver())
+        let input = WelcomeViewModel.Input(
+            showDealerViewTrigger: showDealerViewTrigger.asDriver(),
+            showMainView: showMainView.asDriver())
         self.output = viewModel.transform(input, cancelBag: cancelBag)
         
     }

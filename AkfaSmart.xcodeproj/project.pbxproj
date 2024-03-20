@@ -418,6 +418,13 @@
 		B8CF98EA2B656B8100EF02A7 /* RegisterGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98E92B656B8100EF02A7 /* RegisterGateway.swift */; };
 		B8CF98EC2B65718900EF02A7 /* ShowingRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF98EB2B65718900EF02A7 /* ShowingRegistration.swift */; };
 		B8D49C6B2BA8947900672750 /* TechnicalSupportAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D49C6A2BA8947900672750 /* TechnicalSupportAssembler.swift */; };
+		B8DAD2462BA9CAA400857140 /* PinCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DAD2452BA9CAA400857140 /* PinCodeView.swift */; };
+		B8DAD2482BA9CB5100857140 /* PINCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DAD2472BA9CB5100857140 /* PINCodeViewModel.swift */; };
+		B8DAD24A2BA9DF5B00857140 /* PINCodeViewNavigatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DAD2492BA9DF5B00857140 /* PINCodeViewNavigatorType.swift */; };
+		B8DAD24C2BAAB08C00857140 /* PINCodeViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DAD24B2BAAB08C00857140 /* PINCodeViewAssembler.swift */; };
+		B8DAD24E2BAAB1B200857140 /* ShowingPINCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DAD24D2BAAB1B200857140 /* ShowingPINCodeView.swift */; };
+		B8DAD2512BAABBDA00857140 /* SingleCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DAD2502BAABBDA00857140 /* SingleCodeView.swift */; };
+		B8DAD2532BAAC23300857140 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DAD2522BAAC23300857140 /* ToastView.swift */; };
 		B8E192962B9ABF500013B148 /* PurchaseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192952B9ABF500013B148 /* PurchaseDetailView.swift */; };
 		B8E192982B9B0F620013B148 /* InvoiceDetailGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192972B9B0F620013B148 /* InvoiceDetailGateway.swift */; };
 		B8E1929A2B9B0FC90013B148 /* GettingInvoiceDetailDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192992B9B0FC90013B148 /* GettingInvoiceDetailDomainUseCase.swift */; };
@@ -860,6 +867,13 @@
 		B8CF98E92B656B8100EF02A7 /* RegisterGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGateway.swift; sourceTree = "<group>"; };
 		B8CF98EB2B65718900EF02A7 /* ShowingRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingRegistration.swift; sourceTree = "<group>"; };
 		B8D49C6A2BA8947900672750 /* TechnicalSupportAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSupportAssembler.swift; sourceTree = "<group>"; };
+		B8DAD2452BA9CAA400857140 /* PinCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCodeView.swift; sourceTree = "<group>"; };
+		B8DAD2472BA9CB5100857140 /* PINCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINCodeViewModel.swift; sourceTree = "<group>"; };
+		B8DAD2492BA9DF5B00857140 /* PINCodeViewNavigatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINCodeViewNavigatorType.swift; sourceTree = "<group>"; };
+		B8DAD24B2BAAB08C00857140 /* PINCodeViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINCodeViewAssembler.swift; sourceTree = "<group>"; };
+		B8DAD24D2BAAB1B200857140 /* ShowingPINCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingPINCodeView.swift; sourceTree = "<group>"; };
+		B8DAD2502BAABBDA00857140 /* SingleCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCodeView.swift; sourceTree = "<group>"; };
+		B8DAD2522BAAC23300857140 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B8E192952B9ABF500013B148 /* PurchaseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetailView.swift; sourceTree = "<group>"; };
 		B8E192972B9B0F620013B148 /* InvoiceDetailGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailGateway.swift; sourceTree = "<group>"; };
 		B8E192992B9B0FC90013B148 /* GettingInvoiceDetailDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingInvoiceDetailDomainUseCase.swift; sourceTree = "<group>"; };
@@ -1124,6 +1138,7 @@
 				B80331502BA0CD940019ACA5 /* ShowingEditInfographicsView.swift */,
 				B803316A2BA1BD820019ACA5 /* ShowingEditTechnographicsView.swift */,
 				B80331792BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift */,
+				B8DAD24D2BAAB1B200857140 /* ShowingPINCodeView.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -1853,6 +1868,7 @@
 		B866A9742B71688B00202C9F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				B8DAD2442BA9CA9800857140 /* PIN */,
 				3420A0A22B9D886F00DC3E3D /* TechnicalSupport */,
 				B82CA9712B977EF9000147D2 /* Views */,
 				B863DAB82B8D098F003F2C3D /* Graphics */,
@@ -2177,6 +2193,27 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		B8DAD2442BA9CA9800857140 /* PIN */ = {
+			isa = PBXGroup;
+			children = (
+				B8DAD24F2BAABBCD00857140 /* Views */,
+				B8DAD2452BA9CAA400857140 /* PinCodeView.swift */,
+				B8DAD2472BA9CB5100857140 /* PINCodeViewModel.swift */,
+				B8DAD2492BA9DF5B00857140 /* PINCodeViewNavigatorType.swift */,
+				B8DAD24B2BAAB08C00857140 /* PINCodeViewAssembler.swift */,
+			);
+			path = PIN;
+			sourceTree = "<group>";
+		};
+		B8DAD24F2BAABBCD00857140 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B8DAD2502BAABBDA00857140 /* SingleCodeView.swift */,
+				B8DAD2522BAAC23300857140 /* ToastView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B8E192942B9ABF3C0013B148 /* PurchaseDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2421,6 +2458,7 @@
 				B863DABC2B8D09DE003F2C3D /* ShowingLanguageSetterView.swift in Sources */,
 				B863DA9D2B8D047A003F2C3D /* HRGraphicsView.swift in Sources */,
 				B8D49C6B2BA8947900672750 /* TechnicalSupportAssembler.swift in Sources */,
+				B8DAD2482BA9CB5100857140 /* PINCodeViewModel.swift in Sources */,
 				B8C165AC2B9AA51B00F70074 /* PaymentHistoryViewUseCase.swift in Sources */,
 				B877FD7D2B8C327D00D24CB0 /* ImageDownloaderGateway.swift in Sources */,
 				B877FD6B2B8BFD9F00D24CB0 /* MobileClass+API.swift in Sources */,
@@ -2428,6 +2466,7 @@
 				B8AC367E2B799E5D0060D52D /* ShowingAddDealerView.swift in Sources */,
 				178722F724BD537D00D90F8E /* AppDelegate.swift in Sources */,
 				B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */,
+				B8DAD2532BAAC23300857140 /* ToastView.swift in Sources */,
 				17A5B1F824D9026D004BD209 /* BaseViewController.swift in Sources */,
 				1787233124BD547600D90F8E /* AppViewModel.swift in Sources */,
 				3420A0B82B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift in Sources */,
@@ -2488,6 +2527,7 @@
 				17A5B1FC24D948BC004BD209 /* PagingTableView.swift in Sources */,
 				B8CF98E22B65671300EF02A7 /* RegisterAssembler.swift in Sources */,
 				B8E192982B9B0F620013B148 /* InvoiceDetailGateway.swift in Sources */,
+				B8DAD2462BA9CAA400857140 /* PinCodeView.swift in Sources */,
 				B8C165A02B99DC7E00F70074 /* ArticlesFilterViewAssembler.swift in Sources */,
 				B89F2F7B2B90DBA1004DAEAB /* PurchaseHistoryViewRow.swift in Sources */,
 				B877FD6D2B8BFEE700D24CB0 /* MobileClassGateway.swift in Sources */,
@@ -2513,6 +2553,7 @@
 				B8C1659A2B99D91E00F70074 /* ArticleTypeViewUseCase.swift in Sources */,
 				B803317E2BA1F3070019ACA5 /* HRGraphicsEditDomainUseCase.swift in Sources */,
 				B87ED20C2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift in Sources */,
+				B8DAD24E2BAAB1B200857140 /* ShowingPINCodeView.swift in Sources */,
 				1781CF4224BD8FB8004ED1C6 /* ProductDetailUseCase.swift in Sources */,
 				174A188D24C8219300AB39D9 /* ActivityIndicator.swift in Sources */,
 				B8BE49F22B8D7EAD00876714 /* TechnoGraphicsViewUseCase.swift in Sources */,
@@ -2538,6 +2579,7 @@
 				3420A0B22B9E405700DC3E3D /* Message+API.swift in Sources */,
 				B8C165B92B9AAD1F00F70074 /* ShowingPaymentsHistoryView.swift in Sources */,
 				B80331612BA190350019ACA5 /* EditTechnographicsUseCase.swift in Sources */,
+				B8DAD2512BAABBDA00857140 /* SingleCodeView.swift in Sources */,
 				B8E192A52B9B19C60013B148 /* PurchaseDetailViewRow.swift in Sources */,
 				B863DAC22B8D0A21003F2C3D /* ShowingProductGraphics.swift in Sources */,
 				B87ED2072B7A28E900EB5139 /* SplashViewNavigator.swift in Sources */,
@@ -2655,6 +2697,7 @@
 				B8BE49FE2B8E3EED00876714 /* MarketingGraphicsGateway.swift in Sources */,
 				1720C7C124FE383D00D616B2 /* Validation+Collection.swift in Sources */,
 				1787234924BD560500D90F8E /* MainAssembler.swift in Sources */,
+				B8DAD24A2BA9DF5B00857140 /* PINCodeViewNavigatorType.swift in Sources */,
 				B85516C72B79061B00FC2D6E /* ArticleDomainUseCase.swift in Sources */,
 				B8C165982B99D8DA00F70074 /* GettingArticleTypeDomainUseCase.swift in Sources */,
 				B863DAB52B8D084B003F2C3D /* TechnoGraphicsView.swift in Sources */,
@@ -2745,6 +2788,7 @@
 				B866A9712B715CBD00202C9F /* ArticleRow.swift in Sources */,
 				B89F2F862B911A6B004DAEAB /* InvoiceDomainUseCase.swift in Sources */,
 				B80331692BA1AD4C0019ACA5 /* EditTechnographicsDomainUseCase.swift in Sources */,
+				B8DAD24C2BAAB08C00857140 /* PINCodeViewAssembler.swift in Sources */,
 				B8FEC6B72B8504C70028BA7F /* ResendSMSGateway.swift in Sources */,
 				17A5B20124D95168004BD209 /* RefreshHeaderAnimator.swift in Sources */,
 				1770EC3324DAA9AC0022FBFE /* ShowingRepoCollection.swift in Sources */,

@@ -11,11 +11,13 @@ import Combine
 import PhotosUI
 struct SettingsView: View {
     @ObservedObject var output: SettingsViewModel.Output
+    private let loadInitialSettings = PassthroughSubject<Void, Never>()
     private let uploadAvatarImageTrigger = PassthroughSubject<Void, Never>()
     private let getGeneralUserInfoTrigger = PassthroughSubject<Void,Never>()
     
     private let selectRowTrigger = PassthroughSubject<Int,Never>()
     private let deleteAccountTrigger = PassthroughSubject<Void, Never>()
+    private let showPINCodeViewTrigger = PassthroughSubject<Int, Never>()
     private let cancelBag = CancelBag()
     
     var body: some View {
@@ -59,80 +61,8 @@ struct SettingsView: View {
                         .padding(24)
                     }
                 }
-                if output.showImageSourceSelector {
-                    ZStack {
-                        Color.black.opacity(0.6).ignoresSafeArea(.all)
-                        VStack(spacing: 0) {
-                            Spacer()
-                            Button {
-                                if !PickerImage.checkPermissions(.library) {
-                                    return
-                                }
-                                output.imageChooserType = .library
-                                output.showImagePicker = true
-                            } label: {
-                                HStack(spacing: 8) {
-                                    Image(systemName: "folder.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 24, height: 24)
-                                        .foregroundColor(Color(hex: "#51526C"))
-                                    Text("USE_GALLERY".localizedString)
-                                        .bold()
-                                        .foregroundColor(Color(hex: "#51526C"))
-                                }
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 40)
-                                .background(Color(hex: "#DFE3EB"))
-                                .cornerRadius(12)
-                                .padding()
-                            }
-                            
-                            Button {
-                                if !PickerImage.checkPermissions(.camera) {
-                                    
-                                    return
-                                }
-                                output.imageChooserType = .camera
-                                output.showImagePicker = true
-                            } label: {
-                                HStack(spacing: 8) {
-                                    Image(systemName: "camera.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 24, height: 24)
-                                        .foregroundColor(Color(hex: "#51526C"))
-                                    Text("USE_CAMERA".localizedString)
-                                        .bold()
-                                        .foregroundColor(Color(hex: "#51526C"))
-                                }
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 40)
-                                .background(Color(hex: "#DFE3EB"))
-                                .cornerRadius(12)
-                                .padding()
-                            }
-                            
-                            Button {
-                                output.showImageSourceSelector = false
-                            } label: {
-                                Text("CLOSE".localizedString)
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 40)
-                                    .foregroundColor(Color.white)
-                                    .background(Color.red)
-                                    .cornerRadius(12)
-                                    .padding()
-                            }
-                            Spacer()
-                        }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 240)
-                        .background(Color.white)
-                        .cornerRadius(8)
-                        .padding(.horizontal)
-                    }
-                }
+                imageSourceSelector
+                pinCodeOptionSelector
             }
             .navigationTitle("SETTINGS_TITLE".localizedString)
             .navigationBarHidden(false)
@@ -144,6 +74,7 @@ struct SettingsView: View {
                 )
             }
             .onAppear {
+                loadInitialSettings.send(())
                 if output.imageData == nil {
                     if output.isFirstLoad {
                         output.isFirstLoad = false
@@ -166,7 +97,9 @@ struct SettingsView: View {
             selectRowTrigger: selectRowTrigger.asDriver(),
             deleteAccountTrigger: deleteAccountTrigger.asDriver(),
             loadUserInfoTrigger: getGeneralUserInfoTrigger.asDriver(),
-            uploadAvatarImageTrigger: uploadAvatarImageTrigger.asDriver())
+            uploadAvatarImageTrigger: uploadAvatarImageTrigger.asDriver(),
+            showPINCodeViewTrigger: showPINCodeViewTrigger.asDriver(),
+            loadInitialSettings: loadInitialSettings.asDriver())
         output = viewModel.transform(input, cancelBag: cancelBag)
     }
     
@@ -215,6 +148,144 @@ struct SettingsView: View {
             .frame(height: 80)
             .padding(.horizontal)
             
+        }
+    }
+    
+    var imageSourceSelector: some View {
+        ZStack {
+            if output.showImageSourceSelector {
+                Color.black.opacity(0.6).ignoresSafeArea(.all)
+                VStack(spacing: 0) {
+                    Spacer()
+                    Button {
+                        if !PickerImage.checkPermissions(.library) {
+                            return
+                        }
+                        output.imageChooserType = .library
+                        output.showImagePicker = true
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "folder.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(Color(hex: "#51526C"))
+                            Text("USE_GALLERY".localizedString)
+                                .bold()
+                                .foregroundColor(Color(hex: "#51526C"))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 40)
+                        .background(Color(hex: "#DFE3EB"))
+                        .cornerRadius(12)
+                        .padding()
+                    }
+                    
+                    Button {
+                        if !PickerImage.checkPermissions(.camera) {
+                            
+                            return
+                        }
+                        output.imageChooserType = .camera
+                        output.showImagePicker = true
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "camera.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(Color(hex: "#51526C"))
+                            Text("USE_CAMERA".localizedString)
+                                .bold()
+                                .foregroundColor(Color(hex: "#51526C"))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 40)
+                        .background(Color(hex: "#DFE3EB"))
+                        .cornerRadius(12)
+                        .padding()
+                    }
+                    
+                    Button {
+                        output.showImageSourceSelector = false
+                    } label: {
+                        Text("CLOSE".localizedString)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .foregroundColor(Color.white)
+                            .background(Color.red)
+                            .cornerRadius(12)
+                            .padding()
+                    }
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 240)
+                .background(Color.white)
+                .cornerRadius(8)
+                .padding(.horizontal)
+            }
+        }
+    }
+    
+    var pinCodeOptionSelector: some View {
+        ZStack {
+            if output.showPinCodeOptionSelector {
+                Color.black.opacity(0.6).ignoresSafeArea(.all)
+                VStack(spacing: 0) {
+                    Spacer()
+                    Button {
+                        output.showPinCodeOptionSelector = false
+                        showPINCodeViewTrigger.send(0)
+                    } label: {
+                        HStack(spacing: 8) {
+                            Text("CREATE_NEW_PIN".localizedString)
+                                .bold()
+                                .foregroundColor(Color(hex: "#51526C"))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 40)
+                        .background(Color(hex: "#DFE3EB"))
+                        .cornerRadius(12)
+                        .padding()
+                    }
+                    if output.hasPIN {
+                        Button {
+                            showPINCodeViewTrigger.send(1)
+                            output.showPinCodeOptionSelector = false
+                        } label: {
+                            HStack(spacing: 8) {
+                                Text("REMOVE_PIN".localizedString)
+                                    .bold()
+                                    .foregroundColor(Color(hex: "#51526C"))
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .background(Color(hex: "#DFE3EB"))
+                            .cornerRadius(12)
+                            .padding()
+                        }
+                    }
+                    
+                    Button {
+                        output.showPinCodeOptionSelector = false
+                    } label: {
+                        Text("CLOSE".localizedString)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .foregroundColor(Color.white)
+                            .background(Color.red)
+                            .cornerRadius(12)
+                            .padding()
+                    }
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: output.hasPIN ? 240 : 160)
+                .background(Color.white)
+                .cornerRadius(8)
+                .padding(.horizontal)
+            }
         }
     }
 }

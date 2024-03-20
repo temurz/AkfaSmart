@@ -11,9 +11,10 @@ protocol LoginNavigatorType {
     func showRegistration()
     func showWelcomeView()
     func showForgotPassword()
+    func showPINCodeView(state: PINCodeState)
 }
 
-struct LoginNavigator: LoginNavigatorType, ShowingRegistration, ShowingForgotPassword, ShowingWelcomeView {
+struct LoginNavigator: LoginNavigatorType, ShowingRegistration, ShowingForgotPassword, ShowingWelcomeView, ShowingPINCodeView {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
 }

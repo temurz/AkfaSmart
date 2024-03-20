@@ -38,7 +38,8 @@ protocol Assembler: AnyObject,
     EditTechnographicsAssembler,
     HRGraphicsAssembler,
     HRGraphicsEditAssembler,
-    TechnicalSupportAssembler
+    TechnicalSupportAssembler,
+    PINCodeViewAssembler
 {
     
 }

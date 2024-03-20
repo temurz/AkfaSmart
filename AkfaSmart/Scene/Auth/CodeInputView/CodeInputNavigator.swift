@@ -10,9 +10,10 @@ import UIKit
 protocol CodeInputNavigatorType {
     func showMain(page: MainPage)
     func showResetPasswordView()
+    func showPINCodeView(state: PINCodeState)
 }
 
-struct CodeInputNavigator: CodeInputNavigatorType, ShowingMain, ShowingResetPasswordView {
+struct CodeInputNavigator: CodeInputNavigatorType, ShowingMain, ShowingResetPasswordView, ShowingPINCodeView {
     unowned var assembler: Assembler
     unowned var navigationController: UINavigationController
 }
