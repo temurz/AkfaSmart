@@ -15,7 +15,7 @@
 "MY_CLASS" = "Мой класс";
 "MESSAGES" = "Сообщения";
 "NEWS" = "Новости";
-"ARTICLES" = "Статьи";
+"ARTICLES" = "Каталоги";
 "YOUR_STATUS" = "Ваш статус";
 "DETAIL" = "Подробнее";
 "BY_ANNUAL_PURCHASE" = "По годовой закупке";
@@ -54,8 +54,8 @@
 "CLEAR" = "Очистить";
 "DATE_OF_START" = "Дата начала";
 "DATE_OF_END" = "Дата окончания";
-"TYPE_OF_ARTICLES" = "Тип статей";
-"SELECT_ARTICLE_TYPE" = "Выберите тип статьи";
+"TYPE_OF_ARTICLES" = "Типы каталогов";
+"SELECT_ARTICLE_TYPE" = "Выберите тип каталога";
 "KM" = "км";
 "GROUP_WITH_COLON" = "Группа: ";
 "DEALERS_WITH_THIS_PRODUCT" = "Дилеры с этим товаром";
@@ -100,7 +100,7 @@
 "ABOUT_EMPLOYEES" = "О сотрудниках";
 "IS_THERE_A_SELLER" = "Есть ли продавец";
 "IS_THERE_AN_ACCOUNTANT" = "Есть ли бухгалтер";
-"HR_GRAPHICS_TITLE" = "Графика кадров";
+"HR_GRAPHICS_TITLE" = "HR Графика";
 "ADDRESS_OF_FACTORY" = "Адрес завода";
 "AREA_OF_FACTORY" = "Площадь завода";
 "GLASS_FACTORY_EXISTS" = "Стекольный завод (есть/нет)";
