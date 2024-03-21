@@ -21,6 +21,7 @@ extension LoginViewModel: ViewModel {
     final class Input: ObservableObject {
         @Published var username = "998"
         @Published var password = ""
+        @Published var reload = false
         let loginTrigger: Driver<Void>
         let showRegisterTrigger: Driver<Void>
         let showForgotPasswordTrigger: Driver<Void>

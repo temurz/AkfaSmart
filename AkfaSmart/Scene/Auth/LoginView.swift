@@ -101,6 +101,20 @@ struct LoginView: View {
                         .padding()
                     }
                     .padding(.horizontal, 16)
+                    
+                    HStack {
+                        Spacer()
+                        Button("Ru") {
+                            AuthApp.shared.language = "ru"
+                            input.reload = true
+                        }
+                        Spacer()
+                        Button("Uz") {
+                            AuthApp.shared.language = "uz"
+                            input.reload = true
+                        }
+                        Spacer()
+                    }
                     Spacer()
                 }
                 .padding()
