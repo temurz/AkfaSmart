@@ -177,6 +177,8 @@
 "PIN_CODE_REMOVED" = "PIN kod o'chirildi!";
 "REMOVE_PIN" = "PIN kodni o'chirish";
 "CREATE_NEW_PIN" = "Yangi PIN yaratish";
+"NEED_CAMERA_ALLOW" = "Sozlamalarda kamera foydalanishga ruxsat bering!";
+"OPEN_SETTINGS" = "Sozlamalarni ochish";
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";
 "Invalid server response" = "Noto'g'ri server javobi";

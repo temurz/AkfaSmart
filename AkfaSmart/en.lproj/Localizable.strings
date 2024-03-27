@@ -172,7 +172,8 @@
 "PIN_CODE_REMOVED" = "PIN code is removed!";
 "REMOVE_PIN" = "Remove PIN";
 "CREATE_NEW_PIN" = "Create a new PIN";
-
+"NEED_CAMERA_ALLOW" = "Need to allow camera usage in settings";
+"OPEN_SETTINGS" = "Open settings";
 //ERRORS
 "Not Found" = "Not found";
 "Invalid server response" = "Invalid server response";

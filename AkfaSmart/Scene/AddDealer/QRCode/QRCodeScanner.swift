@@ -17,11 +17,24 @@ struct QRCodeScannerViewMain: View {
         // Create a QR code scanner view
         
         ZStack {
+            if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
                 QRCodeScanner(result: $result) {
                     dismiss()
                 }
                 .torchLight(isOn: isTorchOn)
                 .interval(delay: 1.0)
+            }else {
+                VStack {
+                    Text("NEED_CAMERA_ALLOW".localizedString)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    Button("OPEN_SETTINGS".localizedString) {
+                        if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(settingsURL)
+                        }
+                    }
+                }
+            }
                 
             VStack(alignment: .center) {
                 HStack {
@@ -121,18 +134,38 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
             print("Failed to get the camera device")
             return
         }
+        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+            // Already Authorized
+            setCamera(captureDevice)
+        } else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] (granted: Bool) -> Void in
+                guard let self else { return }
+               if granted {
+                   // User granted
+                   self.setCamera(captureDevice)
+               } else {
+                   // User rejected
+                   return
+               }
+           })
+        }
+        
+        
+    }
+    
+    private func setCamera(_ captureDevice: AVCaptureDevice) {
         let input = try? AVCaptureDeviceInput(device: captureDevice)
-        captureSession.addInput(input!)
+        self.captureSession.addInput(input!)
         
         // Set up the metadata output
         let captureMetadataOutput = AVCaptureMetadataOutput()
-        captureSession.addOutput(captureMetadataOutput)
+        self.captureSession.addOutput(captureMetadataOutput)
         captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
         captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
         
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        self.videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         // Start the capture session
-        videoPreviewLayer?.frame = view.layer.bounds
+        self.videoPreviewLayer?.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
         DispatchQueue.global(qos: .background).async {
             self.captureSession.startRunning()
