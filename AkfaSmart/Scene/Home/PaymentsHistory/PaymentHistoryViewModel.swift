@@ -57,6 +57,7 @@ extension PaymentHistoryViewModel: ViewModel {
             .receive(on: RunLoop.main)
             .map {
                 if let error = $0 as? APIUnknownError, error.error == "Not Found".localizedString {
+                    output.hasMorePages = false
                     return AlertMessage()
                 }else {
                     return AlertMessage(error: $0)

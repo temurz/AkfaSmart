@@ -53,6 +53,7 @@ extension SearchProductViewModel: ViewModel {
             .receive(on: RunLoop.main)
             .map {
                 if let error = $0 as? APIUnknownError, error.error == "Not Found".localizedString {
+                    output.hasMorePages = false
                     return AlertMessage()
                 }else {
                     return AlertMessage(error: $0)
@@ -73,8 +74,17 @@ extension SearchProductViewModel: ViewModel {
             .assign(to: \.isLoadingMore, on: output)
             .store(in: cancelBag)
         
+        input.loadProductsTrigger.sink { _ in
+            guard output.debounceText != output.searchedText && !output.searchedText.isEmpty else { return }
+            output.items = []
+            output.debounceText = output.searchedText
+            
+            loadProductsTrigger.send(output.searchedText)
+        }
+        .store(in: cancelBag)
+        
         output.$searchedText
-            .debounce(for: .seconds(0.8), scheduler: RunLoop.main)
+            .debounce(for: .seconds(2.5), scheduler: RunLoop.main)
             .sink(receiveValue: { text in
                 guard output.debounceText != text && !text.isEmpty else { return }
                 output.items = []

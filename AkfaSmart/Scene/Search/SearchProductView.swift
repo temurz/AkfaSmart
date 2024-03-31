@@ -21,6 +21,9 @@ struct SearchProductView: View {
             VStack {
                 ZStack(alignment: .trailing) {
                     TextField("SEARCH".localizedString, text: $output.searchedText)
+                        .onSubmit {
+                            loadProductsTrigger.send("")
+                        }
                         .frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
                         .background(Color(hex: "#F5F7FA"))
@@ -52,6 +55,19 @@ struct SearchProductView: View {
                                 showProductDetailView.send(item)
                             }
                                 .listRowSeparator(.hidden)
+                                .onAppear {
+                                    if output.items.last?.id ?? -1 == item.id && output.hasMorePages {
+                                        loadMoreProductsTrigger.send(output.searchedText)
+                                    }
+                                }
+                        }
+                        if output.isLoadingMore {
+                            HStack {
+                                Spacer()
+                                ActivityIndicator(isAnimating: $output.isLoadingMore, style: .large)
+                                Spacer()
+                            }
+                            .listRowSeparator(.hidden)
                         }
                     }
                     .listStyle(.plain)
