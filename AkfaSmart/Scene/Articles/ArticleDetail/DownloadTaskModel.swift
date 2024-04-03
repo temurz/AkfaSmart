@@ -34,7 +34,7 @@ class DownloadTaskModel: NSObject, ObservableObject, URLSessionDownloadDelegate,
         }
         
         let directoryPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        if /*FileManager.default.fileExists(atPath: directoryPath.appendingPathComponent(validURL.lastPathComponent).path)*/ false {
+        if FileManager.default.fileExists(atPath: directoryPath.appendingPathComponent(validURL.lastPathComponent).path) {
             print("yes file found")
             
             let controller = UIDocumentInteractionController(url: directoryPath.appendingPathComponent(validURL.lastPathComponent))
