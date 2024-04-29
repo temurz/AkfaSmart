@@ -42,7 +42,7 @@ extension CodeInputViewModel: ViewModel {
         @Published var timeRemaining = 120
         @Published var username: String =  AuthApp.shared.username?.makeStarsInsteadNumbersInUsername() ?? ""
         @Published var title: String
-        @Published var isConfirmEnabled = true
+        @Published var isConfirmEnabled = false
         @Published var reason: CodeReason
         @Published var showConfirmAlert = false
         var activeUsername: String? = nil
@@ -135,8 +135,24 @@ extension CodeInputViewModel: ViewModel {
                 .filter { output.isConfirmEnabled }
                 .map { _ in
                     switch reason {
-                    case .dealer:
-                        output.showConfirmAlert = true
+                    case let .dealer(_, activeDealer, _):
+                        if activeDealer?.removeWhitespacesFromString().removePlusFromPhoneNumber() == AuthApp.shared.username?.removeWhitespacesFromString().removePlusFromPhoneNumber() {
+                            if let dealer = output.dealer {
+                                self.dealerUseCase.confirmSMSCodeForActiveDealer(dealer, code: input.code)
+                                    .trackError(errorTracker)
+                                    .trackActivity(activityTracker)
+                                    .asDriver()
+                                    .map({ bool in
+                                        navigator.showMain(page: .home)
+                                    })
+                                    .sink()
+                                    .store(in: cancelBag)
+                            }
+                        }else {
+                            output.showConfirmAlert = true
+                        }
+                        
+                        
                     default:
                         break
                     }

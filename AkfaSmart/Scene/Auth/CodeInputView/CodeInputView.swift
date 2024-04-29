@@ -66,6 +66,9 @@ struct CodeInputView: View {
                             .background(Color(hex: "#F5F7FA"))
                             .cornerRadius(12)
                             .padding([.top, .horizontal])
+                            .onChange(of: input.code) { newValue in
+                                output.isConfirmEnabled = !newValue.isEmpty
+                            }
                         Text(output.codeValidationMessage)
                             .foregroundColor(.red)
                             .font(.footnote)
@@ -95,9 +98,10 @@ struct CodeInputView: View {
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 40)
                                 .foregroundColor(.white)
-                                .background(Color.red)
+                                .background(!input.code.isEmpty && output.timeRemaining > 0 ? Color.red : .gray)
                                 .cornerRadius(12)
                         }
+                        .allowsHitTesting(output.isConfirmEnabled && output.timeRemaining > 0)
                     }
                     .padding()
                     switch output.reason {
@@ -158,7 +162,7 @@ struct CodeInputView: View {
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 40)
                                 .overlay {
-                                    RoundedRectangle(cornerRadius: 4)
+                                    RoundedRectangle(cornerRadius: 12)
                                         .stroke(Color.gray, lineWidth: 0.5)
                                 }
                                 .padding()
