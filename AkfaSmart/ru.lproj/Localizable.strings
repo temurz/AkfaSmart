@@ -176,7 +176,7 @@
 "CREATE_NEW_PIN" = "Создать новый ПИН";
 "NEED_CAMERA_ALLOW" = "Нужно разрешение на использование камеры в настройках!";
 "OPEN_SETTINGS" = "Открыть настройки";
-"REACTIVATE_DEALER_ALERT_TEXT" = "Ushbu mijoz %@ raqamli foydalanuvchiga biriktirilgan. Tasdiqlash orqali oldingisini o'chirgan holda biriktirishingiz mumkin";
+"REACTIVATE_DEALER_ALERT_TEXT" = "Этот клиент прикреплен к цифровому пользователю %@.\nВы можете прикрепить предыдущий, удалив и подтвердив его";
 "ADD" = "Добавить";
 //ERRORS
 "Not Found" = "Нет данных";

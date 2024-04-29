@@ -174,7 +174,7 @@
 "CREATE_NEW_PIN" = "Create a new PIN";
 "NEED_CAMERA_ALLOW" = "Need to allow camera usage in settings";
 "OPEN_SETTINGS" = "Open settings";
-"REACTIVATE_DEALER_ALERT_TEXT" = "Ushbu mijoz %@ raqamli foydalanuvchiga biriktirilgan. Tasdiqlash orqali oldingisini o'chirgan holda biriktirishingiz mumkin";
+"REACTIVATE_DEALER_ALERT_TEXT" = "This client is attached to digital user %@.\nYou can attach the previous one by deleting and confirming it.";
 "ADD" = "Add";
 //ERRORS
 "Bad Request" = "Bad Request";
