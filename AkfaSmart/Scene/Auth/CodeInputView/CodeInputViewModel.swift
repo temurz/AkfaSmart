@@ -15,6 +15,7 @@ struct CodeInputViewModel {
     let confirmSMSCodeOnForgotPasswordUseCase: ConfirmSMSCodeOnForgotPasswordUseCaseType
     let dealerUseCase: ConfirmDealerUseCaseType
     let reason: CodeReason
+    private let showAlertTrigger = PassthroughSubject<Void, Never>()
 }
 
 // MARK: - ViewModelType
@@ -24,11 +25,13 @@ extension CodeInputViewModel: ViewModel {
         let confirmRegisterTrigger: Driver<Void>
         let resendSMSTrigger: Driver<Void>
         let showMainViewTrigger: Driver<Void>
+        let confirmActiveUserTrigger: Driver<Void>
         
-        init(confirmRegisterTrigger: Driver<Void>, resendSMSTrigger: Driver<Void>, showMainViewTrigger: Driver<Void>) {
+        init(confirmRegisterTrigger: Driver<Void>, resendSMSTrigger: Driver<Void>, showMainViewTrigger: Driver<Void>, confirmActiveUserTrigger: Driver<Void>) {
             self.confirmRegisterTrigger = confirmRegisterTrigger
             self.resendSMSTrigger = resendSMSTrigger
             self.showMainViewTrigger = showMainViewTrigger
+            self.confirmActiveUserTrigger = confirmActiveUserTrigger
         }
     }
     
@@ -41,6 +44,10 @@ extension CodeInputViewModel: ViewModel {
         @Published var title: String
         @Published var isConfirmEnabled = true
         @Published var reason: CodeReason
+        @Published var showConfirmAlert = false
+        var activeUsername: String? = nil
+        var dealer: AddDealer? = nil
+        var isActive: Bool = false
         
         init(reason: CodeReason) {
             self.reason = reason
@@ -49,9 +56,12 @@ extension CodeInputViewModel: ViewModel {
                 title = "REGISTRATION".localizedString
             case .forgotPassword:
                 title = "FORGOT_PASSWORD".localizedString
-            case let .dealer(dealer):
+            case let .dealer(dealer, activeUsername, isActive):
                 title = "ADD_DEALER".localizedString
                 username = dealer.phone?.makeStarsInsteadNumbersInUsername() ?? ""
+                self.dealer = dealer
+                self.activeUsername = activeUsername
+                self.isActive = isActive
             }
         }
     }
@@ -82,41 +92,74 @@ extension CodeInputViewModel: ViewModel {
         }
         .store(in: cancelBag)
         
-        input.confirmRegisterTrigger
-            .delay(for: 0.1, scheduler: RunLoop.main)
-            .filter { output.isConfirmEnabled }
-            .map { _ in
-                switch reason {
-                case .register:
-                    self.useCase.confirmRegister(dto: CodeInputDto(code: input.code))
-                        .trackError(errorTracker)
-                        .trackActivity(activityTracker)
-                        .asDriver()
-                case .forgotPassword:
-                    self.confirmSMSCodeOnForgotPasswordUseCase.confirmSMSCodeOnForgotPassword(dto: CodeInputDto(code: input.code))
-                        .trackError(errorTracker)
-                        .trackActivity(activityTracker)
-                        .asDriver()
-                case let .dealer(dealer):
-                    self.dealerUseCase.confirmSMSCode(dealer, code: input.code)
-                        .trackError(errorTracker)
-                        .trackActivity(activityTracker)
-                        .asDriver()
-                }
-            }
-            .switchToLatest()
-            .sink { bool in
-                if bool {
+        if !output.isActive {
+            input.confirmRegisterTrigger
+                .delay(for: 0.1, scheduler: RunLoop.main)
+                .filter { output.isConfirmEnabled }
+                .map { _ in
                     switch reason {
                     case .register:
-                        navigator.showPINCodeView(state: .onAuth)
+                        self.useCase.confirmRegister(dto: CodeInputDto(code: input.code))
+                            .trackError(errorTracker)
+                            .trackActivity(activityTracker)
+                            .asDriver()
                     case .forgotPassword:
-                        navigator.showResetPasswordView()
-                    case .dealer(_):
-                        navigator.showMain(page: .home)
+                        self.confirmSMSCodeOnForgotPasswordUseCase.confirmSMSCodeOnForgotPassword(dto: CodeInputDto(code: input.code))
+                            .trackError(errorTracker)
+                            .trackActivity(activityTracker)
+                            .asDriver()
+                    case let .dealer(dealer,_, _):
+                        self.dealerUseCase.confirmSMSCode(dealer, code: input.code)
+                            .trackError(errorTracker)
+                            .trackActivity(activityTracker)
+                            .asDriver()
                     }
                 }
+                .switchToLatest()
+                .sink { bool in
+                    if bool {
+                        switch reason {
+                        case .register:
+                            navigator.showPINCodeView(state: .onAuth)
+                        case .forgotPassword:
+                            navigator.showResetPasswordView()
+                        case .dealer(_,_,_):
+                            navigator.showMain(page: .home)
+                        }
+                    }
+                }
+                .store(in: cancelBag)
+        }else {
+            input.confirmRegisterTrigger
+                .delay(for: 0.1, scheduler: RunLoop.main)
+                .filter { output.isConfirmEnabled }
+                .map { _ in
+                    switch reason {
+                    case .dealer:
+                        output.showConfirmAlert = true
+                    default:
+                        break
+                    }
+                }
+                .sink()
+                .store(in: cancelBag)
+        }
+        
+        input.confirmActiveUserTrigger
+            .map { _ in
+                if let dealer = output.dealer {
+                    self.dealerUseCase.confirmSMSCodeForActiveDealer(dealer, code: input.code)
+                        .trackError(errorTracker)
+                        .trackActivity(activityTracker)
+                        .asDriver()
+                        .map({ bool in
+                            navigator.showMain(page: .home)
+                        })
+                        .sink()
+                        .store(in: cancelBag)
+                }
             }
+            .sink()
             .store(in: cancelBag)
         
         input.resendSMSTrigger
@@ -136,7 +179,29 @@ extension CodeInputViewModel: ViewModel {
         
         errorTracker
             .receive(on: RunLoop.main)
-            .map { AlertMessage(error: $0) }
+            .map {
+                if let error = $0 as? APIUnknownError, error.status == 702 {
+                    switch output.reason {
+                    case let .dealer(dealer,_,_):
+                        dealerUseCase.requestSMSCodeForActiveDealer(dealer)
+                            .trackError(errorTracker)
+                            .trackActivity(activityTracker)
+                            .asDriver()
+                            .map { dealerInfo in
+                                output.timeRemaining = 120
+                            }
+                            .sink()
+                            .store(in: cancelBag)
+                    default:
+                        break
+                    }
+                    return AlertMessage()
+                }else {
+                    var alert = AlertMessage(error: $0)
+                    alert.isShowing = true
+                    return alert
+                }
+            }
             .assign(to: \.alert, on: output)
             .store(in: cancelBag)
             

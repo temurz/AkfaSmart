@@ -11,7 +11,7 @@ import SwiftUI
 enum CodeReason {
     case register
     case forgotPassword
-    case dealer(_ dealer: AddDealer)
+    case dealer(_ dealer: AddDealer, activeUsername: String?, isActive: Bool)
 }
 
 protocol ShowingCodeInput {

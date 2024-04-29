@@ -61,3 +61,43 @@ extension API {
         }
     }
 }
+
+
+extension API {
+    func requestSMSForAlreadyActiveDealer(_ input: RequestSMSForAlreadyActiveDealer) -> Observable<GetUserInfoResponse> {
+        request(input)
+    }
+    
+    final class RequestSMSForAlreadyActiveDealer: APIInput {
+        init(_ dealer: AddDealer) {
+            let params: Parameters = [
+                "printableName": dealer.printableName ?? "",
+                "cid": dealer.cid ?? "",
+                "dealerId": dealer.dealerId ?? "",
+                "phone": dealer.phone ?? ""
+            ]
+            super.init(urlString: API.Urls.addDealer_requestSMSCodeForActiveDealer, parameters: params, method: .post,encoding: JSONEncoding.prettyPrinted, requireAccessToken: true)
+        }
+    }
+}
+
+
+extension API {
+    func confirmSMS_forActiveDealer(_ input: ConfirmSMSForActiveDealerInput) -> Observable<Bool> {
+        success(input)
+    }
+    
+    final class ConfirmSMSForActiveDealerInput: APIInput {
+        init(_ dealer: AddDealer, code: String) {
+            let params: Parameters = [
+                "printableName": dealer.printableName ?? "",
+                "cid": dealer.cid ?? "",
+                "dealerId": dealer.dealerId ?? "",
+                "phone": dealer.phone ?? ""
+            ]
+            var url = API.Urls.addDealer_confirmSMSCodeForActiveDealer
+            url.append("?code=\(code)")
+            super.init(urlString: url, parameters: params, method: .post, encoding: JSONEncoding.prettyPrinted, requireAccessToken: true)
+        }
+    }
+}

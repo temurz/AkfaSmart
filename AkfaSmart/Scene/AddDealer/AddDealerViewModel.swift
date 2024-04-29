@@ -10,11 +10,13 @@ import Foundation
 struct AddDealerViewModel {
     let navigator: AddDealerNavigatorType
     let useCase: AddDealerUseCaseType
+    
 }
 
 extension AddDealerViewModel: ViewModel {
     struct Input {
-        let addDealerTrigger: Driver<Void>
+        let addDealerTrigger: Driver<AddDealer>
+        let searchDealerTrigger: Driver<Void>
         let showQRScannerTrigger: Driver<Bool>
         let showMainView: Driver<Void>
     }
@@ -23,7 +25,9 @@ extension AddDealerViewModel: ViewModel {
         @Published var isShowingQrScanner = false
         @Published var isConfirmEnabled = false
         @Published var qrCodeValue = ""
-        var addDealer: AddDealer?
+        @Published var isLoading = false
+        @Published var alert = AlertMessage()
+        @Published var addDealer: AddDealer?
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -41,28 +45,72 @@ extension AddDealerViewModel: ViewModel {
         }
         .store(in: cancelBag)
         
+        input.searchDealerTrigger.map { _ in
+            useCase.sendQRCode(output.qrCodeValue)
+                .trackError(errorTracker)
+                .trackActivity(activityTracker)
+                .asDriver()
+        }
+        .switchToLatest()
+        .sink(receiveValue: { dealer in
+            output.isConfirmEnabled = true
+            output.addDealer = dealer
+            output.qrCodeValue = ""
+        })
+        .store(in: cancelBag)
+        
         input.addDealerTrigger
-            .map { _ in
-                useCase.sendQRCode(output.qrCodeValue)
-                    .trackError(errorTracker)
+            .sink { dealer in
+                useCase.requestSMSCode(dealer)
                     .trackActivity(activityTracker)
-                    .asDriver()
-            }
-            .switchToLatest()
-            .sink(receiveValue: { addDealer in
-                useCase.requestSMSCode(addDealer)
                     .trackError(errorTracker)
-                    .trackActivity(activityTracker)
                     .asDriver()
                     .map { bool in
                         if bool {
-                            navigator.showCodeInput(reason: .dealer(addDealer))
+                            navigator.showCodeInput(reason: .dealer(dealer, activeUsername: nil, isActive: false))
+                        }else {
+                            useCase.requestSMSCodeForActiveDealer(dealer)
+                                .trackError(errorTracker)
+                                .trackActivity(activityTracker)
+                                .asDriver()
+                                .map { dealerInfo in
+                                    navigator.showCodeInput(reason: .dealer(dealer, activeUsername: dealerInfo.username, isActive: true))
+                                }
+                                .sink()
+                                .store(in: cancelBag)
                         }
                     }
                     .sink()
                     .store(in: cancelBag)
-                output.addDealer = addDealer
-            })
+            }
+            .store(in: cancelBag)
+        
+        errorTracker
+            .receive(on: RunLoop.main)
+            .map { 
+                if let error = $0 as? APIUnknownError, error.status == 702 {
+                    if let dealer = output.addDealer {
+                        useCase.requestSMSCodeForActiveDealer(dealer)
+                            .trackError(errorTracker)
+                            .trackActivity(activityTracker)
+                            .asDriver()
+                            .map { dealerInfo in
+                                navigator.showCodeInput(reason: .dealer(dealer, activeUsername: dealerInfo.username, isActive: true))
+                            }
+                            .sink()
+                            .store(in: cancelBag)
+                    }
+                    return AlertMessage()
+                }else {
+                    return AlertMessage(error: $0)
+                }
+            }
+            .assign(to: \.alert, on: output)
+            .store(in: cancelBag)
+            
+        activityTracker
+            .receive(on: RunLoop.main)
+            .assign(to: \.isLoading, on: output)
             .store(in: cancelBag)
         
         return output

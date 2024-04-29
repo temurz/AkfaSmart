@@ -196,6 +196,7 @@
 		B85516D02B79294700FC2D6E /* InfographicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516CF2B79294700FC2D6E /* InfographicsView.swift */; };
 		B85516D22B792B5600FC2D6E /* InfographicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516D12B792B5600FC2D6E /* InfographicsViewModel.swift */; };
 		B85516D52B792C6C00FC2D6E /* InfoViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516D42B792C6C00FC2D6E /* InfoViewRow.swift */; };
+		B86083A02BD6B98D00026B61 /* SearchDealerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B860839F2BD6B98D00026B61 /* SearchDealerUseCase.swift */; };
 		B863DA9B2B8D0458003F2C3D /* HRGraphicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863DA9A2B8D0458003F2C3D /* HRGraphicViewModel.swift */; };
 		B863DA9D2B8D047A003F2C3D /* HRGraphicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863DA9C2B8D047A003F2C3D /* HRGraphicsView.swift */; };
 		B863DAA12B8D053F003F2C3D /* LanguageViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863DAA02B8D053F003F2C3D /* LanguageViewRow.swift */; };
@@ -647,6 +648,7 @@
 		B85516CF2B79294700FC2D6E /* InfographicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsView.swift; sourceTree = "<group>"; };
 		B85516D12B792B5600FC2D6E /* InfographicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsViewModel.swift; sourceTree = "<group>"; };
 		B85516D42B792C6C00FC2D6E /* InfoViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewRow.swift; sourceTree = "<group>"; };
+		B860839F2BD6B98D00026B61 /* SearchDealerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDealerUseCase.swift; sourceTree = "<group>"; };
 		B863DA9A2B8D0458003F2C3D /* HRGraphicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicViewModel.swift; sourceTree = "<group>"; };
 		B863DA9C2B8D047A003F2C3D /* HRGraphicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsView.swift; sourceTree = "<group>"; };
 		B863DAA02B8D053F003F2C3D /* LanguageViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewRow.swift; sourceTree = "<group>"; };
@@ -2088,6 +2090,7 @@
 				B8AC36772B79925F0060D52D /* AddDealerNavigator.swift */,
 				B8AC36792B7992680060D52D /* AddDealerUseCase.swift */,
 				B8AC367B2B7992720060D52D /* AddDealerAssembler.swift */,
+				B860839F2BD6B98D00026B61 /* SearchDealerUseCase.swift */,
 			);
 			path = AddDealer;
 			sourceTree = "<group>";
@@ -2453,6 +2456,7 @@
 				B8BE4A0D2B90068E00876714 /* UserClassDetailView.swift in Sources */,
 				B89F2FAE2B91BBF5004DAEAB /* ProductDealerWithLocation.swift in Sources */,
 				B8BE49EE2B8D7D7800876714 /* TechnoGraphicsGateway.swift in Sources */,
+				B86083A02BD6B98D00026B61 /* SearchDealerUseCase.swift in Sources */,
 				B863DAAB2B8D0644003F2C3D /* MarketingGraphicView.swift in Sources */,
 				1742B37624D7B82C00C82D15 /* ShowingRepoList.swift in Sources */,
 				B863DABC2B8D09DE003F2C3D /* ShowingLanguageSetterView.swift in Sources */,

@@ -7,3 +7,10 @@
 //
 
 import Foundation
+protocol SearchDealerUseCaseType {
+    func searchDealer() -> Observable<AddDealer>
+}
+
+//struct SearchDealerUseCase: SearchDealerUseCaseType {
+//   
+//}

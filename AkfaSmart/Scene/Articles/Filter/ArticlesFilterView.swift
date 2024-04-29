@@ -69,6 +69,7 @@ struct ArticlesFilterView: View {
             dateFilter.optionalTo = nil
             dateFilter.isFiltered = true
             type.type = nil
+            type.name = nil
             navigationController.popViewController(animated: true)
         }, label: {
             Text("CLEAR".localizedString)

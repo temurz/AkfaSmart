@@ -24,3 +24,13 @@ extension AddDealerDomainUseCase {
         gateway.confirmSMSCode(dealer, code: code)
     }
 }
+
+extension AddDealerDomainUseCase {
+    func requestSMSCodeForActiveDealer(_ dealer: AddDealer) -> Observable<GetUserInfoResponse> {
+        return gateway.requestSMSCodeForActiveDealer(dealer)
+    }
+    
+    func confirmSMSCodeForActiveDealer(_ dealer: AddDealer, code: String) -> Observable<Bool> {
+        gateway.confirmSMSCodeForActiveDealer(dealer, code: code)
+    }
+}

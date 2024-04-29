@@ -16,6 +16,7 @@ struct CodeInputView: View {
     private let confirmRegisterTrigger = PassthroughSubject<Void,Never>()
     private let resendSMSTrigger = PassthroughSubject<Void,Never>()
     private let showMainView = PassthroughSubject<Void,Never>()
+    private let confirmActiveUserTrigger = PassthroughSubject<Void,Never>()
     
     @State var statusBarHeight: CGFloat = 0
     @State var username: String = AuthApp.shared.username?.makeStarsInsteadNumbersInUsername() ?? ""
@@ -60,6 +61,7 @@ struct CodeInputView: View {
                             .padding([.bottom,.horizontal])
                         TextField("SMS_CODE".localizedString, text: $input.code)
                             .multilineTextAlignment(.center)
+                            .keyboardType(.numberPad)
                             .frame(height: 48)
                             .background(Color(hex: "#F5F7FA"))
                             .cornerRadius(12)
@@ -118,6 +120,7 @@ struct CodeInputView: View {
                     }
                 }
                 .padding()
+                confirmActiveDealerView
             }
         }
         .alert(isPresented: $output.alert.isShowing) {
@@ -137,11 +140,59 @@ struct CodeInputView: View {
         }
     }
     
+    var confirmActiveDealerView: some View {
+        ZStack {
+            if output.showConfirmAlert {
+                Color.black.opacity(0.6).ignoresSafeArea(.all)
+                VStack {
+                    Text(String(format: NSLocalizedString("REACTIVATE_DEALER_ALERT_TEXT".localizedString, comment: ""), output.activeUsername ?? "***"))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    HStack(spacing: 12) {
+                        Button {
+                            output.showConfirmAlert = false
+                        } label: {
+                            Text("DISMISS".localizedString)
+                                .foregroundStyle(.red)
+                                .background(.clear)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 40)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .stroke(Color.gray, lineWidth: 0.5)
+                                }
+                                .padding()
+                        }
+                        Button {
+                            confirmActiveUserTrigger.send(())
+                            output.showConfirmAlert = false
+                        } label: {
+                            Text("ADD".localizedString)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 40)
+                                .foregroundColor(Color.white)
+                                .background(Color.red)
+                                .cornerRadius(12)
+                                .padding()
+                        }
+                    }
+                    
+                }
+                .frame(maxWidth: .infinity)
+                .background(Color.white)
+                .cornerRadius(8)
+                .padding(.horizontal)
+
+            }
+        }
+    }
+    
     init(viewModel: CodeInputViewModel) {
         let input = CodeInputViewModel.Input(
             confirmRegisterTrigger: confirmRegisterTrigger.asDriver(),
             resendSMSTrigger: resendSMSTrigger.asDriver(),
-            showMainViewTrigger: showMainView.asDriver()
+            showMainViewTrigger: showMainView.asDriver(),
+            confirmActiveUserTrigger: confirmActiveUserTrigger.asDriver()
         )
         output = viewModel.transform(input, cancelBag: cancelBag)
         self.input = input

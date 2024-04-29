@@ -11,6 +11,11 @@ protocol AddDealerGatewayType {
     func sendQRCode(_ qrCode: String) -> Observable<AddDealer>
     func requestSMSCode(_ dealer: AddDealer) -> Observable<Bool>
     func confirmSMSCode(_ dealer: AddDealer, code: String) -> Observable<Bool>
+    
+    func requestSMSCodeForActiveDealer(_ dealer: AddDealer) -> Observable<GetUserInfoResponse>
+    func confirmSMSCodeForActiveDealer(_ dealer: AddDealer, code: String) -> Observable<Bool>
+
+
 }
 
 struct AddDealerGateway: AddDealerGatewayType {
@@ -27,5 +32,15 @@ struct AddDealerGateway: AddDealerGatewayType {
     func confirmSMSCode(_ dealer: AddDealer, code: String) -> Observable<Bool> {
         let input = API.ConfirmSMSForAddDealerInput(dealer, code: code)
         return API.shared.confirmSMS_forAddDealer(input)
+    }
+    
+    func requestSMSCodeForActiveDealer(_ dealer: AddDealer) -> Observable<GetUserInfoResponse> {
+        let input = API.RequestSMSForAlreadyActiveDealer(dealer)
+        return API.shared.requestSMSForAlreadyActiveDealer(input)
+    }
+    
+    func confirmSMSCodeForActiveDealer(_ dealer: AddDealer, code: String) -> Observable<Bool> {
+        let input = API.ConfirmSMSForActiveDealerInput(dealer, code: code)
+        return API.shared.confirmSMS_forActiveDealer(input)
     }
 }

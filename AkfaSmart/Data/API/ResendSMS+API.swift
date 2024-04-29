@@ -32,7 +32,7 @@ extension API {
             var encoding: ParameterEncoding = URLEncoding.queryString
             var requireAccessToken = false
             switch reason {
-            case .dealer(let dealer):
+            case .dealer(let dealer, let activeUsername, let isActive):
                 params = [
                     "printableName": dealer.printableName ?? "",
                     "cid": dealer.cid ?? "",
