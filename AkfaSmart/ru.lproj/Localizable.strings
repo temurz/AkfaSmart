@@ -176,6 +176,8 @@
 "CREATE_NEW_PIN" = "Создать новый ПИН";
 "NEED_CAMERA_ALLOW" = "Нужно разрешение на использование камеры в настройках!";
 "OPEN_SETTINGS" = "Открыть настройки";
+"REACTIVATE_DEALER_ALERT_TEXT" = "Ushbu mijoz %@ raqamli foydalanuvchiga biriktirilgan. Tasdiqlash orqali oldingisini o'chirgan holda biriktirishingiz mumkin";
+"ADD" = "Добавить";
 //ERRORS
 "Not Found" = "Нет данных";
 "Invalid server response" = "Неверный ответ сервера";
@@ -183,3 +185,6 @@
 "mobile user details is not found!!!" = "Данные мобильного пользователя не найдены!!!";
 "Internal Server Error" = "Внутренняя Ошибка Сервера";
 "The username or password is wrong" = "Неправильный номер телефона или пароль";
+"such dealer client is active!!!" = "Этот дилер уже активен";
+"Bad Request" = "Неверный запрос";
+"Already Exist" = "Такой аккаунт уже существует";

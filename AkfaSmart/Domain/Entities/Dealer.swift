@@ -34,3 +34,11 @@ struct AddDealer: Codable {
     let printableName: String?
     let cid: Int?
 }
+
+struct GetUserInfoResponse: Decodable {
+    let username: String?
+    let imageUrl: String?
+    let firstName: String?
+    let lastName: String?
+    let middleName: String?
+}

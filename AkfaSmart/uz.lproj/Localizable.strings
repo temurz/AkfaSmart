@@ -179,6 +179,8 @@
 "CREATE_NEW_PIN" = "Yangi PIN yaratish";
 "NEED_CAMERA_ALLOW" = "Sozlamalarda kamera foydalanishga ruxsat bering!";
 "OPEN_SETTINGS" = "Sozlamalarni ochish";
+"REACTIVATE_DEALER_ALERT_TEXT" = "Ushbu mijoz %@ raqamli foydalanuvchiga biriktirilgan. Tasdiqlash orqali oldingisini o'chirgan holda biriktirishingiz mumkin";
+"ADD" = "Biriktirish";
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";
 "Invalid server response" = "Noto'g'ri server javobi";
@@ -186,3 +188,6 @@
 "mobile user details is not found!!!" = "Mobil foydalanuvchi ma'lumotlari topilmadi!!!";
 "Internal Server Error" = "Ichki Serverda Xatolik";
 "The username or password is wrong" = "Telefon raqam yoki parol noto\'g\'ri";
+"such dealer client is active!!!" = "Bu diler aktivlashtirilgan";
+"Bad Request" = "Noto'g'ri so'rov";
+"Already Exist" = "Bu akkaunt oldin ro'yxatdan o'tgan";

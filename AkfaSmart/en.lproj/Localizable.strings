@@ -174,10 +174,15 @@
 "CREATE_NEW_PIN" = "Create a new PIN";
 "NEED_CAMERA_ALLOW" = "Need to allow camera usage in settings";
 "OPEN_SETTINGS" = "Open settings";
+"REACTIVATE_DEALER_ALERT_TEXT" = "Ushbu mijoz %@ raqamli foydalanuvchiga biriktirilgan. Tasdiqlash orqali oldingisini o'chirgan holda biriktirishingiz mumkin";
+"ADD" = "Add";
 //ERRORS
+"Bad Request" = "Bad Request";
 "Not Found" = "Not found";
 "Invalid server response" = "Invalid server response";
 "Error" = "Error";
 "mobile user details is not found!!!" = "mobile user details is not found!!!";
 "Internal Server Error" = "Internal Server Error";
 "The username or password is wrong" = "The username or password is wrong";
+"such dealer client is active!!!" = "such dealer client is active";
+"Already Exist" = "Already exists";

@@ -37,6 +37,8 @@ extension API {
         static let addDealer_requestSMSCode = Base.BASE_URL + "/api/mobile/dealer_client/sms/send"
         static let addDealer_resendSMSCode = Base.BASE_URL + "/api/mobile/dealer_client/sms/resend"
         static let addDealer_confirmSMSCode = Base.BASE_URL + "/api/mobile/dealer_client/sms/confirm"
+        static let addDealer_requestSMSCodeForActiveDealer = Base.BASE_URL + "/api/mobile/dealer_client/sms/reset/active/mob-dealer-client/send-code"
+        static let addDealer_confirmSMSCodeForActiveDealer = Base.BASE_URL + "/api/mobile/dealer_client/sms/reset/active/mob-dealer-client"
 
         
         //MobileClass
