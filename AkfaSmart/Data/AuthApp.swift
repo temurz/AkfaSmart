@@ -114,3 +114,11 @@ extension String {
         return String(text)
     }
 }
+
+extension String {
+    func removeWhitespacesFromString() -> String {
+       let chr = self.components(separatedBy: .whitespaces)
+       let resString = chr.joined()
+       return resString
+    }
+}

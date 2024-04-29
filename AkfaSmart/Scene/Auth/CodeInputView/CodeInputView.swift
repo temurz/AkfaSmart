@@ -145,7 +145,7 @@ struct CodeInputView: View {
             if output.showConfirmAlert {
                 Color.black.opacity(0.6).ignoresSafeArea(.all)
                 VStack {
-                    Text(String(format: NSLocalizedString("REACTIVATE_DEALER_ALERT_TEXT".localizedString, comment: ""), output.activeUsername ?? "***"))
+                    Text(String(format: NSLocalizedString("REACTIVATE_DEALER_ALERT_TEXT".localizedString, comment: ""), output.activeUsername?.removeWhitespacesFromString().makeStarsInsteadNumbersInUsername() ?? "***"))
                         .multilineTextAlignment(.center)
                         .padding()
                     HStack(spacing: 12) {

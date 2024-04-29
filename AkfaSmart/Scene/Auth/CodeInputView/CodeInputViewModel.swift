@@ -58,7 +58,7 @@ extension CodeInputViewModel: ViewModel {
                 title = "FORGOT_PASSWORD".localizedString
             case let .dealer(dealer, activeUsername, isActive):
                 title = "ADD_DEALER".localizedString
-                username = dealer.phone?.makeStarsInsteadNumbersInUsername() ?? ""
+                username = dealer.phone?.removeWhitespacesFromString().makeStarsInsteadNumbersInUsername() ?? ""
                 self.dealer = dealer
                 self.activeUsername = activeUsername
                 self.isActive = isActive
