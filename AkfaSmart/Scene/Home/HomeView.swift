@@ -133,6 +133,10 @@ struct HomeView: View {
                         .frame(height: 16)
                 }
             }
+            .refreshable {
+                getDealersTrigger.send(())
+                getMobileClassInfoTrigger.send(())
+            }
         }
         .navigationTitle("")
         .onAppear {

@@ -82,6 +82,10 @@ struct SettingsView: View {
                     }
                 }
             }
+            .refreshable {
+                loadInitialSettings.send(())
+                getGeneralUserInfoTrigger.send(())
+            }
             .sheet(isPresented: $output.showImagePicker) {
                 ImagePicker(sourceType: output.imageChooserType == .library ? .photoLibrary : .camera, selectedImage: $output.imageData) {
                     uploadAvatarImageTrigger.send(())
