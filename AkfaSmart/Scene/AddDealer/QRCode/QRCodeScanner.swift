@@ -17,7 +17,7 @@ struct QRCodeScannerViewMain: View {
         // Create a QR code scanner view
         
         ZStack {
-            if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+            if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized || !UserDefaults.standard.bool(forKey: "askedCameraAccess") {
                 QRCodeScanner(result: $result) {
                     dismiss()
                 }
@@ -140,6 +140,7 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
         } else {
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] (granted: Bool) -> Void in
                 guard let self else { return }
+                UserDefaults.standard.setValue(true, forKey: "askedCameraAccess")
                if granted {
                    // User granted
                    self.setCamera(captureDevice)
