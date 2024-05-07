@@ -32,6 +32,9 @@ class MainViewRouter: ViewRouter {
     @Published var body: AnyView
     
     func route(selectedPageId: String) {
+        if self.selectedPageId == selectedPageId {
+            return
+        }
         self.selectedPageId = selectedPageId
         switch selectedPageId {
         case MainPage.home.rawValue:
