@@ -10,7 +10,7 @@ import Foundation
 
 struct NewsItemViewModel: Codable, Identifiable {
     let id: Int
-    let date: String?
+    let date: Int?
     let title: String?
     let shortContent: String?
     let htmlContent: String?

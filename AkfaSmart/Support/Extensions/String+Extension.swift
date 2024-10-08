@@ -7,6 +7,14 @@
 //
 
 import Foundation
+extension Date {
+    func convertToDateUS() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let result = dateFormatter.string(from: self)
+        return result
+    }
+}
 extension String {
     func convertToDateUS() -> String {
         let dateFormatter = DateFormatter()

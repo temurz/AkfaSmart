@@ -42,7 +42,7 @@ struct NewsDetailView: View {
                     .foregroundColor(Color.gray)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
-                Text(itemModel.date?.convertToDateUS() ?? "")
+                Text(Date(timeIntervalSince1970: TimeInterval(itemModel.date ?? 0)).convertToDateUS())
                     .font(.subheadline)
                     .foregroundColor(Color(hex: "#9DA8C2"))
                     .padding(6)

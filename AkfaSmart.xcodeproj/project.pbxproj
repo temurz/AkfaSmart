@@ -3027,7 +3027,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AkfaSmart/Preview Content\"";
-				DEVELOPMENT_TEAM = HW395M775M;
+				DEVELOPMENT_TEAM = B9QUW9Z84N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AkfaSmart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -3036,7 +3036,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = infoUz.AkfaSmartUz;
+				PRODUCT_BUNDLE_IDENTIFIER = infoUz.AkfaSmartUzCopy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CleanArchitecture/CleanArchitecture-Bridging-Header.h";
@@ -3055,7 +3055,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AkfaSmart/Preview Content\"";
-				DEVELOPMENT_TEAM = HW395M775M;
+				DEVELOPMENT_TEAM = B9QUW9Z84N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AkfaSmart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -3064,7 +3064,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = infoUz.AkfaSmartUz;
+				PRODUCT_BUNDLE_IDENTIFIER = infoUz.AkfaSmartUzCopy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CleanArchitecture/CleanArchitecture-Bridging-Header.h";

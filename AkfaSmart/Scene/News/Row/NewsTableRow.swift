@@ -43,7 +43,7 @@ struct NewsTableRow: View {
             .padding(.horizontal)
             
             Divider()
-            Text(item.date?.convertToDateUS() ?? "")
+            Text(Date(timeIntervalSince1970: TimeInterval(item.date ?? 0)).convertToDateUS())
                 .font(.subheadline)
                 .foregroundColor(Color(hex: "#9DA8C2"))
                 .padding(6)
@@ -70,5 +70,5 @@ struct NewsTableRow: View {
 }
 
 #Preview {
-    NewsTableRow(item: NewsItemViewModel(id: 0, date: "", title: "", shortContent: "", htmlContent: nil, imageUrl: nil))
+    NewsTableRow(item: NewsItemViewModel(id: 0, date: 0, title: "", shortContent: "", htmlContent: nil, imageUrl: nil))
 }
