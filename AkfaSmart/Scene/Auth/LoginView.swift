@@ -12,7 +12,6 @@ import Combine
 struct LoginView: View {
     @ObservedObject var input: LoginViewModel.Input
     @ObservedObject var output: LoginViewModel.Output
-    @State private var statusBarHeight: CGFloat = 0
     @State private var eyeImage = "eye"
     @State private var isShowingPassword = false
 
@@ -23,103 +22,106 @@ struct LoginView: View {
     
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            ZStack {
-                Color.red
-                    .ignoresSafeArea(edges: .top)
-                Color.white
-                    .cornerRadius(20, corners: [.topLeft, .topRight])
-                    .padding(.top, statusBarHeight > 0 ? statusBarHeight : 48)
-                    .ignoresSafeArea()
-                    .onAppear {
-                        if let statusBarManager = UIApplication.shared.windows.first?.windowScene?.statusBarManager {
-                            statusBarHeight = statusBarManager.statusBarFrame.height
-                        }
-                    }
-                VStack(alignment: .leading) {
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    Image("akfa_smart")
+                        .frame(width: 124, height: 44)
+                    Spacer()
+                }
+                .ignoresSafeArea()
+                Group {
                     HStack {
                         Spacer()
-                        Image("akfa_smart")
-                            .frame(width: 124, height: 44)
-                        Spacer()
-                    }
-                    .ignoresSafeArea()
-                    Group {
                         Text("LOGIN".localizedString)
                             .font(.title)
+                            .bold()
                             .padding(.top, 16)
-                        ZStack(alignment: .leading) {
-                            NumberPhoneMaskView(number: $input.username)
-                                .frame(height: 48)
-                                .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
-                                .background(Color(hex: "#F5F7FA"))
-                                .cornerRadius(12)
-                            Image("phone_icon")
-                                .resizable()
-                                .foregroundColor(.gray)
-                                .frame(width: 16, height: 16)
-                                .padding()
-                        }
-                        Text(self.output.usernameValidationMessage)
-                            .foregroundColor(.red)
-                            .font(.footnote)
-                        CustomSecureTextField(password: $input.password)
-                        .padding(.top)
-                        
-                        Text(self.output.passwordValidationMessage)
-                            .foregroundColor(.red)
-                            .font(.footnote)
-                        HStack {
-                            Spacer()
-                            Button("FORGOT_PASSWORD_QUESTION".localizedString) {
-                                showForgotPasswordTrigger.send(())
-                            }
-                            .foregroundColor(.black)
-                            Spacer()
-                        }
-                        Button() {
-                            self.loginTrigger.send(())
-                        } label: {
-                            Text("LOGIN".localizedString)
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 40)
-                                .foregroundColor(Color.white)
-                                .background(Color.red)
-                                .disabled(!self.output.isLoginEnabled)
-                                .cornerRadius(12)
-                                .padding(.top, 16)
-                        }
-                        
-                        
-                        HStack {
-                            Spacer()
-                            Button("REGISTRATION".localizedString) {
-                                self.showRegisterTrigger.send(())
-                            }
-                            .foregroundColor(Color(hex: "#51526C"))
-                            Spacer()
-                        }
-                        .padding()
+                        Spacer()
                     }
-                    .padding(.horizontal, 16)
-                    
+                    ZStack(alignment: .leading) {
+                        NumberPhoneMaskView(number: $input.username)
+                            .frame(height: 50)
+                            .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
+                            .background(Colors.textFieldLightGrayBackground)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(
+                                        self.output.usernameValidationMessage.isEmpty ? Colors.borderGrayColor : .red,
+                                        lineWidth: self.output.usernameValidationMessage.isEmpty ? 1 : 2)
+                            }
+                        Image("call")
+                            .resizable()
+                            .foregroundColor(.gray)
+                            .frame(width: 18, height: 18)
+                            .padding()
+                    }
+                    Text(self.output.usernameValidationMessage)
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                    CustomSecureTextField(password: $input.password)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(self.output.passwordValidationMessage.isEmpty ? Colors.borderGrayColor : .red, lineWidth: self.output.passwordValidationMessage.isEmpty ? 1 : 2)
+                        }
+                        .padding(.top)
+                    Text(self.output.passwordValidationMessage)
+                        .foregroundColor(.red)
+                        .font(.footnote)
                     HStack {
                         Spacer()
-                        Button("Ru") {
-                            AuthApp.shared.language = "ru"
-                            input.reload = true
+                        Button{
+                            showForgotPasswordTrigger.send(())
+                        } label: {
+                            Text("FORGOT_PASSWORD_QUESTION".localizedString)
+                                .font(.subheadline)
                         }
-                        Spacer()
-                        Button("Uz") {
+                        .foregroundColor(.black)
+                    }
+                    Button() {
+                        self.loginTrigger.send(())
+                    } label: {
+                        Text("LOGIN".localizedString)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .foregroundColor(Color.white)
+                            .background(Colors.customRedColor)
+                            .disabled(!self.output.isLoginEnabled)
+                            .cornerRadius(8)
+                    }
+                    .padding(.top, 24)
+                    Button {
+                        self.showRegisterTrigger.send(())
+                    } label: {
+                        Text("REGISTRATION".localizedString)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .foregroundColor(Color.black)
+                            .background(Colors.buttonBackgroundGrayColor)
+                            .cornerRadius(8)
+                    }
+                    .padding(.top, 8)
+                }
+                .padding(.horizontal, 16)
+                Spacer()
+                HStack {
+                    Spacer()
+                    VStack(spacing: 4) {
+                        Button("O'zbekcha") {
                             AuthApp.shared.language = "uz"
                             input.reload = true
                         }
-                        Spacer()
+                        .foregroundStyle(.black)
+                        Button("Русский") {
+                            AuthApp.shared.language = "ru"
+                            input.reload = true
+                        }
+                        .foregroundStyle(.black)
                     }
                     Spacer()
                 }
-                .padding()
             }
-            
+            .padding()
         }
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
@@ -162,63 +164,4 @@ public struct RoundedCorner: Shape {
     }
 }
 
-struct CustomPhoneNumberTextField: View {
-    @Binding var text: String
-    var body: some View {
-        TextField("", text: $text)
-    }
-}
 
-struct CustomSecureTextField: View {
-    @State private var isShowingPassword: Bool = false
-    @State private var eyeImage: String = "eye"
-    
-    let placeholder: String
-    @Binding var password: String
-    
-    var body: some View {
-        ZStack(alignment: .leading) {
-            Group {
-                if isShowingPassword {
-                    TextField(placeholder, text: $password)
-                        .padding(.horizontal)
-                }else {
-                    SecureField(placeholder, text: $password)
-                        .padding(.horizontal)
-                }
-            }
-            .frame(height: 48)
-                .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
-                .background(Color(hex: "#F5F7FA"))
-                .cornerRadius(12)
-            
-            
-            
-            HStack(alignment: .center) {
-                Image("key_square")
-                    .resizable()
-                    .foregroundColor(.gray)
-                    .frame(width: 18, height: 18)
-                    .padding()
-                Spacer()
-                
-                Image(systemName: eyeImage)
-                    .resizable()
-                    .tint(.gray)
-                    .frame(width: 20, height: 16)
-                    .padding()
-                    .onTapGesture {
-                        isShowingPassword.toggle()
-                        eyeImage = isShowingPassword ? "eye.slash" : "eye"
-                    }
-                
-            }
-        }
-        .frame(height: 48)
-    }
-    
-    init(placeholder: String = "PASSWORD".localizedString, password: Binding<String>) {
-        self.placeholder = placeholder
-        self._password = password
-    }
-}

@@ -18,7 +18,6 @@ struct CodeInputView: View {
     private let showMainView = PassthroughSubject<Void,Never>()
     private let confirmActiveUserTrigger = PassthroughSubject<Void,Never>()
     
-    @State var statusBarHeight: CGFloat = 0
     @State var username: String = AuthApp.shared.username?.makeStarsInsteadNumbersInUsername() ?? ""
 //    @State private var timeRemaining = 120
     @State var duration = "2:00"
@@ -29,17 +28,6 @@ struct CodeInputView: View {
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             ZStack {
-                Color.red
-                    .ignoresSafeArea(edges: .top)
-                Color.white
-                    .cornerRadius(20, corners: [.topLeft, .topRight])
-                    .padding(.top, statusBarHeight > 0 ? statusBarHeight : 48)
-                    .ignoresSafeArea()
-                    .onAppear {
-                        if let statusBarManager = UIApplication.shared.windows.first?.windowScene?.statusBarManager {
-                            statusBarHeight = statusBarManager.statusBarFrame.height
-                        }
-                    }
                 VStack(alignment: .leading) {
                     HStack {
                         Spacer()
@@ -52,58 +40,74 @@ struct CodeInputView: View {
                     VStack(alignment: .leading, spacing: 16) {
                         Text(output.title)
                             .font(.title)
+                            .bold()
+                            .frame(maxWidth: .infinity, alignment: .center)
                             .padding(.horizontal)
-                    
+                        
                         Text(String(format: NSLocalizedString("CODE_SENT_TO_PHONE".localizedString, comment: ""), output.username)
-                            )
-                            .foregroundColor(Color(hex: "#51526C"))
-                            .font(.system(size: 17))
-                            .padding([.bottom,.horizontal])
-                        TextField("SMS_CODE".localizedString, text: $input.code)
-                            .multilineTextAlignment(.center)
-                            .keyboardType(.numberPad)
-                            .frame(height: 48)
-                            .background(Color(hex: "#F5F7FA"))
-                            .cornerRadius(12)
-                            .padding([.top, .horizontal])
-                            .onChange(of: input.code) { newValue in
-                                output.isConfirmEnabled = !newValue.isEmpty
-                            }
-                        Text(output.codeValidationMessage)
-                            .foregroundColor(.red)
-                            .font(.footnote)
-                            .padding(.horizontal)
+                        )
+                        .foregroundColor(Colors.textDescriptionColor)
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.bottom)
+                        VStack(spacing: 0) {
+                            TextField("SMS_CODE".localizedString, text: $input.code)
+                                .multilineTextAlignment(.center)
+                                .keyboardType(.numberPad)
+                                .frame(height: 50)
+                                .background(Colors.textFieldMediumGrayBackground)
+                                .overlay{
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(
+                                            self.output.codeValidationMessage.isEmpty ? Colors.borderGrayColor : .red,
+                                            lineWidth: self.output.codeValidationMessage.isEmpty ? 1 : 2)
+                                }
+                                .padding(.top)
+                                .onChange(of: input.code) { newValue in
+                                    output.isConfirmEnabled = !newValue.isEmpty
+                                }
+                            Text(output.codeValidationMessage)
+                                .foregroundColor(.red)
+                                .font(.footnote)
+                                .padding(.horizontal)
+                            Text(duration)
+                                .font(.system(size: 14))
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundColor(Colors.textSteelColor)
+                        }
                     }
-                    HStack {
-                        Text("RESEND_CODE_IN".localizedString)
-                            .font(.system(size: 14))
-                            .foregroundColor(Color(hex: "#51526C"))
-                        Spacer()
-                        Text(duration)
-                            .font(.system(size: 14))
-                            .foregroundColor(Color(hex: "#51526C"))
-                            .onTapGesture {
+                    Spacer()
+                    if duration.isEmpty {
+                        HStack {
+                            Spacer()
+                            Button {
                                 if output.timeRemaining == 0 {
                                     resendSMSTrigger.send(())
                                 }
+                            } label: {
+                                Text("RESEND_SMS".localizedString)
+                                    .font(.subheadline)
+                                    .bold()
+                                    .foregroundColor(Colors.customRedColor)
+                                    
                             }
-                    }
-                    .padding()
-                    Spacer()
-                    HStack {
-                        Button {
-                            confirmRegisterTrigger.send(())
-                        } label: {
-                            Text("CONFIRM".localizedString)
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 40)
-                                .foregroundColor(.white)
-                                .background(!input.code.isEmpty && output.timeRemaining > 0 ? Color.red : .gray)
-                                .cornerRadius(12)
+                            Spacer()
                         }
-                        .allowsHitTesting(output.isConfirmEnabled && output.timeRemaining > 0)
+                     
                     }
-                    .padding()
+                    Button {
+                        confirmRegisterTrigger.send(())
+                    } label: {
+                        Text("CONFIRM".localizedString)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .foregroundColor(.white)
+                            .background(!input.code.isEmpty && output.timeRemaining > 0 ? Colors.customRedColor : .gray)
+                            .cornerRadius(8)
+                    }
+                    .allowsHitTesting(output.isConfirmEnabled && output.timeRemaining > 0)
+                    
                     switch output.reason {
                     case .dealer:
                         Button() {
@@ -139,7 +143,8 @@ struct CodeInputView: View {
                 output.timeRemaining -= 1
                 duration = output.timeRemaining.makeMinutesAndSeconds()
             }else {
-                duration = "RESEND_SMS".localizedString
+                duration = ""
+                
             }
         }
     }
@@ -162,7 +167,7 @@ struct CodeInputView: View {
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 40)
                                 .overlay {
-                                    RoundedRectangle(cornerRadius: 12)
+                                    RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.gray, lineWidth: 0.5)
                                 }
                                 .padding()

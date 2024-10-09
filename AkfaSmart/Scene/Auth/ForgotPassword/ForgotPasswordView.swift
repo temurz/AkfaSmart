@@ -18,71 +18,63 @@ struct ForgotPasswordView: View {
     
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            ZStack {
-                Color.red
-                    .ignoresSafeArea(edges: .top)
-                Color.white
-                    .cornerRadius(20, corners: [.topLeft, .topRight])
-                    .padding(.top, statusBarHeight > 0 ? statusBarHeight : 48)
-                    .ignoresSafeArea()
-                    .onAppear {
-                        if let statusBarManager = UIApplication.shared.windows.first?.windowScene?.statusBarManager {
-                            statusBarHeight = statusBarManager.statusBarFrame.height
-                        }
-                    }
-                VStack(alignment: .leading) {
-                    HStack {
-                        Spacer()
-                        Image("akfa_smart")
-                            .frame(width: 124, height: 44)
-                        Spacer()
-                    }
-                    .ignoresSafeArea()
-                    .padding(.bottom)
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("FORGOT_PASSWORD_QUESTION".localizedString)
-                            .font(.title)
-                            .padding(.horizontal)
-                    
-                        Text("ENTER_PHONE_NUMBER_RESET_PASSWORD".localizedString)
-                            .foregroundColor(Color(hex: "#51526C"))
-                            .font(.system(size: 17))
-                            .padding([.bottom,.horizontal])
-                        ZStack(alignment: .leading) {
-                            NumberPhoneMaskView(number: $input.phoneNumber)
-                                .frame(height: 48)
-                                .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
-                                .background(Color(hex: "#F5F7FA"))
-                                .cornerRadius(12)
-                            Image("phone_icon")
-                                .resizable()
-                                .foregroundColor(.gray)
-                                .frame(width: 16, height: 16)
-                                .padding()
-                        }
-                        Text(output.usernameValidationMessage)
-                            .foregroundColor(.red)
-                            .font(.footnote)
-                    }
-                    
+            VStack(alignment: .leading) {
+                HStack {
                     Spacer()
-                    HStack {
-                        Button {
-                            confirmPhoneNumberTrigger.send(())
-                        }label: {
-                            Text("CONFIRM".localizedString)
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 40)
-                                .foregroundColor(.white)
-                                .background(Color.red)
-                                .cornerRadius(12)
-                        }
-                    }
-                    .padding()
-                    
+                    Image("akfa_smart")
+                        .frame(width: 124, height: 44)
+                    Spacer()
                 }
-                .padding()
+                .ignoresSafeArea()
+                .padding(.bottom)
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("FORGOT_PASSWORD_QUESTION".localizedString)
+                        .font(.title)
+                        .bold()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.horizontal)
+                    
+                    Text("ENTER_PHONE_NUMBER_RESET_PASSWORD".localizedString)
+                        .font(.headline)
+                        .foregroundColor(Colors.textDescriptionColor)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.bottom)
+                    ZStack(alignment: .leading) {
+                        NumberPhoneMaskView(number: $input.phoneNumber)
+                            .frame(height: 50)
+                            .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
+                            .background(Colors.textFieldLightGrayBackground)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(
+                                        self.output.usernameValidationMessage.isEmpty ? Colors.borderGrayColor : .red,
+                                        lineWidth: self.output.usernameValidationMessage.isEmpty ? 1 : 2)
+                            }
+                        Image("call")
+                            .resizable()
+                            .foregroundColor(.gray)
+                            .frame(width: 18, height: 18)
+                            .padding()
+                    }
+                    Text(output.usernameValidationMessage)
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                }
+                
+                Spacer()
+                Button {
+                    confirmPhoneNumberTrigger.send(())
+                }label: {
+                    Text("CONFIRM".localizedString)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .foregroundColor(.white)
+                        .background(Colors.customRedColor)
+                        .cornerRadius(8)
+                }
             }
+            .padding()
         }
         .alert(isPresented: $output.alert.isShowing) {
             Alert(

@@ -11,7 +11,6 @@ import Combine
 struct RegisterView: View {
     @ObservedObject var input: RegisterViewModel.Input
     @ObservedObject var output: RegisterViewModel.Output
-    @State private var statusBarHeight: CGFloat = 0
     
     private let cancelBag = CancelBag()
     private let registerTrigger = PassthroughSubject<Void, Never>()
@@ -19,83 +18,93 @@ struct RegisterView: View {
     
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            ZStack {
-                Color.red
-                    .ignoresSafeArea(edges: .top)
-                Color.white
-                    .cornerRadius(20, corners: [.topLeft, .topRight])
-                    .padding(.top, statusBarHeight > 0 ? statusBarHeight : 48)
-                    .ignoresSafeArea()
-                    .onAppear {
-                        if let statusBarManager = UIApplication.shared.windows.first?.windowScene?.statusBarManager {
-                            statusBarHeight = statusBarManager.statusBarFrame.height
-                        }
-                    }
-                VStack(alignment: .leading) {
-                    HStack {
-                        Spacer()
-                        Image("akfa_smart")
-                            .frame(width: 124, height: 44)
-                        Spacer()
-                    }
-                    .ignoresSafeArea()
-                    Group {
-                        Text("REGISTER".localizedString)
-                            .font(.title)
-                            .padding(.top, 16)
-                        ZStack(alignment: .leading) {
-                            NumberPhoneMaskView(number: $input.username)
-                                .frame(height: 48)
-                                .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
-                                .background(Color(hex: "#F5F7FA"))
-                                .cornerRadius(12)
-                            Image("phone_icon")
-                                .resizable()
-                                .foregroundColor(.gray)
-                                .frame(width: 16, height: 16)
-                                .padding()
-                        }
-                        Text(self.output.usernameValidationMessage)
-                            .foregroundColor(.red)
-                            .font(.footnote)
-                        CustomSecureTextField(password: $input.password)
-                        Text(self.output.passwordValidationMessage)
-                            .foregroundColor(.red)
-                            .font(.footnote)
-                        CustomSecureTextField(placeholder: "CONFIRM_PASSWORD".localizedString, password: $input.repeatedPassword)
-                        Text(self.output.repeatedPasswordValidationMessage)
-                            .foregroundColor(.red)
-                            .font(.footnote)
-                        
-                        Button {
-                            self.registerTrigger.send(())
-                        } label: {
-                            Text("REGISTER".localizedString)
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 40)
-                                .foregroundColor(Color.white)
-                                .background(Color.red)
-                                .disabled(!self.output.isRegisterEnabled)
-                                .cornerRadius(12)
-                                .padding(.top, 16)
-                        }
-                        
-                        HStack {
-                            Spacer()
-                            Button("ALREADY_REGISTERED".localizedString) {
-                                self.showLoginTrigger.send(Void())
-                            }
-                            .foregroundColor(Color(hex: "#51526C"))
-                            Spacer()
-                        }
-                        .padding()
-                    }
-                    .padding(.horizontal, 16)
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    Image("akfa_smart")
+                        .frame(width: 124, height: 44)
                     Spacer()
                 }
-                .padding()
+                .ignoresSafeArea()
+                Group {
+                    HStack {
+                        Spacer()
+                        Text("REGISTER".localizedString)
+                            .font(.title)
+                            .bold()
+                            .padding(.top, 16)
+                        Spacer()
+                    }
+                    
+                    ZStack(alignment: .leading) {
+                        NumberPhoneMaskView(number: $input.username)
+                            .frame(height: 50)
+                            .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
+                            .background(Colors.textFieldLightGrayBackground)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(
+                                        self.output.usernameValidationMessage.isEmpty ? Colors.borderGrayColor : .red,
+                                        lineWidth: self.output.usernameValidationMessage.isEmpty ? 1 : 2)
+                            }
+                        Image("call")
+                            .resizable()
+                            .foregroundColor(.gray)
+                            .frame(width: 16, height: 16)
+                            .padding()
+                    }
+                    Text(self.output.usernameValidationMessage)
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                    CustomSecureTextField(password: $input.password)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(
+                                    self.output.passwordValidationMessage.isEmpty ? Colors.borderGrayColor : .red,
+                                    lineWidth: self.output.passwordValidationMessage.isEmpty ? 1 : 2)
+                        }
+                    Text(self.output.passwordValidationMessage)
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                    CustomSecureTextField(placeholder: "CONFIRM_PASSWORD".localizedString, password: $input.repeatedPassword)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(
+                                    self.output.repeatedPasswordValidationMessage.isEmpty ? Colors.borderGrayColor : .red,
+                                    lineWidth: self.output.repeatedPasswordValidationMessage.isEmpty ? 1 : 2)
+                        }
+                    Text(self.output.repeatedPasswordValidationMessage)
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                    
+                    Button {
+                        self.registerTrigger.send(())
+                    } label: {
+                        Text("REGISTER".localizedString)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .foregroundColor(Color.white)
+                            .background(Colors.customRedColor)
+                            .disabled(!self.output.isRegisterEnabled)
+                            .cornerRadius(8)
+                    }
+                    .padding(.top, 16)
+                    Button {
+                        self.showLoginTrigger.send(Void())
+                    } label: {
+                        Text("ALREADY_REGISTERED".localizedString)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .foregroundColor(Color.black)
+                            .background(Colors.buttonBackgroundGrayColor)
+                            .cornerRadius(8)
+                    }
+                    .padding(.top, 8)
+                }
+                .padding(.horizontal, 16)
+                Spacer()
             }
-            
+            .padding()
         }
         .alert(isPresented: $output.alert.isShowing) {
             Alert(

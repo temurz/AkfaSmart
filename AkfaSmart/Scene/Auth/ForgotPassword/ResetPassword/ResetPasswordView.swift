@@ -14,38 +14,48 @@ struct ResetPasswordView: View {
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            CustomHeaderView {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("RESET_PASSWORD".localizedString)
-                        .font(.title)
-                    Text("CREATE_PASSWORD".localizedString)
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                    
-                    CustomSecureTextField(placeholder: "NEW_PASSWORD".localizedString,
-                                          password: $output.password)
-                    Text(output.passwordValidationMessage)
-                        .font(.footnote)
-                        .foregroundColor(.red)
-                    CustomSecureTextField(placeholder: "CONFIRM_NEW_PASSWORD".localizedString,
-                        password: $output.repeatedPassword)
-                    Text(output.repeatedPasswordValidationMessage)
-                        .font(.footnote)
-                        .foregroundColor(.red)
-                    Spacer()
-                    Button {
-                        resetPasswordTrigger.send(())
-                    } label: {
-                        Text("RESET_PASSWORD".localizedString)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 40)
-                            .foregroundColor(.white)
-                            .background(Color.red)
-                            .cornerRadius(12)
-                    }
+            VStack(alignment: .leading, spacing: 12) {
+                Text("RESET_PASSWORD".localizedString)
+                    .font(.title)
+                    .bold()
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Text("CREATE_PASSWORD".localizedString)
+                    .font(.headline)
+                    .foregroundColor(Colors.textDescriptionColor)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                
+                CustomSecureTextField(placeholder: "NEW_PASSWORD".localizedString,
+                                      password: $output.password)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(self.output.passwordValidationMessage.isEmpty ? Colors.borderGrayColor : .red, lineWidth: self.output.passwordValidationMessage.isEmpty ? 1 : 2)
                 }
-                .padding()
+                Text(output.passwordValidationMessage)
+                    .font(.footnote)
+                    .foregroundColor(.red)
+                CustomSecureTextField(placeholder: "CONFIRM_NEW_PASSWORD".localizedString,
+                                      password: $output.repeatedPassword)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(self.output.repeatedPasswordValidationMessage.isEmpty ? Colors.borderGrayColor : .red, lineWidth: self.output.repeatedPasswordValidationMessage.isEmpty ? 1 : 2)
+                }
+                Text(output.repeatedPasswordValidationMessage)
+                    .font(.footnote)
+                    .foregroundColor(.red)
+                Spacer()
+                Button {
+                    resetPasswordTrigger.send(())
+                } label: {
+                    Text("RESET_PASSWORD".localizedString)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .foregroundColor(.white)
+                        .background(Color.red)
+                        .cornerRadius(8)
+                }
             }
+            .padding()
         }
         .alert(isPresented: $output.alert.isShowing) {
             Alert(title: Text(output.alert.title),

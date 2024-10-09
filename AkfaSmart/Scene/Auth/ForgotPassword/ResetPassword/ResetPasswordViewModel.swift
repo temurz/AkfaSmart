@@ -48,7 +48,7 @@ extension ResetPasswordViewModel: ViewModel {
             .CombineLatest(output.$repeatedPassword, input.resetPasswordTrigger)
             .map { $0.0 }
             .map {
-                $0 == output.password
+                $0 == output.password && !$0.isEmpty
             }
         
         repeatedPasswordValidation

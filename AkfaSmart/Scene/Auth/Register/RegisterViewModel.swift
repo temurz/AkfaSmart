@@ -71,7 +71,7 @@ extension RegisterViewModel: ViewModel {
             .CombineLatest(input.$repeatedPassword, input.registerTrigger)
             .map { $0.0 }
             .map {
-                $0 == input.password
+                $0 == input.password && !$0.isEmpty
             }
         
         repeatedPasswordValidation

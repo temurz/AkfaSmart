@@ -321,6 +321,8 @@
 		B87ED2072B7A28E900EB5139 /* SplashViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2062B7A28E900EB5139 /* SplashViewNavigator.swift */; };
 		B87ED2092B7A296400EB5139 /* SplashViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2082B7A296400EB5139 /* SplashViewAssembler.swift */; };
 		B87ED20C2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED20B2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift */; };
+		B895A4752CB5FDE000E51FF0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A4742CB5FDE000E51FF0 /* Colors.swift */; };
+		B895A4772CB5FFC500E51FF0 /* CustomSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895A4762CB5FFC500E51FF0 /* CustomSecureTextField.swift */; };
 		B89F2F732B9021B3004DAEAB /* SeriesAndAmountRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F2F722B9021B3004DAEAB /* SeriesAndAmountRow.swift */; };
 		B89F2F752B902334004DAEAB /* AdditionalClassDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F2F742B902334004DAEAB /* AdditionalClassDetailRow.swift */; };
 		B89F2F782B90DA6C004DAEAB /* PurchaseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89F2F772B90DA6C004DAEAB /* PurchaseHistoryView.swift */; };
@@ -771,6 +773,8 @@
 		B87ED2062B7A28E900EB5139 /* SplashViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewNavigator.swift; sourceTree = "<group>"; };
 		B87ED2082B7A296400EB5139 /* SplashViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewAssembler.swift; sourceTree = "<group>"; };
 		B87ED20B2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMaskPhone.swift; sourceTree = "<group>"; };
+		B895A4742CB5FDE000E51FF0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B895A4762CB5FFC500E51FF0 /* CustomSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureTextField.swift; sourceTree = "<group>"; };
 		B89F2F722B9021B3004DAEAB /* SeriesAndAmountRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesAndAmountRow.swift; sourceTree = "<group>"; };
 		B89F2F742B902334004DAEAB /* AdditionalClassDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalClassDetailRow.swift; sourceTree = "<group>"; };
 		B89F2F772B90DA6C004DAEAB /* PurchaseHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryView.swift; sourceTree = "<group>"; };
@@ -958,6 +962,7 @@
 				17DCF1B824BF01ED00D970B4 /* Publisher+.swift */,
 				176BAA4724D130B800324D3C /* Bindable.swift */,
 				17A5B1F524D81561004BD209 /* GenericSubscriber.swift */,
+				B895A4742CB5FDE000E51FF0 /* Colors.swift */,
 			);
 			path = Architecture;
 			sourceTree = "<group>";
@@ -1337,6 +1342,7 @@
 				1787233B24BD556E00D90F8E /* LoginUseCase.swift */,
 				1787233D24BD556E00D90F8E /* LoginViewModel.swift */,
 				176BAA5424D158BC00324D3C /* LoginView.swift */,
+				B895A4762CB5FFC500E51FF0 /* CustomSecureTextField.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -2585,6 +2591,7 @@
 				B80331612BA190350019ACA5 /* EditTechnographicsUseCase.swift in Sources */,
 				B8DAD2512BAABBDA00857140 /* SingleCodeView.swift in Sources */,
 				B8E192A52B9B19C60013B148 /* PurchaseDetailViewRow.swift in Sources */,
+				B895A4772CB5FFC500E51FF0 /* CustomSecureTextField.swift in Sources */,
 				B863DAC22B8D0A21003F2C3D /* ShowingProductGraphics.swift in Sources */,
 				B87ED2072B7A28E900EB5139 /* SplashViewNavigator.swift in Sources */,
 				B80331722BA1E0330019ACA5 /* HRGraphicsEditView.swift in Sources */,
@@ -2662,6 +2669,7 @@
 				B8BE4A022B8E3FAB00876714 /* MarketingGraphicsViewUseCase.swift in Sources */,
 				1734926524C59D2A0014F87E /* AppError.swift in Sources */,
 				B866A98B2B71940200202C9F /* HomeViewUseCase.swift in Sources */,
+				B895A4752CB5FDE000E51FF0 /* Colors.swift in Sources */,
 				17A5B1F224D804DA004BD209 /* UIViewController+.swift in Sources */,
 				1787234A24BD560500D90F8E /* MainNavigator.swift in Sources */,
 				1781CF4024BD8FB8004ED1C6 /* ProductDetailAssembler.swift in Sources */,
@@ -3030,7 +3038,7 @@
 				DEVELOPMENT_TEAM = B9QUW9Z84N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AkfaSmart/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3058,7 +3066,7 @@
 				DEVELOPMENT_TEAM = B9QUW9Z84N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AkfaSmart/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

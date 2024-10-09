@@ -10,24 +10,12 @@ import SwiftUI
 import Combine
 struct WelcomeView: View {
     let output: WelcomeViewModel.Output
-    @State private var statusBarHeight: CGFloat = 0
     private let showDealerViewTrigger = PassthroughSubject<Void,Never>()
     private let showMainView = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     
     var body: some View {
         ZStack {
-            Color.red
-                .ignoresSafeArea(edges: .top)
-            Color.white
-                .cornerRadius(20, corners: [.topLeft, .topRight])
-                .padding(.top, statusBarHeight > 0 ? statusBarHeight : 48)
-                .ignoresSafeArea()
-                .onAppear {
-                    if let statusBarManager = UIApplication.shared.windows.first?.windowScene?.statusBarManager {
-                        statusBarHeight = statusBarManager.statusBarFrame.height
-                    }
-                }
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Spacer()

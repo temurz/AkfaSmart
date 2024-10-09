@@ -12,22 +12,9 @@ struct SplashView: View {
     let output: SplashViewModel.Output
     private let loadViewsTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
-    @State var statusBarHeight: CGFloat = 0
+    
     var body: some View {
         ZStack {
-            Color.red
-                .ignoresSafeArea(edges: .top)
-            Color.white
-                .cornerRadius(20, corners: [.topLeft, .topRight])
-                .padding(.top, statusBarHeight > 0 ? statusBarHeight : 48)
-                .ignoresSafeArea()
-                .onAppear {
-                    if let statusBarManager = UIApplication.shared.windows.first?.windowScene?.statusBarManager {
-                        statusBarHeight = statusBarManager.statusBarFrame.height
-                    }
-                }
-            
-            
             VStack {
                 Group {
                     Image("akfa_smart")
