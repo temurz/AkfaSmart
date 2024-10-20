@@ -28,7 +28,7 @@ struct TabBarView<Router>: View where Router: ViewRouter {
     @StateObject var viewRouter: Router
     
     private let cornerRadius: CGFloat = 16
-    private let height: CGFloat = 95
+    private let height: CGFloat = 120
     private let shadowRadius: CGFloat = 16
     
     private let prominentItemWidth: CGFloat = 70
@@ -50,8 +50,8 @@ struct TabBarView<Router>: View where Router: ViewRouter {
                                        tabBarItem: self.viewRouter.pages[idx],
                                        defaultColor: .tabBarItemDefaultTintColor,
                                        selectedColor: .tabBarItemSelectedTintColor,
-                                       width: 24,
-                                       height: 24,
+                                       width: 32,
+                                       height: 32,
                                        font: .caption2)
                             .frame(width: geo.size.width/6)
                     }
@@ -68,8 +68,8 @@ struct TabBarView<Router>: View where Router: ViewRouter {
                                    tabBarItem: self.viewRouter.pages[idx],
                                    defaultColor: .tabBarItemDefaultTintColor,
                                    selectedColor: .tabBarItemSelectedTintColor,
-                                   width: 24,
-                                   height: 24,
+                                   width: 32,
+                                   height: 32,
                                    font: .caption2)
                     .frame(width: geo.size.width/6)
                 }

@@ -22,11 +22,11 @@ class MainViewRouter: ViewRouter {
     let assembler: Assembler
     
     
-    var pages: [TabBarItem] = [TabBarItem(imageName: "house", title: "HOME".localizedString, id: MainPage.home.rawValue),
-                               TabBarItem(imageName: "square.stack.3d.up", title: "ARTICLES".localizedString, id: MainPage.catalog.rawValue),
-                               TabBarItem(imageName: "plus.app", title: "SEARCH".localizedString, id: MainPage.add.rawValue),
-                               TabBarItem(imageName: "doc.plaintext", title: "NEWS".localizedString, id: MainPage.news.rawValue),
-                               TabBarItem(imageName: "gearshape", title: "SETTINGS_TITLE".localizedString, id: MainPage.settings.rawValue)]
+    var pages: [TabBarItem] = [TabBarItem(imageName: "home_tab_icon", title: "HOME".localizedString, id: MainPage.home.rawValue),
+                               TabBarItem(imageName: "catalog_tab_icon", title: "ARTICLES".localizedString, id: MainPage.catalog.rawValue),
+                               TabBarItem(imageName: "search_tab_icon", title: "SEARCH".localizedString, id: MainPage.add.rawValue),
+                               TabBarItem(imageName: "news_tab_icon", title: "NEWS".localizedString, id: MainPage.news.rawValue),
+                               TabBarItem(imageName: "settings_tab_icon", title: "SETTINGS_TITLE".localizedString, id: MainPage.settings.rawValue)]
     
     @Published var selectedPageId: String = MainPage.home.rawValue
     @Published var body: AnyView

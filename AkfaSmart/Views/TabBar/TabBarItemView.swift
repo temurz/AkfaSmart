@@ -20,8 +20,12 @@ struct TabBarItemView<Router>: View where Router: ViewRouter{
   let font : Font
   
   private var displayColor: Color {
-    selected ? selectedColor : defaultColor
+      selected ? .white : defaultColor
   }
+    
+    private var displayBackgroundColor: Color {
+        selected ? selectedColor : .clear
+    }
   
   private var selected: Bool {
       viewRouter.selectedPageId == tabBarItem.id
@@ -31,15 +35,18 @@ struct TabBarItemView<Router>: View where Router: ViewRouter{
         VStack {
 //            Spacer()
             Group {
-                Image(systemName: tabBarItem.imageName)
+                Image(tabBarItem.imageName)
                     .resizable()
                     .renderingMode(.template)
                     .foregroundColor(displayColor)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: width, height: height)
+                    .background(displayBackgroundColor)
+                    .cornerRadius(10)
+                    .shadow(color: selected ? selectedColor.opacity(0.5) : .clear, radius: 1, x: 0, y: 1)
                 Text(tabBarItem.title)
                     .font(font)
-                    .foregroundColor(displayColor)
+                    .foregroundColor(defaultColor)
             }
             Spacer()
         }
