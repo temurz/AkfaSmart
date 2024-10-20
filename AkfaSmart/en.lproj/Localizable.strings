@@ -176,6 +176,9 @@
 "OPEN_SETTINGS" = "Open settings";
 "REACTIVATE_DEALER_ALERT_TEXT" = "This client is attached to digital user %@.\nYou can attach the previous one by deleting and confirming it.";
 "ADD" = "Add";
+"ALL_LOWERCASED" = "all";
+
+
 //ERRORS
 "Bad Request" = "Bad Request";
 "Not Found" = "Not found";

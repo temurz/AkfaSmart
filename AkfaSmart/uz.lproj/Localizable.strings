@@ -181,6 +181,9 @@
 "OPEN_SETTINGS" = "Sozlamalarni ochish";
 "REACTIVATE_DEALER_ALERT_TEXT" = "Ushbu mijoz %@ raqamli foydalanuvchiga biriktirilgan. Tasdiqlash orqali oldingisini o'chirgan holda biriktirishingiz mumkin";
 "ADD" = "Biriktirish";
+"ALL_LOWERCASED" = "barchasi";
+
+
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";
 "Invalid server response" = "Noto'g'ri server javobi";
