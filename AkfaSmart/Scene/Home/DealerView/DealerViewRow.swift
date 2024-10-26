@@ -11,143 +11,77 @@ import SwiftUI
 struct DealerViewRow: View {
     var width: CGFloat
     var model: Dealer
-    var isBalanceVisible: Bool
-    @Binding var totalOfMonth: Double
-    @Binding var totalOfYear: Double
-    var openPurchases: ((Int) -> ())
-    var openPayments: ((Int) -> ())
+    var addRow: Bool = false
+    
+    init(width: CGFloat, model: Dealer) {
+        self.width = width
+        self.model = model
+    }
+    
+    init(addRow: Bool, width: CGFloat) {
+        self.addRow = addRow
+        self.width = width
+        self.model = Dealer(dealerId: nil, dealerClientCid: nil, name: nil, clientName: nil, balance: 0, purchaseForMonth: 0, purchaseForYear: 0)
+    }
     
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                VStack {
-                    VStack {
-                        HStack {
-                            Label("DEALER".localizedString, image: "account_circle")
-                                .foregroundColor(Color(hex: "#9DA8C2"))
-                                .font(.subheadline)
-                            Spacer()
-                            Text(model.name ?? " ")
-                                .foregroundColor(Color(hex: "#51526C"))
-                                .font(.headline)
-                        }
-                        
-                        HStack {
-                            Label("CLIENT".localizedString, image: "account_circle")
-                                .foregroundColor(Color(hex: "#9DA8C2"))
-                                .font(.subheadline)
-                            Spacer()
-                            Text(model.clientName ?? " ")
-                                .multilineTextAlignment(.trailing)
-                                .lineLimit(2)
-                                .foregroundColor(Color(hex: "#51526C"))
-                                .font(.headline)
-                        }
-                        
-                        HStack {
-                            Label("BALANCE".localizedString, image: "account_balance_wallet")
-                                .font(.subheadline)
-                                .foregroundColor(Color(hex: "#9DA8C2"))
-                            Spacer()
-                            if isBalanceVisible {
+                if addRow {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "plus.app")
+                            .resizable()
+                            .foregroundStyle(Colors.customRedColor)
+                            .frame(width: 24, height: 24)
+                        Text("ADD_DEALER".localizedString)
+                            .font(.headline)
+                            .foregroundStyle(Colors.customRedColor)
+                        Spacer()
+                    }
+                    .frame(height: 80)
+                } else {
+                    HStack {
+                        VStack {
+                            HStack(spacing: 8) {
+                                Text("DEALER".localizedString)
+                                    .foregroundColor(Color(hex: "#9DA8C2"))
+                                    .font(.subheadline)
+                                Text(model.name ?? " ")
+                                    .foregroundColor(Color(hex: "#51526C"))
+                                    .font(.headline)
+                                Spacer()
+                            }
+                            HStack(spacing: 8) {
+                                Text("BALANCE".localizedString)
+                                    .font(.subheadline)
+                                    .foregroundColor(Color(hex: "#9DA8C2"))
                                 Text(model.balance.convertDecimals() + "SUM_UZS".localizedString)
                                     .font(.headline)
                                     .foregroundColor(model.balance >= 0 ? .green : .red)
-                            }else {
-                                Text("***" + "SUM_UZS".localizedString)
-                                    .font(.headline)
-                                    .foregroundColor(.red)
+                                Spacer()
                             }
                         }
-                    }
-                    .padding([.horizontal, .top])
-                    Divider()
-                }
-                .background(Color(hex: "#F6F8FC"))
-                
-                Text("SUM_OF_BOUGHT_GOODS".localizedString)
-                    .font(.headline)
-                    .padding(.horizontal)
-                HStack {
-                    Text("FOR_MONTH".localizedString)
-                        .font(.subheadline)
-                        .foregroundColor(Color(hex: "#9DA8C2"))
-                    Spacer()
-                    if isBalanceVisible {
-                        Text(model.purchaseForMonth.convertDecimals())
-                    }else {
-                        Text("***")
-                    }
-                }
-                .padding(.horizontal)
-                
-                ZStack {
-                    Color.gray
-                        .cornerRadius(2)
-                        .frame(height: 4)
-                    if totalOfMonth != 0 {
-                        HStack {
-                            GeometryReader { g in
-                                Color.red
-                                    .cornerRadius(2)
-                                    .frame(width: CGFloat(
-                                        (model.purchaseForMonth / totalOfMonth) * g.size.width))
-                                    .frame(height: 4)
-                                    
-                            }
-                            Spacer()
+                        .padding()
+                        Spacer()
+                        VStack {
+                            Image("info")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .padding()
                         }
-                        
                     }
+                    .frame(height: 80)
                 }
-                .frame(height: 4)
-                .padding()
-                
 
-                HStack {
-                    Text("FOR_YEAR".localizedString)
-                        .font(.subheadline)
-                        .foregroundColor(Color(hex: "#9DA8C2"))
-                    Spacer()
-                    if isBalanceVisible {
-                        Text(model.purchaseForYear.convertDecimals())
-                    }else {
-                        Text("***")
-                    }
-                }
-                .padding(.horizontal)
-                
-                ZStack {
-                    Color.gray
-                        .cornerRadius(2)
-                        .frame(height: 4)
-                    if totalOfYear != 0 {
-                        HStack {
-                            GeometryReader { g in
-                                Color.red
-                                    .cornerRadius(2)
-                                    .frame(width: CGFloat(
-                                        (model.purchaseForYear / totalOfYear) * g.size.width))
-                                    .frame(height: 4)
-                                    
-                            }
-                            Spacer()
-                        }
-                        
-                    }
-                }
-                .frame(height: 4)
-                .padding()
-                
-                Divider()
-                
             }
             .background(.white)
             .border(Color(hex: "#E2E5ED"), width: 0.5)
             .cornerRadius(8)
-            .shadow(radius: 4)
+            .shadow(color: .black.opacity(0.2), radius: 2)
+            .frame(height: 80)
             .padding(.horizontal, 20)
-            .padding(.vertical, 20)
+//            .padding(.vertical, 20)
             
             
         }

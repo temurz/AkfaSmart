@@ -13,6 +13,7 @@ protocol HomeViewAssembler {
     func resolve(navigationController: UINavigationController) -> HomeViewNavigatorType
     func resolve() -> HomeViewUseCaseType
     func resolve() -> MobileClassUseCaseType
+    func resolve() -> GetCardsViewUseCaseType
 }
 
 extension HomeViewAssembler {
@@ -20,7 +21,7 @@ extension HomeViewAssembler {
         return HomeView(viewModel: resolve(navigationController: navigationController))
     }
     func resolve(navigationController: UINavigationController) -> HomeViewModel {
-        return HomeViewModel(navigator: resolve(navigationController: navigationController), useCase: resolve(), mobileClassUseCase: resolve())
+        return HomeViewModel(navigator: resolve(navigationController: navigationController), useCase: resolve(), mobileClassUseCase: resolve(), getCardsUseCase: resolve())
     }
 }
 
@@ -36,6 +37,10 @@ extension HomeViewAssembler where Self: DefaultAssembler {
     func resolve() -> MobileClassUseCaseType {
         return MobileClassUseCase(gateway: resolve())
     }
+    
+    func resolve() -> GetCardsViewUseCaseType {
+        return GetCardsViewUseCase(gateway: resolve())
+    }
 }
 
 extension HomeViewAssembler where Self: PreviewAssembler {
@@ -49,5 +54,9 @@ extension HomeViewAssembler where Self: PreviewAssembler {
     
     func resolve() -> MobileClassUseCaseType {
         return MobileClassUseCase(gateway: resolve())
+    }
+    
+    func resolve() -> GetCardsViewUseCaseType {
+        return GetCardsViewUseCase(gateway: resolve())
     }
 }

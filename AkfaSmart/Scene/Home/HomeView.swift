@@ -25,6 +25,7 @@ struct HomeView: View {
     private let showMessagesViewTrigger = PassthroughSubject<Void,Never>()
     private let showArticlesViewTrigger = PassthroughSubject<Void,Never>()
     private let showNewsViewTrigger = PassthroughSubject<Void,Never>()
+    private let getCardsTrigger = PassthroughSubject<Void,Never>()
     
     
     let cancelBag = CancelBag()
@@ -80,112 +81,51 @@ struct HomeView: View {
                             Text("ALL_LOWERCASED".localizedString)
                                 .font(.headline)
                                 .foregroundStyle(Color.red)
-                            //                        CustomButtonWithImage(eyeImage: output.visible ? "visibility" : "visibility_off") {
-                            //                            AuthApp.shared.visibility = !output.visible
-                            //                            balanceIsVisible.toggle()
-                            //                        }
-                            //                        .onAppear {
-                            //                            if AuthApp.shared.visibility {
-                            //                                balanceIsVisible = true
-                            //                            }
-                            //                        }
-                            //                        Button {
-                            //                            showAddDealerViewTrigger.send(())
-                            //                        } label: {
-                            //                            Image("add_circle_outline")
-                            //                                .resizable()
-                            //                                .foregroundColor(.white)
-                            //                                .frame(width: 20, height: 20)
-                            //                        }
-                            //                        .frame(width: 40, height: 32)
-                            //                        .background(Color.red)
-                            //                        .cornerRadius(12)
-                            //                        notificationView
                             
                         }
                         .padding(.horizontal)
-                        
-                        if output.hasDealers {
+                        if output.items.isEmpty {
                             Carousel(
-                                data: $output.items,
-                                isBalanceVisible: $balanceIsVisible,
-                                totalOfMonth: $output.totalOfMonth,
-                                totalOfYear: $output.totalOfYear,
-                                openPurchases: { dealerId in
-                                    //                                openPurchasesTrigger.send(dealerId)
-                                },
-                                openPayments: { dealerId in
-                                    //                                openPaymentsTrigger.send(dealerId)
-                                })
-                            .frame(height: 320)
-                            //                        .background(Color.red)
+                                data: $output.items)
+                            .frame(height: 120)
                         }else {
-                            HStack {
-                                Spacer()
-                                Text("DEALERS_NOT_ADDED".localizedString)
-                                    .multilineTextAlignment(.center)
-                                    .lineLimit(2)
-                                    .font(.title2)
-                                    .foregroundColor(.gray)
-                                Spacer()
-                            }
-                            .padding()
+                            Carousel(
+                                data: $output.items)
+                            .frame(height: 120)
                         }
-                        HStack {
-                            Button {
-                                openPurchasesTrigger.send(())
-                            } label: {
-                                Text("HISTORY_OF_PURCHASES".localizedString)
-                                    .font(.system(size: 15))
-                                    .foregroundColor(Color(hex: "#51526C"))
-                                    .lineLimit(1)
-                                    .frame(height: 50)
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.horizontal)
-                                    .background(Color(hex: "#DFE3EB"))
-                                    .cornerRadius(12)
-                            }
-                            Button {
-                                openPaymentsTrigger.send(())
-                            } label: {
-                                Text("HISTORY_OF_PAYMENTS".localizedString)
-                                    .font(.system(size: 15))
-                                    .foregroundColor(Color(hex: "#51526C"))
-                                    .lineLimit(1)
-                                    .frame(height: 50)
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.horizontal)
-                                    .background(Color(hex: "#DFE3EB"))
-                                    .cornerRadius(12)
-                            }
-                        }
-                        .padding(16)
                         
-                        Text("MY_CLASS".localizedString)
-                            .font(.title2)
-                            .padding(.horizontal)
-                        UserClassView(model: $output.mobileClass,
-                                      imageData: $output.mobileClassLogoData)
-                        .onTapGesture {
-                            showClassDetailViewTrigger.send(())
+                        
+                        HStack {
+                            Text("MY_CARDS".localizedString)
+                                .font(.headline)
+                            Spacer()
+                            Text("ALL_LOWERCASED".localizedString)
+                                .font(.headline)
+                                .foregroundStyle(Color.red)
                         }
-                        .frame(height: 160)
-                        Spacer()
-                            .frame(height: 16)
+                        .padding(.horizontal)
+                        if output.cards.isEmpty {
+                            CardsCarousel(data: $output.cards)
+                                .frame(height: 180)
+                        }else {
+                            CardsCarousel(data: $output.cards)
+                                .frame(height: 180)
+                        }
                     }
                     .padding(.vertical)
                 }
                 .refreshable {
                     getDealersTrigger.send(())
                     getMobileClassInfoTrigger.send(())
+                    getCardsTrigger.send(())
                 }
-                .zIndex(1)
             }
         }
         .navigationBarHidden(true)
         .onAppear {
             getDealersTrigger.send(())
             getMobileClassInfoTrigger.send(())
+            getCardsTrigger.send(())
         }
     }
     
@@ -244,7 +184,8 @@ struct HomeView: View {
             showClassDetailViewTrigger: showClassDetailViewTrigger.asDriver(),
             showMessagesViewTrigger: showMessagesViewTrigger.asDriver(),
             showArticlesViewTrigger: showArticlesViewTrigger.asDriver(),
-            showNewsViewTrigger: showNewsViewTrigger.asDriver()
+            showNewsViewTrigger: showNewsViewTrigger.asDriver(), 
+            getCardsTrigger: getCardsTrigger.asDriver()
         )
         
         output = viewModel.transform(input, cancelBag: cancelBag)

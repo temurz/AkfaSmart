@@ -1,14 +1,14 @@
 //
-//  CarouselView.swift
+//  CardsCarousel.swift
 //  AkfaSmart
 //
-//  Created by Temur on 22/02/2024.
+//  Created by Temur on 21/10/2024.
 //  Copyright © 2024 Tuan Truong. All rights reserved.
 //
 
 import SwiftUI
-struct Carousel: UIViewRepresentable {
-    @Binding var data: [Dealer]
+struct CardsCarousel: UIViewRepresentable {
+    @Binding var data: [Card]
     
     func makeUIView(context: Context) -> UIScrollView {
         //ScrollView Content Size
@@ -22,10 +22,10 @@ struct Carousel: UIViewRepresentable {
         view.showsHorizontalScrollIndicator = false
 
         //Embed SwiftUI View into UIView
-        let listView = DealersListView(
+        let listView = CardsHorizontalListView(
             data: $data)
         let view1 = UIHostingController(rootView: listView)
-        view1.view.frame = CGRect(x: 0, y: 0, width: total, height: 120)
+        view1.view.frame = CGRect(x: 0, y: 0, width: total, height: 180)
         view1.view.backgroundColor = .clear
         
         view.addSubview(view1.view)

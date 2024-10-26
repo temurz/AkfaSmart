@@ -32,7 +32,7 @@
 "TOTAL_OF_PRODUCTS_SHOULD_BE_MAXIMUM" = "Общее количество товаров должно быть максимальным ";
 "SHOULD_BE_PERSENTS_UZ" = "%";
 "DEALERS_NAME" = "Имя дилера";
-"BALANCE" = "Баланс";
+"BALANCE" = "Баланс:";
 "SUM_UZS" = " сум";
 "SUM_OF_BOUGHT_GOODS" = "Сумма купленных товаров:";
 "FOR_MONTH" = "За месяц";

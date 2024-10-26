@@ -84,5 +84,16 @@ extension API {
         static let getMessages = Base.BASE_URL + "/api/mobile/message/data"
         static let sendMessage = Base.BASE_URL + "/api/mobile/message/save"
         static let clearMessagesHistory = Base.BASE_URL + "/api/mobile/message/clearAll"
+        
+        //Cards
+        static let addCard = Base.BASE_URL + "/api/mobile/loyaltyCard/join"
+        static let activateCard = Base.BASE_URL + "/api/mobile/loyaltyCard/activate"
+        static let blockCard = Base.BASE_URL + "/api/mobile/loyaltyCard/block"
+        static let unblockCard = Base.BASE_URL + "/api/mobile/loyaltyCard/unblock"
+        static let confirmCardAction = Base.BASE_URL + "/api/mobile/loyaltyCard/confirm/"
+        static let resendCardAction = Base.BASE_URL + "/api/mobile/loyaltyCard/resend/"
+        static let cardSettings = Base.BASE_URL + "/api/mobile/loyaltyCard/settings"
+        static let deleteCard = Base.BASE_URL + "/api/mobile/loyaltyCard/delete"
+        static let getCards = Base.BASE_URL + "/api/mobile/loyaltyCard/balance"
     }
 }

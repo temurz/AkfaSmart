@@ -11,6 +11,7 @@ struct HomeViewModel {
     let navigator: HomeViewNavigatorType
     let useCase: HomeViewUseCaseType
     let mobileClassUseCase: MobileClassUseCaseType
+    let getCardsUseCase: GetCardsViewUseCaseType
 }
 
 extension HomeViewModel: ViewModel {
@@ -25,6 +26,7 @@ extension HomeViewModel: ViewModel {
         let showMessagesViewTrigger: Driver<Void>
         let showArticlesViewTrigger: Driver<Void>
         let showNewsViewTrigger: Driver<Void>
+        let getCardsTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -35,6 +37,7 @@ extension HomeViewModel: ViewModel {
         @Published var alert = AlertMessage()
         @Published var hasDealers = false
         @Published var items: [Dealer] = []
+        @Published var cards: [Card] = []
         @Published var mobileClass: MobileClass? = nil
         @Published var mobileClassLogoData: Data? = nil
         @Published var unreadDataCount: UnreadDataCount = UnreadDataCount(countUnreadMessages: 0, countUnreadArticles: 0, countUnreadNews: 0)
@@ -161,6 +164,19 @@ extension HomeViewModel: ViewModel {
             .sink {
                 navigator.showTechnicalSupport()
             }
+            .store(in: cancelBag)
+        
+        input.getCardsTrigger
+            .map {
+                getCardsUseCase.getCards(nil)
+                    .trackError(errorTracker)
+                    .trackActivity(activityTracker)
+                    .asDriver()
+            }
+            .switchToLatest()
+            .sink(receiveValue: { cards in
+                output.cards = cards
+            })
             .store(in: cancelBag)
         return output
     }

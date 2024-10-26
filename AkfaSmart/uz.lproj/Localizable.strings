@@ -34,7 +34,7 @@
 "SINGLE" = "Uylanmagan";
 "SQ_M" = " kv.m";
 "DEALERS_NAME" = "Diler ismi";
-"BALANCE" = "Balans";
+"BALANCE" = "Balans:";
 "SUM_UZS" = " uzs";
 "SUM_OF_BOUGHT_GOODS" = "Mahsulotlar xaridi(uzs): ";
 "FOR_MONTH" = "Oylik";

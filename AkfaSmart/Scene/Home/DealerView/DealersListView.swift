@@ -10,25 +10,16 @@ import SwiftUI
 
 struct DealersListView: View {
     @Binding var data: [Dealer]
-    @Binding var isBalanceVisible: Bool
-    @Binding var totalOfMonth: Double
-    @Binding var totalOfYear: Double
-    var openPurchases: ((Int) -> ())
-    var openPayments: ((Int) -> ())
     
     var body: some View {
         HStack(spacing: 0) {
             ForEach(data, id: \.dealerClientCid) { model in
                 DealerViewRow(
                     width: UIScreen.main.bounds.width,
-                    model: model,
-                    isBalanceVisible: self.isBalanceVisible,
-                    totalOfMonth: $totalOfMonth,
-                    totalOfYear: $totalOfYear,
-                    openPurchases: openPurchases,
-                    openPayments: openPayments
+                    model: model
                 )
             }
+            DealerViewRow(addRow: true, width: UIScreen.main.bounds.width)
         }
     }
 }
