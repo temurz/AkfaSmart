@@ -17,12 +17,16 @@ struct TechnicalSupportView: View {
     private let clearHistoryTrigger = PassthroughSubject<Void,Never>()
     private let sendMessageTrigger = PassthroughSubject<String,Never>()
     private let sendMessageWithImageTrigger = PassthroughSubject<MessageWithData, Never>()
+    private let popViewControllerTrigger = PassthroughSubject<Void, Never>()
     private let cancelBag = CancelBag()
     @State var showImagePicker = false
     let documentPickerDelegate = DocumentPickerDelegate()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
+                CustomNavigationBar(title: "CHAT".localizedString, onBackTapAction: {
+                    popViewControllerTrigger.send(())
+                })
                 if output.items.isEmpty && !output.isLoading {
                     VStack {
                         Spacer()
@@ -101,7 +105,6 @@ struct TechnicalSupportView: View {
             }
             .background(Color(hex: "#EAEEF5"))
         }
-        .navigationTitle("CHAT".localizedString)
         .alert(isPresented: $output.alert.isShowing, content: {
             Alert(title: Text(output.alert.title),
                   message: Text(output.alert.message),
@@ -130,20 +133,6 @@ struct TechnicalSupportView: View {
             output.isLoadingFile = false
             getMessagesTrigger.send(())
         }
-        .navigationBarItems(trailing:
-                                Menu {
-            Button {
-                clearHistoryTrigger.send(())
-            } label: {
-                Text("CLEAR".localizedString)
-            }
-
-        } label: {
-            Image("more")
-                .resizable()
-                .frame(width: 20, height: 20)
-        }
-        )
     }
     
     func showDocumentPicker() {
@@ -160,7 +149,8 @@ struct TechnicalSupportView: View {
             loadMoreMessagesTrigger: loadMoreMessagesTrigger.asDriver(),
             clearHistoryTrigger: clearHistoryTrigger.asDriver(),
             sendMessageTrigger: sendMessageTrigger.asDriver(),
-            sendMessageWithImageTrigger: sendMessageWithImageTrigger.asDriver()
+            sendMessageWithImageTrigger: sendMessageWithImageTrigger.asDriver(),
+            popViewControllerTrigger: popViewControllerTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

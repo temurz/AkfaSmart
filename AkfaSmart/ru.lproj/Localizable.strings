@@ -5,6 +5,10 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"MAIN" = "ОСНОВНАЯ";
+"MY_CARDS" = "Мои карты";
+"ACTIVE" = "АКТИВНАЯ";
+"BONUS_CARD" = "БОНУСНАЯ КАРТА";
 "YES" = "Да";
 "NO" = "Нет";
 "HOME" = "Главная";

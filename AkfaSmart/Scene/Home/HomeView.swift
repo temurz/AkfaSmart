@@ -32,7 +32,7 @@ struct HomeView: View {
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack(spacing: 0) {
-                CustomTabNavigationBar {
+                ViewWithShadowOnBottom {
                     VStack {
                         HStack(spacing: 12) {
                             ZStack {
@@ -206,7 +206,7 @@ struct HomeView: View {
     HomeView(viewModel: PreviewAssembler().resolve(navigationController: UINavigationController()))
 }
 
-struct CustomTabNavigationBar<Content: View>: View {
+struct ViewWithShadowOnBottom<Content: View>: View {
     
     var content: () -> Content
     var body: some View {

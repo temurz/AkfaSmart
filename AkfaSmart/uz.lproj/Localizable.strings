@@ -5,6 +5,10 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"MAIN" = "ASOSIY";
+"MY_CARDS" = "Mening kartalarim";
+"ACTIVE" = "ACTIVE";
+"BONUS_CARD" = "BONUS KARTA";
 "YES" = "Ha";
 "NO" = "Yo'q";
 "FILTER" = "Filtr";

@@ -18,7 +18,7 @@ extension TechnicalSupportAssembler {
         return TechnicalSupportView(viewModel: resolve(navigationController: navigationController))
     }
     func resolve(navigationController: UINavigationController) -> TechnicalSupportViewModel {
-        return TechnicalSupportViewModel(useCase: resolve())
+        return TechnicalSupportViewModel(useCase: resolve(), navigator: PopViewNavigator(navigationController: navigationController))
     }
 }
 

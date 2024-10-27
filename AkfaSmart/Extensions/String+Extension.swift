@@ -90,4 +90,21 @@ extension String {
         
         return result
     }
+    
+    func addSpaces(byEvery num: Int) -> String {
+        let initial = self
+        var result = ""
+        
+        initial.enumerated().forEach { i, char in
+            
+            if i > 0 && i%num == 0 {
+                result.append(" ")
+                result.append(char)
+            } else {
+                result.append(char)
+            }
+        }
+        
+        return result
+    }
 }

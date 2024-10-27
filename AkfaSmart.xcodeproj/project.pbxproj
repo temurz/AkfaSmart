@@ -446,6 +446,7 @@
 		B8E192A02B9B10710013B148 /* PurchaseDetailViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1929F2B9B10710013B148 /* PurchaseDetailViewAssembler.swift */; };
 		B8E192A22B9B174F0013B148 /* ShowingPurchaseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192A12B9B174F0013B148 /* ShowingPurchaseDetailView.swift */; };
 		B8E192A52B9B19C60013B148 /* PurchaseDetailViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192A42B9B19C60013B148 /* PurchaseDetailViewRow.swift */; };
+		B8F7B7C22CCEC3B10093A2B7 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */; };
 		B8FEC6B52B8502540028BA7F /* ResendSMS+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6B42B8502540028BA7F /* ResendSMS+API.swift */; };
 		B8FEC6B72B8504C70028BA7F /* ResendSMSGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */; };
 		B8FEC6B92B8504F90028BA7F /* ResendSMSDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6B82B8504F90028BA7F /* ResendSMSDomainUseCase.swift */; };
@@ -908,6 +909,7 @@
 		B8E1929F2B9B10710013B148 /* PurchaseDetailViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetailViewAssembler.swift; sourceTree = "<group>"; };
 		B8E192A12B9B174F0013B148 /* ShowingPurchaseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingPurchaseDetailView.swift; sourceTree = "<group>"; };
 		B8E192A42B9B19C60013B148 /* PurchaseDetailViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetailViewRow.swift; sourceTree = "<group>"; };
+		B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		B8FEC6B42B8502540028BA7F /* ResendSMS+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResendSMS+API.swift"; sourceTree = "<group>"; };
 		B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendSMSGateway.swift; sourceTree = "<group>"; };
 		B8FEC6B82B8504F90028BA7F /* ResendSMSDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendSMSDomainUseCase.swift; sourceTree = "<group>"; };
@@ -1259,10 +1261,10 @@
 		178722F524BD537D00D90F8E /* AkfaSmart */ = {
 			isa = PBXGroup;
 			children = (
-				B866A9242B6BF70800202C9F /* Views */,
 				1787231924BD53AC00D90F8E /* Domain */,
 				1787231824BD53A400D90F8E /* Data */,
 				1787231A24BD53B200D90F8E /* Scene */,
+				17DCF1B724BF01E400D970B4 /* Extensions */,
 				1787234F24BD566300D90F8E /* Support */,
 				1787234E24BD565E00D90F8E /* Config */,
 				178722F624BD537D00D90F8E /* AppDelegate.swift */,
@@ -1323,6 +1325,7 @@
 		1787231A24BD53B200D90F8E /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				B866A9242B6BF70800202C9F /* Views */,
 				1765B2CF24C6D5350096D210 /* Navigators */,
 				1742B37924D7E87000C82D15 /* Common */,
 				B866A9802B716BEA00202C9F /* Home */,
@@ -1394,7 +1397,6 @@
 			isa = PBXGroup;
 			children = (
 				1734926324C59CC00014F87E /* Architecture */,
-				17DCF1B724BF01E400D970B4 /* Extensions */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -1807,6 +1809,7 @@
 				B866A9252B6BF71B00202C9F /* TabBar */,
 				B866A9512B7110FB00202C9F /* BottomBarView.swift */,
 				B866A9532B7115C200202C9F /* ShimmerView.swift */,
+				B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2706,6 +2709,7 @@
 				B8BE4A0A2B8E4C9500876714 /* ProductGraphicsDomainUseCase.swift in Sources */,
 				B8BE49E12B8D677C00876714 /* Graphics + API.swift in Sources */,
 				B8C3E4EC2CC6BA8900738BAF /* CardsHorizontalListView.swift in Sources */,
+				B8F7B7C22CCEC3B10093A2B7 /* CustomNavigationBar.swift in Sources */,
 				B8AC36762B79924E0060D52D /* AddDealerViewModel.swift in Sources */,
 				B866A9272B6BF72600202C9F /* ViewRouter.swift in Sources */,
 				B89F2F962B91846C004DAEAB /* Bundle+.swift in Sources */,

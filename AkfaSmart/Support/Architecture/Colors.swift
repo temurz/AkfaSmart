@@ -20,4 +20,7 @@ struct Colors {
     static var textSteelColor = Color(hex: "#7A889B")
     
     static var customRedColor = Color(hex: "#E32F27")
+    
+    static var customGreenBackgroundColor = Color(hex: "#72C36A")
+    static var customMustardBackgroundColor = Color(hex: "#FFD600")
 }

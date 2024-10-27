@@ -10,6 +10,7 @@ import Foundation
 
 struct TechnicalSupportViewModel {
     let useCase: TechnicalSupportUseCaseType
+    let navigator: PopViewNavigatorType
 }
 
 extension TechnicalSupportViewModel: ViewModel {
@@ -20,6 +21,7 @@ extension TechnicalSupportViewModel: ViewModel {
         let clearHistoryTrigger: Driver<Void>
         let sendMessageTrigger: Driver<String>
         let sendMessageWithImageTrigger: Driver<MessageWithData>
+        let popViewControllerTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -120,6 +122,12 @@ extension TechnicalSupportViewModel: ViewModel {
                         output.newMessages += 1
                     }
                     .store(in: cancelBag)
+            }
+            .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
             }
             .store(in: cancelBag)
         
