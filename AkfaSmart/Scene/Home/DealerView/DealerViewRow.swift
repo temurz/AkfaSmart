@@ -12,10 +12,12 @@ struct DealerViewRow: View {
     var width: CGFloat
     var model: Dealer
     var addRow: Bool = false
+    var didSelectInformation: ((Dealer) -> Void)?
     
-    init(width: CGFloat, model: Dealer) {
+    init(width: CGFloat, model: Dealer, didSelectInformation: ((Dealer) -> Void)? = nil) {
         self.width = width
         self.model = model
+        self.didSelectInformation = didSelectInformation
     }
     
     init(addRow: Bool, width: CGFloat) {
@@ -45,10 +47,10 @@ struct DealerViewRow: View {
                         VStack {
                             HStack(spacing: 8) {
                                 Text("DEALER".localizedString)
-                                    .foregroundColor(Color(hex: "#9DA8C2"))
+                                    .foregroundColor(Colors.secondaryTextColor)
                                     .font(.subheadline)
                                 Text(model.name ?? " ")
-                                    .foregroundColor(Color(hex: "#51526C"))
+                                    .foregroundColor(Colors.primaryTextColor)
                                     .font(.headline)
                                 Spacer()
                             }
@@ -65,10 +67,14 @@ struct DealerViewRow: View {
                         .padding()
                         Spacer()
                         VStack {
-                            Image("info")
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                                .padding()
+                            Button {
+                                didSelectInformation?(model)
+                            } label: {
+                                Image("info")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .padding()
+                            }
                         }
                     }
                     .frame(height: 80)

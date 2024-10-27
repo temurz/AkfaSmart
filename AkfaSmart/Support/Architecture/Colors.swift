@@ -10,7 +10,9 @@ import SwiftUI
 struct Colors {
     static var textFieldLightGrayBackground = Color(hex: "#FDFDFF")
     static var textFieldMediumGrayBackground = Color(hex: "#F5F7FA")
+    
     static var borderGrayColor = Color(hex: "#E7E7E7")
+    static var borderGrayColor2 = Color(hex: "#E8EEF4")
     
     static var buttonBackgroundGrayColor = Color(hex: "#F3F3F3")
     
@@ -23,4 +25,7 @@ struct Colors {
     
     static var customGreenBackgroundColor = Color(hex: "#72C36A")
     static var customMustardBackgroundColor = Color(hex: "#FFD600")
+    
+    static var primaryTextColor = Color(hex: "#51526C")
+    static var secondaryTextColor = Color(hex: "#9DA8C2")
 }

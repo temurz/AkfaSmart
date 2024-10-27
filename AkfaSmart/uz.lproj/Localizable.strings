@@ -5,6 +5,8 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"EXPENSES" = "Xarajat";
+"INFORMATION" = "Ma'lumoti";
 "MAIN" = "ASOSIY";
 "MY_CARDS" = "Mening kartalarim";
 "ACTIVE" = "ACTIVE";
@@ -16,6 +18,7 @@
 "SEARCH" = "Qidirish";
 "MY_DEALERS" = "Mening dilerlarim";
 "DEALER" = "Diler:";
+"DEALER_TITLE" = "Diler";
 "TOTAL_OF_PRODUCTS_SHOULD_BE" = " mahsulotlarning ja'mi xaridi bo'lishi kerak";
 "MIN" = " eng kamida ";
 "MAX" = " eng kopi ";

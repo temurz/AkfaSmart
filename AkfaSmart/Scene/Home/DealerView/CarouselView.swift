@@ -9,6 +9,7 @@
 import SwiftUI
 struct Carousel: UIViewRepresentable {
     @Binding var data: [Dealer]
+    var didSelectInformation: (Dealer) -> ()
     
     func makeUIView(context: Context) -> UIScrollView {
         //ScrollView Content Size
@@ -23,7 +24,8 @@ struct Carousel: UIViewRepresentable {
 
         //Embed SwiftUI View into UIView
         let listView = DealersListView(
-            data: $data)
+            data: $data,
+        didSelectInformation: didSelectInformation)
         let view1 = UIHostingController(rootView: listView)
         view1.view.frame = CGRect(x: 0, y: 0, width: total, height: 120)
         view1.view.backgroundColor = .clear

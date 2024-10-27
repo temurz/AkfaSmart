@@ -447,6 +447,12 @@
 		B8E192A22B9B174F0013B148 /* ShowingPurchaseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192A12B9B174F0013B148 /* ShowingPurchaseDetailView.swift */; };
 		B8E192A52B9B19C60013B148 /* PurchaseDetailViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192A42B9B19C60013B148 /* PurchaseDetailViewRow.swift */; };
 		B8F7B7C22CCEC3B10093A2B7 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */; };
+		B8F7B7C42CCEC52B0093A2B7 /* DealerDetailModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C32CCEC52B0093A2B7 /* DealerDetailModalView.swift */; };
+		B8F7B7C62CCEC76D0093A2B7 /* ShowDealerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */; };
+		B8F7B7C82CCECEBE0093A2B7 /* HorizontalSeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C72CCECEBE0093A2B7 /* HorizontalSeparatorLine.swift */; };
+		B8F7B7CB2CCED4E10093A2B7 /* DealerDetailsViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7CA2CCED4E10093A2B7 /* DealerDetailsViewNavigator.swift */; };
+		B8F7B7CE2CCED5570093A2B7 /* DealerDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7CD2CCED5570093A2B7 /* DealerDetailsViewModel.swift */; };
+		B8F7B7D02CCED76B0093A2B7 /* DealerDetailsViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7CF2CCED76B0093A2B7 /* DealerDetailsViewAssembler.swift */; };
 		B8FEC6B52B8502540028BA7F /* ResendSMS+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6B42B8502540028BA7F /* ResendSMS+API.swift */; };
 		B8FEC6B72B8504C70028BA7F /* ResendSMSGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */; };
 		B8FEC6B92B8504F90028BA7F /* ResendSMSDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6B82B8504F90028BA7F /* ResendSMSDomainUseCase.swift */; };
@@ -910,6 +916,12 @@
 		B8E192A12B9B174F0013B148 /* ShowingPurchaseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingPurchaseDetailView.swift; sourceTree = "<group>"; };
 		B8E192A42B9B19C60013B148 /* PurchaseDetailViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetailViewRow.swift; sourceTree = "<group>"; };
 		B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		B8F7B7C32CCEC52B0093A2B7 /* DealerDetailModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModalView.swift; sourceTree = "<group>"; };
+		B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerDetailsView.swift; sourceTree = "<group>"; };
+		B8F7B7C72CCECEBE0093A2B7 /* HorizontalSeparatorLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSeparatorLine.swift; sourceTree = "<group>"; };
+		B8F7B7CA2CCED4E10093A2B7 /* DealerDetailsViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailsViewNavigator.swift; sourceTree = "<group>"; };
+		B8F7B7CD2CCED5570093A2B7 /* DealerDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailsViewModel.swift; sourceTree = "<group>"; };
+		B8F7B7CF2CCED76B0093A2B7 /* DealerDetailsViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailsViewAssembler.swift; sourceTree = "<group>"; };
 		B8FEC6B42B8502540028BA7F /* ResendSMS+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResendSMS+API.swift"; sourceTree = "<group>"; };
 		B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendSMSGateway.swift; sourceTree = "<group>"; };
 		B8FEC6B82B8504F90028BA7F /* ResendSMSDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendSMSDomainUseCase.swift; sourceTree = "<group>"; };
@@ -1169,6 +1181,7 @@
 				B803316A2BA1BD820019ACA5 /* ShowingEditTechnographicsView.swift */,
 				B80331792BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift */,
 				B8DAD24D2BAAB1B200857140 /* ShowingPINCodeView.swift */,
+				B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -1810,6 +1823,7 @@
 				B866A9512B7110FB00202C9F /* BottomBarView.swift */,
 				B866A9532B7115C200202C9F /* ShimmerView.swift */,
 				B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */,
+				B8F7B7C72CCECEBE0093A2B7 /* HorizontalSeparatorLine.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2300,6 +2314,17 @@
 			path = Row;
 			sourceTree = "<group>";
 		};
+		B8F7B7CC2CCED5440093A2B7 /* DealerDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				B8F7B7C32CCEC52B0093A2B7 /* DealerDetailModalView.swift */,
+				B8F7B7CA2CCED4E10093A2B7 /* DealerDetailsViewNavigator.swift */,
+				B8F7B7CD2CCED5570093A2B7 /* DealerDetailsViewModel.swift */,
+				B8F7B7CF2CCED76B0093A2B7 /* DealerDetailsViewAssembler.swift */,
+			);
+			path = DealerDetailView;
+			sourceTree = "<group>";
+		};
 		B8FEC6BC2B8636A80028BA7F /* ResetPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -2315,6 +2340,7 @@
 		B8FEC6C92B8660880028BA7F /* DealerView */ = {
 			isa = PBXGroup;
 			children = (
+				B8F7B7CC2CCED5440093A2B7 /* DealerDetailView */,
 				B8FEC6DB2B879ABC0028BA7F /* CarouselView.swift */,
 				B8FEC6CD2B8665950028BA7F /* DealersListView.swift */,
 				B8FEC6CB2B86650E0028BA7F /* DealerViewRow.swift */,
@@ -2614,6 +2640,7 @@
 				B8C165A92B9A9F8700F70074 /* GettingPaymentReceiptsDomainUseCase.swift in Sources */,
 				B866A8C52B66FB2300202C9F /* Alamofire+.swift in Sources */,
 				173865A624D3BC130059E3AD /* APIError.swift in Sources */,
+				B8F7B7C82CCECEBE0093A2B7 /* HorizontalSeparatorLine.swift in Sources */,
 				B8E1929C2B9B10160013B148 /* PurchaseDetailViewUseCase.swift in Sources */,
 				B82836152CC55E94008FF612 /* CustomButtonWithImage.swift in Sources */,
 				176BAA6924D26AA300324D3C /* String+Base64.swift in Sources */,
@@ -2677,6 +2704,7 @@
 				B8CF98E62B65672D00EF02A7 /* RegisterUseCase.swift in Sources */,
 				1734926024C539220014F87E /* ProductsView.swift in Sources */,
 				178809AC24C0446B00002215 /* ErrorTracker.swift in Sources */,
+				B8F7B7C42CCEC52B0093A2B7 /* DealerDetailModalView.swift in Sources */,
 				B866A8DD2B68E01200202C9F /* CodeInputUseCase.swift in Sources */,
 				173865A124D3BB470059E3AD /* Repo.swift in Sources */,
 				B8FEC6C82B86487E0028BA7F /* ShowingResetPasswordView.swift in Sources */,
@@ -2731,6 +2759,7 @@
 				B8FEC6DA2B8783140028BA7F /* UserClassView.swift in Sources */,
 				B8BE4A022B8E3FAB00876714 /* MarketingGraphicsViewUseCase.swift in Sources */,
 				1734926524C59D2A0014F87E /* AppError.swift in Sources */,
+				B8F7B7D02CCED76B0093A2B7 /* DealerDetailsViewAssembler.swift in Sources */,
 				B866A98B2B71940200202C9F /* HomeViewUseCase.swift in Sources */,
 				B895A4752CB5FDE000E51FF0 /* Colors.swift in Sources */,
 				17A5B1F224D804DA004BD209 /* UIViewController+.swift in Sources */,
@@ -2755,6 +2784,7 @@
 				B8AC367A2B7992680060D52D /* AddDealerUseCase.swift in Sources */,
 				3420A0B42B9E444800DC3E3D /* MessagesGateway.swift in Sources */,
 				B863DAB72B8D0880003F2C3D /* TechnoGraphicsViewModel.swift in Sources */,
+				B8F7B7C62CCEC76D0093A2B7 /* ShowDealerDetailsView.swift in Sources */,
 				1742B37124D7B45C00C82D15 /* UIViewController+Debug.swift in Sources */,
 				B803316D2BA1D5CE0019ACA5 /* HRGraphicsNavigator.swift in Sources */,
 				B87ED2022B7A275F00EB5139 /* SplashView.swift in Sources */,
@@ -2776,6 +2806,7 @@
 				B8DAD24A2BA9DF5B00857140 /* PINCodeViewNavigatorType.swift in Sources */,
 				B85516C72B79061B00FC2D6E /* ArticleDomainUseCase.swift in Sources */,
 				B8C165982B99D8DA00F70074 /* GettingArticleTypeDomainUseCase.swift in Sources */,
+				B8F7B7CE2CCED5570093A2B7 /* DealerDetailsViewModel.swift in Sources */,
 				B863DAB52B8D084B003F2C3D /* TechnoGraphicsView.swift in Sources */,
 				B8BE49FC2B8E3CB100876714 /* MarketingGraphics.swift in Sources */,
 				B87ED1FA2B7A220300EB5139 /* WelcomeViewModel.swift in Sources */,
@@ -2835,6 +2866,7 @@
 				3420A0A42B9D890600DC3E3D /* TechnicalSupportView.swift in Sources */,
 				B866A8C72B686B7A00202C9F /* Registration+API.swift in Sources */,
 				B866A93D2B70F80700202C9F /* ImageCache.swift in Sources */,
+				B8F7B7CB2CCED4E10093A2B7 /* DealerDetailsViewNavigator.swift in Sources */,
 				B8AC36732B7991790060D52D /* AddDealerView.swift in Sources */,
 				B866A97C2B7168D800202C9F /* SettingsUseCase.swift in Sources */,
 				1787235B24BD578500D90F8E /* ProductGateway.swift in Sources */,

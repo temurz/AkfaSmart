@@ -5,6 +5,8 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"EXPENSES" = "EXPENSES";
+"INFORMATION" = "Information";
 "MAIN" = "MAIN";
 "MY_CARDS" = "My cards";
 "ACTIVE" = "ACTIVE";
@@ -15,6 +17,7 @@
 "SEARCH" = "Search";
 "MY_DEALERS" = "My dealers";
 "DEALER" = "Dealer:";
+"DEALER_TITLE" = "Dealer";
 "DEALERS_NOT_ADDED" = "You didn't \n add dealers yet!";
 "MY_CLASS" = "My class";
 "MESSAGES" = "Messages";

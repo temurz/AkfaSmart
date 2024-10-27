@@ -5,6 +5,8 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"EXPENSES" = "Расходы";
+"INFORMATION" = "Информация";
 "MAIN" = "ОСНОВНАЯ";
 "MY_CARDS" = "Мои карты";
 "ACTIVE" = "АКТИВНАЯ";
@@ -15,6 +17,7 @@
 "SEARCH" = "Поиск";
 "MY_DEALERS" = "Мои дилеры";
 "DEALER" = "Дилер:";
+"DEALER_TITLE" = "Дилер";
 "DEALERS_NOT_ADDED" = "Вы еще \n не добавили дилеров!";
 "MY_CLASS" = "Мой класс";
 "MESSAGES" = "Сообщения";

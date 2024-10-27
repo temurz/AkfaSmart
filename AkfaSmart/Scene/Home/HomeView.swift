@@ -14,6 +14,8 @@ struct HomeView: View {
     @State var totalOfMonth = 0.0
     @State var totalOfYear = 0.0
     @State var searchText = ""
+    @State var infoDealer = Dealer(dealerId: nil, dealerClientCid: nil, name: nil, clientName: nil, balance: 0, purchaseForMonth: 0, purchaseForYear: 0)
+    @State var showDealerDetails = false
     
     private let openPurchasesTrigger = PassthroughSubject<Void,Never>()
     private let openPaymentsTrigger = PassthroughSubject<Void,Never>()
@@ -27,6 +29,7 @@ struct HomeView: View {
     private let showNewsViewTrigger = PassthroughSubject<Void,Never>()
     private let getCardsTrigger = PassthroughSubject<Void,Never>()
     
+    private let showDealerDetailsViewTrigger = PassthroughSubject<Dealer,Never>()
     
     let cancelBag = CancelBag()
     var body: some View {
@@ -50,7 +53,7 @@ struct HomeView: View {
                                 
                             ZStack(alignment: .leading) {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color(hex: "#E8EEF4"))
+                                    .stroke(Colors.borderGrayColor2)
                                 Image(systemName: "magnifyingglass")
                                     .resizable()
                                     .foregroundColor(.gray)
@@ -60,10 +63,6 @@ struct HomeView: View {
                                     .padding(.leading, 44)
                             }
                             .frame(height: 42)
-                            
-                                
-
-                            
                             Spacer()
                             notificationView
                         }
@@ -86,12 +85,14 @@ struct HomeView: View {
                         .padding(.horizontal)
                         if output.items.isEmpty {
                             Carousel(
-                                data: $output.items)
-                            .frame(height: 120)
+                                data: $output.items) { _ in }
+                                .frame(height: 120)
                         }else {
                             Carousel(
-                                data: $output.items)
-                            .frame(height: 120)
+                                data: $output.items) { dealer in
+                                    showDealerDetailsViewTrigger.send(dealer)
+                                }
+                                .frame(height: 120)
                         }
                         
                         
@@ -185,7 +186,8 @@ struct HomeView: View {
             showMessagesViewTrigger: showMessagesViewTrigger.asDriver(),
             showArticlesViewTrigger: showArticlesViewTrigger.asDriver(),
             showNewsViewTrigger: showNewsViewTrigger.asDriver(), 
-            getCardsTrigger: getCardsTrigger.asDriver()
+            getCardsTrigger: getCardsTrigger.asDriver(),
+            showDealerDetailsViewTrigger: showDealerDetailsViewTrigger.asDriver()
         )
         
         output = viewModel.transform(input, cancelBag: cancelBag)
@@ -214,7 +216,7 @@ struct ViewWithShadowOnBottom<Content: View>: View {
             
             content()
             Spacer()
-            Color(hex: "#E8EEF4")
+            Colors.borderGrayColor2
                 .frame(height: 2)
                 .shadow(color: .black.opacity(0.1),radius: 2, x: 0, y: 2)
                 

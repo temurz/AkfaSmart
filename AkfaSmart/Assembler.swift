@@ -39,7 +39,8 @@ protocol Assembler: AnyObject,
     HRGraphicsAssembler,
     HRGraphicsEditAssembler,
     TechnicalSupportAssembler,
-    PINCodeViewAssembler
+    PINCodeViewAssembler,
+    DealerDetailsViewAssembler
 {
     
 }

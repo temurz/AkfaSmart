@@ -27,6 +27,7 @@ extension HomeViewModel: ViewModel {
         let showArticlesViewTrigger: Driver<Void>
         let showNewsViewTrigger: Driver<Void>
         let getCardsTrigger: Driver<Void>
+        let showDealerDetailsViewTrigger: Driver<Dealer>
     }
     
     final class Output: ObservableObject {
@@ -177,6 +178,12 @@ extension HomeViewModel: ViewModel {
             .sink(receiveValue: { cards in
                 output.cards = cards
             })
+            .store(in: cancelBag)
+        
+        input.showDealerDetailsViewTrigger
+            .sink { dealer in
+                navigator.showDealersDetailViewModally(dealer: dealer)
+            }
             .store(in: cancelBag)
         return output
     }
