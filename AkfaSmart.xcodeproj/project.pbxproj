@@ -96,7 +96,6 @@
 		1781CF4424BD8FB8004ED1C6 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1781CF3F24BD8FB8004ED1C6 /* ProductDetailViewModel.swift */; };
 		178722F724BD537D00D90F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178722F624BD537D00D90F8E /* AppDelegate.swift */; };
 		178722F924BD537D00D90F8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178722F824BD537D00D90F8E /* SceneDelegate.swift */; };
-		178722FB24BD537D00D90F8E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178722FA24BD537D00D90F8E /* ContentView.swift */; };
 		178722FD24BD537E00D90F8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178722FC24BD537E00D90F8E /* Assets.xcassets */; };
 		1787230024BD537E00D90F8E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178722FF24BD537E00D90F8E /* Preview Assets.xcassets */; };
 		1787230324BD537E00D90F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1787230124BD537E00D90F8E /* LaunchScreen.storyboard */; };
@@ -566,7 +565,6 @@
 		178722F324BD537D00D90F8E /* AkfaSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AkfaSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		178722F624BD537D00D90F8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		178722F824BD537D00D90F8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		178722FA24BD537D00D90F8E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		178722FC24BD537E00D90F8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		178722FF24BD537E00D90F8E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1787230224BD537E00D90F8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1286,12 +1284,10 @@
 				178722F624BD537D00D90F8E /* AppDelegate.swift */,
 				1787233224BD54B600D90F8E /* Assembler.swift */,
 				178722F824BD537D00D90F8E /* SceneDelegate.swift */,
-				178722FA24BD537D00D90F8E /* ContentView.swift */,
 				178722FC24BD537E00D90F8E /* Assets.xcassets */,
 				1787230124BD537E00D90F8E /* LaunchScreen.storyboard */,
 				1787230424BD537E00D90F8E /* Info.plist */,
 				178722FE24BD537E00D90F8E /* Preview Content */,
-				B8CF98DA2B6311AC00EF02A7 /* Color+Extension.swift */,
 				B8512B142B9E5BA900CEE80A /* Localizable.strings */,
 			);
 			path = AkfaSmart;
@@ -1541,6 +1537,7 @@
 		17DCF1B724BF01E400D970B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B8CF98DA2B6311AC00EF02A7 /* Color+Extension.swift */,
 				17DCF1BA24BF028200D970B4 /* Double+.swift */,
 				1742B37024D7B45C00C82D15 /* UIViewController+Debug.swift */,
 				17A5B1F124D804DA004BD209 /* UIViewController+.swift */,
@@ -2847,7 +2844,6 @@
 				1770EC4324DD2F2F0022FBFE /* ScreenLoadingType.swift in Sources */,
 				B8CF98DB2B6311AC00EF02A7 /* Color+Extension.swift in Sources */,
 				1720C7BA24FE355800D616B2 /* GetPageDto.swift in Sources */,
-				178722FB24BD537D00D90F8E /* ContentView.swift in Sources */,
 				B86E1C972BA480BF00A0AF4D /* DownloadTaskModel.swift in Sources */,
 				B8FEC6B92B8504F90028BA7F /* ResendSMSDomainUseCase.swift in Sources */,
 				B82CA96D2B97768D000147D2 /* UserInfoGateway.swift in Sources */,
