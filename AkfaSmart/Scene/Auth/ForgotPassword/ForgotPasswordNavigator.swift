@@ -9,9 +9,10 @@
 import UIKit
 protocol ForgotPasswordNavigatorType {
     func showCodeInput(reason: CodeReason)
+    func popView()
 }
 
-struct ForgotPasswordNavigator: ForgotPasswordNavigatorType, ShowingCodeInput {
+struct ForgotPasswordNavigator: ForgotPasswordNavigatorType, ShowingCodeInput, PoppingController {
     let assembler: Assembler
     let navigationController: UINavigationController
 }

@@ -26,12 +26,18 @@ extension CodeInputViewModel: ViewModel {
         let resendSMSTrigger: Driver<Void>
         let showMainViewTrigger: Driver<Void>
         let confirmActiveUserTrigger: Driver<Void>
+        let popViewControllerTrigger: Driver<Void>
         
-        init(confirmRegisterTrigger: Driver<Void>, resendSMSTrigger: Driver<Void>, showMainViewTrigger: Driver<Void>, confirmActiveUserTrigger: Driver<Void>) {
+        init(confirmRegisterTrigger: Driver<Void>, 
+             resendSMSTrigger: Driver<Void>,
+             showMainViewTrigger: Driver<Void>,
+             confirmActiveUserTrigger: Driver<Void>,
+             popViewControllerTrigger: Driver<Void>) {
             self.confirmRegisterTrigger = confirmRegisterTrigger
             self.resendSMSTrigger = resendSMSTrigger
             self.showMainViewTrigger = showMainViewTrigger
             self.confirmActiveUserTrigger = confirmActiveUserTrigger
+            self.popViewControllerTrigger = popViewControllerTrigger
         }
     }
     
@@ -224,6 +230,12 @@ extension CodeInputViewModel: ViewModel {
         activityTracker
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
+            }
             .store(in: cancelBag)
         
         return output

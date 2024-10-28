@@ -30,7 +30,7 @@ struct MainView: View {
 //                self.viewRouter.route(selectedPageId: self.viewRouter.selectedPageId)
 //            }
         })
-//        .navigationBarHidden(true)
+        .navigationBarHidden(true)
 //            .statusBar(hidden: true)
             .edgesIgnoringSafeArea([.bottom, .leading, .trailing])
          

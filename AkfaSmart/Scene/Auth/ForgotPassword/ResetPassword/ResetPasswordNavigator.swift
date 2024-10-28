@@ -9,9 +9,10 @@
 import UIKit
 protocol ResetPasswordNavigatorType {
     func showLogin()
+    func popView()
 }
 
-struct ResetPasswordNavigator: ResetPasswordNavigatorType, ShowingLogin {
+struct ResetPasswordNavigator: ResetPasswordNavigatorType, ShowingLogin, PoppingController {
     var assembler: Assembler
     var navigationController: UINavigationController
 }

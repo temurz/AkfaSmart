@@ -18,6 +18,7 @@ extension ShowingLogin {
     func showLogin() {
         let view: LoginView = assembler.resolve(navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
+        navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.setViewControllers([vc], animated: false)
     }
 }

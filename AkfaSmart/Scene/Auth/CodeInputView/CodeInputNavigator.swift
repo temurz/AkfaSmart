@@ -11,9 +11,10 @@ protocol CodeInputNavigatorType {
     func showMain(page: MainPage)
     func showResetPasswordView()
     func showPINCodeView(state: PINCodeState)
+    func popView()
 }
 
-struct CodeInputNavigator: CodeInputNavigatorType, ShowingMain, ShowingResetPasswordView, ShowingPINCodeView {
+struct CodeInputNavigator: CodeInputNavigatorType, ShowingMain, ShowingResetPasswordView, ShowingPINCodeView, PoppingController {
     unowned var assembler: Assembler
     unowned var navigationController: UINavigationController
 }

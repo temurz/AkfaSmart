@@ -18,10 +18,12 @@ struct ForgotPasswordViewModel {
 extension ForgotPasswordViewModel: ViewModel {
     final class Input: ObservableObject {
         let confirmPhoneNumberTrigger: Driver<Void>
+        let popViewControllerTrigger: Driver<Void>
         @Published var phoneNumber = "998"
         
-        init(confirmPhoneNumberTrigger: Driver<Void>) {
+        init(confirmPhoneNumberTrigger: Driver<Void>, popViewControllerTrigger: Driver<Void>) {
             self.confirmPhoneNumberTrigger = confirmPhoneNumberTrigger
+            self.popViewControllerTrigger = popViewControllerTrigger
         }
     }
     
@@ -80,6 +82,12 @@ extension ForgotPasswordViewModel: ViewModel {
         activityTracker
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
+            }
             .store(in: cancelBag)
         
         return output

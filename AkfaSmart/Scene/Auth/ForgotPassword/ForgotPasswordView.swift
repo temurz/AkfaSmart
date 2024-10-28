@@ -12,69 +12,76 @@ struct ForgotPasswordView: View {
     @ObservedObject var input: ForgotPasswordViewModel.Input
     @ObservedObject var output: ForgotPasswordViewModel.Output
     private let confirmPhoneNumberTrigger = PassthroughSubject<Void,Never>()
+    private let popViewControllerTrigger = PassthroughSubject<Void,Never>()
     
     @State var statusBarHeight: CGFloat = 0
     private let cancelBag = CancelBag()
     
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            VStack(alignment: .leading) {
-                HStack {
-                    Spacer()
-                    Image("akfa_smart")
-                        .frame(width: 124, height: 44)
-                    Spacer()
+            VStack {
+                CustomNavigationBar(title: "") {
+                    popViewControllerTrigger.send(())
                 }
-                .ignoresSafeArea()
-                .padding(.bottom)
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("FORGOT_PASSWORD_QUESTION".localizedString)
-                        .font(.title)
-                        .bold()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.horizontal)
+                VStack(alignment: .leading) {
                     
-                    Text("ENTER_PHONE_NUMBER_RESET_PASSWORD".localizedString)
-                        .font(.headline)
-                        .foregroundColor(Colors.textDescriptionColor)
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.bottom)
-                    ZStack(alignment: .leading) {
-                        NumberPhoneMaskView(number: $input.phoneNumber)
-                            .frame(height: 50)
-                            .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
-                            .background(Colors.textFieldLightGrayBackground)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(
-                                        self.output.usernameValidationMessage.isEmpty ? Colors.borderGrayColor : .red,
-                                        lineWidth: self.output.usernameValidationMessage.isEmpty ? 1 : 2)
-                            }
-                        Image("call")
-                            .resizable()
-                            .foregroundColor(.gray)
-                            .frame(width: 18, height: 18)
-                            .padding()
+                    HStack {
+                        Spacer()
+                        Image("akfa_smart")
+                            .frame(width: 124, height: 44)
+                        Spacer()
                     }
-                    Text(output.usernameValidationMessage)
-                        .foregroundColor(.red)
-                        .font(.footnote)
+                    .ignoresSafeArea()
+                    .padding(.bottom)
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text("FORGOT_PASSWORD_QUESTION".localizedString)
+                            .font(.title)
+                            .bold()
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.horizontal)
+                        
+                        Text("ENTER_PHONE_NUMBER_RESET_PASSWORD".localizedString)
+                            .font(.headline)
+                            .foregroundColor(Colors.textDescriptionColor)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.bottom)
+                        ZStack(alignment: .leading) {
+                            NumberPhoneMaskView(number: $input.phoneNumber)
+                                .frame(height: 50)
+                                .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 8))
+                                .background(Colors.textFieldLightGrayBackground)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(
+                                            self.output.usernameValidationMessage.isEmpty ? Colors.borderGrayColor : .red,
+                                            lineWidth: self.output.usernameValidationMessage.isEmpty ? 1 : 2)
+                                }
+                            Image("call")
+                                .resizable()
+                                .foregroundColor(.gray)
+                                .frame(width: 18, height: 18)
+                                .padding()
+                        }
+                        Text(output.usernameValidationMessage)
+                            .foregroundColor(.red)
+                            .font(.footnote)
+                    }
+                    
+                    Spacer()
+                    Button {
+                        confirmPhoneNumberTrigger.send(())
+                    }label: {
+                        Text("CONFIRM".localizedString)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .foregroundColor(.white)
+                            .background(Colors.customRedColor)
+                            .cornerRadius(8)
+                    }
                 }
-                
-                Spacer()
-                Button {
-                    confirmPhoneNumberTrigger.send(())
-                }label: {
-                    Text("CONFIRM".localizedString)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .foregroundColor(.white)
-                        .background(Colors.customRedColor)
-                        .cornerRadius(8)
-                }
+                .padding()
             }
-            .padding()
         }
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
@@ -86,7 +93,9 @@ struct ForgotPasswordView: View {
     }
     
     init(viewModel: ForgotPasswordViewModel) {
-        let input = ForgotPasswordViewModel.Input(confirmPhoneNumberTrigger: confirmPhoneNumberTrigger.asDriver())
+        let input = ForgotPasswordViewModel.Input(
+            confirmPhoneNumberTrigger: confirmPhoneNumberTrigger.asDriver(),
+            popViewControllerTrigger: popViewControllerTrigger.asDriver())
         self.output = viewModel.transform(input, cancelBag: cancelBag)
         self.input = input
     }
