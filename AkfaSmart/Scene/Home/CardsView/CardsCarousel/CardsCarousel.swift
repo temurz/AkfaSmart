@@ -12,7 +12,7 @@ struct CardsCarousel: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UIScrollView {
         //ScrollView Content Size
-        let total = UIScreen.main.bounds.width * CGFloat(data.count + 1)
+        let total = UIScreen.main.bounds.width * CGFloat(data.count)
         let view = UIScrollView()
         view.isPagingEnabled = true
         //height = 1.0 for disabling vertical scrolling.

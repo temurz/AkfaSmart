@@ -284,6 +284,17 @@
 		B866A9932B71AFF700202C9F /* SearchProductViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A9922B71AFF700202C9F /* SearchProductViewNavigator.swift */; };
 		B866A9952B71B01100202C9F /* SearchProductViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A9942B71B01100202C9F /* SearchProductViewUseCase.swift */; };
 		B866A9972B71B02900202C9F /* SearchProductAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A9962B71B02900202C9F /* SearchProductAssembler.swift */; };
+		B8677C4C2CCFBC57000636D8 /* CardsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C4B2CCFBC57000636D8 /* CardsMainView.swift */; };
+		B8677C4E2CCFBD94000636D8 /* CardsMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C4D2CCFBD94000636D8 /* CardsMainViewModel.swift */; };
+		B8677C502CCFBDAE000636D8 /* CardsMainViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C4F2CCFBDAE000636D8 /* CardsMainViewNavigator.swift */; };
+		B8677C522CCFC0E1000636D8 /* ShowingCardsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C512CCFC0E1000636D8 /* ShowingCardsMainView.swift */; };
+		B8677C542CCFC14E000636D8 /* CardsMainViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C532CCFC14E000636D8 /* CardsMainViewAssembler.swift */; };
+		B8677C572CCFC66A000636D8 /* AddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C562CCFC66A000636D8 /* AddCardView.swift */; };
+		B8677C592CCFCD98000636D8 /* AddCardViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C582CCFCD98000636D8 /* AddCardViewUseCase.swift */; };
+		B8677C5B2CCFCDA3000636D8 /* AddCardViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C5A2CCFCDA3000636D8 /* AddCardViewNavigator.swift */; };
+		B8677C5D2CCFCDAD000636D8 /* AddCardViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C5C2CCFCDAD000636D8 /* AddCardViewAssembler.swift */; };
+		B8677C5F2CCFCDB6000636D8 /* AddCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C5E2CCFCDB6000636D8 /* AddCardViewModel.swift */; };
+		B8677C612CCFD33E000636D8 /* ShowingAddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8677C602CCFD33E000636D8 /* ShowingAddCardView.swift */; };
 		B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */; };
 		B86CDF472B77BC56002E7EA4 /* News+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF462B77BC56002E7EA4 /* News+API.swift */; };
 		B86CDF4A2B77C801002E7EA4 /* NewsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */; };
@@ -753,6 +764,17 @@
 		B866A9922B71AFF700202C9F /* SearchProductViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductViewNavigator.swift; sourceTree = "<group>"; };
 		B866A9942B71B01100202C9F /* SearchProductViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductViewUseCase.swift; sourceTree = "<group>"; };
 		B866A9962B71B02900202C9F /* SearchProductAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductAssembler.swift; sourceTree = "<group>"; };
+		B8677C4B2CCFBC57000636D8 /* CardsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsMainView.swift; sourceTree = "<group>"; };
+		B8677C4D2CCFBD94000636D8 /* CardsMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsMainViewModel.swift; sourceTree = "<group>"; };
+		B8677C4F2CCFBDAE000636D8 /* CardsMainViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsMainViewNavigator.swift; sourceTree = "<group>"; };
+		B8677C512CCFC0E1000636D8 /* ShowingCardsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingCardsMainView.swift; sourceTree = "<group>"; };
+		B8677C532CCFC14E000636D8 /* CardsMainViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsMainViewAssembler.swift; sourceTree = "<group>"; };
+		B8677C562CCFC66A000636D8 /* AddCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardView.swift; sourceTree = "<group>"; };
+		B8677C582CCFCD98000636D8 /* AddCardViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewUseCase.swift; sourceTree = "<group>"; };
+		B8677C5A2CCFCDA3000636D8 /* AddCardViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewNavigator.swift; sourceTree = "<group>"; };
+		B8677C5C2CCFCDAD000636D8 /* AddCardViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewAssembler.swift; sourceTree = "<group>"; };
+		B8677C5E2CCFCDB6000636D8 /* AddCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModel.swift; sourceTree = "<group>"; };
+		B8677C602CCFD33E000636D8 /* ShowingAddCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingAddCardView.swift; sourceTree = "<group>"; };
 		B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGateway.swift; sourceTree = "<group>"; };
 		B86CDF462B77BC56002E7EA4 /* News+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+API.swift"; sourceTree = "<group>"; };
 		B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDomainUseCase.swift; sourceTree = "<group>"; };
@@ -1183,6 +1205,8 @@
 				B8DAD24D2BAAB1B200857140 /* ShowingPINCodeView.swift */,
 				B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */,
 				B8F7B7D12CCEDA570093A2B7 /* PoppingController.swift */,
+				B8677C512CCFC0E1000636D8 /* ShowingCardsMainView.swift */,
+				B8677C602CCFD33E000636D8 /* ShowingAddCardView.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -1981,6 +2005,35 @@
 			path = Row;
 			sourceTree = "<group>";
 		};
+		B8677C492CCFBC29000636D8 /* CardsCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				B8C3E4E92CC6BA6100738BAF /* CardsCarousel.swift */,
+				B8C3E4EB2CC6BA8900738BAF /* CardsHorizontalListView.swift */,
+			);
+			path = CardsCarousel;
+			sourceTree = "<group>";
+		};
+		B8677C4A2CCFBC3A000636D8 /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				B8C3E4ED2CC6BAA000738BAF /* CardRowView.swift */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
+		B8677C552CCFC65F000636D8 /* AddCardView */ = {
+			isa = PBXGroup;
+			children = (
+				B8677C562CCFC66A000636D8 /* AddCardView.swift */,
+				B8677C5E2CCFCDB6000636D8 /* AddCardViewModel.swift */,
+				B8677C582CCFCD98000636D8 /* AddCardViewUseCase.swift */,
+				B8677C5A2CCFCDA3000636D8 /* AddCardViewNavigator.swift */,
+				B8677C5C2CCFCDAD000636D8 /* AddCardViewAssembler.swift */,
+			);
+			path = AddCardView;
+			sourceTree = "<group>";
+		};
 		B86CDF482B77C7CD002E7EA4 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -2253,10 +2306,14 @@
 		B8C3E4E82CC6BA3F00738BAF /* CardsView */ = {
 			isa = PBXGroup;
 			children = (
-				B8C3E4E92CC6BA6100738BAF /* CardsCarousel.swift */,
-				B8C3E4EB2CC6BA8900738BAF /* CardsHorizontalListView.swift */,
-				B8C3E4ED2CC6BAA000738BAF /* CardRowView.swift */,
+				B8677C552CCFC65F000636D8 /* AddCardView */,
+				B8677C4A2CCFBC3A000636D8 /* Rows */,
+				B8677C492CCFBC29000636D8 /* CardsCarousel */,
 				B88E1F082CCD4B7B004F2C64 /* GetCardsViewUseCase.swift */,
+				B8677C4B2CCFBC57000636D8 /* CardsMainView.swift */,
+				B8677C4D2CCFBD94000636D8 /* CardsMainViewModel.swift */,
+				B8677C4F2CCFBDAE000636D8 /* CardsMainViewNavigator.swift */,
+				B8677C532CCFC14E000636D8 /* CardsMainViewAssembler.swift */,
 			);
 			path = CardsView;
 			sourceTree = "<group>";
@@ -2568,6 +2625,7 @@
 				B89F2F732B9021B3004DAEAB /* SeriesAndAmountRow.swift in Sources */,
 				173865AC24D3BC840059E3AD /* API+Repo.swift in Sources */,
 				B8E1929A2B9B0FC90013B148 /* GettingInvoiceDetailDomainUseCase.swift in Sources */,
+				B8677C4C2CCFBC57000636D8 /* CardsMainView.swift in Sources */,
 				B866A9632B71536900202C9F /* ArticlesViewModel.swift in Sources */,
 				1742B36E24D7B22B00C82D15 /* ReposViewController.swift in Sources */,
 				B89F2F902B916C09004DAEAB /* Date+.swift in Sources */,
@@ -2606,6 +2664,7 @@
 				B89F2FA12B91A5A5004DAEAB /* GettingProductsDomainUseCase.swift in Sources */,
 				1781CF4424BD8FB8004ED1C6 /* ProductDetailViewModel.swift in Sources */,
 				B877FD612B8BBFA200D24CB0 /* Dealers+API.swift in Sources */,
+				B8677C592CCFCD98000636D8 /* AddCardViewUseCase.swift in Sources */,
 				B866A9412B70F8E400202C9F /* AsyncImageEarly.swift in Sources */,
 				B866A9872B7193D300202C9F /* HomeViewModel.swift in Sources */,
 				B8C165B22B9AA5CA00F70074 /* PaymentHistoryViewModel.swift in Sources */,
@@ -2661,6 +2720,7 @@
 				B89F2FB42B91BE1C004DAEAB /* ProductDealersListViewModel.swift in Sources */,
 				174A188F24C821B600AB39D9 /* LoadingView.swift in Sources */,
 				173865B224D419700059E3AD /* ViewModel+GetPage.swift in Sources */,
+				B8677C612CCFD33E000636D8 /* ShowingAddCardView.swift in Sources */,
 				B877FD6F2B8BFF6300D24CB0 /* MobileClassInfoDomainUseCase.swift in Sources */,
 				178809AA24C0412F00002215 /* Observable.swift in Sources */,
 				1742B37B24D7E88900C82D15 /* AlertMessage.swift in Sources */,
@@ -2668,6 +2728,7 @@
 				B80331442BA0BECE0019ACA5 /* EditInfographicsGateway.swift in Sources */,
 				B82CA9702B97775D000147D2 /* GettingUserInfoDomainUseCase.swift in Sources */,
 				176BAA5C24D175C200324D3C /* AuthGateway.swift in Sources */,
+				B8677C5B2CCFCDA3000636D8 /* AddCardViewNavigator.swift in Sources */,
 				B8CF98E82B656B2700EF02A7 /* RegisterDTO.swift in Sources */,
 				B866A8D12B68CFBD00202C9F /* ShowingForgotPassword.swift in Sources */,
 				B8FEC6DC2B879ABC0028BA7F /* CarouselView.swift in Sources */,
@@ -2683,6 +2744,7 @@
 				B80331722BA1E0330019ACA5 /* HRGraphicsEditView.swift in Sources */,
 				1787233324BD54B600D90F8E /* Assembler.swift in Sources */,
 				176BAA5A24D16BAE00324D3C /* ShowingLogin.swift in Sources */,
+				B8677C5D2CCFCDAD000636D8 /* AddCardViewAssembler.swift in Sources */,
 				B87ED2002B7A245F00EB5139 /* ShowingWelcomeView.swift in Sources */,
 				B8BE4A112B900C4E00876714 /* ClassDetailDomainUseCase.swift in Sources */,
 				B8BE49F82B8D883300876714 /* HRGraphicsDomainUseCase.swift in Sources */,
@@ -2697,6 +2759,7 @@
 				B863DABE2B8D09F7003F2C3D /* ShowingMarketingsGraphics.swift in Sources */,
 				173865A824D3BC490059E3AD /* APIInput.swift in Sources */,
 				B866A95C2B7129F700202C9F /* NewsDetailView.swift in Sources */,
+				B8677C4E2CCFBD94000636D8 /* CardsMainViewModel.swift in Sources */,
 				1742B36F24D7B22B00C82D15 /* ReposViewModel.swift in Sources */,
 				B866A98D2B71941500202C9F /* HomeViewAssembler.swift in Sources */,
 				B866A9362B70EE3200202C9F /* NewsTableRow.swift in Sources */,
@@ -2708,6 +2771,7 @@
 				B866A8DD2B68E01200202C9F /* CodeInputUseCase.swift in Sources */,
 				173865A124D3BB470059E3AD /* Repo.swift in Sources */,
 				B8FEC6C82B86487E0028BA7F /* ShowingResetPasswordView.swift in Sources */,
+				B8677C502CCFBDAE000636D8 /* CardsMainViewNavigator.swift in Sources */,
 				B866A9732B715D5800202C9F /* CustomImageAndTitleView.swift in Sources */,
 				B866A8DB2B68DC8100202C9F /* ForgotPasswordView.swift in Sources */,
 				B866A9432B70F92900202C9F /* EnvironmentValues+ImageCache.swift in Sources */,
@@ -2742,6 +2806,7 @@
 				B866A9272B6BF72600202C9F /* ViewRouter.swift in Sources */,
 				B89F2F962B91846C004DAEAB /* Bundle+.swift in Sources */,
 				B863DAA32B8D0551003F2C3D /* LanguageChangerView.swift in Sources */,
+				B8677C522CCFC0E1000636D8 /* ShowingCardsMainView.swift in Sources */,
 				B89F2F982B91872B004DAEAB /* DateIntervalView.swift in Sources */,
 				1787235624BD571500D90F8E /* GettingProducts.swift in Sources */,
 				B8FEC6C22B863C720028BA7F /* ResetPasswordUseCase.swift in Sources */,
@@ -2842,6 +2907,7 @@
 				B89F2F7F2B90E994004DAEAB /* ShowingPurchasesHistoryView.swift in Sources */,
 				B8BE4A132B900C8500876714 /* ClassDetailViewUseCase.swift in Sources */,
 				1770EC4324DD2F2F0022FBFE /* ScreenLoadingType.swift in Sources */,
+				B8677C5F2CCFCDB6000636D8 /* AddCardViewModel.swift in Sources */,
 				B8CF98DB2B6311AC00EF02A7 /* Color+Extension.swift in Sources */,
 				1720C7BA24FE355800D616B2 /* GetPageDto.swift in Sources */,
 				B86E1C972BA480BF00A0AF4D /* DownloadTaskModel.swift in Sources */,
@@ -2887,6 +2953,7 @@
 				B866A96B2B71544700202C9F /* ShowingArticleDetail.swift in Sources */,
 				1781CF4124BD8FB8004ED1C6 /* ProductDetailNavigator.swift in Sources */,
 				B866A9852B7193BE00202C9F /* HomeView.swift in Sources */,
+				B8677C542CCFC14E000636D8 /* CardsMainViewAssembler.swift in Sources */,
 				B89F2F8C2B911C1C004DAEAB /* PurchaseHistroyNavigator.swift in Sources */,
 				B80331512BA0CD940019ACA5 /* ShowingEditInfographicsView.swift in Sources */,
 				1765B2D324C6D6D40096D210 /* ProductRow.swift in Sources */,
@@ -2930,6 +2997,7 @@
 				1787234D24BD560500D90F8E /* MainViewModel.swift in Sources */,
 				B877FD842B8C3F8700D24CB0 /* AddDealerDomainUseCase.swift in Sources */,
 				B8CF98E02B6566EC00EF02A7 /* RegisterViewModel.swift in Sources */,
+				B8677C572CCFC66A000636D8 /* AddCardView.swift in Sources */,
 				B866A92B2B6BF76700202C9F /* TabBarItemView.swift in Sources */,
 				B8BE49EC2B8D7B8900876714 /* TechnoGraphics.swift in Sources */,
 				B8BE4A1C2B9013B800876714 /* ClassDetailViewRow.swift in Sources */,

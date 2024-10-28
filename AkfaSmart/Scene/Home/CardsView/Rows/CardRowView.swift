@@ -9,21 +9,11 @@
 import SwiftUI
 struct CardRowView: View {
     var model: Card
-    var isAddRow = false
-    
-    init(model: Card) {
-        self.model = model
-    }
-    
-    init(isAddRow: Bool) {
-        self.isAddRow = isAddRow
-        self.model = Card()
-    }
     
     var body: some View {
         VStack {
             VStack {
-                if isAddRow {
+                if model.id < 0 {
                     HStack {
                         Spacer()
                         Image(systemName: "plus.app")
@@ -65,7 +55,7 @@ struct CardRowView: View {
                             }
                             .padding([.top, .horizontal])
                             HStack {
-                                Text((1234689.convertDecimals()) + " uzs")
+                                Text((model.balance?.convertDecimals() ?? "0") + " uzs")
                                     .bold()
                                     .font(.title3)
                                     .foregroundStyle(.white)

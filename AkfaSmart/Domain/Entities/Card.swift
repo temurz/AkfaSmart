@@ -51,7 +51,7 @@ struct Card: Decodable {
     }
     
     init() {
-        self.id = 0
+        self.id = -1
         self.balance = nil
         self.cardNumber = nil
         self.displayName = nil

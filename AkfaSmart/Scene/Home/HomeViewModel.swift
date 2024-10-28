@@ -16,9 +16,6 @@ struct HomeViewModel {
 
 extension HomeViewModel: ViewModel {
     struct Input {
-        let openPurchasesTrigger: Driver<Void>
-        let openPaymentsTrigger: Driver<Void>
-        let calculateTotalAmounts: Driver<Void>
         let getDealersTrigger: Driver<Void>
         let getMobileClassInfo: Driver<Void>
         let showAddDealerViewTrigger: Driver<Void>
@@ -28,6 +25,7 @@ extension HomeViewModel: ViewModel {
         let showNewsViewTrigger: Driver<Void>
         let getCardsTrigger: Driver<Void>
         let showDealerDetailsViewTrigger: Driver<Dealer>
+        let showCardsMainViewTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -51,17 +49,6 @@ extension HomeViewModel: ViewModel {
         
         input.showAddDealerViewTrigger.sink {
             navigator.showAddDealerView()
-        }
-        .store(in: cancelBag)
-        
-        input.calculateTotalAmounts.sink {
-            output.totalOfMonth = output.items
-                .map { $0.purchaseForMonth }
-                .reduce(0,+)
-            
-            output.totalOfYear = output.items
-                .map {$0.purchaseForYear}
-                .reduce(0, +)
         }
         .store(in: cancelBag)
         
@@ -126,18 +113,6 @@ extension HomeViewModel: ViewModel {
             }
             .store(in: cancelBag)
         
-        input.openPurchasesTrigger
-            .sink {_ in 
-                navigator.showPurchasesHistoryView()
-            }
-            .store(in: cancelBag)
-        
-        input.openPaymentsTrigger
-            .sink { _ in
-                navigator.showPaymentsHistoryView()
-            }
-            .store(in: cancelBag)
-        
         errorTracker
             .receive(on: RunLoop.main)
             .map { AlertMessage(error: $0 ) }
@@ -177,6 +152,7 @@ extension HomeViewModel: ViewModel {
             .switchToLatest()
             .sink(receiveValue: { cards in
                 output.cards = cards
+                output.cards.append(Card())
             })
             .store(in: cancelBag)
         
@@ -185,6 +161,13 @@ extension HomeViewModel: ViewModel {
                 navigator.showDealersDetailViewModally(dealer: dealer)
             }
             .store(in: cancelBag)
+        
+        input.showCardsMainViewTrigger
+            .sink {
+                navigator.showCardsMainView()
+            }
+            .store(in: cancelBag)
+        
         return output
     }
 }

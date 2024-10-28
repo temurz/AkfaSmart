@@ -15,7 +15,6 @@ struct CardsHorizontalListView: View {
             ForEach(data, id: \.id) { model in
                 CardRowView(model: model)
             }
-            CardRowView(isAddRow: true)
         }
     }
 }

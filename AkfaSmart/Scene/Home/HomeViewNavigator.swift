@@ -10,14 +10,13 @@ import UIKit
 protocol HomeViewNavigatorType {
     func showAddDealerView()
     func showClassDetailView(imageData: Data?, title: String?)
-    func showPurchasesHistoryView()
-    func showPaymentsHistoryView()
     func showMain(page: MainPage)
     func showTechnicalSupport()
     func showDealersDetailViewModally(dealer: Dealer)
+    func showCardsMainView()
 }
 
-struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView, ShowingClassDetailView, ShowingPurchasesHistoryView, ShowingPaymentsHistoryView, ShowingMain, ShowingTechnicalSupportView, ShowDealerDetailsView {
+struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView, ShowingClassDetailView, ShowingMain, ShowingTechnicalSupportView, ShowDealerDetailsView, ShowingCardsMainView {
     var assembler: Assembler
     
     var navigationController: UINavigationController

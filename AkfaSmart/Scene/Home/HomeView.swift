@@ -17,9 +17,6 @@ struct HomeView: View {
     @State var infoDealer = Dealer(dealerId: nil, dealerClientCid: nil, name: nil, clientName: nil, balance: 0, purchaseForMonth: 0, purchaseForYear: 0)
     @State var showDealerDetails = false
     
-    private let openPurchasesTrigger = PassthroughSubject<Void,Never>()
-    private let openPaymentsTrigger = PassthroughSubject<Void,Never>()
-    private let calculateTotalAmounts = PassthroughSubject<Void,Never>()
     private let getDealersTrigger = PassthroughSubject<Void,Never>()
     private let getMobileClassInfoTrigger = PassthroughSubject<Void,Never>()
     private let showAddDealerViewTrigger = PassthroughSubject<Void,Never>()
@@ -28,13 +25,14 @@ struct HomeView: View {
     private let showArticlesViewTrigger = PassthroughSubject<Void,Never>()
     private let showNewsViewTrigger = PassthroughSubject<Void,Never>()
     private let getCardsTrigger = PassthroughSubject<Void,Never>()
+    private let showCardsMainViewTrigger = PassthroughSubject<Void,Never>()
     
     private let showDealerDetailsViewTrigger = PassthroughSubject<Dealer,Never>()
     
     let cancelBag = CancelBag()
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
                 ViewWithShadowOnBottom {
                     VStack {
                         HStack(spacing: 12) {
@@ -100,9 +98,13 @@ struct HomeView: View {
                             Text("MY_CARDS".localizedString)
                                 .font(.headline)
                             Spacer()
-                            Text("ALL_LOWERCASED".localizedString)
-                                .font(.headline)
-                                .foregroundStyle(Color.red)
+                            Button {
+                                showCardsMainViewTrigger.send(())
+                            } label: {
+                                Text("ALL_LOWERCASED".localizedString)
+                                    .font(.headline)
+                                    .foregroundStyle(Color.red)
+                            }
                         }
                         .padding(.horizontal)
                         if output.cards.isEmpty {
@@ -176,9 +178,6 @@ struct HomeView: View {
     
     init(viewModel: HomeViewModel) {
         let input = HomeViewModel.Input(
-            openPurchasesTrigger: openPurchasesTrigger.asDriver(),
-            openPaymentsTrigger: openPaymentsTrigger.asDriver(), 
-            calculateTotalAmounts: calculateTotalAmounts.asDriver(),
             getDealersTrigger: getDealersTrigger.asDriver(), 
             getMobileClassInfo: getMobileClassInfoTrigger.asDriver(),
             showAddDealerViewTrigger: showAddDealerViewTrigger.asDriver(), 
@@ -187,7 +186,8 @@ struct HomeView: View {
             showArticlesViewTrigger: showArticlesViewTrigger.asDriver(),
             showNewsViewTrigger: showNewsViewTrigger.asDriver(), 
             getCardsTrigger: getCardsTrigger.asDriver(),
-            showDealerDetailsViewTrigger: showDealerDetailsViewTrigger.asDriver()
+            showDealerDetailsViewTrigger: showDealerDetailsViewTrigger.asDriver(),
+            showCardsMainViewTrigger: showCardsMainViewTrigger.asDriver()
         )
         
         output = viewModel.transform(input, cancelBag: cancelBag)
