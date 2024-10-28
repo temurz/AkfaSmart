@@ -453,6 +453,7 @@
 		B8F7B7CB2CCED4E10093A2B7 /* DealerDetailsViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7CA2CCED4E10093A2B7 /* DealerDetailsViewNavigator.swift */; };
 		B8F7B7CE2CCED5570093A2B7 /* DealerDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7CD2CCED5570093A2B7 /* DealerDetailsViewModel.swift */; };
 		B8F7B7D02CCED76B0093A2B7 /* DealerDetailsViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7CF2CCED76B0093A2B7 /* DealerDetailsViewAssembler.swift */; };
+		B8F7B7D22CCEDA570093A2B7 /* PoppingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7D12CCEDA570093A2B7 /* PoppingController.swift */; };
 		B8FEC6B52B8502540028BA7F /* ResendSMS+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6B42B8502540028BA7F /* ResendSMS+API.swift */; };
 		B8FEC6B72B8504C70028BA7F /* ResendSMSGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */; };
 		B8FEC6B92B8504F90028BA7F /* ResendSMSDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEC6B82B8504F90028BA7F /* ResendSMSDomainUseCase.swift */; };
@@ -922,6 +923,7 @@
 		B8F7B7CA2CCED4E10093A2B7 /* DealerDetailsViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailsViewNavigator.swift; sourceTree = "<group>"; };
 		B8F7B7CD2CCED5570093A2B7 /* DealerDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailsViewModel.swift; sourceTree = "<group>"; };
 		B8F7B7CF2CCED76B0093A2B7 /* DealerDetailsViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailsViewAssembler.swift; sourceTree = "<group>"; };
+		B8F7B7D12CCEDA570093A2B7 /* PoppingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoppingController.swift; sourceTree = "<group>"; };
 		B8FEC6B42B8502540028BA7F /* ResendSMS+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResendSMS+API.swift"; sourceTree = "<group>"; };
 		B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendSMSGateway.swift; sourceTree = "<group>"; };
 		B8FEC6B82B8504F90028BA7F /* ResendSMSDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendSMSDomainUseCase.swift; sourceTree = "<group>"; };
@@ -1182,6 +1184,7 @@
 				B80331792BA1E67C0019ACA5 /* ShowingHRGraphicsEditView.swift */,
 				B8DAD24D2BAAB1B200857140 /* ShowingPINCodeView.swift */,
 				B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */,
+				B8F7B7D12CCEDA570093A2B7 /* PoppingController.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -1695,8 +1698,8 @@
 			isa = PBXGroup;
 			children = (
 				B80331702BA1E01C0019ACA5 /* HRGraphicsEdit */,
-				B863DA9A2B8D0458003F2C3D /* HRGraphicViewModel.swift */,
 				B863DA9C2B8D047A003F2C3D /* HRGraphicsView.swift */,
+				B863DA9A2B8D0458003F2C3D /* HRGraphicViewModel.swift */,
 				B8BE49F92B8D888100876714 /* HRGraphicsViewUseCase.swift */,
 				B803316C2BA1D5CE0019ACA5 /* HRGraphicsNavigator.swift */,
 				B803316E2BA1D61D0019ACA5 /* HRGraphicsAssembler.swift */,
@@ -2941,6 +2944,7 @@
 				B8AC36782B79925F0060D52D /* AddDealerNavigator.swift in Sources */,
 				B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */,
 				1742B36B24D7B22B00C82D15 /* ReposAssembler.swift in Sources */,
+				B8F7B7D22CCEDA570093A2B7 /* PoppingController.swift in Sources */,
 				B85516D22B792B5600FC2D6E /* InfographicsViewModel.swift in Sources */,
 				B877FD812B8C3F1F00D24CB0 /* AddDealerGateway.swift in Sources */,
 				B866A8E72B68E4CD00202C9F /* CodeConfirm+API.swift in Sources */,

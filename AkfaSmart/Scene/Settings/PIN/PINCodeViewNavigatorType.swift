@@ -12,9 +12,10 @@ protocol PINCodeViewNavigatorType {
     func showMain(page: MainPage)
     func popView()
     func showWelcomeView()
+    func checkHasParentController() -> Bool
 }
 
-struct PINCodeViewNavigator: PINCodeViewNavigatorType, ShowingMain, ShowingWelcomeView {
+struct PINCodeViewNavigator: PINCodeViewNavigatorType, ShowingMain, ShowingWelcomeView, PoppingController {
     var assembler: Assembler
     
     var navigationController: UINavigationController
@@ -27,7 +28,7 @@ struct PINCodeViewNavigator: PINCodeViewNavigatorType, ShowingMain, ShowingWelco
         }
     }
     
-    func popView() {
-        navigationController.popViewController(animated: true)
+    func checkHasParentController() -> Bool {
+        navigationController.viewControllers.count > 1
     }
 }

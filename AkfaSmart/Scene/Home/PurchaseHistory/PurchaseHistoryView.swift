@@ -17,11 +17,20 @@ struct PurchaseHistoryView: View {
     private let loadMoreIncome = PassthroughSubject<InvoiceInput,Never>()
     private let showFilterViewTrigger = PassthroughSubject<Void,Never>()
     private let showDetailViewTrigger = PassthroughSubject<Invoice, Never>()
+    
+    private let popViewControllerTrigger = PassthroughSubject<Void, Never>()
+
     private let cancelBag = CancelBag()
     
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
+                CustomNavigationBar(title: "PURCHASE_HISTORY_TITLE".localizedString, rightBarImage: "filter_icon") {
+                    popViewControllerTrigger.send(())
+                } onRightBarButtonTapAction: {
+                    showFilterViewTrigger.send(())
+                }
+
                 Picker("", selection: $selection) {
                     Text("INCOME".localizedString)
                         .font(.headline)
@@ -82,16 +91,6 @@ struct PurchaseHistoryView: View {
                 }
             }
         }
-        .navigationTitle("PURCHASE_HISTORY_TITLE".localizedString)
-        .navigationBarItems(trailing:
-                                Button(action: {
-            showFilterViewTrigger.send(())
-        }, label: {
-            Image("filter_icon")
-                .resizable()
-                .foregroundColor(Color.red)
-        })
-        )
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
                 title: Text(output.alert.title),
@@ -116,7 +115,8 @@ struct PurchaseHistoryView: View {
             reloadPurchaseHistoryIncome: reloadIncome.asDriver(),
             loadMorePurchaseHistoryIncome: loadMoreIncome.asDriver(),
             showFilterViewTrigger: showFilterViewTrigger.asDriver(), 
-            showDetailViewTrigger: showDetailViewTrigger.asDriver()
+            showDetailViewTrigger: showDetailViewTrigger.asDriver(),
+            popViewControllerTrigger: popViewControllerTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

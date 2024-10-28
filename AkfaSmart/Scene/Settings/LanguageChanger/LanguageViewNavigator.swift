@@ -8,16 +8,12 @@
 
 import UIKit
 protocol LanguageViewNavigatorType {    
-    func popViewController()
+    func popView()
     func showMain(page: MainPage)
 }
 
-struct LanguageViewNavigator: LanguageViewNavigatorType, ShowingMain {
+struct LanguageViewNavigator: LanguageViewNavigatorType, ShowingMain, PoppingController {
     unowned var assembler: Assembler
     
     unowned var navigationController: UINavigationController
-    
-    func popViewController() {
-        navigationController.popViewController(animated: true)
-    }
 }

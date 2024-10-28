@@ -12,10 +12,10 @@ struct PINCodeView: View {
     @ObservedObject var output: PINCodeViewModel.Output
     private let sendCodeTrigger = PassthroughSubject<Void, Never>()
     private let skipTrigger = PassthroughSubject<Void, Never>()
+    private let popViewControllerTrigger = PassthroughSubject<Void, Never>()
+    private let checkHasParentControllerTrigger = PassthroughSubject<Void, Never>()
     private let cancelBag = CancelBag()
     
-    
-
     @State var id = UUID()
     @FocusState var focusField: FocusField?
     enum FocusField {
@@ -24,6 +24,14 @@ struct PINCodeView: View {
     }
     var body: some View {
         VStack {
+            if output.hasParentController {
+                CustomNavigationBar(title: "PIN_CODE_VIEW_TITLE".localizedString) {
+                    popViewControllerTrigger.send(())
+                }
+            } else {
+                ModuleNavigationBar(title: "PIN_CODE_VIEW_TITLE".localizedString)
+            }
+             
             Spacer()
             Text(output.state.rawValue.localizedString)
                 .multilineTextAlignment(.center)
@@ -93,13 +101,17 @@ struct PINCodeView: View {
         .navigationTitle("PIN_CODE_VIEW_TITLE".localizedString)
         .toastView(toast: $output.toast)
         .onAppear {
+            checkHasParentControllerTrigger.send(())
             focusField = FocusField.first
         }
     }
     
     init(viewModel: PINCodeViewModel) {
-        let input = PINCodeViewModel.Input(saveCodeTrigger: sendCodeTrigger.asDriver(),
-                                           skipTrigger: skipTrigger.asDriver())
+        let input = PINCodeViewModel.Input(
+            saveCodeTrigger: sendCodeTrigger.asDriver(),
+            skipTrigger: skipTrigger.asDriver(),
+            popViewControllerTrigger: popViewControllerTrigger.asDriver(), 
+            checkHasParentControllerTrigger: checkHasParentControllerTrigger.asDriver())
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

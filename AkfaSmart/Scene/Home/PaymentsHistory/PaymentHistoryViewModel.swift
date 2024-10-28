@@ -23,6 +23,7 @@ extension PaymentHistoryViewModel: ViewModel {
         let reloadPaymentsHistoryIncome: Driver<ReceiptsInput>
         let loadMorePaymentsHistoryIncome: Driver<ReceiptsInput>
         let showFilterViewTrigger: Driver<Void>
+        let popViewController: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -81,6 +82,12 @@ extension PaymentHistoryViewModel: ViewModel {
         input.showFilterViewTrigger
             .sink {
                 navigator.showDateFilterView(output.dateFilter)
+            }
+            .store(in: cancelBag)
+        
+        input.popViewController
+            .sink {
+                navigator.popView()
             }
             .store(in: cancelBag)
         

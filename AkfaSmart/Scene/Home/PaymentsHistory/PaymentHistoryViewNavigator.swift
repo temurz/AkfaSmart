@@ -10,9 +10,10 @@ import UIKit
 import SwiftUI
 protocol PaymentHistoryViewNavigatorType {
     func showDateFilterView(_ dateFilter: DateFilter)
+    func popView()
 }
 
-struct PaymentHistoryViewNavigator: PaymentHistoryViewNavigatorType {
+struct PaymentHistoryViewNavigator: PaymentHistoryViewNavigatorType, PoppingController {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
     

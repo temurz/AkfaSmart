@@ -16,7 +16,12 @@ protocol ShowingMarketinggraphics {
 
 extension ShowingMarketinggraphics {
     func showMarketinggraphics() {
-        let view: MarketingGraphicsView = MarketingGraphicsView(viewModel: MarketingGraphicsViewModel(useCase: MarketingGraphicsViewUseCase(gateway: MarketingGraphicsGateway())))
+        let view: MarketingGraphicsView = MarketingGraphicsView(
+            viewModel:
+                MarketingGraphicsViewModel(
+                    useCase: MarketingGraphicsViewUseCase(gateway: MarketingGraphicsGateway()),
+                    navigator: PopViewNavigator(navigationController: navigationController))
+        )
         let vc = UIHostingController(rootView: view)
         self.navigationController.pushViewController(vc, animated: true)
     }

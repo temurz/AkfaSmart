@@ -16,7 +16,11 @@ protocol ShowingProductGraphics {
 
 extension ShowingProductGraphics {
     func showProductGraphics() {
-        let view: ProductGraphicsView = ProductGraphicsView(viewModel: ProductGraphicsViewModel(useCase: ProductGraphicsViewUseCase(gateway: ProductGraphicsGateway())))
+        let view: ProductGraphicsView = ProductGraphicsView(
+            viewModel: ProductGraphicsViewModel(
+                useCase: ProductGraphicsViewUseCase(gateway: ProductGraphicsGateway()),
+                navigator: PopViewNavigator(navigationController: navigationController))
+        )
         let vc = UIHostingController(rootView: view)
         self.navigationController.pushViewController(vc, animated: true)
     }

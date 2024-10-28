@@ -12,31 +12,29 @@ struct HRGraphicsEditView: View {
     @ObservedObject var output: HRGraphicsEditViewModel.Output
     private let saveHRGraphicsTrigger = PassthroughSubject<HRGraphics, Never>()
     private let loadInitialValuesTrigger = PassthroughSubject<HRGraphics,Never>()
+    private let popViewControllerTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     
     private let model: HRGraphics
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            ScrollView {
-                VStack {
-                    EditInfographicsViewRow(title: "NUMBER_OF_EMPLOYEES".localizedString, constantModel: "\(model.numberOfEmployees ?? 0)", editedValue: $output.numberOfEmployeesEditedString, keyboardType: .numberPad)
-                    EditViewRowWithMultiLine(title: "ABOUT_EMPLOYEES".localizedString, constantModel: model.aboutEmployees, editedValue: $output.aboutEmployeesEdited)
-                    sellerRow
-                    accountantRow
-                    
+            VStack(alignment: .leading) {
+                CustomNavigationBar(title: "HR_GRAPHICS_TITLE".localizedString, rightBarTitle: "SAVE".localizedString) {
+                    popViewControllerTrigger.send(())
+                } onRightBarButtonTapAction: {
+                    saveHRGraphicsTrigger.send(model)
+                }
+                ScrollView {
+                    VStack {
+                        EditInfographicsViewRow(title: "NUMBER_OF_EMPLOYEES".localizedString, constantModel: "\(model.numberOfEmployees ?? 0)", editedValue: $output.numberOfEmployeesEditedString, keyboardType: .numberPad)
+                        EditViewRowWithMultiLine(title: "ABOUT_EMPLOYEES".localizedString, constantModel: model.aboutEmployees, editedValue: $output.aboutEmployeesEdited)
+                        sellerRow
+                        accountantRow
+                        
+                    }
                 }
             }
         }
-        .navigationTitle("HR_GRAPHICS_TITLE".localizedString)
-        .navigationBarItems(trailing:
-                                Button(action: {
-            saveHRGraphicsTrigger.send(model)
-        }, label: {
-            Text("SAVE".localizedString)
-                .bold()
-                .foregroundColor(Color.red)
-        })
-        )
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
                 title: Text(output.alert.title),
@@ -147,7 +145,8 @@ struct HRGraphicsEditView: View {
         
         let input = HRGraphicsEditViewModel.Input(
             saveHRGraphicsTrigger: saveHRGraphicsTrigger.asDriver(),
-            loadInitialValuesTrigger: loadInitialValuesTrigger.asDriver()
+            loadInitialValuesTrigger: loadInitialValuesTrigger.asDriver(),
+            popViewControllerTrigger: popViewControllerTrigger.asDriver()
         )
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

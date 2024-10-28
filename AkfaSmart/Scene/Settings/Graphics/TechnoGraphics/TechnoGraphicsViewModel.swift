@@ -19,6 +19,7 @@ extension TechnoGraphicsViewModel: ViewModel {
         let requestTechnoGraphicsTrigger: Driver<Void>
         let showEditTechnoGraphicsViewTrigger: Driver<Void>
         let openGoogleMapsTrigger: Driver<Location>
+        let popViewControllerTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -82,6 +83,12 @@ extension TechnoGraphicsViewModel: ViewModel {
         activityTracker
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
+            }
             .store(in: cancelBag)
         
         return output

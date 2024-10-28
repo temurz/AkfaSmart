@@ -27,6 +27,9 @@ struct ProductDealersListView: View {
     var body: some View {
         return LoadingView(isShowing: .constant(false), text: .constant("")) {
             VStack {
+                CustomNavigationBar(title: "DEALERS_WITH_THIS_PRODUCT".localizedString) {
+                    backButtonTrigger.send(())
+                }
                 VStack(alignment: .leading) {
                     Text(model.name)
                         .font(.subheadline)
@@ -71,23 +74,12 @@ struct ProductDealersListView: View {
                 .listStyle(.plain)
             }
         }
-        .navigationTitle("DEALERS_WITH_THIS_PRODUCT".localizedString)
         .onAppear {
             
             locationManager.didEndUpdating = { lat, long in
                 loadProductDealersTrigger.send(ProductDealersListInput(productName: model.name, latitude: lat, longitude: long))
             }
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Button(action: {
-            backButtonTrigger.send(())
-        }) {
-            Image(systemName: "chevron.left")
-                .imageScale(.large)
-                .foregroundColor(.blue) // Customize the color as needed
-        }
-        )
     }
     
     init(model: ProductWithName, viewModel: ProductDealersListViewModel) {

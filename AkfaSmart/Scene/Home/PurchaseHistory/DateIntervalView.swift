@@ -21,13 +21,20 @@ struct DateIntervalView: View {
     var navigationContoller: UINavigationController
     var body: some View {
         VStack {
+            CustomNavigationBar(title: "FILTER".localizedString, rightBarTitle: "CLEAR".localizedString) {
+                navigationContoller.popViewController(animated: true)
+            } onRightBarButtonTapAction: {
+                dateFilter.optionalFrom = nil
+                dateFilter.optionalTo = nil
+                dateFilter.isFiltered = true
+                navigationContoller.popViewController(animated: true)
+            }
             CalendarAlert(from: dateFilter.from, to: dateFilter.to)
             .environmentObject(dateFilter)
             Button(action: {
                 navigationContoller.popViewController(animated: true)
             }) {
                 HStack{
-                    
                     Text("FILTER".localizedString)
                         .font(.headline)
                         .frame(maxWidth: .infinity, maxHeight: 40)
@@ -39,17 +46,5 @@ struct DateIntervalView: View {
             }.padding()
             Spacer()
         }
-        .navigationTitle("FILTER".localizedString)
-        .navigationBarItems(trailing:
-                                Button(action: {
-            dateFilter.optionalFrom = nil
-            dateFilter.optionalTo = nil
-            dateFilter.isFiltered = true
-            navigationContoller.popViewController(animated: true)
-        }, label: {
-            Text("CLEAR".localizedString)
-                .foregroundColor(Color.red)
-        })
-        )
     }
 }

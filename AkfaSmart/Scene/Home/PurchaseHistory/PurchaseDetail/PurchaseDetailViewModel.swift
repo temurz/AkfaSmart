@@ -9,11 +9,13 @@
 import Foundation
 struct PurchaseDetailViewModel {
     let useCase: PurchaseDetailViewUseCaseType
+    let navigator: PopViewNavigatorType
 }
 
 extension PurchaseDetailViewModel: ViewModel {
     struct Input {
         let loadDetailsTrigger: Driver<InvoiceDetailViewInput>
+        let popViewController: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -50,6 +52,12 @@ extension PurchaseDetailViewModel: ViewModel {
         activityTracker
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
+        
+        input.popViewController
+            .sink {
+                navigator.popView()
+            }
             .store(in: cancelBag)
         
         return output

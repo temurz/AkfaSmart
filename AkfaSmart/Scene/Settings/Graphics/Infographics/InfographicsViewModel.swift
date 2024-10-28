@@ -16,6 +16,7 @@ extension InfographicsViewModel: ViewModel {
     struct Input {
         let requestInfographicsTrigger: Driver<Void>
         let showEditInfographicsViewTrigger: Driver<Void>
+        let popViewControllerTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -63,6 +64,12 @@ extension InfographicsViewModel: ViewModel {
                 if let info = output.info {
                     navigator.showEditInfographicsView(model: info)
                 }
+            }
+            .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
             }
             .store(in: cancelBag)
         

@@ -9,11 +9,13 @@
 import Foundation
 struct ClassDetailViewModel {
     let useCase: ClassDetailViewUseCaseType
+    let navigator: PopViewNavigatorType
 }
 
 extension ClassDetailViewModel: ViewModel {
     struct Input {
         let requestClassDetailsTrigger: Driver<Void>
+        let popViewControllerTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -49,6 +51,12 @@ extension ClassDetailViewModel: ViewModel {
         activityTracker
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
+            }
             .store(in: cancelBag)
         
         return output

@@ -22,8 +22,10 @@ struct CustomNavigationBar: View {
                     ZStack {
                             Text(title)
                                 .font(.headline)
+                                .truncationMode(.middle)
                                 .foregroundStyle(.black)
                                 .padding()
+                                .frame(width: UIScreen.main.bounds.width - 80)
                         HStack {
                             Image("arrow_back")
                                 .resizable()
@@ -33,6 +35,7 @@ struct CustomNavigationBar: View {
                                     onBackTapAction()
                                 }
                                 .padding(.leading)
+                                .background(Color.white)
                             Spacer(minLength: 10)
                             Text(title)
                                 .font(.headline)
@@ -48,7 +51,7 @@ struct CustomNavigationBar: View {
                                     .onTapGesture {
                                         onRightBarButtonTapAction?()
                                     }
-                                    .padding(8)
+                                    .padding()
                                     .background(Color.white)
                             } else if let rightBarTitle {
                                 Text(rightBarTitle)
@@ -68,5 +71,52 @@ struct CustomNavigationBar: View {
             }
         }
         .background(Color.white)
+    }
+}
+
+
+struct ModuleNavigationBar: View {
+    var title: String
+    var rightBarTitle: String?
+    var rightBarImage: String?
+    var onRightBarButtonTapAction: (() -> Void)?
+    
+    var body: some View {
+        VStack {
+            ViewWithShadowOnBottom {
+                HStack {
+                    Text(title)
+                        .font(.headline)
+                        .foregroundStyle(.black)
+                        .padding()
+                    Spacer()
+                    if let rightBarImage {
+                        Image(rightBarImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundStyle(Colors.customRedColor)
+                            .frame(width: 24, height: 24)
+                            .onTapGesture {
+                                onRightBarButtonTapAction?()
+                            }
+                            .padding(8)
+                            .background(Color.white)
+                    } else if let rightBarTitle {
+                        Text(rightBarTitle)
+                            .foregroundStyle(Colors.customRedColor)
+                            .font(.callout)
+                            .lineLimit(1)
+                            .bold()
+                            .onTapGesture {
+                                onRightBarButtonTapAction?()
+                            }
+                            .padding(.trailing)
+                            .background(Color.white)
+                    }
+                }
+            }
+        }
+        .background(Color.white)
+
     }
 }

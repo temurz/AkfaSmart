@@ -16,6 +16,7 @@ extension LanguageChangerViewModel: ViewModel {
     struct Input {
         let saveTrigger: Driver<Void>
         let getCurrentLanguageTrigger: Driver<Void>
+        let popViewControllerTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -60,6 +61,12 @@ extension LanguageChangerViewModel: ViewModel {
                     AuthApp.shared.language = "en"
                 }
                 navigator.showMain(page: .settings)
+            }
+            .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
             }
             .store(in: cancelBag)
         

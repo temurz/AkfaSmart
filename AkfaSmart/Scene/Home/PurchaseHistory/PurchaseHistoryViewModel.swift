@@ -24,6 +24,7 @@ extension PurchaseHistoryViewModel: ViewModel {
         let loadMorePurchaseHistoryIncome: Driver<InvoiceInput>
         let showFilterViewTrigger: Driver<Void>
         let showDetailViewTrigger: Driver<Invoice>
+        let popViewControllerTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -88,6 +89,12 @@ extension PurchaseHistoryViewModel: ViewModel {
             navigator.showPurchaseDetailView(model)
         }
         .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
+            }
+            .store(in: cancelBag)
         
         return output
     }

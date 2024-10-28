@@ -14,6 +14,7 @@ struct EditInfographicsView: View {
     private let loadRegionsTrigger = PassthroughSubject<Void,Never>()
     private let loadChildRegionsTrigger = PassthroughSubject<Int,Never>()
     private let saveInfographicsTrigger = PassthroughSubject<Infographics, Never>()
+    private let popViewControllerTrigger = PassthroughSubject<Void, Never>()
     
     private let loadInitialValuesTrigger = PassthroughSubject<Infographics,Never>()
     private let cancelBag = CancelBag()
@@ -23,34 +24,31 @@ struct EditInfographicsView: View {
     private let model: Infographics
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            ScrollView {
-                VStack(spacing: 4) {
-                    EditInfographicsViewRow(title: "FIRST_NAME".localizedString, constantModel: model.firstName, editedValue: $output.firstName)
-                    EditInfographicsViewRow(title: "MIDDLE_NAME".localizedString, constantModel: model.middleName, editedValue: $output.middleName)
-                    EditInfographicsViewRow(title: "LAST_NAME".localizedString, constantModel: model.lastName, editedValue: $output.lastName)
-                    marriedRow
-                    childRow
-                    dateRow
-                    regionRow
-                    EditInfographicsViewRow(title: "ADDRESS".localizedString, constantModel: model.address, editedValue: $output.address)
-                    EditInfographicsViewRow(title: "NATIONALITY".localizedString, constantModel: model.nation, editedValue: $output.nation)
-                    EditInfographicsViewRow(title: "EDUCATION".localizedString, constantModel: model.education, editedValue: $output.educationEdited)
-                    languagesRow
+            VStack(alignment: .leading) {
+                CustomNavigationBar(title: "INFOGRAPHICS".localizedString, rightBarTitle: "SAVE".localizedString) {
+                    popViewControllerTrigger.send(())
+                } onRightBarButtonTapAction: {
+                    saveInfographicsTrigger.send(model)
                 }
-                .onChange(of: output.initialValuesAreLoaded, perform: { value in
-                    
-                })
+                ScrollView {
+                    VStack(spacing: 4) {
+                        EditInfographicsViewRow(title: "FIRST_NAME".localizedString, constantModel: model.firstName, editedValue: $output.firstName)
+                        EditInfographicsViewRow(title: "MIDDLE_NAME".localizedString, constantModel: model.middleName, editedValue: $output.middleName)
+                        EditInfographicsViewRow(title: "LAST_NAME".localizedString, constantModel: model.lastName, editedValue: $output.lastName)
+                        marriedRow
+                        childRow
+                        dateRow
+                        regionRow
+                        EditInfographicsViewRow(title: "ADDRESS".localizedString, constantModel: model.address, editedValue: $output.address)
+                        EditInfographicsViewRow(title: "NATIONALITY".localizedString, constantModel: model.nation, editedValue: $output.nation)
+                        EditInfographicsViewRow(title: "EDUCATION".localizedString, constantModel: model.education, editedValue: $output.educationEdited)
+                        languagesRow
+                    }
+                    .onChange(of: output.initialValuesAreLoaded, perform: { value in
+                        
+                    })
+                }
             }
-            .navigationTitle("INFOGRAPHICS".localizedString)
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                saveInfographicsTrigger.send(model)
-            }, label: {
-                Text("SAVE".localizedString)
-                    .bold()
-                    .foregroundColor(Color.red)
-            })
-            )
             .alert(isPresented: $output.alert.isShowing) {
                 Alert(
                     title: Text(output.alert.title),
@@ -291,7 +289,8 @@ struct EditInfographicsView: View {
             loadRegionsDataTrigger: loadRegionsTrigger.asDriver(),
             loadChildRegionsDataTrigger: loadChildRegionsTrigger.asDriver(),
             saveInfographicsTrigger: saveInfographicsTrigger.asDriver(),
-            loadInitialValuesTrigger: loadInitialValuesTrigger.asDriver()
+            loadInitialValuesTrigger: loadInitialValuesTrigger.asDriver(),
+            popViewControllerTrigger: popViewControllerTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

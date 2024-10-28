@@ -9,9 +9,10 @@
 import UIKit
 protocol HRGraphicsNavigatorType {
     func showHRGraphicsEditView(_ model: HRGraphics)
+    func popView()
 }
 
-struct HRGraphicsNavigator: HRGraphicsNavigatorType, ShowingHRGraphicsEditView {
+struct HRGraphicsNavigator: HRGraphicsNavigatorType, ShowingHRGraphicsEditView, PoppingController {
     unowned var assembler: Assembler
     unowned var navigationController: UINavigationController
 }

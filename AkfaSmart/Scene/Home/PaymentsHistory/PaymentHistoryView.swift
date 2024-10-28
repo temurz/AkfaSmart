@@ -17,11 +17,18 @@ struct PaymentHistoryView: View {
     private let loadMoreHistoryTrigger = PassthroughSubject<ReceiptsInput,Never>()
     private let showFilterViewTrigger = PassthroughSubject<Void,Never>()
     
+    private let popViewControllerTrigger = PassthroughSubject<Void, Never>()
+    
     private let cancelBag = CancelBag()
     
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
+                CustomNavigationBar(title: "PAYMENT_HISTORY_TITLE".localizedString, rightBarImage: "filter_icon") {
+                    popViewControllerTrigger.send(())
+                } onRightBarButtonTapAction: {
+                    showFilterViewTrigger.send(())
+                }
                 Picker("", selection: $selection) {
                     Text("OUTCOME_PAYMENT".localizedString)
                         .font(.headline)
@@ -89,16 +96,6 @@ struct PaymentHistoryView: View {
                 }
             }
         }
-        .navigationTitle("PAYMENT_HISTORY_TITLE".localizedString)
-        .navigationBarItems(trailing:
-                                Button(action: {
-            showFilterViewTrigger.send(())
-        }, label: {
-            Image("filter_icon")
-                .resizable()
-                .foregroundColor(Color.red)
-        })
-        )
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
                 title: Text(output.alert.title),
@@ -121,7 +118,8 @@ struct PaymentHistoryView: View {
             loadPaymentsHistoryIncome: loadHistoryTrigger.asDriver(),
             reloadPaymentsHistoryIncome: reloadHistoryTrigger.asDriver(),
             loadMorePaymentsHistoryIncome: loadMoreHistoryTrigger.asDriver(),
-            showFilterViewTrigger: showFilterViewTrigger.asDriver())
+            showFilterViewTrigger: showFilterViewTrigger.asDriver(),
+            popViewController: popViewControllerTrigger.asDriver())
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

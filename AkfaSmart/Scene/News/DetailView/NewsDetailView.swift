@@ -9,15 +9,22 @@
 import SwiftUI
 import WebKit
 import Combine
+import UIKit
 struct NewsDetailView: View {
     let itemModel: NewsItemViewModel
     @ObservedObject var output: ImageDownloaderViewModel.Output
     
+    var navigationController: UINavigationController
+    
     private let getImageTrigger = PassthroughSubject<String,Never>()
+    
     private let cancelBag = CancelBag()
     
     var body: some View {
         VStack {
+            CustomNavigationBar(title: "NEWS".localizedString) {
+                navigationController.popViewController(animated: true)
+            }
             VStack {
                 if let data = output.imageData {
                     Image(data: data)?
@@ -42,7 +49,7 @@ struct NewsDetailView: View {
                     .foregroundColor(Color.gray)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
-                Text(Date(timeIntervalSince1970: TimeInterval(itemModel.date ?? 0)).convertToDateUS())
+                Text(Date(timeIntervalSince1970: TimeInterval(itemModel.date ?? 1)/1000.0).convertToDateUS())
                     .font(.subheadline)
                     .foregroundColor(Color(hex: "#9DA8C2"))
                     .padding(6)
@@ -55,16 +62,16 @@ struct NewsDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("NEWS".localizedString)
         .onAppear {
             getImageTrigger.send(itemModel.imageUrl ?? "")
         }
     }
     
-    init(itemModel: NewsItemViewModel) {
+    init(itemModel: NewsItemViewModel, navigationController: UINavigationController) {
         self.itemModel = itemModel
         let input = ImageDownloaderViewModel.Input(getImageTrigger: getImageTrigger.asDriver())
         self.output = ImageDownloaderViewModel().transform(input, cancelBag: cancelBag)
+        self.navigationController = navigationController
     }
 }
 

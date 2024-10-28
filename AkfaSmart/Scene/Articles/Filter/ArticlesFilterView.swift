@@ -21,6 +21,16 @@ struct ArticlesFilterView: View {
     var body: some View {
         return LoadingView(isShowing: .constant(false), text: .constant("")) {
             VStack {
+                CustomNavigationBar(title: "FILTER".localizedString, rightBarTitle: "CLEAR".localizedString) {
+                    navigationController.popViewController(animated: true)
+                } onRightBarButtonTapAction: {
+                    dateFilter.optionalFrom = nil
+                    dateFilter.optionalTo = nil
+                    dateFilter.isFiltered = true
+                    type.type = nil
+                    type.name = nil
+                    navigationController.popViewController(animated: true)
+                }
                 VStack(alignment: .leading, spacing: 8) {
                     Text("ARTICLE_NAME".localizedString)
                         .padding(.horizontal, 4)
@@ -62,30 +72,6 @@ struct ArticlesFilterView: View {
                 Spacer()
             }
         }
-        .navigationTitle("FILTER".localizedString)
-        .navigationBarItems(trailing:
-                                Button(action: {
-            dateFilter.optionalFrom = nil
-            dateFilter.optionalTo = nil
-            dateFilter.isFiltered = true
-            type.type = nil
-            type.name = nil
-            navigationController.popViewController(animated: true)
-        }, label: {
-            Text("CLEAR".localizedString)
-                .foregroundColor(.red)
-        })
-        )
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Button(action: {
-            navigationController.popViewController(animated: true)
-        }) {
-            Image(systemName: "chevron.left")
-                .imageScale(.large)
-                .foregroundColor(.blue) // Customize the color as needed
-        }
-        )
         .onAppear {
             getArticleTypesTrigger.send(())
         }

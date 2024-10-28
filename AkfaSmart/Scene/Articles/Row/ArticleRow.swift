@@ -49,7 +49,7 @@ struct ArticleRow: View {
                     .cornerRadius(6)
                     .padding()
                 Spacer()
-                Text(Date(timeIntervalSince1970: TimeInterval(itemModel.date ?? 0)).convertToDateUS())
+                Text(Date(timeIntervalSince1970: TimeInterval(itemModel.date ?? 1)/1000.0).convertToDateUS())
                     .font(.subheadline)
                     .foregroundColor(Color(hex: "#9DA8C2"))
                     .padding(6)

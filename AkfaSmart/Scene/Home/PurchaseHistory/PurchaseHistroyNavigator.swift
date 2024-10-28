@@ -11,9 +11,11 @@ import SwiftUI
 protocol PurchaseHistoryViewNavigatorType {
     func showDateFilterView(_ dateFilter: DateFilter)
     func showPurchaseDetailView(_ model: Invoice)
+    func popView()
 }
 
-struct PurchaseHistoryViewNavigator: PurchaseHistoryViewNavigatorType, ShowingPurchaseDetailView {
+struct PurchaseHistoryViewNavigator: PurchaseHistoryViewNavigatorType, ShowingPurchaseDetailView, PoppingController {
+    
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
     

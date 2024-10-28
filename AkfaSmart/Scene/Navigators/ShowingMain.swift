@@ -18,7 +18,6 @@ extension ShowingMain {
         let view: MainView = assembler.resolve(navigationController: navigationController, page: page)
         
         let vc = UIHostingController(rootView: view)
-        navigationController.setNavigationBarHidden(false, animated: false)
         navigationController.setViewControllers([vc], animated: true)
     }
 }

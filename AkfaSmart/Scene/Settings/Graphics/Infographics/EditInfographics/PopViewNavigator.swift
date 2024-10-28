@@ -11,10 +11,6 @@ protocol PopViewNavigatorType {
     func popView()
 }
 
-struct PopViewNavigator: PopViewNavigatorType {
+struct PopViewNavigator: PopViewNavigatorType, PoppingController {
     unowned var navigationController: UINavigationController
-    
-    func popView() {
-        navigationController.popViewController(animated: true)
-    }
 }

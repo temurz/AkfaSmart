@@ -15,7 +15,7 @@ protocol ShowingPurchaseDetailView {
 
 extension ShowingPurchaseDetailView {
     func showPurchaseDetailView(_ model: Invoice) {
-        let view: PurchaseDetailView = assembler.resolve(model: model)
+        let view: PurchaseDetailView = assembler.resolve(model: model, navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
         navigationController.pushViewController(vc, animated: true)
     }

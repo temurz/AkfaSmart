@@ -9,11 +9,13 @@
 import Foundation
 struct ProductGraphicsViewModel {
     let useCase: ProductGraphicsViewUseCaseType
+    let navigator: PopViewNavigatorType
 }
 
 extension ProductGraphicsViewModel: ViewModel {
     struct Input {
         let requestProductGraphicsTrigger: Driver<Void>
+        let popViewControllerTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -49,6 +51,12 @@ extension ProductGraphicsViewModel: ViewModel {
         activityTracker
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
+            }
             .store(in: cancelBag)
         
         return output

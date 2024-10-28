@@ -15,7 +15,7 @@ protocol ShowingClassDetailView {
 
 extension ShowingClassDetailView {
     func showClassDetailView(imageData: Data?, title: String?) {
-        let view: UserClassDetailView = assembler.resolve(imageData: imageData, title: title)
+        let view: UserClassDetailView = assembler.resolve(imageData: imageData, title: title, navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
         navigationController.pushViewController(vc, animated: true)
     }

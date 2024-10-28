@@ -9,9 +9,10 @@
 import UIKit
 protocol InfographicsViewNavigatorType {
     func showEditInfographicsView(model: Infographics)
+    func popView()
 }
 
-struct InfographicsViewNavigator: InfographicsViewNavigatorType, ShowingEditInfographicsView {
+struct InfographicsViewNavigator: InfographicsViewNavigatorType, ShowingEditInfographicsView, PoppingController {
     unowned var assembler: Assembler
     unowned var navigationController: UINavigationController
 }

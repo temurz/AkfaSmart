@@ -20,6 +20,7 @@ struct NewsView: View {
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
+                ModuleNavigationBar(title: "NEWS".localizedString)
                 if output.news.isEmpty && !output.isLoading {
                     VStack(alignment: .center) {
                         Spacer()
@@ -63,10 +64,8 @@ struct NewsView: View {
                     }
                 }
             }
-            .padding(.top)
         }
-        .navigationTitle("NEWS".localizedString)
-        .navigationBarHidden(false)
+        .navigationBarHidden(true)
         .pullToRefresh(isShowing: $output.isReloading, onRefresh: {
             self.reloadNewsTrigger.send(())
         })

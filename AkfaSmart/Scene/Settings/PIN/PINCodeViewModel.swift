@@ -25,6 +25,8 @@ extension PINCodeViewModel: ViewModel {
     struct Input {
         let saveCodeTrigger: Driver<Void>
         let skipTrigger: Driver<Void>
+        let popViewControllerTrigger: Driver<Void>
+        let checkHasParentControllerTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -36,6 +38,7 @@ extension PINCodeViewModel: ViewModel {
         @Published var validationMessage = ""
         @Published var state: PINCodeState
         @Published var toast: Toast? = nil
+        @Published var hasParentController: Bool = false
         
         init(state: PINCodeState) {
             self.state = state
@@ -101,6 +104,18 @@ extension PINCodeViewModel: ViewModel {
                     }
                     break
                 }
+            }
+            .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
+            }
+            .store(in: cancelBag)
+        
+        input.checkHasParentControllerTrigger
+            .sink {
+                output.hasParentController =  navigator.checkHasParentController()
             }
             .store(in: cancelBag)
         

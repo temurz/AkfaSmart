@@ -18,10 +18,17 @@ struct LanguageChangerView: View {
     @ObservedObject var output: LanguageChangerViewModel.Output
     private let saveTrigger = PassthroughSubject<Void,Never>()
     private let getCurrentLanguageTrigger = PassthroughSubject<Void,Never>()
+    private let popViewControllerTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     
     var body: some View {
         VStack (alignment: .leading) {
+            CustomNavigationBar(title: "LANGUAGE_TITLE".localizedString, rightBarTitle: "SAVE".localizedString) {
+                popViewControllerTrigger.send(())
+            } onRightBarButtonTapAction: {
+                saveTrigger.send(())
+            }
+
             List {
                 ForEach($output.items, id: \.title) { $item in
                     LanguageViewRow(viewModel: item, selectedItem: $output.selectedRow)
@@ -36,14 +43,6 @@ struct LanguageChangerView: View {
             .listStyle(.plain)
             
         }
-        .navigationTitle("LANGUAGE_TITLE".localizedString)
-        .navigationBarItems(trailing: Button(action: {
-            saveTrigger.send(())
-        }, label: {
-            Text("SAVE".localizedString)
-                .foregroundColor(.red)
-                .font(.headline)
-        }))
         .onAppear {
             getCurrentLanguageTrigger.send(())
         }
@@ -52,7 +51,8 @@ struct LanguageChangerView: View {
     init(viewModel: LanguageChangerViewModel) {
         let input = LanguageChangerViewModel.Input(
             saveTrigger: saveTrigger.asDriver(),
-            getCurrentLanguageTrigger: getCurrentLanguageTrigger.asDriver()
+            getCurrentLanguageTrigger: getCurrentLanguageTrigger.asDriver(),
+            popViewControllerTrigger: popViewControllerTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

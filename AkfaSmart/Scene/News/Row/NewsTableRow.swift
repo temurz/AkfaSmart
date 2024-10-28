@@ -43,7 +43,7 @@ struct NewsTableRow: View {
             .padding(.horizontal)
             
             Divider()
-            Text(Date(timeIntervalSince1970: TimeInterval(item.date ?? 0)).convertToDateUS())
+            Text(Date(timeIntervalSince1970: TimeInterval(item.date ?? 1)/1000.0).convertToDateUS())
                 .font(.subheadline)
                 .foregroundColor(Color(hex: "#9DA8C2"))
                 .padding(6)

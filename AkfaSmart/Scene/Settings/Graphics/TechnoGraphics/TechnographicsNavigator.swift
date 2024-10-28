@@ -10,9 +10,10 @@ import UIKit
 import SwiftUI
 protocol TechnographicsNavigatorType {
     func showEditTechnographicsView(model: TechnoGraphics)
+    func popView()
 }
 
-struct TechnographicsNavigator: TechnographicsNavigatorType, ShowingEditTechnographicsView {
+struct TechnographicsNavigator: TechnographicsNavigatorType, ShowingEditTechnographicsView, PoppingController {
     unowned var assembler: Assembler
     unowned var navigationController: UINavigationController
 }

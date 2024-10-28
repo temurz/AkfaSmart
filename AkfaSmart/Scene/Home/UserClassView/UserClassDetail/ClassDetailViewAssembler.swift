@@ -8,18 +8,18 @@
 
 import UIKit
 protocol ClassDetailViewAssembler {
-    func resolve(imageData: Data?, title: String?) -> UserClassDetailView
-    func resolve() -> ClassDetailViewModel
+    func resolve(imageData: Data?, title: String?, navigationController: UINavigationController) -> UserClassDetailView
+    func resolve(navigationController: UINavigationController) -> ClassDetailViewModel
     func resolve() -> ClassDetailViewUseCaseType
 }
 
 extension ClassDetailViewAssembler {
-    func resolve(imageData: Data?, title: String?) -> UserClassDetailView {
-        return UserClassDetailView(viewModel: resolve(), imageData, title: title)
+    func resolve(imageData: Data?, title: String?, navigationController: UINavigationController) -> UserClassDetailView {
+        return UserClassDetailView(viewModel: resolve(navigationController: navigationController), imageData, title: title)
     }
     
-    func resolve() -> ClassDetailViewModel {
-        return ClassDetailViewModel(useCase: resolve())
+    func resolve(navigationController: UINavigationController) -> ClassDetailViewModel {
+        return ClassDetailViewModel(useCase: resolve(), navigator: PopViewNavigator(navigationController: navigationController))
     }
 }
 

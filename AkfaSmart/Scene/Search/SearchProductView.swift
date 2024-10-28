@@ -19,6 +19,7 @@ struct SearchProductView: View {
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
+                ModuleNavigationBar(title: "SEARCH_PRODUCT".localizedString)
                 ZStack(alignment: .trailing) {
                     TextField("SEARCH".localizedString, text: $output.searchedText)
                         .onSubmit {
@@ -73,8 +74,7 @@ struct SearchProductView: View {
                     .listStyle(.plain)
                 }
             }
-            .navigationTitle("SEARCH_PRODUCT".localizedString)
-            .navigationBarHidden(false)
+            .navigationBarHidden(true)
         }
     }
     

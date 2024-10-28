@@ -13,62 +13,60 @@ struct EditTechnographicsView: View {
     private let loadToolsTrigger = PassthroughSubject<Void,Never>()
     private let saveTechnographicsTrigger = PassthroughSubject<TechnoGraphics, Never>()
     private let loadInitialValuesTrigger = PassthroughSubject<TechnoGraphics,Never>()
+    private let popViewControllerTrigger = PassthroughSubject<Void,Never>()
     private let openMapTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     
     private let model: TechnoGraphics
     var body: some View {
-        
-        ScrollView {
-            VStack( spacing: 4) {
-                VStack(alignment: .leading) {
-                    Text("ADDRESS_OF_FACTORY".localizedString)
-                        .font(.headline)
-                        .padding(.horizontal, 4)
-                    Text(output.address)
-                        .font(.subheadline)
-                        .padding(.horizontal, 4)
-                    HStack {
-                        if output.locationInfoManager.locationInfo == nil {
-                            Text(output.addressEdited)
-                                .foregroundStyle(.red)
-                                .lineLimit(3)
-                                .padding(4)
-                        }else {
-                            Text(output.locationInfoManager.locationInfo?.name ?? "")
-                                .foregroundStyle(.red)
-                                .lineLimit(3)
-                                .padding(4)
-                        }
-                        Spacer()
-                        Button {
-                            openMapTrigger.send(())
-                        } label: {
-                            Image("location")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                                .padding(.trailing)
+        VStack(alignment: .leading) {
+            CustomNavigationBar(title: "TECHNOGRAPHICS_TITLE".localizedString, rightBarTitle: "SAVE".localizedString) {
+                popViewControllerTrigger.send(())
+            } onRightBarButtonTapAction: {
+                saveTechnographicsTrigger.send(model)
+            }
+
+            ScrollView {
+                VStack( spacing: 4) {
+                    VStack(alignment: .leading) {
+                        Text("ADDRESS_OF_FACTORY".localizedString)
+                            .font(.headline)
+                            .padding(.horizontal, 4)
+                        Text(output.address)
+                            .font(.subheadline)
+                            .padding(.horizontal, 4)
+                        HStack {
+                            if output.locationInfoManager.locationInfo == nil {
+                                Text(output.addressEdited)
+                                    .foregroundStyle(.red)
+                                    .lineLimit(3)
+                                    .padding(4)
+                            }else {
+                                Text(output.locationInfoManager.locationInfo?.name ?? "")
+                                    .foregroundStyle(.red)
+                                    .lineLimit(3)
+                                    .padding(4)
+                            }
+                            Spacer()
+                            Button {
+                                openMapTrigger.send(())
+                            } label: {
+                                Image("location")
+                                    .resizable()
+                                    .frame(width: 32, height: 32)
+                                    .padding(.trailing)
+                            }
                         }
                     }
+                    .padding(.horizontal)
+                    
+                    
+                    EditInfographicsViewRow(title: "AREA_OF_FACTORY".localizedString + "SQ_M".localizedString, constantModel: model.area?.convertDecimals(), editedValue: $output.areaEditedString, keyboardType: .numberPad)
+                    glassShopRow
+                    toolsRow
                 }
-                .padding(.horizontal)
-                
-                
-                EditInfographicsViewRow(title: "AREA_OF_FACTORY".localizedString + "SQ_M".localizedString, constantModel: model.area?.convertDecimals(), editedValue: $output.areaEditedString, keyboardType: .numberPad)
-                glassShopRow
-                toolsRow
             }
         }
-        .navigationTitle("TECHNOGRAPHICS_TITLE".localizedString)
-        .navigationBarItems(trailing:
-                                Button(action: {
-            saveTechnographicsTrigger.send(model)
-        }, label: {
-            Text("SAVE".localizedString)
-                .bold()
-                .foregroundColor(Color.red)
-        })
-        )
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
                 title: Text(output.alert.title),
@@ -180,7 +178,8 @@ struct EditTechnographicsView: View {
             loadToolsTrigger: loadToolsTrigger.asDriver(), 
             saveTechnographicsTrigger: saveTechnographicsTrigger.asDriver(),
             loadInitialValuesTrigger: loadInitialValuesTrigger.asDriver(),
-            openMapTrigger: openMapTrigger.asDriver()
+            openMapTrigger: openMapTrigger.asDriver(),
+            popViewControllerTrigger: popViewControllerTrigger.asDriver()
         )
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

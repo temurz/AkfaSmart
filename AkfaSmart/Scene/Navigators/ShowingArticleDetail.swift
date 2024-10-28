@@ -15,7 +15,7 @@ protocol ShowingArticleDetail {
 
 extension ShowingArticleDetail {
     func showArticleDetail(_ item: ArticleItemViewModel) {
-        let view: ArticleDetailView = ArticleDetailView(itemModel: item)
+        let view: ArticleDetailView = ArticleDetailView(itemModel: item, navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
         navigationController.pushViewController(vc, animated: true)
     }

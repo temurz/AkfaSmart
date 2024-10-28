@@ -21,6 +21,9 @@ struct ArticlesView: View {
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
+                ModuleNavigationBar(title: "ARTICLES".localizedString, rightBarTitle: "FILTER".localizedString) {
+                    showFilterViewTrigger.send(())
+                }
                 if output.articles.isEmpty && !output.isLoading {
                     VStack(alignment: .center) {
                         Spacer()
@@ -73,19 +76,8 @@ struct ArticlesView: View {
                     }
                 }
             }
-            .padding(.top)
         }
-        .navigationTitle("ARTICLES".localizedString)
-        .navigationBarHidden(false)
-        .navigationBarItems(trailing:
-                                Button(action: {
-            showFilterViewTrigger.send(())
-        }, label: {
-            Image("filter_icon")
-                .resizable()
-                .foregroundColor(Color.red)
-        })
-        )
+        .navigationBarHidden(true)
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
                 title: Text(output.alert.title),

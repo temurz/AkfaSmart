@@ -22,76 +22,79 @@ struct SettingsView: View {
     
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
-            ZStack {
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        headerView
-                            .padding()
-                        
-                        Color(hex: "#E2E5ED").frame(height: 4)
-                        ForEach(output.items[0]) { item in
-                            SettingsRowView(viewModel: item)
-                                .background(Color.white)
-                                .onTapGesture {
-                                    selectRowTrigger.send(item.id)
-                                }
+            VStack {
+                ModuleNavigationBar(title: "SETTINGS_TITLE".localizedString)
+                ZStack {
+                    ScrollView {
+                        VStack(alignment: .leading) {
+                            headerView
+                                .padding()
+                            
+                            Color(hex: "#E2E5ED").frame(height: 4)
+                            ForEach(output.items[0]) { item in
+                                SettingsRowView(viewModel: item)
+                                    .background(Color.white)
+                                    .onTapGesture {
+                                        selectRowTrigger.send(item.id)
+                                    }
+                            }
+                            
+                            Color(hex: "#E2E5ED").frame(height: 4)
+                            ForEach(output.items[1]) { item in
+                                SettingsRowView(viewModel: item)
+                                    .background(Color.white)
+                                    .onTapGesture {
+                                        selectRowTrigger.send(item.id)
+                                    }
+                                Divider()
+                            }
+                            
+                            Button("DELETE_ACCOUNT".localizedString) {
+                                deleteAccountTrigger.send(())
+                            }
+                            .foregroundColor(Color.red)
+                            .font(.bold(.headline)())
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 14)
+                                    .stroke(Color.red, lineWidth: 1.5)
+                            }
+                            .padding(24)
                         }
-                        
-                        Color(hex: "#E2E5ED").frame(height: 4)
-                        ForEach(output.items[1]) { item in
-                            SettingsRowView(viewModel: item)
-                                .background(Color.white)
-                                .onTapGesture {
-                                    selectRowTrigger.send(item.id)
-                                }
-                            Divider()
+                    }
+                    imageSourceSelector
+                    pinCodeOptionSelector
+                }
+                .navigationBarHidden(true)
+                .alert(isPresented: $output.alert.isShowing) {
+                    Alert(
+                        title: Text(output.alert.title),
+                        message: Text(output.alert.message),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
+                .onAppear {
+                    loadInitialSettings.send(())
+                    if output.imageData == nil {
+                        if output.isFirstLoad {
+                            output.isFirstLoad = false
+                            getGeneralUserInfoTrigger.send(())
                         }
-                        
-                        Button("DELETE_ACCOUNT".localizedString) {
-                            deleteAccountTrigger.send(())
-                        }
-                        .foregroundColor(Color.red)
-                        .font(.bold(.headline)())
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 14)
-                                .stroke(Color.red, lineWidth: 1.5)
-                        }
-                        .padding(24)
                     }
                 }
-                imageSourceSelector
-                pinCodeOptionSelector
-            }
-            .navigationTitle("SETTINGS_TITLE".localizedString)
-            .navigationBarHidden(false)
-            .alert(isPresented: $output.alert.isShowing) {
-                Alert(
-                    title: Text(output.alert.title),
-                    message: Text(output.alert.message),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
-            .onAppear {
-                loadInitialSettings.send(())
-                if output.imageData == nil {
-                    if output.isFirstLoad {
-                        output.isFirstLoad = false
-                        getGeneralUserInfoTrigger.send(())
+                .refreshable {
+                    loadInitialSettings.send(())
+                    getGeneralUserInfoTrigger.send(())
+                }
+                .sheet(isPresented: $output.showImagePicker) {
+                    ImagePicker(sourceType: output.imageChooserType == .library ? .photoLibrary : .camera, selectedImage: $output.imageData) {
+                        uploadAvatarImageTrigger.send(())
+                        output.showImageSourceSelector = false
                     }
-                }
-            }
-            .refreshable {
-                loadInitialSettings.send(())
-                getGeneralUserInfoTrigger.send(())
-            }
-            .sheet(isPresented: $output.showImagePicker) {
-                ImagePicker(sourceType: output.imageChooserType == .library ? .photoLibrary : .camera, selectedImage: $output.imageData) {
-                    uploadAvatarImageTrigger.send(())
-                    output.showImageSourceSelector = false
-                }
                     .ignoresSafeArea()
+                }
+                
             }
         }
     }

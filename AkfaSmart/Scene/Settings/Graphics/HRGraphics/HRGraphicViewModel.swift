@@ -16,6 +16,7 @@ extension HRgraphicsViewModel: ViewModel {
     struct Input {
         let requestHRGraphicsTrigger: Driver<Void>
         let showEditViewTrigger: Driver<Void>
+        let popViewControllerTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -60,6 +61,13 @@ extension HRgraphicsViewModel: ViewModel {
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
             .store(in: cancelBag)
+        
+        input.popViewControllerTrigger
+            .sink {
+                navigator.popView()
+            }
+            .store(in: cancelBag)
+        
         return output
     }
 }

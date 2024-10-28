@@ -12,39 +12,43 @@ struct ProductGraphicsView: View {
     @ObservedObject var output: ProductGraphicsViewModel.Output
     
     private let requestProductGraphicsTrigger = PassthroughSubject<Void,Never>()
+    private let popViewControllerTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: .constant(false), text: .constant("")) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
-                    if output.graphics != nil, let graphics = output.graphics {
-                        MarketingViewRow(
-                            viewModel: MarketingItemViewModel(
-                                title: "ANNUAL_BUY_AMOUNT".localizedString,
-                                value: getAmount(graphics.annualBuyAmount))
-                        )
-                        MarketingViewRow(
-                            viewModel: MarketingItemViewModel(
-                                title: "ANNUAL_BUY_WEIGHT".localizedString,
-                                value: getAmount(graphics.annualBuyWeight))
-                        )
-                        MarketingViewRow(
-                            viewModel: MarketingItemViewModel(
-                                title: "DEALER_NAMES".localizedString,
-                                value: graphics.dealerNames)
-                        )
-                        ProductGraphicsDetailRow(
-                            model: ProductGraphicsDetailModel(
-                                title: "ANNUAL_BUY_WEIGHT".localizedString,
-                                detailArray: graphics.annualBuyWeightDetail)
-                        )
-                    }
-                    
+            VStack(alignment: .leading) {
+                CustomNavigationBar(title: "PRODUCT_GRAPHICS_TITLE".localizedString) {
+                    popViewControllerTrigger.send(())
                 }
-                .padding()
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 12) {
+                        if output.graphics != nil, let graphics = output.graphics {
+                            MarketingViewRow(
+                                viewModel: MarketingItemViewModel(
+                                    title: "ANNUAL_BUY_AMOUNT".localizedString,
+                                    value: getAmount(graphics.annualBuyAmount))
+                            )
+                            MarketingViewRow(
+                                viewModel: MarketingItemViewModel(
+                                    title: "ANNUAL_BUY_WEIGHT".localizedString,
+                                    value: getAmount(graphics.annualBuyWeight))
+                            )
+                            MarketingViewRow(
+                                viewModel: MarketingItemViewModel(
+                                    title: "DEALER_NAMES".localizedString,
+                                    value: graphics.dealerNames)
+                            )
+                            ProductGraphicsDetailRow(
+                                model: ProductGraphicsDetailModel(
+                                    title: "ANNUAL_BUY_WEIGHT".localizedString,
+                                    detailArray: graphics.annualBuyWeightDetail)
+                            )
+                        }
+                    }
+                    .padding()
+                }
             }
         }
-        .navigationTitle("PRODUCT_GRAPHICS_TITLE".localizedString)
         .alert(isPresented: $output.alert.isShowing) {
             Alert(title: Text(output.alert.title),
                   message: Text(output.alert.message),
@@ -62,8 +66,9 @@ struct ProductGraphicsView: View {
     }
     
     init(viewModel: ProductGraphicsViewModel) {
-        let input = ProductGraphicsViewModel.Input(requestProductGraphicsTrigger: requestProductGraphicsTrigger.asDriver())
-        
+        let input = ProductGraphicsViewModel.Input(
+            requestProductGraphicsTrigger: requestProductGraphicsTrigger.asDriver(),
+            popViewControllerTrigger: popViewControllerTrigger.asDriver())
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }
 }

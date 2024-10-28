@@ -6,20 +6,20 @@
 //  Copyright © 2024 Tuan Truong. All rights reserved.
 //
 
-import Foundation
+import UIKit
 protocol PurchaseDetailViewAssembler {
-    func resolve(model: Invoice) -> PurchaseDetailView
-    func resolve() -> PurchaseDetailViewModel
+    func resolve(model: Invoice, navigationController: UINavigationController) -> PurchaseDetailView
+    func resolve(navigationController: UINavigationController) -> PurchaseDetailViewModel
     func resolve() -> PurchaseDetailViewUseCaseType
 }
 
 extension PurchaseDetailViewAssembler {
-    func resolve(model: Invoice) -> PurchaseDetailView {
-        return PurchaseDetailView(model: model, viewModel: resolve())
+    func resolve(model: Invoice, navigationController: UINavigationController) -> PurchaseDetailView {
+        return PurchaseDetailView(model: model, viewModel: resolve(navigationController: navigationController))
     }
     
-    func resolve() -> PurchaseDetailViewModel {
-        return PurchaseDetailViewModel(useCase: resolve())
+    func resolve(navigationController: UINavigationController) -> PurchaseDetailViewModel {
+        return PurchaseDetailViewModel(useCase: resolve(), navigator: PopViewNavigator(navigationController: navigationController))
     }
 }
 
