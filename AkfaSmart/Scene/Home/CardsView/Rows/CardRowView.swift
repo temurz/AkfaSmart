@@ -32,7 +32,12 @@ struct CardRowView: View {
                     }
                 } else {
                     ZStack {
-                        gradient(colors: model.getColorStrings().map({ Color(hex: $0) }), startPoint: .bottomLeading, endPoint: .topTrailing)
+                        if model.isBlocked ?? false {
+                            gradient(colors: [Color(hex: "#ECECEC"), Color(hex: "#E2E2E2")], startPoint: .bottomLeading, endPoint: .topTrailing)
+                        } else {
+                            gradient(colors: model.getColorStrings().map({ Color(hex: $0) }), startPoint: .bottomLeading, endPoint: .topTrailing)
+                        }
+                        
                         HStack {
                             Spacer()
                             Image("transparentIcon")
@@ -43,9 +48,11 @@ struct CardRowView: View {
                         .padding(.horizontal)
                         VStack {
                             HStack {
-                                Text("BONUS_CARD".localizedString)
+                                Text(model.displayName?.uppercased() ?? "BONUS_CARD".localizedString)
                                     .font(.subheadline)
-                                    .foregroundStyle(Color.white)
+                                    .foregroundStyle(
+                                        (model.isBlocked ?? false) ? Colors.blockedGrayTextColor : .white
+                                    )
                                 Spacer()
                                 Image("more_vert")
                                     .renderingMode(.template)
@@ -58,7 +65,9 @@ struct CardRowView: View {
                                 Text((model.balance?.convertDecimals() ?? "0") + " uzs")
                                     .bold()
                                     .font(.title3)
-                                    .foregroundStyle(.white)
+                                    .foregroundStyle(
+                                        (model.isBlocked ?? false) ? Colors.blockedGrayTextColor : .white
+                                    )
                                     .padding(.horizontal)
                                     .padding(.vertical, 4)
                                 Spacer()
@@ -66,8 +75,10 @@ struct CardRowView: View {
                             
                             Spacer()
                             HStack(spacing: 4) {
-                                Text(model.cardNumber?.addSpaces(byEvery: 3) ?? "xxx xxx xxx xxx")
-                                    .foregroundStyle(.white)
+                                Text(model.cardNumber?.addSpaces(byEvery: 3) ?? "000 000 000 000")
+                                    .foregroundStyle(
+                                        (model.isBlocked ?? false) ? Colors.blockedGrayTextColor : .white
+                                    )
                                     .font(.subheadline)
                                     .padding(.horizontal, 8)
                                     .padding(.vertical,4)
@@ -77,21 +88,50 @@ struct CardRowView: View {
                                 if model.isMain ?? false {
                                     Text("MAIN".localizedString)
                                         .font(.footnote)
-                                        .foregroundStyle(.white)
+                                        .bold()
+                                        .foregroundStyle(
+                                            (model.isBlocked ?? false) ? Colors.blockedGrayTextColor : .white
+                                        )
                                         .padding(.horizontal, 8)
                                         .padding(.vertical,4)
-                                        .background(Colors.customMustardBackgroundColor)
+                                        .background(
+                                            (model.isBlocked ?? false) ? Colors.buttonBackgroundGrayColor: Colors.customMustardBackgroundColor
+                                        )
                                         .cornerRadius(5, corners: .allCorners)
                                 }
                                 Text("ACTIVE".localizedString)
                                     .font(.footnote)
-                                    .foregroundStyle(.white)
+                                    .bold()
+                                    .foregroundStyle(
+                                        (model.isBlocked ?? false) ? Colors.blockedGrayTextColor : .white
+                                    )
                                     .padding(.horizontal, 8)
                                     .padding(.vertical,4)
-                                    .background(Colors.customGreenBackgroundColor)
+                                    .background(
+                                        (model.isBlocked ?? false) ? Colors.buttonBackgroundGrayColor :  Colors.customGreenBackgroundColor
+                                    )
                                     .cornerRadius(5, corners: .allCorners)
                             }
                             .padding()
+                        }
+                        if model.isBlocked ?? false {
+                            Color.gray.opacity(0.2)
+                            VStack {
+                                HStack {
+                                    Image("lock_1")
+                                        .renderingMode(.template)
+                                        .resizable()
+                                        .foregroundStyle(.white)
+                                        .frame(width: 16, height: 16)
+                                    Text("BLOCKED".localizedString)
+                                        .font(.subheadline)
+                                        .foregroundStyle(.white)
+                                }
+                                .padding(.vertical, 8)
+                                .padding(.horizontal)
+                                .background(Colors.customRedColor)
+                                .cornerRadius(8, corners: .allCorners)
+                            }
                         }
                     }
                     .cornerRadius(12, corners: .allCorners)

@@ -13,6 +13,7 @@ struct Colors {
     
     static var borderGrayColor = Color(hex: "#E7E7E7")
     static var borderGrayColor2 = Color(hex: "#E8EEF4")
+    static var blockedGrayTextColor = Color(hex: "#CACACA")
     
     static var buttonBackgroundGrayColor = Color(hex: "#F3F3F3")
     

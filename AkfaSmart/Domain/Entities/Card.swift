@@ -34,7 +34,7 @@ struct Card: Decodable {
         if let cardBackground {
             return cardBackground.components(separatedBy: ",")
         } else {
-            return ["#E32F27","#7D1547"]
+            return Colors.redCardGradientHexString.components(separatedBy: ",")
         }
     }
     
@@ -59,6 +59,18 @@ struct Card: Decodable {
         self.cardHolderPhone = nil
         self.isMain = nil
         self.isBlocked = nil
+        self.status = nil
+    }
+    
+    init(isBlocked: Bool) {
+        self.id = Int.max
+        self.balance = nil
+        self.cardNumber = nil
+        self.displayName = nil
+        self.cardBackground = nil
+        self.cardHolderPhone = nil
+        self.isMain = nil
+        self.isBlocked = isBlocked
         self.status = nil
     }
 }

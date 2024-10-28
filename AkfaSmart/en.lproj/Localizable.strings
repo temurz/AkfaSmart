@@ -5,6 +5,7 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"BLOCKED" = "Blocked";
 "ADD_CARD" = "Add card";
 "EXPENSES" = "EXPENSES";
 "INFORMATION" = "Information";
