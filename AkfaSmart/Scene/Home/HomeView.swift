@@ -83,12 +83,20 @@ struct HomeView: View {
                         .padding(.horizontal)
                         if output.items.isEmpty {
                             Carousel(
-                                data: $output.items) { _ in }
+                                data: $output.items) 
+                            { _ in
+                                
+                            } addDealerAction: {
+                                
+                            }
+                            
                                 .frame(height: 120)
                         }else {
                             Carousel(
                                 data: $output.items) { dealer in
                                     showDealerDetailsViewTrigger.send(dealer)
+                                } addDealerAction: {
+                                    showAddDealerViewTrigger.send(())
                                 }
                                 .frame(height: 120)
                         }
@@ -108,10 +116,10 @@ struct HomeView: View {
                         }
                         .padding(.horizontal)
                         if output.cards.isEmpty {
-                            CardsCarousel(data: $output.cards)
+                            CardsCarousel(data: $output.cards, currentIndex: $output.currentCardIndex, targetIndex: .constant(nil), height: 180)
                                 .frame(height: 180)
                         }else {
-                            CardsCarousel(data: $output.cards)
+                            CardsCarousel(data: $output.cards, currentIndex: $output.currentCardIndex, targetIndex: .constant(nil), height: 180)
                                 .frame(height: 180)
                         }
                     }

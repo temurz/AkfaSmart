@@ -11,6 +11,8 @@ import SwiftUI
 struct DealersListView: View {
     @Binding var data: [Dealer]
     var didSelectInformation: (Dealer) -> ()
+    var addDealerAction: () -> Void
+    
     var body: some View {
         HStack(spacing: 0) {
             ForEach(data, id: \.dealerClientCid) { model in
@@ -20,7 +22,7 @@ struct DealersListView: View {
                     didSelectInformation: didSelectInformation
                 )
             }
-            DealerViewRow(addRow: true, width: UIScreen.main.bounds.width)
+            DealerViewRow(addRow: true, width: UIScreen.main.bounds.width, addDealerAction: addDealerAction)
         }
     }
 }

@@ -31,17 +31,17 @@ struct Colors {
     static var secondaryTextColor = Color(hex: "#9DA8C2")
     
     static var redCardGradientBackground = CardGradient(firstColor: Color(hex: "#E32F27"), secondColor: Color(hex: "#7D1547"))
-    static var secondCardGradientBackground = CardGradient(firstColor: Color(hex: "#673AB7"), secondColor: Color(hex: "#331664"))
-    static var thirdCardGradientBackground = CardGradient(firstColor: Color(hex: "#FF9800"), secondColor: Color(hex: "#724E18"))
-    static var fourthCardGradientBackground = CardGradient(firstColor: Color(hex: "#00BCD4"), secondColor: Color(hex: "#16606A"))
+    static var purpleCardGradientBackground = CardGradient(firstColor: Color(hex: "#673AB7"), secondColor: Color(hex: "#331664"))
+    static var mustardCardGradientBackground = CardGradient(firstColor: Color(hex: "#FF9800"), secondColor: Color(hex: "#724E18"))
+    static var blueCardGradientBackground = CardGradient(firstColor: Color(hex: "#00BCD4"), secondColor: Color(hex: "#16606A"))
     static var fifthCardGradientBackground = CardGradient(firstColor: Color(hex: "#9C27B0"), secondColor: Color(hex: "#60176D"))
     static var sixthCardGradientBackground = CardGradient(firstColor: Color(hex: "#FF5722"), secondColor: Color(hex: "#782F18"))
     static var seventhCardGradientBackground = CardGradient(firstColor: Color(hex: "#8BC34A"), secondColor: Color(hex: "#456A1B"))
     
     static var redCardGradientHexString = "#E32F27,#7D1547"
-    static var secondCardGradientHexString = "#673AB7,#331664"
-    static var thirdCardGradientHexString = "#FF9800,#724E18"
-    static var fourthCardGradientHexString = "#00BCD4,#16606A"
+    static var purpleCardGradientHexString = "#673AB7,#331664"
+    static var mustardCardGradientHexString = "#FF9800,#724E18"
+    static var blueCardGradientHexString = "#00BCD4,#16606A"
     static var fifthCardGradientHexString = "#9C27B0,#60176D"
     static var sixthCardGradientHexString = "#FF5722,#782F18"
     static var seventhCardGradientHexString = "#8BC34A,#456A1B"

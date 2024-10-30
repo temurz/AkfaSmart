@@ -13,17 +13,20 @@ struct DealerViewRow: View {
     var model: Dealer
     var addRow: Bool = false
     var didSelectInformation: ((Dealer) -> Void)?
+    var addDealerAction: () -> Void
     
     init(width: CGFloat, model: Dealer, didSelectInformation: ((Dealer) -> Void)? = nil) {
         self.width = width
         self.model = model
         self.didSelectInformation = didSelectInformation
+        self.addDealerAction = { }
     }
     
-    init(addRow: Bool, width: CGFloat) {
+    init(addRow: Bool, width: CGFloat, addDealerAction: @escaping () -> Void) {
         self.addRow = addRow
         self.width = width
         self.model = Dealer(dealerId: nil, dealerClientCid: nil, name: nil, clientName: nil, balance: 0, purchaseForMonth: 0, purchaseForYear: 0)
+        self.addDealerAction = addDealerAction
     }
     
     var body: some View {
@@ -42,6 +45,9 @@ struct DealerViewRow: View {
                         Spacer()
                     }
                     .frame(height: 80)
+                    .onTapGesture {
+                        addDealerAction()
+                    }
                 } else {
                     HStack {
                         VStack {

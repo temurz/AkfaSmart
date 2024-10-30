@@ -13,15 +13,27 @@ struct CustomSecureTextField: View {
     
     let placeholder: String
     @Binding var password: String
+    var imageString = "key"
+    var keyboardType: UIKeyboardType = .default
+    
+    init(placeholder: String, password: Binding<String>, image: String = "key", keyboardType: UIKeyboardType = .default) {
+        self.placeholder = placeholder
+        self._password = password
+        self.imageString = image
+        self.keyboardType = keyboardType
+    }
+    
     
     var body: some View {
         ZStack(alignment: .leading) {
             Group {
                 if isShowingPassword {
                     TextField(placeholder, text: $password)
+                        .keyboardType(keyboardType)
                         .padding(.horizontal)
                 }else {
                     SecureField(placeholder, text: $password)
+                        .keyboardType(keyboardType)
                         .padding(.horizontal)
                 }
             }
@@ -32,7 +44,7 @@ struct CustomSecureTextField: View {
             
             
             HStack(alignment: .center) {
-                Image("key")
+                Image(imageString)
                     .resizable()
                     .foregroundColor(.gray)
                     .frame(width: 18, height: 18)

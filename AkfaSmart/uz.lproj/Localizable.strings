@@ -5,6 +5,9 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"MAKE_MAIN_CARD" = "Asosiy kartaga aylantirish";
+"CARD_NAME" = "Karta nomlanishi";
+"CARD_NUMBER" = "Karta raqami";
 "BLOCKED" = "Bloklangan";
 "ADD_CARD" = "Karta qo'shish";
 "EXPENSES" = "Xarajat";
@@ -203,3 +206,5 @@
 "such dealer client is active!!!" = "Bu diler aktivlashtirilgan";
 "Bad Request" = "Noto'g'ri so'rov";
 "Already Exist" = "Bu akkaunt oldin ro'yxatdan o'tgan";
+"CARD_NUMBER_VALIDATION_ERROR" = "Karta raqami noto'g'ri";
+"CARD_NAME_VALIDATION_ERROR" = "Karta nomi bo'sh bo'lishi mumkin emas";

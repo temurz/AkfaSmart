@@ -5,6 +5,9 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"MAKE_MAIN_CARD" = "Make main card";
+"CARD_NAME" = "Card name";
+"CARD_NUMBER" = "Card number";
 "BLOCKED" = "Blocked";
 "ADD_CARD" = "Add card";
 "EXPENSES" = "EXPENSES";
@@ -198,3 +201,5 @@
 "The username or password is wrong" = "The username or password is wrong";
 "such dealer client is active!!!" = "such dealer client is active";
 "Already Exist" = "Already exists";
+"CARD_NUMBER_VALIDATION_ERROR" = "Card number is not valid";
+"CARD_NAME_VALIDATION_ERROR" = "Card name cannot be empty";

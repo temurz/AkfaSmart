@@ -37,6 +37,8 @@ extension HomeViewModel: ViewModel {
         @Published var hasDealers = false
         @Published var items: [Dealer] = []
         @Published var cards: [Card] = []
+        @Published var currentCardIndex = 0
+        @Published var targetIndex: Int? = 0
         @Published var mobileClass: MobileClass? = nil
         @Published var mobileClassLogoData: Data? = nil
         @Published var unreadDataCount: UnreadDataCount = UnreadDataCount(countUnreadMessages: 0, countUnreadArticles: 0, countUnreadNews: 0)

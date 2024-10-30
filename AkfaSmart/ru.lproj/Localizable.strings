@@ -5,6 +5,9 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"MAKE_MAIN_CARD" = "Сделать основной картой";
+"CARD_NAME" = "Название карты";
+"CARD_NUMBER" = "Номер карты";
 "BLOCKED" = "Заблокирован";
 "ADD_CARD" = "Добавить карту";
 "EXPENSES" = "Расходы";
@@ -200,3 +203,5 @@
 "such dealer client is active!!!" = "Этот дилер уже активен";
 "Bad Request" = "Неверный запрос";
 "Already Exist" = "Такой аккаунт уже существует";
+"CARD_NUMBER_VALIDATION_ERROR" = "Неправильный номер карты";
+"CARD_NAME_VALIDATION_ERROR" = "Название карты не может быть пустым";

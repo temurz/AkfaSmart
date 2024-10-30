@@ -14,7 +14,7 @@ struct Card: Decodable {
     let displayName: String?
     let cardBackground: String?
     let cardHolderPhone: String?
-    let isMain: Bool?
+    var isMain: Bool?
     let isBlocked: Bool?
     let status: String?
     
@@ -71,6 +71,18 @@ struct Card: Decodable {
         self.cardHolderPhone = nil
         self.isMain = nil
         self.isBlocked = isBlocked
+        self.status = nil
+    }
+    
+    init(id: Int, displayName: String?, cardBackground: String?, isMain: Bool?) {
+        self.id = id
+        self.balance = 0
+        self.cardNumber = nil
+        self.displayName = nil
+        self.cardBackground = cardBackground
+        self.cardHolderPhone = nil
+        self.isMain = isMain
+        self.isBlocked = nil
         self.status = nil
     }
 }
