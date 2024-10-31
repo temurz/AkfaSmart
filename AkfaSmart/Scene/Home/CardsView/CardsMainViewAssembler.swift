@@ -11,6 +11,7 @@ protocol CardsMainViewAssembler {
     func resolve(navigationController: UINavigationController) -> CardsMainView
     func resolve(navigationController: UINavigationController) -> CardsMainViewModel
     func resolve(navigationController: UINavigationController) -> CardsMainViewNavigatorType
+    func resolve() -> DeleteCardUseCaseType
 }
 
 extension CardsMainViewAssembler {
@@ -18,7 +19,11 @@ extension CardsMainViewAssembler {
         return CardsMainView(viewModel: resolve(navigationController: navigationController))
     }
     func resolve(navigationController: UINavigationController) -> CardsMainViewModel {
-        return CardsMainViewModel(navigator: resolve(navigationController: navigationController), getCardsUseCase: GetCardsViewUseCase(gateway: GetCardsGateway()))
+        return CardsMainViewModel(
+            navigator: resolve(navigationController: navigationController),
+            getCardsUseCase: GetCardsViewUseCase(gateway: GetCardsGateway()),
+            deleteCardUseCase: resolve()
+        )
     }
 }
 
@@ -26,10 +31,18 @@ extension CardsMainViewAssembler where Self: PreviewAssembler {
     func resolve(navigationController: UINavigationController) -> CardsMainViewNavigatorType {
         return CardsMainViewNavigator(assembler: self, navigationController: navigationController)
     }
+    
+    func resolve() -> DeleteCardUseCaseType {
+        return DeleteCardUseCase(gateway: resolve())
+    }
 }
 
 extension CardsMainViewAssembler where Self: DefaultAssembler {
     func resolve(navigationController: UINavigationController) -> CardsMainViewNavigatorType {
         return CardsMainViewNavigator(assembler: self, navigationController: navigationController)
+    }
+    
+    func resolve() -> DeleteCardUseCaseType {
+        return DeleteCardUseCase(gateway: resolve())
     }
 }

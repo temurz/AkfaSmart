@@ -34,15 +34,17 @@ extension AddCardViewModel: ViewModel {
         @Published var isLoading = false
         
         @Published var coloredCards = [
-            Card(id: 0, displayName: "CARD_NAME".localizedString, cardBackground: Colors.mustardCardGradientHexString, isMain: false),
-            Card(id: 1, displayName: "CARD_NAME".localizedString, cardBackground: Colors.redCardGradientHexString, isMain: false),
-            Card(id: 2, displayName: "CARD_NAME".localizedString, cardBackground: Colors.blueCardGradientHexString, isMain: false),
-            Card(id: 3,  displayName: "CARD_NAME".localizedString, cardBackground: Colors.purpleCardGradientHexString,  isMain: false)
+            Card(id: 0, cardNumber: nil, displayName: "CARD_NAME".localizedString, cardBackground: Colors.mustardCardGradientHexString, isMain: false),
+            Card(id: 1, cardNumber: nil, displayName: "CARD_NAME".localizedString, cardBackground: Colors.redCardGradientHexString, isMain: false),
+            Card(id: 2, cardNumber: nil, displayName: "CARD_NAME".localizedString, cardBackground: Colors.blueCardGradientHexString, isMain: false),
+            Card(id: 3, cardNumber: nil,  displayName: "CARD_NAME".localizedString, cardBackground: Colors.purpleCardGradientHexString,  isMain: false)
         ]
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
         let output = Output()
+        let errorTracker = ErrorTracker()
+        let activityTracker = ActivityTracker(false)
         
         let phoneNumberValidation = Publishers
             .CombineLatest(output.$phoneNumber, input.addCardTrigger)
@@ -77,29 +79,45 @@ extension AddCardViewModel: ViewModel {
                 $0.isEmpty ? "CARD_NAME_VALIDATION_ERROR".localizedString : ""
             }
         
-        Publishers
-            .CombineLatest3(phoneNumberValidation, cardNumberValidation, cardNameValidation)
-            .map { $0.0.isEmpty && $0.1.isEmpty && $0.2.isEmpty }
-            .assign(to: \.isAddingEnabled, on: output)
-            .store(in: cancelBag)
-        
         cardNameValidation
             .asDriver()
             .map { $0 }
             .assign(to: \.cardNameValidationMessage, on: output)
             .store(in: cancelBag)
         
-        
+        Publishers
+            .CombineLatest3(phoneNumberValidation, cardNumberValidation, cardNameValidation)
+            .map { $0.0.isEmpty && $0.1.isEmpty && $0.2.isEmpty }
+            .assign(to: \.isAddingEnabled, on: output)
+            .store(in: cancelBag)
         
         input.addCardTrigger
             .delay(for: 0.1, scheduler: RunLoop.main)
             .filter { output.isAddingEnabled }
-            .map { _ in
-                let background = output.coloredCards[output.cardIndex].cardBackground
-                addCardUseCase.addCard(Card(id: 0, balance: 0, cardNumber: output.cardNumber, displayName: output.cardName, cardBackground: background, cardHolderPhone: output.phoneNumber, isMain: output.isMain, isBlocked: nil, status: nil))
+            .map {
+                self.addCardUseCase.addCard(output.cardNumber)
+                    .trackError(errorTracker)
+                    .trackActivity(activityTracker)
+                    .asDriver()
             }
-            .sink {
-                
+            .switchToLatest()
+            .sink { bool in
+                if bool {
+                    navigator.showModally(reason: .cardActivation(output.cardNumber), isModal: true) { bool in
+                        if bool {
+                            addCardUseCase.changeCardSettings(Card(id: 0, cardNumber: output.cardNumber, displayName: output.cardName, cardBackground: output.coloredCards[output.cardIndex].cardBackground, isMain: output.isMain))
+                                .trackError(errorTracker)
+                                .trackActivity(activityTracker)
+                                .asDriver()
+                                .sink { bool in
+                                    if bool {
+                                        navigator.popView()
+                                    }
+                                }
+                                .store(in: cancelBag)
+                        }
+                    }
+                }
             }
             .store(in: cancelBag)
         
@@ -108,6 +126,18 @@ extension AddCardViewModel: ViewModel {
                 navigator.popView()
             }
             .store(in: cancelBag)
+        
+        errorTracker
+            .receive(on: RunLoop.main)
+            .map { AlertMessage(error: $0 ) }
+            .assign(to: \.alert, on: output)
+            .store(in: cancelBag)
+        
+        activityTracker
+            .receive(on: RunLoop.main)
+            .assign(to: \.isLoading, on: output)
+            .store(in: cancelBag)
+            
         
         return output
     }

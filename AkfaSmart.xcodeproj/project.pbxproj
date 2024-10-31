@@ -196,6 +196,15 @@
 		B85516D02B79294700FC2D6E /* InfographicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516CF2B79294700FC2D6E /* InfographicsView.swift */; };
 		B85516D22B792B5600FC2D6E /* InfographicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516D12B792B5600FC2D6E /* InfographicsViewModel.swift */; };
 		B85516D52B792C6C00FC2D6E /* InfoViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85516D42B792C6C00FC2D6E /* InfoViewRow.swift */; };
+		B858E6F42CD385CE00575CF0 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B858E6F32CD385CE00575CF0 /* EditCardView.swift */; };
+		B858E6F62CD38B8400575CF0 /* EditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B858E6F52CD38B8400575CF0 /* EditCardViewModel.swift */; };
+		B858E6F82CD38B9700575CF0 /* EditCardViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B858E6F72CD38B9700575CF0 /* EditCardViewNavigator.swift */; };
+		B858E6FA2CD38BAF00575CF0 /* EditCardViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B858E6F92CD38BAF00575CF0 /* EditCardViewUseCase.swift */; };
+		B858E6FC2CD38BB700575CF0 /* EditCardViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B858E6FB2CD38BB700575CF0 /* EditCardViewAssembler.swift */; };
+		B858E6FE2CD38E4E00575CF0 /* EditCardStateGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B858E6FD2CD38E4E00575CF0 /* EditCardStateGateway.swift */; };
+		B858E7002CD38EE600575CF0 /* EditCardStateDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B858E6FF2CD38EE600575CF0 /* EditCardStateDomainUseCase.swift */; };
+		B858E7092CD39A4D00575CF0 /* ConfirmCardActionDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B858E7082CD39A4D00575CF0 /* ConfirmCardActionDomainUseCase.swift */; };
+		B858E70B2CD39D5B00575CF0 /* ShowingCardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B858E70A2CD39D5B00575CF0 /* ShowingCardSettingsView.swift */; };
 		B86083A02BD6B98D00026B61 /* SearchDealerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B860839F2BD6B98D00026B61 /* SearchDealerUseCase.swift */; };
 		B863DA9B2B8D0458003F2C3D /* HRGraphicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863DA9A2B8D0458003F2C3D /* HRGraphicViewModel.swift */; };
 		B863DA9D2B8D047A003F2C3D /* HRGraphicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863DA9C2B8D047A003F2C3D /* HRGraphicsView.swift */; };
@@ -332,6 +341,13 @@
 		B87ED2072B7A28E900EB5139 /* SplashViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2062B7A28E900EB5139 /* SplashViewNavigator.swift */; };
 		B87ED2092B7A296400EB5139 /* SplashViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED2082B7A296400EB5139 /* SplashViewAssembler.swift */; };
 		B87ED20C2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ED20B2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift */; };
+		B88DEE5C2CD1B11B00B6AAB8 /* CardActivationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88DEE5B2CD1B11B00B6AAB8 /* CardActivationUseCase.swift */; };
+		B88DEE5E2CD2755900B6AAB8 /* AddCardGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88DEE5D2CD2755900B6AAB8 /* AddCardGateway.swift */; };
+		B88DEE602CD276F000B6AAB8 /* CardActivationDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88DEE5F2CD276F000B6AAB8 /* CardActivationDomainUseCase.swift */; };
+		B88DEE622CD2777000B6AAB8 /* AddCardDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88DEE612CD2777000B6AAB8 /* AddCardDomainUseCase.swift */; };
+		B88DEE642CD280CE00B6AAB8 /* DeleteCardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88DEE632CD280CE00B6AAB8 /* DeleteCardUseCase.swift */; };
+		B88DEE662CD2810200B6AAB8 /* DeleteCardDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88DEE652CD2810200B6AAB8 /* DeleteCardDomainUseCase.swift */; };
+		B88DEE682CD2812F00B6AAB8 /* DeleteCardGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88DEE672CD2812F00B6AAB8 /* DeleteCardGateway.swift */; };
 		B88E1F022CCD40D6004F2C64 /* Card+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88E1F012CCD40D6004F2C64 /* Card+API.swift */; };
 		B88E1F042CCD49EA004F2C64 /* GetCardsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88E1F032CCD49EA004F2C64 /* GetCardsGateway.swift */; };
 		B88E1F072CCD4A77004F2C64 /* GetCardsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88E1F062CCD4A77004F2C64 /* GetCardsDomainUseCase.swift */; };
@@ -678,6 +694,15 @@
 		B85516CF2B79294700FC2D6E /* InfographicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsView.swift; sourceTree = "<group>"; };
 		B85516D12B792B5600FC2D6E /* InfographicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsViewModel.swift; sourceTree = "<group>"; };
 		B85516D42B792C6C00FC2D6E /* InfoViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewRow.swift; sourceTree = "<group>"; };
+		B858E6F32CD385CE00575CF0 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
+		B858E6F52CD38B8400575CF0 /* EditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewModel.swift; sourceTree = "<group>"; };
+		B858E6F72CD38B9700575CF0 /* EditCardViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewNavigator.swift; sourceTree = "<group>"; };
+		B858E6F92CD38BAF00575CF0 /* EditCardViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewUseCase.swift; sourceTree = "<group>"; };
+		B858E6FB2CD38BB700575CF0 /* EditCardViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardViewAssembler.swift; sourceTree = "<group>"; };
+		B858E6FD2CD38E4E00575CF0 /* EditCardStateGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardStateGateway.swift; sourceTree = "<group>"; };
+		B858E6FF2CD38EE600575CF0 /* EditCardStateDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardStateDomainUseCase.swift; sourceTree = "<group>"; };
+		B858E7082CD39A4D00575CF0 /* ConfirmCardActionDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCardActionDomainUseCase.swift; sourceTree = "<group>"; };
+		B858E70A2CD39D5B00575CF0 /* ShowingCardSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingCardSettingsView.swift; sourceTree = "<group>"; };
 		B860839F2BD6B98D00026B61 /* SearchDealerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDealerUseCase.swift; sourceTree = "<group>"; };
 		B863DA9A2B8D0458003F2C3D /* HRGraphicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicViewModel.swift; sourceTree = "<group>"; };
 		B863DA9C2B8D047A003F2C3D /* HRGraphicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRGraphicsView.swift; sourceTree = "<group>"; };
@@ -812,6 +837,13 @@
 		B87ED2062B7A28E900EB5139 /* SplashViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewNavigator.swift; sourceTree = "<group>"; };
 		B87ED2082B7A296400EB5139 /* SplashViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewAssembler.swift; sourceTree = "<group>"; };
 		B87ED20B2B7A2DAE00EB5139 /* TextFieldMaskPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMaskPhone.swift; sourceTree = "<group>"; };
+		B88DEE5B2CD1B11B00B6AAB8 /* CardActivationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActivationUseCase.swift; sourceTree = "<group>"; };
+		B88DEE5D2CD2755900B6AAB8 /* AddCardGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardGateway.swift; sourceTree = "<group>"; };
+		B88DEE5F2CD276F000B6AAB8 /* CardActivationDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActivationDomainUseCase.swift; sourceTree = "<group>"; };
+		B88DEE612CD2777000B6AAB8 /* AddCardDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardDomainUseCase.swift; sourceTree = "<group>"; };
+		B88DEE632CD280CE00B6AAB8 /* DeleteCardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCardUseCase.swift; sourceTree = "<group>"; };
+		B88DEE652CD2810200B6AAB8 /* DeleteCardDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCardDomainUseCase.swift; sourceTree = "<group>"; };
+		B88DEE672CD2812F00B6AAB8 /* DeleteCardGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCardGateway.swift; sourceTree = "<group>"; };
 		B88E1F012CCD40D6004F2C64 /* Card+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+API.swift"; sourceTree = "<group>"; };
 		B88E1F032CCD49EA004F2C64 /* GetCardsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCardsGateway.swift; sourceTree = "<group>"; };
 		B88E1F062CCD4A77004F2C64 /* GetCardsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCardsDomainUseCase.swift; sourceTree = "<group>"; };
@@ -1207,6 +1239,7 @@
 				B8F7B7D12CCEDA570093A2B7 /* PoppingController.swift */,
 				B8677C512CCFC0E1000636D8 /* ShowingCardsMainView.swift */,
 				B8677C602CCFD33E000636D8 /* ShowingAddCardView.swift */,
+				B858E70A2CD39D5B00575CF0 /* ShowingCardSettingsView.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -1497,38 +1530,25 @@
 		1787235924BD577C00D90F8E /* Gateways */ = {
 			isa = PBXGroup;
 			children = (
+				B858E7072CD3971400575CF0 /* Class */,
+				B858E7062CD396F700575CF0 /* Dealers */,
+				B858E7052CD396DA00575CF0 /* SMSCode */,
+				B858E7042CD396BB00575CF0 /* ArticlesAndNews */,
+				B858E7032CD396A100575CF0 /* Auth */,
+				B858E7022CD3966800575CF0 /* Graphics */,
+				B858E7012CD3964A00575CF0 /* Cards */,
 				1787235A24BD578500D90F8E /* ProductGateway.swift */,
-				176BAA5B24D175C200324D3C /* AuthGateway.swift */,
 				1781CF3824BD8D58004ED1C6 /* GatewaysAssembler.swift */,
 				1742B36424D7B01600C82D15 /* RepoGateway.swift */,
 				B8CF98E92B656B8100EF02A7 /* RegisterGateway.swift */,
-				B866A8E22B68E09600202C9F /* CodeInputGateway.swift */,
-				B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */,
-				B85516C82B79069300FC2D6E /* ArticlesGateway.swift */,
-				B87C71E52B82B2A20061530E /* ForgotPasswordGateway.swift */,
-				B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */,
-				B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */,
-				B877FD6C2B8BFEE700D24CB0 /* MobileClassGateway.swift */,
 				B877FD7C2B8C327D00D24CB0 /* ImageDownloaderGateway.swift */,
-				B877FD802B8C3F1F00D24CB0 /* AddDealerGateway.swift */,
-				B8BE49E22B8D683300876714 /* InfoGraphicsGateway.swift */,
-				B8BE49ED2B8D7D7800876714 /* TechnoGraphicsGateway.swift */,
-				B8BE49F52B8D87A200876714 /* HRGateway.swift */,
-				B8BE49FD2B8E3EED00876714 /* MarketingGraphicsGateway.swift */,
-				B8BE4A072B8E4C3200876714 /* ProductGraphicsGateway.swift */,
-				B8BE4A0E2B900C0200876714 /* ClassDetailGateway.swift */,
 				B89F2F822B9118ED004DAEAB /* InvoiceListGateway.swift */,
 				B89F2F9D2B91A460004DAEAB /* ProductsListGateway.swift */,
 				B89F2FAF2B91BC20004DAEAB /* ProductDealersListGateway.swift */,
 				B82CA96C2B97768D000147D2 /* UserInfoGateway.swift */,
-				B8C165952B99D87D00F70074 /* ArticleTypeGateway.swift */,
 				B8C165A52B9A9ADE00F70074 /* PaymentReceiptsGateway.swift */,
 				B8E192972B9B0F620013B148 /* InvoiceDetailGateway.swift */,
 				3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */,
-				B80331432BA0BECE0019ACA5 /* EditInfographicsGateway.swift */,
-				B80331662BA1ACF80019ACA5 /* EditTechnographicsGateway.swift */,
-				B803317B2BA1EF8E0019ACA5 /* HRGraphicsEditGateway.swift */,
-				B88E1F032CCD49EA004F2C64 /* GetCardsGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -1715,6 +1735,90 @@
 			path = Row;
 			sourceTree = "<group>";
 		};
+		B858E6F22CD385AD00575CF0 /* EditCardView */ = {
+			isa = PBXGroup;
+			children = (
+				B858E6F32CD385CE00575CF0 /* EditCardView.swift */,
+				B858E6F52CD38B8400575CF0 /* EditCardViewModel.swift */,
+				B858E6F72CD38B9700575CF0 /* EditCardViewNavigator.swift */,
+				B858E6F92CD38BAF00575CF0 /* EditCardViewUseCase.swift */,
+				B858E6FB2CD38BB700575CF0 /* EditCardViewAssembler.swift */,
+			);
+			path = EditCardView;
+			sourceTree = "<group>";
+		};
+		B858E7012CD3964A00575CF0 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				B88E1F032CCD49EA004F2C64 /* GetCardsGateway.swift */,
+				B88DEE5D2CD2755900B6AAB8 /* AddCardGateway.swift */,
+				B88DEE672CD2812F00B6AAB8 /* DeleteCardGateway.swift */,
+				B858E6FD2CD38E4E00575CF0 /* EditCardStateGateway.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		B858E7022CD3966800575CF0 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				B8BE49E22B8D683300876714 /* InfoGraphicsGateway.swift */,
+				B8BE49ED2B8D7D7800876714 /* TechnoGraphicsGateway.swift */,
+				B8BE49F52B8D87A200876714 /* HRGateway.swift */,
+				B8BE49FD2B8E3EED00876714 /* MarketingGraphicsGateway.swift */,
+				B8BE4A072B8E4C3200876714 /* ProductGraphicsGateway.swift */,
+				B80331432BA0BECE0019ACA5 /* EditInfographicsGateway.swift */,
+				B80331662BA1ACF80019ACA5 /* EditTechnographicsGateway.swift */,
+				B803317B2BA1EF8E0019ACA5 /* HRGraphicsEditGateway.swift */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		B858E7032CD396A100575CF0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				176BAA5B24D175C200324D3C /* AuthGateway.swift */,
+				B87C71E52B82B2A20061530E /* ForgotPasswordGateway.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		B858E7042CD396BB00575CF0 /* ArticlesAndNews */ = {
+			isa = PBXGroup;
+			children = (
+				B85516C82B79069300FC2D6E /* ArticlesGateway.swift */,
+				B8C165952B99D87D00F70074 /* ArticleTypeGateway.swift */,
+				B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */,
+			);
+			path = ArticlesAndNews;
+			sourceTree = "<group>";
+		};
+		B858E7052CD396DA00575CF0 /* SMSCode */ = {
+			isa = PBXGroup;
+			children = (
+				B866A8E22B68E09600202C9F /* CodeInputGateway.swift */,
+				B8FEC6B62B8504C70028BA7F /* ResendSMSGateway.swift */,
+			);
+			path = SMSCode;
+			sourceTree = "<group>";
+		};
+		B858E7062CD396F700575CF0 /* Dealers */ = {
+			isa = PBXGroup;
+			children = (
+				B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */,
+				B877FD802B8C3F1F00D24CB0 /* AddDealerGateway.swift */,
+			);
+			path = Dealers;
+			sourceTree = "<group>";
+		};
+		B858E7072CD3971400575CF0 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				B8BE4A0E2B900C0200876714 /* ClassDetailGateway.swift */,
+				B877FD6C2B8BFEE700D24CB0 /* MobileClassGateway.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		B863DA942B8D037C003F2C3D /* HRGraphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1821,6 +1925,7 @@
 				B866A8D52B68D0E200202C9F /* CodeInputAssembler.swift */,
 				B866A8DC2B68E01200202C9F /* CodeInputUseCase.swift */,
 				B866A8E02B68E04400202C9F /* CodeInputNavigator.swift */,
+				B88DEE5B2CD1B11B00B6AAB8 /* CardActivationUseCase.swift */,
 			);
 			path = CodeInputView;
 			sourceTree = "<group>";
@@ -2117,6 +2222,11 @@
 			isa = PBXGroup;
 			children = (
 				B88E1F062CCD4A77004F2C64 /* GetCardsDomainUseCase.swift */,
+				B88DEE5F2CD276F000B6AAB8 /* CardActivationDomainUseCase.swift */,
+				B88DEE612CD2777000B6AAB8 /* AddCardDomainUseCase.swift */,
+				B88DEE652CD2810200B6AAB8 /* DeleteCardDomainUseCase.swift */,
+				B858E6FF2CD38EE600575CF0 /* EditCardStateDomainUseCase.swift */,
+				B858E7082CD39A4D00575CF0 /* ConfirmCardActionDomainUseCase.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -2306,14 +2416,16 @@
 		B8C3E4E82CC6BA3F00738BAF /* CardsView */ = {
 			isa = PBXGroup;
 			children = (
+				B858E6F22CD385AD00575CF0 /* EditCardView */,
 				B8677C552CCFC65F000636D8 /* AddCardView */,
 				B8677C4A2CCFBC3A000636D8 /* Rows */,
 				B8677C492CCFBC29000636D8 /* CardsCarousel */,
-				B88E1F082CCD4B7B004F2C64 /* GetCardsViewUseCase.swift */,
 				B8677C4B2CCFBC57000636D8 /* CardsMainView.swift */,
 				B8677C4D2CCFBD94000636D8 /* CardsMainViewModel.swift */,
 				B8677C4F2CCFBDAE000636D8 /* CardsMainViewNavigator.swift */,
 				B8677C532CCFC14E000636D8 /* CardsMainViewAssembler.swift */,
+				B88E1F082CCD4B7B004F2C64 /* GetCardsViewUseCase.swift */,
+				B88DEE632CD280CE00B6AAB8 /* DeleteCardUseCase.swift */,
 			);
 			path = CardsView;
 			sourceTree = "<group>";
@@ -2594,6 +2706,7 @@
 				1742B36324D7B00000C82D15 /* GettingRepos.swift in Sources */,
 				B85516C92B79069300FC2D6E /* ArticlesGateway.swift in Sources */,
 				B80331582BA0D88A0019ACA5 /* PopViewNavigator.swift in Sources */,
+				B88DEE5C2CD1B11B00B6AAB8 /* CardActivationUseCase.swift in Sources */,
 				B89F2F8A2B911B95004DAEAB /* PurchaseHistoryViewModel.swift in Sources */,
 				B8C165A42B9A6F6000F70074 /* PaymentReceipt.swift in Sources */,
 				1765B2D124C6D5550096D210 /* ShowingProductDetail.swift in Sources */,
@@ -2624,6 +2737,7 @@
 				B82CA96B2B977598000147D2 /* User+API.swift in Sources */,
 				B89F2F732B9021B3004DAEAB /* SeriesAndAmountRow.swift in Sources */,
 				173865AC24D3BC840059E3AD /* API+Repo.swift in Sources */,
+				B88DEE602CD276F000B6AAB8 /* CardActivationDomainUseCase.swift in Sources */,
 				B8E1929A2B9B0FC90013B148 /* GettingInvoiceDetailDomainUseCase.swift in Sources */,
 				B8677C4C2CCFBC57000636D8 /* CardsMainView.swift in Sources */,
 				B866A9632B71536900202C9F /* ArticlesViewModel.swift in Sources */,
@@ -2683,6 +2797,7 @@
 				B8C165A02B99DC7E00F70074 /* ArticlesFilterViewAssembler.swift in Sources */,
 				B89F2F7B2B90DBA1004DAEAB /* PurchaseHistoryViewRow.swift in Sources */,
 				B877FD6D2B8BFEE700D24CB0 /* MobileClassGateway.swift in Sources */,
+				B858E6F82CD38B9700575CF0 /* EditCardViewNavigator.swift in Sources */,
 				B87C71DC2B829EEA0061530E /* ForgotPasswordViewModel.swift in Sources */,
 				B866A8CD2B6874E100202C9F /* ShowingMain.swift in Sources */,
 				1742B37824D7C48400C82D15 /* RepoItemViewModel.swift in Sources */,
@@ -2732,6 +2847,7 @@
 				B8CF98E82B656B2700EF02A7 /* RegisterDTO.swift in Sources */,
 				B866A8D12B68CFBD00202C9F /* ShowingForgotPassword.swift in Sources */,
 				B8FEC6DC2B879ABC0028BA7F /* CarouselView.swift in Sources */,
+				B88DEE642CD280CE00B6AAB8 /* DeleteCardUseCase.swift in Sources */,
 				B863DA9B2B8D0458003F2C3D /* HRGraphicViewModel.swift in Sources */,
 				3420A0B22B9E405700DC3E3D /* Message+API.swift in Sources */,
 				B8C165B92B9AAD1F00F70074 /* ShowingPaymentsHistoryView.swift in Sources */,
@@ -2744,6 +2860,7 @@
 				B80331722BA1E0330019ACA5 /* HRGraphicsEditView.swift in Sources */,
 				1787233324BD54B600D90F8E /* Assembler.swift in Sources */,
 				176BAA5A24D16BAE00324D3C /* ShowingLogin.swift in Sources */,
+				B858E6FC2CD38BB700575CF0 /* EditCardViewAssembler.swift in Sources */,
 				B8677C5D2CCFCDAD000636D8 /* AddCardViewAssembler.swift in Sources */,
 				B87ED2002B7A245F00EB5139 /* ShowingWelcomeView.swift in Sources */,
 				B8BE4A112B900C4E00876714 /* ClassDetailDomainUseCase.swift in Sources */,
@@ -2752,6 +2869,7 @@
 				B866A9932B71AFF700202C9F /* SearchProductViewNavigator.swift in Sources */,
 				B8C1659C2B99D96B00F70074 /* ArticlesFilterViewModel.swift in Sources */,
 				B8FEC6D82B8761AB0028BA7F /* Dealer.swift in Sources */,
+				B88DEE662CD2810200B6AAB8 /* DeleteCardDomainUseCase.swift in Sources */,
 				B89F2FB22B91BD76004DAEAB /* GettingProductDealersListDomainUseCase.swift in Sources */,
 				B8C165B42B9AA60800F70074 /* PaymentHistoryView.swift in Sources */,
 				B8C3E4F02CC6BAD500738BAF /* View+Extension.swift in Sources */,
@@ -2781,6 +2899,7 @@
 				B866A98F2B71AF5100202C9F /* SearchProductView.swift in Sources */,
 				B8AC367C2B7992720060D52D /* AddDealerAssembler.swift in Sources */,
 				178809AE24C04A7E00002215 /* ActivityTracker.swift in Sources */,
+				B88DEE682CD2812F00B6AAB8 /* DeleteCardGateway.swift in Sources */,
 				B8BE49FA2B8D888100876714 /* HRGraphicsViewUseCase.swift in Sources */,
 				B866A9382B70EFA000202C9F /* NewsItemViewModel.swift in Sources */,
 				B866A97A2B7168C700202C9F /* SettingsAssembler.swift in Sources */,
@@ -2832,9 +2951,11 @@
 				1781CF4024BD8FB8004ED1C6 /* ProductDetailAssembler.swift in Sources */,
 				B8FEC6CE2B8665950028BA7F /* DealersListView.swift in Sources */,
 				B86E1C9B2BA485B200A0AF4D /* DownloadProgressView.swift in Sources */,
+				B858E7002CD38EE600575CF0 /* EditCardStateDomainUseCase.swift in Sources */,
 				3420A0A62B9D891E00DC3E3D /* TechnicalSupportViewModel.swift in Sources */,
 				B877FD782B8C30D300D24CB0 /* ImageDownloaderViewModel.swift in Sources */,
 				B89F2F812B911719004DAEAB /* Invoice+API.swift in Sources */,
+				B858E7092CD39A4D00575CF0 /* ConfirmCardActionDomainUseCase.swift in Sources */,
 				B8C165942B99D38F00F70074 /* ArticlesFilterView.swift in Sources */,
 				B8E192A02B9B10710013B148 /* PurchaseDetailViewAssembler.swift in Sources */,
 				B803314F2BA0CCA20019ACA5 /* EditInfographicsViewAssembler.swift in Sources */,
@@ -2889,6 +3010,7 @@
 				B80331672BA1ACF80019ACA5 /* EditTechnographicsGateway.swift in Sources */,
 				B866A96E2B7154E500202C9F /* ArticleDetailView.swift in Sources */,
 				B863DAA92B8D0629003F2C3D /* MarketingViewRow.swift in Sources */,
+				B88DEE622CD2777000B6AAB8 /* AddCardDomainUseCase.swift in Sources */,
 				B8BE4A082B8E4C3200876714 /* ProductGraphicsGateway.swift in Sources */,
 				B87ED2052B7A283F00EB5139 /* SplashViewModel.swift in Sources */,
 				B8C165AE2B9AA56E00F70074 /* PaymentHistoryViewNavigator.swift in Sources */,
@@ -2961,6 +3083,7 @@
 				B863DAA12B8D053F003F2C3D /* LanguageViewRow.swift in Sources */,
 				B89F2F9E2B91A460004DAEAB /* ProductsListGateway.swift in Sources */,
 				B866A9712B715CBD00202C9F /* ArticleRow.swift in Sources */,
+				B858E6F62CD38B8400575CF0 /* EditCardViewModel.swift in Sources */,
 				B89F2F862B911A6B004DAEAB /* InvoiceDomainUseCase.swift in Sources */,
 				B80331692BA1AD4C0019ACA5 /* EditTechnographicsDomainUseCase.swift in Sources */,
 				B8DAD24C2BAAB08C00857140 /* PINCodeViewAssembler.swift in Sources */,
@@ -2985,6 +3108,7 @@
 				B86CDF4A2B77C801002E7EA4 /* NewsDomainUseCase.swift in Sources */,
 				B87C71E02B829FD60061530E /* ForgotPasswordNavigator.swift in Sources */,
 				B866A8E52B68E19F00202C9F /* CodeInputDto.swift in Sources */,
+				B858E6F42CD385CE00575CF0 /* EditCardView.swift in Sources */,
 				176BAA4824D130B800324D3C /* Bindable.swift in Sources */,
 				B877FD712B8C053200D24CB0 /* MobileClassUseCase.swift in Sources */,
 				B88E1F092CCD4B7B004F2C64 /* GetCardsViewUseCase.swift in Sources */,
@@ -2997,6 +3121,7 @@
 				1787234D24BD560500D90F8E /* MainViewModel.swift in Sources */,
 				B877FD842B8C3F8700D24CB0 /* AddDealerDomainUseCase.swift in Sources */,
 				B8CF98E02B6566EC00EF02A7 /* RegisterViewModel.swift in Sources */,
+				B858E6FE2CD38E4E00575CF0 /* EditCardStateGateway.swift in Sources */,
 				B8677C572CCFC66A000636D8 /* AddCardView.swift in Sources */,
 				B866A92B2B6BF76700202C9F /* TabBarItemView.swift in Sources */,
 				B8BE49EC2B8D7B8900876714 /* TechnoGraphics.swift in Sources */,
@@ -3007,13 +3132,16 @@
 				B85516D02B79294700FC2D6E /* InfographicsView.swift in Sources */,
 				B8AC36782B79925F0060D52D /* AddDealerNavigator.swift in Sources */,
 				B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */,
+				B88DEE5E2CD2755900B6AAB8 /* AddCardGateway.swift in Sources */,
 				1742B36B24D7B22B00C82D15 /* ReposAssembler.swift in Sources */,
 				B8F7B7D22CCEDA570093A2B7 /* PoppingController.swift in Sources */,
+				B858E6FA2CD38BAF00575CF0 /* EditCardViewUseCase.swift in Sources */,
 				B85516D22B792B5600FC2D6E /* InfographicsViewModel.swift in Sources */,
 				B877FD812B8C3F1F00D24CB0 /* AddDealerGateway.swift in Sources */,
 				B866A8E72B68E4CD00202C9F /* CodeConfirm+API.swift in Sources */,
 				B866A9592B71285300202C9F /* ArticleItemViewModel.swift in Sources */,
 				B87ED1FC2B7A22CC00EB5139 /* WelcomeViewNavigator.swift in Sources */,
+				B858E70B2CD39D5B00575CF0 /* ShowingCardSettingsView.swift in Sources */,
 				1765B2CC24C68D940096D210 /* CancelBag.swift in Sources */,
 				B8C165962B99D87D00F70074 /* ArticleTypeGateway.swift in Sources */,
 			);

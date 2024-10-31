@@ -26,12 +26,11 @@ extension HomeViewModel: ViewModel {
         let getCardsTrigger: Driver<Void>
         let showDealerDetailsViewTrigger: Driver<Dealer>
         let showCardsMainViewTrigger: Driver<Void>
+        let addCardViewTrigger: Driver<Void>
+        let cardSettingsViewTrigger: Driver<Card>
     }
     
     final class Output: ObservableObject {
-        @Published var visible: Bool = AuthApp.shared.visibility
-        @Published var totalOfMonth = 0.0
-        @Published var totalOfYear = 0.0
         @Published var isLoading = false
         @Published var alert = AlertMessage()
         @Published var hasDealers = false
@@ -39,6 +38,7 @@ extension HomeViewModel: ViewModel {
         @Published var cards: [Card] = []
         @Published var currentCardIndex = 0
         @Published var targetIndex: Int? = 0
+        @Published var needToRender = false
         @Published var mobileClass: MobileClass? = nil
         @Published var mobileClassLogoData: Data? = nil
         @Published var unreadDataCount: UnreadDataCount = UnreadDataCount(countUnreadMessages: 0, countUnreadArticles: 0, countUnreadNews: 0)
@@ -69,16 +69,9 @@ extension HomeViewModel: ViewModel {
                         .trackActivity(activityTracker)
                         .asDriver()
                         .map { dealers in
-                            output.totalOfMonth = dealers
-                                .map { $0.purchaseForMonth }
-                                .reduce(0,+)
-                            
-                            output.totalOfYear = dealers
-                                .map {$0.purchaseForYear}
-                                .reduce(0, +)
-                            
                             output.hasDealers = bool
                             output.items = dealers
+                            output.needToRender.toggle()
                         }
                         .sink()
                         .store(in: cancelBag)
@@ -155,6 +148,7 @@ extension HomeViewModel: ViewModel {
             .sink(receiveValue: { cards in
                 output.cards = cards
                 output.cards.append(Card())
+                output.needToRender.toggle()
             })
             .store(in: cancelBag)
         
@@ -167,6 +161,18 @@ extension HomeViewModel: ViewModel {
         input.showCardsMainViewTrigger
             .sink {
                 navigator.showCardsMainView()
+            }
+            .store(in: cancelBag)
+        
+        input.addCardViewTrigger
+            .sink {
+                navigator.showAddCardView()
+            }
+            .store(in: cancelBag)
+        
+        input.cardSettingsViewTrigger
+            .sink { card in
+                navigator.showCardSettingsView(card)
             }
             .store(in: cancelBag)
         

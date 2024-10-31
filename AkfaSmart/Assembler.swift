@@ -42,7 +42,8 @@ protocol Assembler: AnyObject,
     PINCodeViewAssembler,
     DealerDetailsViewAssembler,
     CardsMainViewAssembler,
-    AddCardViewAssembler
+    AddCardViewAssembler,
+    EditCardViewAssembler
 {
     
 }

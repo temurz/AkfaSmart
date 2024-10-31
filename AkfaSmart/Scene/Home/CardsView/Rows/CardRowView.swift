@@ -9,6 +9,12 @@
 import SwiftUI
 struct CardRowView: View {
     var model: Card
+    var width: CGFloat
+    
+    init(model: Card, width: CGFloat = UIScreen.main.bounds.width) {
+        self.model = model
+        self.width = width
+    }
     
     var body: some View {
         VStack {
@@ -144,6 +150,6 @@ struct CardRowView: View {
             
         }
         .frame(height: 140)
-        .frame(width: UIScreen.main.bounds.width)
+        .frame(width: width)
     }
 }

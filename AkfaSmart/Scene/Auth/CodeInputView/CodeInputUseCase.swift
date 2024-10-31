@@ -35,3 +35,12 @@ protocol ConfirmSMSCodeOnForgotPasswordUseCaseType {
 struct ConfirmSMSCodeOnForgotPasswordUseCase: ConfirmSMSCodeOnForgotPasswordUseCaseType, ConfirmSMSCodeOnForgotPasswordDomainUseCase {
     let confirmSMSCodeOnForgotPasswordGateway: ConfirmSMSCodeOnForgotPasswordGatewayType
 }
+
+protocol CardConfirmActionUseCaseType {
+    func confirmBlockAction(id: Int, confirmationCode: String) -> Observable<Bool>
+    func confirmUnblockAction(id: Int, confirmationCode: String) -> Observable<Bool>
+}
+
+struct CardConfirmActionUseCase: CardConfirmActionUseCaseType, ConfirmCardActionDomainUseCase {
+    var gateway: CardConfirmActionGatewayType
+}

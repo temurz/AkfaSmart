@@ -29,7 +29,7 @@ extension AddCardViewAssembler where Self: PreviewAssembler {
     }
     
     func resolve() -> AddCardViewUseCaseType {
-        return AddCardViewUseCase()
+        return AddCardViewUseCase(gateway: resolve())
     }
 }
 
@@ -39,6 +39,6 @@ extension AddCardViewAssembler where Self: DefaultAssembler {
     }
     
     func resolve() -> AddCardViewUseCaseType {
-        return AddCardViewUseCase()
+        return AddCardViewUseCase(gateway: resolve())
     }
 }

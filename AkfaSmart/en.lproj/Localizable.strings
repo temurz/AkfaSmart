@@ -5,6 +5,12 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"CARD_INFORMATION" = "Card information";
+"UNBLOCK_CARD" = "Unblock card";
+"BLOCK_CARD" = "Block card";
+"DELETE_CARD" = "Delete card";
+"EDIT_CARD_TITLE" = "Edit card";
+"CARD_ACTIVATION_TITLE" = "Activate card";
 "MAKE_MAIN_CARD" = "Make main card";
 "CARD_NAME" = "Card name";
 "CARD_NUMBER" = "Card number";

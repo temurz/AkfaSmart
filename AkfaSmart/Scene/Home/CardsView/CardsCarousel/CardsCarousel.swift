@@ -16,6 +16,7 @@ struct CardsCarousel: UIViewRepresentable {
     @Binding var currentIndex: Int
     @Binding var targetIndex: Int?
     var height: CGFloat
+    var didSelectCard: (Card) -> Void
     
     func makeUIView(context: Context) -> UIScrollView {
         //ScrollView Content Size
@@ -31,7 +32,7 @@ struct CardsCarousel: UIViewRepresentable {
 
         //Embed SwiftUI View into UIView
         let listView = CardsHorizontalListView(
-            data: $data)
+            data: $data, didSelectCard: didSelectCard)
         let view1 = UIHostingController(rootView: listView)
         view1.view.frame = CGRect(x: 0, y: 0, width: total, height: height)
         view1.view.backgroundColor = .clear

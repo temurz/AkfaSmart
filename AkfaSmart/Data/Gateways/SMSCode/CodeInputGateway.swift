@@ -54,3 +54,28 @@ struct ConfirmSMSCodeOnForgotPasswordGateway: ConfirmSMSCodeOnForgotPasswordGate
             .eraseToAnyPublisher()
     }
 }
+
+protocol CardActivationGatewayType {
+    func activateCard(_ cardNumber: String, confirmationCode: String) -> Observable<Bool>
+}
+
+struct CardActivationGateway: CardActivationGatewayType {
+    func activateCard(_ cardNumber: String, confirmationCode: String) -> Observable<Bool> {
+        return API.shared.activateCard(API.ActivateCardInput(cardNumber: cardNumber, confirmationCode: confirmationCode))
+    }
+}
+
+protocol CardConfirmActionGatewayType {
+    func confirmBlockAction(id: Int, confirmationCode: String) -> Observable<Bool>
+    func confirmUnblockAction(id: Int, confirmationCode: String) -> Observable<Bool>
+}
+
+struct CardConfirmActionGateway: CardConfirmActionGatewayType {
+    func confirmBlockAction(id: Int, confirmationCode: String) -> Observable<Bool> {
+        return API.shared.confirmCardAction(API.ConfirmCardActionInput(action: "block", id: id, confirmationCode: confirmationCode))
+    }
+    
+    func confirmUnblockAction(id: Int, confirmationCode: String) -> Observable<Bool> {
+        return API.shared.confirmCardAction(API.ConfirmCardActionInput(action: "unblock", id: id, confirmationCode: confirmationCode))
+    }
+}

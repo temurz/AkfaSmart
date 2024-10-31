@@ -10,6 +10,7 @@ import Foundation
 struct CardsMainViewModel {
     let navigator: CardsMainViewNavigatorType
     let getCardsUseCase: GetCardsViewUseCaseType
+    let deleteCardUseCase: DeleteCardUseCaseType
 }
 
 extension CardsMainViewModel: ViewModel {
@@ -19,6 +20,7 @@ extension CardsMainViewModel: ViewModel {
         let showAddCardViewTrigger: Driver<Void>
         let selectCardTrigger: Driver<Card>
         let popViewControllerTrigger: Driver<Void>
+        let deleteCardTrigger: Driver<Int>
     }
     
     final class Output: ObservableObject {
@@ -65,6 +67,29 @@ extension CardsMainViewModel: ViewModel {
         input.showAddCardViewTrigger
             .sink {
                 navigator.showAddCardView()
+            }
+            .store(in: cancelBag)
+        
+        input.deleteCardTrigger
+            .sink { id in
+                deleteCardUseCase.deleteCard(id: id)
+                    .trackError(errorTracker)
+                    .trackActivity(activityTracker)
+                    .asDriver()
+                    .sink { bool in
+                        if bool {
+                            output.cards.removeAll { card in
+                                card.id == id
+                            }
+                        }
+                    }
+                    .store(in: cancelBag)
+            }
+            .store(in: cancelBag)
+        
+        input.selectCardTrigger
+            .sink { card in
+                navigator.showCardSettingsView(card)
             }
             .store(in: cancelBag)
         

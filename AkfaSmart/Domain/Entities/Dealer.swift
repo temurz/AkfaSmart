@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct Dealer: Decodable {
+struct Dealer: Decodable, Equatable {
     let dealerId: Int?
     let dealerClientCid: Int?
     let name: String?

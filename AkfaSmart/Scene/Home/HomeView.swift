@@ -16,6 +16,9 @@ struct HomeView: View {
     @State var searchText = ""
     @State var infoDealer = Dealer(dealerId: nil, dealerClientCid: nil, name: nil, clientName: nil, balance: 0, purchaseForMonth: 0, purchaseForYear: 0)
     @State var showDealerDetails = false
+    @State var refresh = false
+    @State private var initialDealers = [Dealer]()
+    @State private var initialCards = [Card]()
     
     private let getDealersTrigger = PassthroughSubject<Void,Never>()
     private let getMobileClassInfoTrigger = PassthroughSubject<Void,Never>()
@@ -26,6 +29,8 @@ struct HomeView: View {
     private let showNewsViewTrigger = PassthroughSubject<Void,Never>()
     private let getCardsTrigger = PassthroughSubject<Void,Never>()
     private let showCardsMainViewTrigger = PassthroughSubject<Void,Never>()
+    private let addCardViewTrigger = PassthroughSubject<Void,Never>()
+    private let cardSettingsViewTrigger = PassthroughSubject<Card,Never>()
     
     private let showDealerDetailsViewTrigger = PassthroughSubject<Dealer,Never>()
     
@@ -81,17 +86,15 @@ struct HomeView: View {
                             
                         }
                         .padding(.horizontal)
-                        if output.items.isEmpty {
+                        if output.needToRender {
                             Carousel(
-                                data: $output.items) 
-                            { _ in
-                                
-                            } addDealerAction: {
-                                
-                            }
-                            
+                                data: $output.items) { dealer in
+                                    showDealerDetailsViewTrigger.send(dealer)
+                                } addDealerAction: {
+                                    showAddDealerViewTrigger.send(())
+                                }
                                 .frame(height: 120)
-                        }else {
+                        } else {
                             Carousel(
                                 data: $output.items) { dealer in
                                     showDealerDetailsViewTrigger.send(dealer)
@@ -100,8 +103,6 @@ struct HomeView: View {
                                 }
                                 .frame(height: 120)
                         }
-                        
-                        
                         HStack {
                             Text("MY_CARDS".localizedString)
                                 .font(.headline)
@@ -115,11 +116,23 @@ struct HomeView: View {
                             }
                         }
                         .padding(.horizontal)
-                        if output.cards.isEmpty {
-                            CardsCarousel(data: $output.cards, currentIndex: $output.currentCardIndex, targetIndex: .constant(nil), height: 180)
+                        if output.needToRender {
+                            CardsCarousel(data: $output.cards, currentIndex: $output.currentCardIndex, targetIndex: .constant(nil), height: 180, didSelectCard: { card in
+                                if card.id < 0 {
+                                    addCardViewTrigger.send(())
+                                } else {
+                                    cardSettingsViewTrigger.send(card)
+                                }
+                            })
                                 .frame(height: 180)
                         }else {
-                            CardsCarousel(data: $output.cards, currentIndex: $output.currentCardIndex, targetIndex: .constant(nil), height: 180)
+                            CardsCarousel(data: $output.cards, currentIndex: $output.currentCardIndex, targetIndex: .constant(nil), height: 180, didSelectCard: { card in
+                                if card.id < 0 {
+                                    addCardViewTrigger.send(())
+                                } else {
+                                    cardSettingsViewTrigger.send(card)
+                                }
+                            })
                                 .frame(height: 180)
                         }
                     }
@@ -195,7 +208,9 @@ struct HomeView: View {
             showNewsViewTrigger: showNewsViewTrigger.asDriver(), 
             getCardsTrigger: getCardsTrigger.asDriver(),
             showDealerDetailsViewTrigger: showDealerDetailsViewTrigger.asDriver(),
-            showCardsMainViewTrigger: showCardsMainViewTrigger.asDriver()
+            showCardsMainViewTrigger: showCardsMainViewTrigger.asDriver(),
+            addCardViewTrigger: addCardViewTrigger.asDriver(),
+            cardSettingsViewTrigger: cardSettingsViewTrigger.asDriver()
         )
         
         output = viewModel.transform(input, cancelBag: cancelBag)

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct Card: Decodable {
+struct Card: Decodable, Equatable {
     let id: Int
     let balance: Double?
     let cardNumber: String?
@@ -15,7 +15,7 @@ struct Card: Decodable {
     let cardBackground: String?
     let cardHolderPhone: String?
     var isMain: Bool?
-    let isBlocked: Bool?
+    var isBlocked: Bool?
     let status: String?
     
     private enum CodingKeys: String, CodingKey {
@@ -36,6 +36,14 @@ struct Card: Decodable {
         } else {
             return Colors.redCardGradientHexString.components(separatedBy: ",")
         }
+    }
+    
+    mutating func block(_ bool: Bool) {
+        isBlocked = bool
+    }
+    
+    func newCopy(isMain: Bool, displayName: String) -> Card {
+        return Card(id: self.id, balance: self.balance, cardNumber: self.cardNumber, displayName: displayName, cardBackground: self.cardBackground, cardHolderPhone: self.cardHolderPhone, isMain: isMain, isBlocked: self.isBlocked, status: self.status)
     }
     
     init(id: Int, balance: Double?, cardNumber: String?, displayName: String?, cardBackground: String?, cardHolderPhone: String?, isMain: Bool?, isBlocked: Bool?, status: String?) {
@@ -74,11 +82,11 @@ struct Card: Decodable {
         self.status = nil
     }
     
-    init(id: Int, displayName: String?, cardBackground: String?, isMain: Bool?) {
+    init(id: Int, cardNumber: String?, displayName: String?, cardBackground: String?, isMain: Bool?) {
         self.id = id
         self.balance = 0
-        self.cardNumber = nil
-        self.displayName = nil
+        self.cardNumber = cardNumber
+        self.displayName = displayName
         self.cardBackground = cardBackground
         self.cardHolderPhone = nil
         self.isMain = isMain

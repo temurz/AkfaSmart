@@ -23,6 +23,12 @@ extension API {
                 API.Urls.resendForgotPassword
             case .dealer:
                 API.Urls.addDealer_resendSMSCode
+            case .cardActivation(_):
+                API.Urls.addCard
+            case .block:
+                API.Urls.resendCardAction + "block"
+            case .unblock:
+                API.Urls.resendCardAction + "unblock"
             }
             
             let username = AuthApp.shared.username ?? ""
@@ -41,6 +47,18 @@ extension API {
                 ]
                 encoding = JSONEncoding.prettyPrinted
                 requireAccessToken = true
+            case let .block(id):
+                params = [
+                    "id": id
+                ]
+            case let .unblock(id, _):
+                params = [
+                    "id": id
+                ]
+            case let .cardActivation(cardNumber):
+                params = [
+                    "cardNumber": cardNumber
+                ]
             default:
                 break
             }

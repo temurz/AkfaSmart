@@ -11,7 +11,7 @@ import Combine
 struct CodeInputView: View {
     @ObservedObject var input: CodeInputViewModel.Input
     @ObservedObject var output: CodeInputViewModel.Output
-    
+    @Environment(\.dismiss) var dismiss
     private let cancelBag = CancelBag()
     private let confirmRegisterTrigger = PassthroughSubject<Void,Never>()
     private let resendSMSTrigger = PassthroughSubject<Void,Never>()
@@ -23,31 +23,61 @@ struct CodeInputView: View {
 //    @State private var timeRemaining = 120
     @State var duration = "2:00"
     
+    let isModal: Bool
+    var completion: ((Bool) -> Void)?
+    
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
-                CustomNavigationBar(title: "") {
-                    popViewControllerTrigger.send(())
+                if !isModal {
+                    CustomNavigationBar(title: "") {
+                        popViewControllerTrigger.send(())
+                    }
                 }
                 ZStack {
                     VStack(alignment: .leading) {
-                        HStack {
-                            Spacer()
-                            Image("akfa_smart")
-                                .frame(width: 124, height: 44)
-                            Spacer()
+                        if !isModal {
+                            HStack {
+                                Spacer()
+                                Image("akfa_smart")
+                                    .frame(width: 124, height: 44)
+                                Spacer()
+                            }
+                            .ignoresSafeArea()
+                            .padding(.bottom)
+                        }else {
+                            ZStack {
+                                Text(output.title)
+                                    .bold()
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding()
+                                HStack {
+                                    Spacer()
+                                    Button {
+                                        completion?(output.success)
+                                        dismiss()
+                                    } label: {
+                                        Image("cancel")
+                                            .resizable()
+                                            .frame(width: 24, height: 24)
+                                            .padding()
+                                    }
+                                }
+                            }
+                            
                         }
-                        .ignoresSafeArea()
-                        .padding(.bottom)
                         VStack(alignment: .leading, spacing: 16) {
-                            Text(output.title)
-                                .font(.title)
-                                .bold()
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .padding(.horizontal)
+                            if !isModal {
+                                Text(output.title)
+                                    .font(.title)
+                                    .bold()
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.horizontal)
+                            }
+                            
                             
                             Text(String(format: NSLocalizedString("CODE_SENT_TO_PHONE".localizedString, comment: ""), output.username)
                             )
@@ -137,6 +167,12 @@ struct CodeInputView: View {
                 }
             }
         }
+        .onChange(of: output.success, perform: { newValue in
+            if newValue {
+                completion?(newValue)
+                dismiss()
+            }
+        })
         .alert(isPresented: $output.alert.isShowing) {
             Alert(
                 title: Text(output.alert.title),
@@ -202,7 +238,7 @@ struct CodeInputView: View {
         }
     }
     
-    init(viewModel: CodeInputViewModel) {
+    init(viewModel: CodeInputViewModel, isModal: Bool = false, completion: ((Bool) -> Void)? = nil) {
         let input = CodeInputViewModel.Input(
             confirmRegisterTrigger: confirmRegisterTrigger.asDriver(),
             resendSMSTrigger: resendSMSTrigger.asDriver(),
@@ -212,6 +248,8 @@ struct CodeInputView: View {
         )
         output = viewModel.transform(input, cancelBag: cancelBag)
         self.input = input
+        self.isModal = isModal
+        self.completion = completion
     }
 }
 

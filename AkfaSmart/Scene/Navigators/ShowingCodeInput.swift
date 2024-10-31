@@ -12,6 +12,9 @@ enum CodeReason {
     case register
     case forgotPassword
     case dealer(_ dealer: AddDealer, activeUsername: String?, isActive: Bool)
+    case cardActivation(_ cardNumber: String)
+    case block(_ id: Int)
+    case unblock(_ id: Int, connectedPhone: String)
 }
 
 protocol ShowingCodeInput {
@@ -24,5 +27,11 @@ extension ShowingCodeInput {
         let view: CodeInputView = assembler.resolve(navigationController: navigationController, reason: reason)
         let vc = UIHostingController(rootView: view)
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showModally(reason: CodeReason, isModal: Bool, completion: ((Bool) -> Void)? ) {
+        let view: CodeInputView = assembler.resolve(navigationController: navigationController, reason: reason, isModal: isModal, completion: completion)
+        let vc = UIHostingController(rootView: view)
+        navigationController.present(vc, animated: true)
     }
 }

@@ -8,11 +8,10 @@
 
 import Foundation
 protocol AddCardViewUseCaseType {
-    func addCard(_ card: Card)
+    func addCard(_ cardNumber: String) -> Observable<Bool>
+    func changeCardSettings(_ card: Card) -> Observable<Bool>
 }
 
-struct AddCardViewUseCase: AddCardViewUseCaseType {
-    func addCard(_ card: Card) {
-        
-    }
+struct AddCardViewUseCase: AddCardViewUseCaseType, AddCardDomainUseCase {
+    var gateway: AddCardGatewayType
 }

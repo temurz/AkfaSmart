@@ -14,6 +14,8 @@ struct CodeInputViewModel {
     let useCaseResend: ResendSMSUseCaseType
     let confirmSMSCodeOnForgotPasswordUseCase: ConfirmSMSCodeOnForgotPasswordUseCaseType
     let dealerUseCase: ConfirmDealerUseCaseType
+    let cardActivationUseCase: CardActivationUseCaseType
+    let cardConfirmActionUseCase: CardConfirmActionUseCaseType
     let reason: CodeReason
     private let showAlertTrigger = PassthroughSubject<Void, Never>()
 }
@@ -51,6 +53,7 @@ extension CodeInputViewModel: ViewModel {
         @Published var isConfirmEnabled = false
         @Published var reason: CodeReason
         @Published var showConfirmAlert = false
+        @Published var success = false
         var activeUsername: String? = nil
         var dealer: AddDealer? = nil
         var isActive: Bool = false
@@ -68,6 +71,12 @@ extension CodeInputViewModel: ViewModel {
                 self.dealer = dealer
                 self.activeUsername = activeUsername
                 self.isActive = isActive
+            case let .cardActivation(cardNumber):
+                title = "CARD_ACTIVATION_TITLE".localizedString
+            case .block:
+                title = "BLOCK_CARD_TITLE".localizedString
+            case .unblock:
+                title = "UNBLOCK_CARD_TITLE".localizedString
             }
         }
     }
@@ -119,6 +128,21 @@ extension CodeInputViewModel: ViewModel {
                             .trackError(errorTracker)
                             .trackActivity(activityTracker)
                             .asDriver()
+                    case let .cardActivation(cardNumber):
+                        self.cardActivationUseCase.activateCard(cardNumber, confirmationCode: input.code)
+                            .trackError(errorTracker)
+                            .trackActivity(activityTracker)
+                            .asDriver()
+                    case let .block(id):
+                        self.cardConfirmActionUseCase.confirmBlockAction(id: id, confirmationCode: input.code)
+                            .trackError(errorTracker)
+                            .trackActivity(activityTracker)
+                            .asDriver()
+                    case let .unblock(id, _):
+                        self.cardConfirmActionUseCase.confirmUnblockAction(id: id, confirmationCode: input.code)
+                            .trackError(errorTracker)
+                            .trackActivity(activityTracker)
+                            .asDriver()
                     }
                 }
                 .switchToLatest()
@@ -131,6 +155,8 @@ extension CodeInputViewModel: ViewModel {
                             navigator.showResetPasswordView()
                         case .dealer(_,_,_):
                             navigator.showMain(page: .home)
+                        case .cardActivation, .block, .unblock:
+                            output.success = bool
                         }
                     }
                 }

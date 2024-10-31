@@ -131,6 +131,26 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> GetCardsGatewayType {
         return GetCardsGateway()
     }
+    
+    func resolve() -> AddCardGatewayType {
+        return AddCardGateway()
+    }
+    
+    func resolve() -> CardActivationGatewayType {
+        return CardActivationGateway()
+    }
+    
+    func resolve() -> DeleteCardGatewayType {
+        return DeleteCardGateway()
+    }
+    
+    func resolve() -> EditCardStateGatewayType {
+        return EditCardStateGateway()
+    }
+    
+    func resolve() -> CardConfirmActionGatewayType {
+        CardConfirmActionGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -247,5 +267,25 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> GetCardsGatewayType {
         return GetCardsGateway()
+    }
+    
+    func resolve() -> AddCardGatewayType {
+        return AddCardGateway()
+    }
+    
+    func resolve() -> CardActivationGatewayType {
+        return CardActivationGateway()
+    }
+    
+    func resolve() -> DeleteCardGatewayType {
+        return DeleteCardGateway()
+    }
+    
+    func resolve() -> EditCardStateGatewayType {
+        return EditCardStateGateway()
+    }
+    
+    func resolve() -> CardConfirmActionGatewayType {
+        CardConfirmActionGateway()
     }
 }

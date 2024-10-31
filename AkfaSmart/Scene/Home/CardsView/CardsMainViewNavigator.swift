@@ -10,9 +10,10 @@ import UIKit
 protocol CardsMainViewNavigatorType {
     func popView()
     func showAddCardView()
+    func showCardSettingsView(_ card: Card)
 }
 
-struct CardsMainViewNavigator: CardsMainViewNavigatorType, PoppingController, ShowingAddCardView {
+struct CardsMainViewNavigator: CardsMainViewNavigatorType, PoppingController, ShowingAddCardView, ShowingCardSettingsView {
     var assembler: Assembler
     var navigationController: UINavigationController
 }

@@ -20,7 +20,7 @@ struct AddCardView: View {
                 CustomNavigationBar(title: "ADD_CARD".localizedString) {
                     popViewControllerTrigger.send(())
                 }
-                CardsCarousel(data: $output.coloredCards, currentIndex: $output.cardIndex, targetIndex: $output.targetIndex, height: 180)
+                CardsCarousel(data: $output.coloredCards, currentIndex: $output.cardIndex, targetIndex: $output.targetIndex, height: 180, didSelectCard: { _ in })
                     .frame(height: 180)
                 coloredButtons
                 VStack(alignment: .leading) {

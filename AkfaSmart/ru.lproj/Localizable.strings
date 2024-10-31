@@ -5,6 +5,12 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"CARD_INFORMATION" = "Информация о карте";
+"UNBLOCK_CARD" = "Разблокировать карту";
+"BLOCK_CARD" = "Блокировать карту";
+"DELETE_CARD" = "Удалить карту";
+"EDIT_CARD_TITLE" = "Редактировать карту";
+"CARD_ACTIVATION_TITLE" = "Активировать карту";
 "MAKE_MAIN_CARD" = "Сделать основной картой";
 "CARD_NAME" = "Название карты";
 "CARD_NUMBER" = "Номер карты";

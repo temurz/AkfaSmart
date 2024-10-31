@@ -14,6 +14,7 @@ struct CardsMainView: View {
     private let showAddCardViewTrigger = PassthroughSubject<Void,Never>()
     private let selectCardTrigger = PassthroughSubject<Card,Never>()
     private let popViewControllerTrigger = PassthroughSubject<Void,Never>()
+    private let deleteCardTrigger = PassthroughSubject<Int,Never>()
     private let cancelBag = CancelBag()
     @State var isLoading = false
     var body: some View {
@@ -27,6 +28,18 @@ struct CardsMainView: View {
                 List(output.cards, id: \.id) { card in
                     CardRowView(model: card)
                         .listRowSeparator(.hidden)
+                        .swipeActions {
+                            Button {
+                                deleteCardTrigger.send(card.id)
+                            } label: {
+                                Image(systemName: "trash")
+                                    .foregroundStyle(.white)
+                            }
+                            .tint(Colors.customRedColor)
+                        }
+                        .onTapGesture {
+                            selectCardTrigger.send(card)
+                        }
                 }
                 .listStyle(.plain)
                 
@@ -44,7 +57,8 @@ struct CardsMainView: View {
             getCardsTrigger: getCardsTrigger.asDriver(),
             showAddCardViewTrigger: showAddCardViewTrigger.asDriver(),
             selectCardTrigger: selectCardTrigger.asDriver(),
-            popViewControllerTrigger: popViewControllerTrigger.asDriver()
+            popViewControllerTrigger: popViewControllerTrigger.asDriver(),
+            deleteCardTrigger: deleteCardTrigger.asDriver()
         )
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

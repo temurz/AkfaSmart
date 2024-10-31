@@ -5,6 +5,12 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"CARD_INFORMATION" = "Karta haqida ma'lumot";
+"UNBLOCK_CARD" = "Kartani blokdan chiqarish";
+"BLOCK_CARD" = "Kartani bloklash";
+"DELETE_CARD" = "Kartani olib tashlash";
+"EDIT_CARD_TITLE" = "Kartani tahrirlash";
+"CARD_ACTIVATION_TITLE" = "Kartani aktivlashtirish";
 "MAKE_MAIN_CARD" = "Asosiy kartaga aylantirish";
 "CARD_NAME" = "Karta nomlanishi";
 "CARD_NUMBER" = "Karta raqami";
