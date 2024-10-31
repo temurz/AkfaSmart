@@ -105,7 +105,7 @@ struct CardRowView: View {
                                         )
                                         .cornerRadius(5, corners: .allCorners)
                                 }
-                                Text("ACTIVE".localizedString)
+                                Text(model.status ?? "ACTIVE".localizedString)
                                     .font(.footnote)
                                     .bold()
                                     .foregroundStyle(
