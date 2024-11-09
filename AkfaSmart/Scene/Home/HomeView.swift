@@ -20,6 +20,8 @@ struct HomeView: View {
     @State private var initialDealers = [Dealer]()
     @State private var initialCards = [Card]()
     
+    var showSideMenuAction: (() -> Void)?
+    
     private let getDealersTrigger = PassthroughSubject<Void,Never>()
     private let getMobileClassInfoTrigger = PassthroughSubject<Void,Never>()
     private let showAddDealerViewTrigger = PassthroughSubject<Void,Never>()
@@ -42,13 +44,16 @@ struct HomeView: View {
                     VStack {
                         HStack(spacing: 12) {
                             ZStack {
-                                Image("person_a")
-                                    .renderingMode(.template)
-                                    .resizable()
-                                    .foregroundStyle(Color(hex: "#C8CDD0"))
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(.top, 7)
-                                    
+                                Button {
+                                    showSideMenuAction?()
+                                } label: {
+                                    Image("person_a")
+                                        .renderingMode(.template)
+                                        .resizable()
+                                        .foregroundStyle(Color(hex: "#C8CDD0"))
+                                        .aspectRatio(contentMode: .fit)
+                                        .padding(.top, 7)
+                                }
                             }
                             .frame(width: 42, height: 42)
                             .background(Color(hex: "#F2F3F5"))
@@ -214,16 +219,6 @@ struct HomeView: View {
         )
         
         output = viewModel.transform(input, cancelBag: cancelBag)
-    }
-    
-    func calculateTotals() {
-        totalOfMonth = output.items
-            .map { $0.purchaseForMonth }
-            .reduce(0,+)
-        
-        totalOfYear = output.items
-            .map {$0.purchaseForYear}
-            .reduce(0, +)
     }
 }
 

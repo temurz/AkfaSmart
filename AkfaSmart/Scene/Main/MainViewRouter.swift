@@ -31,6 +31,8 @@ class MainViewRouter: ViewRouter {
     @Published var selectedPageId: String = MainPage.home.rawValue
     @Published var body: AnyView
     
+    var showSideMenu: (() -> Void)?
+    
     func route(selectedPageId: String) {
         if self.selectedPageId == selectedPageId {
             return
@@ -38,7 +40,10 @@ class MainViewRouter: ViewRouter {
         self.selectedPageId = selectedPageId
         switch selectedPageId {
         case MainPage.home.rawValue:
-            let view: HomeView = assembler.resolve(navigationController: navigationController)
+            var view: HomeView = assembler.resolve(navigationController: navigationController)
+            view.showSideMenuAction = { [weak self] in
+                self?.showSideMenu?()
+            }
             body = AnyView(view)
             break
         case MainPage.catalog.rawValue:
@@ -71,6 +76,11 @@ class MainViewRouter: ViewRouter {
 //        self.homeView = assembler.resolve(navigationController: navigationController)
         let view: HomeView = assembler.resolve(navigationController: navigationController)
         self.body = AnyView(view)
+        var newView: HomeView = assembler.resolve(navigationController: navigationController)
+        newView.showSideMenuAction = { [weak self] in
+            self?.showSideMenu?()
+        }
+        self.body = AnyView(newView)
         if page != .home {
             self.route(selectedPageId: page.rawValue)
         }

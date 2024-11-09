@@ -15,9 +15,11 @@ protocol MainNavigatorType {
     func toRepoCollection()
     func toUsers()
     func toLogin()
+    func showClassDetailView(imageData: Data?, title: String?)
+    func showTechnicalSupport()
 }
 
-struct MainNavigator: MainNavigatorType, ShowingProductList, ShowingLogin, ShowingRepoList, ShowingRepoCollection {
+struct MainNavigator: MainNavigatorType, ShowingProductList, ShowingLogin, ShowingRepoList, ShowingRepoCollection, ShowingClassDetailView, ShowingTechnicalSupportView {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
     

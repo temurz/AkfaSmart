@@ -19,7 +19,7 @@ protocol MainAssembler {
 extension MainAssembler {
     
     func resolve(navigationController: UINavigationController, page: MainPage = .home) -> MainView {
-        let view = MainView(viewRouter: resolve(navigationController: navigationController, page: page))
+        let view = MainView(viewRouter: resolve(navigationController: navigationController, page: page), viewModel: resolve(navigationController: navigationController))
 //        let vm: MainViewModel = resolve(navigationController: navigationController)
 //        vc.bindViewModel(to: vm)
         return view
@@ -28,7 +28,8 @@ extension MainAssembler {
     func resolve(navigationController: UINavigationController) -> MainViewModel {
         return MainViewModel(
             navigator: resolve(navigationController: navigationController),
-            useCase: resolve()
+            useCase: resolve(), 
+            mobileClassUseCase: MobileClassUseCase(gateway: MobileClassGateway())
         )
     }
 }
@@ -44,7 +45,7 @@ extension MainAssembler where Self: DefaultAssembler {
     }
     
     func resolve() -> MainUseCaseType {
-        return MainUseCase()
+        return MainUseCase(gateway: resolve())
     }
 }
 
@@ -59,6 +60,6 @@ extension MainAssembler where Self: PreviewAssembler {
     }
     
     func resolve() -> MainUseCaseType {
-        return MainUseCase()
+        return MainUseCase(gateway: resolve())
     }
 }

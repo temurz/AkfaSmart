@@ -7,9 +7,9 @@
 //
 
 protocol MainUseCaseType {
-    
+    func getGeneralUserInfo() -> Observable<GeneralUser> 
 }
 
-struct MainUseCase: MainUseCaseType {
-    
+struct MainUseCase: MainUseCaseType, GettingUserInfoDomainUseCase {
+    var gateway: UserInfoGatewayType
 }

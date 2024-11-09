@@ -12,6 +12,7 @@ import Combine
 struct MainViewModel {
     let navigator: MainNavigatorType
     let useCase: MainUseCaseType
+    let mobileClassUseCase: MobileClassUseCaseType
 }
 
 // MARK: - ViewModelType
@@ -19,14 +20,24 @@ extension MainViewModel: ViewModel {
     struct Input {
         let loadTrigger: Driver<Void>
         let selectMenuTrigger: Driver<IndexPath>
+        let getMobileClassInfo: Driver<Void>
+        let showClassDetailViewTrigger: Driver<Void>
+        let getGeneralInfoTrigger: Driver<Void>
+        let showChatTrigger: Driver<Void>
+        let logoutTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
         @Published var menuSections: [MenuSection] = []
+        @Published var mobileClass: MobileClass? = nil
+        @Published var mobileClassLogoData: Data? = nil
+        @Published var fullname = ""
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
         let output = Output()
+        let errorTracker = ErrorTracker()
+        let activityTracker = ActivityTracker(false)
         
         input.loadTrigger
             .map {
@@ -54,6 +65,58 @@ extension MainViewModel: ViewModel {
                 }
             })
             .sink()
+            .store(in: cancelBag)
+        
+        input.getMobileClassInfo
+            .map {
+                mobileClassUseCase.getMobileClassInfo()
+                    .trackError(errorTracker)
+                    .trackActivity(activityTracker)
+                    .asDriver()
+            }
+            .switchToLatest()
+            .sink(receiveValue: { mobileClass in
+                mobileClassUseCase.getMobileClassImage(mobileClass.logoImgUrl ?? "")
+                    .asDriver()
+                    .map { data in
+                        output.mobileClassLogoData = data
+                    }
+                    .sink()
+                    .store(in: cancelBag)
+                output.mobileClass = mobileClass
+            })
+            .store(in: cancelBag)
+        
+        input.showClassDetailViewTrigger
+            .sink {
+                navigator.showClassDetailView(imageData: output.mobileClassLogoData, title: output.mobileClass?.klassName)
+            }
+            .store(in: cancelBag)
+        
+        input.getGeneralInfoTrigger
+            .sink {
+                useCase.getGeneralUserInfo()
+                    .asDriver()
+                    .sink { info in
+                        output.fullname = (info.firstName ?? "") + "\n" + (info.lastName ?? info.middleName ?? "")
+                    }
+                    .store(in: cancelBag)
+            }
+            .store(in: cancelBag)
+        
+        input.showChatTrigger
+            .sink {
+                navigator.showTechnicalSupport()
+            }
+            .store(in: cancelBag)
+        
+        input.logoutTrigger
+            .sink {
+                AuthApp.shared.token = nil
+                AuthApp.shared.username = nil
+                AuthApp.shared.pass = nil
+                navigator.toLogin()
+            }
             .store(in: cancelBag)
                 
         return output

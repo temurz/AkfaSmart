@@ -38,12 +38,12 @@ final class MainViewController: UIViewController, Bindable {
     }
     
     func bindViewModel() {
-        let input = MainViewModel.Input(
-            loadTrigger: Driver.just(()),
-            selectMenuTrigger: selectMenuTrigger.asDriver()
-        )
-        
-        output = viewModel.transform(input, cancelBag: cancelBag)
+//        let input = MainViewModel.Input(
+//            loadTrigger: Driver.just(()),
+//            selectMenuTrigger: selectMenuTrigger.asDriver()
+//        )
+//        
+//        output = viewModel.transform(input, cancelBag: cancelBag)
     }
 
 }
