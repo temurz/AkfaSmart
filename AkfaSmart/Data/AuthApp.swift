@@ -12,6 +12,7 @@ class AuthApp {
     
     private var keyToken:String { "tokenKey" }
     private var keyAuth:String { "MyAutorizationKey"}
+    private var keyPass:String { "passKey"}
     private var keyAppEnterCode: String { "appEnterCodeKey" }
     private let keyFirstEnter: String = "firstEnter"
     private let keyForVisibility: String = "visibilityKey"
@@ -38,6 +39,16 @@ class AuthApp {
         }
         set {
             defaults.setValue(newValue, forKey: keyAuth)
+        }
+    }
+    
+    var pass: String? {
+        get {
+            guard let pass = defaults.string(forKey: keyPass) else { return nil}
+            return pass
+        }
+        set {
+            defaults.setValue(newValue, forKey: keyPass)
         }
     }
     

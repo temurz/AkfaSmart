@@ -86,6 +86,7 @@ extension LoginViewModel: ViewModel {
             .switchToLatest()
             .sink(receiveValue: { bool in
                 if bool {
+                    AuthApp.shared.pass = input.password
                     navigator.showPINCodeView(state: .onAuth)
                 }
             })

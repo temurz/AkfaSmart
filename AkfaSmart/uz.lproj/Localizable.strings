@@ -214,3 +214,4 @@
 "Already Exist" = "Bu akkaunt oldin ro'yxatdan o'tgan";
 "CARD_NUMBER_VALIDATION_ERROR" = "Karta raqami noto'g'ri";
 "CARD_NAME_VALIDATION_ERROR" = "Karta nomi bo'sh bo'lishi mumkin emas";
+"PLEASE_TRY_AGAIN_ERROR" = "Iltimos yana urinib ko'ring";

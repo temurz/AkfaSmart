@@ -48,6 +48,7 @@ open class APIBase {
     
     public var manager: Alamofire.Session
     public var logOptions = LogOptions.default
+    private let cancelBag = CancelBag()
     
     public convenience init() {
         let configuration = URLSessionConfiguration.default
@@ -327,7 +328,22 @@ open class APIBase {
             }
             
         case .failure(let afError):
-            error = afError
+            guard let statusCode = dataResponse.response?.statusCode else {
+                throw APIUnknownError(statusCode: nil)
+            }
+            if statusCode == 401 {
+                API.shared.login(API.LoginInput(dto: LoginDto(username: AuthApp.shared.username ?? "", password: AuthApp.shared.pass ?? "")))
+                    .map { output in
+                        AuthApp.shared.token = output.remoteSession
+                        AuthApp.shared.username = output.username
+                    }
+                    .sink()
+                    .store(in: cancelBag)
+                error = APIUnknownError(statusCode: 0, error: "PLEASE_TRY_AGAIN_ERROR".localizedString)
+            } else {
+                error = afError
+            }
+            
         }
         
         throw error

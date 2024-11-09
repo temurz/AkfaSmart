@@ -209,3 +209,4 @@
 "Already Exist" = "Already exists";
 "CARD_NUMBER_VALIDATION_ERROR" = "Card number is not valid";
 "CARD_NAME_VALIDATION_ERROR" = "Card name cannot be empty";
+"PLEASE_TRY_AGAIN_ERROR" = "Please try again";

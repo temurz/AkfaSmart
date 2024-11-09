@@ -66,6 +66,7 @@ extension SettingsViewModel: ViewModel {
         input.deleteAccountTrigger.sink { _ in
             AuthApp.shared.token = nil
             AuthApp.shared.username = nil
+            AuthApp.shared.pass = nil
             navigator.showLogin()
         }
         .store(in: cancelBag)

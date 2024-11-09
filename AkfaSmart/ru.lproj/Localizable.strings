@@ -211,3 +211,4 @@
 "Already Exist" = "Такой аккаунт уже существует";
 "CARD_NUMBER_VALIDATION_ERROR" = "Неправильный номер карты";
 "CARD_NAME_VALIDATION_ERROR" = "Название карты не может быть пустым";
+"PLEASE_TRY_AGAIN_ERROR" = "Пожалуйста попробуйте снова";

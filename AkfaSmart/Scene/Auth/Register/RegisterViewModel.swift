@@ -100,6 +100,7 @@ extension RegisterViewModel: ViewModel {
             .switchToLatest()
             .sink(receiveValue: { bool in
                 if bool {
+                    AuthApp.shared.pass = input.password
                     navigator.showCodeInput(reason: .register)
                 }
             })
