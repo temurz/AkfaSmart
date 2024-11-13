@@ -42,7 +42,7 @@ struct PurchaseHistoryViewRow: View {
                         .bold()
                         .padding(4)
                         .foregroundStyle(type == .income ? .green : .red)
-                        .background(Colors.customGreenBackgroundColor.opacity(0.1))
+                        .background(type == .income ? Colors.customGreenBackgroundColor.opacity(0.2) : Colors.customRedColor.opacity(0.2))
                         .cornerRadius(7, corners: .allCorners)
                     Spacer()
                     Text(Date(timeIntervalSince1970: TimeInterval(model.date ?? 1)/1000.0).convertToDateUS())

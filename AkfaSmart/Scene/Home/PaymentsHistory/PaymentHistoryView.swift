@@ -62,14 +62,12 @@ struct PaymentHistoryView: View {
                         ForEach(output.items, id: \.uniqueId) { item in
                             PaymentHistoryViewRow(model: item, type: output.type)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(Color.blue)
                                 .onAppear {
                                     if output.items.last?.uniqueId == item.uniqueId && output.hasMorePages {
                                         output.isLoadingMore = true
                                         loadMoreHistoryTrigger.send(ReceiptsInput(from: output.dateFilter.optionalFrom, to: output.dateFilter.optionalTo, type: output.type.rawValue))
                                     }
                                 }
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 .listRowSeparator(.hidden)
                             
                         }
