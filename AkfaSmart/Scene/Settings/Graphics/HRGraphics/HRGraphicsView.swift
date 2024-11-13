@@ -64,7 +64,6 @@ struct HRgraphicsView: View {
                             )
                         }
                     }
-                    .padding()
                 }
             }
         }

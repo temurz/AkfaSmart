@@ -30,16 +30,20 @@ struct SettingsView: View {
                             headerView
                                 .padding()
                             
-                            Color(hex: "#E2E5ED").frame(height: 4)
+                            Colors.oldBorderColor.frame(height: 2)
                             ForEach(output.items[0]) { item in
+                                if item.id != 0 {
+                                    Divider()
+                                }
                                 SettingsRowView(viewModel: item)
                                     .background(Color.white)
                                     .onTapGesture {
                                         selectRowTrigger.send(item.id)
                                     }
+                                    .listRowSeparator(.visible)
                             }
                             
-                            Color(hex: "#E2E5ED").frame(height: 4)
+                            Colors.oldBorderColor.frame(height: 4)
                             ForEach(output.items[1]) { item in
                                 SettingsRowView(viewModel: item)
                                     .background(Color.white)
@@ -113,46 +117,43 @@ struct SettingsView: View {
     var headerView: some View {
         HStack {
             ZStack {
-                if output.imageData != nil, let data = output.imageData {
-                    Image(data: data)?
-                        .resizable()
-                        .background(Color(hex: "#DFE3EB"))
-                        .frame(width: 80, height: 80)
-                        .cornerRadius(8)
-                }else {
-                    Image("avatar")
-                        .resizable()
-                        .frame(width: 80, height: 80)
-                        .background(Color(hex: "#DFE3EB"))
-                        .cornerRadius(8)
-                }
-                VStack {
-                    Spacer()
-                    Button {
-                        output.showImageSourceSelector.toggle()
-                    } label: {
-                        Image("pen")
+                Button {
+                    
+                } label: {
+                    if output.imageData != nil, let data = output.imageData {
+                        Image(data: data)?
                             .resizable()
-                            .frame(width: 12, height: 12)
+                            .background(Color(hex: "#DFE3EB"))
+                            .frame(width: 72, height: 72)
+                            .cornerRadius(36)
+                    }else {
+                        Image("person_a")
+                            .renderingMode(.template)
+                            .resizable()
+                            .foregroundStyle(Color(hex: "#C8CDD0"))
+                            .aspectRatio(contentMode: .fit)
+                            .padding(.top, 12)
                     }
-                    .frame(width: 28, height: 28)
-                    .background(Color(hex: "#DFE3EB"))
-                    .cornerRadius(14)
-                    .offset(CGSize(width: 1, height: 10))
                 }
-                
             }
-            .frame(width: 80, height: 94)
+            .frame(width: 72, height: 72)
+            .background(Colors.avatarBackgroundGrayColor)
+            .cornerRadius(36)
             
             VStack(alignment: .leading) {
-                Text("\(output.user?.firstName ?? "") \(output.user?.middleName ?? "") \(output.user?.lastName ?? "")")
-                    .font(.headline)
                 Text(output.user?.username?.formatPhoneNumber() ?? "")
-                    .font(.footnote)
-                    .foregroundColor(.red)
-                Spacer()
-            }
-            .frame(height: 80)
+                    .font(.headline)
+                    .bold()
+                Button {
+                    output.showImageSourceSelector.toggle()
+                } label: {
+                    Text("EDIT".localizedString)
+                        .font(.body)
+                        .bold()
+                        .foregroundStyle(.red)
+                        .padding(.top, 4)
+                }
+           }
             .padding(.horizontal)
             
         }

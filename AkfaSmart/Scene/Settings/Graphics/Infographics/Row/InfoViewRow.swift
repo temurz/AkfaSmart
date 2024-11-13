@@ -12,19 +12,25 @@ struct InfoViewRow: View {
     let viewModel: InfoItemViewModel
     var body: some View {
         VStack(alignment: .leading) {
-            Text(viewModel.title)
-                .foregroundColor(Color(hex: "#9DA8C2"))
-            Text(viewModel.value)
-                .multilineTextAlignment(.leading)
-                .lineLimit(Int.max)
-            Text(viewModel.editedValue)
-                .multilineTextAlignment(.leading)
-                .lineLimit(Int.max)
-                .foregroundColor(.red)
+            VStack(alignment: .leading) {
+                Text(viewModel.title)
+                    .font(.footnote)
+                    .foregroundStyle(Colors.textSteelColor)
+                Text(viewModel.value)
+                    .font(.body)
+                    .bold()
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(Int.max)
+                Text(viewModel.editedValue)
+                    .font(.body)
+                    .bold()
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(Int.max)
+                    .foregroundColor(.red)
+            }
+            .padding(.horizontal)
+            Divider()
         }
+        
     }
-}
-
-#Preview {
-    InfoViewRow(viewModel: InfoItemViewModel(title: "", value: "", editedValue: ""))
 }

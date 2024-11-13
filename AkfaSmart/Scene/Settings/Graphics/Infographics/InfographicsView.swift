@@ -85,7 +85,6 @@ struct InfographicsView: View {
                             )
                         }
                     }
-                    .padding(.horizontal)
                 }
             }
         }

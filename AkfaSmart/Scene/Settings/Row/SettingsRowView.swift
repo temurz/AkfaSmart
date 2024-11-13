@@ -15,12 +15,11 @@ struct SettingsRowView: View {
                 Image(viewModel.image)
                     .resizable()
                     .frame(width: 24, height: 24)
-            }else {
-                Color.clear
-                    .frame(width: 24)
             }
             Text(viewModel.text)
-                .font(.system(size: 15))
+                .font(.body)
+                .bold()
+                .padding(.leading, 4)
             Spacer()
             if viewModel.id != 0 {
                 Image(systemName: "chevron.forward")

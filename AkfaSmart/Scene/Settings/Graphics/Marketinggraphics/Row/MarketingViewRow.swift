@@ -13,9 +13,20 @@ struct MarketingViewRow: View {
     let viewModel: MarketingItemViewModel
     var body: some View {
         VStack(alignment: .leading) {
-            Text(viewModel.title)
-                .foregroundColor(Color(hex: "#9DA8C2"))
-            Text(viewModel.value)
+            VStack(alignment: .leading) {
+                Text(viewModel.title)
+                    .font(.footnote)
+                    .foregroundStyle(Colors.textSteelColor)
+                Text(viewModel.value)
+                    .font(.body)
+                    .bold()
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(Int.max)
+            }
+            .padding(.horizontal)
+            Divider()
         }
+        
+        
     }
 }

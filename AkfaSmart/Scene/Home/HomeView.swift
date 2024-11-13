@@ -56,7 +56,7 @@ struct HomeView: View {
                                 }
                             }
                             .frame(width: 42, height: 42)
-                            .background(Color(hex: "#F2F3F5"))
+                            .background(Colors.avatarBackgroundGrayColor)
                             .cornerRadius(21)
                                 
 //                            ZStack(alignment: .leading) {

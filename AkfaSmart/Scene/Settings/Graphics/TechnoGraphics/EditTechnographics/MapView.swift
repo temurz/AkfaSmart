@@ -123,6 +123,9 @@ struct MapView: View {
     
     var body: some View {
         VStack {
+            CustomNavigationBar(title: "CHOOSE_ON_MAP".localizedString) {
+                navigationController.popViewController(animated: true)
+            }
             MapViewUI(selectedLocation: $selectedLocation, locationName: $locationName)
                 .environmentObject(locationInfoManager)
                 .frame(maxHeight: .infinity)
@@ -135,16 +138,16 @@ struct MapView: View {
                     .padding()
             }
         }
-        .navigationTitle("CHOOSE_ON_MAP".localizedString)
-        .navigationBarItems(trailing:
-                                Button(action: {
-            navigationController.popViewController(animated: true)
-        }, label: {
-            Text("SAVE".localizedString)
-                .bold()
-                .foregroundColor(Color.red)
-        })
-        )
+//        .navigationTitle("CHOOSE_ON_MAP".localizedString)
+//        .navigationBarItems(trailing:
+//                                Button(action: {
+//            navigationController.popViewController(animated: true)
+//        }, label: {
+//            Text("SAVE".localizedString)
+//                .bold()
+//                .foregroundColor(Color.red)
+//        })
+//        )
     }
 }
 

@@ -30,12 +30,27 @@ struct TechnoGraphicsView: View {
                         if output.technoGraphics != nil,
                             let techno = output.technoGraphics {
                             HStack {
-                                InfoViewRow(
-                                    viewModel: InfoItemViewModel(
-                                        title: "ADDRESS_OF_FACTORY".localizedString,
-                                        value: output.address,
-                                        editedValue: output.addressEdited)
-                                )
+                                VStack(alignment: .leading) {
+                                    VStack(alignment: .leading) {
+                                        Text("ADDRESS_OF_FACTORY".localizedString)
+                                            .font(.footnote)
+                                            .foregroundStyle(Colors.textSteelColor)
+                                        Text(output.address)
+                                            .font(.body)
+                                            .bold()
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(Int.max)
+                                        Text(output.addressEdited)
+                                            .font(.body)
+                                            .bold()
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(Int.max)
+                                            .foregroundColor(.red)
+                                        
+                                    }
+                                    .padding(.horizontal)
+                                    
+                                }
                                 Spacer()
                                 if !output.address.isEmpty || !output.addressEdited.isEmpty {
                                     Button {
@@ -53,12 +68,11 @@ struct TechnoGraphicsView: View {
                                             .background(Color.red)
                                             .cornerRadius(8)
                                     }
+                                    .padding(.horizontal)
                                 }
                                 
-
-                                
                             }
-                            
+                            Divider()
                             InfoViewRow(
                                 viewModel: InfoItemViewModel(
                                     title: "AREA_OF_FACTORY".localizedString,
@@ -85,7 +99,6 @@ struct TechnoGraphicsView: View {
                             )
                         }
                     }
-                    .padding(.horizontal)
                 }
             }
 

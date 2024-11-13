@@ -64,7 +64,7 @@ extension EditCardViewModel: ViewModel {
             .sink {
                 if output.card.isBlocked ?? false {
                     let connectedPhone = AuthApp.shared.username?.getOnlyNumbers()
-                    editCardUseCase.unblock(id: output.card.id, connectedPhone: connectedPhone ?? "")
+                    editCardUseCase.unblock(id: output.card.id, connectedPhone: output.card.cardHolderPhone ?? "")
                         .trackError(errorTracker)
                         .trackActivity(activityTracker)
                         .asDriver()

@@ -45,7 +45,6 @@ struct ProductGraphicsView: View {
                             )
                         }
                     }
-                    .padding()
                 }
             }
         }
@@ -81,18 +80,25 @@ struct ProductGraphicsDetailModel {
 struct ProductGraphicsDetailRow: View {
     let model: ProductGraphicsDetailModel
     var body: some View {
-        
         VStack(alignment: .leading) {
-            Text(model.title)
-                .foregroundColor(Color(hex: "#9DA8C2"))
-            ForEach(model.detailArray, id: \.id) { item in
-                HStack {
-                    Text(item.name)
-                    Spacer()
-                    Text(item.weight.convertDecimals())
+            VStack(alignment: .leading) {
+                Text(model.title)
+                    .font(.footnote)
+                    .foregroundStyle(Colors.textSteelColor)
+                ForEach(model.detailArray, id: \.id) { item in
+                    HStack {
+                        Text(item.name)
+                            .bold()
+                        Spacer()
+                        Text(item.weight.convertDecimals())
+                            .bold()
+                    }
                 }
             }
+            .padding(.horizontal)
+            Divider()
         }
+        
         
     }
 }

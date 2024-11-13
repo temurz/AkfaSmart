@@ -29,23 +29,25 @@ struct EditTechnographicsView: View {
             ScrollView {
                 VStack( spacing: 4) {
                     VStack(alignment: .leading) {
-                        Text("ADDRESS_OF_FACTORY".localizedString)
-                            .font(.headline)
-                            .padding(.horizontal, 4)
-                        Text(output.address)
-                            .font(.subheadline)
-                            .padding(.horizontal, 4)
                         HStack {
-                            if output.locationInfoManager.locationInfo == nil {
-                                Text(output.addressEdited)
-                                    .foregroundStyle(.red)
-                                    .lineLimit(3)
-                                    .padding(4)
-                            }else {
-                                Text(output.locationInfoManager.locationInfo?.name ?? "")
-                                    .foregroundStyle(.red)
-                                    .lineLimit(3)
-                                    .padding(4)
+                            VStack(alignment: .leading) {
+                                Text("ADDRESS_OF_FACTORY".localizedString)
+                                    .font(.headline)
+                                    .padding(.horizontal, 4)
+                                Text(output.address)
+                                    .font(.subheadline)
+                                    .padding(.horizontal, 4)
+                                if output.locationInfoManager.locationInfo == nil {
+                                    Text(output.addressEdited)
+                                        .foregroundStyle(.red)
+                                        .lineLimit(3)
+                                        .padding(4)
+                                }else {
+                                    Text(output.locationInfoManager.locationInfo?.name ?? "")
+                                        .foregroundStyle(.red)
+                                        .lineLimit(3)
+                                        .padding(4)
+                                }
                             }
                             Spacer()
                             Button {

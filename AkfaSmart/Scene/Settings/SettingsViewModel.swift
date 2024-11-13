@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct SettingItemViewModel: Identifiable {
+struct SettingItemViewModel: Identifiable, Equatable {
     let id: Int
     let image: String
     let text: String
@@ -32,15 +32,15 @@ extension SettingsViewModel: ViewModel {
     final class Output: ObservableObject {
         @Published var items = [
             [
-                SettingItemViewModel(id: 0, image: "person", text: "PERSONAL_DATA".localizedString),
-                SettingItemViewModel(id: 1, image: "", text: "INFOGRAPHICS".localizedString),
-                SettingItemViewModel(id: 2, image: "", text: "TECHNOGRAPHICS".localizedString),
-                SettingItemViewModel(id: 3, image: "", text: "HR_GRAPHICS".localizedString),
-                SettingItemViewModel(id: 4, image: "", text: "MARKET_GRAPHICS".localizedString),
-                SettingItemViewModel(id: 5, image: "", text: "PRODUCT_GRAPHICS".localizedString),
+                SettingItemViewModel(id: 0, image: "", text: "PERSONAL_DATA".localizedString),
+                SettingItemViewModel(id: 1, image: "exclamation_icon", text: "INFOGRAPHICS".localizedString),
+                SettingItemViewModel(id: 2, image: "exclamation_icon", text: "TECHNOGRAPHICS".localizedString),
+                SettingItemViewModel(id: 3, image: "exclamation_icon", text: "HR_GRAPHICS".localizedString),
+                SettingItemViewModel(id: 4, image: "exclamation_icon", text: "MARKET_GRAPHICS".localizedString),
+                SettingItemViewModel(id: 5, image: "exclamation_icon", text: "PRODUCT_GRAPHICS".localizedString),
             ],
             [
-                SettingItemViewModel(id: 6, image: "headset_mic", text: "TECHNICAL_SUPPORT".localizedString),
+//                SettingItemViewModel(id: 6, image: "headset_mic", text: "TECHNICAL_SUPPORT".localizedString),
                 SettingItemViewModel(id: 7, image: "lock", text: "PIN_CODE".localizedString),
                 SettingItemViewModel(id: 8, image: "translate", text: "LANGUAGE".localizedString)
             ]

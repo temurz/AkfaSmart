@@ -55,7 +55,6 @@ struct MarketingGraphicsView: View {
                             )
                         }
                     }
-                    .padding()
                 }
             }
             

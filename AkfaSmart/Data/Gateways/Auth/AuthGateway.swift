@@ -23,10 +23,10 @@ struct AuthGateway: AuthGatewayType {
         return API.shared.login(input)
             .tryMap { output in
                 let body = output
-                
+                guard body.remoteSession != nil else { return false }
                 AuthApp.shared.token = body.remoteSession
                 AuthApp.shared.username = body.username
-                return body.remoteSession != nil ? true : false
+                return true
             }
             .eraseToAnyPublisher()
     }

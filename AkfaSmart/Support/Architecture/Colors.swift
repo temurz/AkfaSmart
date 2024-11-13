@@ -13,6 +13,7 @@ struct Colors {
     
     static var borderGrayColor = Color(hex: "#E7E7E7")
     static var borderGrayColor2 = Color(hex: "#E8EEF4")
+    static var oldBorderColor = Color(hex: "#E2E5ED")
     static var blockedGrayTextColor = Color(hex: "#CACACA")
     
     static var buttonBackgroundGrayColor = Color(hex: "#F3F3F3")
@@ -30,6 +31,9 @@ struct Colors {
     static var primaryTextColor = Color(hex: "#51526C")
     static var secondaryTextColor = Color(hex: "#9DA8C2")
     
+    static var avatarBackgroundGrayColor = Color(hex: "#F2F3F5")
+    
+    //Cards
     static var redCardGradientBackground = CardGradient(firstColor: Color(hex: "#E32F27"), secondColor: Color(hex: "#7D1547"))
     static var purpleCardGradientBackground = CardGradient(firstColor: Color(hex: "#673AB7"), secondColor: Color(hex: "#331664"))
     static var mustardCardGradientBackground = CardGradient(firstColor: Color(hex: "#FF9800"), secondColor: Color(hex: "#724E18"))
