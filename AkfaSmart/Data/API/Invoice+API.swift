@@ -14,13 +14,18 @@ extension API {
     
     final class GetInvoiceListInput: APIInput {
         init(input: InvoiceInput, dto: GetPageDto) {
-            let params: Parameters = [
-                "from": input.from?.toShortFormat() ?? "",
-                "to": input.to?.toShortFormat() ?? "",
+            var params: Parameters = [
                 "type": input.type,
                 "length": dto.perPage,
                 "start": dto.page
             ]
+            if let from = input.from {
+                params["from"] = from.toShortFormat()
+            }
+            if let to = input.to {
+                params["to"] = to.toShortFormat()
+            }
+            
             super.init(urlString: API.Urls.getInvoiceList, parameters: params, method: .post, requireAccessToken: true)
         }
     }
@@ -35,6 +40,23 @@ extension API {
         init(invoiceId: Int, dealerId: Int) {
             let url = API.Urls.getInvoiceListById + "/\(invoiceId)/\(dealerId)"
             super.init(urlString: url, parameters: nil, method: .post, requireAccessToken: true)
+        }
+    }
+}
+
+extension API {
+    func getInvoiceElectronCheque(_ input: GetInvoiceElectronChequeAPIInput) -> Observable<String> {
+        requestPrimitive(input)
+    }
+    
+    final class GetInvoiceElectronChequeAPIInput: APIInput {
+        init(invoiceId: Int, dealerId: Int) {
+            let parameters: Parameters = [
+                "invoiceCid": invoiceId,
+                "dealerId": dealerId
+            ]
+            
+            super.init(urlString: API.Urls.getInvoiceElectronCheque, parameters: parameters, method: .get, requireAccessToken: true)
         }
     }
 }

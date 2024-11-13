@@ -89,6 +89,8 @@ struct WebView: UIViewRepresentable {
         let styledHTML = addStyleToHTML(html)
         //        let headString = "<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></head>"
         let headString = "<head><meta name='viewport' content='width=device-width, shrink-to-fit=YES'></head>"
+//        let modifiedHTMLContent = html.replacingOccurrences(of: "<head>.*?</head>", with: headString, options: .regularExpression, range: nil)
+
         webView.loadHTMLString(styledHTML, baseURL: nil)
     }
     

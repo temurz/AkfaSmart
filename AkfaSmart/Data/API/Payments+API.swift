@@ -14,13 +14,17 @@ extension API {
     
     final class GetPaymentReceiptsAPIInput: APIInput {
         init(input: ReceiptsInput, dto: GetPageDto ) {
-            let params: Parameters = [
-                "from": input.from?.toShortFormat() ?? "",
-                "to": input.to?.toShortFormat() ?? "",
+            var params: Parameters = [
                 "type": input.type,
                 "length": dto.perPage,
                 "start": dto.page
             ]
+            if let from = input.from {
+                params["from"] = from.toShortFormat()
+            }
+            if let to = input.to {
+                params["to"] = to.toShortFormat()
+            }
             super.init(urlString: API.Urls.getReceiptList, parameters: params, method: .post, requireAccessToken: true)
         }
     }

@@ -18,7 +18,7 @@ struct PaymentHistoryViewRow: View {
                     Text(model.dealerName ?? "")
                         .bold()
                     Spacer()
-                    Text(model.date?.convertToDateUS() ?? "")
+                    Text(Date(timeIntervalSince1970: TimeInterval(model.date ?? 1)/1000.0).convertToDateUS())
                         .foregroundColor(Color(hex: "#9DA8C2"))
                 }
                 .padding(.vertical, 4)

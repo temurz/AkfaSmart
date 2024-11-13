@@ -13,7 +13,7 @@ struct Invoice: Decodable {
     let dealerName: String?
     let total: Double?
     let type: String?
-    let date: String?
+    let date: Int?
     let cid: Int?
     let uniqueId: String?
     let status: String?

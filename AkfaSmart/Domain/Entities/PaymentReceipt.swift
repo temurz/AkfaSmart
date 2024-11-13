@@ -9,7 +9,7 @@
 import Foundation
 struct PaymentReceipt: Decodable {
     let type: String?
-    let date: String?
+    let date: Int?
     let status: String?
     let amount: Double?
     let info: String?

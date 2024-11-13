@@ -56,10 +56,10 @@ struct ProductDealersListView: View {
                     ForEach(output.items, id: \.dealerId) { item in
                         ProductDealerViewRow(model: item, 
                                              selectLocation: {
-                            showLocationTrigger.send(Location(latitude: item.latitude, longitude: item.longitude))
+                            showLocationTrigger.send(Location(latitude: item.latitude ?? 0.0, longitude: item.longitude ?? 0.0))
                         },
                                              selectPhone: {
-                            showPhoneCallTrigger.send("\(item.phones)")
+                            showPhoneCallTrigger.send("\(item.phones ?? "")")
                         })
                             .padding(.vertical, 4)
                             .onAppear {

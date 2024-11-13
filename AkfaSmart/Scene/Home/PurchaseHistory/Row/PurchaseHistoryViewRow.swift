@@ -17,7 +17,7 @@ struct PurchaseHistoryViewRow: View {
                 Text("ORDER_WITH_NUMBER".localizedString)
                 Text(String(model.cid ?? 0))
                 Spacer()
-                Text(model.date?.convertToDateUS() ?? "")
+                Text(Date(timeIntervalSince1970: TimeInterval(model.date ?? 1)/1000.0).convertToDateUS())
             }
             HStack(spacing: 0) {
                 Text("CLIENT".localizedString)

@@ -9,6 +9,7 @@
 import Foundation
 protocol PurchaseDetailViewUseCaseType {
     func getInvoiceDetail(invoiceId: Int, dealerId: Int) -> Observable<[InvoiceDetail]>
+    func getInvoiceElectronCheque(invoiceId: Int, dealerId: Int) -> Observable<String>
 }
 
 struct PurchaseDetailViewUseCase: PurchaseDetailViewUseCaseType, GettingInvoiceDetailDomainUseCase {

@@ -9,6 +9,7 @@
 import Foundation
 protocol InvoiceDetailGatewayType {
     func getInvoiceDetail(invoiceId: Int, dealerId: Int) -> Observable<[InvoiceDetail]>
+    func getInvoiceElectronCheque(invoiceId: Int, dealerId: Int) -> Observable<String>
 }
 
 struct InvoiceDetailGateway: InvoiceDetailGatewayType {
@@ -16,4 +17,10 @@ struct InvoiceDetailGateway: InvoiceDetailGatewayType {
         let input = API.GetInvoiceDetailAPIInput(invoiceId: invoiceId, dealerId: dealerId)
         return API.shared.getInvoiceDetail(input)
     }
+    
+    func getInvoiceElectronCheque(invoiceId: Int, dealerId: Int) -> Observable<String> {
+        let input = API.GetInvoiceElectronChequeAPIInput(invoiceId: invoiceId, dealerId: dealerId)
+        return API.shared.getInvoiceElectronCheque(input)
+    }
+
 }

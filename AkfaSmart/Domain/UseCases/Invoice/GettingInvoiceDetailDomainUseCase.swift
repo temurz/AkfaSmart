@@ -15,4 +15,8 @@ extension GettingInvoiceDetailDomainUseCase {
     func getInvoiceDetail(invoiceId: Int, dealerId: Int) -> Observable<[InvoiceDetail]> {
         gateway.getInvoiceDetail(invoiceId: invoiceId, dealerId: dealerId)
     }
+    
+    func getInvoiceElectronCheque(invoiceId: Int, dealerId: Int) -> Observable<String> {
+        gateway.getInvoiceElectronCheque(invoiceId: invoiceId, dealerId: dealerId)
+    }
 }

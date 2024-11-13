@@ -67,6 +67,7 @@ extension API {
         //Invoice
         static let getInvoiceList = Base.BASE_URL + "/api/mobile/invoice/list"
         static let getInvoiceListById = Base.BASE_URL + "/api/mobile/invoice/items"
+        static let getInvoiceElectronCheque = Base.BASE_URL + "/api/mobile/summaryInvoice/electronCheque"
         
         //Receipt
         static let getReceiptList = Base.BASE_URL + "/api/mobile/payment_receipt/list"

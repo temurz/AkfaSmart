@@ -13,14 +13,14 @@ struct ProductDealerViewRow: View {
     var selectPhone: (() -> Void)?
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(model.dealerName)
+            Text(model.dealerName ?? "")
                 .font(.bold(.headline)())
                 .padding(.horizontal)
                 .padding(.vertical, 8)
             Divider()
             HStack {
                 Image("location")
-                Text("\(model.address)")
+                Text("\(model.address ?? "")")
             }
             .padding(.horizontal)
             .padding(.vertical, 8)
@@ -30,7 +30,7 @@ struct ProductDealerViewRow: View {
                     Image("routing-2")
                         .padding(.leading)
                     Divider()
-                    Text(String(format: "%.1f", model.distance/1000) + "\n" + "KM".localizedString)
+                    Text(String(format: "%.1f", (model.distance ?? 1000)/1000) + "\n" + "KM".localizedString)
                         .fixedSize()
                         .multilineTextAlignment(.center)
                         .lineLimit(2)

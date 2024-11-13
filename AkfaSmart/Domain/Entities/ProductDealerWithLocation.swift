@@ -8,17 +8,17 @@
 
 import Foundation
 struct ProductDealerWithLocation: Decodable {
-    let address: String
-    let name: String
     let id: Int
-    let distance: Double
-    let dealerId: Int
-    let rate: Double
-    let longitude: Double
-    let latitude: Double
-    let phones: String
-    let regionName: String
-    let dealerName: String
-    let baseUnitName: String
-    let groupName: String
+    let address: String?
+    let name: String?
+    let distance: Double?
+    let dealerId: Int?
+    let rate: Double?
+    let longitude: Double?
+    let latitude: Double?
+    let phones: String?
+    let regionName: String?
+    let dealerName: String?
+    let baseUnitName: String?
+    let groupName: String?
 }
