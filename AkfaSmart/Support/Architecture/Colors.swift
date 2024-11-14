@@ -20,6 +20,8 @@ struct Colors {
     
     static var iconGrayColor = Color(hex: "#A2A5B9")
     
+    static var circleGrayColor = Color(hex: "#D9D9D9")
+    
     static var textDescriptionColor = Color(hex: "#313844")
     static var textSteelColor = Color(hex: "#7A889B")
     

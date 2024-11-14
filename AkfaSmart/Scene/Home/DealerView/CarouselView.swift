@@ -8,13 +8,18 @@
 
 import SwiftUI
 struct Carousel: UIViewRepresentable {
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
     @Binding var data: [Dealer]
+    @Binding var currentIndex: Int
     var didSelectInformation: (Dealer) -> ()
     var addDealerAction: () -> Void
     
     func makeUIView(context: Context) -> UIScrollView {
         //ScrollView Content Size
-        let total = UIScreen.main.bounds.width * CGFloat(data.count + 1)
+        let total = UIScreen.main.bounds.width * CGFloat(data.count)
         let view = UIScrollView()
         view.isPagingEnabled = true
         //height = 1.0 for disabling vertical scrolling.
@@ -22,6 +27,7 @@ struct Carousel: UIViewRepresentable {
         view.bounces = true
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
+        view.delegate = context.coordinator
 
         //Embed SwiftUI View into UIView
         let listView = DealersListView(
@@ -40,4 +46,23 @@ struct Carousel: UIViewRepresentable {
         
     }
     
+    class Coordinator: NSObject, UIScrollViewDelegate {
+        var parent: Carousel?
+        
+        init(_ parent: Carousel) {
+            self.parent = parent
+        }
+        
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            guard let parent = parent else { return }
+            // Calculate the current card index
+            let pageWidth = scrollView.frame.width
+            let currentPage = Int((scrollView.contentOffset.x + pageWidth / 2) / pageWidth)
+            
+            // Update the currentIndex binding if the page changed
+            if currentPage != parent.currentIndex && currentPage < parent.data.count {
+                parent.currentIndex = currentPage
+            }
+        }
+    }
 }

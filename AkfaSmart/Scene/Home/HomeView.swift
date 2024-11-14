@@ -93,7 +93,7 @@ struct HomeView: View {
                         .padding(.horizontal)
                         if output.needToRender {
                             Carousel(
-                                data: $output.items) { dealer in
+                                data: $output.items, currentIndex: $output.currentDealerIndex) { dealer in
                                     showDealerDetailsViewTrigger.send(dealer)
                                 } addDealerAction: {
                                     showAddDealerViewTrigger.send(())
@@ -101,12 +101,30 @@ struct HomeView: View {
                                 .frame(height: 120)
                         } else {
                             Carousel(
-                                data: $output.items) { dealer in
+                                data: $output.items, currentIndex: $output.currentDealerIndex) { dealer in
                                     showDealerDetailsViewTrigger.send(dealer)
                                 } addDealerAction: {
                                     showAddDealerViewTrigger.send(())
                                 }
                                 .frame(height: 120)
+                        }
+                        HStack {
+                            Spacer()
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundStyle(output.currentDealerIndex == 0 ? Colors.customRedColor : Colors.circleGrayColor)
+                            if output.items.count > 2 {
+                                Circle()
+                                    .frame(width: 10, height: 10)
+                                    .foregroundStyle(output.currentDealerIndex != 0 && output.currentCardIndex != output.items.count - 1 ? Colors.customRedColor : Colors.circleGrayColor)
+                            }
+                            if output.items.count > 1 {
+                                Circle()
+                                    .frame(width: 10, height: 10)
+                                    .foregroundStyle(output.currentDealerIndex == output.cards.count - 1 ? Colors.customRedColor : Colors.circleGrayColor)
+                            }
+                            
+                            Spacer()
                         }
                         HStack {
                             Text("MY_CARDS".localizedString)
@@ -140,6 +158,24 @@ struct HomeView: View {
                             })
                                 .frame(height: 180)
                         }
+                        HStack {
+                            Spacer()
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundStyle(output.currentCardIndex == 0 ? Colors.customRedColor : Colors.circleGrayColor)
+                            if output.cards.count > 2 {
+                                Circle()
+                                    .frame(width: 10, height: 10)
+                                    .foregroundStyle(output.currentCardIndex != 0 && output.currentCardIndex != output.cards.count - 1 ? Colors.customRedColor : Colors.circleGrayColor)
+                            }
+                            if output.cards.count > 1 {
+                                Circle()
+                                    .frame(width: 10, height: 10)
+                                    .foregroundStyle(output.currentCardIndex == output.cards.count - 1 ? Colors.customRedColor : Colors.circleGrayColor)
+                            }
+                            Spacer()
+                        }
+                        
                     }
                     .padding(.vertical)
                 }

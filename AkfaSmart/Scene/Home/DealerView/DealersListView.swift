@@ -16,13 +16,15 @@ struct DealersListView: View {
     var body: some View {
         HStack(spacing: 0) {
             ForEach(data, id: \.dealerClientCid) { model in
-                DealerViewRow(
-                    width: UIScreen.main.bounds.width,
-                    model: model,
-                    didSelectInformation: didSelectInformation
-                )
+                if model.dealerId != nil {
+                    DealerViewRow(
+                        model: model,
+                        didSelectInformation: didSelectInformation
+                    )
+                } else {
+                    DealerViewRow(addRow: true, addDealerAction: addDealerAction)
+                }   
             }
-            DealerViewRow(addRow: true, width: UIScreen.main.bounds.width, addDealerAction: addDealerAction)
         }
     }
 }

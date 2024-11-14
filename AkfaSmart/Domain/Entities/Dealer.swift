@@ -15,6 +15,28 @@ struct Dealer: Decodable, Equatable {
     let balance: Double
     let purchaseForMonth: Double
     let purchaseForYear: Double
+    
+    init(dealerId: Int?, dealerClientCid: Int?, name: String?, clientName: String?, balance: Double, purchaseForMonth: Double, purchaseForYear: Double) {
+        self.dealerId = dealerId
+        self.dealerClientCid = dealerClientCid
+        self.name = name
+        self.clientName = clientName
+        self.balance = balance
+        self.purchaseForMonth = purchaseForMonth
+        self.purchaseForYear = purchaseForYear
+    }
+    
+    
+    init() {
+        self.dealerId = nil
+        self.dealerClientCid = nil
+        self.name = nil
+        self.clientName = nil
+        self.balance = 0.0
+        self.purchaseForMonth = 0.0
+        self.purchaseForYear = 0.0
+
+    }
 }
 
 struct HasDealerAndLocation: Decodable {

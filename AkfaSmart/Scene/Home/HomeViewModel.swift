@@ -34,8 +34,9 @@ extension HomeViewModel: ViewModel {
         @Published var isLoading = false
         @Published var alert = AlertMessage()
         @Published var hasDealers = false
-        @Published var items: [Dealer] = []
-        @Published var cards: [Card] = []
+        @Published var items: [Dealer] = [Dealer()]
+        @Published var cards: [Card] = [Card()]
+        @Published var currentDealerIndex = 0
         @Published var currentCardIndex = 0
         @Published var targetIndex: Int? = 0
         @Published var needToRender = false
@@ -71,12 +72,13 @@ extension HomeViewModel: ViewModel {
                         .map { dealers in
                             output.hasDealers = bool
                             output.items = dealers
+                            output.items.append(Dealer())
                             output.needToRender.toggle()
                         }
                         .sink()
                         .store(in: cancelBag)
                 }else {
-                    output.items = []
+                    output.items = [Dealer()]
                 }
             }
             )

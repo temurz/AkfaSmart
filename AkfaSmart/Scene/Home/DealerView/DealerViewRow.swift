@@ -9,22 +9,20 @@
 import SwiftUI
 
 struct DealerViewRow: View {
-    var width: CGFloat
+    let width: CGFloat = UIScreen.main.bounds.width
     var model: Dealer
     var addRow: Bool = false
     var didSelectInformation: ((Dealer) -> Void)?
     var addDealerAction: () -> Void
     
-    init(width: CGFloat, model: Dealer, didSelectInformation: ((Dealer) -> Void)? = nil) {
-        self.width = width
+    init(model: Dealer, didSelectInformation: ((Dealer) -> Void)? = nil) {
         self.model = model
         self.didSelectInformation = didSelectInformation
         self.addDealerAction = { }
     }
     
-    init(addRow: Bool, width: CGFloat, addDealerAction: @escaping () -> Void) {
+    init(addRow: Bool, addDealerAction: @escaping () -> Void) {
         self.addRow = addRow
-        self.width = width
         self.model = Dealer(dealerId: nil, dealerClientCid: nil, name: nil, clientName: nil, balance: 0, purchaseForMonth: 0, purchaseForYear: 0)
         self.addDealerAction = addDealerAction
     }
@@ -97,7 +95,7 @@ struct DealerViewRow: View {
             
             
         }
-        .frame(width: self.width)
+        .frame(width: width)
         
     }
 }
