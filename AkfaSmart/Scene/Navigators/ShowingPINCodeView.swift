@@ -17,6 +17,7 @@ extension ShowingPINCodeView {
     func showPINCodeView(state: PINCodeState) {
         let view: PINCodeView = assembler.resolve(state: state, navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
+        navigationController.isNavigationBarHidden = true
         switch state {
         case .onAuth, .enterSimple:
             navigationController.setViewControllers([vc], animated: true)

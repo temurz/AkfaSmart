@@ -50,7 +50,7 @@ extension PINCodeViewModel: ViewModel {
         
         input.skipTrigger
             .sink {
-                navigator.showWelcomeView()
+                navigator.showMain(page: .home)
             }
             .store(in: cancelBag)
         

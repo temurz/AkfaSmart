@@ -5,6 +5,8 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"BLOCK_CARD_TITLE" = "Kartani bloklash";
+"UNBLOCK_CARD_TITLE" = "Blokdan chiqarish";
 "VERSION" = "Versiya %@";
 "LOGOUT" = "Chiqish";
 "TEXT_TO_SUPPORT" = "Akfa kompaniyasiga murojaat";

@@ -15,17 +15,23 @@ struct SplashView: View {
     
     var body: some View {
         ZStack {
+            Image("red_transparent_icon")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: UIScreen.main.bounds.width)
             VStack {
                 Group {
-                    Image("akfa_smart")
+                    Image("akfa_smart_new")
                         .resizable()
                         .frame(maxWidth: .infinity)
                         .scaledToFit()
+                        .background(Color.clear)
                         .padding(.horizontal, 32)
                 }.padding(.horizontal)
                 
             }
             .padding()
+            .background(.clear)
         }
         .onAppear {
             loadViewsTrigger.send(())

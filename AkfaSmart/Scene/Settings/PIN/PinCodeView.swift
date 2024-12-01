@@ -24,19 +24,26 @@ struct PINCodeView: View {
     }
     var body: some View {
         VStack {
-            if output.hasParentController {
-                CustomNavigationBar(title: "PIN_CODE_VIEW_TITLE".localizedString) {
-                    popViewControllerTrigger.send(())
+            if output.state != .enterSimple {
+                if output.hasParentController {
+                    CustomNavigationBar(title: "PIN_CODE_VIEW_TITLE".localizedString) {
+                        popViewControllerTrigger.send(())
+                    }
+                } else {
+                    ModuleNavigationBar(title: "PIN_CODE_VIEW_TITLE".localizedString)
                 }
             } else {
-                ModuleNavigationBar(title: "PIN_CODE_VIEW_TITLE".localizedString)
+                Spacer()
+                    .frame(height: 48)
             }
              
-            Spacer()
             Text(output.state.rawValue.localizedString)
+                .font(.body)
+                .bold()
                 .multilineTextAlignment(.center)
+            Spacer()
             ZStack {
-                HStack(spacing: 8) {
+                HStack(spacing: 24) {
                     SingleCodeView(filled: $output.firstLetterFilled)
                     SingleCodeView(filled: $output.secondLetterFilled)
                     SingleCodeView(filled: $output.thirdLetterFilled)
@@ -91,9 +98,10 @@ struct PINCodeView: View {
                     AuthApp.shared.appEnterCode = nil
                 } label: {
                     Text("SKIP".localizedString)
+                        .font(.subheadline)
                         .frame(maxWidth: .infinity)
                         .frame(height: 40)
-                        .foregroundColor(Color.blue)
+                        .foregroundColor(Colors.customRedColor)
                         .padding()
                 }
             }

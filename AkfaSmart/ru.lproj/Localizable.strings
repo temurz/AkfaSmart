@@ -5,6 +5,8 @@
   Created by Temur on 10/03/2024.
   Copyright © 2024 Tuan Truong. All rights reserved.
 */
+"BLOCK_CARD_TITLE" = "Блокировать карту";
+"UNBLOCK_CARD_TITLE" = "Разблокировать карту";
 "VERSION" = "Версия %@";
 "LOGOUT" = "Выйти";
 "TEXT_TO_SUPPORT" = "Обращение к поддержке";
