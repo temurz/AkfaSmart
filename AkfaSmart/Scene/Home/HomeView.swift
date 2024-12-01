@@ -31,6 +31,7 @@ struct HomeView: View {
     private let showNewsViewTrigger = PassthroughSubject<Void,Never>()
     private let getCardsTrigger = PassthroughSubject<Void,Never>()
     private let showCardsMainViewTrigger = PassthroughSubject<Void,Never>()
+    private let showMyDealersViewTrigger = PassthroughSubject<Void,Never>()
     private let addCardViewTrigger = PassthroughSubject<Void,Never>()
     private let cardSettingsViewTrigger = PassthroughSubject<Card,Never>()
     
@@ -85,10 +86,13 @@ struct HomeView: View {
                             Text("MY_DEALERS".localizedString)
                                 .font(.headline)
                             Spacer()
-                            Text("ALL_LOWERCASED".localizedString)
-                                .font(.headline)
-                                .foregroundStyle(Color.red)
-                            
+                            Button {
+                                showMyDealersViewTrigger.send(())
+                            } label: {
+                                Text("ALL_LOWERCASED".localizedString)
+                                    .font(.headline)
+                                    .foregroundStyle(Color.red)
+                            }
                         }
                         .padding(.horizontal)
                         if output.needToRender {
@@ -250,6 +254,7 @@ struct HomeView: View {
             getCardsTrigger: getCardsTrigger.asDriver(),
             showDealerDetailsViewTrigger: showDealerDetailsViewTrigger.asDriver(),
             showCardsMainViewTrigger: showCardsMainViewTrigger.asDriver(),
+            showMyDealersViewTrigger: showMyDealersViewTrigger.asDriver(),
             addCardViewTrigger: addCardViewTrigger.asDriver(),
             cardSettingsViewTrigger: cardSettingsViewTrigger.asDriver()
         )

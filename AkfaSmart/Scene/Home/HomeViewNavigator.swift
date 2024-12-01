@@ -16,9 +16,10 @@ protocol HomeViewNavigatorType {
     func showCardsMainView()
     func showAddCardView()
     func showCardSettingsView(_ card: Card)
+    func showMyDealers(_ dealers: [Dealer])
 }
 
-struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView, ShowingClassDetailView, ShowingMain, ShowingTechnicalSupportView, ShowDealerDetailsView, ShowingCardsMainView, ShowingAddCardView, ShowingCardSettingsView {
+struct HomeViewNavigator: HomeViewNavigatorType, ShowingAddDealerView, ShowingClassDetailView, ShowingMain, ShowingTechnicalSupportView, ShowDealerDetailsView, ShowingCardsMainView, ShowingAddCardView, ShowingCardSettingsView, ShowingMyDealers {
     var assembler: Assembler
     
     var navigationController: UINavigationController

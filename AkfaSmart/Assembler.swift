@@ -43,7 +43,8 @@ protocol Assembler: AnyObject,
     DealerDetailsViewAssembler,
     CardsMainViewAssembler,
     AddCardViewAssembler,
-    EditCardViewAssembler
+    EditCardViewAssembler,
+    MyDealersViewAssembler
 {
     
 }

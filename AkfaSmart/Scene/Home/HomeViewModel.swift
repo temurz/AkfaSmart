@@ -26,6 +26,7 @@ extension HomeViewModel: ViewModel {
         let getCardsTrigger: Driver<Void>
         let showDealerDetailsViewTrigger: Driver<Dealer>
         let showCardsMainViewTrigger: Driver<Void>
+        let showMyDealersViewTrigger: Driver<Void>
         let addCardViewTrigger: Driver<Void>
         let cardSettingsViewTrigger: Driver<Card>
     }
@@ -175,6 +176,12 @@ extension HomeViewModel: ViewModel {
         input.cardSettingsViewTrigger
             .sink { card in
                 navigator.showCardSettingsView(card)
+            }
+            .store(in: cancelBag)
+        
+        input.showMyDealersViewTrigger
+            .sink {
+                navigator.showMyDealers(output.items.dropLast())
             }
             .store(in: cancelBag)
         

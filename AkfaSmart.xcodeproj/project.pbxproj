@@ -307,6 +307,13 @@
 		B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */; };
 		B86CDF472B77BC56002E7EA4 /* News+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF462B77BC56002E7EA4 /* News+API.swift */; };
 		B86CDF4A2B77C801002E7EA4 /* NewsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */; };
+		B86DEEDF2CFCBCA4005178DB /* MyDealersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86DEEDE2CFCBCA4005178DB /* MyDealersView.swift */; };
+		B86DEEE32CFCBF91005178DB /* MyDealerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86DEEE22CFCBF91005178DB /* MyDealerRow.swift */; };
+		B86DEEE52CFCC45A005178DB /* MyDealersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86DEEE42CFCC45A005178DB /* MyDealersViewModel.swift */; };
+		B86DEEE72CFCC469005178DB /* MyDealersViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86DEEE62CFCC469005178DB /* MyDealersViewAssembler.swift */; };
+		B86DEEE92CFCC476005178DB /* MyDealersViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86DEEE82CFCC476005178DB /* MyDealersViewNavigator.swift */; };
+		B86DEEEC2CFCDB9E005178DB /* MyDealersViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86DEEEB2CFCDB9E005178DB /* MyDealersViewUseCase.swift */; };
+		B86DEEEE2CFCDE2D005178DB /* ShowingMyDealers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86DEEED2CFCDE2D005178DB /* ShowingMyDealers.swift */; };
 		B86E1C972BA480BF00A0AF4D /* DownloadTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E1C962BA480BF00A0AF4D /* DownloadTaskModel.swift */; };
 		B86E1C9B2BA485B200A0AF4D /* DownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E1C9A2BA485B200A0AF4D /* DownloadProgressView.swift */; };
 		B877FD612B8BBFA200D24CB0 /* Dealers+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */; };
@@ -803,6 +810,13 @@
 		B86CDF442B77BBA8002E7EA4 /* NewsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGateway.swift; sourceTree = "<group>"; };
 		B86CDF462B77BC56002E7EA4 /* News+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+API.swift"; sourceTree = "<group>"; };
 		B86CDF492B77C801002E7EA4 /* NewsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDomainUseCase.swift; sourceTree = "<group>"; };
+		B86DEEDE2CFCBCA4005178DB /* MyDealersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDealersView.swift; sourceTree = "<group>"; };
+		B86DEEE22CFCBF91005178DB /* MyDealerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDealerRow.swift; sourceTree = "<group>"; };
+		B86DEEE42CFCC45A005178DB /* MyDealersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDealersViewModel.swift; sourceTree = "<group>"; };
+		B86DEEE62CFCC469005178DB /* MyDealersViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDealersViewAssembler.swift; sourceTree = "<group>"; };
+		B86DEEE82CFCC476005178DB /* MyDealersViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDealersViewNavigator.swift; sourceTree = "<group>"; };
+		B86DEEEB2CFCDB9E005178DB /* MyDealersViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDealersViewUseCase.swift; sourceTree = "<group>"; };
+		B86DEEED2CFCDE2D005178DB /* ShowingMyDealers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingMyDealers.swift; sourceTree = "<group>"; };
 		B86E1C962BA480BF00A0AF4D /* DownloadTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTaskModel.swift; sourceTree = "<group>"; };
 		B86E1C9A2BA485B200A0AF4D /* DownloadProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProgressView.swift; sourceTree = "<group>"; };
 		B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dealers+API.swift"; sourceTree = "<group>"; };
@@ -1240,6 +1254,7 @@
 				B8677C512CCFC0E1000636D8 /* ShowingCardsMainView.swift */,
 				B8677C602CCFD33E000636D8 /* ShowingAddCardView.swift */,
 				B858E70A2CD39D5B00575CF0 /* ShowingCardSettingsView.swift */,
+				B86DEEED2CFCDE2D005178DB /* ShowingMyDealers.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -2147,6 +2162,27 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		B86DEEE12CFCBCC2005178DB /* My Dealers */ = {
+			isa = PBXGroup;
+			children = (
+				B86DEEEA2CFCC4C4005178DB /* Row */,
+				B86DEEDE2CFCBCA4005178DB /* MyDealersView.swift */,
+				B86DEEE42CFCC45A005178DB /* MyDealersViewModel.swift */,
+				B86DEEE82CFCC476005178DB /* MyDealersViewNavigator.swift */,
+				B86DEEEB2CFCDB9E005178DB /* MyDealersViewUseCase.swift */,
+				B86DEEE62CFCC469005178DB /* MyDealersViewAssembler.swift */,
+			);
+			path = "My Dealers";
+			sourceTree = "<group>";
+		};
+		B86DEEEA2CFCC4C4005178DB /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				B86DEEE22CFCBF91005178DB /* MyDealerRow.swift */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
 		B877FD642B8BC10600D24CB0 /* Dealers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2509,6 +2545,7 @@
 		B8FEC6C92B8660880028BA7F /* DealerView */ = {
 			isa = PBXGroup;
 			children = (
+				B86DEEE12CFCBCC2005178DB /* My Dealers */,
 				B8F7B7CC2CCED5440093A2B7 /* DealerDetailView */,
 				B8FEC6DB2B879ABC0028BA7F /* CarouselView.swift */,
 				B8FEC6CD2B8665950028BA7F /* DealersListView.swift */,
@@ -2717,6 +2754,7 @@
 				B8BE49EE2B8D7D7800876714 /* TechnoGraphicsGateway.swift in Sources */,
 				B86083A02BD6B98D00026B61 /* SearchDealerUseCase.swift in Sources */,
 				B863DAAB2B8D0644003F2C3D /* MarketingGraphicView.swift in Sources */,
+				B86DEEEC2CFCDB9E005178DB /* MyDealersViewUseCase.swift in Sources */,
 				1742B37624D7B82C00C82D15 /* ShowingRepoList.swift in Sources */,
 				B863DABC2B8D09DE003F2C3D /* ShowingLanguageSetterView.swift in Sources */,
 				B863DA9D2B8D047A003F2C3D /* HRGraphicsView.swift in Sources */,
@@ -2867,9 +2905,11 @@
 				B8BE49F82B8D883300876714 /* HRGraphicsDomainUseCase.swift in Sources */,
 				B866A9492B70FCEC00202C9F /* NewsViewModel.swift in Sources */,
 				B866A9932B71AFF700202C9F /* SearchProductViewNavigator.swift in Sources */,
+				B86DEEE92CFCC476005178DB /* MyDealersViewNavigator.swift in Sources */,
 				B8C1659C2B99D96B00F70074 /* ArticlesFilterViewModel.swift in Sources */,
 				B8FEC6D82B8761AB0028BA7F /* Dealer.swift in Sources */,
 				B88DEE662CD2810200B6AAB8 /* DeleteCardDomainUseCase.swift in Sources */,
+				B86DEEDF2CFCBCA4005178DB /* MyDealersView.swift in Sources */,
 				B89F2FB22B91BD76004DAEAB /* GettingProductDealersListDomainUseCase.swift in Sources */,
 				B8C165B42B9AA60800F70074 /* PaymentHistoryView.swift in Sources */,
 				B8C3E4F02CC6BAD500738BAF /* View+Extension.swift in Sources */,
@@ -2965,6 +3005,7 @@
 				B86CDF472B77BC56002E7EA4 /* News+API.swift in Sources */,
 				1787236824BD5EC700D90F8E /* ProductsViewModel.swift in Sources */,
 				B866A8E32B68E09600202C9F /* CodeInputGateway.swift in Sources */,
+				B86DEEE72CFCC469005178DB /* MyDealersViewAssembler.swift in Sources */,
 				1787234B24BD560500D90F8E /* MainUseCase.swift in Sources */,
 				B82CA9672B975981000147D2 /* ConverterToString.swift in Sources */,
 				B8AC367A2B7992680060D52D /* AddDealerUseCase.swift in Sources */,
@@ -3024,6 +3065,7 @@
 				1787232D24BD547600D90F8E /* AppAssembler.swift in Sources */,
 				B866A9952B71B01100202C9F /* SearchProductViewUseCase.swift in Sources */,
 				B866A8D62B68D0E200202C9F /* CodeInputAssembler.swift in Sources */,
+				B86DEEE52CFCC45A005178DB /* MyDealersViewModel.swift in Sources */,
 				B8FEC6C62B863C870028BA7F /* ResetPasswordAssembler.swift in Sources */,
 				173865AA24D3BC6A0059E3AD /* APIOutput.swift in Sources */,
 				B89F2F7F2B90E994004DAEAB /* ShowingPurchasesHistoryView.swift in Sources */,
@@ -3120,6 +3162,7 @@
 				176BAA5824D167A400324D3C /* LoggingIn.swift in Sources */,
 				1787234D24BD560500D90F8E /* MainViewModel.swift in Sources */,
 				B877FD842B8C3F8700D24CB0 /* AddDealerDomainUseCase.swift in Sources */,
+				B86DEEE32CFCBF91005178DB /* MyDealerRow.swift in Sources */,
 				B8CF98E02B6566EC00EF02A7 /* RegisterViewModel.swift in Sources */,
 				B858E6FE2CD38E4E00575CF0 /* EditCardStateGateway.swift in Sources */,
 				B8677C572CCFC66A000636D8 /* AddCardView.swift in Sources */,
@@ -3132,6 +3175,7 @@
 				B85516D02B79294700FC2D6E /* InfographicsView.swift in Sources */,
 				B8AC36782B79925F0060D52D /* AddDealerNavigator.swift in Sources */,
 				B86CDF452B77BBA8002E7EA4 /* NewsGateway.swift in Sources */,
+				B86DEEEE2CFCDE2D005178DB /* ShowingMyDealers.swift in Sources */,
 				B88DEE5E2CD2755900B6AAB8 /* AddCardGateway.swift in Sources */,
 				1742B36B24D7B22B00C82D15 /* ReposAssembler.swift in Sources */,
 				B8F7B7D22CCEDA570093A2B7 /* PoppingController.swift in Sources */,
