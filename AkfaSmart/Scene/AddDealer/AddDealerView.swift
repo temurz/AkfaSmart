@@ -131,7 +131,7 @@ struct AddDealerView: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
-            .sheet(isPresented: $output.isShowingQrScanner) {
+            .fullScreenCover(isPresented: $output.isShowingQrScanner) {
                 QRCodeScannerViewMain(result: $output.qrCodeValue)
                     .onDisappear {
                         if !output.qrCodeValue.isEmpty {

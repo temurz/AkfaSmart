@@ -23,6 +23,7 @@ struct QRCodeScannerViewMain: View {
                 }
                 .torchLight(isOn: isTorchOn)
                 .interval(delay: 1.0)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }else {
                 VStack {
                     Text("NEED_CAMERA_ALLOW".localizedString)
@@ -36,17 +37,21 @@ struct QRCodeScannerViewMain: View {
                 }
             }
                 
+            ScannerOverlayView()
+            
             VStack(alignment: .center) {
                 HStack {
-                    Spacer()
                     Button {
                         dismiss()
                     } label: {
-                        Text("DISMISS".localizedString)
-                            .padding(4)
+                        Image("arrow_back2")
+                            .resizable()
+                            .frame(width: 28, height: 28)
                     }
-                    
+                    .padding(.vertical)
+                    Spacer()
                 }
+                .padding(.vertical)
                 Spacer()
                 HStack {
                     Spacer()
@@ -68,6 +73,25 @@ struct QRCodeScannerViewMain: View {
             
         }
         .ignoresSafeArea(.all)
+    }
+}
+
+
+
+struct ScannerOverlayView: View {
+    var body: some View {
+        ZStack {
+            // Black overlay
+            Color.black.opacity(0.5) // Adjust opacity as needed
+            
+            // Transparent square in the center
+            RoundedRectangle(cornerRadius: 8) // Square with rounded corners (optional)
+                .frame(width: UIScreen.main.bounds.width/1.43, height:  UIScreen.main.bounds.width/1.7) // Adjust the size of the square
+                .blendMode(.destinationOut) // Makes the rectangle "cut out" from the background
+            
+        }
+        .compositingGroup() // Necessary for the blendMode to work
+        .ignoresSafeArea() // Ensures the overlay covers the entire screen
     }
 }
 
@@ -150,8 +174,13 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
                }
            })
         }
+        self.videoPreviewLayer?.videoGravity = .resizeAspectFill
         
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        videoPreviewLayer?.frame = view.bounds
     }
     
     private func setCamera(_ captureDevice: AVCaptureDevice) {
