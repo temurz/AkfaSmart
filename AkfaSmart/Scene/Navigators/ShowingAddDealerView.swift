@@ -17,6 +17,6 @@ extension ShowingAddDealerView {
     func showAddDealerView() {
         let view: AddDealerView = assembler.resolve(navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
-        self.navigationController.setViewControllers([vc], animated: true)
+        self.navigationController.present(vc, animated: true)
     }
 }

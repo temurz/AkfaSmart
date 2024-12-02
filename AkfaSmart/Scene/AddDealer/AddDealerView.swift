@@ -14,15 +14,35 @@ struct AddDealerView: View {
     let searchDealerTrigger = PassthroughSubject<Void,Never>()
     let showQRScannerTrigger = PassthroughSubject<Bool,Never>()
     let showMainView = PassthroughSubject<Void, Never>()
+    let dismissTrigger = PassthroughSubject<Void, Never>()
     
     private let cancelBag = CancelBag()
     var body: some View {
         return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
+                ZStack {
+                    HStack {
+                        Spacer()
+                        Text("ADD_MY_DEALER".localizedString)
+                            .font(.headline)
+                            .bold()
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Button {
+                            dismissTrigger.send(())
+                        } label: {
+                            Image("cancel")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 24, height: 24)
+                        }
+                        .padding(.vertical)
+
+                    }
+                }
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("ADD_MY_DEALER".localizedString)
-                        .font(.title)
-                    
                     Text("CAN_ADD_DEALER_BY_SCAN".localizedString)
                         .font(.system(size: 15))
                         .foregroundColor(Color(hex: "#9497A1"))
@@ -99,9 +119,11 @@ struct AddDealerView: View {
                             .foregroundColor(Color.blue)
                     }
                 }
-                .padding()
+                .padding(.horizontal)
+                .padding(.bottom)
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.bottom)
             .alert(isPresented: $output.alert.isShowing) {
                 Alert(
                     title: Text(output.alert.title),
@@ -122,8 +144,12 @@ struct AddDealerView: View {
     }
     
     init(viewModel: AddDealerViewModel) {
-        let input = AddDealerViewModel.Input(addDealerTrigger: addDealerTrigger.asDriver(), searchDealerTrigger: searchDealerTrigger.asDriver(), showQRScannerTrigger: showQRScannerTrigger.asDriver(),
-                                             showMainView: showMainView.asDriver())
+        let input = AddDealerViewModel.Input(
+            addDealerTrigger: addDealerTrigger.asDriver(),
+            searchDealerTrigger: searchDealerTrigger.asDriver(),
+            showQRScannerTrigger: showQRScannerTrigger.asDriver(),
+            showMainView: showMainView.asDriver(),
+            dismissTrigger: dismissTrigger.asDriver())
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

@@ -19,6 +19,7 @@ extension AddDealerViewModel: ViewModel {
         let searchDealerTrigger: Driver<Void>
         let showQRScannerTrigger: Driver<Bool>
         let showMainView: Driver<Void>
+        let dismissTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -67,14 +68,18 @@ extension AddDealerViewModel: ViewModel {
                     .asDriver()
                     .map { bool in
                         if bool {
-                            navigator.showCodeInput(reason: .dealer(dealer, activeUsername: nil, isActive: false))
+                            navigator.showModally(reason: .dealer(dealer, activeUsername: nil, isActive: false), isModal: true) { bool in
+                                navigator.showMain(page: .home)
+                            }
                         }else {
                             useCase.requestSMSCodeForActiveDealer(dealer)
                                 .trackError(errorTracker)
                                 .trackActivity(activityTracker)
                                 .asDriver()
                                 .map { dealerInfo in
-                                    navigator.showCodeInput(reason: .dealer(dealer, activeUsername: dealerInfo.username, isActive: true))
+                                    navigator.showModally(reason: .dealer(dealer, activeUsername: dealerInfo.username, isActive: true), isModal: true) { bool in
+                                        navigator.showMain(page: .home)
+                                    }
                                 }
                                 .sink()
                                 .store(in: cancelBag)
@@ -82,6 +87,12 @@ extension AddDealerViewModel: ViewModel {
                     }
                     .sink()
                     .store(in: cancelBag)
+            }
+            .store(in: cancelBag)
+        
+        input.dismissTrigger
+            .sink {
+                navigator.dismiss()
             }
             .store(in: cancelBag)
         

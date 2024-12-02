@@ -32,6 +32,7 @@ extension ShowingCodeInput {
     func showModally(reason: CodeReason, isModal: Bool, completion: ((Bool) -> Void)? ) {
         let view: CodeInputView = assembler.resolve(navigationController: navigationController, reason: reason, isModal: isModal, completion: completion)
         let vc = UIHostingController(rootView: view)
+        navigationController.dismiss(animated: true)
         navigationController.present(vc, animated: true)
     }
 }
