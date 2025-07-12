@@ -25,16 +25,14 @@ extension SplashViewModel: ViewModel {
         input.loadViewsTrigger.sink { _ in
             let hasToken = AuthApp.shared.token != nil
             let hassPass = AuthApp.shared.pass != nil
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
-                if hasToken && hassPass {
-                    if AuthApp.shared.appEnterCode != nil {
-                        navigator.showPINCodeView(state: .enterSimple)
-                    }else {
-                        navigator.showMain(page: .home)
-                    }
+            if hasToken && hassPass {
+                if AuthApp.shared.appEnterCode != nil {
+                    navigator.showPINCodeView(state: .enterSimple)
                 }else {
-                    navigator.showLogin()
+                    navigator.showMain(page: .home)
                 }
+            }else {
+                navigator.showLogin()
             }
         }
         .store(in: cancelBag)
