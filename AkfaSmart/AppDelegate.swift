@@ -8,6 +8,8 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import netfox
+
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +19,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
         IQKeyboardManager.shared.toolbarConfiguration.previousNextDisplayMode = .alwaysShow
+        
+        if Settings.isDebugOrTestFlight {
+            NFX.sharedInstance().start()
+        } else {
+            NFX.sharedInstance().stop()
+        }
+        
         return true
     }
 

@@ -481,6 +481,8 @@
 		B8E192A52B9B19C60013B148 /* PurchaseDetailViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192A42B9B19C60013B148 /* PurchaseDetailViewRow.swift */; };
 		B8E1B0E22E222B9800FE9467 /* CouponInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1B0E12E222B9800FE9467 /* CouponInfo.swift */; };
 		B8E1B0E42E222C6A00FE9467 /* AllCouponInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1B0E32E222C6A00FE9467 /* AllCouponInfo.swift */; };
+		B8E1B0E72E222D5800FE9467 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1B0E62E222D5600FE9467 /* Settings.swift */; };
+		B8E1B0EB2E222E1C00FE9467 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = B8E1B0EA2E222E1C00FE9467 /* netfox */; };
 		B8F7B7C22CCEC3B10093A2B7 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */; };
 		B8F7B7C42CCEC52B0093A2B7 /* DealerDetailModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C32CCEC52B0093A2B7 /* DealerDetailModalView.swift */; };
 		B8F7B7C62CCEC76D0093A2B7 /* ShowDealerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */; };
@@ -986,6 +988,7 @@
 		B8E192A42B9B19C60013B148 /* PurchaseDetailViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetailViewRow.swift; sourceTree = "<group>"; };
 		B8E1B0E12E222B9800FE9467 /* CouponInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponInfo.swift; sourceTree = "<group>"; };
 		B8E1B0E32E222C6A00FE9467 /* AllCouponInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCouponInfo.swift; sourceTree = "<group>"; };
+		B8E1B0E62E222D5600FE9467 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		B8F7B7C32CCEC52B0093A2B7 /* DealerDetailModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModalView.swift; sourceTree = "<group>"; };
 		B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerDetailsView.swift; sourceTree = "<group>"; };
@@ -1026,6 +1029,7 @@
 				1716DE5D250385C5005111BF /* Dto in Frameworks */,
 				B866A9472B70FB6200202C9F /* URLImage in Frameworks */,
 				17A5B20424D962B0004BD209 /* CombineExt in Frameworks */,
+				B8E1B0EB2E222E1C00FE9467 /* netfox in Frameworks */,
 				176BAA4124D1150700324D3C /* Reusable in Frameworks */,
 				1B425EAA24FF8D1A000F7F6B /* SDWebImage in Frameworks */,
 				17A5B20724D962CB004BD209 /* CombineCocoa in Frameworks */,
@@ -1475,6 +1479,7 @@
 		1787234E24BD565E00D90F8E /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				B8E1B0E62E222D5600FE9467 /* Settings.swift */,
 				173865AD24D3BCBC0059E3AD /* APIUrls.swift */,
 				1770EC3024DAA7940022FBFE /* ColorCompatibility.swift */,
 			);
@@ -2603,6 +2608,7 @@
 				B866A9462B70FB6200202C9F /* URLImage */,
 				B866A9562B7116CE00202C9F /* Shimmer */,
 				B8AC368E2B79BA870060D52D /* IQKeyboardManagerSwift */,
+				B8E1B0EA2E222E1C00FE9467 /* netfox */,
 			);
 			productName = CleanArchitecture;
 			productReference = 178722F324BD537D00D90F8E /* AkfaSmart.app */;
@@ -2674,6 +2680,7 @@
 				B866A9442B70FB0500202C9F /* XCRemoteSwiftPackageReference "url-image" */,
 				B866A9552B7116CE00202C9F /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 				B8AC368D2B79BA870060D52D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				B8E1B0E52E222D0300FE9467 /* XCRemoteSwiftPackageReference "netfox" */,
 			);
 			productRefGroup = 178722F424BD537D00D90F8E /* Products */;
 			projectDirPath = "";
@@ -2791,6 +2798,7 @@
 				B8BE49E82B8D68FB00876714 /* InfographicsViewUseCase.swift in Sources */,
 				173865A424D3BB7A0059E3AD /* APIService.swift in Sources */,
 				B803316F2BA1D61D0019ACA5 /* HRGraphicsAssembler.swift in Sources */,
+				B8E1B0E72E222D5800FE9467 /* Settings.swift in Sources */,
 				B8BE49F42B8D86CB00876714 /* HRGraphics.swift in Sources */,
 				178722F924BD537D00D90F8E /* SceneDelegate.swift in Sources */,
 				B8BE4A042B8E480600876714 /* ProductGraphicsViewUseCase.swift in Sources */,
@@ -3619,6 +3627,14 @@
 				minimumVersion = 7.0.1;
 			};
 		};
+		B8E1B0E52E222D0300FE9467 /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3696,6 +3712,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B8AC368D2B79BA870060D52D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		B8E1B0EA2E222E1C00FE9467 /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8E1B0E52E222D0300FE9467 /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

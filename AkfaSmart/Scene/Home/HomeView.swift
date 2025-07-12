@@ -59,19 +59,6 @@ struct HomeView: View {
                             .frame(width: 42, height: 42)
                             .background(Colors.avatarBackgroundGrayColor)
                             .cornerRadius(21)
-                                
-//                            ZStack(alignment: .leading) {
-//                                RoundedRectangle(cornerRadius: 8)
-//                                    .stroke(Colors.borderGrayColor2)
-//                                Image(systemName: "magnifyingglass")
-//                                    .resizable()
-//                                    .foregroundColor(.gray)
-//                                    .frame(width: 20, height: 20)
-//                                    .padding(.leading, 14)
-//                                TextField("SEARCH_PRODUCT".localizedString, text: $searchText)
-//                                    .padding(.leading, 44)
-//                            }
-//                            .frame(height: 42)
                             Spacer()
                             notificationView
                         }
