@@ -479,6 +479,7 @@
 		B8E192A02B9B10710013B148 /* PurchaseDetailViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1929F2B9B10710013B148 /* PurchaseDetailViewAssembler.swift */; };
 		B8E192A22B9B174F0013B148 /* ShowingPurchaseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192A12B9B174F0013B148 /* ShowingPurchaseDetailView.swift */; };
 		B8E192A52B9B19C60013B148 /* PurchaseDetailViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E192A42B9B19C60013B148 /* PurchaseDetailViewRow.swift */; };
+		B8E1B0E22E222B9800FE9467 /* CouponInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1B0E12E222B9800FE9467 /* CouponInfo.swift */; };
 		B8F7B7C22CCEC3B10093A2B7 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */; };
 		B8F7B7C42CCEC52B0093A2B7 /* DealerDetailModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C32CCEC52B0093A2B7 /* DealerDetailModalView.swift */; };
 		B8F7B7C62CCEC76D0093A2B7 /* ShowDealerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */; };
@@ -982,6 +983,7 @@
 		B8E1929F2B9B10710013B148 /* PurchaseDetailViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetailViewAssembler.swift; sourceTree = "<group>"; };
 		B8E192A12B9B174F0013B148 /* ShowingPurchaseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingPurchaseDetailView.swift; sourceTree = "<group>"; };
 		B8E192A42B9B19C60013B148 /* PurchaseDetailViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetailViewRow.swift; sourceTree = "<group>"; };
+		B8E1B0E12E222B9800FE9467 /* CouponInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponInfo.swift; sourceTree = "<group>"; };
 		B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		B8F7B7C32CCEC52B0093A2B7 /* DealerDetailModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModalView.swift; sourceTree = "<group>"; };
 		B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerDetailsView.swift; sourceTree = "<group>"; };
@@ -1488,6 +1490,7 @@
 		1787235024BD56C800D90F8E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				B8E1B0E12E222B9800FE9467 /* CouponInfo.swift */,
 				B863DAC32B8D58CA003F2C3D /* Graphics */,
 				B877FD682B8BF5B200D24CB0 /* MobileClass.swift */,
 				1787235224BD56E400D90F8E /* Product.swift */,
@@ -2766,6 +2769,7 @@
 				B877FD7B2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift in Sources */,
 				B8AC367E2B799E5D0060D52D /* ShowingAddDealerView.swift in Sources */,
 				178722F724BD537D00D90F8E /* AppDelegate.swift in Sources */,
+				B8E1B0E22E222B9800FE9467 /* CouponInfo.swift in Sources */,
 				B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */,
 				B8DAD2532BAAC23300857140 /* ToastView.swift in Sources */,
 				17A5B1F824D9026D004BD209 /* BaseViewController.swift in Sources */,
