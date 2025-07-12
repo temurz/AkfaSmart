@@ -96,5 +96,9 @@ extension API {
         static let cardSettings = Base.BASE_URL + "/api/mobile/loyaltyCard/settings"
         static let deleteCard = Base.BASE_URL + "/api/mobile/loyaltyCard/delete"
         static let getCards = Base.BASE_URL + "/api/mobile/loyaltyCard/balance"
+        
+        //Coupons
+        static let getPromotionList = Base.BASE_URL + "/api/mobile/coupon/getContentList"
+        static let getCouponItems = Base.BASE_URL + "/api/mobile/coupon/getCoupon"
     }
 }

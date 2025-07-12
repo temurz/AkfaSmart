@@ -12,6 +12,7 @@ struct HomeViewModel {
     let useCase: HomeViewUseCaseType
     let mobileClassUseCase: MobileClassUseCaseType
     let getCardsUseCase: GetCardsViewUseCaseType
+    let getPromotionsUseCase: GetPromotionsUseCaseType
 }
 
 extension HomeViewModel: ViewModel {
@@ -29,6 +30,7 @@ extension HomeViewModel: ViewModel {
         let showMyDealersViewTrigger: Driver<Void>
         let addCardViewTrigger: Driver<Void>
         let cardSettingsViewTrigger: Driver<Card>
+        let onAppearTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -44,12 +46,24 @@ extension HomeViewModel: ViewModel {
         @Published var mobileClass: MobileClass? = nil
         @Published var mobileClassLogoData: Data? = nil
         @Published var unreadDataCount: UnreadDataCount = UnreadDataCount(countUnreadMessages: 0, countUnreadArticles: 0, countUnreadNews: 0)
+        @Published var promotions: [Promotion] = []
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
         let errorTracker = ErrorTracker()
         let activityTracker = ActivityTracker(false)
         let output = Output()
+        
+        input.onAppearTrigger
+            .sink {
+                getPromotionsUseCase.getPromotionsList()
+                    .asDriver()
+                    .sink { promotions in
+                        output.promotions = promotions
+                    }
+                    .store(in: cancelBag)
+            }
+            .store(in: cancelBag)
         
         input.showAddDealerViewTrigger.sink {
             navigator.showAddDealerView()

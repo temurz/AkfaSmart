@@ -151,6 +151,10 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> CardConfirmActionGatewayType {
         CardConfirmActionGateway()
     }
+    
+    func resolve() -> GetPromotionsGatewayProtocol {
+        GetPromotionsGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -287,5 +291,8 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     
     func resolve() -> CardConfirmActionGatewayType {
         CardConfirmActionGateway()
+    }
+    func resolve() -> GetPromotionsGatewayProtocol {
+        GetPromotionsGateway()
     }
 }

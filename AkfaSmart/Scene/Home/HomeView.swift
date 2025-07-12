@@ -34,6 +34,7 @@ struct HomeView: View {
     private let showMyDealersViewTrigger = PassthroughSubject<Void,Never>()
     private let addCardViewTrigger = PassthroughSubject<Void,Never>()
     private let cardSettingsViewTrigger = PassthroughSubject<Card,Never>()
+    private let onAppearTrigger = PassthroughSubject<Void,Never>()
     
     private let showDealerDetailsViewTrigger = PassthroughSubject<Dealer,Never>()
     
@@ -182,6 +183,7 @@ struct HomeView: View {
             getDealersTrigger.send(())
             getMobileClassInfoTrigger.send(())
             getCardsTrigger.send(())
+            onAppearTrigger.send(())
         }
     }
     
@@ -243,7 +245,8 @@ struct HomeView: View {
             showCardsMainViewTrigger: showCardsMainViewTrigger.asDriver(),
             showMyDealersViewTrigger: showMyDealersViewTrigger.asDriver(),
             addCardViewTrigger: addCardViewTrigger.asDriver(),
-            cardSettingsViewTrigger: cardSettingsViewTrigger.asDriver()
+            cardSettingsViewTrigger: cardSettingsViewTrigger.asDriver(),
+            onAppearTrigger: onAppearTrigger.asDriver()
         )
         
         output = viewModel.transform(input, cancelBag: cancelBag)
