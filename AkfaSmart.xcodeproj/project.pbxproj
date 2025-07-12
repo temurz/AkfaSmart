@@ -490,6 +490,8 @@
 		B8E1B0F72E223AF600FE9467 /* GetPromotionsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1B0F62E223AEC00FE9467 /* GetPromotionsDomainUseCase.swift */; };
 		B8E1B0F92E223B4800FE9467 /* GetCouponItemsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1B0F82E223B4100FE9467 /* GetCouponItemsDomainUseCase.swift */; };
 		B8E1B0FC2E223BCE00FE9467 /* GetPromotionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1B0FB2E223BC600FE9467 /* GetPromotionsUseCase.swift */; };
+		B8E1B0FE2E22502300FE9467 /* PromotionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1B0FD2E22500D00FE9467 /* PromotionViewCell.swift */; };
+		B8E1B1002E2251E000FE9467 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1B0FF2E2251DE00FE9467 /* Constants.swift */; };
 		B8F7B7C22CCEC3B10093A2B7 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */; };
 		B8F7B7C42CCEC52B0093A2B7 /* DealerDetailModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C32CCEC52B0093A2B7 /* DealerDetailModalView.swift */; };
 		B8F7B7C62CCEC76D0093A2B7 /* ShowDealerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */; };
@@ -1003,6 +1005,8 @@
 		B8E1B0F62E223AEC00FE9467 /* GetPromotionsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPromotionsDomainUseCase.swift; sourceTree = "<group>"; };
 		B8E1B0F82E223B4100FE9467 /* GetCouponItemsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCouponItemsDomainUseCase.swift; sourceTree = "<group>"; };
 		B8E1B0FB2E223BC600FE9467 /* GetPromotionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPromotionsUseCase.swift; sourceTree = "<group>"; };
+		B8E1B0FD2E22500D00FE9467 /* PromotionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewCell.swift; sourceTree = "<group>"; };
+		B8E1B0FF2E2251DE00FE9467 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		B8F7B7C32CCEC52B0093A2B7 /* DealerDetailModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModalView.swift; sourceTree = "<group>"; };
 		B8F7B7C52CCEC76D0093A2B7 /* ShowDealerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerDetailsView.swift; sourceTree = "<group>"; };
@@ -1504,6 +1508,7 @@
 		1787234F24BD566300D90F8E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				B8E1B0FF2E2251DE00FE9467 /* Constants.swift */,
 				1734926324C59CC00014F87E /* Architecture */,
 			);
 			path = Support;
@@ -2570,6 +2575,7 @@
 		B8E1B0FA2E223BA300FE9467 /* Promotions */ = {
 			isa = PBXGroup;
 			children = (
+				B8E1B0FD2E22500D00FE9467 /* PromotionViewCell.swift */,
 				B8E1B0FB2E223BC600FE9467 /* GetPromotionsUseCase.swift */,
 			);
 			path = Promotions;
@@ -2833,6 +2839,7 @@
 				1770EC2B24DAA5ED0022FBFE /* RepoCollectionViewController.swift in Sources */,
 				B82CA96B2B977598000147D2 /* User+API.swift in Sources */,
 				B89F2F732B9021B3004DAEAB /* SeriesAndAmountRow.swift in Sources */,
+				B8E1B0FE2E22502300FE9467 /* PromotionViewCell.swift in Sources */,
 				173865AC24D3BC840059E3AD /* API+Repo.swift in Sources */,
 				B88DEE602CD276F000B6AAB8 /* CardActivationDomainUseCase.swift in Sources */,
 				B8E1929A2B9B0FC90013B148 /* GettingInvoiceDetailDomainUseCase.swift in Sources */,
@@ -3065,6 +3072,7 @@
 				B8C165942B99D38F00F70074 /* ArticlesFilterView.swift in Sources */,
 				B8E192A02B9B10710013B148 /* PurchaseDetailViewAssembler.swift in Sources */,
 				B803314F2BA0CCA20019ACA5 /* EditInfographicsViewAssembler.swift in Sources */,
+				B8E1B1002E2251E000FE9467 /* Constants.swift in Sources */,
 				B85516CB2B790E5F00FC2D6E /* Articles+API.swift in Sources */,
 				1787233F24BD556E00D90F8E /* LoginNavigator.swift in Sources */,
 				1787232F24BD547600D90F8E /* AppUseCase.swift in Sources */,

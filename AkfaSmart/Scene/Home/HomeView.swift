@@ -168,6 +168,16 @@ struct HomeView: View {
                             Spacer()
                         }
                         
+                        TabView {
+                            ForEach(output.promotions, id: \.id) { promotion in
+                                PromotionViewCell(model: promotion)
+                                    .frame(width: Constants.screenWidth - 32)
+                                    .cornerRadius(16)
+                                    .padding(.horizontal, 10)
+                            }
+                        }
+                        .tabViewStyle(.page(indexDisplayMode: .never))
+                        .frame(height: 160)
                     }
                     .padding(.vertical)
                 }
