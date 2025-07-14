@@ -316,6 +316,7 @@
 		B86DEEEE2CFCDE2D005178DB /* ShowingMyDealers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86DEEED2CFCDE2D005178DB /* ShowingMyDealers.swift */; };
 		B86E1C972BA480BF00A0AF4D /* DownloadTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E1C962BA480BF00A0AF4D /* DownloadTaskModel.swift */; };
 		B86E1C9B2BA485B200A0AF4D /* DownloadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E1C9A2BA485B200A0AF4D /* DownloadProgressView.swift */; };
+		B86FAD362E250606005C57A0 /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86FAD352E250606005C57A0 /* CachedImageView.swift */; };
 		B877FD612B8BBFA200D24CB0 /* Dealers+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */; };
 		B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */; };
 		B877FD662B8BC11500D24CB0 /* GetDealersDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877FD652B8BC11500D24CB0 /* GetDealersDomainUseCase.swift */; };
@@ -832,6 +833,7 @@
 		B86DEEED2CFCDE2D005178DB /* ShowingMyDealers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingMyDealers.swift; sourceTree = "<group>"; };
 		B86E1C962BA480BF00A0AF4D /* DownloadTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTaskModel.swift; sourceTree = "<group>"; };
 		B86E1C9A2BA485B200A0AF4D /* DownloadProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProgressView.swift; sourceTree = "<group>"; };
+		B86FAD352E250606005C57A0 /* CachedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
 		B877FD602B8BBFA200D24CB0 /* Dealers+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dealers+API.swift"; sourceTree = "<group>"; };
 		B877FD622B8BC05900D24CB0 /* GetDealersGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDealersGateway.swift; sourceTree = "<group>"; };
 		B877FD652B8BC11500D24CB0 /* GetDealersDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDealersDomainUseCase.swift; sourceTree = "<group>"; };
@@ -1995,6 +1997,7 @@
 		B866A9242B6BF70800202C9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B86FAD352E250606005C57A0 /* CachedImageView.swift */,
 				B87ED20A2B7A2D9000EB5139 /* CustomMaskedTextfield */,
 				B866A93B2B70F7EE00202C9F /* AsyncImage */,
 				B866A9252B6BF71B00202C9F /* TabBar */,
@@ -3235,6 +3238,7 @@
 				B88E1F072CCD4A77004F2C64 /* GetCardsDomainUseCase.swift in Sources */,
 				B866A8C12B66EC9400202C9F /* Login+API.swift in Sources */,
 				B803315D2BA190180019ACA5 /* EditTechnographicsView.swift in Sources */,
+				B86FAD362E250606005C57A0 /* CachedImageView.swift in Sources */,
 				176BAA5824D167A400324D3C /* LoggingIn.swift in Sources */,
 				1787234D24BD560500D90F8E /* MainViewModel.swift in Sources */,
 				B877FD842B8C3F8700D24CB0 /* AddDealerDomainUseCase.swift in Sources */,
