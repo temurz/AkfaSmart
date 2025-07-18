@@ -206,6 +206,7 @@
 "COUPON_COUNT" = "Количество купонов";
 "PURCHASE_DURATION" = "Длина покупки";
 "CARD_NUMBER" = "Номер карты";
+"NO_COUPON" = "Купоны не найдены";
 
 //ERRORS
 "Not Found" = "Нет данных";

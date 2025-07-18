@@ -35,6 +35,8 @@ struct Colors {
     
     static var avatarBackgroundGrayColor = Color(hex: "#F2F3F5")
     
+    static let dark = Color(hex: "#262E3A")
+    
     //Cards
     static var redCardGradientBackground = CardGradient(firstColor: Color(hex: "#E32F27"), secondColor: Color(hex: "#7D1547"))
     static var purpleCardGradientBackground = CardGradient(firstColor: Color(hex: "#673AB7"), secondColor: Color(hex: "#331664"))

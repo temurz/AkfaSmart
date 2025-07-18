@@ -11,6 +11,7 @@ import Combine
 
 struct PromotionDetailView: View {
     private let popViewTrigger = PassthroughSubject<Void,Never>()
+    private let myCouponsTrigger = PassthroughSubject<Void,Never>()
     
     @ObservedObject var output: PromotionDetailViewModel.Output
     private let cancelBag = CancelBag()
@@ -57,7 +58,7 @@ struct PromotionDetailView: View {
                 .scrollIndicators(.hidden)
                 .fixedSize(horizontal: false, vertical: true)
                 Button {
-                    
+                    myCouponsTrigger.send(())
                 } label: {
                     Text("MY_COUPONS".localizedString)
                         .foregroundStyle(.white)
@@ -76,7 +77,8 @@ struct PromotionDetailView: View {
     
     init(viewModel: PromotionDetailViewModel) {
         let input = PromotionDetailViewModel.Input(
-            popViewTrigger: popViewTrigger.asDriver()
+            popViewTrigger: popViewTrigger.asDriver(),
+            myCouponsTrigger: myCouponsTrigger.asDriver()
         )
         
         self.output = viewModel.transform(input, cancelBag: cancelBag)

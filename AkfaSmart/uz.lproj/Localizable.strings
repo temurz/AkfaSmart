@@ -209,6 +209,7 @@
 "COUPON_COUNT" = "Kupon soni";
 "PURCHASE_DURATION" = "Xarid uzunligi";
 "CARD_NUMBER" = "Karta raqami";
+"NO_COUPON" = "Kuponlar topilmadi";
 
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";

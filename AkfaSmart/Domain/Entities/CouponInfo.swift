@@ -6,7 +6,7 @@
 //  Copyright © 2025 Tuan Truong. All rights reserved.
 //
 
-struct CouponInfo: Decodable {
+struct CouponInfo: Decodable, Identifiable {
     let id: Int?
     let name: String?
     let date: String?

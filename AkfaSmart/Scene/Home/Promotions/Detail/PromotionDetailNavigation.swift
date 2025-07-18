@@ -10,13 +10,9 @@ import UIKit
 
 protocol PromotionDetailNavigatorType {
     func popView()
-    func showCoupons()
+    func showMyCouponsView()
 }
 
-struct PromotionDetailNavigator: PromotionDetailNavigatorType, PoppingController {
-    func showCoupons() {
-        
-    }
-    
+struct PromotionDetailNavigator: PromotionDetailNavigatorType, PoppingController, ShowMyCouponsView {
     unowned var navigationController: UINavigationController
 }

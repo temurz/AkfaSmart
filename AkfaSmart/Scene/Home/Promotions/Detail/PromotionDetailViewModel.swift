@@ -18,6 +18,7 @@ extension PromotionDetailViewModel: ViewModel {
     
     struct Input {
         let popViewTrigger: AnyPublisher<Void,Never>
+        let myCouponsTrigger: AnyPublisher<Void,Never>
     }
     
     final class Output: ObservableObject {
@@ -34,6 +35,12 @@ extension PromotionDetailViewModel: ViewModel {
         input.popViewTrigger
             .sink {
                 navigator.popView()
+            }
+            .store(in: cancelBag)
+        
+        input.myCouponsTrigger
+            .sink {
+                navigator.showMyCouponsView()
             }
             .store(in: cancelBag)
         
