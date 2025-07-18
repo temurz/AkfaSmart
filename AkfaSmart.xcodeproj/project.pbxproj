@@ -414,6 +414,8 @@
 		B8AD7EC32E2A37DD00A3399A /* MyCouponsViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7EC22E2A37D600A3399A /* MyCouponsViewUseCase.swift */; };
 		B8AD7EC52E2A3B8600A3399A /* ShowMyCouponsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7EC42E2A3B7D00A3399A /* ShowMyCouponsView.swift */; };
 		B8AD7EC72E2A3DAC00A3399A /* CouponItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7EC62E2A3DA600A3399A /* CouponItemCellView.swift */; };
+		B8AD7EC92E2A434600A3399A /* MyCouponsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7EC82E2A434000A3399A /* MyCouponsAssembler.swift */; };
+		B8AD7ECB2E2A45EC00A3399A /* PromotionDetailViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7ECA2E2A45E300A3399A /* PromotionDetailViewAssembler.swift */; };
 		B8BE49E12B8D677C00876714 /* Graphics + API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E02B8D677C00876714 /* Graphics + API.swift */; };
 		B8BE49E32B8D683300876714 /* InfoGraphicsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E22B8D683300876714 /* InfoGraphicsGateway.swift */; };
 		B8BE49E62B8D689600876714 /* InfographicsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E52B8D689600876714 /* InfographicsDomainUseCase.swift */; };
@@ -940,6 +942,8 @@
 		B8AD7EC22E2A37D600A3399A /* MyCouponsViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponsViewUseCase.swift; sourceTree = "<group>"; };
 		B8AD7EC42E2A3B7D00A3399A /* ShowMyCouponsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMyCouponsView.swift; sourceTree = "<group>"; };
 		B8AD7EC62E2A3DA600A3399A /* CouponItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponItemCellView.swift; sourceTree = "<group>"; };
+		B8AD7EC82E2A434000A3399A /* MyCouponsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponsAssembler.swift; sourceTree = "<group>"; };
+		B8AD7ECA2E2A45E300A3399A /* PromotionDetailViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetailViewAssembler.swift; sourceTree = "<group>"; };
 		B8BE49E02B8D677C00876714 /* Graphics + API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Graphics + API.swift"; sourceTree = "<group>"; };
 		B8BE49E22B8D683300876714 /* InfoGraphicsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGraphicsGateway.swift; sourceTree = "<group>"; };
 		B8BE49E52B8D689600876714 /* InfographicsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsDomainUseCase.swift; sourceTree = "<group>"; };
@@ -2246,6 +2250,7 @@
 		B86FAD3C2E25223D005C57A0 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				B8AD7ECA2E2A45E300A3399A /* PromotionDetailViewAssembler.swift */,
 				B8AD7EBA2E2A235B00A3399A /* CouponRuleCellView.swift */,
 				B8AD7EB82E2A225F00A3399A /* PromotionDetailNavigation.swift */,
 				B86FAD3D2E252244005C57A0 /* PromotionDetailView.swift */,
@@ -2444,6 +2449,7 @@
 		B8AD7EBC2E2A379C00A3399A /* MyCoupons */ = {
 			isa = PBXGroup;
 			children = (
+				B8AD7EC82E2A434000A3399A /* MyCouponsAssembler.swift */,
 				B8AD7EC62E2A3DA600A3399A /* CouponItemCellView.swift */,
 				B8AD7EC22E2A37D600A3399A /* MyCouponsViewUseCase.swift */,
 				B8AD7EBF2E2A37B300A3399A /* MyCouponsView.swift */,
@@ -2988,6 +2994,7 @@
 				B8AD7EBB2E2A236000A3399A /* CouponRuleCellView.swift in Sources */,
 				B8BE49F22B8D7EAD00876714 /* TechnoGraphicsViewUseCase.swift in Sources */,
 				17A5B1F424D8080B004BD209 /* UIViewController+Combine.swift in Sources */,
+				B8AD7ECB2E2A45EC00A3399A /* PromotionDetailViewAssembler.swift in Sources */,
 				17DCF1B624BEE76800D970B4 /* Driver.swift in Sources */,
 				B8C165A62B9A9ADE00F70074 /* PaymentReceiptsGateway.swift in Sources */,
 				B866A93A2B70F23400202C9F /* String+Extension.swift in Sources */,
@@ -3277,6 +3284,7 @@
 				B866A92D2B6BF79100202C9F /* ProminentTabBarItemView.swift in Sources */,
 				1770EC2E24DAA6570022FBFE /* RepoCollectionCell.swift in Sources */,
 				1742B37E24D7F52D00C82D15 /* RepoCell.swift in Sources */,
+				B8AD7EC92E2A434600A3399A /* MyCouponsAssembler.swift in Sources */,
 				B88E1F042CCD49EA004F2C64 /* GetCardsGateway.swift in Sources */,
 				176BAA7524D26E4C00324D3C /* LogOptions.swift in Sources */,
 				B8CF98EC2B65718900EF02A7 /* ShowingRegistration.swift in Sources */,

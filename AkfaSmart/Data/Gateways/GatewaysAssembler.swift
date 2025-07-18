@@ -155,6 +155,9 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> GetPromotionsGatewayProtocol {
         GetPromotionsGateway()
     }
+    func resolve() -> GetCouponItemsGatewayProtocol {
+        GetCouponItemsGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -294,5 +297,8 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     }
     func resolve() -> GetPromotionsGatewayProtocol {
         GetPromotionsGateway()
+    }
+    func resolve() -> GetCouponItemsGatewayProtocol {
+        GetCouponItemsGateway()
     }
 }

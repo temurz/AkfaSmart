@@ -14,5 +14,7 @@ protocol PromotionDetailNavigatorType {
 }
 
 struct PromotionDetailNavigator: PromotionDetailNavigatorType, PoppingController, ShowMyCouponsView {
+    unowned var assembler: Assembler
+    
     unowned var navigationController: UINavigationController
 }

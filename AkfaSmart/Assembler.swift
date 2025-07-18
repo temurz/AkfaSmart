@@ -44,7 +44,9 @@ protocol Assembler: AnyObject,
     CardsMainViewAssembler,
     AddCardViewAssembler,
     EditCardViewAssembler,
-    MyDealersViewAssembler
+    MyDealersViewAssembler,
+    MyCouponsAssembler,
+    PromotionDetailViewAssembler
 {
     
 }

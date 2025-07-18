@@ -10,11 +10,12 @@ import SwiftUI
 
 protocol ShowPromotionDetailView {
     var navigationController: UINavigationController { get }
+    var assembler: Assembler { get }
 }
 
 extension ShowPromotionDetailView {
     func showPromotionDetailView(promotion: Promotion) {
-        let view: PromotionDetailView = PromotionDetailView(viewModel: PromotionDetailViewModel(promotion: promotion, navigator: PromotionDetailNavigator(navigationController: navigationController)))
+        let view: PromotionDetailView = assembler.resolve(promotion: promotion, navigationController: navigationController)
         let vc = UIHostingController(rootView: view)
         navigationController.pushViewController(vc, animated: true)
     }
