@@ -35,6 +35,7 @@ struct HomeView: View {
     private let addCardViewTrigger = PassthroughSubject<Void,Never>()
     private let cardSettingsViewTrigger = PassthroughSubject<Card,Never>()
     private let showPromotionDetailView = PassthroughSubject<Promotion,Never>()
+    private let showPromotionsListView = PassthroughSubject<Void,Never>()
     private let onAppearTrigger = PassthroughSubject<Void,Never>()
     
     private let showDealerDetailsViewTrigger = PassthroughSubject<Dealer,Never>()
@@ -169,19 +170,34 @@ struct HomeView: View {
                             Spacer()
                         }
                         
-                        TabView {
-                            ForEach(output.promotions, id: \.id) { promotion in
-                                PromotionViewCell(model: promotion)
-                                    .frame(width: Constants.screenWidth - 32)
-                                    .cornerRadius(16)
-                                    .padding(.horizontal, 10)
-                                    .onTapGesture {
-                                        showPromotionDetailView.send(promotion)
-                                    }
+                        if !output.promotions.isEmpty {
+                            HStack {
+                                Text("PROMOTIONS".localizedString)
+                                    .font(.headline)
+                                Spacer()
+                                Button {
+                                    showPromotionsListView.send(())
+                                } label: {
+                                    Text("ALL_LOWERCASED".localizedString)
+                                        .font(.headline)
+                                        .foregroundStyle(Color.red)
+                                }
                             }
+                            .padding(.horizontal)
+                            TabView {
+                                ForEach(output.promotions, id: \.id) { promotion in
+                                    PromotionViewCell(model: promotion)
+                                        .frame(width: Constants.screenWidth - 32)
+                                        .cornerRadius(16)
+                                        .padding(.horizontal, 10)
+                                        .onTapGesture {
+                                            showPromotionDetailView.send(promotion)
+                                        }
+                                }
+                            }
+                            .tabViewStyle(.page(indexDisplayMode: .never))
+                            .frame(height: 160)
                         }
-                        .tabViewStyle(.page(indexDisplayMode: .never))
-                        .frame(height: 160)
                     }
                     .padding(.vertical)
                 }
@@ -261,7 +277,8 @@ struct HomeView: View {
             addCardViewTrigger: addCardViewTrigger.asDriver(),
             cardSettingsViewTrigger: cardSettingsViewTrigger.asDriver(),
             onAppearTrigger: onAppearTrigger.asDriver(),
-            showPromotionDetailView: showPromotionDetailView.asDriver()
+            showPromotionDetailView: showPromotionDetailView.asDriver(),
+            showPromotionsListView: showPromotionsListView.asDriver()
         )
         
         output = viewModel.transform(input, cancelBag: cancelBag)

@@ -205,6 +205,7 @@
 "PURCHASE_DURATION" = "Purchase duration";
 "CARD_NUMBER" = "Card number";
 "NO_COUPON" = "Not found any coupon";
+"PROMOTIONS" = "Promotions";
 
 //ERRORS
 "Bad Request" = "Bad Request";

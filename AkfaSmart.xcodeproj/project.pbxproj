@@ -416,6 +416,11 @@
 		B8AD7EC72E2A3DAC00A3399A /* CouponItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7EC62E2A3DA600A3399A /* CouponItemCellView.swift */; };
 		B8AD7EC92E2A434600A3399A /* MyCouponsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7EC82E2A434000A3399A /* MyCouponsAssembler.swift */; };
 		B8AD7ECB2E2A45EC00A3399A /* PromotionDetailViewAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7ECA2E2A45E300A3399A /* PromotionDetailViewAssembler.swift */; };
+		B8AD7ECF2E2A560B00A3399A /* PromotionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7ECE2E2A55FC00A3399A /* PromotionsListView.swift */; };
+		B8AD7ED12E2A561600A3399A /* PromotionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7ED02E2A560E00A3399A /* PromotionsListViewModel.swift */; };
+		B8AD7ED32E2A56D600A3399A /* PromotionsListNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7ED22E2A56CF00A3399A /* PromotionsListNavigator.swift */; };
+		B8AD7ED52E2A576300A3399A /* PromotionsListAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7ED42E2A575C00A3399A /* PromotionsListAssembler.swift */; };
+		B8AD7ED72E2A592C00A3399A /* ShowPromotionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD7ED62E2A592800A3399A /* ShowPromotionsListView.swift */; };
 		B8BE49E12B8D677C00876714 /* Graphics + API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E02B8D677C00876714 /* Graphics + API.swift */; };
 		B8BE49E32B8D683300876714 /* InfoGraphicsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E22B8D683300876714 /* InfoGraphicsGateway.swift */; };
 		B8BE49E62B8D689600876714 /* InfographicsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE49E52B8D689600876714 /* InfographicsDomainUseCase.swift */; };
@@ -944,6 +949,11 @@
 		B8AD7EC62E2A3DA600A3399A /* CouponItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponItemCellView.swift; sourceTree = "<group>"; };
 		B8AD7EC82E2A434000A3399A /* MyCouponsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponsAssembler.swift; sourceTree = "<group>"; };
 		B8AD7ECA2E2A45E300A3399A /* PromotionDetailViewAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionDetailViewAssembler.swift; sourceTree = "<group>"; };
+		B8AD7ECE2E2A55FC00A3399A /* PromotionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsListView.swift; sourceTree = "<group>"; };
+		B8AD7ED02E2A560E00A3399A /* PromotionsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsListViewModel.swift; sourceTree = "<group>"; };
+		B8AD7ED22E2A56CF00A3399A /* PromotionsListNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsListNavigator.swift; sourceTree = "<group>"; };
+		B8AD7ED42E2A575C00A3399A /* PromotionsListAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsListAssembler.swift; sourceTree = "<group>"; };
+		B8AD7ED62E2A592800A3399A /* ShowPromotionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPromotionsListView.swift; sourceTree = "<group>"; };
 		B8BE49E02B8D677C00876714 /* Graphics + API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Graphics + API.swift"; sourceTree = "<group>"; };
 		B8BE49E22B8D683300876714 /* InfoGraphicsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGraphicsGateway.swift; sourceTree = "<group>"; };
 		B8BE49E52B8D689600876714 /* InfographicsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfographicsDomainUseCase.swift; sourceTree = "<group>"; };
@@ -1272,6 +1282,7 @@
 		1765B2CF24C6D5350096D210 /* Navigators */ = {
 			isa = PBXGroup;
 			children = (
+				B8AD7ED62E2A592800A3399A /* ShowPromotionsListView.swift */,
 				B8AD7EC42E2A3B7D00A3399A /* ShowMyCouponsView.swift */,
 				B8AD7EB62E2A17A000A3399A /* ShowPromotionDetailView.swift */,
 				1765B2D024C6D5550096D210 /* ShowingProductDetail.swift */,
@@ -2458,6 +2469,17 @@
 			path = MyCoupons;
 			sourceTree = "<group>";
 		};
+		B8AD7ECD2E2A55F400A3399A /* PromotionsList */ = {
+			isa = PBXGroup;
+			children = (
+				B8AD7ED42E2A575C00A3399A /* PromotionsListAssembler.swift */,
+				B8AD7ED22E2A56CF00A3399A /* PromotionsListNavigator.swift */,
+				B8AD7ECE2E2A55FC00A3399A /* PromotionsListView.swift */,
+				B8AD7ED02E2A560E00A3399A /* PromotionsListViewModel.swift */,
+			);
+			path = PromotionsList;
+			sourceTree = "<group>";
+		};
 		B8BE49E42B8D688200876714 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -2628,6 +2650,7 @@
 		B8E1B0FA2E223BA300FE9467 /* Promotions */ = {
 			isa = PBXGroup;
 			children = (
+				B8AD7ECD2E2A55F400A3399A /* PromotionsList */,
 				B8AD7EBC2E2A379C00A3399A /* MyCoupons */,
 				B86FAD3C2E25223D005C57A0 /* Detail */,
 				B8E1B0FD2E22500D00FE9467 /* PromotionViewCell.swift */,
@@ -2904,6 +2927,7 @@
 				B866A9632B71536900202C9F /* ArticlesViewModel.swift in Sources */,
 				1742B36E24D7B22B00C82D15 /* ReposViewController.swift in Sources */,
 				B89F2F902B916C09004DAEAB /* Date+.swift in Sources */,
+				B8AD7ECF2E2A560B00A3399A /* PromotionsListView.swift in Sources */,
 				B8BE49E82B8D68FB00876714 /* InfographicsViewUseCase.swift in Sources */,
 				173865A424D3BB7A0059E3AD /* APIService.swift in Sources */,
 				B803316F2BA1D61D0019ACA5 /* HRGraphicsAssembler.swift in Sources */,
@@ -2963,6 +2987,7 @@
 				B877FD6D2B8BFEE700D24CB0 /* MobileClassGateway.swift in Sources */,
 				B858E6F82CD38B9700575CF0 /* EditCardViewNavigator.swift in Sources */,
 				B87C71DC2B829EEA0061530E /* ForgotPasswordViewModel.swift in Sources */,
+				B8AD7ED32E2A56D600A3399A /* PromotionsListNavigator.swift in Sources */,
 				B866A8CD2B6874E100202C9F /* ShowingMain.swift in Sources */,
 				1742B37824D7C48400C82D15 /* RepoItemViewModel.swift in Sources */,
 				B866A97E2B7168E100202C9F /* SettingsViewModel.swift in Sources */,
@@ -3199,10 +3224,12 @@
 				B866A9672B71538200202C9F /* ArticlesUseCase.swift in Sources */,
 				B8C3E4E72CC69C2100738BAF /* Card.swift in Sources */,
 				B8FEC6BE2B8636B80028BA7F /* ResetPasswordViewModel.swift in Sources */,
+				B8AD7ED12E2A561600A3399A /* PromotionsListViewModel.swift in Sources */,
 				B866A8D82B68D8BA00202C9F /* Int+.swift in Sources */,
 				1787232D24BD547600D90F8E /* AppAssembler.swift in Sources */,
 				B866A9952B71B01100202C9F /* SearchProductViewUseCase.swift in Sources */,
 				B866A8D62B68D0E200202C9F /* CodeInputAssembler.swift in Sources */,
+				B8AD7ED72E2A592C00A3399A /* ShowPromotionsListView.swift in Sources */,
 				B86DEEE52CFCC45A005178DB /* MyDealersViewModel.swift in Sources */,
 				B8FEC6C62B863C870028BA7F /* ResetPasswordAssembler.swift in Sources */,
 				173865AA24D3BC6A0059E3AD /* APIOutput.swift in Sources */,
@@ -3309,6 +3336,7 @@
 				B8CF98E02B6566EC00EF02A7 /* RegisterViewModel.swift in Sources */,
 				B858E6FE2CD38E4E00575CF0 /* EditCardStateGateway.swift in Sources */,
 				B8677C572CCFC66A000636D8 /* AddCardView.swift in Sources */,
+				B8AD7ED52E2A576300A3399A /* PromotionsListAssembler.swift in Sources */,
 				B866A92B2B6BF76700202C9F /* TabBarItemView.swift in Sources */,
 				B8BE49EC2B8D7B8900876714 /* TechnoGraphics.swift in Sources */,
 				B8BE4A1C2B9013B800876714 /* ClassDetailViewRow.swift in Sources */,

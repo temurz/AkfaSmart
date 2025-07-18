@@ -32,6 +32,7 @@ extension HomeViewModel: ViewModel {
         let cardSettingsViewTrigger: Driver<Card>
         let onAppearTrigger: Driver<Void>
         let showPromotionDetailView: Driver<Promotion>
+        let showPromotionsListView: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -205,6 +206,13 @@ extension HomeViewModel: ViewModel {
                 navigator.showPromotionDetailView(promotion: $0)
             }
             .store(in: cancelBag)
+        
+        input.showPromotionsListView
+            .sink {
+                navigator.showPromotionsListView(promotions: output.promotions)
+            }
+            .store(in: cancelBag)
+        
         return output
     }
 }

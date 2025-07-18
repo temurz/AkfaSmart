@@ -207,6 +207,7 @@
 "PURCHASE_DURATION" = "Длина покупки";
 "CARD_NUMBER" = "Номер карты";
 "NO_COUPON" = "Купоны не найдены";
+"PROMOTIONS" = "Акции";
 
 //ERRORS
 "Not Found" = "Нет данных";

@@ -210,6 +210,7 @@
 "PURCHASE_DURATION" = "Xarid uzunligi";
 "CARD_NUMBER" = "Karta raqami";
 "NO_COUPON" = "Kuponlar topilmadi";
+"PROMOTIONS" = "Akciyalar";
 
 //ERRORS
 "Not Found" = "Ma'lumot topilmadi";
