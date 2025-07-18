@@ -24,7 +24,7 @@ struct Promotion: Decodable {
 }
 
 struct PromotionCouponInfo: Decodable {
-    let crmCouponContent: [CouponInfo]
+    let crmCouponContent: [AllCouponInfo]
     let totalAcceptedLength: Int
     let totalCouponCount: Int
 }

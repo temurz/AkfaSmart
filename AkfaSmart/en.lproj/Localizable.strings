@@ -200,7 +200,10 @@
 "REACTIVATE_DEALER_ALERT_TEXT" = "This client is attached to digital user %@.\nYou can attach the previous one by deleting and confirming it.";
 "ADD" = "Add";
 "ALL_LOWERCASED" = "all";
-
+"MY_COUPONS" = "My coupons";
+"COUPON_COUNT" = "Number of coupons";
+"PURCHASE_DURATION" = "Purchase duration";
+"CARD_NUMBER" = "Card number";
 
 //ERRORS
 "Bad Request" = "Bad Request";

@@ -80,15 +80,18 @@ struct WebView: UIViewRepresentable {
     let html: String
     
     func makeUIView(context: Context) -> WKWebView {
-        
-        return WKWebView()
+        let webView = WKWebView()
+        webView.isOpaque = false
+        webView.backgroundColor = UIColor.clear
+        webView.scrollView.backgroundColor = UIColor.clear
+        return webView
     }
     
     // 3
     func updateUIView(_ webView: WKWebView, context: Context) {
         let styledHTML = addStyleToHTML(html)
         //        let headString = "<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></head>"
-        let headString = "<head><meta name='viewport' content='width=device-width, shrink-to-fit=YES'></head>"
+//        let headString = "<head><meta name='viewport' content='width=device-width, shrink-to-fit=YES'></head>"
 //        let modifiedHTMLContent = html.replacingOccurrences(of: "<head>.*?</head>", with: headString, options: .regularExpression, range: nil)
 
         webView.loadHTMLString(styledHTML, baseURL: nil)

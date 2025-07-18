@@ -34,6 +34,7 @@ struct HomeView: View {
     private let showMyDealersViewTrigger = PassthroughSubject<Void,Never>()
     private let addCardViewTrigger = PassthroughSubject<Void,Never>()
     private let cardSettingsViewTrigger = PassthroughSubject<Card,Never>()
+    private let showPromotionDetailView = PassthroughSubject<Promotion,Never>()
     private let onAppearTrigger = PassthroughSubject<Void,Never>()
     
     private let showDealerDetailsViewTrigger = PassthroughSubject<Dealer,Never>()
@@ -174,6 +175,9 @@ struct HomeView: View {
                                     .frame(width: Constants.screenWidth - 32)
                                     .cornerRadius(16)
                                     .padding(.horizontal, 10)
+                                    .onTapGesture {
+                                        showPromotionDetailView.send(promotion)
+                                    }
                             }
                         }
                         .tabViewStyle(.page(indexDisplayMode: .never))
@@ -256,7 +260,8 @@ struct HomeView: View {
             showMyDealersViewTrigger: showMyDealersViewTrigger.asDriver(),
             addCardViewTrigger: addCardViewTrigger.asDriver(),
             cardSettingsViewTrigger: cardSettingsViewTrigger.asDriver(),
-            onAppearTrigger: onAppearTrigger.asDriver()
+            onAppearTrigger: onAppearTrigger.asDriver(),
+            showPromotionDetailView: showPromotionDetailView.asDriver()
         )
         
         output = viewModel.transform(input, cancelBag: cancelBag)
