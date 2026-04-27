@@ -12,6 +12,6 @@ struct MarketingGraphics: Codable {
     let annualSalesTurnover: Double?
     let hasOffice: Bool
     let hasShowroom: Bool
-    let numberOfOutdoorAdvertising: Int
+    let numberOfOutdoorAdvertising: Int?
     let useAdvertising: String?
 }

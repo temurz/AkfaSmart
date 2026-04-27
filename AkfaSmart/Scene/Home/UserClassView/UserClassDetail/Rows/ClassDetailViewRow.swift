@@ -39,7 +39,7 @@ struct ClassDetailViewRow: View {
                     Text(
                         ConverterToString.getClassProductsAttributed(products: model.c1KlassProductGroups)
                         + AttributedString("TOTAL_OF_PRODUCTS_SHOULD_BE".localizedString)
-                        + ConverterToString.minMaxText(min: model.c1MinWeight, max: model.c1MaxWeight)
+                        + ConverterToString.minMaxText(min: model.c1MinWeight ?? 0, max: model.c1MaxWeight ?? 0)
                     )
                     .frame(width: UIScreen.main.bounds.width - 64)
                     .multilineTextAlignment(.leading)

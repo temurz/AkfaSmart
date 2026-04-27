@@ -8,9 +8,9 @@
 
 import Foundation
 struct ProductWithName: Decodable {
-    let name: String
+    let name: String?
     let id: Int
-    let rate: Double
-    let baseUnitName: String
-    let groupName: String
+    let rate: Double?
+    let baseUnitName: String?
+    let groupName: String?
 }

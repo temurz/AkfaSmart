@@ -20,7 +20,7 @@ struct MessageModel:Decodable, Hashable {
     let fileNames: [String]
     
     var fileItems: FileItem {
-        var items = FileItem(fileNames: fileNames, fileURLs: fileUrls)
+        let items = FileItem(fileNames: fileNames, fileURLs: fileUrls)
         return items
     }
 }

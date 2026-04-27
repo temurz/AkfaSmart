@@ -18,10 +18,10 @@ struct MobileClass: Decodable {
 
 struct MobileClassDetail: Decodable {
     let c1Id: Int
-    let c1Type: String
-    let c1Amount: Double
-    let c1MaxWeight: Double
-    let c1MinWeight: Double
+    let c1Type: String?
+    let c1Amount: Double?
+    let c1MaxWeight: Double?
+    let c1MinWeight: Double?
     let c1KlassProductGroups: [ModelWithIdAndName]
     let c1AmountDetail: [ClassAmountDetail]
     let c2ObjectList: [AdditionalClassDetail]

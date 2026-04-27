@@ -12,9 +12,9 @@ struct Dealer: Decodable, Equatable {
     let dealerClientCid: Int?
     let name: String?
     let clientName: String?
-    let balance: Double
-    let purchaseForMonth: Double
-    let purchaseForYear: Double
+    let balance: Double?
+    let purchaseForMonth: Double?
+    let purchaseForYear: Double?
     
     init(dealerId: Int?, dealerClientCid: Int?, name: String?, clientName: String?, balance: Double, purchaseForMonth: Double, purchaseForYear: Double) {
         self.dealerId = dealerId

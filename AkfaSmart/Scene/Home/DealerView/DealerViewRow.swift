@@ -62,9 +62,9 @@ struct DealerViewRow: View {
                                 Text("BALANCE".localizedString)
                                     .font(.subheadline)
                                     .foregroundColor(Color(hex: "#9DA8C2"))
-                                Text(model.balance.convertDecimals() + "SUM_UZS".localizedString)
+                                Text((model.balance?.convertDecimals() ?? "") + "SUM_UZS".localizedString)
                                     .font(.headline)
-                                    .foregroundColor(model.balance >= 0 ? .green : .red)
+                                    .foregroundColor(model.balance ?? 0 >= 0 ? .green : .red)
                                 Spacer()
                             }
                         }

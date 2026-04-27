@@ -31,7 +31,7 @@ struct ProductDealersListView: View {
                     backButtonTrigger.send(())
                 }
                 VStack(alignment: .leading) {
-                    Text(model.name)
+                    Text(model.name ?? "")
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9497A1"))
                     HStack(spacing: 0) {
@@ -39,7 +39,7 @@ struct ProductDealersListView: View {
                             .font(.subheadline)
                             .foregroundColor(Color(hex: "#9497A1"))
                         Spacer()
-                        Text(model.groupName)
+                        Text(model.groupName ?? "")
                     }
                     
                     HStack {
@@ -47,7 +47,7 @@ struct ProductDealersListView: View {
                             .font(.subheadline)
                             .foregroundColor(Color(hex: "#9497A1"))
                         Spacer()
-                        Text(model.rate.convertDecimals() + "UZS".localizedString)
+                        Text((model.rate?.convertDecimals() ?? "") + "UZS".localizedString)
                     }
                 }
                 .padding()
@@ -64,7 +64,7 @@ struct ProductDealersListView: View {
                             .padding(.vertical, 4)
                             .onAppear {
                                 if output.items.last?.dealerId ?? -1 == item.dealerId && output.hasMorePages {
-                                    loadMoreProductDealersTrigger.send(ProductDealersListInput(productName: model.name, latitude: 0.0, longitude: 0.0))
+                                    loadMoreProductDealersTrigger.send(ProductDealersListInput(productName: model.name ?? "", latitude: 0.0, longitude: 0.0))
                                 }
                             }
                             .listRowSeparator(.hidden)
@@ -77,7 +77,7 @@ struct ProductDealersListView: View {
         .onAppear {
             
             locationManager.didEndUpdating = { lat, long in
-                loadProductDealersTrigger.send(ProductDealersListInput(productName: model.name, latitude: lat, longitude: long))
+                loadProductDealersTrigger.send(ProductDealersListInput(productName: model.name ?? "", latitude: lat, longitude: long))
             }
         }
     }

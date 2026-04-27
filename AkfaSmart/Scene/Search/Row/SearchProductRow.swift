@@ -14,7 +14,7 @@ struct SearchProductRow: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text(model.name)
+                Text(model.name ?? "")
                     .font(.subheadline)
                     .foregroundColor(Color(hex: "#9497A1"))
                 HStack(spacing: 0) {
@@ -22,7 +22,7 @@ struct SearchProductRow: View {
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9497A1"))
                     Spacer()
-                    Text(model.groupName)
+                    Text(model.groupName ?? "")
                 }
                 
                 HStack {
@@ -30,7 +30,7 @@ struct SearchProductRow: View {
                         .font(.subheadline)
                         .foregroundColor(Color(hex: "#9497A1"))
                     Spacer()
-                    Text(model.rate.convertDecimals() + "UZS".localizedString)
+                    Text((model.rate?.convertDecimals() ?? "") + "UZS".localizedString)
                 }
             }
             .padding()
