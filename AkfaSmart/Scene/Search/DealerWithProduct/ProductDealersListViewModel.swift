@@ -15,9 +15,9 @@ struct ProductDealersListViewModel {
 
 extension ProductDealersListViewModel: ViewModel {
     struct Input {
-        let loadProductDealersTrigger: Driver<ProductDealersListInput>
-        let reloadProductDealersTrigger: Driver<ProductDealersListInput>
-        let loadMoreProductDealersTrigger: Driver<ProductDealersListInput>
+        let loadProductDealersTrigger: Driver<ProductDealersByIdInput>
+        let reloadProductDealersTrigger: Driver<ProductDealersByIdInput>
+        let loadMoreProductDealersTrigger: Driver<ProductDealersByIdInput>
         let showLocationTrigger: Driver<Location>
         let showPhoneCallTrigger: Driver<String>
         let backButtonTrigger: Driver<Void>
@@ -35,7 +35,7 @@ extension ProductDealersListViewModel: ViewModel {
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
         let output = Output()
         
-        let getPageInfo = GetPageInput(loadTrigger: input.loadProductDealersTrigger, reloadTrigger: input.reloadProductDealersTrigger, loadMoreTrigger: input.loadMoreProductDealersTrigger, getItems: useCase.getProductDealers)
+        let getPageInfo = GetPageInput(loadTrigger: input.loadProductDealersTrigger, reloadTrigger: input.reloadProductDealersTrigger, loadMoreTrigger: input.loadMoreProductDealersTrigger, getItems: useCase.getProductDealersById)
         
         let (page,error,isLoading,isReloading,isLoadingMore) = getPage(input: getPageInfo).destructured
         

@@ -16,4 +16,9 @@ extension GettingProductDealersListDomainUseCase {
         let dto = GetPageDto(page: page)
         return gateway.getProductDealers(dto: dto, input: input)
     }
+    
+    func getProductDealersById(input: ProductDealersByIdInput, page: Int) -> Observable<PagingInfo<ProductDealerWithLocation>> {
+        let dto = GetPageDto(page: page)
+        return gateway.getProductDealersById(dto: dto, input: input)
+    }
 }

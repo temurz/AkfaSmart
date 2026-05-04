@@ -41,4 +41,21 @@ extension API {
             super.init(urlString: API.Urls.getProductsListByNameAndLocation, parameters: params, method: .post, requireAccessToken: true)
         }
     }
+    
+    func getProductDealersById(_ input: GetProductDealersByIdInput) -> Observable<[ProductDealerWithLocation]> {
+        requestList(input)
+    }
+    
+    final class GetProductDealersByIdInput: APIInput {
+        init(dto: GetPageDto, input: ProductDealersByIdInput) {
+            let params: Parameters = [
+                "productId": input.productId,
+                "latitude": input.latitude,
+                "longitude": input.longitude,
+                "length": dto.perPage,
+                "start": dto.page
+            ]
+            super.init(urlString: API.Urls.getProductDealersListById, parameters: params, method: .post, requireAccessToken: true)
+        }
+    }
 }

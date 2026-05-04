@@ -43,12 +43,12 @@ struct SearchProductRow: View {
             }
             .background(Color.white)
             .padding(.horizontal)
-            .onTapGesture {
-                selected?()
-            }
         }
         .background(.white)
         .cornerRadius(8)
         .shadow(radius: 4)
+        .onTapGesture {
+            selected?()
+        }
     }
 }

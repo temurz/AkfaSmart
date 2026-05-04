@@ -75,6 +75,7 @@ extension API {
         //Products
         static let getProductsList = Base.BASE_URL + "/api/mobile/product/list"
         static let getProductsListByNameAndLocation = Base.BASE_URL + "/api/mobile/product/listByProductName"
+        static let getProductDealersListById = Base.BASE_URL + "/api/mobile/product/listByProductId"
 
         //User
         static let getGeneralUserInfo = Base.BASE_URL + "/api/mobile/mobile_user/userInfo"

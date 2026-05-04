@@ -14,9 +14,9 @@ struct ProductDealersListView: View {
     @ObservedObject var output: ProductDealersListViewModel.Output
     @ObservedObject var locationManager = LocationManager()
 
-    private let loadProductDealersTrigger = PassthroughSubject<ProductDealersListInput, Never>()
-    private let reloadProductDealersTrigger = PassthroughSubject<ProductDealersListInput, Never>()
-    private let loadMoreProductDealersTrigger = PassthroughSubject<ProductDealersListInput, Never>()
+    private let loadProductDealersTrigger = PassthroughSubject<ProductDealersByIdInput, Never>()
+    private let reloadProductDealersTrigger = PassthroughSubject<ProductDealersByIdInput, Never>()
+    private let loadMoreProductDealersTrigger = PassthroughSubject<ProductDealersByIdInput, Never>()
     
     private let showLocationTrigger = PassthroughSubject<Location, Never>()
     private let showPhoneCallTrigger = PassthroughSubject<String, Never>()
@@ -25,7 +25,7 @@ struct ProductDealersListView: View {
     private let cancelBag = CancelBag()
     
     var body: some View {
-        return LoadingView(isShowing: .constant(false), text: .constant("")) {
+        return LoadingView(isShowing: $output.isLoading, text: .constant("")) {
             VStack {
                 CustomNavigationBar(title: "DEALERS_WITH_THIS_PRODUCT".localizedString) {
                     backButtonTrigger.send(())
@@ -64,7 +64,7 @@ struct ProductDealersListView: View {
                             .padding(.vertical, 4)
                             .onAppear {
                                 if output.items.last?.dealerId ?? -1 == item.dealerId && output.hasMorePages {
-                                    loadMoreProductDealersTrigger.send(ProductDealersListInput(productName: model.name ?? "", latitude: 0.0, longitude: 0.0))
+                                    loadMoreProductDealersTrigger.send(ProductDealersByIdInput(productId: model.id, latitude: 0.0, longitude: 0.0))
                                 }
                             }
                             .listRowSeparator(.hidden)
@@ -75,10 +75,10 @@ struct ProductDealersListView: View {
             }
         }
         .onAppear {
-            
             locationManager.didEndUpdating = { lat, long in
-                loadProductDealersTrigger.send(ProductDealersListInput(productName: model.name ?? "", latitude: lat, longitude: long))
+                loadProductDealersTrigger.send(ProductDealersByIdInput(productId: model.id, latitude: lat, longitude: long))
             }
+            locationManager.startUpdating()
         }
     }
     
@@ -98,15 +98,18 @@ struct ProductDealersListView: View {
 }
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    let manager = CLLocationManager()
+    var manager: CLLocationManager? = CLLocationManager()
     @Published var latitude: Double = 0
     @Published var longitude: Double = 0
     var didEndUpdating: ((Double, Double) -> Void)?
     override init() {
         super.init()
-        manager.delegate = self
-        manager.startUpdatingLocation()
-        manager.requestWhenInUseAuthorization()
+        manager?.delegate = self
+        manager?.requestWhenInUseAuthorization()
+    }
+
+    func startUpdating() {
+        manager?.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
