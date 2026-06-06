@@ -151,6 +151,7 @@
 		3420A0B82B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0B72B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift */; };
 		4C4FF5222FD3F5D40004D544 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4FF5212FD3F5D40004D544 /* FirebaseCore */; };
 		4C4FF5242FD3F5D40004D544 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4FF5232FD3F5D40004D544 /* FirebaseMessaging */; };
+		4C4FF5262FD3F62C0004D544 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4FF5252FD3F62B0004D544 /* GoogleService-Info.plist */; };
 		B80331442BA0BECE0019ACA5 /* EditInfographicsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331432BA0BECE0019ACA5 /* EditInfographicsGateway.swift */; };
 		B80331462BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331452BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift */; };
 		B80331492BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331482BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift */; };
@@ -683,6 +684,7 @@
 		3420A0B12B9E405700DC3E3D /* Message+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+API.swift"; sourceTree = "<group>"; };
 		3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesGateway.swift; sourceTree = "<group>"; };
 		3420A0B72B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingMessagesDomainUseCase.swift; sourceTree = "<group>"; };
+		4C4FF5252FD3F62B0004D544 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B80331432BA0BECE0019ACA5 /* EditInfographicsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsGateway.swift; sourceTree = "<group>"; };
 		B80331452BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsDomainUseCase.swift; sourceTree = "<group>"; };
 		B80331482BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsViewUseCase.swift; sourceTree = "<group>"; };
@@ -1417,6 +1419,7 @@
 		178722F524BD537D00D90F8E /* AkfaSmart */ = {
 			isa = PBXGroup;
 			children = (
+				4C4FF5252FD3F62B0004D544 /* GoogleService-Info.plist */,
 				1787231924BD53AC00D90F8E /* Domain */,
 				1787231824BD53A400D90F8E /* Data */,
 				1787231A24BD53B200D90F8E /* Scene */,
@@ -2840,6 +2843,7 @@
 				B8512B122B9E5BA900CEE80A /* Localizable.strings in Resources */,
 				1787230024BD537E00D90F8E /* Preview Assets.xcassets in Resources */,
 				176BAA4C24D1319C00324D3C /* MenuCell.xib in Resources */,
+				4C4FF5262FD3F62C0004D544 /* GoogleService-Info.plist in Resources */,
 				178722FD24BD537E00D90F8E /* Assets.xcassets in Resources */,
 				176BAA4424D1154300324D3C /* Main.storyboard in Resources */,
 			);
