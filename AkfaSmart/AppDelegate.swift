@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import netfox
+import FirebaseMessaging
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {

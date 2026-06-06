@@ -149,6 +149,8 @@
 		3420A0B22B9E405700DC3E3D /* Message+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0B12B9E405700DC3E3D /* Message+API.swift */; };
 		3420A0B42B9E444800DC3E3D /* MessagesGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */; };
 		3420A0B82B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0B72B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift */; };
+		4C4FF5222FD3F5D40004D544 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4FF5212FD3F5D40004D544 /* FirebaseCore */; };
+		4C4FF5242FD3F5D40004D544 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 4C4FF5232FD3F5D40004D544 /* FirebaseMessaging */; };
 		B80331442BA0BECE0019ACA5 /* EditInfographicsGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331432BA0BECE0019ACA5 /* EditInfographicsGateway.swift */; };
 		B80331462BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331452BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift */; };
 		B80331492BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80331482BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift */; };
@@ -1073,8 +1075,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4FF5242FD3F5D40004D544 /* FirebaseMessaging in Frameworks */,
 				174A188A24C81EEA00AB39D9 /* SwiftUIRefresh in Frameworks */,
 				1B425EAF24FF9058000F7F6B /* ESPullToRefresh in Frameworks */,
+				4C4FF5222FD3F5D40004D544 /* FirebaseCore in Frameworks */,
 				1BD163F124FF8CA700EBC063 /* MBProgressHUD in Frameworks */,
 				177428D524F3691B00C141E4 /* ValidatedPropertyKit in Frameworks */,
 				176BAA5F24D2690300324D3C /* Alamofire in Frameworks */,
@@ -2738,6 +2742,8 @@
 				B866A9562B7116CE00202C9F /* Shimmer */,
 				B8AC368E2B79BA870060D52D /* IQKeyboardManagerSwift */,
 				B8E1B0EA2E222E1C00FE9467 /* netfox */,
+				4C4FF5212FD3F5D40004D544 /* FirebaseCore */,
+				4C4FF5232FD3F5D40004D544 /* FirebaseMessaging */,
 			);
 			productName = CleanArchitecture;
 			productReference = 178722F324BD537D00D90F8E /* AkfaSmart.app */;
@@ -2810,6 +2816,7 @@
 				B866A9552B7116CE00202C9F /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 				B8AC368D2B79BA870060D52D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				B8E1B0E52E222D0300FE9467 /* XCRemoteSwiftPackageReference "netfox" */,
+				4C4FF5202FD3F5D40004D544 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 178722F424BD537D00D90F8E /* Products */;
 			projectDirPath = "";
@@ -3759,6 +3766,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		4C4FF5202FD3F5D40004D544 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.14.0;
+			};
+		};
 		B866A9442B70FB0500202C9F /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
@@ -3853,6 +3868,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1BD163EF24FF8CA700EBC063 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
 			productName = MBProgressHUD;
+		};
+		4C4FF5212FD3F5D40004D544 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C4FF5202FD3F5D40004D544 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		4C4FF5232FD3F5D40004D544 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C4FF5202FD3F5D40004D544 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		B866A9462B70FB6200202C9F /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
