@@ -15,12 +15,13 @@ extension API {
     
     final class LoginInput: APIInput {
         init(dto: LoginDto) {
-            let params: Parameters = [
+            var params: Parameters = [
                 "username": dto.username ?? "",
                 "password": dto.password ?? ""
             ]
-            
-            
+            if let fcmToken = AuthApp.shared.fcmToken {
+                params["fcmToken"] = fcmToken
+            }
             super.init(urlString: API.Urls.login,
                        parameters: params,
                        method: .post,

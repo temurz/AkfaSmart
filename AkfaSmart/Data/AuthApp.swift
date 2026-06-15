@@ -19,6 +19,14 @@ class AuthApp {
     private let keySMSCode: String = "SMSCodeKey"
     private let defaults = UserDefaults.standard
     
+    //MARK: FCM Token
+    private let keyFcmToken: String = "fcmTokenKey"
+
+    var fcmToken: String? {
+        get { defaults.string(forKey: keyFcmToken) }
+        set { defaults.setValue(newValue, forKey: keyFcmToken) }
+    }
+
     //MARK: Token
     var token:String? {
         get {

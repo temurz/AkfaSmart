@@ -140,6 +140,7 @@
 		1B425EAA24FF8D1A000F7F6B /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1B425EA924FF8D1A000F7F6B /* SDWebImage */; };
 		1B425EAC24FF8D1A000F7F6B /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1B425EAB24FF8D1A000F7F6B /* SDWebImageMapKit */; };
 		1B425EAF24FF9058000F7F6B /* ESPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 1B425EAE24FF9058000F7F6B /* ESPullToRefresh */; };
+		1BB99F098435C940F8397D41 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B572CB6F53A646D1A62D85C1 /* NotificationManager.swift */; };
 		1BD163F124FF8CA700EBC063 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 1BD163F024FF8CA700EBC063 /* MBProgressHUD */; };
 		3420A0A42B9D890600DC3E3D /* TechnicalSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0A32B9D890600DC3E3D /* TechnicalSupportView.swift */; };
 		3420A0A62B9D891E00DC3E3D /* TechnicalSupportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420A0A52B9D891E00DC3E3D /* TechnicalSupportViewModel.swift */; };
@@ -685,6 +686,9 @@
 		3420A0B32B9E444800DC3E3D /* MessagesGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesGateway.swift; sourceTree = "<group>"; };
 		3420A0B72B9E47E400DC3E3D /* GettingMessagesDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingMessagesDomainUseCase.swift; sourceTree = "<group>"; };
 		4C4FF5252FD3F62B0004D544 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4C4FF5272FD3F7FC0004D544 /* AkfaSmart.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AkfaSmart.entitlements; sourceTree = "<group>"; };
+		4C4FFD6D2FDFE6AD0004D544 /* AkfaSmartRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AkfaSmartRelease.entitlements; sourceTree = "<group>"; };
+		B572CB6F53A646D1A62D85C1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B80331432BA0BECE0019ACA5 /* EditInfographicsGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsGateway.swift; sourceTree = "<group>"; };
 		B80331452BA0BF4D0019ACA5 /* EditInfographicsDomainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsDomainUseCase.swift; sourceTree = "<group>"; };
 		B80331482BA0BF970019ACA5 /* EditInfographicsViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfographicsViewUseCase.swift; sourceTree = "<group>"; };
@@ -1419,6 +1423,8 @@
 		178722F524BD537D00D90F8E /* AkfaSmart */ = {
 			isa = PBXGroup;
 			children = (
+				4C4FFD6D2FDFE6AD0004D544 /* AkfaSmartRelease.entitlements */,
+				4C4FF5272FD3F7FC0004D544 /* AkfaSmart.entitlements */,
 				4C4FF5252FD3F62B0004D544 /* GoogleService-Info.plist */,
 				1787231924BD53AC00D90F8E /* Domain */,
 				1787231824BD53A400D90F8E /* Data */,
@@ -1427,6 +1433,7 @@
 				1787234F24BD566300D90F8E /* Support */,
 				1787234E24BD565E00D90F8E /* Config */,
 				178722F624BD537D00D90F8E /* AppDelegate.swift */,
+				B572CB6F53A646D1A62D85C1 /* NotificationManager.swift */,
 				1787233224BD54B600D90F8E /* Assembler.swift */,
 				178722F824BD537D00D90F8E /* SceneDelegate.swift */,
 				178722FC24BD537E00D90F8E /* Assets.xcassets */,
@@ -2921,6 +2928,7 @@
 				B877FD7B2B8C318600D24CB0 /* ImageDownloaderDomainUseCase.swift in Sources */,
 				B8AC367E2B799E5D0060D52D /* ShowingAddDealerView.swift in Sources */,
 				178722F724BD537D00D90F8E /* AppDelegate.swift in Sources */,
+				1BB99F098435C940F8397D41 /* NotificationManager.swift in Sources */,
 				B8E1B0E22E222B9800FE9467 /* CouponInfo.swift in Sources */,
 				B877FD632B8BC05900D24CB0 /* GetDealersGateway.swift in Sources */,
 				B8DAD2532BAAC23300857140 /* ToastView.swift in Sources */,
@@ -3554,6 +3562,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AkfaSmart/AkfaSmart.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3582,6 +3591,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AkfaSmart/AkfaSmartRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

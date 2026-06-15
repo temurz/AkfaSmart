@@ -26,8 +26,21 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             NFX.sharedInstance().stop()
         }
-        
+
+        NotificationManager.shared.setup(application: application)
+
         return true
+    }
+
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+        print("✅ APNs token received: \(deviceToken.map { String(format: "%02x", $0) }.joined())")
+    }
+
+    func application(_ application: UIApplication,
+                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("❌ APNs registration failed: \(error)")
     }
 
     // MARK: UISceneSession Lifecycle
