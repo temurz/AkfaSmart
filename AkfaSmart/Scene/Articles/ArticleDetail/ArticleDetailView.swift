@@ -25,16 +25,11 @@ struct ArticleDetailView: View {
                 navigationContoller.popViewController(animated: true)
             }
             ScrollView {
-                VStack {
-                    if let data = output.imageData {
-                        Image(data: data)?
-                            .resizable()
-                            .frame(width: UIScreen.main.bounds.width - 64)
-                            .frame(height: 200)
-                            .scaledToFill()
-                            .cornerRadius(12)
-                            .padding()
-                    }
+                if let data = output.imageData {
+                    Image(data: data)?
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
                 }
                 VStack(alignment: .leading) {
                         Text(itemModel.title ?? "")

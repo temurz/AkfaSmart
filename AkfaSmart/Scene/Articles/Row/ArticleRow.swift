@@ -15,49 +15,46 @@ struct ArticleRow: View {
     private let getImageTrigger = PassthroughSubject<String,Never>()
     private let cancelBag = CancelBag()
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             if let data = output.imageData {
                 Image(data: data)?
                     .resizable()
-                    .frame(width: UIScreen.main.bounds.width - 64)
-                    .frame(height: 200)
-                    .scaledToFill()
-                    .cornerRadius(12)
-                    .padding()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(12, corners: [.topLeft, .topRight])
             }
-            Group {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(itemModel.title ?? "")
                     .font(.headline)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
-                    .padding(.top)
                 Text(itemModel.shortContent ?? "")
                     .font(.footnote)
-                    .foregroundColor(Color.gray)
+                    .foregroundColor(.gray)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
+                Divider()
+                HStack {
+                    Text(itemModel.type ?? "")
+                        .foregroundColor(.white)
+                        .font(.subheadline)
+                        .padding(4)
+                        .background(Color(hex: itemModel.buttonColor ?? ""))
+                        .cornerRadius(6)
+                    Spacer()
+                    Text(Date(timeIntervalSince1970: TimeInterval(itemModel.date ?? 1)/1000.0).convertToDateUS())
+                        .font(.subheadline)
+                        .foregroundColor(Color(hex: "#9DA8C2"))
+                        .padding(6)
+                        .background(Color(hex: "#F7F7F6"))
+                        .cornerRadius(6)
+                }
             }
-            .padding(.horizontal)
-            Divider()
-            HStack {
-                Text(itemModel.type ?? "")
-                    .foregroundColor(.white)
-                    .font(.subheadline)
-                    .padding(4)
-                    .background(Color(hex: itemModel.buttonColor ?? ""))
-                    .cornerRadius(6)
-                    .padding()
-                Spacer()
-                Text(Date(timeIntervalSince1970: TimeInterval(itemModel.date ?? 1)/1000.0).convertToDateUS())
-                    .font(.subheadline)
-                    .foregroundColor(Color(hex: "#9DA8C2"))
-                    .padding(6)
-                    .background(Color.init(hex: "#F7F7F6"))
-                    .cornerRadius(6)
-                    .padding()
-            }
+            .padding()
         }
+        .background(Color.white)
+        .cornerRadius(12)
         .overlay {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color(hex: "#E2E5ED"))

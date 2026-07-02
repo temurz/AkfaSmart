@@ -15,42 +15,37 @@ struct NewsTableRow: View {
     private let getImageTrigger = PassthroughSubject<String,Never>()
     private let cancelBag = CancelBag()
     var body: some View {
-        VStack(alignment: .leading) {
-            if output.imageData != nil {
-                Image(data: output.imageData!)?
+        VStack(alignment: .leading, spacing: 0) {
+            if let data = output.imageData {
+                Image(data: data)?
                     .resizable()
-                    .frame(width: UIScreen.main.bounds.width - 64)
-                    .frame(height: 200)
-                    .scaledToFill()
-                    .cornerRadius(12)
-                    .padding()
-                                        
-                
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(12, corners: [.topLeft, .topRight])
             }
-            Group {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(item.title ?? "")
                     .font(.headline)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
-                    .padding(.top)
                 Text(item.shortContent ?? "")
                     .font(.footnote)
-                    .foregroundColor(Color.gray)
+                    .foregroundColor(.gray)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
+                Divider()
+                Text(Date(timeIntervalSince1970: TimeInterval(item.date ?? 1)/1000.0).convertToDateUS())
+                    .font(.subheadline)
+                    .foregroundColor(Color(hex: "#9DA8C2"))
+                    .padding(6)
+                    .background(Color(hex: "#F7F7F6"))
+                    .cornerRadius(6)
             }
-            .padding(.horizontal)
-            
-            Divider()
-            Text(Date(timeIntervalSince1970: TimeInterval(item.date ?? 1)/1000.0).convertToDateUS())
-                .font(.subheadline)
-                .foregroundColor(Color(hex: "#9DA8C2"))
-                .padding(6)
-                .background(Color.init(hex: "#F7F7F6"))
-                .cornerRadius(6)
-                .padding()
+            .padding()
         }
+        .background(Color.white)
+        .cornerRadius(12)
         .overlay {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color(hex: "#E2E5ED"))
