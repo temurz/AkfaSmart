@@ -101,5 +101,14 @@ extension API {
         //Coupons
         static let getPromotionList = Base.BASE_URL + "/api/mobile/coupon/getContentList"
         static let getCouponItems = Base.BASE_URL + "/api/mobile/coupon/getCoupon"
+
+        //Order / Cart
+        static let saveOrderItem = Base.BASE_URL + "/api/mobile/order-item/save"
+        static let changeOrderItemQuantity = Base.BASE_URL + "/api/mobile/order-item/change-quantity"
+        static let deleteOrderItem = Base.BASE_URL + "/api/mobile/order-item/delete"
+        static let getInCartItemsCount = Base.BASE_URL + "/api/mobile/order-item/in-cart/count"
+        static let getCartItems = Base.BASE_URL + "/api/mobile/order/get-cart-items"
+        static let addDealerToOrder = Base.BASE_URL + "/api/mobile/order/add-dealer"
+        static let completeOrder = Base.BASE_URL + "/api/mobile/order/complete"
     }
 }

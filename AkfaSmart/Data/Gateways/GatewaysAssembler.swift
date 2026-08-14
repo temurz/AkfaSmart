@@ -158,6 +158,10 @@ extension GatewaysAssembler where Self: DefaultAssembler {
     func resolve() -> GetCouponItemsGatewayProtocol {
         GetCouponItemsGateway()
     }
+
+    func resolve() -> OrderGatewayType {
+        OrderGateway()
+    }
 }
 
 extension GatewaysAssembler where Self: PreviewAssembler {
@@ -300,5 +304,9 @@ extension GatewaysAssembler where Self: PreviewAssembler {
     }
     func resolve() -> GetCouponItemsGatewayProtocol {
         GetCouponItemsGateway()
+    }
+
+    func resolve() -> OrderGatewayType {
+        OrderGateway()
     }
 }

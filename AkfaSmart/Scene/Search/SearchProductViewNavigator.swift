@@ -9,9 +9,10 @@
 import UIKit
 protocol SearchProductViewNavigatorType {
     func showProductDealersListView(model: ProductWithName)
+    func showCartView()
 }
 
-struct SearchProductViewNavigator: SearchProductViewNavigatorType, ShowingProductDealersListView {
+struct SearchProductViewNavigator: SearchProductViewNavigatorType, ShowingProductDealersListView, ShowingCartView {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
 }

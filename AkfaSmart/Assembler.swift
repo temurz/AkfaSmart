@@ -47,7 +47,8 @@ protocol Assembler: AnyObject,
     MyDealersViewAssembler,
     MyCouponsAssembler,
     PromotionDetailViewAssembler,
-    PromotionsListAssembler
+    PromotionsListAssembler,
+    CartAssembler
 {
     
 }

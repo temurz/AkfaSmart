@@ -85,6 +85,13 @@
 "GROUP_WITH_COLON" = "Guruh: ";
 
 "SEARCH_PRODUCT" = "Mahsulotni qidirish";
+
+"NAME_WITH_COLON" = "Nomi: ";
+"ADD_TO_CART" = "Savatga qo'shish";
+"ORDER_INFO_TITLE" = "Buyurtma haqida";
+"SELECT_DEALER" = "Dilerni tanlang";
+"SUBMIT_ORDER" = "Buyurtmani yuborish";
+"ITEMS_SUFFIX" = "mahsulot";
 "WELCOME" = "Xush kelibsiz!";
 "ADD_MY_DEALER" = "Mening dilerimni biriktirish";
 "DISMISS" = "Bekor qilish";

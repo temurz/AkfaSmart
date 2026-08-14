@@ -28,7 +28,7 @@ extension SearchProductViewAssembler where Self: DefaultAssembler {
         return SearchProductViewNavigator(assembler: self, navigationController: navigationController)
     }
     func resolve() -> SearchProductViewUseCaseType {
-        return SearchProductViewUseCase(gateway: resolve())
+        return SearchProductViewUseCase(gateway: resolve(), orderGateway: resolve())
     }
 }
 
@@ -37,6 +37,6 @@ extension SearchProductViewAssembler where Self: PreviewAssembler {
         return SearchProductViewNavigator(assembler: self, navigationController: navigationController)
     }
     func resolve() -> SearchProductViewUseCaseType {
-        return SearchProductViewUseCase(gateway: resolve())
+        return SearchProductViewUseCase(gateway: resolve(), orderGateway: resolve())
     }
 }

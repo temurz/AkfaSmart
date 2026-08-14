@@ -83,6 +83,13 @@
 "GROUP_WITH_COLON" = "Группа: ";
 "DEALERS_WITH_THIS_PRODUCT" = "Дилеры с этим товаром";
 "SEARCH_PRODUCT" = "Поиск товара";
+
+"NAME_WITH_COLON" = "Имя: ";
+"ADD_TO_CART" = "Добавить в корзину";
+"ORDER_INFO_TITLE" = "Инфо о заказе";
+"SELECT_DEALER" = "Выберите диллер";
+"SUBMIT_ORDER" = "Отправить заказ";
+"ITEMS_SUFFIX" = "товаров";
 "WELCOME" = "Добро пожаловать!";
 "ADD_MY_DEALER" = "Добавить моего дилера";
 "DISMISS" = "Отмена";

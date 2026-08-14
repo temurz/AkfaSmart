@@ -82,6 +82,13 @@
 "GROUP_WITH_COLON" = "Group: ";
 "DEALERS_WITH_THIS_PRODUCT" = "Dealers with this product";
 "SEARCH_PRODUCT" = "Search product";
+
+"NAME_WITH_COLON" = "Name: ";
+"ADD_TO_CART" = "Add to cart";
+"ORDER_INFO_TITLE" = "Order info";
+"SELECT_DEALER" = "Select dealer";
+"SUBMIT_ORDER" = "Submit order";
+"ITEMS_SUFFIX" = "items";
 "WELCOME" = "Welcome!";
 "ADD_MY_DEALER" = "Add my dealer";
 "DISMISS" = "Dismiss";

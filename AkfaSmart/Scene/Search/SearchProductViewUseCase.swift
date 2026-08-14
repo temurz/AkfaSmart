@@ -9,8 +9,14 @@
 import Foundation
 protocol SearchProductViewUseCaseType {
     func getProductsList(text: String, page: Int) -> Observable<PagingInfo<ProductWithName>>
+    func saveOrderItem(productId: Int, quantity: Int) -> Observable<CartItem>
 }
 
 struct SearchProductViewUseCase: SearchProductViewUseCaseType, GettingProductsDomainUseCase {
-    var gateway: ProductsListGatewayType   
+    var gateway: ProductsListGatewayType
+    var orderGateway: OrderGatewayType
+
+    func saveOrderItem(productId: Int, quantity: Int) -> Observable<CartItem> {
+        orderGateway.saveOrderItem(productId: productId, quantity: quantity)
+    }
 }
