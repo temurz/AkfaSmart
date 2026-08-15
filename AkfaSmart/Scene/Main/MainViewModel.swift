@@ -25,6 +25,7 @@ extension MainViewModel: ViewModel {
         let getGeneralInfoTrigger: Driver<Void>
         let showChatTrigger: Driver<Void>
         let logoutTrigger: Driver<Void>
+        let showMyOrdersTrigger: Driver<Void>
     }
     
     final class Output: ObservableObject {
@@ -107,6 +108,12 @@ extension MainViewModel: ViewModel {
         input.showChatTrigger
             .sink {
                 navigator.showTechnicalSupport()
+            }
+            .store(in: cancelBag)
+
+        input.showMyOrdersTrigger
+            .sink {
+                navigator.showMyOrders()
             }
             .store(in: cancelBag)
         

@@ -179,6 +179,17 @@
 "TECHNICAL_SUPPORT" = "Техническая поддержка";
 "PIN_CODE" = "ПИН-код";
 "LANGUAGE" = "Язык";
+
+"MY_ORDERS" = "Мои заказы";
+"QUANTITY_WITH_COLON" = "Количество";
+"STATUS_WITH_COLON" = "Статус";
+"TOTAL_AMOUNT" = "Общая сумма";
+"ORDER_STATUS_NEW" = "Новый";
+"ORDER_STATUS_IN_DEALER" = "У дилера";
+"ORDER_STATUS_APPROVED" = "Одобренный";
+"ORDER_STATUS_CANCELED" = "Отменено";
+"ORDER_DETAIL_TITLE" = "Информация о заказе";
+"CANCEL_ORDER" = "Отменить заказ";
 "CHAT_IS_EMPTY" = "У вас нет сообщений";
 "LIST_IS_EMPTY" = "Список пуст";
 "FIRST_NAME" = "Имя";

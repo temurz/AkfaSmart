@@ -20,7 +20,7 @@ protocol SettingsNavigatorType {
     func showPINCodeView(state: PINCodeState)
 }
 
-struct SettingsNavigator: 
+struct SettingsNavigator:
     SettingsNavigatorType,
     ShowingLogin,
     ShowingInfograpics,

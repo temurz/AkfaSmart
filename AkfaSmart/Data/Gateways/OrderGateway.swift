@@ -12,6 +12,9 @@ protocol OrderGatewayType {
     func getInCartItemsCount() -> Observable<Int>
     func addDealerToOrder(dealerId: Int) -> Observable<Bool>
     func completeOrder() -> Observable<Bool>
+    func getAllOrdersList(status: String, dto: GetPageDto) -> Observable<PagingInfo<OrderSummary>>
+    func getOrderItems(orderId: Int) -> Observable<[CartItem]>
+    func cancelOrder(orderId: Int) -> Observable<Bool>
 }
 
 struct OrderGateway: OrderGatewayType {
@@ -43,5 +46,19 @@ struct OrderGateway: OrderGatewayType {
 
     func completeOrder() -> Observable<Bool> {
         API.shared.completeOrder(API.CompleteOrderInput())
+    }
+
+    func getAllOrdersList(status: String, dto: GetPageDto) -> Observable<PagingInfo<OrderSummary>> {
+        API.shared.getAllOrdersList(API.GetAllOrdersListInput(status: status, dto: dto))
+            .map { PagingInfo(page: dto.page, items: $0, hasMorePages: $0.count == dto.perPage) }
+            .eraseToAnyPublisher()
+    }
+
+    func getOrderItems(orderId: Int) -> Observable<[CartItem]> {
+        API.shared.getOrderItems(API.GetOrderItemsInput(orderId: orderId))
+    }
+
+    func cancelOrder(orderId: Int) -> Observable<Bool> {
+        API.shared.cancelOrder(API.CancelOrderInput(orderId: orderId))
     }
 }

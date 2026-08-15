@@ -182,6 +182,17 @@
 "TECHNICAL_SUPPORT" = "Texnik yordam";
 "PIN_CODE" = "PIN-kod";
 "LANGUAGE" = "Til";
+
+"MY_ORDERS" = "Mening buyurtmalarim";
+"QUANTITY_WITH_COLON" = "Miqdori";
+"STATUS_WITH_COLON" = "Holati";
+"TOTAL_AMOUNT" = "Umumiy summa";
+"ORDER_STATUS_NEW" = "Yangi";
+"ORDER_STATUS_IN_DEALER" = "Dilerda";
+"ORDER_STATUS_APPROVED" = "Tasdiqlangan";
+"ORDER_STATUS_CANCELED" = "Bekor qilingan";
+"ORDER_DETAIL_TITLE" = "Buyurtma ma'lumoti";
+"CANCEL_ORDER" = "Buyurtmani bekor qilish";
 "CHAT_IS_EMPTY" = "Sizda xatlar yo'q";
 "LIST_IS_EMPTY" = "Ro'yxat bo'sh";
 "FIRST_NAME" = "Ismi";

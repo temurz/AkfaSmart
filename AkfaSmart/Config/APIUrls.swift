@@ -110,5 +110,8 @@ extension API {
         static let getCartItems = Base.BASE_URL + "/api/mobile/order/get-cart-items"
         static let addDealerToOrder = Base.BASE_URL + "/api/mobile/order/add-dealer"
         static let completeOrder = Base.BASE_URL + "/api/mobile/order/complete"
+        static let getAllOrdersList = Base.BASE_URL + "/api/mobile/order/all-orders-list"
+        static let getOrderItemsByOrderId = Base.BASE_URL + "/api/mobile/order-item/getByOrderId"
+        static let cancelOrder = Base.BASE_URL + "/api/mobile/order/cancel"
     }
 }

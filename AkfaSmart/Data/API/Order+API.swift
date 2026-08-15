@@ -97,3 +97,46 @@ extension API {
         }
     }
 }
+
+extension API {
+    func getAllOrdersList(_ input: GetAllOrdersListInput) -> Observable<[OrderSummary]> {
+        requestList(input)
+    }
+
+    final class GetAllOrdersListInput: APIInput {
+        init(status: String, dto: GetPageDto) {
+            let parameters: Parameters = [
+                "orderStatus": status,
+                "length": dto.perPage,
+                "start": dto.page
+            ]
+            super.init(urlString: API.Urls.getAllOrdersList, parameters: parameters, method: .get, requireAccessToken: true)
+        }
+    }
+}
+
+extension API {
+    func getOrderItems(_ input: GetOrderItemsInput) -> Observable<[CartItem]> {
+        requestList(input)
+    }
+
+    final class GetOrderItemsInput: APIInput {
+        init(orderId: Int) {
+            let url = API.Urls.getOrderItemsByOrderId + "/\(orderId)"
+            super.init(urlString: url, parameters: nil, method: .get, requireAccessToken: true)
+        }
+    }
+}
+
+extension API {
+    func cancelOrder(_ input: CancelOrderInput) -> Observable<Bool> {
+        success(input)
+    }
+
+    final class CancelOrderInput: APIInput {
+        init(orderId: Int) {
+            let url = API.Urls.cancelOrder + "/\(orderId)"
+            super.init(urlString: url, parameters: nil, method: .put, requireAccessToken: true)
+        }
+    }
+}

@@ -177,6 +177,17 @@
 "TECHNICAL_SUPPORT" = "Technical support";
 "PIN_CODE" = "PIN-code";
 "LANGUAGE" = "Language";
+
+"MY_ORDERS" = "My orders";
+"QUANTITY_WITH_COLON" = "Quantity";
+"STATUS_WITH_COLON" = "Status";
+"TOTAL_AMOUNT" = "Total amount";
+"ORDER_STATUS_NEW" = "New";
+"ORDER_STATUS_IN_DEALER" = "At dealer";
+"ORDER_STATUS_APPROVED" = "Approved";
+"ORDER_STATUS_CANCELED" = "Canceled";
+"ORDER_DETAIL_TITLE" = "Order info";
+"CANCEL_ORDER" = "Cancel order";
 "CHAT_IS_EMPTY" = "You have no messages";
 "LIST_IS_EMPTY" = "List is empty";
 "FIRST_NAME" = "First name";

@@ -19,6 +19,7 @@ struct MainView: View {
     private var showSettingsTrigger = PassthroughSubject<Void,Never>()
     private let showChatTrigger = PassthroughSubject<Void,Never>()
     private let logoutTrigger = PassthroughSubject<Void,Never>()
+    private let showMyOrdersTrigger = PassthroughSubject<Void,Never>()
     private let cancelBag = CancelBag()
     
     var body: some View {
@@ -54,6 +55,7 @@ struct MainView: View {
                         showClassDetailTrigger: showClassDetailViewTrigger,
                         showChatTrigger: showChatTrigger,
                         logoutTrigger: logoutTrigger,
+                        showMyOrdersTrigger: showMyOrdersTrigger,
                         showSettingsAction: {
                             self.showSideMenu = false
                             viewRouter.route(selectedPageId: MainPage.settings.rawValue)
@@ -91,7 +93,8 @@ struct MainView: View {
             showClassDetailViewTrigger: showClassDetailViewTrigger.asDriver(),
             getGeneralInfoTrigger: getGeneralInfoTrigger.asDriver(),
             showChatTrigger: showChatTrigger.asDriver(),
-            logoutTrigger: logoutTrigger.asDriver()
+            logoutTrigger: logoutTrigger.asDriver(),
+            showMyOrdersTrigger: showMyOrdersTrigger.asDriver()
         )
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }
@@ -106,7 +109,8 @@ struct SideMenu: View {
     var showClassDetailTrigger: PassthroughSubject<Void,Never>
     var showChatTrigger: PassthroughSubject<Void,Never>
     var logoutTrigger: PassthroughSubject<Void,Never>
-    
+    var showMyOrdersTrigger: PassthroughSubject<Void,Never>
+
     var showSettingsAction: (() -> Void)?
     
     var body: some View {
@@ -121,12 +125,30 @@ struct SideMenu: View {
                 }
             VStack {
                 Button {
+                    showMyOrdersTrigger.send(())
+                } label: {
+                    HStack {
+                        Image(systemName: "bag")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(Colors.customRedColor)
+                            .frame(width: 20, height: 20)
+                        Text("MY_ORDERS".localizedString)
+                            .foregroundStyle(Colors.textSteelColor)
+                        Spacer()
+                    }
+                    .padding(.vertical)
+                }
+
+                Button {
                     showSettingsAction?()
                 } label: {
                     HStack {
                         Image("settings_icon")
+                            .renderingMode(.template)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .foregroundColor(Colors.customRedColor)
                             .frame(width: 20, height: 20)
                         Text("SETTINGS_TITLE".localizedString)
                             .foregroundStyle(Colors.textSteelColor)
@@ -140,8 +162,10 @@ struct SideMenu: View {
                 } label: {
                     HStack {
                         Image("headphone")
+                            .renderingMode(.template)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .foregroundColor(Colors.customRedColor)
                             .frame(width: 20, height: 20)
                         Text("TEXT_TO_SUPPORT".localizedString)
                             .foregroundStyle(Colors.textSteelColor)
@@ -158,8 +182,10 @@ struct SideMenu: View {
                     logoutTrigger.send(())
                 } label: {
                     Image("logout")
+                        .renderingMode(.template)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .foregroundColor(Colors.customRedColor)
                         .frame(width: 20, height: 20)
                     Text("LOGOUT".localizedString)
                         .foregroundStyle(Colors.primaryTextColor)
