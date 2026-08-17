@@ -65,26 +65,30 @@ struct SearchProductView: View {
                     .padding(.horizontal)
                     .padding(.top)
 
-                    Button {
-                        isGroupPickerPresented = true
-                    } label: {
-                        HStack {
-                            Text(output.selectedGroup?.text ?? "SELECT_GROUP".localizedString)
-                                .foregroundColor(output.selectedGroup == nil ? Colors.secondaryTextColor : Colors.primaryTextColor)
-                                .lineLimit(1)
-                            Spacer()
-                            Image(systemName: "chevron.down")
-                                .foregroundColor(Colors.secondaryTextColor)
+                    HStack {
+                        Button {
+                            isGroupPickerPresented = true
+                        } label: {
+                            HStack(spacing: 6) {
+                                Text(output.selectedGroup?.text ?? "SELECT_GROUP".localizedString)
+                                    .font(.system(size: 13))
+                                    .foregroundColor(output.selectedGroup == nil ? Colors.secondaryTextColor : Colors.primaryTextColor)
+                                    .lineLimit(1)
+                                Image(systemName: "chevron.down")
+                                    .font(.system(size: 11))
+                                    .foregroundColor(Colors.secondaryTextColor)
+                            }
+                            .padding(.horizontal, 12)
+                            .frame(height: 32)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Colors.oldBorderColor)
+                            }
                         }
-                        .padding(.horizontal, 12)
-                        .frame(height: 40)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Colors.oldBorderColor)
-                        }
+                        Spacer()
                     }
                     .padding(.horizontal)
-                    .padding(.bottom, 8)
+                    .padding(.top, 8)
 
                     if output.items.isEmpty {
                         VStack(alignment: .center) {
