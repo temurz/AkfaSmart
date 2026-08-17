@@ -12,6 +12,7 @@ struct SearchProductView: View {
     @ObservedObject var output: SearchProductViewModel.Output
     @State private var isGroupPickerPresented = false
     @State private var addToCartSheetHeight: CGFloat = 260
+    @State private var groupPickerHeight: CGFloat = 400
     private let loadProductsTrigger = PassthroughSubject<SearchProductQuery,Never>()
     private let reloadProductsTrigger = PassthroughSubject<SearchProductQuery,Never>()
     private let loadMoreProductsTrigger = PassthroughSubject<SearchProductQuery,Never>()
@@ -135,16 +136,6 @@ struct SearchProductView: View {
                 }
             }
 
-            if isGroupPickerPresented {
-                ProductGroupPickerSheetView(
-                    rootGroups: output.groups,
-                    onSelect: { group in
-                        selectGroupTrigger.send(group)
-                        isGroupPickerPresented = false
-                    },
-                    onDismiss: { isGroupPickerPresented = false }
-                )
-            }
         }
         .sheet(item: $output.selectedProduct, onDismiss: { dismissAddToCartTrigger.send(()) }) { product in
             AddToCartSheetView(
@@ -153,6 +144,21 @@ struct SearchProductView: View {
             )
             .readSheetHeight(into: $addToCartSheetHeight)
             .presentationDetents([.height(addToCartSheetHeight)])
+            .presentationDragIndicator(.visible)
+            .presentationCompactAdaptation(.sheet)
+            .presentationBackground(Color.white)
+        }
+        .sheet(isPresented: $isGroupPickerPresented) {
+            ProductGroupPickerSheetView(
+                rootGroups: output.groups,
+                onSelect: { group in
+                    selectGroupTrigger.send(group)
+                    isGroupPickerPresented = false
+                },
+                onDismiss: { isGroupPickerPresented = false }
+            )
+            .readSheetHeight(into: $groupPickerHeight)
+            .presentationDetents([.height(groupPickerHeight)])
             .presentationDragIndicator(.visible)
             .presentationCompactAdaptation(.sheet)
             .presentationBackground(Color.white)
