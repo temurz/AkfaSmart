@@ -11,6 +11,7 @@ import Combine
 struct SearchProductView: View {
     @ObservedObject var output: SearchProductViewModel.Output
     @State private var isGroupPickerPresented = false
+    @State private var addToCartSheetHeight: CGFloat = 260
     private let loadProductsTrigger = PassthroughSubject<SearchProductQuery,Never>()
     private let reloadProductsTrigger = PassthroughSubject<SearchProductQuery,Never>()
     private let loadMoreProductsTrigger = PassthroughSubject<SearchProductQuery,Never>()
@@ -134,14 +135,6 @@ struct SearchProductView: View {
                 }
             }
 
-            if let selectedProduct = output.selectedProduct {
-                AddToCartSheetView(
-                    product: selectedProduct,
-                    onAdd: { quantity in addToCartTrigger.send((selectedProduct, quantity)) },
-                    onDismiss: { dismissAddToCartTrigger.send(()) }
-                )
-            }
-
             if isGroupPickerPresented {
                 ProductGroupPickerSheetView(
                     rootGroups: output.groups,
@@ -152,6 +145,17 @@ struct SearchProductView: View {
                     onDismiss: { isGroupPickerPresented = false }
                 )
             }
+        }
+        .sheet(item: $output.selectedProduct, onDismiss: { dismissAddToCartTrigger.send(()) }) { product in
+            AddToCartSheetView(
+                product: product,
+                onAdd: { quantity in addToCartTrigger.send((product, quantity)) }
+            )
+            .readSheetHeight(into: $addToCartSheetHeight)
+            .presentationDetents([.height(addToCartSheetHeight)])
+            .presentationDragIndicator(.visible)
+            .presentationCompactAdaptation(.sheet)
+            .presentationBackground(Color.white)
         }
         .alert(isPresented: $output.alert.isShowing) {
             Alert(

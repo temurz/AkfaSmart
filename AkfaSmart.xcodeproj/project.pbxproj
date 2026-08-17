@@ -170,6 +170,7 @@
 		7CAABECE106D78493CF0365D /* Order+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89634BC02C7F1A63C58DB392 /* Order+API.swift */; };
 		810A19BFD3D942469249E272 /* MyOrdersAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC771818D1714A5B86303750 /* MyOrdersAssembler.swift */; };
 		913A5F64B7536267BCE67341 /* QuantityStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6411935351630B3D2B130E7E /* QuantityStepperView.swift */; };
+		067A0234FB114C9446C1EB88 /* SheetHeightReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2B2F250249963CF150A4E2 /* SheetHeightReader.swift */; };
 		9893448E653C45CCA1C01227 /* ShowingMyOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A00904D58546BAB2A350F8 /* ShowingMyOrdersView.swift */; };
 		AC3D63AA2BE5172F47890537 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC9A774C7995CAE9DE9705B /* CartView.swift */; };
 		AD07F2DD94AA0170B89135FA /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B289C5C2E9DF247D55722 /* CartViewModel.swift */; };
@@ -730,6 +731,7 @@
 		501C4E0D30114871BDCABE7C /* MyOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersView.swift; sourceTree = "<group>"; };
 		591029536489EE96F0D59052 /* MyOrderDetailAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderDetailAssembler.swift; sourceTree = "<group>"; };
 		6411935351630B3D2B130E7E /* QuantityStepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityStepperView.swift; sourceTree = "<group>"; };
+		4F2B2F250249963CF150A4E2 /* SheetHeightReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHeightReader.swift; sourceTree = "<group>"; };
 		6853F7851A7540718EE40A75 /* MyOrderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderRow.swift; sourceTree = "<group>"; };
 		6CC9A774C7995CAE9DE9705B /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		6E3C5B25999A87BFDEA6783E /* CartAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartAssembler.swift; sourceTree = "<group>"; };
@@ -2194,6 +2196,7 @@
 				B8F7B7C12CCEC3B10093A2B7 /* CustomNavigationBar.swift */,
 				B8F7B7C72CCECEBE0093A2B7 /* HorizontalSeparatorLine.swift */,
 				6411935351630B3D2B130E7E /* QuantityStepperView.swift */,
+				4F2B2F250249963CF150A4E2 /* SheetHeightReader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3552,6 +3555,7 @@
 				D925D4A426F58C94D810C082 /* CartItem.swift in Sources */,
 				5008A1262492B88787686668 /* CartManager.swift in Sources */,
 				913A5F64B7536267BCE67341 /* QuantityStepperView.swift in Sources */,
+				067A0234FB114C9446C1EB88 /* SheetHeightReader.swift in Sources */,
 				7CAABECE106D78493CF0365D /* Order+API.swift in Sources */,
 				5B4F0E7177C135FB6CA2953A /* OrderGateway.swift in Sources */,
 				25303C7CDA3BB9628079DA7C /* ShowingCartView.swift in Sources */,
