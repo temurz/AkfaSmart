@@ -73,9 +73,10 @@ extension API {
         static let getReceiptList = Base.BASE_URL + "/api/mobile/payment_receipt/list"
 
         //Products
-        static let getProductsList = Base.BASE_URL + "/api/mobile/product/list"
+        static let getProductsList = Base.BASE_URL + "/api/mobile/product-list-new"
         static let getProductsListByNameAndLocation = Base.BASE_URL + "/api/mobile/product/listByProductName"
         static let getProductDealersListById = Base.BASE_URL + "/api/mobile/product/listByProductId"
+        static let getProductGroupTree = Base.BASE_URL + "/api/mobile/adw-product-group-tree"
 
         //User
         static let getGeneralUserInfo = Base.BASE_URL + "/api/mobile/mobile_user/userInfo"

@@ -88,6 +88,10 @@
 "ADD_TO_CART" = "Добавить в корзину";
 "ORDER_INFO_TITLE" = "Инфо о заказе";
 "SELECT_DEALER" = "Выберите диллер";
+"SELECT_GROUP" = "Выберите группу";
+"ALL_GROUPS" = "Все группы";
+"ORDER_SUBMITTED_SUCCESS" = "Ваш заказ успешно зарегистрирован";
+"GO_TO_MAIN_SCREEN" = "Перейти на главный экран";
 "SUBMIT_ORDER" = "Отправить заказ";
 "ITEMS_SUFFIX" = "товаров";
 "WELCOME" = "Добро пожаловать!";

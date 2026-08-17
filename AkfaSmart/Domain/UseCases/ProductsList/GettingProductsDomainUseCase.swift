@@ -12,9 +12,12 @@ protocol GettingProductsDomainUseCase {
 }
 
 extension GettingProductsDomainUseCase {
-    func getProductsList(text: String, page: Int) -> Observable<PagingInfo<ProductWithName>> {
+    func getProductsList(text: String, groupId: Int?, page: Int) -> Observable<PagingInfo<ProductWithName>> {
         let dto = GetPageDto(page: page)
-        return gateway.getProductsList(text: text, dto: dto)
+        return gateway.getProductsList(text: text, groupId: groupId, dto: dto)
     }
 
+    func getProductGroupTree() -> Observable<[ProductGroup]> {
+        gateway.getProductGroupTree()
+    }
 }

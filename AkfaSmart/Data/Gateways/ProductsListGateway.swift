@@ -8,12 +8,13 @@
 
 import Foundation
 protocol ProductsListGatewayType {
-    func getProductsList(text: String, dto: GetPageDto) -> Observable<PagingInfo<ProductWithName>>
+    func getProductsList(text: String, groupId: Int?, dto: GetPageDto) -> Observable<PagingInfo<ProductWithName>>
+    func getProductGroupTree() -> Observable<[ProductGroup]>
 }
 
 struct ProductsListGateway: ProductsListGatewayType {
-    func getProductsList(text: String, dto: GetPageDto) -> Observable<PagingInfo<ProductWithName>> {
-        let input = API.GetProductsListInput(text: text, dto: dto)
+    func getProductsList(text: String, groupId: Int?, dto: GetPageDto) -> Observable<PagingInfo<ProductWithName>> {
+        let input = API.GetProductsListInput(text: text, groupId: groupId, dto: dto)
         return API.shared.getProducts(input)
             .tryMap { output in
                 return output
@@ -21,5 +22,9 @@ struct ProductsListGateway: ProductsListGatewayType {
             .replaceNil(with: [])
             .map { PagingInfo(page: dto.page, items: $0, hasMorePages: $0.count == dto.perPage) }
             .eraseToAnyPublisher()
+    }
+
+    func getProductGroupTree() -> Observable<[ProductGroup]> {
+        API.shared.getProductGroupTree(API.GetProductGroupTreeInput())
     }
 }

@@ -87,6 +87,10 @@
 "ADD_TO_CART" = "Add to cart";
 "ORDER_INFO_TITLE" = "Order info";
 "SELECT_DEALER" = "Select dealer";
+"SELECT_GROUP" = "Select group";
+"ALL_GROUPS" = "All groups";
+"ORDER_SUBMITTED_SUCCESS" = "Your order has been successfully registered";
+"GO_TO_MAIN_SCREEN" = "Go to main screen";
 "SUBMIT_ORDER" = "Submit order";
 "ITEMS_SUFFIX" = "items";
 "WELCOME" = "Welcome!";

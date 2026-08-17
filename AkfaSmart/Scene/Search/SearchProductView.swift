@@ -10,14 +10,17 @@ import SwiftUI
 import Combine
 struct SearchProductView: View {
     @ObservedObject var output: SearchProductViewModel.Output
-    private let loadProductsTrigger = PassthroughSubject<String,Never>()
-    private let reloadProductsTrigger = PassthroughSubject<String,Never>()
-    private let loadMoreProductsTrigger = PassthroughSubject<String,Never>()
+    @State private var isGroupPickerPresented = false
+    private let loadProductsTrigger = PassthroughSubject<SearchProductQuery,Never>()
+    private let reloadProductsTrigger = PassthroughSubject<SearchProductQuery,Never>()
+    private let loadMoreProductsTrigger = PassthroughSubject<SearchProductQuery,Never>()
     private let showLocationTrigger = PassthroughSubject<ProductWithName,Never>()
     private let selectProductTrigger = PassthroughSubject<ProductWithName,Never>()
     private let addToCartTrigger = PassthroughSubject<(ProductWithName, Int),Never>()
     private let dismissAddToCartTrigger = PassthroughSubject<Void,Never>()
     private let showCartTrigger = PassthroughSubject<Void,Never>()
+    private let loadGroupsTrigger = PassthroughSubject<Void,Never>()
+    private let selectGroupTrigger = PassthroughSubject<ProductGroup?,Never>()
 
     private let cancelBag = CancelBag()
     var body: some View {
@@ -29,7 +32,7 @@ struct SearchProductView: View {
                         ZStack(alignment: .trailing) {
                             TextField("SEARCH".localizedString, text: $output.searchedText)
                                 .onSubmit {
-                                    loadProductsTrigger.send("")
+                                    loadProductsTrigger.send(SearchProductQuery(text: "", groupId: output.selectedGroup?.id))
                                 }
                                 .frame(height: 48)
                                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
@@ -59,7 +62,29 @@ struct SearchProductView: View {
                             }
                         }
                     }
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.top)
+
+                    Button {
+                        isGroupPickerPresented = true
+                    } label: {
+                        HStack {
+                            Text(output.selectedGroup?.text ?? "SELECT_GROUP".localizedString)
+                                .foregroundColor(output.selectedGroup == nil ? Colors.secondaryTextColor : Colors.primaryTextColor)
+                                .lineLimit(1)
+                            Spacer()
+                            Image(systemName: "chevron.down")
+                                .foregroundColor(Colors.secondaryTextColor)
+                        }
+                        .padding(.horizontal, 12)
+                        .frame(height: 40)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Colors.oldBorderColor)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 8)
 
                     if output.items.isEmpty {
                         VStack(alignment: .center) {
@@ -83,7 +108,7 @@ struct SearchProductView: View {
                                     )
                                         .onAppear {
                                             if output.items.last?.id ?? -1 == item.id && output.hasMorePages {
-                                                loadMoreProductsTrigger.send(output.searchedText)
+                                                loadMoreProductsTrigger.send(SearchProductQuery(text: output.searchedText, groupId: output.selectedGroup?.id))
                                             }
                                         }
                                 }
@@ -100,7 +125,8 @@ struct SearchProductView: View {
                 }
                 .navigationBarHidden(true)
                 .onAppear {
-                    loadProductsTrigger.send("")
+                    loadProductsTrigger.send(SearchProductQuery(text: "", groupId: output.selectedGroup?.id))
+                    loadGroupsTrigger.send(())
                 }
             }
 
@@ -111,6 +137,24 @@ struct SearchProductView: View {
                     onDismiss: { dismissAddToCartTrigger.send(()) }
                 )
             }
+
+            if isGroupPickerPresented {
+                ProductGroupPickerSheetView(
+                    rootGroups: output.groups,
+                    onSelect: { group in
+                        selectGroupTrigger.send(group)
+                        isGroupPickerPresented = false
+                    },
+                    onDismiss: { isGroupPickerPresented = false }
+                )
+            }
+        }
+        .alert(isPresented: $output.alert.isShowing) {
+            Alert(
+                title: Text(output.alert.title),
+                message: Text(output.alert.message),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 
@@ -123,7 +167,9 @@ struct SearchProductView: View {
             selectProductTrigger: selectProductTrigger.asDriver(),
             addToCartTrigger: addToCartTrigger.asDriver(),
             dismissAddToCartTrigger: dismissAddToCartTrigger.asDriver(),
-            showCartTrigger: showCartTrigger.asDriver())
+            showCartTrigger: showCartTrigger.asDriver(),
+            loadGroupsTrigger: loadGroupsTrigger.asDriver(),
+            selectGroupTrigger: selectGroupTrigger.asDriver())
 
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

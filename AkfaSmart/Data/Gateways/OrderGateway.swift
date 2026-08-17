@@ -5,7 +5,7 @@
 
 import Foundation
 protocol OrderGatewayType {
-    func saveOrderItem(productId: Int, quantity: Int) -> Observable<CartItem>
+    func saveOrderItem(productId: Int, quantity: Int) -> Observable<Bool>
     func getCartItems() -> Observable<CartSummary>
     func changeOrderItemQuantity(orderItemId: Int, quantity: Int) -> Observable<Bool>
     func deleteOrderItem(orderItemId: Int) -> Observable<Bool>
@@ -18,7 +18,7 @@ protocol OrderGatewayType {
 }
 
 struct OrderGateway: OrderGatewayType {
-    func saveOrderItem(productId: Int, quantity: Int) -> Observable<CartItem> {
+    func saveOrderItem(productId: Int, quantity: Int) -> Observable<Bool> {
         API.shared.saveOrderItem(API.SaveOrderItemInput(productId: productId, quantity: quantity))
     }
 

@@ -8,15 +8,16 @@
 
 import Foundation
 protocol SearchProductViewUseCaseType {
-    func getProductsList(text: String, page: Int) -> Observable<PagingInfo<ProductWithName>>
-    func saveOrderItem(productId: Int, quantity: Int) -> Observable<CartItem>
+    func getProductsList(text: String, groupId: Int?, page: Int) -> Observable<PagingInfo<ProductWithName>>
+    func getProductGroupTree() -> Observable<[ProductGroup]>
+    func saveOrderItem(productId: Int, quantity: Int) -> Observable<Bool>
 }
 
 struct SearchProductViewUseCase: SearchProductViewUseCaseType, GettingProductsDomainUseCase {
     var gateway: ProductsListGatewayType
     var orderGateway: OrderGatewayType
 
-    func saveOrderItem(productId: Int, quantity: Int) -> Observable<CartItem> {
+    func saveOrderItem(productId: Int, quantity: Int) -> Observable<Bool> {
         orderGateway.saveOrderItem(productId: productId, quantity: quantity)
     }
 }

@@ -18,6 +18,7 @@ struct CartView: View {
     private let decrementTrigger = PassthroughSubject<Int, Never>()
     private let removeTrigger = PassthroughSubject<Int, Never>()
     private let submitOrderTrigger = PassthroughSubject<Void, Never>()
+    private let dismissSuccessTrigger = PassthroughSubject<Void, Never>()
 
     private let cancelBag = CancelBag()
 
@@ -112,6 +113,13 @@ struct CartView: View {
                     onDismiss: { dismissDealerPickerTrigger.send(()) }
                 )
             }
+
+            if output.submittedOrderId != nil {
+                OrderSuccessDialogView(
+                    orderId: output.submittedOrderId,
+                    onDismiss: { dismissSuccessTrigger.send(()) }
+                )
+            }
         }
         .navigationBarHidden(true)
         .onAppear {
@@ -134,7 +142,8 @@ struct CartView: View {
             incrementTrigger: incrementTrigger.asDriver(),
             decrementTrigger: decrementTrigger.asDriver(),
             removeTrigger: removeTrigger.asDriver(),
-            submitOrderTrigger: submitOrderTrigger.asDriver()
+            submitOrderTrigger: submitOrderTrigger.asDriver(),
+            dismissSuccessTrigger: dismissSuccessTrigger.asDriver()
         )
         self.output = viewModel.transform(input, cancelBag: cancelBag)
     }

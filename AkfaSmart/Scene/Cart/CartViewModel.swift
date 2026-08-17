@@ -22,6 +22,7 @@ extension CartViewModel: ViewModel {
         let decrementTrigger: Driver<Int>
         let removeTrigger: Driver<Int>
         let submitOrderTrigger: Driver<Void>
+        let dismissSuccessTrigger: Driver<Void>
     }
 
     final class Output: ObservableObject {
@@ -33,6 +34,8 @@ extension CartViewModel: ViewModel {
         @Published var alert = AlertMessage()
         @Published var totalPrice: Double = 0
         @Published var totalQuantity: Int = 0
+        @Published var orderId: Int?
+        @Published var submittedOrderId: Int?
     }
 
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -55,6 +58,7 @@ extension CartViewModel: ViewModel {
                     output.items = summary.items
                     output.totalPrice = summary.totalPrice
                     output.totalQuantity = Int(summary.totalQuantity)
+                    output.orderId = summary.id
                 })
                 .store(in: cancelBag)
             CartManager.shared.refreshCount()
@@ -157,6 +161,7 @@ extension CartViewModel: ViewModel {
         input.submitOrderTrigger
             .sink {
                 guard output.selectedDealer != nil, !output.items.isEmpty else { return }
+                let completedOrderId = output.orderId
                 output.isLoading = true
                 useCase.completeOrder()
                     .receive(on: RunLoop.main)
@@ -168,10 +173,17 @@ extension CartViewModel: ViewModel {
                     }, receiveValue: { success in
                         if success {
                             CartManager.shared.refreshCount()
-                            navigationController.popViewController(animated: true)
+                            output.submittedOrderId = completedOrderId
                         }
                     })
                     .store(in: cancelBag)
+            }
+            .store(in: cancelBag)
+
+        input.dismissSuccessTrigger
+            .sink {
+                output.submittedOrderId = nil
+                navigationController.popViewController(animated: true)
             }
             .store(in: cancelBag)
 

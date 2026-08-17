@@ -5,8 +5,8 @@
 
 import Alamofire
 extension API {
-    func saveOrderItem(_ input: SaveOrderItemInput) -> Observable<CartItem> {
-        request(input)
+    func saveOrderItem(_ input: SaveOrderItemInput) -> Observable<Bool> {
+        success(input)
     }
 
     final class SaveOrderItemInput: APIInput {

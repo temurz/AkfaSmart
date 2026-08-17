@@ -13,13 +13,30 @@ extension API {
     }
     
     final class GetProductsListInput: APIInput {
-        init(text: String, dto: GetPageDto) {
-            let params: Parameters = [
-                "productName": text,
+        init(text: String, groupId: Int?, dto: GetPageDto) {
+            var params: Parameters = [
                 "length": dto.perPage,
                 "start": dto.page
             ]
-            super.init(urlString: API.Urls.getProductsList, parameters: params, method: .post, requireAccessToken: true)
+            if !text.isEmpty {
+                params["search"] = text
+            }
+            if let groupId {
+                params["groupId"] = groupId
+            }
+            super.init(urlString: API.Urls.getProductsList, parameters: params, method: .get, requireAccessToken: true)
+        }
+    }
+}
+
+extension API {
+    func getProductGroupTree(_ input: GetProductGroupTreeInput) -> Observable<[ProductGroup]> {
+        requestList(input)
+    }
+
+    final class GetProductGroupTreeInput: APIInput {
+        init() {
+            super.init(urlString: API.Urls.getProductGroupTree, parameters: nil, method: .get, requireAccessToken: true)
         }
     }
 }
