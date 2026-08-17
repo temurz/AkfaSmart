@@ -110,12 +110,12 @@ struct HomeView: View {
                             if output.items.count > 2 {
                                 Circle()
                                     .frame(width: 10, height: 10)
-                                    .foregroundStyle(output.currentDealerIndex != 0 && output.currentCardIndex != output.items.count - 1 ? Colors.customRedColor : Colors.circleGrayColor)
+                                    .foregroundStyle(output.currentDealerIndex != 0 && output.currentDealerIndex != output.items.count - 1 ? Colors.customRedColor : Colors.circleGrayColor)
                             }
                             if output.items.count > 1 {
                                 Circle()
                                     .frame(width: 10, height: 10)
-                                    .foregroundStyle(output.currentDealerIndex == output.cards.count - 1 ? Colors.customRedColor : Colors.circleGrayColor)
+                                    .foregroundStyle(output.currentDealerIndex == output.items.count - 1 ? Colors.customRedColor : Colors.circleGrayColor)
                             }
                             
                             Spacer()

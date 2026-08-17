@@ -59,7 +59,7 @@ extension MyDealersViewModel: ViewModel {
         
         input.addDealerTrigger
             .sink {
-                
+                navigator.showAddDealerView()
             }
             .store(in: cancelBag)
         

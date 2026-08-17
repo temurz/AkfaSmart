@@ -10,9 +10,10 @@ import UIKit
 protocol MyDealersViewNavigatorType {
     func popView()
     func showDealersDetailViewModally(dealer: Dealer)
+    func showAddDealerView()
 }
 
-struct MyDealersViewNavigator: MyDealersViewNavigatorType, PoppingController, ShowDealerDetailsView {
+struct MyDealersViewNavigator: MyDealersViewNavigatorType, PoppingController, ShowDealerDetailsView, ShowingAddDealerView {
     var assembler: Assembler
     
     var navigationController: UINavigationController

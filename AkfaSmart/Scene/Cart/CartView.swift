@@ -7,6 +7,7 @@ import SwiftUI
 import Combine
 struct CartView: View {
     @ObservedObject var output: CartViewModel.Output
+    @State private var dealerPickerHeight: CGFloat = 300
 
     private let loadCartTrigger = PassthroughSubject<Void, Never>()
     private let backTrigger = PassthroughSubject<Void, Never>()
@@ -105,15 +106,6 @@ struct CartView: View {
                 }
             }
 
-            if output.isDealerPickerPresented {
-                DealerPickerSheetView(
-                    dealers: output.dealers,
-                    selected: output.selectedDealer,
-                    onSelect: { dealer in chooseDealerTrigger.send(dealer) },
-                    onDismiss: { dismissDealerPickerTrigger.send(()) }
-                )
-            }
-
             if output.submittedOrderId != nil {
                 OrderSuccessDialogView(
                     orderId: output.submittedOrderId,
@@ -125,6 +117,18 @@ struct CartView: View {
         .onAppear {
             loadCartTrigger.send(())
             getDealersTrigger.send(())
+        }
+        .sheet(isPresented: $output.isDealerPickerPresented, onDismiss: { dismissDealerPickerTrigger.send(()) }) {
+            DealerPickerSheetView(
+                dealers: output.dealers,
+                selected: output.selectedDealer,
+                onSelect: { dealer in chooseDealerTrigger.send(dealer) }
+            )
+            .readSheetHeight(into: $dealerPickerHeight)
+            .presentationDetents([.height(dealerPickerHeight)])
+            .presentationDragIndicator(.visible)
+            .presentationCompactAdaptation(.sheet)
+            .presentationBackground(Color.white)
         }
         .alert(isPresented: $output.alert.isShowing) {
             Alert(title: Text(output.alert.title), message: Text(output.alert.message), dismissButton: .default(Text("OK")))

@@ -17,14 +17,7 @@ struct DealerDetailModalView: View {
     private let cancelBag = CancelBag()
     
     var body: some View {
-        VStack {
-            Button {
-                dismissTrigger.send(())
-            } label: {
-                Color.black.opacity(0.1)
-            }
-
-            VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Color.clear
                         .frame(width: 24, height: 24)
@@ -123,13 +116,12 @@ struct DealerDetailModalView: View {
                     }
                 }
                 .padding(.bottom)
-            }
-            .padding()
-            .background(Color.white)
-            .cornerRadius(12, corners: [.topLeft, .topRight])
         }
-        .ignoresSafeArea(.all)
-        .background(Color.clear)
+        .padding(.horizontal)
+        .padding(.top, 20)
+        .padding(.bottom)
+        .frame(maxWidth: .infinity)
+        .background(Color.white)
     }
     
     init(model: Dealer, viewModel: DealerDetailsViewModel) {
